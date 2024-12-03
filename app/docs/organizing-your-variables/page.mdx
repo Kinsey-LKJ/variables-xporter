@@ -1,0 +1,32 @@
+---
+asIndexPage: true
+---
+
+import {
+  CloudIcon,
+  DiagramIcon,
+  FormulaIcon,
+  TableIcon,
+  TailwindIcon
+} from '../../components/icons'
+import { Cards } from 'nextra/components'
+import { TerminalIcon, TypeScriptIcon } from 'nextra/icons'
+import { MDXRemote } from 'nextra/mdx-remote'
+import { createIndexPage, getPageMap } from 'nextra/page-map'
+
+# Organizing Your Variables
+This is the page for the Arrange Variables section.
+
+<MDXRemote
+  compiledSource={await createIndexPage(await getPageMap('/docs/organizing-your-variables'))}
+  components={{
+    Cards,
+    TerminalIcon,
+    DiagramIcon,
+    TailwindIcon,
+    FormulaIcon,
+    TableIcon,
+    TypeScriptIcon,
+    CloudIcon
+  }}
+/>
