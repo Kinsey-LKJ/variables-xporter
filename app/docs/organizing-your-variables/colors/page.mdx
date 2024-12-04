@@ -1,1 +1,176 @@
+import { Callout } from 'nextra/components'
+import { Tabs } from 'nextra/components'
+
 # Colors
+所有颜色类变量的组织建议。
+
+如果你对颜色类变量的组织和命名没有头绪，[shadcn/ui 的命名约定](https://ui.shadcn.com/docs/theming#convention)是一个很好的开始：
+一般情况下，`background` 用于背景颜色，`foreground` 用于文本颜色，当 `background` 用于组件的背景颜色时，如 `colors/card/DEFAULT`[^1]，则省略 `background` 后缀。
+
+{/* - `--background` - 背景色
+- `--foreground` - 前景色/文本色
+- `--muted` - 柔和的背景色
+- `--muted-foreground` - 柔和的前景色
+- `--popover` - 弹出层背景色
+- `--popover-foreground` - 弹出层前景色
+- `--card` - 卡片背景色
+- `--card-foreground` - 卡片前景色
+- `--border` - 边框色
+- `--input` - 输入框边框色
+- `--primary` - 主色调
+- `--primary-foreground` - 主色调上的前景色
+- `--secondary` - 次色调
+- `--secondary-foreground` - 次色调上的前景色
+- `--accent` - 强调色
+- `--accent-foreground` - 强调色上的前景色
+- `--destructive` - 危险/警告色
+- `--destructive-foreground` - 危险/警告色上的前景色
+- `--ring` - 聚焦环的颜色
+
+<Callout type="warning" emoji="⚠️">
+  以上是 CSS Variables，请不要在 Figma 中使用 `--` 作为任何变量的前缀。
+</Callout> */}
+
+{/* 对应到 Figma 中，可以使用以下命名约定： */}
+- `colors/background/DEFAULT` - 背景色  
+- `colors/foreground/DEFAULT` - 前景色
+- `colors/muted/DEFAULT` - 柔和的背景色
+- `colors/muted/foreground` - 柔和的前景色
+- `colors/popover/DEFAULT` - 弹出层背景色
+- `colors/popover/foreground` - 弹出层前景色
+- `colors/card/DEFAULT` - 卡片背景色
+- `colors/card/foreground` - 卡片前景色
+- `colors/border/DEFAULT` - 边框色
+- `colors/input/DEFAULT` - 输入框边框色
+- `colors/primary/DEFAULT` - 主色调
+- `colors/primary/foreground` - 主色调上的前景色
+- `colors/secondary/DEFAULT` - 次色调
+- `colors/secondary/foreground` - 次色调上的前景色
+- `colors/accent/DEFAULT` - 强调色
+- `colors/accent/foreground` - 强调色上的前景色
+- `colors/destructive/DEFAULT` - 危险/警告色
+- `colors/destructive/foreground` - 危险/警告色上的前景色
+- `colors/ring/DEFAULT` - 聚焦环的颜色
+
+如果你在 Figma 中按照上述命名约定组织变量，Variables Xporter 将导出以下结果：
+
+
+<Tabs items={['Tailwind CSS', '仅 CSS 变量',"JSON"]}>
+  <Tabs.Tab>
+    ```js
+    // tailwind.config.js
+    module.exports = {
+      theme: {
+        extend: {
+          colors: {
+            background: {
+              DEFAULT: 'rgba(var(--background))',
+            },
+            foreground: {
+              DEFAULT: 'rgba(var(--foreground))',
+            },
+            muted: {
+              DEFAULT: 'rgba(var(--muted))',
+              foreground: 'rgba(var(--muted-foreground))',
+            },
+            popover: {
+              DEFAULT: 'rgba(var(--popover))',
+              foreground: 'rgba(var(--popover-foreground))',
+            },
+            card: {
+              DEFAULT: 'rgba(var(--card))',
+              foreground: 'rgba(var(--card-foreground))',
+            },
+            border: {
+              DEFAULT: 'rgba(var(--border))',
+            },
+            input: {
+              DEFAULT: 'rgba(var(--input))',
+            },
+          }
+        }
+      }
+    }
+    ```
+
+        ```css
+    /* global.css */
+    :root {
+      --background: 0 0 0;
+      --foreground: 255 255 255;
+      --muted: 210 210 210;
+      --muted-foreground: 113 113 113;
+      --popover: 255 255 255;
+      --popover-foreground: 0 0 0;
+      --card: 255 255 255;
+      --card-foreground: 0 0 0;
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --primary: 0 0 0;
+      --primary-foreground: 0 0 0;
+      --secondary: 210 210 210;
+      --secondary-foreground: 113 113 113;
+      --accent: 210 210 210;
+      --accent-foreground: 113 113 113;
+      --destructive: 0 63 25;
+      --destructive-foreground: 0 85 255;
+      --ring: 214.3 31.8% 91.4%;
+    }
+
+    .dark {
+      ...
+    }
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+      ```css
+    :root {
+      --background: 0 0 0;
+      --foreground: 255 255 255;
+      --muted: 210 210 210;
+      --muted-foreground: 113 113 113;
+      --popover: 255 255 255;
+      --popover-foreground: 0 0 0;
+      --card: 255 255 255;
+      --card-foreground: 0 0 0;
+      --border: 214.3 31.8% 91.4%;
+      --input: 214.3 31.8% 91.4%;
+      --primary: 0 0 0;
+      --primary-foreground: 0 0 0;
+      --secondary: 210 210 210;
+      --secondary-foreground: 113 113 113;
+      --accent: 210 210 210;
+      --accent-foreground: 113 113 113;
+      --destructive: 0 63 25;
+      --destructive-foreground: 0 85 255;
+      --ring: 214.3 31.8% 91.4%;
+    }
+
+    .dark {
+      ...
+    }
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+{/* <Callout type="info" emoji="💡">
+  Variables Xporter 会自动生成[符合 Tailwind CSS 规则](https://tailwindcss.com/docs/customizing-colors#using-css-variables)的颜色类 CSS 变量，并且支持与不透明度修饰符一起使用。
+</Callout> */}
+
+## 对于Tailwind CSS 项目
+必须以 `colors` 作为顶层目录，在 Tailwind CSS 的配置文件中，只有 `colors` 配置键对于颜色类样式是有效的
+
+<figure className="mt-6">
+  <>![组织颜色类变量](/organizing-your-variables/colors/colors-1.png)</>
+  <figcaption>
+    组织颜色类变量
+  </figcaption>
+</figure>
+
+<Callout type="info" emoji="💡">
+  Variables Xporter 会自动生成[符合 Tailwind CSS 规则](https://tailwindcss.com/docs/customizing-colors#using-css-variables)的颜色类 CSS 变量，并且支持与不透明度修饰符一起使用。
+</Callout>
+
+
+
+[^1]: `DEFAULT` 是组织变量层级的一种方式，[了解更多](/docs/organizing-your-variables/principles#使用默认值组织变量层级)

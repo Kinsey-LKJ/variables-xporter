@@ -57,7 +57,7 @@ export default async function RootLayout({
           dark: 100
         },
         lightness: {
-          light: 25,
+          light: 45,
           dark: 65
         },
       }}/>
