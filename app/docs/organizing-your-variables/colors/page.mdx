@@ -2,7 +2,7 @@ import { Callout } from 'nextra/components'
 import { Tabs } from 'nextra/components'
 
 # Colors
-所有颜色类变量的组织建议。
+颜色类变量的组织建议。
 
 如果你对颜色类变量的组织和命名没有头绪，[shadcn/ui 的命名约定](https://ui.shadcn.com/docs/theming#convention)是一个很好的开始：
 一般情况下，`background` 用于背景颜色，`foreground` 用于文本颜色，当 `background` 用于组件的背景颜色时，如 `colors/card/DEFAULT`[^1]，则省略 `background` 后缀。
@@ -158,7 +158,7 @@ import { Tabs } from 'nextra/components'
 </Callout> */}
 
 ## 对于Tailwind CSS 项目
-必须以 `colors` 作为顶层目录，在 Tailwind CSS 的配置文件中，只有 `colors` 配置键对于颜色类样式是有效的
+如果你的项目使用 Tailwind CSS，在 Figma 中你的变量必须保证以 `colors` 作为顶层目录，因为在 Tailwind CSS 的配置文件中，只有 `colors` 配置键对于颜色类样式是有效的。
 
 <figure className="mt-6">
   <>![组织颜色类变量](/organizing-your-variables/colors/colors-1.png)</>
@@ -173,4 +173,4 @@ import { Tabs } from 'nextra/components'
 
 
 
-[^1]: `DEFAULT` 是组织变量层级的一种方式，[了解更多](/docs/organizing-your-variables/principles#使用默认值组织变量层级)
+[^1]: `DEFAULT` 是组织变量层级的一种方式，[了解更多](/docs/organizing-your-variables/principles#use-default-value)

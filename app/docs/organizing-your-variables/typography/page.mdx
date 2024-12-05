@@ -1,1 +1,21 @@
+import { Callout } from 'nextra/components'
+
 # Typography
+`font-family` 、`font-size` 、`font-weight` 、`line-height` 等字体类变量的组织建议。
+
+## 顶层目录
+一般情况下，建议直接以 `font-family` 、`font-size` 、`font-weight` 、`line-height` 等字体类变量作为顶层目录，例如这样命名：
+- `font-family/sans`
+- `font-size/sm`
+- `font-weight/bold`
+- `line-height/relaxed`
+
+<Callout type="error" emoji="🚨">
+在用于 Tailwind CSS 项目时，将 `font-family` 、`font-size` 、`font-weight` 、`line-height` 等字体类样式作为顶层目录是必须的。
+</Callout>
+
+## 合并处理
+除了像上述那样将字体类样式名作为顶层目录外，还可以将多个字体类变量合并处理，这是常见的情况：
+- `font/hero/size/8xl`
+- `font/hero/weight/bold`
+- `font/hero/line-height/relaxed`
