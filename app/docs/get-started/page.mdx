@@ -22,48 +22,36 @@ Nextra works like a Next.js plugin, and it accepts a theme config (layout) to
 render the page. To start: [^3]
 
 <Steps>
-### 按照组织建议整理你的 Figma 变量
-这是十分关键的一步，特别在用于 Tailwind CSS 项目时。
+### 按照 [组织建议](/docs/organizing-your-variables) 整理你的 Figma 变量
+这是十分关键的一步，特别是对于 Tailwind CSS 项目。
 
 
-<Cards.Card
-  className="mt-2"
-  icon={<ScrollText size={20} />}
-  title="组织你的变量"
-  href="/docs/organizing-your-variables"
-  arrow
-/>
+### 在你的 Figma 文件里打开 [Variables Xporter](https://www.figma.com/community/plugin/1255188943883240897)
 
 
-### Install the docs theme 
+<figure className="mt-6 max-w-[400px]">
+  <>![打开 Variables Xporter](/get-started/open-variables-xporter.png)</>
+  <figcaption>
+    打开 Variables Xporter
+  </figcaption>
+</figure>
 
-### Create the following Next.js config and theme config under the root directory
 
-### Create a `theme.config.js` file for the docs theme
+### 选择要导出的集合以及分组
 
-### You are good to go! Run `next dev` to start
+<figure className="mt-6 max-w-[400px]">
+  <>![选择集合和分组](/get-started/choose-collection-and-group.png)</>
+  <figcaption>
+    选择集合和分组
+  </figcaption>
+</figure>
 
+### 选择格式并导出
+
+<figure className="mt-6 max-w-[400px]">
+  <>![选择格式并导出](/get-started/choose-format.png)</>
+  <figcaption>
+    选择格式并导出
+  </figcaption>
+</figure>
 </Steps>
-
----
-
-<span id="sidebar-and-anchor-links" />
-
-> [!NOTE]
->
-> Any `.md` or `.mdx` file will turn into a doc page and be displayed in
-> sidebar. You can also create a `_meta.js` file to customize the page order and
-> title. <br /> Check the source code: https://github.com/shuding/nextra for
-> more information.
-
-> [!TIP]
->
-> You can also use
-> [`<style jsx>`](https://nextjs.org/docs/basic-features/built-in-css-support#css-in-js)
-> to style elements inside `theme.config.js`.
-
-[^1]: Install Next.js, Nextra and React.
-
-[^2]: Install the docs theme.
-
-[^3]: To start.

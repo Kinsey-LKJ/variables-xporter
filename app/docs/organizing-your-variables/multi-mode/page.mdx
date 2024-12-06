@@ -1,1 +1,20 @@
 # Multi Mode
+
+Variables Xporter 支持多模式，并且支持变量的跨集合引用，这在创建复杂 Design Tokens 时非常有用，以下是多模式变量的组织建议。
+
+
+## 核心原则
+
+ Variables Xporter 建议使用多集合来组织多模式变量，并且遵循**唯一出口原则**。
+
+
+{/* ## 单一集合
+如果你的 Design Tokens 只包含一个集合，那么可以直接新建一个 mode，然后在新 mode 中设定变量的值即可。
+
+## 多集合
+如果你的 Design Tokens 包含多个集合，例如你可能有一个 Primitives 集合作为原子变量，另一个集合引用这些原子变量，那么直接在这个集合新建一个 mode 即可。
+
+## 复杂情况
+如果你的 Design Tokens 比较复杂，例如包含多个集合以及许多 mode，例如你可能有一个 Theme Modes 集合来管理会因不同主题而变化的变量，
+还有一个 Density Modes 集合来管理因不同的紧凑性模式下而变化的变量，还有一个 Device Modes 集合来管理因不同的设备类型而变化的变量，
+那么你可以直接在每个集合中新建一个 mode，然后在每个 mode 中设定变量的值。 */}

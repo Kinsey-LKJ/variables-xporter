@@ -9,13 +9,37 @@ import { Callout } from 'nextra/components'
 - `font-size/sm`
 - `font-weight/bold`
 - `line-height/relaxed`
+- `letter-spacing/normal`
 
 <Callout type="error" emoji="🚨">
-在用于 Tailwind CSS 项目时，将 `font-family` 、`font-size` 、`font-weight` 、`line-height` 等字体类样式作为顶层目录是必须的。
+在用于 Tailwind CSS 项目时，将 `font-family` 、`font-size` 、`font-weight` 、`line-height` 等字体类样式作为顶层目录是必须的，或者将 `font` 作为顶层目录将变量[合并处理](#merge-property)。
 </Callout>
 
-## 合并处理
-除了像上述那样将字体类样式名作为顶层目录外，还可以将多个字体类变量合并处理，这是常见的情况：
+## 合并处理 [#merge-property]
+除了像上述那样将字体类样式名作为顶层目录外，还可以将多个字体类变量合并处理，这是常见的命名：
 - `font/hero/size/8xl`
 - `font/hero/weight/bold`
 - `font/hero/line-height/relaxed`
+- `font/hero/letter-spacing/normal`
+
+对于原子化变量：
+- `font/size/sm`
+- `font/size/base`
+- `font/size/lg`
+- `...`
+- `font/weight/normal`
+- `font/weight/medium`
+- `font/weight/bold`
+- `...`
+- `font/line-height/none`
+- `font/line-height/tight`
+- `font/line-height/relaxed`
+- `...`
+- `font/letter-spacing/normal`
+- `font/letter-spacing/tight`
+- `font/letter-spacing/wide`
+- `...`
+
+<Callout type="warning" emoji="⚠️">
+合并处理只支持 `font-size` 、`font-weight` 、`line-height` 、`letter-spacing` 四种样式，并且只在已存在 `font/size/{variable}` 、或者 `font/{variable}/size` 变量时有效，这是按照 Tailwind CSS 针对 `fontSize` 的[自定义功能](https://tailwindcss.com/docs/font-size#customizing-your-theme)设计的。
+</Callout>
