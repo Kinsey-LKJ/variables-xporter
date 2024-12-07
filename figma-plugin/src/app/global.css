@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #1a1a1a;
+  --mantine-color-text: rgb(var(--colors-foreground));
+  color: rgb(var(--colors-foreground));
+}
+
+.nav-back-button .mantine-Button-section {
+  margin-right: 0.25rem;
+}
+
+#red-light {
+  offset-path: path(
+    'M599.5 323.5V298L599 297.5L574 272.5H531.828C531.298 272.5 530.789 272.289 530.414 271.914L521.586 263.086C521.211 262.711 520.702 262.5 520.172 262.5H372.828C372.298 262.5 371.789 262.711 371.414 263.086L328.586 305.914C328.211 306.289 327.702 306.5 327.172 306.5H268.328C267.798 306.5 267.289 306.289 266.914 305.914L226.5 265.5L199.5 238.5V175.5C199.5 173.291 197.709 171.5 195.5 171.5H38.5C36.2909 171.5 34.5 169.709 34.5 167.5V0'
+  );
+  offset-distance: 100%;
+  animation: red-light-move 10s 2s linear infinite;
+}
+
+#purple-light {
+  offset-path: path('M631 252.5H230H0');
+  offset-distance: 100%;
+  animation: purple-light-move 10s 1s linear infinite;
+  opacity: 0;
+}
+
+#green-light {
+  offset-path: path(
+    'M620.5 182.5V185.5L574.5 231.5H564.5H509.328C508.798 231.5 508.289 231.711 507.914 232.086L499.086 240.914C498.711 241.289 498.202 241.5 497.672 241.5H414.315C413.793 241.5 413.291 241.296 412.917 240.93L370.083 199.07C369.709 198.704 369.207 198.5 368.685 198.5H325.328C324.798 198.5 324.289 198.711 323.914 199.086L278.586 244.414C278.211 244.789 277.702 245 277.172 245H229H199.5V448'
+  );
+  offset-distance: 100%;
+  animation: green-light-move 10s linear infinite;
+}
+
+#green-circle,
+#purple-circle,
+#red-circle {
+  opacity: 0;
+  transform-origin: 199.5px 252.5px;
+}
+
+#red-circle {
+  animation: red-ripple 10s 2s infinite;
+}
+
+#purple-circle {
+  animation: purple-ripple 10s 1s infinite;
+}
+
+#green-circle {
+  animation: green-ripple 10s infinite;
+}
+/* #gold-light-in-red-path {
+  offset-path: path(
+    'M599.5 323.5V298L599 297.5L574 272.5H531.828C531.298 272.5 530.789 272.289 530.414 271.914L521.586 263.086C521.211 262.711 520.702 262.5 520.172 262.5H372.828C372.298 262.5 371.789 262.711 371.414 263.086L328.586 305.914C328.211 306.289 327.702 306.5 327.172 306.5H268.328C267.798 306.5 267.289 306.289 266.914 305.914L226.5 265.5L199.5 238.5V175.5C199.5 173.291 197.709 171.5 195.5 171.5H38.5C36.2909 171.5 34.5 169.709 34.5 167.5V0'
+  );
+  animation: gold-light-in-red-path-move 10s 2s linear infinite;
+} */
+#gold-light-in-purple-path {
+  offset-path: path('M631 252.5H230H0');
+  animation: gold-light-in-purple-path-move 10s 1s linear infinite;
+}
+
+/* #gold-light-in-green-path {
+  offset-path: path(
+    'M620.5 182.5V185.5L574.5 231.5H564.5H509.328C508.798 231.5 508.289 231.711 507.914 232.086L499.086 240.914C498.711 241.289 498.202 241.5 497.672 241.5H414.315C413.793 241.5 413.291 241.296 412.917 240.93L370.083 199.07C369.709 198.704 369.207 198.5 368.685 198.5H325.328C324.798 198.5 324.289 198.711 323.914 199.086L278.586 244.414C278.211 244.789 277.702 245 277.172 245H229H199.5V448'
+  );
+  animation: gold-light-in-green-path-move 10s linear infinite;
+} */
+
+#tokens-display-mask-rect {
+  animation: tokens-display-mask-move 10s 1s linear infinite;
+}
+
+#tokens-display {
+  opacity: 0.3;
+  animation: tokens-display 10s 1s linear infinite;
+}
+
+#export-display {
+  opacity: 0.3;
+  animation: export-display 10s 2s linear infinite;
+}
+
+@keyframes red-light-move {
+  0% {
+    offset-distance: 100%;
+  }
+  30% {
+    offset-distance: 54%;
+  }
+  40% {
+    offset-distance: 54%;
+  }
+  100% {
+    offset-distance: 54%;
+  }
+}
+
+@keyframes gold-light-in-red-path-move {
+  0% {
+    offset-distance: 54%;
+  }
+  40% {
+    offset-distance: 54%;
+  }
+  100% {
+    offset-distance: 0%;
+  }
+}
+
+@keyframes red-ripple {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  30% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  34% {
+    opacity: 1;
+    offset-distance: 54%;
+  }
+  40% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes green-light-move {
+  0% {
+    offset-distance: 100%;
+  }
+  30% {
+    offset-distance: 70%;
+  }
+  60% {
+    offset-distance: 70%;
+  }
+  100% {
+    offset-distance: 70%;
+  }
+}
+
+@keyframes gold-light-in-green-path-move {
+  0% {
+    offset-distance: 70%;
+  }
+  60% {
+    offset-distance: 70%;
+  }
+  100% {
+    offset-distance: 0%;
+  }
+}
+
+@keyframes green-ripple {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  30% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  34% {
+    opacity: 1;
+    offset-distance: 54%;
+  }
+  40% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes purple-light-move {
+  0% {
+    opacity: 0;
+    offset-distance: 100%;
+  }
+  5% {
+    opacity: 1;
+  }
+  30% {
+    offset-distance: 70%;
+  }
+  50% {
+    offset-distance: 70%;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    offset-distance: 70%;
+  }
+}
+
+@keyframes gold-light-in-purple-path-move {
+  0% {
+    offset-distance: 70%;
+  }
+  50% {
+    offset-distance: 70%;
+  }
+
+  90% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    offset-distance: 0%;
+  }
+}
+
+@keyframes purple-ripple {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  30% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  34% {
+    opacity: 1;
+    offset-distance: 54%;
+  }
+  40% {
+    opacity: 0;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes tokens-display-mask-move {
+  0% {
+    transform: translateX(-4%);
+  }
+  70% {
+    transform: translateX(-4%);
+  }
+  75% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes tokens-display {
+  0% {
+    opacity: 0.3;
+  }
+  62% {
+    opacity: 0.3;
+  }
+  67% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes export-display {
+  0% {
+    opacity: 0.3;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  85% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.3;
+  }
+}
+
+@layer components {
+  .special-text {
+    @apply text-transparent [text-shadow:0px_0px_4px_#fffef770,0_0_0_#FFF6B9,0px_0px_10px_#ffffdf20];
+  }
+}
+
+@layer base {
+  :root {
+    --colors-gold-50: 255 255 230;
+    --colors-gold-100: 255 255 208;
+    --colors-gold-200: 255 255 159;
+    --colors-gold-300: 255 255 105;
+    --colors-gold-400: 255 255 64;
+    --colors-gold-500: 255 255 41;
+    --colors-gold-600: 255 255 29;
+    --colors-gold-700: 227 227 16;
+    --colors-gold-800: 201 201 0;
+    --colors-gold-900: 173 173 0;
+    --colors-foreground: var(--colors-gold-50);
+    --colors-background: 26 26 26;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+}
+
+/* @layer base {
+  * {
+    @apply border-border;
+  }
+} */
+
+.connect-github-drawer .mantine-Drawer-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.connect-github-drawer .mantine-Drawer-body {
+  height: 100%;
+  padding: 0;
+}

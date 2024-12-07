@@ -1,0 +1,37 @@
+.gradientStroke {
+  border: 1px solid transparent;
+  /* background:
+    radial-gradient(34.7% 19.54% at 100% 33.4%, #222838 17.66%, #22283800) border-box,
+    radial-gradient(31.57% 34.53% at 0 22.95%, #15161c 0, #15161c00) border-box,
+    radial-gradient(52.59% 47.66% at 50% 0, #313951 0, #2b212a) border-box,
+    linear-gradient(180deg, #101116, #10111600) border-box; */
+  background: radial-gradient(calc(25% + 55% * var(--gradient-stroke-animation-progress)) calc(50% + 150% * var(--gradient-stroke-animation-progress)) at 50% calc(0% + 80% * var(--gradient-stroke-animation-progress)), #ffffdf 0, #efefc229) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  border-radius: 999px;
+  --gradient-stroke-animation-progress: 0;
+}
+
+.control {
+  transition: all 0.4s 0.1s;
+  @mixin hover {
+    background-color: light-dark(transparent, transparent);
+    box-shadow: 0px 0px 30px 0px #ffffdf52;
+  }
+}
+
+.control:disabled {
+  @mixin hover {
+    box-shadow: none;
+  }
+}
