@@ -9,6 +9,8 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+/docs/node_modules
+/figma-plugin/node_modules
 
 # testing
 /coverage
@@ -16,6 +18,11 @@
 # next.js
 /.next/
 /out/
+/docs/.next/
+/docs/out/
+
+#dist
+/figma-plugin/dist
 
 # production
 /build
