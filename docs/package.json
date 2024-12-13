@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.0",
     "@tailwindcss/postcss": "4.0.0-beta.4",
     "lucide-react": "^0.466.0",
     "next": "15.0.3",

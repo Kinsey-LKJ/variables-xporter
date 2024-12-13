@@ -32,6 +32,10 @@ import { Tabs } from 'nextra/components'
 </Callout> */}
 
 {/* 对应到 Figma 中，可以使用以下命名约定： */}
+
+<details>
+  {/* prettier-ignore */}
+  <summary>shadcn/ui 的命名约定</summary>
 - `colors/background/DEFAULT` - 背景色  
 - `colors/foreground/DEFAULT` - 前景色
 - `colors/muted/DEFAULT` - 柔和的背景色
@@ -51,114 +55,15 @@ import { Tabs } from 'nextra/components'
 - `colors/destructive/DEFAULT` - 危险/警告色
 - `colors/destructive/foreground` - 危险/警告色上的前景色
 - `colors/ring/DEFAULT` - 聚焦环的颜色
+</details>
 
-如果你在 Figma 中按照上述命名约定组织变量，Variables Xporter 将导出以下结果：
-
-
-<Tabs items={['Tailwind CSS', '仅 CSS 变量',"JSON"]}>
-  <Tabs.Tab>
-    ```js
-    // tailwind.config.js
-    module.exports = {
-      theme: {
-        extend: {
-          colors: {
-            background: {
-              DEFAULT: 'rgba(var(--background))',
-            },
-            foreground: {
-              DEFAULT: 'rgba(var(--foreground))',
-            },
-            muted: {
-              DEFAULT: 'rgba(var(--muted))',
-              foreground: 'rgba(var(--muted-foreground))',
-            },
-            popover: {
-              DEFAULT: 'rgba(var(--popover))',
-              foreground: 'rgba(var(--popover-foreground))',
-            },
-            card: {
-              DEFAULT: 'rgba(var(--card))',
-              foreground: 'rgba(var(--card-foreground))',
-            },
-            border: {
-              DEFAULT: 'rgba(var(--border))',
-            },
-            input: {
-              DEFAULT: 'rgba(var(--input))',
-            },
-          }
-        }
-      }
-    }
-    ```
-
-        ```css
-    /* global.css */
-    :root {
-      --background: 0 0 0;
-      --foreground: 255 255 255;
-      --muted: 210 210 210;
-      --muted-foreground: 113 113 113;
-      --popover: 255 255 255;
-      --popover-foreground: 0 0 0;
-      --card: 255 255 255;
-      --card-foreground: 0 0 0;
-      --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
-      --primary: 0 0 0;
-      --primary-foreground: 0 0 0;
-      --secondary: 210 210 210;
-      --secondary-foreground: 113 113 113;
-      --accent: 210 210 210;
-      --accent-foreground: 113 113 113;
-      --destructive: 0 63 25;
-      --destructive-foreground: 0 85 255;
-      --ring: 214.3 31.8% 91.4%;
-    }
-
-    .dark {
-      ...
-    }
-    ```
-  </Tabs.Tab>
-  <Tabs.Tab>
-      ```css
-    :root {
-      --background: 0 0 0;
-      --foreground: 255 255 255;
-      --muted: 210 210 210;
-      --muted-foreground: 113 113 113;
-      --popover: 255 255 255;
-      --popover-foreground: 0 0 0;
-      --card: 255 255 255;
-      --card-foreground: 0 0 0;
-      --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
-      --primary: 0 0 0;
-      --primary-foreground: 0 0 0;
-      --secondary: 210 210 210;
-      --secondary-foreground: 113 113 113;
-      --accent: 210 210 210;
-      --accent-foreground: 113 113 113;
-      --destructive: 0 63 25;
-      --destructive-foreground: 0 85 255;
-      --ring: 214.3 31.8% 91.4%;
-    }
-
-    .dark {
-      ...
-    }
-    ```
-  </Tabs.Tab>
-</Tabs>
 
 {/* <Callout type="info" emoji="💡">
   Variables Xporter 会自动生成[符合 Tailwind CSS 规则](https://tailwindcss.com/docs/customizing-colors#using-css-variables)的颜色类 CSS 变量，并且支持与不透明度修饰符一起使用。
 </Callout> */}
 
-## 对于Tailwind CSS 项目
-如果你的项目使用 Tailwind CSS，在 Figma 中你的变量必须保证以 `colors` 作为顶层目录，因为在 Tailwind CSS 的配置文件中，只有 `colors` 配置键对于颜色类样式是有效的。
+## 顶层目录
+建议以 `colors` 作为顶层目录，来组织所有的颜色相关变量。
 
 <figure className="mt-6">
   <>![组织颜色类变量](/organizing-your-variables/colors/colors-1.png)</>
@@ -166,6 +71,10 @@ import { Tabs } from 'nextra/components'
     组织颜色类变量
   </figcaption>
 </figure>
+
+<Callout type="error" emoji="🚨">
+  在用于 Tailwind CSS 项目时，顶层目录必须为 `colors`，因为 Tailwind CSS 的配置文件中，只有 `colors` 配置键对于颜色类样式是有效的。
+</Callout>
 
 <Callout type="info" emoji="💡">
   Variables Xporter 会自动生成[符合 Tailwind CSS 规则](https://tailwindcss.com/docs/customizing-colors#using-css-variables)的颜色类 CSS 变量，并且支持与不透明度修饰符一起使用。

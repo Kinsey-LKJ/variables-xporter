@@ -3,30 +3,86 @@ asIndexPage: true
 ---
 
 import {
-  CloudIcon,
-  DiagramIcon,
-  FormulaIcon,
-  TableIcon,
-  TailwindIcon
-} from '../../components/icons'
+  Palette,
+  Type,
+  Ruler,
+  Box,
+  Moon
+} from 'lucide-react'
 import { Cards } from 'nextra/components'
-import { TerminalIcon, TypeScriptIcon } from 'nextra/icons'
-import { MDXRemote } from 'nextra/mdx-remote'
-import { createIndexPage, getPageMap } from 'nextra/page-map'
 
-# Organizing Your Variables
-This is the page for the Arrange Variables section.
+# 组织你的设计变量
 
-<MDXRemote
-  compiledSource={await createIndexPage(await getPageMap('/docs/organizing-your-variables'))}
-  components={{
-    Cards,
-    TerminalIcon,
-    DiagramIcon,
-    TailwindIcon,
-    FormulaIcon,
-    TableIcon,
-    TypeScriptIcon,
-    CloudIcon
-  }}
-/>
+在设计系统中，变量的组织方式至关重要。它不仅能提升设计和开发的效率，对于使用 Tailwind CSS 的项目来说，更是决定了设计令牌能否被正确导出和使用。合理的变量组织能让设计师更轻松地管理系统，也能让开发者更方便地应用这些设计决策。
+
+# 为什么变量组织很重要
+
+- **可维护性**：清晰的变量结构让团队成员能够轻松找到和更新所需的设计令牌
+- **可扩展性**：良好的组织方式为未来的设计系统扩展提供了坚实的基础
+- **一致性**：统一的命名和分类确保了设计语言在整个产品中的一致性
+- **效率**：合理的变量组织能够加速设计和开发的工作流程
+- **Tailwind 兼容性**：变量结构需要与 Tailwind CSS 的配置结构保持一致，确保正确的导出和映射
+
+## 基本原则
+
+在开始组织变量之前，我们为你准备了一些实用的建议和最佳实践：
+
+<Cards>
+  <Cards.Card
+    icon={<Type />}
+    title="组织原则"
+    href="/docs/organizing-your-variables/principles"
+  />
+</Cards>
+
+这些建议可以帮助你：
+- 建立适合团队的变量命名方式
+- 规划变量的层次结构
+- 提升变量的可维护性和可扩展性
+- 正确匹配 Tailwind CSS 的配置结构
+
+## 变量类型
+
+了解了基本原则后，让我们看看不同类型变量的组织方式：
+
+<Cards>
+  <Cards.Card
+    icon={<Palette />}
+    title="颜色系统"
+    href="/docs/organizing-your-variables/colors"
+  />
+  <Cards.Card
+    icon={<Type />}
+    title="排版系统"
+    href="/docs/organizing-your-variables/typography"
+  />
+  <Cards.Card
+    icon={<Ruler />}
+    title="间距和尺寸系统"
+    href="/docs/organizing-your-variables/spacing"
+  />
+  <Cards.Card
+    icon={<Box />}
+    title="其他令牌"
+    href="/docs/organizing-your-variables/other-tokens"
+  />
+  <Cards.Card
+    icon={<Moon />}
+    title="多主题模式"
+    href="/docs/organizing-your-variables/multi-mode"
+  />
+</Cards>
+
+## 实用建议
+
+以下是一些可以帮助你更好地组织变量的建议：
+
+- 根据团队习惯选择合适的命名方式
+- 按照项目需求组织变量结构
+- 遵循 Tailwind CSS 的配置结构（这是必须的）
+- 为变量添加适当的描述
+- 定期检查和优化变量组织
+- 记录重要变量的使用场景
+- 使用集合（Collection）归类变量
+- 确保变量名称在导出时能被正确解析
+

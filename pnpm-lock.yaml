@@ -6,10 +6,17 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      cz-git:
+        specifier: ^1.11.0
+        version: 1.11.0
 
   docs:
     dependencies:
+      '@headlessui/react':
+        specifier: ^2.2.0
+        version: 2.2.0(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@tailwindcss/postcss':
         specifier: 4.0.0-beta.4
         version: 4.0.0-beta.4
@@ -1524,6 +1531,10 @@ packages:
   cytoscape@3.30.4:
     resolution: {integrity: sha512-OxtlZwQl1WbwMmLiyPSEBuzeTIQnwZhJYYWFzZ2PhEHVFwpeaqNIkUzSiso00D98qk60l8Gwon2RP304d3BJ1A==}
     engines: {node: '>=0.10'}
+
+  cz-git@1.11.0:
+    resolution: {integrity: sha512-FCNkpyVmNPX0P8kHtX8uoFcXsJ4bjivMXVS5vc/qCyM8jj+Tuqo6CXQjGQKwKl0Lk9VNz7o6JfPoU/mM/XhxqA==}
+    engines: {node: '>=v12.20.0'}
 
   d3-array@2.12.1:
     resolution: {integrity: sha512-B0ErZK/66mHtEsR1TkPEEkwdy+WDesimkM5gpZr5Dsg54BiTA5RXtYW5qTLIAcekaS9xfZrzBLF/OAkB3Qn1YQ==}
@@ -6033,6 +6044,8 @@ snapshots:
       cytoscape: 3.30.4
 
   cytoscape@3.30.4: {}
+
+  cz-git@1.11.0: {}
 
   d3-array@2.12.1:
     dependencies:
