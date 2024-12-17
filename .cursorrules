@@ -1,0 +1,77 @@
+// Project: Variables Xporter
+// Type: Figma Plugin with Documentation
+// Purpose: Export Figma variables to Tailwind CSS and CSS variables
+
+// Workspace Structure
+1. Figma Plugin (/figma-plugin):
+   - Framework: React + TypeScript
+   - Build Tool: Vite
+   - UI Framework: Mantine
+   - State Management: React Context
+   - Key Files:
+     - src/lib/utils2.ts (Core variable processing logic)
+     - src/app/components/App.tsx (Main plugin UI)
+     - src/lib/type.ts (TypeScript type definitions)
+
+2. Documentation Site (/docs):
+   - Framework: Next.js
+   - Content: MDX
+   - UI Framework: Nextra
+   - Language: Chinese (中文)
+   - Key Directories:
+     - app/docs/ (Documentation content)
+     - public/ (Static assets)
+
+// Core Features
+1. Export Modes:
+   - Tailwind CSS configuration export
+   - CSS variables export
+
+2. Multi-mode System:
+   - Supports dark/light modes
+   - Brand themes
+   - Responsive breakpoints
+   - Special states
+   - And more...
+   - Single outlet principle for variable references
+
+3. Variable Organization:
+   - Uses "/" for grouping (e.g. colors/primary)
+   - Supports DEFAULT keyword for base values
+   - Follows Tailwind CSS theme structure
+   - Semantic naming conventions
+
+// Key Principles
+1. Variable Organization:
+   - Clear naming conventions
+   - Logical grouping
+   - Tailwind CSS compatibility
+   - Maintainability
+
+2. Multi-mode Support:
+   - Single outlet principle
+   - Clear reference chains
+   - Mode inheritance
+   - Flexible configuration
+
+3. Export Rules:
+   - Maintains variable relationships
+   - Preserves mode structure
+   - Supports customization
+   - Handles unit conversion
+
+// Documentation Structure
+1. Getting Started
+2. Multi-mode System
+3. Export Modes
+4. Variable Organization
+5. Advanced Features
+6. Troubleshooting
+7. Changelog
+
+// Special Notes
+- Project emphasizes the single outlet principle for managing multiple modes
+- Documentation is written in Chinese (中文)
+- Focus on practical examples and best practices
+- Maintain clear separation between Tailwind CSS and CSS variable modes
+- Plugin UI supports both English and Chinese languages
