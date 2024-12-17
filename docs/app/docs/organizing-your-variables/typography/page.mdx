@@ -4,12 +4,15 @@ import { Callout } from 'nextra/components'
 `font-family` 、`font-size` 、`font-weight` 、`line-height` 等字体类变量的组织建议。
 
 ## 顶层目录
-一般情况下，建议直接以 `font-family` 、`font-size` 、`font-weight` 、`line-height` 等字体类变量作为顶层目录，例如这样命名：
+一般情况下，建议直接以 `font-family` 、`font-size` 、`font-weight` 、`line-height` 等字体类变量作为顶层目录，或者[合并处理](#merge-property)。
+
+例如这样命名：
 - `font-family/sans`
 - `font-size/sm`
 - `font-weight/bold`
 - `line-height/relaxed`
 - `letter-spacing/normal`
+
 
 <Callout type="error" emoji="🚨">
 在用于 Tailwind CSS 项目时，将 `font-family` 、`font-size` 、`font-weight` 、`line-height` 等字体类样式作为顶层目录是必须的，或者将 `font` 作为顶层目录将变量[合并处理](#merge-property)。
@@ -17,29 +20,57 @@ import { Callout } from 'nextra/components'
 
 ## 合并处理 [#merge-property]
 除了像上述那样将字体类样式名作为顶层目录外，还可以将多个字体类变量合并处理，这是常见的命名：
-- `font/hero/size/8xl`
-- `font/hero/weight/bold`
-- `font/hero/line-height/relaxed`
-- `font/hero/letter-spacing/normal`
+- `font/hero/size`
+- `font/hero/weight`
+- `font/hero/line-height`
+- `font/hero/letter-spacing`
 
-对于原子化变量：
-- `font/size/sm`
-- `font/size/base`
-- `font/size/lg`
-- `...`
-- `font/weight/normal`
-- `font/weight/medium`
-- `font/weight/bold`
-- `...`
-- `font/line-height/none`
-- `font/line-height/tight`
-- `font/line-height/relaxed`
-- `...`
-- `font/letter-spacing/normal`
-- `font/letter-spacing/tight`
-- `font/letter-spacing/wide`
-- `...`
-
+这能够生成以下 Tailwind CSS 配置以及 CSS 变量：
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    fontSize: {
+      'hero': ['var(--font-hero-size)', {
+        lineHeight: 'var(--font-hero-line-height)',
+        letterSpacing: 'var(--font-hero-letter-spacing)',
+        fontWeight: 'var(--font-hero-weight)',
+      }]
+    }
+  }
+}
+```
+```css
+:root {
+  --font-hero-size: 1.5rem;
+  --font-hero-line-height: 2rem;
+  --font-hero-letter-spacing: -0.01em;
+  --font-hero-weight: 500;
+}
+```
 <Callout type="warning" emoji="⚠️">
-合并处理只支持 `font-size` 、`font-weight` 、`line-height` 、`letter-spacing` 四种样式，并且只在已存在 `font/size/{variable}` 、或者 `font/{variable}/size` 变量时有效，这是按照 Tailwind CSS 针对 `fontSize` 的[自定义功能](https://tailwindcss.com/docs/font-size#customizing-your-theme)设计的。
+仅支持 `font-size` 、`font-weight` 、`line-height` 、`letter-spacing` 四种样式，并且只在已存在 `font/{variable}/size` 变量时有效，这是按照 Tailwind CSS 针对 `fontSize` 的[自定义功能](https://tailwindcss.com/docs/font-size#customizing-your-theme)设计的。
 </Callout>
+
+### 原子化变量
+
+对于原子化变量，如果符合`font/{property}/{value}` 的命名规则[^1]，Variables Xporter 会自动将其顶层目录改变为对应的属性, 以符合 Tailwind CSS 的配置结构。
+
+例如：
+- `font/size/sm` -> `font-size/sm`
+- `font/size/base` -> `font-size/base`
+- `font/size/lg` -> `font-size/lg`
+
+- `font/weight/normal` -> `font-weight/normal`
+- `font/weight/medium` -> `font-weight/medium`
+- `font/weight/bold` -> `font-weight/bold`
+
+- `font/line-height/none` -> `line-height/none`
+- `font/line-height/tight` -> `line-height/tight`
+- `font/line-height/relaxed` -> `line-height/relaxed`
+
+- `font/letter-spacing/normal` -> `letter-spacing/normal`
+- `font/letter-spacing/tight` -> `letter-spacing/tight`
+- `font/letter-spacing/wide` -> `letter-spacing/wide`
+
+[^1]: `font/size/{value}` 、`font/weight/{value}` 、`font/line-height/{value}` 、`font/letter-spacing/{value}`。
