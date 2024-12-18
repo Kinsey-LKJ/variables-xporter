@@ -11,15 +11,17 @@ import { FileTree } from 'nextra/components'
 
 ## 变量追溯机制
 
-Variables Xporter 在处理变量引用时，会自动追溯到最终的具体值。这意味着：
+Variables Xporter 在处理变量引用时，会自动追溯到最终值。这意味着：
 
 1. 变量可以跨集合引用
-2. 引用链可以有多个层级
-3. 最终会追溯到一个具体的值
+2. 会生成完整的变量引用链
+3. 最终会追溯到一个原始类型的值（COLOR、NUMBER、STRING、BOOLEAN）
+
+有了这些特性，你可以创建十分复杂的跨集合引用的变量体系，可以满足各种复杂的多模式场景。
 
 ### 引用链示例
 
-让我们看一个实际的引用链示例，以 `colors/primary/DEFAULT` 为例：
+让我们看一个实际的引用链示例，以 `colors/primary/DEFAULT` 这个变量为例：
 
 ```plaintext
                 ┌────────────────────────┬────────────────────────┐                    
