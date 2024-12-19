@@ -121,27 +121,30 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
 
   useEffect(() => {
     // 因为 ignoreTailwindColor 和 useRemUnit 不是引用类型，所以可以使用 useEffect 监听
-    if (variables && formValues.selectCollectionID) {
-      try {
-        const output = variables.filter((item) => item.variableCollectionId === formValues.selectCollectionID);
+    const generateTheme = async () => {
+      if (variables && formValues.selectCollectionID) {
+        try {
+          const output = variables.filter((item) => item.variableCollectionId === formValues.selectCollectionID);
 
-        const { css, tailwindConfig } = await generateThemeFiles(
-          output,
-          variables,
-          collections,
-          true,
-          formValues.useRemUnit,
-          formValues.selectVariableGroup,
-          formValues.ignoreTailwindColor ? ignoreGroup : []
-        );
-        setTailwindCSSOutput({
-          config: tailwindConfig,
-          globalsCSS: css,
-        });
-      } catch (error) {
-        console.log(error);
+          const { css, tailwindConfig } = await generateThemeFiles(
+            output,
+            variables,
+            collections,
+            true,
+            formValues.useRemUnit,
+            formValues.selectVariableGroup,
+            formValues.ignoreTailwindColor ? ignoreGroup : []
+          );
+          setTailwindCSSOutput({
+            config: tailwindConfig,
+            globalsCSS: css,
+          });
+        } catch (error) {
+          console.log(error);
+        }
       }
-    }
+    };
+    generateTheme();
   }, [formValues.useRemUnit, formValues.ignoreTailwindColor]);
 
   const submitForm = async () => {
@@ -170,20 +173,8 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
               resolve('延迟完成');
             }, 1000);
           });
-          // const res = await formatting(
-          //   output,
-          //   variables,
-          //   formValues.selectVariableGroup,
-          //   formValues.ignoreTailwindColor ? ignoreGroup : [],
-          //   formValues.useRemUnit,
-          //   selectCollection[0].modes,
-          //   formValues.ignoreTailwindColor,
-          //   collections
-          // );
 
           const { css, tailwindConfig } = await generateThemeFiles(output, variables, collections, true, formValues.useRemUnit, formValues.selectVariableGroup, formValues.ignoreTailwindColor ? ignoreGroup : []);
-          // console.log(css,tailwindConfig);
-          // setTailwindCSSOutput(res);
           setTailwindCSSOutput({
             config: tailwindConfig,
             globalsCSS: css,
