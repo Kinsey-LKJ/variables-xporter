@@ -10,7 +10,8 @@ const meta = {
     }
   },
   'get-started': {
-    title: '快速开始'
+    title: '快速开始',
+    type: 'page'
   },
   features: {
     title: '功能特性',
@@ -22,6 +23,10 @@ const meta = {
   },
   'export-modes': {
     title: '导出模式',
+    type: 'page'
+  },
+  examples: {
+    title: '使用示例',
     type: 'page'
   }
 }
