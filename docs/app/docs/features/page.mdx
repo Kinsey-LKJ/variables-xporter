@@ -1,0 +1,70 @@
+import { Cards } from 'nextra/components'
+import { Callout } from 'nextra/components'
+import { Palette, Type, ArrowsUpDown, Layers, Monitor, Typography, PaintBucket } from 'lucide-react'
+
+# 功能特性
+
+Variables Xporter 提供了一系列强大的功能，帮助你将 Figma 变量无缝导出到开发环境。
+
+## 核心功能
+
+<Cards>
+  <Cards.Card
+    icon={<ArrowsUpDown />}
+    title="变量导出"
+    href="/docs/features/variable-export"
+  >
+    支持将 Figma 变量导出为 Tailwind CSS 配置或 CSS 变量，保持设计系统的一致性。
+  </Cards.Card>
+  <Cards.Card
+    icon={<Type />}
+    title="单位转换"
+    href="/docs/features/unit-conversion"
+  >
+    自动将 px 单位转换为 rem，支持精确的小数位控制。
+  </Cards.Card>
+  <Cards.Card
+    icon={<Monitor />}
+    title="多模式支持"
+    href="/docs/features/multi-mode"
+  >
+    完整支持明暗模式和多主题系统，轻松实现主题切换。
+  </Cards.Card>
+  <Cards.Card
+    icon={<Layers />}
+    title="变量引用处理"
+    href="/docs/features/variable-references"
+  >
+    智能处理变量间的引用关系，确保导出结果的正确性。
+  </Cards.Card>
+</Cards>
+
+## 高级功能
+
+<Cards>
+  <Cards.Card
+    icon={<Monitor />}
+    title="CSS Media Query 支持"
+    href="/docs/features/css-media-query-mode"
+  >
+    支持通过 CSS Media Query 实现响应式设计和主题切换。
+  </Cards.Card>
+  <Cards.Card
+    icon={<Typography />}
+    title="合并排版样式"
+    href="/docs/features/merge-typography-styles"
+  >
+    自动合并相关的排版样式，生成完整的 Typography 配置。
+  </Cards.Card>
+  <Cards.Card
+    icon={<PaintBucket />}
+    title="Tailwind 调色板忽略"
+    href="/docs/features/Ignore-tailwind-css-palette"
+  >
+    可选择性忽略 Tailwind 默认调色板，使用自定义颜色系统。
+  </Cards.Card>
+</Cards>
+
+<Callout type="info" emoji="💡">
+  所有功能都经过精心设计，确保设计到开发的流程顺畅。查看各个功能的详细文档，了解更多使用方法和最佳实践。
+</Callout>

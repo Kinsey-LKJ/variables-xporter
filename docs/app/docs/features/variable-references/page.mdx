@@ -1,0 +1,120 @@
+import { Steps } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+# 变量引用处理
+
+Variables Xporter 提供了强大的变量引用处理功能，能够智能解析和处理变量之间的引用关系，确保导出结果的正确性和一致性。
+
+## 功能概述
+
+- 自动解析变量引用关系
+- 处理多层级变量引用
+- 避免循环引用
+- 保持引用链完整性
+
+## 使用场景
+
+### 主题系统
+在设计系统中：
+- 基础变量被其他变量引用
+- 主题变量引用基础变量
+- 组件变量引用主题变量
+
+### 组件样式
+在组件设计中：
+- 组件样式引用全局变量
+- 状态样式引用基础样式
+- 变体样式继承默认样式
+
+## 配置选项
+
+### 基础配置
+```json
+{
+  "resolveReferences": true,
+  "maxReferenceDepth": 5,
+  "preserveReferences": false
+}
+```
+
+### 配置说明
+- `resolveReferences`: 是否解析变量引用
+- `maxReferenceDepth`: 最大引用深度
+- `preserveReferences`: 是否在输出中保留引用关系
+
+## 示例代码
+
+### Figma 变量结构
+```json
+{
+  "color": {
+    "primary": {
+      "value": "#1a73e8"
+    },
+    "button": {
+      "background": {
+        "value": "{color.primary}"
+      },
+      "hover": {
+        "value": "{color.button.background}",
+        "alpha": 0.8
+      }
+    }
+  }
+}
+```
+
+### Tailwind 配置结果
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1a73e8',
+        button: {
+          background: '#1a73e8',
+          hover: 'rgba(26, 115, 232, 0.8)'
+        }
+      }
+    }
+  }
+}
+```
+
+### CSS 变量结果
+```css
+:root {
+  --color-primary: #1a73e8;
+  --color-button-background: var(--color-primary);
+  --color-button-hover: rgba(26, 115, 232, 0.8);
+}
+```
+
+## 注意事项
+
+<Callout type="warning">
+  在使用变量引用时，请注意：
+  - 避免创建过深的引用链
+  - 检查是否存在循环引用
+  - 确保所有被引用的变量都已定义
+</Callout>
+
+### 最佳实践
+<Steps>
+### 规划引用结构
+在创建变量时就考虑引用关系的合理性。
+
+### 控制引用深度
+保持较浅的引用深度，通常不超过 3 层。
+
+### 验证引用完整性
+确保所有引用的变量都存在且类型正确。
+
+### 文档记录
+为复杂的引用关系添加清晰的文档说明。
+</Steps>
+
+<Callout type="info">
+  建议将重要的基础变量（如品牌色、主题色等）放在较浅的层级，便于其他变量引用。
+</Callout>

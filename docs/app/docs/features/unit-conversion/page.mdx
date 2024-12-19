@@ -1,0 +1,117 @@
+import { Steps } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+# 单位转换
+
+Variables Xporter 提供了强大的单位转换功能，特别是将像素（px）转换为相对单位（rem）的能力，这对于创建响应式和可维护的样式系统至关重要。
+
+## 功能概述
+
+- 自动将 px 单位转换为 rem
+- 支持精确的小数位控制
+- 可配置的基准像素值（默认 16px = 1rem）
+- 支持选择性转换
+
+## 使用场景
+
+### 响应式设计
+在响应式设计中，使用相对单位（rem）可以：
+- 确保布局在不同屏幕尺寸下保持一致
+- 支持浏览器的文本缩放功能
+- 简化媒体查询的编写
+
+### 可维护性提升
+使用 rem 单位可以：
+- 集中管理字体大小
+- 简化主题切换
+- 提高代码的可维护性
+
+## 配置选项
+
+### 基础配置
+```json
+{
+  "useRemUnit": true,
+  "remBasePx": 16,
+  "precision": 4
+}
+```
+
+### 配置说明
+- `useRemUnit`: 是否启用 rem 单位转换
+- `remBasePx`: 基准像素值，默认 16px = 1rem
+- `precision`: 转换后的小数位数
+
+## 示例代码
+
+### 转换前（Figma 变量）
+```json
+{
+  "fontSize": {
+    "sm": "14px",
+    "base": "16px",
+    "lg": "18px"
+  },
+  "spacing": {
+    "1": "4px",
+    "2": "8px",
+    "3": "12px"
+  }
+}
+```
+
+### 转换后（Tailwind 配置）
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    fontSize: {
+      sm: '0.875rem',    // 14px
+      base: '1rem',      // 16px
+      lg: '1.125rem'     // 18px
+    },
+    spacing: {
+      1: '0.25rem',      // 4px
+      2: '0.5rem',       // 8px
+      3: '0.75rem'       // 12px
+    }
+  }
+}
+```
+
+### 转换后（CSS 变量）
+```css
+:root {
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;    /* 18px */
+  --spacing-1: 0.25rem;        /* 4px */
+  --spacing-2: 0.5rem;         /* 8px */
+  --spacing-3: 0.75rem;        /* 12px */
+}
+```
+
+## 注意事项
+
+<Callout type="warning">
+  在使用单位转换功能时，请注意：
+  - 确保团队成员了解基准像素值（remBasePx）的设置
+  - 注意转换精度对文件大小的影响
+  - 某些特殊值可能不适合转换为 rem（如边框宽度）
+</Callout>
+
+### 最佳实践
+<Steps>
+### 确定基准值
+与团队确认基准像素值（通常为 16px）。
+
+### 选择合适的精度
+根据项目需求选择合适的小数位数，平衡精确度和文件大小。
+
+### 建立转换规则
+确定哪些类型的值需要转换为 rem，哪些保持 px。
+</Steps>
+
+<Callout type="info">
+  推荐将字体大小、间距等与排版相关的值转换为 rem，而边框宽度、小图标尺寸等可以保持使用 px。
+</Callout>

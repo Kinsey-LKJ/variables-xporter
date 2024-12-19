@@ -1,0 +1,106 @@
+import { Steps } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+# 变量导出
+
+变量导出是 Variables Xporter 的核心功能，它能够将 Figma 变量转换为开发环境可用的配置文件。
+
+## 功能概述
+
+Variables Xporter 支持将 Figma 变量导出为：
+- Tailwind CSS 配置文件
+- CSS 变量定义文件
+
+## 使用场景
+
+### 设计系统同步
+当你需要将设计系统的变量同步到开发环境时，变量导出功能可以：
+- 保持设计和开发的一致性
+- 自动处理变量转换
+- 维护变量之间的引用关系
+
+### 主题切换实现
+在需要实现多主题支持时：
+- 导出不同主题的变量配置
+- 自动处理主题相关的变量引用
+- 生成主题切换所需的配置文件
+
+## 配置选项
+
+### 基础配置
+```json
+{
+  "exportFormat": "tailwind", // 或 "css-variables"
+  "useRemUnit": true,
+  "remBasePx": 16,
+  "precision": 4
+}
+```
+
+### 高级配置
+```json
+{
+  "prefix": "theme",
+  "darkMode": "class",
+  "mediaQuery": false,
+  "cssVariablePrefix": "--"
+}
+```
+
+## 示例代码
+
+### Tailwind CSS 导出结果
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    colors: {
+      primary: '#1a73e8',
+      'primary-light': '#4285f4',
+      'primary-dark': '#1557b0',
+    },
+    fontSize: {
+      sm: '0.875rem',
+      base: '1rem',
+      lg: '1.125rem',
+    }
+  }
+}
+```
+
+### CSS 变量导出结果
+```css
+:root {
+  --colors-primary: #1a73e8;
+  --colors-primary-light: #4285f4;
+  --colors-primary-dark: #1557b0;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+}
+```
+
+## 注意事项
+
+<Callout type="warning">
+  在导出变量之前，请确保：
+  - 变量已经按照[组织建议](/docs/organizing-your-variables/principles)进行规范化
+  - 所有需要导出的变量都在选中的集合中
+  - 变量引用关系正确，没有循环引用
+</Callout>
+
+### 最佳实践
+<Steps>
+### 规范变量命名
+遵循一致的命名规范，便于维护和使用。
+
+### 检查变量引用
+确保变量引用关系清晰，避免过深的引用链。
+
+### 验证导出结果
+在开发环境中测试导出的配置文件，确保所有变量都正确可用。
+</Steps>
+
+<Callout type="info">
+  如果你的项目同时需要 Tailwind CSS 和 CSS 变量，建议先导出 Tailwind 配置，再根据需要导出补充的 CSS 变量。
+</Callout>

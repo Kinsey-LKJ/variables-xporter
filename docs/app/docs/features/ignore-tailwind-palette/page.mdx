@@ -1,0 +1,126 @@
+import { Steps } from 'nextra/components'
+import { Callout } from 'nextra/components'
+
+# Tailwind 调色板忽略
+
+Variables Xporter 提供了忽略 Tailwind 默认调色板的功能，让你能够完全使用自定义的颜色系统，避免与 Tailwind 默认颜色产生冲突。
+
+## 功能概述
+
+- 完全禁用 Tailwind 默认调色板
+- 仅使用自定义颜色变量
+- 避免命名冲突
+- 保持颜色系统的纯净性
+
+## 使用场景
+
+### 品牌设计系统
+在构建品牌设计系统时：
+- 使用完全自定义的颜色系统
+- 避免与 Tailwind 默认颜色混淆
+- 保持品牌调色的一致性
+
+### 定制化主题
+在开发自定义主题时：
+- 创建独特的颜色方案
+- 避免默认颜色的干扰
+- 简化颜色管理
+
+## 配置选项
+
+### 基础配置
+```json
+{
+  "ignoreTailwindPalette": true,
+  "preserveDefaultColors": false,
+  "colorPrefix": "color"
+}
+```
+
+### 高级配置
+```json
+{
+  "preservedColors": ["black", "white", "transparent", "current"],
+  "colorAliases": {
+    "primary": "brand-blue",
+    "secondary": "brand-green"
+  }
+}
+```
+
+## 示例代码
+
+### Figma 变量结构
+```json
+{
+  "color": {
+    "brand": {
+      "blue": { "value": "#0066FF" },
+      "green": { "value": "#00CC88" }
+    },
+    "text": {
+      "primary": { "value": "#2C2C2C" },
+      "secondary": { "value": "#757575" }
+    }
+  }
+}
+```
+
+### Tailwind 配置结果
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    colors: {
+      // 仅包含自定义颜色
+      'brand-blue': '#0066FF',
+      'brand-green': '#00CC88',
+      'text-primary': '#2C2C2C',
+      'text-secondary': '#757575',
+      // 保留的基础颜色
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: '#000000',
+      white: '#ffffff'
+    }
+  }
+}
+```
+
+### CSS 变量结果
+```css
+:root {
+  --color-brand-blue: #0066FF;
+  --color-brand-green: #00CC88;
+  --color-text-primary: #2C2C2C;
+  --color-text-secondary: #757575;
+}
+```
+
+## 注意事项
+
+<Callout type="warning">
+  使用此功能时，请注意：
+  - 确保团队成员了解颜色系统的变化
+  - 检查是否需要保留某些基础颜色
+  - 注意更新依赖 Tailwind 默认颜色的组件
+</Callout>
+
+### 最佳实践
+<Steps>
+### 规划颜色系统
+在启用此功能前，确保自定义颜色系统完整。
+
+### 识别必要颜色
+确定需要保留的基础颜色（如 transparent、current）。
+
+### 更新组件
+检查并更新使用 Tailwind 默认颜色的组件。
+
+### 文档说明
+为团队提供清晰的颜色使用指南。
+</Steps>
+
+<Callout type="info">
+  建议在项目初期就决定是否使用此功能，这样可以避免后期大规模的颜色系统重构。
+</Callout>
