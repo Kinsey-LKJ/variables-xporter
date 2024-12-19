@@ -2,37 +2,55 @@
 title: Variables Xporter
 ---
 
-import { Callout } from 'nextra/components'
+import { Cards, Steps, Callout } from 'nextra/components'
+import { FileCode, Settings, Layers, Monitor } from 'lucide-react'
 
-# Variables Xporter
+# Variables Xporter 🎨
 
-Variables Xporter 是一个 Figma 插件，它能将 Figma 变量导出为 Tailwind CSS 配置文件或 CSS 变量。让设计系统轻松同步到开发环境！
+Variables Xporter 是一个强大的 Figma 插件，让设计师和开发者之间的协作更加顺畅。它能智能地将 Figma 设计变量转换为开发代码，支持 Tailwind CSS 和原生 CSS 变量，确保设计系统在整个产品中保持完美的一致性。✨
 
-## 功能特点
+<div className="nx-mt-8">
+  <Cards>
+    <Cards.Card
+      icon={<FileCode size={24} strokeWidth={1.5} className="nx-text-primary" />}
+      title="快速上手"
+      href="/docs/get-started"
+    >
+      只需几分钟，即可完成插件安装和配置，开启设计到代码的无缝转换之旅
+    </Cards.Card>
+    <Cards.Card
+      icon={<Settings size={24} strokeWidth={1.5} className="nx-text-primary" />}
+      title="功能特性"
+      href="/docs/features"
+    >
+      支持变量导出、单位转换、多主题模式等强大功能，让设计系统更加灵活
+    </Cards.Card>
+    <Cards.Card
+      icon={<Layers size={24} strokeWidth={1.5} className="nx-text-primary" />}
+      title="变量组织"
+      href="/docs/organizing-your-variables"
+    >
+      遵循最佳实践，轻松管理设计变量，打造清晰高效的设计系统
+    </Cards.Card>
+    <Cards.Card
+      icon={<Monitor size={24} strokeWidth={1.5} className="nx-text-primary" />}
+      title="导出模式"
+      href="/docs/export-modes"
+    >
+      灵活选择 Tailwind CSS 或 CSS 变量，完美适配你的开发工作流
+    </Cards.Card>
+  </Cards>
+</div>
 
-### 导出格式
-- **Tailwind CSS**：生成配置文件和对应的 CSS 文件
-- **CSS 变量**：生成标准 CSS 变量
+## 开始使用 🚀
 
-### 变量处理
-- **类型支持**：颜色、数值、尺寸等变量类型的自动转换
-- **单位转换**：px 到 rem 的自动转换，保持精度
-- **变量引用**：完整支持变量间的引用关系
-- **变量过滤**：支持选择性导出，避免冗余配置
+<Steps>
+1. **安装插件** - 在 Figma 插件市场安装 Variables Xporter
+2. **组织变量** - 按照[最佳实践](/docs/organizing-your-variables)组织你的设计变量
+3. **选择模式** - 选择 [Tailwind CSS](/docs/export-modes/tailwind) 或 [CSS 变量](/docs/export-modes/css-variables)
+4. **导出代码** - 一键导出，即刻使用
+</Steps>
 
-### 多模式系统
-- **单一出口**：基于单一出口原则的多模式变量管理
-- **智能解析**：自动处理不同模式下的变量值和引用
-- **类型检测**：智能识别和转换不同类型的变量
-- **代码优化**：生成简洁规范的配置代码
-
-## 开始使用
-
-1. 在 Figma 中安装插件
-2. 参考[变量组织建议](/docs/organizing-your-variables)规划变量
-3. 导出变量为代码
-4. 在项目中使用配置文件
-
-<Callout type="info">
-了解变量组织的最佳实践，将帮助你更好地规划设计系统。
+<Callout type="info" emoji="💡">
+查看[使用示例](/docs/examples)了解更多实际应用场景，体验设计到代码的无缝转换。
 </Callout>
