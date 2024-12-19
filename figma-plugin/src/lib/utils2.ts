@@ -26,30 +26,28 @@ export const ignoreGroup = [
   'colors/rose',
 ];
 
-// 添加值类型定义
-type RGB = {
+export type RGB = {
   r: number;
   g: number;
   b: number;
 };
 
-type RGBA = RGB & {
+export type RGBA = RGB & {
   a: number;
 };
 
-type SimpleValue = string | number | boolean;
-type ColorValue = RGB | RGBA;
+export type SimpleValue = string | number | boolean;
+export type ColorValue = RGB | RGBA;
 
-// 添加类型守卫
-function isRGB(value: ResolvedValue): value is RGB {
+export function isRGB(value: ResolvedValue): value is RGB {
   return typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value && !('a' in value);
 }
 
-function isRGBA(value: ResolvedValue): value is RGBA {
+export function isRGBA(value: ResolvedValue): value is RGBA {
   return typeof value === 'object' && 'r' in value && 'g' in value && 'b' in value && 'a' in value;
 }
 
-function isColorValue(value: ResolvedValue): value is ColorValue {
+export function isColorValue(value: ResolvedValue): value is ColorValue {
   return isRGB(value) || isRGBA(value);
 }
 
@@ -74,8 +72,7 @@ function isMediaQuery(modeName: string): boolean {
   return mediaQueryFeatures.some((feature) => modeName.startsWith(`${feature}:`));
 }
 
-// 添加值处理函数
-function processColorValue(value: ColorValue): string {
+export function processColorValue(value: ColorValue): string {
   const r = Math.round(value.r * 255);
   const g = Math.round(value.g * 255);
   const b = Math.round(value.b * 255);
@@ -87,8 +84,7 @@ function processColorValue(value: ColorValue): string {
   return `${r} ${g} ${b}`;
 }
 
-// 添加通用值处理函数
-function processConstantValue(
+export function processConstantValue(
   value: SimpleValue | ColorValue,
   resolvedDataType: VariableResolvedDataType,
   scopes: VariableScope[],
@@ -105,12 +101,11 @@ function processConstantValue(
       return `${value}px`;
     }
   } else {
-    // console.log(value);
     return `${value}`;
   }
 }
 
-type ResolvedValue =
+export type ResolvedValue =
   | SimpleValue
   | ColorValue
   | {
@@ -125,7 +120,7 @@ type ResolvedValue =
       };
     };
 
-type ResultValue = {
+export type ResultValue = {
   name: string;
   value: ResolvedValue | undefined;
   variable?: {
@@ -135,7 +130,7 @@ type ResultValue = {
   };
 };
 
-type Result = {
+export type Result = {
   initialVariable: {
     id: string;
     name: string;
@@ -148,14 +143,14 @@ type Result = {
   };
 };
 
-type ResolveContext = {
+export type ResolveContext = {
   variables: TVariable[];
   collections: TVariableCollection[];
   visitedVariableIds: Set<string>;
 };
 
 // 2. 工具函数
-function isVariableAlias(value: VariableValue): value is VariableAlias {
+export function isVariableAlias(value: VariableValue): value is VariableAlias {
   return typeof value === 'object' && value !== null && 'id' in value;
 }
 

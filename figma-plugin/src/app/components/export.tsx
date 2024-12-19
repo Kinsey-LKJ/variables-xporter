@@ -1,7 +1,8 @@
 import { Button, Checkbox, Tooltip, Tabs, Modal } from '@mantine/core';
 import { useVariableFormContext } from './variables-export-form-context';
 import { useContext, useEffect, useMemo, useState } from 'react';
-import { rgbObjectToColorString, getCssValue, kebabToCamel, camelToKebab } from '../../lib/utils';
+import { processColorValue as rgbObjectToColorString, processConstantValue as getCssValue } from '../../lib/utils2';
+import * as changeCase from 'change-case';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';

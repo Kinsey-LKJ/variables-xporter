@@ -8,7 +8,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 import { AppContext } from './App';
 import { Button, ScrollArea } from '@mantine/core';
-import { rgbObjectToColorString, getCssValue, kebabToCamel, camelToKebab, ignoreGroup } from '../../lib/utils';
+import { processColorValue as rgbObjectToColorString, processConstantValue as getCssValue, ignoreGroup } from '../../lib/utils2';
 import prettier from 'prettier/standalone';
 import parserEstree from 'prettier/plugins/estree';
 import parserBabel from 'prettier/plugins/babel';
