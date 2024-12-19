@@ -9,23 +9,23 @@ const meta = {
       layout: 'full'
     }
   },
-  'get-started': {
+  'docs/get-started': {
     title: '快速开始',
     type: 'page'
   },
-  features: {
+  'docs/features': {
     title: '功能特性',
     type: 'page'
   },
-  'organizing-your-variables': {
+  'docs/organizing-your-variables': {
     title: '变量组织',
     type: 'page'
   },
-  'export-modes': {
+  'docs/export-modes': {
     title: '导出模式',
     type: 'page'
   },
-  examples: {
+  'docs/examples': {
     title: '使用示例',
     type: 'page'
   }
