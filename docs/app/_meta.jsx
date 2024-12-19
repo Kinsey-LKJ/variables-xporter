@@ -1,12 +1,12 @@
-
-
 const meta = {
   index: {
-    display: 'hidden'
+    title: 'Variables Xporter',
+    type: 'page',
+    href: '/docs'
   },
   docs: {
     type: 'page',
-    title: 'Documentation',
+    title: 'Documentation'
   },
   example: {
     type: 'page',
@@ -15,7 +15,7 @@ const meta = {
   blog: {
     type: 'page',
     title: 'Blog'
-  },
+  }
 
 }
 
