@@ -1,51 +1,41 @@
-import { Cards } from 'nextra/components'
-import { Callout } from 'nextra/components'
-import { Palette, Type, Layers } from 'lucide-react'
+import { Cards, Steps, Callout } from 'nextra/components'
+import { FileCode, Code, Layers } from 'lucide-react'
 
-# Tailwind CSS
+# CSS 变量
 
-选择 Tailwind CSS 导出方式时，Variables Xporter 会生成两个文件：
-- `tailwind.config.js` - Tailwind CSS 的配置文件
-- `global.css` - 包含所有 CSS 变量定义
+选择 CSS Variables 导出方式时，Variables Xporter 会生成一个包含所有 CSS 变量定义的 CSS 文件。这种方式更加简单和灵活，适合不使用 Tailwind CSS 的项目。
 
-## 特性和优化
+## 基础用法
 
-### 1. 颜色值优化
-自动将颜色值转换为 RGB 通道格式，支持 Tailwind 的不透明度修饰符：
-
-```js
-// tailwind.config.js
-colors: {
-  primary: 'rgb(var(--colors-primary-default))'
-}
-
-// global.css
-:root {
-  --colors-primary-default: 192 57 57;  /* RGB 通道格式 */
-}
-```
-
-使用示例：
-```html
-<div class="text-primary/80">  <!-- 80% 不透明度 -->
-  Hello World
-</div>
-```
-
-### 2. 字体变量合并
-自动合并相关的字体变量，符合 Tailwind 的约定：
-
-```js
-fontSize: {
-  'heading-1': ['2.5rem', { lineHeight: '1.2' }]
-}
-```
-
-### 3. 主题模式支持
-自动处理主题切换相关的变量：
+<Steps>
+### 变量定义
+生成标准的 CSS 自定义属性：
 
 ```css
-/* global.css */
+:root {
+  --colors-primary: #c03939;
+  --colors-primary-foreground: #ffffff;
+  --font-size-heading-1: 2.5rem;
+  --line-height-heading-1: 1.2;
+}
+```
+
+### 变量使用
+在任何 CSS 规则中使用这些变量：
+
+```css
+.button {
+  background-color: var(--colors-primary);
+  color: var(--colors-primary-foreground);
+  font-size: var(--font-size-heading-1);
+  line-height: var(--line-height-heading-1);
+}
+```
+
+### 主题切换
+使用 CSS 类切换主题：
+
+```css
 :root {
   --colors-primary: var(--colors-primary-light);
 }
@@ -54,28 +44,51 @@ fontSize: {
   --colors-primary: var(--colors-primary-dark);
 }
 ```
+</Steps>
 
-## 必须遵守的规则
+## 高级配置
 
-### 1. 顶层结构
-变量集合必须使用 Tailwind CSS 的主题配置名：
+### 媒体查询支持
 
-- `colors` - 颜色变量
-- `spacing` - 间距、宽度、高度等
-- `fontSize` - 字体大小
-- `fontWeight` - 字重
-- `borderRadius` - 圆角
-- `opacity` - 透明度
-等。
+<Callout type="info">
+  支持基于媒体查询的响应式设计。
+</Callout>
 
-### 2. 变量层级
-使用 `DEFAULT` 作为基础值的标记：
-
+```css
+@media (min-width: 768px) {
+  :root {
+    --spacing-container: 2rem;
+    --font-size-heading-1: 3rem;
+  }
+}
 ```
-colors/
-  primary/
-    DEFAULT     -> text-primary
-    foreground  -> text-primary-foreground
+
+### 变量计算
+
+支持 CSS 计算函数：
+
+```css
+:root {
+  --spacing-base: 1rem;
+  --spacing-large: calc(var(--spacing-base) * 2);
+  --spacing-small: calc(var(--spacing-base) * 0.5);
+}
+```
+
+### 嵌套主题
+
+支持多层主题嵌套：
+
+```css
+.theme-blue {
+  --primary: var(--blue-500);
+  --secondary: var(--blue-300);
+}
+
+.theme-red {
+  --primary: var(--red-500);
+  --secondary: var(--red-300);
+}
 ```
 
 ## 变量组织建议
@@ -100,4 +113,4 @@ colors/
   />
 </Cards>
 
-这些原则能帮助你建立一个更易于维护和使用的设计系统。 
+这些原则能帮助你建立一个更易于维护和使用的设计系统。   

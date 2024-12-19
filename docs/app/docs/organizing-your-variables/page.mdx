@@ -9,11 +9,27 @@ import {
   Box,
   Moon
 } from 'lucide-react'
-import { Cards } from 'nextra/components'
+import { Cards, Steps, Callout } from 'nextra/components'
 
 # 组织你的设计变量
 
 在设计系统中，变量的组织方式至关重要。它不仅能提升设计和开发的效率，对于使用 Tailwind CSS 的项目来说，更是决定了设计令牌能否被正确导出和使用。合理的变量组织能让设计师更轻松地管理系统，也能让开发者更方便地应用这些设计决策。
+
+## 快速上手
+
+<Steps>
+### 创建变量集合
+在 Figma 中创建新的变量集合（Collection），根据类型分类你的变量。
+
+### 规划变量结构
+按照类型（颜色、排版、间距等）组织变量，确保结构清晰。
+
+### 遵循命名规范
+使用一致的命名方式，推荐使用 kebab-case 或 camelCase。
+
+### 设置变量类型
+为每个变量选择正确的类型（颜色、数字等），这将影响导出结果。
+</Steps>
 
 ## 为什么变量组织很重要
 
@@ -75,14 +91,48 @@ import { Cards } from 'nextra/components'
 
 ## 实用建议
 
-以下是一些可以帮助你更好地组织变量的建议：
+<Callout type="info">
+  良好的变量组织是设计系统成功的关键。以下建议将帮助你建立一个可维护、可扩展的变量系统。
+</Callout>
 
-- 根据团队习惯选择合适的命名方式
-- 按照项目需求组织变量结构
-- 遵循 Tailwind CSS 的配置结构（这是必须的）
-- 为变量添加适当的描述
+### 命名和结构
+
+<Steps>
+### 选择命名规范
+根据团队习惯选择 kebab-case 或 camelCase，保持一致性。
+
+### 规划层级结构
+```
+color/
+  ├─ primary/
+  │   ├─ default
+  │   ├─ hover
+  │   └─ active
+  └─ text/
+      ├─ primary
+      └─ secondary
+```
+
+### 设置变量类型
+确保选择正确的变量类型，这会影响导出结果：
+- 颜色类型 → Tailwind colors
+- 数字类型 → spacing, fontSize 等
+- 字符串类型 → fontFamily 等
+
+### 添加变量描述
+为重要变量添加清晰的描述，帮助团队理解其用途。
+</Steps>
+
+### 最佳实践
+
 - 定期检查和优化变量组织
 - 记录重要变量的使用场景
 - 使用集合（Collection）归类变量
 - 确保变量名称在导出时能被正确解析
+- 避免过深的嵌套层级（建议不超过 3 层）
+- 保持变量结构与 Tailwind 配置的一致性
+
+<Callout type="warning">
+  注意：变量名称中的特殊字符可能会影响导出结果。建议仅使用字母、数字、连字符和下划线。
+</Callout>
 

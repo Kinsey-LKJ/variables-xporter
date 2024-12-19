@@ -1,0 +1,97 @@
+---
+asIndexPage: true
+---
+
+import { Cards, Steps, Callout } from 'nextra/components'
+import { Code, FileJson, FileCode } from 'lucide-react'
+
+# 导出模式
+
+Variables Xporter 支持两种主要的导出模式：Tailwind CSS 和 CSS 变量。每种模式都有其特点和适用场景，你可以根据项目需求选择合适的导出模式。
+
+## 选择导出模式
+
+<Steps>
+### 评估项目需求
+考虑项目是否使用 Tailwind CSS，以及团队的技术栈偏好。
+
+### 了解模式特点
+- Tailwind CSS：适合使用 Tailwind 的项目，可直接集成到配置中
+- CSS 变量：更通用的方案，适合任何类型的项目
+
+### 配置导出选项
+根据选择的模式，配置相应的导出选项。
+
+### 验证导出结果
+确保导出的变量能够正确应用到项目中。
+</Steps>
+
+## 导出模式详解
+
+<Cards>
+  <Cards.Card
+    icon={<FileJson />}
+    title="Tailwind CSS"
+    href="/docs/export-modes/tailwind"
+  >
+    将设计变量导出为 Tailwind 配置，支持主题扩展和自定义选项。
+  </Cards.Card>
+  <Cards.Card
+    icon={<FileCode />}
+    title="CSS 变量"
+    href="/docs/export-modes/css-variables"
+  >
+    导出为标准的 CSS 自定义属性，支持多主题和媒体查询。
+  </Cards.Card>
+</Cards>
+
+## 模式对比
+
+<Callout type="info">
+  了解每种模式的优势和限制，可以帮助你做出更好的选择。
+</Callout>
+
+### Tailwind CSS 模式
+
+**优势：**
+- 与 Tailwind 生态系统完美集成
+- 支持主题扩展机制
+- 可以利用 Tailwind 的工具类系统
+- 适合使用 Tailwind 的项目
+
+**限制：**
+- 需要项目使用 Tailwind CSS
+- 配置结构需要符合 Tailwind 规范
+- 部分高级特性可能需要额外配置
+
+### CSS 变量模式
+
+**优势：**
+- 更通用，适用于任何项目
+- 原生浏览器支持
+- 支持运行时切换
+- 易于调试和修改
+
+**限制：**
+- 需要额外的 CSS 类来组织主题
+- 某些旧版浏览器可能需要 polyfill
+- 变量命名需要遵循 CSS 规范
+
+## 使用建议
+
+<Steps>
+### 选择标准
+- 使用 Tailwind CSS 的项目 → 选择 Tailwind 模式
+- 需要更通用支持的项目 → 选择 CSS 变量模式
+- 需要运行时切换主题 → 考虑 CSS 变量模式
+
+### 注意事项
+- 确保团队成员了解所选模式的使用方法
+- 建立清晰的变量命名规范
+- 定期检查导出结果的正确性
+- 记录特殊配置和使用说明
+</Steps>
+
+<Callout type="warning">
+  无论选择哪种模式，都要确保变量的组织结构清晰，便于维护和扩展。
+</Callout>

@@ -1,41 +1,86 @@
-import { Cards } from 'nextra/components'
-import { Callout } from 'nextra/components'
-import { Palette, Type, Layers } from 'lucide-react'
+import { Cards, Steps, Callout } from 'nextra/components'
+import { FileJson, Code, Layers } from 'lucide-react'
 
-# CSS Variables
+# Tailwind CSS
 
-选择 CSS Variables 导出方式时，Variables Xporter 会生成一个包含所有 CSS 变量定义的 CSS 文件。这种方式更加简单和灵活，适合不使用 Tailwind CSS 的项目。
+选择 Tailwind CSS 导出方式时，Variables Xporter 会生成两个文件：
+- `tailwind.config.js` - Tailwind CSS 的配置文件
+- `global.css` - 包含所有 CSS 变量定义
 
-## 特点
+## 配置文件导出
 
-### 1. 简单直观
-直接输出标准的 CSS 自定义属性：
+<Steps>
+### 基础配置
+生成标准的 Tailwind 配置文件：
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: 'rgb(var(--colors-primary-default))'
+      },
+      fontSize: {
+        'heading-1': ['2.5rem', { lineHeight: '1.2' }]
+      }
+    }
+  }
+}
+```
+
+### 颜色值优化
+自动将颜色值转换为 RGB 通道格式，支持 Tailwind 的不透明度修饰符：
 
 ```css
+/* global.css */
 :root {
-  --colors-primary: #c03939;
-  --colors-primary-foreground: #ffffff;
-  --font-size-heading-1: 2.5rem;
-  --line-height-heading-1: 1.2;
+  --colors-primary-default: 192 57 57;  /* RGB 通道格式 */
 }
 ```
 
-### 2. 灵活的使用方式
-可以在任何 CSS 规则中使用这些变量：
+### 变量合并
+自动合并相关的变量，符合 Tailwind 的约定：
 
-```css
-.button {
-  background-color: var(--colors-primary);
-  color: var(--colors-primary-foreground);
-  font-size: var(--font-size-heading-1);
-  line-height: var(--line-height-heading-1);
+```js
+fontSize: {
+  'heading-1': ['2.5rem', {
+    lineHeight: '1.2',
+    letterSpacing: '-0.02em',
+    fontWeight: '600'
+  }]
+}
+```
+</Steps>
+
+## 自定义选项
+
+### 变量映射
+
+<Callout type="info">
+  你可以自定义变量如何映射到 Tailwind 的配置结构中。
+</Callout>
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      // 自定义映射
+      colors: {
+        'brand': 'rgb(var(--colors-primary-default))',
+        'brand-accent': 'rgb(var(--colors-secondary-default))'
+      }
+    }
+  }
 }
 ```
 
-### 3. 主题模式支持
-支持使用 CSS 类切换主题：
+### 主题模式
+
+支持多主题模式的配置：
 
 ```css
+/* global.css */
 :root {
   --colors-primary: var(--colors-primary-light);
 }
@@ -45,33 +90,61 @@ import { Palette, Type, Layers } from 'lucide-react'
 }
 ```
 
-## 变量组织建议
+### 高级配置
 
-虽然 CSS Variables 方式对变���组织的要求较低，但我们仍然建议你遵循良好的组织原则，这样可以：
+<Steps>
+### 预设支持
+可以与 Tailwind 预设（preset）结合使用：
 
-- 提高变量的可维护性
-- 保持设计系统的一致性
-- 方便团队协作
-- 为将来可能的框架迁移做准备
+```js
+// tailwind.config.js
+module.exports = {
+  presets: [require('./preset.js')],
+  theme: {
+    extend: {
+      // 你的主题配置
+    }
+  }
+}
+```
+
+### 插件集成
+支持与其他 Tailwind 插件协同工作：
+
+```js
+module.exports = {
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography')
+  ]
+}
+```
+
+### 自定义变量前缀
+可以配置 CSS 变量的前缀：
+
+```js
+module.exports = {
+  prefix: 'tw-'  // 添加前缀
+}
+```
+</Steps>
+
+## 使用建议
 
 <Cards>
   <Cards.Card
     icon={<Layers />}
-    title="基本原则"
+    title="变量组织"
     href="/docs/organizing-your-variables/principles"
   />
   <Cards.Card
-    icon={<Palette />}
-    title="颜色系统"
-    href="/docs/organizing-your-variables/colors"
-  />
-  <Cards.Card
-    icon={<Type />}
-    title="排版系统"
-    href="/docs/organizing-your-variables/typography"
+    icon={<Code />}
+    title="实际示例"
+    href="/docs/examples"
   />
 </Cards>
 
-<Callout type="info" emoji="💡">
-  即使你现在不使用 Tailwind CSS，遵循这些组织原则也能让你的设计系统更加规范和专业。如果将来需要迁移到 Tailwind CSS，也会更加容易。
+<Callout type="warning">
+  确保你的变量结构符合 Tailwind 的配置要求，这对于正确导出至关重要。
 </Callout> 
