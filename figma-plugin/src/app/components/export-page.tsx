@@ -20,136 +20,15 @@ import { notifications } from '@mantine/notifications';
 import * as changeCase from 'change-case';
 import { generateThemeFiles } from '../../lib/utils2';
 
-const formatting = async (
-  variables: TVariable[],
-  allVariables: TVariable[],
-  selectGroup: string[],
-  ignoreGroup: string[],
-  useRemUnit: boolean,
-  modes: { name: string; modeId: string }[],
-  ignoreTailwindColor: boolean,
-  collections: TVariableCollection[]
-) => {
-  let config: any = {};
-  let globalsCSSObject = {};
-
-  const filtered = variables.filter((item) => {
-    return (
-      selectGroup.some((group) => item.name.startsWith(group + '/') || item.name === group) &&
-      !ignoreGroup.some((group) => item.name.startsWith(group + '/'))
-    );
-  });
-
-  filtered.forEach((item) => {
-    console.log(item.name);
-    console.log(changeCase.camelCase(item.name));
-    // const parts = kebabToCamel(item.name).split('/');
-    const parts = item.name.split('/').map((item, index, array) => {
-      if (index === array.length - 1 && changeCase.camelCase(item) === 'default') {
-        return item.toUpperCase();
-      } else {
-        return changeCase.camelCase(item);
-      }
-    });
-
-    const name = changeCase.kebabCase(item.name);
-    let currentLevel = config;
-
-    for (let i = 0; i < parts.length; i++) {
-      const part = parts[i];
-
-      if (!currentLevel[part]) {
-        currentLevel[part] = {};
-      }
-
-      console.log(part);
-
-      if (i === parts.length - 1) {
-        let formattedName = name.replace(/\//g, '-');
-        if (formattedName.slice(-8).toUpperCase() === '-DEFAULT') {
-          formattedName = formattedName.slice(0, -8);
-        }
-
-        // Use a special key such as "__value" for storing values
-        if (item.resolvedType === 'COLOR') {
-          currentLevel[part]['__value'] = `rgb(var(--${formattedName}))`;
-        } else {
-          currentLevel[part]['__value'] = `var(--${formattedName})`;
-        }
-
-        modes.forEach((mode) => {
-          if (item.valuesByMode[mode.modeId] || item.valuesByMode[mode.modeId] === 0) {
-            const colorValue = item.valuesByMode[mode.modeId];
-            globalsCSSObject[mode.modeId] = globalsCSSObject[mode.modeId] || {};
-            globalsCSSObject[mode.modeId][`${formattedName}`] = globalsCSSObject[mode.modeId][`${formattedName}`] || {};
-            globalsCSSObject[mode.modeId][`${formattedName}`].value = colorValue;
-            globalsCSSObject[mode.modeId][`${formattedName}`].type = item.resolvedType;
-            globalsCSSObject[mode.modeId][`${formattedName}`].scopes = item.scopes;
-          }
-        });
-      } else {
-        currentLevel = currentLevel[part];
-      }
-    }
-  });
-
-  console.log(globalsCSSObject);
-
-  let globalsCSS = '';
-  let isFirstMode = true;
-
-
-
-  for (let modeId in globalsCSSObject) {
-    const modeName = modes.filter((mode) => mode.modeId === modeId)[0].name;
-
-    globalsCSS += `${isFirstMode ? ':root' : '.' + modeName} {\n`;
-    isFirstMode = false;
-
-    for (let cssVariable in globalsCSSObject[modeId]) {
-      const colorValue = getCssValue(
-        globalsCSSObject[modeId][cssVariable].value,
-        globalsCSSObject[modeId][cssVariable].type,
-        globalsCSSObject[modeId][cssVariable].scopes,
-        modeId,
-        variables,
-        allVariables,
-        useRemUnit,
-        cssVariable,
-        ignoreTailwindColor,
-        collections
-      );
-
-      if (colorValue === undefined) {
-        console.log(cssVariable);
-      }
-
-      if (colorValue !== undefined) {
-        globalsCSS += `  --${cssVariable}: ${colorValue};\n`;
-      }
-    }
-    globalsCSS += '}\n\n';
-  }
-
-  const configResult = await writeConfig(flattenConfig(config));
-  return {
-    config: configResult,
-    globalsCSS,
-  };
-};
-
 function flattenConfig(config: object) {
   const newConfig = {};
   for (const key in config) {
     const value = config[key];
-    if (typeof value === 'object' && value !== null) {
-      // 检查 "__value" 属性，同时需要确定没有其他键存在，意味着不存在子路径条目
-      if ('__value' in value && Object.keys(value).length === 1) {
+    if (typeof value === 'object' && !Array.isArray(value) && value !== null) {
+      if (value.__value) {
         newConfig[key] = value.__value;
       } else {
-        // 如果对象包含除 "__value" 之外的其他键，或者根本不存在 "__value" 属性，
-        // 我们就保持原样，并递归执行 flatten 操作
-        const valueToFlatten = 'value' in value ? { ...value } : value;
+        const valueToFlatten = { ...value };
         delete valueToFlatten.__value;
         newConfig[key] = flattenConfig(valueToFlatten);
       }
@@ -157,7 +36,6 @@ function flattenConfig(config: object) {
       newConfig[key] = value;
     }
   }
-
   return newConfig;
 }
 
@@ -247,19 +125,18 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
       try {
         const output = variables.filter((item) => item.variableCollectionId === formValues.selectCollectionID);
 
-        const selectCollection = collections.filter((item) => item.id === formValues.selectCollectionID);
-
-        formatting(
+        const { css, tailwindConfig } = await generateThemeFiles(
           output,
           variables,
-          formValues.selectVariableGroup,
-          formValues.ignoreTailwindColor ? ignoreGroup : [],
+          collections,
+          true,
           formValues.useRemUnit,
-          selectCollection[0].modes,
-          formValues.ignoreTailwindColor,
-          collections
-        ).then((result) => {
-          setTailwindCSSOutput(result);
+          formValues.selectVariableGroup,
+          formValues.ignoreTailwindColor ? ignoreGroup : []
+        );
+        setTailwindCSSOutput({
+          config: tailwindConfig,
+          globalsCSS: css,
         });
       } catch (error) {
         console.log(error);
