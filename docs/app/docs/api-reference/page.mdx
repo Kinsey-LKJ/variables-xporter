@@ -1,0 +1,196 @@
+import { Callout } from 'nextra/components'
+
+# API 参考
+
+本节详细介绍了 Variables Xporter 的所有可用选项和配置项。
+
+## 导出选项
+
+### useRemUnit
+- 类型: `boolean`
+- 默认值: `false`
+- 说明: 是否将 px 单位转换为 rem
+
+```js
+// 示例
+{
+  useRemUnit: true // 将把所有 px 值转换为对应的 rem 值
+}
+```
+
+### ignoreTailwindColor
+- 类型: `boolean`
+- 默认值: `false`
+- 说明: 是否忽略 Tailwind 的颜色处理
+
+```js
+// 示例
+{
+  ignoreTailwindColor: true // 将保持原始颜色格式，不转换为 RGB 通道格式
+}
+```
+
+### exportFormat
+- 类型: `'tailwind' | 'css-variables'`
+- 默认值: `'tailwind'`
+- 说明: 导出格式选择
+
+```js
+// 示例
+{
+  exportFormat: 'css-variables' // 导出为 CSS 变量格式
+}
+```
+
+## GitHub 集成选项
+
+### repository
+- 类型: `string`
+- 格式: `'owner/repo'`
+- 说明: GitHub 仓库地址
+
+```js
+// 示例
+{
+  repository: 'your-org/your-repo'
+}
+```
+
+### branch
+- 类型: `string`
+- 默认值: `'main'`
+- 说明: 目标分支名称
+
+```js
+// 示例
+{
+  branch: 'develop'
+}
+```
+
+### path
+- 类型: `string`
+- 说明: 文件保存路径
+
+```js
+// 示例
+{
+  path: 'src/styles/variables'
+}
+```
+
+## 变量处理选项
+
+### mergeTypographyStyles
+- 类型: `boolean`
+- 默认值: `true`
+- 说明: 是否合并排版相关变量
+
+```js
+// 示例
+{
+  mergeTypographyStyles: true // 启用排版样式合并
+}
+```
+
+### baseRemSize
+- 类型: `number`
+- 默认值: `16`
+- 说明: rem 单位转换基准值
+
+```js
+// 示例
+{
+  baseRemSize: 10 // 使用 10px 作为 1rem 的基准
+}
+```
+
+## 错误处理
+
+Variables Xporter 使用标准的错误处理机制，所有错误都包含以下属性：
+
+- `code`: 错误代码
+- `message`: 错误描述
+- `details`: 详细信息（如果有）
+
+### 常见错误代码
+
+| 错误代码 | 描述 | 解决方案 |
+|---------|------|---------|
+| `INVALID_CONFIG` | 配置格式错误 | 检查配置项的类型和格式 |
+| `GITHUB_AUTH_ERROR` | GitHub 认证失败 | 验证 GitHub 令牌和权限 |
+| `EXPORT_FAILED` | 导出过程失败 | 检查变量格式和导出选项 |
+| `INVALID_PATH` | 路径格式错误 | 确保路径格式正确且有效 |
+
+## 最佳实践
+
+### 配置示例
+
+完整的配置示例：
+
+```js
+{
+  // 导出选项
+  exportFormat: 'tailwind',
+  useRemUnit: true,
+  ignoreTailwindColor: false,
+
+  // GitHub 集成
+  repository: 'your-org/design-system',
+  branch: 'main',
+  path: 'src/styles',
+
+  // 变量处理
+  mergeTypographyStyles: true,
+  baseRemSize: 16
+}
+```
+
+### 性能优化建议
+
+1. 合理使用变量合并
+2. 避免过深的变量引用
+3. 适当设置缓存策略
+
+<Callout type="info" emoji="💡">
+  建议在开发环境中先测试配置，确认输出符合预期后再部署到生产环境。
+</Callout>
+
+## 故障排除指南
+
+### 1. 导出失败
+
+可能的原因：
+- 变量格式不正确
+- 配置项类型错误
+- 文件权限问题
+
+
+解决方案：
+1. 检查变量命名和格式
+2. 验证配置项类型
+3. 确认文件权限设置
+
+### 2. GitHub 集成问题
+
+可能的原因：
+- 认证令牌过期
+- 仓库权限不足
+- 分支保护规则
+
+解决方案：
+1. 更新 GitHub 令牌
+2. 检查仓库访问权限
+3. 确认分支权限设置
+
+### 3. 变量转换异常
+
+可能的原因：
+- 单位转换配置错误
+- 变量引用循环
+- 不支持的值格式
+
+解决方案：
+1. 检查单位转换设置
+2. 简化变量引用关系
+3. 确保使用支持的值格式
