@@ -1,10 +1,7 @@
 const meta = {
   index: {
-    display: 'hidden'
-  },
-  docs: {
+    title: '首页',
     type: 'page',
-    title: '文档',
     theme: {
       layout: 'full'
     }
