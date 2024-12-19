@@ -1,6 +1,7 @@
 import { Cards } from 'nextra/components'
 import { Callout } from 'nextra/components'
 import { Palette, Type, Layers } from 'lucide-react'
+import { CodePreview } from '../../components/CodePreview'
 
 # Tailwind CSS 导出
 
@@ -13,8 +14,13 @@ import { Palette, Type, Layers } from 'lucide-react'
 ### 1. 颜色值优化
 自动将颜色值转换为 RGB 通道格式，支持 Tailwind 的不透明度修饰符：
 
-```js
-// tailwind.config.js
+<CodePreview
+  before={`// Figma 变量
+colors/
+  primary/
+    default: #C03939
+    foreground: #FFFFFF`}
+  after={`// tailwind.config.js
 colors: {
   primary: 'rgb(var(--colors-primary-default))'
 }
@@ -22,8 +28,9 @@ colors: {
 // global.css
 :root {
   --colors-primary-default: 192 57 57;  /* RGB 通道格式 */
-}
-```
+}`}
+  language="js"
+/>
 
 使用示例：
 ```html
@@ -35,11 +42,21 @@ colors: {
 ### 2. 字体变量合并
 自动合并相关的字体变量，符合 Tailwind 的约定：
 
-```js
-fontSize: {
-  'heading-1': ['2.5rem', { lineHeight: '1.2' }]
-}
-```
+<CodePreview
+  before={`// Figma 变量
+typography/
+  heading-1/
+    size: 40px
+    line-height: 1.2
+    weight: 600`}
+  after={`fontSize: {
+  'heading-1': ['2.5rem', {
+    lineHeight: '1.2',
+    fontWeight: '600'
+  }]
+}`}
+  language="js"
+/>
 
 ### 3. 主题模式支持
 自动处理主题切换相关的变量：
@@ -226,4 +243,4 @@ colors/
 
 <Callout type="info" emoji="💡">
   合理利用 Tailwind CSS 的特性和 Variables Xporter 的功能，可以构建出灵活、可维护且性能优秀的设计系统。
-</Callout> 
+</Callout>   

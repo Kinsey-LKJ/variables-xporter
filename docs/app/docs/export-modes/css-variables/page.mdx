@@ -1,6 +1,7 @@
 import { Cards } from 'nextra/components'
 import { Callout } from 'nextra/components'
 import { Palette, Type, Layers } from 'lucide-react'
+import { CodePreview } from '../../components/CodePreview'
 
 # CSS 变量导出
 
@@ -11,14 +12,23 @@ import { Palette, Type, Layers } from 'lucide-react'
 ### 1. 简单直观
 直接输出标准的 CSS 自定义属性：
 
-```css
-:root {
+<CodePreview
+  before={`// Figma 变量
+colors/
+  primary: #C03939
+  primary-foreground: #FFFFFF
+typography/
+  heading-1/
+    size: 40px
+    line-height: 1.2`}
+  after={`:root {
   --colors-primary: #c03939;
   --colors-primary-foreground: #ffffff;
   --font-size-heading-1: 2.5rem;
   --line-height-heading-1: 1.2;
-}
-```
+}`}
+  language="css"
+/>
 
 ### 2. 灵活的使用方式
 可以在任何 CSS 规则中使用这些变量：
@@ -158,4 +168,4 @@ import { Palette, Type, Layers } from 'lucide-react'
 
 <Callout type="info" emoji="💡">
   CSS变量的灵活性使其成为构建可维护设计系统的理想选择。通过合理组织和命名变量，可以显著提高代码的可维护性和可重用性。
-</Callout> 
+</Callout>   
