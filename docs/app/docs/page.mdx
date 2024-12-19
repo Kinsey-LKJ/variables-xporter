@@ -10,35 +10,27 @@ import { FileCode, Settings, Layers, Monitor } from 'lucide-react'
 Variables Xporter 是一个强大的 Figma 插件，让设计师和开发者之间的协作更加顺畅。它能智能地将 Figma 设计变量转换为开发代码，支持 Tailwind CSS 和原生 CSS 变量，确保设计系统在整个产品中保持完美的一致性。✨
 
 <div className="nx-mt-8">
-  <Cards>
+  <Cards num={4}>
     <Cards.Card
-      icon={<FileCode size={24} strokeWidth={1.5} className="nx-text-primary" />}
+      arrow
       title="快速上手"
       href="/docs/get-started"
-    >
-      只需几分钟，即可完成插件安装和配置，开启设计到代码的无缝转换之旅
-    </Cards.Card>
+    />
     <Cards.Card
-      icon={<Settings size={24} strokeWidth={1.5} className="nx-text-primary" />}
+      arrow
       title="导出模式"
       href="/docs/export-modes"
-    >
-      支持 Tailwind CSS 和 CSS 变量两种导出模式，灵活适配不同的开发需求
-    </Cards.Card>
+    />
     <Cards.Card
-      icon={<Layers size={24} strokeWidth={1.5} className="nx-text-primary" />}
+      arrow
       title="变量组织"
       href="/docs/organizing-your-variables"
-    >
-      学习如何组织和管理设计变量，打造清晰高效的设计系统
-    </Cards.Card>
+    />
     <Cards.Card
-      icon={<Monitor size={24} strokeWidth={1.5} className="nx-text-primary" />}
+      arrow
       title="高级功能"
       href="/docs/features"
-    >
-      探索更多强大功能，让设计系统管理更上一层楼
-    </Cards.Card>
+    />
   </Cards>
 </div>
 
