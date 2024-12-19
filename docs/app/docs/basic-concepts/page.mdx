@@ -1,0 +1,91 @@
+import { Cards } from 'nextra/components'
+import { Callout } from 'nextra/components'
+import { Variable, Palette, Type, Box } from 'lucide-react'
+
+# 基础概念
+
+Variables Xporter 的核心概念包括变量集合、变量类型和导出模式。了解这些基本概念将帮助你更好地使用插件。
+
+## 变量集合
+
+变量集合是 Figma 中组织设计变量的方式。一个集合可以包含多个变量，这些变量可以是不同的类型。
+
+<Cards>
+  <Cards.Card
+    icon={<Palette />}
+    title="颜色变量"
+    href="/docs/organizing-your-variables/colors"
+  />
+  <Cards.Card
+    icon={<Type />}
+    title="排版变量"
+    href="/docs/organizing-your-variables/typography"
+  />
+  <Cards.Card
+    icon={<Box />}
+    title="间距变量"
+    href="/docs/organizing-your-variables/spacing"
+  />
+</Cards>
+
+## 变量类型
+
+Figma 支持多种类型的变量：
+
+- **颜色（Color）**：用于定义颜色值
+- **数字（Number）**：用于定义尺寸、间距等
+- **字符串（String）**：用于定义文本值
+- **布尔值（Boolean）**：用于定义开关状态
+
+<Callout type="info" emoji="💡">
+  Variables Xporter 会根据变量类型自动选择最适合的导出格式。
+</Callout>
+
+## 变量引用
+
+变量可以引用其他变量，这种引用关系在导出时会被保留：
+
+```css
+:root {
+  --color-primary-light: #e0e0e0;
+  --color-primary: var(--color-primary-light);
+}
+```
+
+## 导出模式
+
+Variables Xporter 支持两种主要的导出模式：
+
+### 1. CSS 变量
+适合需要原生 CSS 支持的项目：
+- 直接使用 CSS 自定义属性
+- 支持浏览器原生功能
+- 无需额外依赖
+
+[了解更多 CSS 变量导出](/docs/export-modes/css-variables)
+
+### 2. Tailwind CSS
+适合使用 Tailwind CSS 框架的项目：
+- 生成 Tailwind 配置
+- 支持主题定制
+- 集成设计令牌
+
+[了解更多 Tailwind CSS 导出](/docs/export-modes/tailwind)
+
+## 多主题支持
+
+Variables Xporter 支持导出多主题变量：
+
+- **明暗主题**：支持 light/dark 模式切换
+- **品牌主题**：支持多品牌变体
+- **响应式**：支持不同设备尺寸
+
+<Callout type="info" emoji="💡">
+  在 Figma 中创建多个变量集合来管理不同的主题。
+</Callout>
+
+## 下一步
+
+- [快速开始](/docs/get-started) - 开始使用 Variables Xporter
+- [变量组织](/docs/organizing-your-variables) - 学习如何组织你的变量
+- [导出模式](/docs/export-modes) - 深入了解导出选项
