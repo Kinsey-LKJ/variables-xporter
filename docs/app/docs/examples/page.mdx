@@ -1,0 +1,220 @@
+---
+title: 使用场景示例
+---
+
+import { Cards, Steps, Callout } from 'nextra/components'
+import { Palette, Moon, Box } from 'lucide-react'
+
+# 使用场景示例
+
+本章节将通过实际案例，展示如何在不同场景下使用 Variables Xporter。
+
+## 品牌设计系统
+
+<Steps>
+### 创建品牌色系
+在 Figma 中创建品牌颜色变量：
+
+```
+colors/
+  ├─ brand/
+  │   ├─ primary
+  │   ├─ secondary
+  │   └─ accent
+  └─ neutral/
+      ├─ 100
+      ├─ 200
+      └─ ...
+```
+
+### 设置排版系统
+定义字体和文本样式：
+
+```
+typography/
+  ├─ fonts/
+  │   ├─ heading
+  │   └─ body
+  └─ text/
+      ├─ h1
+      ├─ h2
+      └─ body
+```
+
+### 导出配置
+选择 Tailwind CSS 导出模式：
+
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          primary: 'rgb(var(--colors-brand-primary))',
+          secondary: 'rgb(var(--colors-brand-secondary))',
+          accent: 'rgb(var(--colors-brand-accent))'
+        }
+      },
+      fontFamily: {
+        heading: 'var(--typography-fonts-heading)',
+        body: 'var(--typography-fonts-body)'
+      }
+    }
+  }
+}
+```
+</Steps>
+
+<Callout type="info">
+  品牌设计系统的变量组织应该反映品牌的视觉层级，便于设计师和开发者理解和使用。
+</Callout>
+
+## 多主题项目
+
+<Steps>
+### 创建基础变量
+设置颜色和样式的基础变量：
+
+```css
+:root {
+  /* 亮色主题（默认） */
+  --colors-background: 255 255 255;
+  --colors-foreground: 0 0 0;
+  --colors-primary: 59 130 246;
+}
+```
+
+### 添加暗色主题
+使用 `.dark` 类切换暗色主题：
+
+```css
+.dark {
+  --colors-background: 17 24 39;
+  --colors-foreground: 255 255 255;
+  --colors-primary: 96 165 250;
+}
+```
+
+### 创建主题变体
+支持多个品牌主题：
+
+```css
+.theme-blue {
+  --colors-primary: 59 130 246;
+  --colors-secondary: 147 197 253;
+}
+
+.theme-green {
+  --colors-primary: 34 197 94;
+  --colors-secondary: 134 239 172;
+}
+```
+
+### 在代码中使用
+结合 Tailwind CSS 使用主题：
+
+```html
+<div class="bg-background text-foreground dark:bg-background dark:text-foreground">
+  <h1 class="text-primary">标题</h1>
+  <p class="text-secondary">内容</p>
+</div>
+```
+</Steps>
+
+<Callout type="warning">
+  确保在切换主题时保持足够的对比度，特别是文本和背景色的组合。
+</Callout>
+
+## 组件库设计
+
+<Steps>
+### 设置组件变量
+为组件创建专门的变量集合：
+
+```
+components/
+  ├─ button/
+  │   ├─ primary
+  │   ├─ secondary
+  │   └─ sizes
+  └─ card/
+      ├─ background
+      ├─ border
+      └─ shadow
+```
+
+### 定义组件状态
+管理不同状态的样式：
+
+```css
+:root {
+  /* 按钮状态 */
+  --button-primary-default: var(--colors-primary);
+  --button-primary-hover: var(--colors-primary-dark);
+  --button-primary-active: var(--colors-primary-darker);
+
+  /* 卡片样式 */
+  --card-background: var(--colors-background);
+  --card-border: var(--colors-border);
+  --card-shadow: var(--shadows-medium);
+}
+```
+
+### 导出组件变量
+配置 Tailwind CSS 组件类：
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      backgroundColor: {
+        'button-primary': 'var(--button-primary-default)',
+        'button-primary-hover': 'var(--button-primary-hover)',
+        'card': 'var(--card-background)'
+      },
+      boxShadow: {
+        'card': 'var(--card-shadow)'
+      }
+    }
+  }
+}
+```
+
+### 使用组件样式
+在组件中应用样式：
+
+```html
+<button class="bg-button-primary hover:bg-button-primary-hover">
+  按钮
+</button>
+
+<div class="bg-card shadow-card border-card">
+  卡片内容
+</div>
+```
+</Steps>
+
+<Callout type="info">
+  组件变量应该建立在基础设计令牌之上，通过引用基础变量来保持一致性。
+</Callout>
+
+## 导航
+
+<Cards>
+  <Cards.Card
+    icon={<Palette />}
+    title="品牌设计系统"
+    href="#品牌设计系统"
+  />
+  <Cards.Card
+    icon={<Moon />}
+    title="多主题项目"
+    href="#多主题项目"
+  />
+  <Cards.Card
+    icon={<Box />}
+    title="组件库设计"
+    href="#组件库设计"
+  />
+</Cards>
