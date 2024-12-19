@@ -1,5 +1,6 @@
 import useEmblaCarousel from 'embla-carousel-react';
-import { validateGithubURL } from '../../lib/utils';
+import gh from 'parse-github-url';
+const validateGithubURL = (url) => gh(url);
 import { ConnectGithubFormValues, useConnectGithubFormContext } from './connect-github-form-context';
 import { Button, ButtonGroup, Drawer, TextInput, PinInput } from '@mantine/core';
 import { useCarouselApi } from '../../lib/hooks';
