@@ -2,40 +2,50 @@ import { Cards } from 'nextra/components'
 import { Callout } from 'nextra/components'
 import { Palette, Type, Layers } from 'lucide-react'
 
-# CSS Variables
+# Tailwind CSS 导出
 
-选择 CSS Variables 导出方式时，Variables Xporter 会生成一个包含所有 CSS 变量定义的 CSS 文件。这种方式更加简单和灵活，适合不使用 Tailwind CSS 的项目。
+选择 Tailwind CSS 导出方式时，Variables Xporter 会生成两个文件：
+- `tailwind.config.js` - Tailwind CSS 的配置文件
+- `global.css` - 包含所有 CSS 变量定义
 
-## 特点
+## 特性和优化
 
-### 1. 简单直观
-直接输出标准的 CSS 自定义属性：
+### 1. 颜色值优化
+自动将颜色值转换为 RGB 通道格式，支持 Tailwind 的不透明度修饰符：
 
-```css
+```js
+// tailwind.config.js
+colors: {
+  primary: 'rgb(var(--colors-primary-default))'
+}
+
+// global.css
 :root {
-  --colors-primary: #c03939;
-  --colors-primary-foreground: #ffffff;
-  --font-size-heading-1: 2.5rem;
-  --line-height-heading-1: 1.2;
+  --colors-primary-default: 192 57 57;  /* RGB 通道格式 */
 }
 ```
 
-### 2. 灵活的使用方式
-可以在任何 CSS 规则中使用这些变量：
+使用示例：
+```html
+<div class="text-primary/80">  <!-- 80% 不透明度 -->
+  Hello World
+</div>
+```
 
-```css
-.button {
-  background-color: var(--colors-primary);
-  color: var(--colors-primary-foreground);
-  font-size: var(--font-size-heading-1);
-  line-height: var(--line-height-heading-1);
+### 2. 字体变量合并
+自动合并相关的字体变量，符合 Tailwind 的约定：
+
+```js
+fontSize: {
+  'heading-1': ['2.5rem', { lineHeight: '1.2' }]
 }
 ```
 
 ### 3. 主题模式支持
-支持使用 CSS 类切换主题：
+自动处理主题切换相关的变量：
 
 ```css
+/* global.css */
 :root {
   --colors-primary: var(--colors-primary-light);
 }
@@ -45,14 +55,32 @@ import { Palette, Type, Layers } from 'lucide-react'
 }
 ```
 
+## 必须遵守的规则
+
+### 1. 顶层结构
+变量集合必须使用 Tailwind CSS 的主题配置名：
+
+- `colors` - 颜色变量
+- `spacing` - 间距、宽度、高度等
+- `fontSize` - 字体大小
+- `fontWeight` - 字重
+- `borderRadius` - 圆角
+- `opacity` - 透明度
+等。
+
+### 2. 变量层级
+使用 `DEFAULT` 作为基础值的标记：
+
+```
+colors/
+  primary/
+    DEFAULT     -> text-primary
+    foreground  -> text-primary-foreground
+```
+
 ## 变量组织建议
 
-虽然 CSS Variables 方式对变���组织的要求较低，但我们仍然建议你遵循良好的组织原则，这样可以：
-
-- 提高变量的可维护性
-- 保持设计系统的一致性
-- 方便团队协作
-- 为将来可能的框架迁移做准备
+虽然只有上述规则是必须遵守的，但我们仍建议你遵循以下组织原则：
 
 <Cards>
   <Cards.Card
@@ -72,6 +100,4 @@ import { Palette, Type, Layers } from 'lucide-react'
   />
 </Cards>
 
-<Callout type="info" emoji="💡">
-  即使你现在不使用 Tailwind CSS，遵循这些组织原则也能让你的设计系统更加规范和专业。如果将来需要迁移到 Tailwind CSS，也会更加容易。
-</Callout> 
+这些原则能帮助你建立一个更易于维护和使用的设计系统。 

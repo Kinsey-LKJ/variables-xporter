@@ -1,1 +1,69 @@
-# Merge Typography Styles
+# 合并排版样式
+
+Variables Xporter 提供了强大的排版样式合并功能，可以帮助你更好地管理和使用 Figma 中的文字样式。
+
+## 功能特点
+
+### 自动合并相关属性
+- 将字体大小、行高、字重等属性自动合并
+- 生成符合 Tailwind CSS 约定的配置
+- 保持样式的一致性和可维护性
+
+### 支持的属性
+- 字体大小（fontSize）
+- 行高（lineHeight）
+- 字重（fontWeight）
+- 字间距（letterSpacing）
+- 字体族（fontFamily）
+
+## 使用方法
+
+### 1. 在 Figma 中组织变量
+```
+typography/
+  heading-1/
+    size: 2.5rem
+    line-height: 1.2
+    weight: 600
+  body/
+    size: 1rem
+    line-height: 1.5
+    weight: 400
+```
+
+### 2. 导出配置
+选择 Tailwind CSS 导出模式时，Variables Xporter 会自动合并相关的排版属性：
+
+```js
+// tailwind.config.js
+fontSize: {
+  'heading-1': ['2.5rem', {
+    lineHeight: '1.2',
+    fontWeight: '600'
+  }],
+  'body': ['1rem', {
+    lineHeight: '1.5',
+    fontWeight: '400'
+  }]
+}
+```
+
+### 3. 在项目中使用
+```html
+<h1 class="text-heading-1">标题文本</h1>
+<p class="text-body">正文内容</p>
+```
+
+## 最佳实践
+
+1. 保持变量命名的一致性
+2. 使用有意义的分组名称
+3. 确保变量层级结构清晰
+4. 适当使用变量引用
+5. 添加必要的变量描述
+
+## 注意事项
+
+- 确保变量名称符合 Tailwind CSS 的命名规范
+- 检查导出的配置是否符合预期
+- 注意变量之间的引用关系
