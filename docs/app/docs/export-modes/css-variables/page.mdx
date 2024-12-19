@@ -45,32 +45,98 @@ import { Palette, Type, Layers } from 'lucide-react'
 }
 ```
 
-## 必须遵守的规则
+## 实际使用场景
 
-### 1. 顶层结构
-变量集合必须使用 Tailwind CSS 的主题配置名：
+### 1. 响应式设计
+```css
+/* 基础变量 */
+:root {
+  --spacing-container: 1rem;
+}
 
-- `colors` - 颜色变量
-- `spacing` - 间距、宽度、高度等
-- `fontSize` - 字体大小
-- `fontWeight` - 字重
-- `borderRadius` - 圆角
-- `opacity` - 透明度
-等。
+/* 媒体查询中修改变量值 */
+@media (min-width: 768px) {
+  :root {
+    --spacing-container: 2rem;
+  }
+}
 
-### 2. 变量层级
-使用 `DEFAULT` 作为基础值的标记：
-
+/* 使用变量 */
+.container {
+  padding: var(--spacing-container);
+}
 ```
-colors/
-  primary/
-    DEFAULT     -> text-primary
-    foreground  -> text-primary-foreground
+
+### 2. 组件变体
+```css
+/* 定义基础变量 */
+.button {
+  --button-bg: var(--colors-primary);
+  --button-text: var(--colors-primary-foreground);
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
+/* 创建变体 */
+.button.secondary {
+  --button-bg: var(--colors-secondary);
+  --button-text: var(--colors-secondary-foreground);
+}
 ```
 
-## 变量组织建议
+### 3. 动画效果
+```css
+.card {
+  --transform-amount: 0deg;
+  transform: rotate(var(--transform-amount));
+  transition: --transform-amount 0.3s;
+}
 
-虽然只有上述规则是必须遵守的，但我们仍建议你遵循以下组织原则：
+.card:hover {
+  --transform-amount: 5deg;
+}
+```
+
+## 最佳实践
+
+### 1. 变量命名
+- 使用语义化的名称
+- 采用一致的命名模式
+- 避免过深的嵌套
+
+### 2. 变量组织
+- 按功能分组
+- 保持层级结构清晰
+- 合理使用默认值
+
+### 3. 性能优化
+- 避免过多的变量嵌套引用
+- 合理使用计算值
+- 注意浏览器兼容性
+
+## 常见问题与解决方案
+
+### 1. 变量值未生效
+可能的原因：
+- 变量名称拼写错误
+- 变量作用域不正确
+- CSS选择器优先级问题
+
+解决方案：
+1. 仔细检查变量名称
+2. 确认变量定义的位置
+3. 检查CSS选择器优先级
+
+### 2. 主题切换不生效
+可能的原因：
+- 主题类名应用位置错误
+- 变量覆盖顺序问题
+- JavaScript切换逻辑问题
+
+解决方案：
+1. 确保主题类名应用在正确的元素上
+2. 检查CSS文件加载顺序
+3. 验证主题切换的JavaScript代码
 
 <Cards>
   <Cards.Card
@@ -90,4 +156,6 @@ colors/
   />
 </Cards>
 
-这些原则能帮助你建立一个更易于维护和使用的设计系统。   
+<Callout type="info" emoji="💡">
+  CSS变量的灵活性使其成为构建可维护设计系统的理想选择。通过合理组织和命名变量，可以显著提高代码的可维护性和可重用性。
+</Callout> 

@@ -55,6 +55,130 @@ fontSize: {
 }
 ```
 
+## 实际使用场景
+
+### 1. 响应式设计
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      spacing: {
+        'container': 'var(--spacing-container)'
+      }
+    }
+  }
+}
+
+// global.css
+:root {
+  --spacing-container: 1rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --spacing-container: 2rem;
+  }
+}
+```
+
+使用示例：
+```html
+<div class="p-container">
+  响应式内容
+</div>
+```
+
+### 2. 组件变体
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      backgroundColor: {
+        'button': 'var(--button-bg)',
+        'button-secondary': 'var(--button-secondary-bg)'
+      },
+      textColor: {
+        'button': 'var(--button-text)',
+        'button-secondary': 'var(--button-secondary-text)'
+      }
+    }
+  }
+}
+```
+
+使用示例：
+```html
+<button class="bg-button text-button">
+  主要按钮
+</button>
+<button class="bg-button-secondary text-button-secondary">
+  次要按钮
+</button>
+```
+
+### 3. 渐变和动画
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      backgroundImage: {
+        'gradient-custom': 'var(--gradient-custom)'
+      },
+      keyframes: {
+        'custom-bounce': {
+          '0%, 100%': { transform: 'var(--bounce-transform-up)' },
+          '50%': { transform: 'var(--bounce-transform-down)' }
+        }
+      }
+    }
+  }
+}
+```
+
+## 最佳实践
+
+### 1. 变量命名
+- 使用语义化的名称
+- 遵循 Tailwind 的命名约定
+- 保持命名简洁明了
+
+### 2. 配置组织
+- 按功能分组配置
+- 使用 extend 而不是覆盖
+- 合理使用默认值
+
+### 3. 性能优化
+- 避免过度使用自定义属性
+- 利用 Tailwind 的 JIT 编译
+- 合理设置 safelist
+
+## 常见问题与解决方案
+
+### 1. 自定义值不生效
+可能的原因：
+- 配置文件位置错误
+- 变量名称不匹配
+- 构建缓存问题
+
+解决方案：
+1. 检查配置文件路径
+2. 验证变量名称拼写
+3. 清除构建缓存
+
+### 2. 主题切换异常
+可能的原因：
+- CSS 变量未正确定义
+- 类名应用顺序问题
+- 暗色模式配置错误
+
+解决方案：
+1. 检查 CSS 变量定义
+2. 调整类名优先级
+3. 验证暗色模式配置
+
 ## 必须遵守的规则
 
 ### 1. 顶层结构
@@ -100,4 +224,6 @@ colors/
   />
 </Cards>
 
-这些原则能帮助你建立一个更易于维护和使用的设计系统。 
+<Callout type="info" emoji="💡">
+  合理利用 Tailwind CSS 的特性和 Variables Xporter 的功能，可以构建出灵活、可维护且性能优秀的设计系统。
+</Callout> 
