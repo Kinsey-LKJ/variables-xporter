@@ -1,0 +1,224 @@
+import { Callout } from 'nextra/components'
+import { CodePreview } from '../../components/CodePreview'
+
+# 最佳实践
+
+本指南汇总了使用 Variables Xporter 的最佳实践，帮助你更好地组织和管理设计变量。
+
+## 变量命名
+
+### 1. 命名规范
+使用清晰、一致的命名规范：
+
+<CodePreview
+  before={`// ❌ 不推荐
+colors/
+  red: #FF0000
+  darkred: #8B0000
+
+// ✅ 推荐
+colors/
+  primary/
+    default: #FF0000
+    dark: #8B0000`}
+  after={`:root {
+  --colors-primary: #FF0000;
+  --colors-primary-dark: #8B0000;
+}`}
+  language="css"
+/>
+
+### 2. 语义化命名
+使用描述性的、语义化的名称：
+
+<CodePreview
+  before={`// ❌ 不推荐
+spacing/
+  sp1: 4px
+  sp2: 8px
+
+// ✅ 推荐
+spacing/
+  small: 4px
+  medium: 8px`}
+  after={`:root {
+  --spacing-small: 0.25rem;
+  --spacing-medium: 0.5rem;
+}`}
+  language="css"
+/>
+
+## 变量组织
+
+### 1. 层级结构
+保持清晰的层级结构：
+
+```
+colors/
+  ├─ primary/
+  │   ├─ default
+  │   ├─ light
+  │   └─ dark
+  └─ secondary/
+      ├─ default
+      ├─ light
+      └─ dark
+```
+
+### 2. 主题管理
+为不同主题创建独立的变量集合：
+
+```
+themes/
+  ├─ light/
+  │   └─ colors/
+  │       └─ primary
+  └─ dark/
+      └─ colors/
+          └─ primary
+```
+
+## 导出配置
+
+### 1. 选择性导出
+只导出需要的变量：
+
+<CodePreview
+  before={`// 完整变量集
+colors/
+  primary/
+    default: #FF0000
+  secondary/
+    default: #00FF00
+  debug/
+    outline: #FF00FF`}
+  after={`// 导出配置
+{
+  includePaths: [
+    'colors/primary/**',
+    'colors/secondary/**'
+  ],
+  excludePaths: [
+    'colors/**/debug'
+  ]
+}`}
+  language="js"
+/>
+
+### 2. 单位转换
+合理使用单位转换功能：
+
+<CodePreview
+  before={`typography/
+  body/
+    size: 16px
+    lineHeight: 24px`}
+  after={`:root {
+  --typography-body-size: 1rem;
+  --typography-body-line-height: 1.5;
+}`}
+  language="css"
+/>
+
+## 版本控制
+
+### 1. 提交规范
+使用清晰的提交信息：
+
+```bash
+# ✅ 推荐的提交信息格式
+git commit -m "feat(theme): 添加暗色主题变量"
+git commit -m "fix(typography): 修正标题字体大小"
+```
+
+### 2. 变更记录
+维护变量的变更记录：
+
+```markdown
+# 变更记录
+
+## v1.1.0
+- 添加暗色主题支持
+- 优化间距变量命名
+
+## v1.0.0
+- 初始版本
+- 基础颜色系统
+- 排版系统
+```
+
+## 性能优化
+
+### 1. 变量复用
+合理复用变量，避免重复定义：
+
+<CodePreview
+  before={`// ❌ 不推荐
+colors/
+  buttonPrimary: #FF0000
+  linkPrimary: #FF0000
+
+// ✅ 推荐
+colors/
+  primary: #FF0000
+
+components/
+  button/
+    primary: {colors.primary}
+  link/
+    primary: {colors.primary}`}
+  after={`:root {
+  --colors-primary: #FF0000;
+  --components-button-primary: var(--colors-primary);
+  --components-link-primary: var(--colors-primary);
+}`}
+  language="css"
+/>
+
+
+### 2. 计算值优化
+使用计算值简化变量定义：
+
+<CodePreview
+  before={`spacing/
+  base: 4px
+  small: 8px  // base * 2
+  medium: 16px // base * 4
+  large: 32px  // base * 8`}
+  after={`:root {
+  --spacing-base: 0.25rem;
+  --spacing-small: calc(var(--spacing-base) * 2);
+  --spacing-medium: calc(var(--spacing-base) * 4);
+  --spacing-large: calc(var(--spacing-base) * 8);
+}`}
+  language="css"
+/>
+
+## 文档维护
+
+### 1. 变量说明
+为变量添加清晰的说明：
+
+```js
+// 在 Figma 中添加变量描述
+colors/
+  primary: {
+    description: "品牌主色，用于主要按钮和重要文字"
+  }
+```
+
+### 2. 使用示例
+提供变量使用的示例代码：
+
+```css
+/* 使用示例 */
+.button-primary {
+  background-color: var(--colors-primary);
+  color: var(--colors-primary-contrast);
+  padding: var(--spacing-medium);
+}
+```
+
+<Callout type="info" emoji="💡">
+  定期审查和更新变量，确保它们仍然符合项目需求。删除未使用的变量以保持代码库的整洁。
+</Callout>

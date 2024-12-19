@@ -1,0 +1,175 @@
+import { Callout } from 'nextra/components'
+import { CodePreview } from '../../components/CodePreview'
+
+# 迁移指南
+
+本指南帮助你将现有的设计系统迁移到 Variables Xporter。无论你是从其他 Figma 插件迁移，还是从头开始构建设计系统，本指南都将帮助你顺利完成迁移。
+
+## 从其他 Figma 插件迁移
+
+### 从 Tokens Studio 迁移
+
+如果你正在使用 Tokens Studio（原 Figma Tokens），可以按照以下步骤迁移：
+
+1. **导出现有令牌**
+```json
+{
+  "colors": {
+    "primary": {
+      "value": "#FF0000",
+      "type": "color"
+    }
+  }
+}
+```
+
+2. **转换为 Figma 变量**
+使用我们的转换工具将 Tokens Studio 的 JSON 转换为 Figma 变量：
+
+<CodePreview
+  before={`// Tokens Studio 格式
+{
+  "colors.primary": "#FF0000"
+}`}
+  after={`// Figma 变量
+colors/
+  primary: #FF0000`}
+  language="json"
+/>
+
+### 从 Style Dictionary 迁移
+
+如果你使用 Style Dictionary 管理设计令牌：
+
+1. **导出 Style Dictionary 配置**
+```json
+{
+  "color": {
+    "primary": { "value": "#FF0000" }
+  }
+}
+```
+
+2. **转换为 Variables Xporter 格式**
+<CodePreview
+  before={`// Style Dictionary
+{
+  "color": {
+    "primary": {
+      "value": "#FF0000"
+    }
+  }
+}`}
+  after={`// Variables Xporter
+colors/
+  primary: #FF0000`}
+  language="json"
+/>
+
+## 从头开始构建
+
+如果你是从头开始构建设计系统：
+
+### 1. 设置变量集合
+
+创建以下基础变量集合：
+
+```
+MyDesignSystem/
+  ├─ colors/
+  ├─ typography/
+  ├─ spacing/
+  └─ components/
+```
+
+### 2. 定义基础变量
+
+从基础变量开始：
+
+<CodePreview
+  before={`// 基础颜色
+colors/
+  primary: #FF0000
+  secondary: #00FF00
+
+// 基础排版
+typography/
+  body/
+    size: 16px
+    weight: 400`}
+  after={`:root {
+  --colors-primary: #FF0000;
+  --colors-secondary: #00FF00;
+  --typography-body-size: 1rem;
+  --typography-body-weight: 400;
+}`}
+  language="css"
+/>
+
+### 3. 建立组件变量
+
+基于基础变量创建组件变量：
+
+<CodePreview
+  before={`components/
+  button/
+    primary/
+      background: {colors.primary}
+      text: #FFFFFF`}
+  after={`:root {
+  --components-button-primary-background: var(--colors-primary);
+  --components-button-primary-text: #FFFFFF;
+}`}
+  language="css"
+/>
+
+## 迁移检查清单
+
+### 1. 变量命名
+- [ ] 使用一致的命名规范
+- [ ] 遵循层级结构
+- [ ] 避免特殊字符
+
+### 2. 变量组织
+- [ ] 创建合理的变量集合
+- [ ] 建立清晰的层级关系
+- [ ] 设置适当的变量引用
+
+### 3. 主题支持
+- [ ] 配置明暗主题
+- [ ] 设置品牌主题
+- [ ] 确保响应式支持
+
+## 常见问题
+
+### 1. 变量引用丢失
+
+<Callout type="warning" emoji="⚠️">
+  迁移时要特别注意变量引用关系，确保所有引用的变量都已正确迁移。
+</Callout>
+
+### 2. 命名冲突
+
+<Callout type="info" emoji="💡">
+  使用命名空间避免变量名冲突，例如 `brand/colors/primary` 而不是简单的 `primary`。
+</Callout>
+
+### 3. 单位转换
+
+<Callout type="info" emoji="💡">
+  注意检查单位转换设置，确保像素值正确转换为相对单位（如 rem）。
+</Callout>
+
+## 下一步
+
+完成迁移后：
+
+1. 验证所有变量是否正确导出
+2. 检查变量引用关系
+3. 测试主题切换功能
+4. 更新项目文档
+
+需要帮助？查看我们的：
+- [故障排除指南](/docs/troubleshooting)
+- [最佳实践](/docs/best-practices)
+- [API 参考](/docs/api-reference)

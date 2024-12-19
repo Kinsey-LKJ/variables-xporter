@@ -1,0 +1,230 @@
+import { Callout } from 'nextra/components'
+import { CodePreview } from '../../components/CodePreview'
+
+# 插件配置
+
+Variables Xporter 提供了丰富的配置选项，帮助你自定义变量导出过程。本指南详细介绍了所有可用的配置选项。
+
+## 基础配置
+
+### 导出格式
+
+选择变量的导出格式：
+
+```js
+{
+  format: 'css-variables', // 或 'tailwind'
+  useRemUnit: true,       // 使用 rem 单位
+  remBasePx: 16          // rem 基准值
+}
+```
+
+### 变量选择
+
+配置要导出的变量范围：
+
+<CodePreview
+  before={`// Figma 变量结构
+colors/
+  primary/
+    light: #E0E0E0
+    default: #FF0000
+    dark: #8B0000
+  secondary/
+    light: #E0FFE0
+    default: #00FF00
+    dark: #008B00`}
+  after={`// 导出配置
+{
+  includePaths: [
+    'colors/primary/**',
+    'colors/secondary/**'
+  ],
+  excludePaths: [
+    '**/debug',
+    '**/test'
+  ]
+}`}
+  language="js"
+/>
+
+## 高级配置
+
+### 主题配置
+
+配置多主题支持：
+
+```js
+{
+  themes: {
+    light: {
+      selector: '.light-theme',
+      collection: 'Light Theme'
+    },
+    dark: {
+      selector: '.dark-theme',
+      collection: 'Dark Theme'
+    }
+  }
+}
+```
+
+### 变量转换
+
+自定义变量转换规则：
+
+<CodePreview
+  before={`// Figma 变量
+spacing/
+  small: 8px
+  medium: 16px`}
+  after={`// 转换配置
+{
+  transformers: {
+    spacing: (value) => \`\${value / 16}rem\`,
+    color: (value) => value.toLowerCase()
+  }
+}`}
+  language="js"
+/>
+
+### GitHub 集成
+
+配置 GitHub 导出选项：
+
+```js
+{
+  github: {
+    repository: 'owner/repo',
+    branch: 'main',
+    path: 'src/styles/variables',
+    commitMessage: 'chore: update design variables'
+  }
+}
+```
+
+## 完整配置示例
+
+这是一个包含所有配置选项的完整示例：
+
+```js
+{
+  // 基础配置
+  format: 'css-variables',
+  useRemUnit: true,
+  remBasePx: 16,
+
+  // 变量选择
+  includePaths: [
+    'colors/**',
+    'typography/**',
+    'spacing/**'
+  ],
+  excludePaths: [
+    '**/deprecated',
+    '**/test'
+  ],
+
+  // 主题配置
+  themes: {
+    light: {
+      selector: '.light-theme',
+      collection: 'Light Theme'
+    },
+    dark: {
+      selector: '.dark-theme',
+      collection: 'Dark Theme'
+    }
+  },
+
+  // 变量转换
+  transformers: {
+    spacing: (value) => `${value / 16}rem`,
+    color: (value) => value.toLowerCase(),
+    typography: {
+      size: (value) => `${value / 16}rem`,
+      weight: (value) => value.toString()
+    }
+  },
+
+  // GitHub 集成
+  github: {
+    repository: 'owner/repo',
+    branch: 'main',
+    path: 'src/styles/variables',
+    commitMessage: 'chore: update design variables'
+  },
+
+  // 输出配置
+  output: {
+    cssVariables: {
+      filename: 'variables.css',
+      prefix: '--'
+    },
+    tailwind: {
+      filename: 'tailwind.config.js',
+      prefix: ''
+    }
+  }
+}
+```
+
+## 配置验证
+
+Variables Xporter 会自动验证你的配置：
+
+<Callout type="info" emoji="💡">
+  如果配置有误，插件会显示详细的错误信息，帮助你快速定位问题。
+</Callout>
+
+### 常见配置错误
+
+1. **路径格式错误**
+```js
+// ❌ 错误
+includePaths: ['colors/primary'] // 缺少通配符
+
+// ✅ 正确
+includePaths: ['colors/primary/**']
+```
+
+2. **选择器格式错误**
+```js
+// ❌ 错误
+selector: 'dark-theme' // 缺少前导点
+
+// ✅ 正确
+selector: '.dark-theme'
+```
+
+## 环境变量
+
+支持通过环境变量覆盖配置：
+
+```bash
+VARIABLES_XPORTER_FORMAT=css-variables
+VARIABLES_XPORTER_USE_REM=true
+VARIABLES_XPORTER_REM_BASE=16
+```
+
+## 配置文件
+
+你可以将配置保存在项目根目录的 `.variables-xporter.json` 文件中：
+
+```json
+{
+  "format": "css-variables",
+  "useRemUnit": true,
+  "remBasePx": 16,
+  "includePaths": [
+    "colors/**",
+    "typography/**"
+  ]
+}
+```
+
+## 下一步
+
+- [查看最佳实践](/docs/best-practices) - 了解配置的最佳实践
+- [故障排除](/docs/troubleshooting) - 解决常见配置问题
+- [API 参考](/docs/api-reference) - 查看详细的 API 文档
