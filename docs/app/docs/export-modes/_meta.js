@@ -1,6 +1,7 @@
 const meta = {
-  'css-variables': "",
   "tailwind": "",
+  'css-variables': ""
+
 
 };
 

@@ -1,8 +1,10 @@
 import { Callout } from 'nextra/components'
+import { Cards } from 'nextra/components'
+import { Moon } from 'lucide-react'
 
 # 多模式支持 🎨
 
-多模式支持是 Variables Xporter 的一个强大特性，它让你能够轻松管理不同场景下的设计变量，如明暗主题、品牌主题等。
+多模式支持是 Variables Xporter 的一个强大特性，它让你能够轻松管理不同场景下的设计变量，如明暗主题、品牌主题等。查看[多模式变量的组织建议](docs/organizing-your-variables/multi-mode)
 
 ## 什么是多模式？
 
@@ -12,6 +14,14 @@ import { Callout } from 'nextra/components'
 - 品牌主题（不同品牌的样式）
 - 响应式断点（不同屏幕尺寸）
 - 状态变化（Normal/Hover/Active）
+
+<Cards>
+  <Cards.Card
+    icon={<Moon />}
+    title="多模式变量的组织建议"
+    href="/docs/organizing-your-variables/multi-mode"
+  />
+</Cards>
 
 ## 工作原理
 
