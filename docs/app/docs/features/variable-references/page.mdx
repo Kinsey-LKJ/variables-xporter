@@ -17,9 +17,9 @@ import { Callout } from 'nextra/components'
 ```plaintext
 Design Tokens (主集合)
 └── colors/primary/DEFAULT ────────────┐
-                                      │
-Theme Modes (主题模式集合)            │
-└── colors/primary/DEFAULT ◄──────────┘
+                                       │
+Theme Modes (主题模式集合)               │
+└── colors/primary/DEFAULT ◄───────────┘
     └── modes
         ├── light: #E55517
         └── dark:  #EE6D21
@@ -41,7 +41,7 @@ spacing/container/DEFAULT
 
 ## 最佳实践
 
-1. **使用单一出口原则**
+1. **[使用单一出口原则](/docs/organizing-your-variables/multi-mode#single-export-principle)**
    - 所有变量访问通过主集合进行
    - 在主集合中建立引用关系
    - 避免直接使用其他集合的变量
