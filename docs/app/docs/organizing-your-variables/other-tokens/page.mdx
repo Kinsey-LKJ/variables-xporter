@@ -4,58 +4,50 @@ import { Callout } from 'nextra/components'
 
 在设计系统中，除了颜色、排版和间距外，还有许多其他重要的设计变量。让我们来看看如何组织这些变量，以保持设计系统的一致性和可维护性。
 
-## 阴影效果
+## 其他样式
 
-阴影变量通常使用 `shadow` 作为顶层目录：
-- `shadow/sm` - 轻微阴影，适用于悬浮卡片
-- `shadow/md` - 中等阴影，适用于弹出框
-- `shadow/lg` - 深度阴影，适用于模态框
-- `shadow/inner` - 内阴影，适用于按压效果
+### `box-shadow`
 
-<Callout type="info" emoji="💡">
-在 Tailwind CSS 项目中，这些变量会自动映射到 `boxShadow` 配置中，可以通过 `shadow-sm`、`shadow-md` 等类名使用。
-</Callout>
+使用 `box-shadow` 作为顶层目录：
+- `box-shadow/sm` 
+- `box-shadow/md` 
+- `box-shadow/lg`
+- `box-shadow/inner` 
 
-## 边框样式
+### `border-width`
 
-边框相关变量推荐使用 `border` 作为顶层目录：
-- `border/width/thin` - 细边框（通常 1px）
-- `border/width/medium` - 中等边框
-- `border/width/thick` - 粗边框
-- `border/radius/sm` - 小圆角
-- `border/radius/md` - 中等圆角
-- `border/radius/full` - 完全圆角（50%）
+使用 `border-width` 作为顶层目录：
+- `border-width/1`
+- `border-width/2` 
+- `border-width/3` 
 
-## 动画效果
+### `border-radius`
 
-动画相关变量使用 `animation` 作为顶层目录：
-- `animation/duration/fast` - 快速过渡（如 150ms）
-- `animation/duration/normal` - 标准过渡（如 300ms）
-- `animation/duration/slow` - 缓慢过渡（如 500ms）
-- `animation/easing/ease-in` - 渐入效果
-- `animation/easing/ease-out` - 渐出效果
-- `animation/easing/bounce` - 弹跳效果
+使用 `border-radius` 作为顶层目录：
+- `border-radius/sm`
+- `border-radius/md`
+- `border-radius/lg`
 
-## 不透明度
+### `blur`
 
-透明度变量使用 `opacity` 作为顶层目录：
-- `opacity/hover` - 悬浮状态透明度
-- `opacity/disabled` - 禁用状态透明度
-- `opacity/overlay` - 遮罩层透明度
+使用 `blur` 作为顶层目录：
+- `blur/sm`
+- `blur/md`
+- `blur/lg`
 
-<Callout type="warning" emoji="⚠️">
-在使用这些变量时，建议采用语义化的命名方式，使变量名能够清晰地表达其用途。例如，使用 `overlay` 而不是具体的数值 `0.5`。
-</Callout>
+你可以在 [Tailwind CSS 主题配置参考](https://tailwindcss.com/docs/theme#configuration-reference) 中查看完整的配置键列表。
 
-## 其他效果
+## 组件级变量
 
-对于其他特殊效果，可以根据其类型创建相应的顶层目录：
-- `backdrop/blur` - 背景模糊效果
-- `backdrop/brightness` - 背景亮度
-- `transform/scale` - 缩放变换
-- `filter/blur` - 元素模糊
-- `filter/brightness` - 元素亮度
+对于组件级变量，顶层目录请依然遵循前面的原则，组件名称作为第二层，例如：
+- `colors/button/DEFAULT`
+- `colors/button/foreground`
+- `colors/button/border`
 
-<Callout type="info" emoji="💡">
-这些变量的组织方式应该根据项目的具体需求来调整。重要的是保持命名的一致性和语义化，使团队成员能够直观地理解和使用这些变量。
-</Callout>
+- `colors/input/DEFAULT`
+
+- `colors/card/DEFAULT`
+- `colors/card/foreground`
+- `colors/card/border`
+
+
