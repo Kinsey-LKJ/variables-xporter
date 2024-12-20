@@ -1,1 +1,61 @@
-# 其他
+# 其他设计变量
+
+import { Callout } from 'nextra/components'
+
+在设计系统中，除了颜色、排版和间距外，还有许多其他重要的设计变量。让我们来看看如何组织这些变量，以保持设计系统的一致性和可维护性。
+
+## 阴影效果
+
+阴影变量通常使用 `shadow` 作为顶层目录：
+- `shadow/sm` - 轻微阴影，适用于悬浮卡片
+- `shadow/md` - 中等阴影，适用于弹出框
+- `shadow/lg` - 深度阴影，适用于模态框
+- `shadow/inner` - 内阴影，适用于按压效果
+
+<Callout type="info" emoji="💡">
+在 Tailwind CSS 项目中，这些变量会自动映射到 `boxShadow` 配置中，可以通过 `shadow-sm`、`shadow-md` 等类名使用。
+</Callout>
+
+## 边框样式
+
+边框相关变量推荐使用 `border` 作为顶层目录：
+- `border/width/thin` - 细边框（通常 1px）
+- `border/width/medium` - 中等边框
+- `border/width/thick` - 粗边框
+- `border/radius/sm` - 小圆角
+- `border/radius/md` - 中等圆角
+- `border/radius/full` - 完全圆角（50%）
+
+## 动画效果
+
+动画相关变量使用 `animation` 作为顶层目录：
+- `animation/duration/fast` - 快速过渡（如 150ms）
+- `animation/duration/normal` - 标准过渡（如 300ms）
+- `animation/duration/slow` - 缓慢过渡（如 500ms）
+- `animation/easing/ease-in` - 渐入效果
+- `animation/easing/ease-out` - 渐出效果
+- `animation/easing/bounce` - 弹跳效果
+
+## 不透明度
+
+透明度变量使用 `opacity` 作为顶层目录：
+- `opacity/hover` - 悬浮状态透明度
+- `opacity/disabled` - 禁用状态透明度
+- `opacity/overlay` - 遮罩层透明度
+
+<Callout type="warning" emoji="⚠️">
+在使用这些变量时，建议采用语义化的命名方式，使变量名能够清晰地表达其用途。例如，使用 `overlay` 而不是具体的数值 `0.5`。
+</Callout>
+
+## 其他效果
+
+对于其他特殊效果，可以根据其类型创建相应的顶层目录：
+- `backdrop/blur` - 背景模糊效果
+- `backdrop/brightness` - 背景亮度
+- `transform/scale` - 缩放变换
+- `filter/blur` - 元素模糊
+- `filter/brightness` - 元素亮度
+
+<Callout type="info" emoji="💡">
+这些变量的组织方式应该根据项目的具体需求来调整。重要的是保持命名的一致性和语义化，使团队成员能够直观地理解和使用这些变量。
+</Callout>
