@@ -16,11 +16,13 @@ import { Callout } from 'nextra/components'
 ### 1. 主题模式切换
 ```plaintext
 Design Tokens (主集合)
-└── colors/primary/DEFAULT ──────┐
-                                │
-Theme Modes (主题模式集合)      │
-├── light mode: #E55517 ◄───────┘
-└── dark mode:  #EE6D21
+└── colors/primary/DEFAULT ────────────┐
+                                      │
+Theme Modes (主题模式集合)            │
+└── colors/primary/DEFAULT ◄──────────┘
+    └── modes
+        ├── light: #E55517
+        └── dark:  #EE6D21
 ```
 
 ### 2. 品牌主题管理
