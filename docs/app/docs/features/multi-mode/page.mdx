@@ -2,83 +2,47 @@ import { Callout } from 'nextra/components'
 import { Cards } from 'nextra/components'
 import { Moon } from 'lucide-react'
 
-# 多模式支持 🎨
+# 多模式支持
 
-多模式支持是 Variables Xporter 的一个强大特性，它让你能够轻松管理不同场景下的设计变量，如明暗主题、品牌主题等。查看[多模式变量的组织建议](docs/organizing-your-variables/multi-mode)
+多模式支持是 Variables Xporter 的一个强大特性，它让你能够轻松导出多模式的设计变量，如明暗主题、品牌主题等。
 
 ## 什么是多模式？
 
-多模式允许一个变量在不同情况下拥有不同的值。常见的模式包括：
+多模式允许一个变量在不同情况下拥有不同的值。了解常见的模式包括：
 
-- 明暗主题（Light/Dark）
-- 品牌主题（不同品牌的样式）
-- 响应式断点（不同屏幕尺寸）
-- 状态变化（Normal/Hover/Active）
+- 明暗主题
+- 品牌主题
+- 响应式断点
+- 布局松散度
 
-<Cards>
-  <Cards.Card
-    icon={<Moon />}
-    title="多模式变量的组织建议"
-    href="/docs/organizing-your-variables/multi-mode"
-  />
-</Cards>
+Variables Xporter **支持复合的多模式变量**，例如 `colors/primary/DEFAULT`（主要颜色）变量可能同时受到明暗主题以及品牌主题的影响，这会导出以下结果：
+
+```css
+/* Default Mode */
+:root {
+  --colors-brand-a-500: 218 89 89 / 1;
+  --colors-brand-a-600: 192 57 57 / 1;
+  --colors-brand-b-500: 238 109 33 / 1;
+  --colors-brand-b-600: 229 85 23 / 1;
+  --colors-primary-default: var(--colors-primary-default-theme-modes);
+  --colors-primary-default-theme-modes: var(--colors-primary-light-brand-modes);
+  --colors-primary-light-brand-modes: var(--colors-brand-a-600);
+  --colors-primary-dark-brand-modes: var(--colors-brand-a-500);
+}
+
+/* Mode Override */
+.dark {
+  --colors-primary-default-theme-modes: var(--colors-primary-dark-brand-modes);
+}
+
+/* Mode Override */
+.brand-b {
+  --colors-primary-light-brand-modes: var(--colors-brand-b-600);
+  --colors-primary-dark-brand-modes: var(--colors-brand-b-500);
+}
+```
+现在，`colors/primary/DEFAULT` 变量在不同的明暗主题以及品牌主题下，都会呈现不一样的结果。了解更多关于[多模式变量的组织建议](/docs/organizing-your-variables/multi-mode)。
+
 
 ## 工作原理
-
-### 1. 模式定义
-在 Figma 中创建不同的模式：
-```plaintext
-Theme Modes（主题模式）
-├── light
-└── dark
-
-Brand Modes（品牌模式）
-├── default
-├── brand-a
-└── brand-b
-```
-
-### 2. 变量映射
-为每个模式设置对应的变量值：
-```css
-/* 明暗主题示例 */
-:root {
-  --colors-primary: var(--colors-primary-light);
-}
-
-.dark {
-  --colors-primary: var(--colors-primary-dark);
-}
-
-/* 品牌主题示例 */
-.brand-a {
-  --colors-primary: var(--colors-brand-a-primary);
-}
-```
-
-### 3. 自动追踪
-Variables Xporter 会自动：
-- 识别所有可用的模式
-- 生成对应的 CSS 变量
-- 处理模式切换的逻辑
-
-## 使用建议
-
-1. **模式命名规范**
-   - 使用清晰的模式名称
-   - 遵循一致的命名模式
-   - 避免特殊字符
-
-2. **模式组织**
-   - 按功能分组模式
-   - 保持模式层级简单
-   - 记录模式用途
-
-3. **值的管理**
-   - 确保所有模式都有对应的值
-   - 使用合适的默认值
-   - 测试模式切换效果
-
-<Callout type="info" emoji="💡">
-  结合变量引用功能，你可以创建更复杂的模式组合，如"深色模式下的品牌主题"。Variables Xporter 会自动处理这些组合情况。
-</Callout>
+Variables Xporter 会追溯所选的导出集合中所有变量，直到找到变量的原始值。这意味着你可以跨集合引用变量，Variables Xporter 会完整的还原变量的引用链。
