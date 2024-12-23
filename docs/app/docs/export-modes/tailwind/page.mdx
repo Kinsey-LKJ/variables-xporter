@@ -41,19 +41,52 @@ fontSize: {
 }
 ```
 
-### 3. 主题模式支持
-自动处理主题切换相关的变量：
+### 3. 多模式支持
+自动生成完整的多维变量系统配置，让你的设计系统更加灵活和强大：
 
-```css
+```js
+// tailwind.config.js
+module.exports = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: 'rgb(var(--colors-primary-light))',
+          dark: 'rgb(var(--colors-primary-dark))',
+          'brand-zhiyun': 'rgb(var(--colors-zhiyun-primary))',
+          'brand-fiveray': 'rgb(var(--colors-fiveray-primary))',
+        }
+      },
+      spacing: {
+        container: {
+          DEFAULT: 'var(--spacing-container-default)',
+          md: 'var(--spacing-container-md)',
+          lg: 'var(--spacing-container-lg)',
+        }
+      },
+      fontSize: {
+        base: {
+          DEFAULT: ['var(--font-size-base-default)', { lineHeight: 'var(--line-height-base)' }],
+          md: ['var(--font-size-base-md)', { lineHeight: 'var(--line-height-base)' }],
+          lg: ['var(--font-size-base-lg)', { lineHeight: 'var(--line-height-base)' }],
+          compact: ['var(--font-size-base-compact)', { lineHeight: 'var(--line-height-base-compact)' }],
+        }
+      }
+    }
+  }
+}
+
 /* global.css */
 :root {
-  --colors-primary: var(--colors-primary-light);
-}
-
-.dark {
-  --colors-primary: var(--colors-primary-dark);
+  --colors-primary-light: 229 85 23;      /* #E55517 */
+  --colors-primary-dark: 238 109 33;      /* #EE6D21 */
+  --colors-zhiyun-primary: 229 85 23;     /* #E55517 */
+  --colors-fiveray-primary: 218 89 89;    /* #DA5959 */
 }
 ```
+
+通过[多模式变量管理](/docs/organizing-your-variables/multi-mode)了解如何组织和管理复杂的多模式变量系统，以及查看[多模式支持特性](/docs/features/multi-mode)了解更多使用细节。Variables Xporter 不仅能自动处理变量转换，还能帮你构建一个支持主题、品牌、响应式、布局密度等多个维度的完整设计系统。
 
 ## 必须遵守的规则
 
@@ -100,4 +133,4 @@ colors/
   />
 </Cards>
 
-这些原则能帮助你建立一个更易于维护和使用的设计系统。 
+这些原则能帮助你建立一个更易于维护和使用的设计系统。       

@@ -32,18 +32,54 @@ import { Palette, Type, Layers } from 'lucide-react'
 }
 ```
 
-### 3. 主题模式支持
-支持使用 CSS 类切换主题：
+### 3. 多模式支持
+打造强大的多维变量系统，轻松应对各种设计场景：
 
 ```css
+/* 基础主题 */
 :root {
   --colors-primary: var(--colors-primary-light);
+  --spacing-container: var(--spacing-container-default);
+  --font-size-base: var(--font-size-base-default);
 }
 
+/* 暗色主题 */
 .dark {
   --colors-primary: var(--colors-primary-dark);
 }
+
+/* 品牌特色 */
+.brand-zhiyun {
+  --colors-primary: var(--colors-zhiyun-primary);
+  --font-family: var(--font-zhiyun);
+}
+.brand-fiveray {
+  --colors-primary: var(--colors-fiveray-primary);
+  --font-family: var(--font-fiveray);
+}
+
+/* 响应式布局 */
+@media (min-width: 768px) {
+  :root {
+    --spacing-container: var(--spacing-container-md);
+    --font-size-base: var(--font-size-base-md);
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    --spacing-container: var(--spacing-container-lg);
+    --font-size-base: var(--font-size-base-lg);
+  }
+}
+
+/* 紧凑模式 */
+.compact {
+  --spacing-base: var(--spacing-base-compact);
+  --font-size-base: var(--font-size-base-compact);
+}
 ```
+
+通过[多模式变量管理](/docs/organizing-your-variables/multi-mode)了解如何组织和管理复杂的多模式变量系统，以及查看[多模式支持特性](/docs/features/multi-mode)了解更多使用细节。Variables Xporter 让你能够轻松构建一个支持主题、品牌、响应式、布局密度等多个维度的完整设计系统。
 
 ## 变量组织建议
 
@@ -74,4 +110,4 @@ import { Palette, Type, Layers } from 'lucide-react'
 
 <Callout type="info" emoji="💡">
   即使你现在不使用 Tailwind CSS，遵循这些组织原则也能让你的设计系统更加规范和专业。如果将来需要迁移到 Tailwind CSS，也会更加容易。
-</Callout> 
+</Callout>       

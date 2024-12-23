@@ -2,18 +2,22 @@ import { Callout } from 'nextra/components'
 
 # 变量引用 🔗
 
-变量引用是 Variables Xporter 的核心特性之一，它允许你在不同的变量集合之间建立引用关系，实现更灵活和可维护的设计系统。
+变量引用是 Variables Xporter 最强大的特性之一，它不仅允许你在不同的变量集合之间建立引用关系，更是构建复杂多维设计系统的基石。通过变量引用，你可以从简单的主题切换逐步扩展到完整的多模式变量系统。
 
 ## 什么是变量引用？
 
 变量引用允许一个变量使用另一个变量的值，这种引用可以：
-- 跨越不同的变量集合
-- 建立多层级的引用链
+- 跨越不同的变量集合，实现模块化管理
+- 建立多层级的引用链，支持复杂的变量系统
 - 最终追溯到原始类型的值（颜色、数字、字符串等）
+- 在不同模式间灵活切换，保持系统的一致性
 
 ## 使用场景
 
-### 1. 主题模式切换
+让我们通过一个循序渐进的例子来看看如何使用变量引用构建强大的多维变量系统：
+
+### 1. 基础的主题切换
+首先从简单的明暗主题切换开始：
 ```plaintext
 Design Tokens (主集合)
 └── colors/primary/DEFAULT ────────────┐
@@ -25,19 +29,42 @@ Theme Modes (主题模式集合)               │
         └── dark:  #EE6D21
 ```
 
-### 2. 品牌主题管理
+### 2. 加入品牌主题
+然后扩展支持多品牌：
 ```plaintext
-colors/primary/DEFAULT
-├── Brand A: colors/brandA/500
-└── Brand B: colors/brandB/500
+Design Tokens (主集合)
+└── colors/primary/DEFAULT ───────────┐
+                                     │
+Theme Modes (主题模式集合)           │
+└── colors/primary/DEFAULT ◄─────────┼────┐
+    └── modes                        │    │
+        ├── light ◄─────────────────┐│    │
+        └── dark  ◄─────────────────┼┘    │
+                                    │     │
+Brands Modes (品牌模式集合)         │     │
+└── colors/primary                  │     │
+    ├── light ──────────────────────┘     │
+    │   ├── zhiyun: #E55517              │
+    │   └── fiveray: #DA5959             │
+    └── dark ────────────────────────────┘
+        ├── zhiyun: #EE6D21
+        └── fiveray: #C03939
 ```
 
-### 3. 响应式设计
+### 3. 扩展到响应式设计
+最后加入响应式支持：
 ```plaintext
-spacing/container/DEFAULT
-├── min-width:1024px: 64rem
-└── min-width:1280px: 72rem
+Design Tokens (主集合)
+└── font/hero/size ──────────────────┐
+                                     │
+Device Modes (设备模式集合)          │
+└── font/hero/size ◄─────────────────┘
+    └── modes
+        ├── default: font/size/2xl (24px)
+        └── min-width:1024px: font/size/3xl (30px)
 ```
+
+通过这种方式，我们可以逐步构建一个支持多个维度的变量系统，每个维度都可以独立管理和扩展。查看[多模式变量管理](/docs/organizing-your-variables/multi-mode)了解更多复杂场景的处理方法。
 
 ## 最佳实践
 
