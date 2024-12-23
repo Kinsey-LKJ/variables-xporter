@@ -7,44 +7,41 @@ import { Steps } from 'nextra/components'
 
 # Variables Xporter
 
-Variables Xporter 是一个 Figma 插件，帮助设计师和开发者更好地协作。通过导出 Figma 变量为标准格式，使设计系统更容易同步到开发环境中。
+Variables Xporter 是一个 Figma 插件，帮助设计师和开发者更好地协作。通过将 Figma 变量导出为标准格式，辅助设计系统在开发环境中的应用。
 
 ## 为什么选择 Variables Xporter？
 
-- 🔧 **简化工作流**
-  通过导出功能辅助设计变量的同步，提高工作效率
-
 - 📦 **标准化输出**
-  支持导出为 Tailwind CSS 配置和标准 CSS 变量
+  支持导出为 Tailwind CSS 配置和标准 CSS 变量，帮助统一设计规范
 
-- 🎨 **灵活配置**
-  提供多种配置选项，满足不同项目需求
+- 🔧 **变量管理**
+  通过变量引用和多模式支持，实现灵活的设计系统管理
+
+- 🎨 **配置选项**
+  提供单位转换等实用功能，适应不同项目需求
 
 ## 核心功能
 
-### 无缝集成
+### 标准模式（Export Modes）
+
+Variables Xporter 支持两种标准导出模式：
 
 - **Tailwind CSS**
-  完美集成到你的 Tailwind 项目中，生成即可使用的配置文件
+  生成两个文件：配置文件（tailwind.config.js）和全局样式文件（global.css）。配置文件包含设计变量的映射，支持颜色值优化（RGB 通道格式）和字体变量合并。[了解更多](/docs/export-modes/tailwind)
 
 - **CSS 变量**
-  生成标准的 CSS 变量，适用于任何项目
+  生成单一的 CSS 文件，包含所有设计变量的 CSS 自定义属性（Custom Properties）定义。支持主题模式切换，适用于任何类型的项目。[了解更多](/docs/export-modes/css-variables)
 
-### 智能变量处理
+### 核心特性
 
-- **类型转换**
-  自动处理颜色、数值、尺寸等变量类型
+- **变量引用**
+  在不同变量集合之间建立引用关系，支持跨集合引用和多层级引用链，让设计系统更灵活可维护。[了解更多](/docs/features/variable-references)
 
-### 多模式系统
+- **单位转换**
+  自动将 Figma 中的 px 单位转换为 rem，提升界面可访问性，方便响应式设计适配。[了解更多](/docs/features/unit-conversion)
 
-- **统一管理**
-  基于单一出口原则，轻松管理多个主题和品牌模式
-
-- **智能解析**
-  自动处理不同模式下的变量值和引用关系
-
-- **代码优化**
-  生成简洁、规范、易于维护的配置代码
+- **多模式支持**
+  基于单一出口原则，轻松管理明暗主题、品牌主题等多种场景，自动处理模式切换逻辑。[了解更多](/docs/features/multi-mode)
 
 ## 开始使用
 <Steps>
