@@ -38,6 +38,8 @@ Variables Xporter 是一个 Figma 插件，它能将 Figma 变量导出为 Tailw
 Variables Xporter 支持导出为 Tailwind CSS 配置和 CSS 变量，让你的设计系统轻松同步到开发环境。
 {% /callout %}
 
+---
+
 ## 开始使用
 
 ### 1. 按照组织建议整理变量

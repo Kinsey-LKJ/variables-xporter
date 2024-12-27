@@ -16,6 +16,8 @@
 {% quick-link title="多模式变量的组织建议" icon="moon" href="/docs/organizing-your-variables/multi-mode" description="了解如何组织多模式变量" /%}
 {% /quick-links %}
 
+---
+
 ## 工作原理
 
 ### 1. 模式定义
@@ -54,6 +56,8 @@ Variables Xporter 会自动：
 - 识别所有可用的模式
 - 生成对应的 CSS 变量
 - 处理模式切换的逻辑
+
+---
 
 ## 使用建议
 

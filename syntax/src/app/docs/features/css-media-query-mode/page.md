@@ -25,6 +25,8 @@ max-width:1024px
 - `prefers-color-scheme`
 等...
 
+---
+
 ## 使用示例
 
 ### 1. 响应式间距

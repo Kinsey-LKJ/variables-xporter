@@ -29,6 +29,8 @@ fontSize: {
 }
 ```
 
+---
+
 ## 命名约定
 
 为了让 Variables Xporter 正确识别和合并变量，建议遵循以下命名规则：
@@ -50,7 +52,7 @@ fontSize: {
    line-height/heading/1
    font-weight/heading/1
    ```
-
+---
 ## 使用建议
 
 1. **保持命名一致性**
