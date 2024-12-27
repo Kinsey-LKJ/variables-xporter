@@ -1,5 +1,6 @@
-import Link from 'next/link'
+'use client'
 
+import Link from 'next/link'
 import { Icon } from '@/components/Icon'
 
 export function QuickLinks({ children }: { children: React.ReactNode }) {

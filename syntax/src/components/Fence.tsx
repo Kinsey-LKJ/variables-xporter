@@ -7,12 +7,16 @@ export function Fence({
   children,
   language,
 }: {
-  children: string
+  children: string | string[] | undefined
   language: string
 }) {
+  const code = Array.isArray(children) 
+    ? children.join('') 
+    : (children || '').toString();
+
   return (
     <Highlight
-      code={children.trimEnd()}
+      code={code.trimEnd()}
       language={language}
       theme={{ plain: {}, styles: [] }}
     >

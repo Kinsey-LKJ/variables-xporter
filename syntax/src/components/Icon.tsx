@@ -7,6 +7,11 @@ import { PluginsIcon } from '@/components/icons/PluginsIcon'
 import { PresetsIcon } from '@/components/icons/PresetsIcon'
 import { ThemingIcon } from '@/components/icons/ThemingIcon'
 import { WarningIcon } from '@/components/icons/WarningIcon'
+import { PaletteIcon } from '@/components/icons/PaletteIcon'
+import { TypeIcon } from '@/components/icons/TypeIcon'
+import { RulerIcon } from '@/components/icons/RulerIcon'
+import { BoxIcon } from '@/components/icons/BoxIcon'
+import { MoonIcon } from '@/components/icons/MoonIcon'
 
 const icons = {
   installation: InstallationIcon,
@@ -15,12 +20,19 @@ const icons = {
   theming: ThemingIcon,
   lightbulb: LightbulbIcon,
   warning: WarningIcon,
+  palette: PaletteIcon,
+  type: TypeIcon,
+  ruler: RulerIcon,
+  box: BoxIcon,
+  moon: MoonIcon,
 }
 
 const iconStyles = {
   blue: '[--icon-foreground:theme(colors.slate.900)] [--icon-background:theme(colors.white)]',
   amber:
     '[--icon-foreground:theme(colors.amber.900)] [--icon-background:theme(colors.amber.100)]',
+  red:
+    '[--icon-foreground:theme(colors.red.900)] [--icon-background:theme(colors.red.100)]',
 }
 
 export function Icon({
@@ -29,7 +41,7 @@ export function Icon({
   className,
   ...props
 }: {
-  color?: keyof typeof iconStyles
+  color?: 'blue' | 'amber' | 'red'
   icon: keyof typeof icons
 } & Omit<React.ComponentPropsWithoutRef<'svg'>, 'color'>) {
   let id = useId()
@@ -58,13 +70,17 @@ const gradients = {
     { stopColor: '#FDE68A', offset: '.08' },
     { stopColor: '#F59E0B', offset: '.837' },
   ],
+  red: [
+    { stopColor: '#FCA5A5', offset: '.08' },
+    { stopColor: '#EF4444', offset: '.837' },
+  ],
 }
 
 export function Gradient({
   color = 'blue',
   ...props
 }: {
-  color?: keyof typeof gradients
+  color?: 'blue' | 'amber' | 'red'
 } & Omit<React.ComponentPropsWithoutRef<'radialGradient'>, 'color'>) {
   return (
     <radialGradient

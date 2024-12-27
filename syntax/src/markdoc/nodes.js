@@ -55,7 +55,22 @@ const nodes = {
     attributes: {
       language: {
         type: String,
+        default: 'text',
       },
+      content: { type: String },
+      filename: { type: String },
+      lineNumbers: { type: Boolean },
+    },
+    transform(node, config) {
+      const attributes = node.transformAttributes(config);
+      const children = node.transformChildren(config);
+      
+      // Convert children to string and handle line breaks
+      const content = Array.isArray(children) 
+        ? children.join('').replace(/\\n/g, '\n').replace(/\\t/g, '  ')
+        : (children && children[0] || '').toString().replace(/\\n/g, '\n').replace(/\\t/g, '  ');
+      
+      return new Tag(this.render, { ...attributes, children: content });
     },
   },
 }

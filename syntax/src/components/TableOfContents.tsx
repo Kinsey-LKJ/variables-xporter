@@ -11,7 +11,9 @@ export function TableOfContents({
 }: {
   tableOfContents: Array<Section>
 }) {
-  let [currentSection, setCurrentSection] = useState(tableOfContents[0]?.id)
+  let [currentSection, setCurrentSection] = useState<string | undefined>(
+    tableOfContents[0]?.id
+  )
 
   let getHeadings = useCallback((tableOfContents: Array<Section>) => {
     return tableOfContents
@@ -32,9 +34,13 @@ export function TableOfContents({
   useEffect(() => {
     if (tableOfContents.length === 0) return
     let headings = getHeadings(tableOfContents)
+    if (headings.length === 0) return
+
     function onScroll() {
       let top = window.scrollY
-      let current = headings[0].id
+      let current = headings[0]?.id
+      if (!current) return
+
       for (let heading of headings) {
         if (top >= heading.top - 10) {
           current = heading.id
