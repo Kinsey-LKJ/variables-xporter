@@ -9,17 +9,27 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@algolia/autocomplete-core": "^1.9.2",
     "@headlessui/react": "^2.2.0",
     "@markdoc/markdoc": "^0.4.0",
     "@markdoc/next.js": "^0.3.7",
+    "@sindresorhus/slugify": "^2.1.0",
     "@tailwindcss/postcss": "4.0.0-beta.4",
     "@tailwindcss/typography": "^0.5.15",
+    "clsx": "^2.1.0",
+    "fast-glob": "^3.2.12",
+    "flexsearch": "^0.7.31",
+    "js-yaml": "^4.1.0",
     "lucide-react": "^0.466.0",
-    "next": "15.0.3",
+    "next": "14.2.22",
+    "next-themes": "^0.2.1",
     "nextra": "4.0.0-app-router.31",
     "nextra-theme-docs": "4.0.0-app-router.31",
-    "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "prism-react-renderer": "^2.0.6",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-highlight-words": "^0.20.0",
+    "simple-functional-loader": "^1.2.1"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -28,7 +38,7 @@
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "postcss": "^8",
-    "tailwindcss": "4.0.0-beta.4",
+    "tailwindcss": "3.4.1",
     "typescript": "^5"
   },
   "packageManager": "pnpm@9.1.0+sha512.67f5879916a9293e5cf059c23853d571beaf4f753c707f40cb22bed5fb1578c6aad3b6c4107ccb3ba0b35be003eb621a16471ac836c87beb53f9d54bb4612724"
