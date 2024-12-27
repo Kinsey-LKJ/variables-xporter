@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
     devDependencies:
       cz-git:
         specifier: ^1.11.0
@@ -17,9 +21,18 @@ importers:
       '@headlessui/react':
         specifier: ^2.2.0
         version: 2.2.0(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@markdoc/markdoc':
+        specifier: ^0.4.0
+        version: 0.4.0(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
+      '@markdoc/next.js':
+        specifier: ^0.3.7
+        version: 0.3.7(@markdoc/markdoc@0.4.0(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106))(next@15.0.3(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@tailwindcss/postcss':
         specifier: 4.0.0-beta.4
         version: 4.0.0-beta.4
+      '@tailwindcss/typography':
+        specifier: ^0.5.15
+        version: 0.5.15(tailwindcss@4.0.0-beta.4)
       lucide-react:
         specifier: ^0.466.0
         version: 0.466.0(react@19.0.0-rc-66855b96-20241106)
@@ -488,6 +501,25 @@ packages:
     peerDependencies:
       react: ^18.x || ^19.x
 
+  '@markdoc/markdoc@0.4.0':
+    resolution: {integrity: sha512-fSh4P3Y4E7oaKYc2oNzSIJVPDto7SMzAuQN1Iyx53UxzleA6QzRdNWRxmiPqtVDaDi5dELd2yICoG91csrGrAw==}
+    engines: {node: '>=14.7.0'}
+    peerDependencies:
+      '@types/react': '*'
+      react: '*'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      react:
+        optional: true
+
+  '@markdoc/next.js@0.3.7':
+    resolution: {integrity: sha512-lp/J0Lfx8YPWes82HOMSDvXBfIkJxPKfEwgzGTwfFBJUGBNM1TBvchaaAzDP2X+HRORP4jNcGbJrZoXSdon0BQ==}
+    peerDependencies:
+      '@markdoc/markdoc': '*'
+      next: '*'
+      react: '*'
+
   '@mdx-js/mdx@3.1.0':
     resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
 
@@ -796,6 +828,11 @@ packages:
   '@tailwindcss/postcss@4.0.0-beta.4':
     resolution: {integrity: sha512-nZZKXG/SRf4+8udSThSMbCduQRen60kWtlkxwLUNpKlJWBkWF7vy/ybJzfgCXwEFxBLuNsnm89o42I3XoifAIw==}
 
+  '@tailwindcss/typography@0.5.15':
+    resolution: {integrity: sha512-AqhlCXl+8grUz8uqExv5OTtgpjuVIwFTSXTrh8y9/pw6q2ek7fJ+Y8ZEVw7EB2DCcuCOtEjf9w3+J3rzts01uA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20'
+
   '@tanstack/react-virtual@3.10.9':
     resolution: {integrity: sha512-OXO2uBjFqA4Ibr2O3y0YMnkrRWGVNqcvHQXmGvMu6IK8chZl3PrDxFXdGZ2iZkSrKh3/qUYoFqYe+Rx23RoU0g==}
     peerDependencies:
@@ -945,8 +982,17 @@ packages:
   '@types/katex@0.16.7':
     resolution: {integrity: sha512-HMwFiRujE5PjrgwHQ25+bsLJgowjGjm5Z8FVSf0N6PwgJrwxH0QxzHYDcKsTfV3wva0vzrpqMTJS2jXPr5BMEQ==}
 
+  '@types/linkify-it@5.0.0':
+    resolution: {integrity: sha512-sVDA58zAw4eWAffKOaQH5/5j3XeayukzDk+ewSsnv3p4yJEZHCCzMDiZM8e0OUrRvmpGZ85jf4yDHkHsgBNr9Q==}
+
+  '@types/markdown-it@12.2.3':
+    resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==}
+
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
+
+  '@types/mdurl@2.0.0':
+    resolution: {integrity: sha512-RGdgjQUZba5p6QEFAVx2OGb8rQDL/cPRG7GiedRzMcJ1tYnUANBncjbSB1NRGwbvjcPeikRABz2nshyPk1bhWg==}
 
   '@types/mdx@2.0.13':
     resolution: {integrity: sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==}
@@ -2932,6 +2978,12 @@ packages:
   lodash-es@4.17.21:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
 
+  lodash.castarray@4.4.0:
+    resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
+
+  lodash.isplainobject@4.0.6:
+    resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
+
   lodash.merge@4.6.2:
     resolution: {integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==}
 
@@ -3597,6 +3649,10 @@ packages:
     resolution: {integrity: sha512-ji1PMDBUf2Vsx/HE5faMSs1+ff6qE6YRulTr4Ja+6HD3gop8rSMTCYdpN7KrdsEg079kfBKkO/PaKhG9uR0zwQ==}
     peerDependencies:
       postcss: '>=8.0.0'
+
+  postcss-selector-parser@6.0.10:
+    resolution: {integrity: sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==}
+    engines: {node: '>=4'}
 
   postcss-selector-parser@6.1.2:
     resolution: {integrity: sha512-Q8qQfPiZ+THO/3ZrOrO0cJJKfpYCagtMUkXbnEfmgUjwXg6z/WBeOyS9APBBPCTSiDV+s4SwQGu8yFsiMRIudg==}
@@ -4940,6 +4996,19 @@ snapshots:
     dependencies:
       react: 18.3.1
 
+  '@markdoc/markdoc@0.4.0(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)':
+    optionalDependencies:
+      '@types/markdown-it': 12.2.3
+      '@types/react': 18.3.12
+      react: 19.0.0-rc-66855b96-20241106
+
+  '@markdoc/next.js@0.3.7(@markdoc/markdoc@0.4.0(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106))(next@15.0.3(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      '@markdoc/markdoc': 0.4.0(@types/react@18.3.12)(react@19.0.0-rc-66855b96-20241106)
+      js-yaml: 4.1.0
+      next: 15.0.3(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      react: 19.0.0-rc-66855b96-20241106
+
   '@mdx-js/mdx@3.1.0(acorn@8.14.0)':
     dependencies:
       '@types/estree': 1.0.6
@@ -5232,6 +5301,14 @@ snapshots:
       postcss: 8.4.49
       tailwindcss: 4.0.0-beta.4
 
+  '@tailwindcss/typography@0.5.15(tailwindcss@4.0.0-beta.4)':
+    dependencies:
+      lodash.castarray: 4.4.0
+      lodash.isplainobject: 4.0.6
+      lodash.merge: 4.6.2
+      postcss-selector-parser: 6.0.10
+      tailwindcss: 4.0.0-beta.4
+
   '@tanstack/react-virtual@3.10.9(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       '@tanstack/virtual-core': 3.10.9
@@ -5412,9 +5489,21 @@ snapshots:
 
   '@types/katex@0.16.7': {}
 
+  '@types/linkify-it@5.0.0':
+    optional: true
+
+  '@types/markdown-it@12.2.3':
+    dependencies:
+      '@types/linkify-it': 5.0.0
+      '@types/mdurl': 2.0.0
+    optional: true
+
   '@types/mdast@4.0.4':
     dependencies:
       '@types/unist': 3.0.3
+
+  '@types/mdurl@2.0.0':
+    optional: true
 
   '@types/mdx@2.0.13': {}
 
@@ -7682,6 +7771,10 @@ snapshots:
 
   lodash-es@4.17.21: {}
 
+  lodash.castarray@4.4.0: {}
+
+  lodash.isplainobject@4.0.6: {}
+
   lodash.merge@4.6.2: {}
 
   lodash@4.17.21: {}
@@ -8711,6 +8804,11 @@ snapshots:
       postcss: 8.4.49
       postcss-mixins: 9.0.4(postcss@8.4.49)
       postcss-nested: 6.2.0(postcss@8.4.49)
+
+  postcss-selector-parser@6.0.10:
+    dependencies:
+      cssesc: 3.0.0
+      util-deprecate: 1.0.2
 
   postcss-selector-parser@6.1.2:
     dependencies:

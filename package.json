@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "cz-git": "^1.11.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
   }
 }
