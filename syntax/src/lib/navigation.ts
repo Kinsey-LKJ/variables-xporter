@@ -13,7 +13,19 @@ export const navigation = [
   {
     title: '变量组织',
     links: [
+      { title: '原则', href: '/docs/organizing-your-variables/principles' },
+      { title: '颜色', href: '/docs/organizing-your-variables/colors' },
+      { title: '排版', href: '/docs/organizing-your-variables/typography' },
+      { title: '间距', href: '/docs/organizing-your-variables/spacing' },
+      { title: '多模式', href: '/docs/organizing-your-variables/multi-mode' },
       { title: '其他设计变量', href: '/docs/organizing-your-variables/other-tokens' },
+    ],
+  },
+  {
+    title: '导出模式',
+    links: [
+      { title: 'Tailwind', href: '/docs/export-modes/tailwind' },
+      { title: 'CSS Variables', href: '/docs/export-modes/css-variables' },
     ],
   },
 ]
