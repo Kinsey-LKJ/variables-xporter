@@ -10,7 +10,10 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@markdoc/markdoc": "^0.4.0",
+    "@markdoc/next.js": "^0.3.7",
     "@tailwindcss/postcss": "4.0.0-beta.4",
+    "@tailwindcss/typography": "^0.5.15",
     "lucide-react": "^0.466.0",
     "next": "15.0.3",
     "nextra": "4.0.0-app-router.31",
