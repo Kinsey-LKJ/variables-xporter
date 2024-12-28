@@ -2,3 +2,4 @@ packages:
   - figma-plugin
   - docs
   - syntax
+  - syntax-ts

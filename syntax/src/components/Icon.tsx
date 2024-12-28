@@ -1,6 +1,8 @@
 import { useId } from 'react'
 import clsx from 'clsx'
-
+import dynamic from 'next/dynamic'
+import { LucideProps } from 'lucide-react';
+import dynamicIconImports from 'lucide-react/dynamicIconImports';
 import { InstallationIcon } from '@/components/icons/InstallationIcon'
 import { LightbulbIcon } from '@/components/icons/LightbulbIcon'
 import { PluginsIcon } from '@/components/icons/PluginsIcon'
@@ -35,30 +37,41 @@ const iconStyles = {
     '[--icon-foreground:theme(colors.red.900)] [--icon-background:theme(colors.red.100)]',
 }
 
-export function Icon({
-  icon,
-  color = 'blue',
-  className,
-  ...props
-}: {
-  color?: 'blue' | 'amber' | 'red'
-  icon: keyof typeof icons
-} & Omit<React.ComponentPropsWithoutRef<'svg'>, 'color'>) {
-  let id = useId()
-  let IconComponent = icons[icon]
+// export function Icon({
+//   icon,
+//   color = 'blue',
+//   className,
+//   ...props
+// }: {
+//   color?: 'blue' | 'amber' | 'red'
+//   icon: keyof typeof icons
+// } & Omit<React.ComponentPropsWithoutRef<'svg'>, 'color'>) {
+//   let id = useId()
+//   let IconComponent = icons[icon]
 
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 32 32"
-      fill="none"
-      className={clsx(className, iconStyles[color])}
-      {...props}
-    >
-      <IconComponent id={id} color={color} />
-    </svg>
-  )
+//   return (
+//     <svg
+//       aria-hidden="true"
+//       viewBox="0 0 32 32"
+//       fill="none"
+//       className={clsx(className, iconStyles[color])}
+//       {...props}
+//     >
+//       <IconComponent id={id} color={color} />
+//     </svg>
+//   )
+// }
+
+interface IconProps extends LucideProps {
+  name: keyof typeof dynamicIconImports;
 }
+
+export const Icon = ({ name, ...props }: IconProps) => {
+  const LucideIcon = dynamic(dynamicIconImports[name])
+
+  return <LucideIcon {...props} />;
+};
+
 
 const gradients = {
   blue: [

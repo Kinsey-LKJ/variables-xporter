@@ -5,6 +5,7 @@ import withSearch from './src/markdoc/search.mjs'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'ts', 'tsx'],
+  transpilePackages: ['lucide-react'],
 }
 
 export default withSearch(

@@ -6,9 +6,11 @@
     "dev:figma-plugin": "pnpm --filter figma-plugin run dev",
     "dev:docs": "pnpm --filter docs run dev",
     "dev:syntax": "pnpm --filter syntax run dev",
+    "dev:syntax-ts": "pnpm --filter syntax-ts run dev",
     "build:figma-plugin": "pnpm --filter figma-plugin run build",
     "build:docs": "pnpm --filter docs run build",
-    "build:syntax": "pnpm --filter syntax run build"
+    "build:syntax": "pnpm --filter syntax run build",
+    "build:syntax-ts": "pnpm --filter syntax-ts run build"
   },
   "devDependencies": {
     "cz-git": "^1.11.0"
