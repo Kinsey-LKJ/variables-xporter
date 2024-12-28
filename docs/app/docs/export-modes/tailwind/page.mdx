@@ -1,6 +1,7 @@
 import { Cards } from 'nextra/components'
 import { Callout } from 'nextra/components'
 import { Palette, Type, Layers } from 'lucide-react'
+import { Layout } from 'lucide-react'
 
 # Tailwind CSS
 
@@ -41,11 +42,10 @@ fontSize: {
 }
 ```
 
-### 3. 主题模式支持
-自动处理主题切换相关的变量：
+### 3. 多模式支持
+借助**变量追溯**和**单一出口原则**, Variables Xporter 能够实现复杂的多模式变量导出。
 
 ```css
-/* global.css */
 :root {
   --colors-primary: var(--colors-primary-light);
 }
@@ -54,6 +54,15 @@ fontSize: {
   --colors-primary: var(--colors-primary-dark);
 }
 ```
+
+
+  <Cards.Card
+    icon={<Layout />}
+    title="多模式支持"
+    href="/docs/features/multi-mode"
+    className="mt-4"
+  />
+
 
 ## 必须遵守的规则
 

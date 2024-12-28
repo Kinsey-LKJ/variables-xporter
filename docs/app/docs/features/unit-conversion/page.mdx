@@ -1,6 +1,6 @@
 import { Callout } from 'nextra/components'
 
-# 单位转换 📏
+# 单位转换
 
 Variables Xporter 提供了强大的单位转换功能，可以自动将 Figma 中的 px 单位转换为更适合开发环境的 rem 单位。
 
@@ -43,17 +43,3 @@ rem（root em）是一个相对单位，它相对于根元素（html）的字体
 <Callout type="info" emoji="💡">
   Variables Xporter 会保持精确的数值转换，确保设计规范在开发环境中得到准确实现。
 </Callout>
-
-## 最佳实践
-
-1. **保持基础字号一致**
-   - 确保 Figma 中使用 16px 作为基础字号
-   - 这样可以保证 rem 转换的准确性
-
-2. **使用 4px 的倍数**
-   - 推荐使用 4px 的倍数作为间距值
-   - 这样转换后的 rem 值会更加整洁（如 4px = 0.25rem）
-
-3. **考虑特殊场景**
-   - 某些需要精确像素对齐的场景可能不适合使用 rem
-   - 这种情况下可以选择不启用单位转换

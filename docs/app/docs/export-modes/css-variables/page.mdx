@@ -1,6 +1,7 @@
 import { Cards } from 'nextra/components'
 import { Callout } from 'nextra/components'
 import { Palette, Type, Layers } from 'lucide-react'
+import { Layout } from 'lucide-react'
 
 # CSS Variables
 
@@ -32,8 +33,8 @@ import { Palette, Type, Layers } from 'lucide-react'
 }
 ```
 
-### 3. 主题模式支持
-支持使用 CSS 类切换主题：
+### 3. 多模式支持
+借助**变量追溯**和**单一出口原则**, Variables Xporter 能够实现复杂的多模式变量导出。
 
 ```css
 :root {
@@ -44,6 +45,15 @@ import { Palette, Type, Layers } from 'lucide-react'
   --colors-primary: var(--colors-primary-dark);
 }
 ```
+
+
+  <Cards.Card
+    icon={<Layout />}
+    title="多模式支持"
+    href="/docs/features/multi-mode"
+    className="mt-4"
+  />
+
 
 ## 变量组织建议
 
