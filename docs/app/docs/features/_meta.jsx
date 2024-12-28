@@ -1,7 +1,4 @@
 const meta = {
-  'variable-references': {
-    title: '变量引用',
-  },
   'unit-conversion': {
     title: '单位转换',
   },
