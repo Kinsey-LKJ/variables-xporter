@@ -1,3 +1,4 @@
 packages:
   - figma-plugin
   - docs
+  - syntax
