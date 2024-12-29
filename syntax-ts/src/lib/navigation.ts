@@ -1,56 +1,44 @@
 export const navigation = [
   {
-    title: 'Introduction',
-    links: [
-      { title: 'Getting started', href: '/' },
-      { title: 'Installation', href: '/docs/installation' },
-    ],
+    title: '简介',
+    links: [{ title: '快速入门', href: '/' }],
   },
   {
-    title: 'Core concepts',
+    title: '导出模式',
     links: [
-      { title: 'Understanding caching', href: '/docs/understanding-caching' },
+      { title: 'Tailwind CSS', href: '/docs/export-modes/tailwind' },
       {
-        title: 'Predicting user behavior',
-        href: '/docs/predicting-user-behavior',
-      },
-      { title: 'Basics of time-travel', href: '/docs/basics-of-time-travel' },
-      {
-        title: 'Introduction to string theory',
-        href: '/docs/introduction-to-string-theory',
-      },
-      { title: 'The butterfly effect', href: '/docs/the-butterfly-effect' },
-    ],
-  },
-  {
-    title: 'Advanced guides',
-    links: [
-      { title: 'Writing plugins', href: '/docs/writing-plugins' },
-      { title: 'Neuralink integration', href: '/docs/neuralink-integration' },
-      { title: 'Temporal paradoxes', href: '/docs/temporal-paradoxes' },
-      { title: 'Testing', href: '/docs/testing' },
-      { title: 'Compile-time caching', href: '/docs/compile-time-caching' },
-      {
-        title: 'Predictive data generation',
-        href: '/docs/predictive-data-generation',
+        title: 'CSS 变量',
+        href: '/docs/export-modes/css-variables',
       },
     ],
   },
   {
-    title: 'API reference',
+    title: '组织你的设计变量',
     links: [
-      { title: 'CacheAdvance.predict()', href: '/docs/cacheadvance-predict' },
-      { title: 'CacheAdvance.flush()', href: '/docs/cacheadvance-flush' },
-      { title: 'CacheAdvance.revert()', href: '/docs/cacheadvance-revert' },
-      { title: 'CacheAdvance.regret()', href: '/docs/cacheadvance-regret' },
+      { title: '基本原则', href: '/docs/organizing-your-variables/principles' },
+      { title: '颜色系统', href: '/docs/organizing-your-variables/colors' },
+      { title: '排版系统', href: '/docs/organizing-your-variables/typography' },
+      {
+        title: '间距和尺寸系统',
+        href: '/docs/organizing-your-variables/spacing',
+      },
+      {
+        title: '其他令牌',
+        href: '/docs/organizing-your-variables/other-tokens',
+      },
+      { title: '多模式', href: '/docs/organizing-your-variables/multi-mode' },
     ],
   },
   {
-    title: 'Contributing',
+    title: '特性',
     links: [
-      { title: 'How to contribute', href: '/docs/how-to-contribute' },
-      { title: 'Architecture guide', href: '/docs/architecture-guide' },
-      { title: 'Design principles', href: '/docs/design-principles' },
+      { title: '单位转换', href: '/docs/features/unit-conversion' },
+      { title: '合并排版样式', href: '/docs/features/merge-typography-styles' },
+      { title: '忽略 Tailwind 调色板', href: '/docs/features/ignore-tailwind-palette' },
+      { title: 'CSS 媒体查询模式', href: '/docs/features/css-media-query-mode' },
+      { title: '多模式', href: '/docs/features/multi-mode' },
+
     ],
-  },
+  }
 ]
