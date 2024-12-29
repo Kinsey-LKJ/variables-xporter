@@ -88,14 +88,15 @@ export function processConstantValue(
   value: SimpleValue | ColorValue,
   resolvedDataType: VariableResolvedDataType,
   scopes: VariableScope[],
-  useRemUnit: boolean
+  useRemUnit: boolean,
+  variableCSSName: string
 ): string {
   if (isColorValue(value)) {
     return processColorValue(value);
   } else if (resolvedDataType === 'FLOAT') {
     if (['OPACITY', 'TEXT_CONTENT'].some((item: VariableScope) => scopes.includes(item))) {
       return `${value}`;
-    } else if (useRemUnit) {
+    } else if (useRemUnit && variableCSSName.startsWith('spacing-')) {
       return `${(value as number) / 16}rem`;
     } else {
       return `${value}px`;
@@ -339,6 +340,8 @@ function generateCSSForMultipleVariables(
     scopes?: VariableScope[]
   ) {
     console.log(parentModes);
+    console.log(variable.name);
+    console.log(value);
     if (value === undefined || value === null) {
       console.warn(`处理变量 ${variable.name} 时遇到空值`);
       return;
@@ -369,7 +372,8 @@ function generateCSSForMultipleVariables(
         value as SimpleValue | ColorValue,
         resolvedDataType,
         scopes,
-        useRemUnit
+        useRemUnit,
+        variableCSSName
       );
       const declaration = `  --${variableCSSName}: ${processedValue};`;
 
@@ -488,7 +492,8 @@ function generateCSSForMultipleVariables(
                 defaultMode.value as SimpleValue | ColorValue,
                 initialVariable.resolvedDataType,
                 initialVariable.scopes,
-                useRemUnit
+                useRemUnit,
+                variableCSSName
               )
             : defaultMode.value;
         const declaration = `  --${variableCSSName}: ${processedValue};`;
@@ -554,7 +559,8 @@ function generateCSSForMultipleVariables(
                   modeData.value as SimpleValue | ColorValue,
                   initialVariable.resolvedDataType,
                   initialVariable.scopes,
-                  useRemUnit
+                  useRemUnit,
+                  variableCSSName
                 )
               : modeData.value;
           const declaration = `  --${variableCSSName}: ${processedValue};`;
