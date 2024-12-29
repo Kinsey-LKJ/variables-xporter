@@ -51,6 +51,41 @@ export function isColorValue(value: ResolvedValue): value is ColorValue {
   return isRGB(value) || isRGBA(value);
 }
 
+const notSupportRemUnit = [
+  'screens',
+  'scale',
+  'backdrop-blur',
+  'scale',
+  'border-width',
+  'text-decoration-thickness',
+  'line-clamp',
+  'outline-offset',
+  'outline-width',
+  'stroke-width',
+  'z-index',
+  "skew"
+];
+
+const nonUnits = [
+  "aspectRatio",          // 比值
+  "hueRotate",            // 角度单位（如 deg）
+  "rotate",               // 角度单位（如 deg）
+  "skew",                 // 角度单位（如 deg）
+  "scale",                // 比例
+  "opacity",              // 0 到 1 的比值
+  "brightness",           // 0 到 1 的比值
+  "contrast",             // 0 到 1 的比值
+  "grayscale",            // 0 到 1 的比值
+  "invert",               // 0 到 1 的比值
+  "saturate",             // 0 到 1 的比值
+  "sepia",                // 0 到 1 的比值
+  "flexGrow",             // 整数
+  "flexShrink",           // 整数
+  "order",                // 整数
+  "zIndex"                // 整数
+];
+
+
 // 判断是否是媒体查询
 function isMediaQuery(modeName: string): boolean {
   // 常见的媒体查询条件
@@ -94,11 +129,17 @@ export function processConstantValue(
   if (isColorValue(value)) {
     return processColorValue(value);
   } else if (resolvedDataType === 'FLOAT') {
+    const startWith = variableCSSName.split('-')[0];
+    
+    const isMustPx = variableCSSName.includes('-px');
+    const isNotSupportRemUnit = notSupportRemUnit.some((item: VariableScope) => startWith.includes(item));
+    const isNonUnit = nonUnits.some((item: VariableScope) => startWith.includes(item));
+
     if (['OPACITY', 'TEXT_CONTENT'].some((item: VariableScope) => scopes.includes(item))) {
       return `${value}`;
-    } else if (useRemUnit && variableCSSName.startsWith('spacing-')) {
+    } else if (!isMustPx && useRemUnit && !isNonUnit && !isNotSupportRemUnit) {
       return `${(value as number) / 16}rem`;
-    } else {
+    } else if (!isNonUnit) {
       return `${value}px`;
     }
   } else {
@@ -300,7 +341,10 @@ function generateCSSForMultipleVariables(
     variable: { name: string; collection: TVariableCollection },
     originalCollection: TVariableCollection
   ): string {
-    const cssNameKebabCase = variable.name.split('/').map(segment => changeCase.kebabCase(segment)).join('-');
+    const cssNameKebabCase = variable.name
+      .split('/')
+      .map((segment) => changeCase.kebabCase(segment))
+      .join('-');
     if (variable.collection.id !== originalCollection.id && appendCollectionName) {
       const collectionName = sanitizeCollectionName(variable.collection.name);
       return `${cssNameKebabCase}-${collectionName}`;
@@ -619,11 +663,11 @@ function generateTailwindConfig(results: Result[]): string {
   function parseVariablePath(name: string): string[] {
     const nameArr = name.split('/');
     return [
-      changeCase.camelCase(nameArr[0]), 
-      ...nameArr.slice(1).map(segment => {
-        if(segment === "DEFAULT") return "DEFAULT";
+      changeCase.camelCase(nameArr[0]),
+      ...nameArr.slice(1).map((segment) => {
+        if (segment === 'DEFAULT') return 'DEFAULT';
         return changeCase.camelCase(segment);
-      })
+      }),
     ];
   }
 
@@ -641,12 +685,12 @@ function generateTailwindConfig(results: Result[]): string {
 
   // 属性名映射和匹配帮助函数
   const propertyMap = {
-    'size': 'fontSize',
-    'weight': 'fontWeight',
-    'lineHeight': 'lineHeight',
-    'fontWeight': 'fontWeight',
-    'letterSpacing': 'letterSpacing',
-    'family': 'fontFamily',
+    size: 'fontSize',
+    weight: 'fontWeight',
+    lineHeight: 'lineHeight',
+    fontWeight: 'fontWeight',
+    letterSpacing: 'letterSpacing',
+    family: 'fontFamily',
     'line-height': 'lineHeight',
     'font-weight': 'fontWeight',
     'letter-spacing': 'letterSpacing',
@@ -654,51 +698,59 @@ function generateTailwindConfig(results: Result[]): string {
 
   // 创建属性名匹配模式
   const propPattern = Object.keys(propertyMap)
-    .map(key => key.replace(/[-]/g, '\\-'))
+    .map((key) => key.replace(/[-]/g, '\\-'))
     .join('|');
 
   // 属性名标准化函数
   function normalizeProperty(prop: string): string {
     switch (prop) {
-      case 'line-height': return 'lineHeight';
-      case 'font-weight': return 'fontWeight';
-      case 'letter-spacing': return 'letterSpacing';
-      default: return prop;
+      case 'line-height':
+        return 'lineHeight';
+      case 'font-weight':
+        return 'fontWeight';
+      case 'letter-spacing':
+        return 'letterSpacing';
+      default:
+        return prop;
     }
   }
 
   // 处理需要合并的字体配置，并返回已使用的变量名集合
   function processMergedFontConfigs(results: Result[]): [Record<string, any>, Set<string>] {
-    const fontConfigs: Record<string, {
-      size?: string;
-      lineHeight?: string;
-      fontWeight?: string;
-      letterSpacing?: string;
-    }> = {};
-    
+    const fontConfigs: Record<
+      string,
+      {
+        size?: string;
+        lineHeight?: string;
+        fontWeight?: string;
+        letterSpacing?: string;
+      }
+    > = {};
+
     const usedVariables = new Set<string>();
 
     // 首先处理标准的字体配置
     for (const result of results) {
       const { initialVariable } = result;
       const name = initialVariable.name;
-      
+
       // 检查是否是标准的字体配置
       const fontMatch = name.match(new RegExp(`^font\\/([^/]+)\\/(${propPattern})$`));
       if (fontMatch) {
         const [, variant, rawProp] = fontMatch;
-        const prop = Object.keys(propertyMap).includes(rawProp) 
-          ? normalizeProperty(rawProp)
-          : rawProp;
-        
+        const prop = Object.keys(propertyMap).includes(rawProp) ? normalizeProperty(rawProp) : rawProp;
+
         if (!fontConfigs[variant]) {
           fontConfigs[variant] = {};
         }
-        
+
         const defaultMode = result.modes[initialVariable.collection.defaultModeId];
         if (defaultMode && defaultMode.value !== undefined) {
-          const value = `var(--${name.split('/').map(segment => changeCase.kebabCase(segment)).join('-')})`;
-          fontConfigs[variant][prop as keyof typeof fontConfigs[string]] = value;
+          const value = `var(--${name
+            .split('/')
+            .map((segment) => changeCase.kebabCase(segment))
+            .join('-')})`;
+          fontConfigs[variant][prop as keyof (typeof fontConfigs)[string]] = value;
           if (prop === 'size' || fontConfigs[variant].size) {
             usedVariables.add(name);
           }
@@ -728,10 +780,8 @@ function generateTailwindConfig(results: Result[]): string {
       if (config.lineHeight) settings.lineHeight = config.lineHeight;
       if (config.fontWeight) settings.fontWeight = config.fontWeight;
       if (config.letterSpacing) settings.letterSpacing = config.letterSpacing;
-      
-      mergedFontSize[variant] = Object.keys(settings).length > 0 
-        ? [config.size, settings]
-        : config.size;
+
+      mergedFontSize[variant] = Object.keys(settings).length > 0 ? [config.size, settings] : config.size;
     }
 
     return [mergedFontSize, usedVariables];
@@ -744,20 +794,20 @@ function generateTailwindConfig(results: Result[]): string {
     for (const result of results) {
       const { initialVariable } = result;
       const name = initialVariable.name;
-      
+
       // 如果这个变量已经被用于合并格式，跳过它
       if (usedVariables.has(name)) {
         continue;
       }
-      
+
       // 匹配 (font/)?property/xx 格式
       const pattern = `^(font\\/|)(${propPattern})\\/([^/]+)$`;
       const match = name.match(new RegExp(pattern));
-      
+
       if (match) {
         const [, , rawProp, variant] = match;
         const configKey = propertyMap[rawProp];
-        
+
         if (!configs[configKey]) {
           configs[configKey] = {};
         }
@@ -780,13 +830,13 @@ function generateTailwindConfig(results: Result[]): string {
     for (const result of results) {
       const { initialVariable } = result;
       const name = initialVariable.name;
-      
+
       // 匹配顶层字体变量
       const fontMatch = name.match(/^font\/(size|family|line-height|weight|letter-spacing)$/);
       if (fontMatch) {
         const [, prop] = fontMatch;
         const configKey = propertyMap[prop];
-        
+
         if (configKey) {
           const defaultMode = result.modes[initialVariable.collection.defaultModeId];
           if (defaultMode && defaultMode.value !== undefined) {
@@ -809,10 +859,16 @@ function generateTailwindConfig(results: Result[]): string {
   function processVariableValue(variable: Result['initialVariable']): string {
     // 检查是否是颜色变量
     if (variable.resolvedDataType === 'COLOR') {
-      return `rgba(var(--${variable.name.split('/').map(segment => changeCase.kebabCase(segment)).join('-')}))`;
+      return `rgba(var(--${variable.name
+        .split('/')
+        .map((segment) => changeCase.kebabCase(segment))
+        .join('-')}))`;
     }
     // 其他类型的变量保持原样
-    return `var(--${variable.name.split('/').map(segment => changeCase.kebabCase(segment)).join('-')})`;
+    return `var(--${variable.name
+      .split('/')
+      .map((segment) => changeCase.kebabCase(segment))
+      .join('-')})`;
   }
 
   // 处理所有变量
@@ -847,11 +903,7 @@ function generateTailwindConfig(results: Result[]): string {
     }
 
     // 处理所有其他变量
-    setNestedValue(
-      config[topLevel], 
-      path.slice(1), 
-      processVariableValue(initialVariable)
-    );
+    setNestedValue(config[topLevel], path.slice(1), processVariableValue(initialVariable));
   }
 
   // 合并字体配置
