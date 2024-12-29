@@ -1,6 +1,8 @@
 import { Callout } from '@/components/Callout'
 import { QuickLink, QuickLinks } from '@/components/QuickLinks'
 import clsx from 'clsx'
+import { Steps, Step } from '@/components/Steps'
+import { FileTree } from '@/components/FileTree'
 
 const tags = {
   callout: {
@@ -42,6 +44,38 @@ const tags = {
       description: { type: String },
       icon: { type: String },
       href: { type: String },
+    },
+  },
+  'file-tree': {
+    render: FileTree,
+  },
+  folder: {
+    render: ({ name, children }) => (
+      <div className="ml-4">
+        {name && <div className="text-blue-400">📁 {name}/</div>}
+        {children}
+      </div>
+    ),
+    attributes: {
+      name: { type: String },
+    },
+  },
+  file: {
+    selfClosing: true,
+    render: ({ name }) => (
+      <div className="ml-4 text-gray-300">📄 {name}</div>
+    ),
+    attributes: {
+      name: { type: String },
+    },
+  },
+  steps: {
+    render: Steps,
+  },
+  step: {
+    render: Step,
+    attributes: {
+      title: { type: String },
     },
   },
 }
