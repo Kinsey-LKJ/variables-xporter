@@ -1,4 +1,5 @@
-import { Callout } from 'nextra/components'
+import { Callout,Cards } from 'nextra/components'
+import {RefreshCw } from 'lucide-react'
 
 # 间距系统
 
@@ -20,14 +21,22 @@ import { Callout } from 'nextra/components'
 - `spacing/4` - 四倍最小间距 (通常 16px)
 
 <Callout type="error" emoji="🚨">
-在 Tailwind CSS 项目中，必须使用 `spacing` 作为顶层目录。这是因为 Tailwind CSS 使用 `spacing` 配置键来统一管理间距、宽度、高度等尺寸相关的工具类。使用其他名称可能导致这些工具类无法正常工作。
+在 Tailwind CSS 项目中，遵循顶层目录的要求是必须的。
 </Callout>
 
 ## 单位转换
 
-Variables Xporter 提供了智能的单位转换功能。你可以在 Figma 中使用更直观的 px 单位进行设计，然后在导出时选择"使用 Rem 单位"选项，工具会自动将其转换为响应式友好的 rem 单位。
+Variables Xporter 提供了智能的单位转换功能。你可以在 Figma 中使用更直观的 px 单位进行设计，然后在导出时选择"使用 Rem 单位"选项，工具会自动将其转换为可访问性友好的 rem 单位。
 
-<Callout type="info" emoji="💡">
-推荐使用 rem 单位，因为它能够根据用户的字体大小设置自动调整，提供更好的可访问性和响应式体验。默认情况下，1rem = 16px。
-</Callout>
+
+了解单位转换的更多内容：
+
+  <Cards.Card
+    icon={<RefreshCw  />}
+    title="单位转换"
+    href="/docs/features/unit-conversion"
+    className="mt-4"
+  />
+
+
 

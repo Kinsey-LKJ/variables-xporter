@@ -1,4 +1,5 @@
-import { Callout } from 'nextra/components'
+import { Callout,Cards } from 'nextra/components'
+import { Columns3 } from 'lucide-react'
 
 # CSS 媒体查询模式
 
@@ -8,14 +9,12 @@ CSS 媒体查询模式让你能够为不同的视口尺寸或设备特性定义�
 
 Variables Xporter 支持在变量模式名中使用标准的媒体查询语法：
 
-```plaintext
 变量模式命名规则：
-{media-feature}:{value}
+**`{media-feature}:{value}`**
 
 例如：
-min-width:768px
-max-width:1024px
-```
+`min-width:768px`、`max-width:1024px`
+
 
 ### 支持的媒体特性
 
@@ -67,3 +66,12 @@ max-width:1024px
   --font-size-heading: 3rem;
 }
 ```
+
+了解如何在 Figma 中创建和管理多模式变量:
+
+  <Cards.Card
+    icon={<Columns3  />}
+    title="多模式变量管理"
+    href="/docs/organizing-your-variables/multi-mode"
+    className="mt-4"
+  />
