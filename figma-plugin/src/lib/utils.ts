@@ -644,9 +644,17 @@ function generateCSSForMultipleVariables(
   for (const [selector, declarations] of modeOverrides.entries()) {
     if (declarations.size > 0) {
       css.push(`/* Mode Override */`);
-      css.push(`${selector} {`);
-      css.push([...declarations].join('\n'));
-      css.push('}\n');
+      if (selector.startsWith('@media')) {
+        css.push(`${selector} {`);
+        css.push('  :root {');
+        css.push([...declarations].join('\n'));
+        css.push('  }');
+        css.push('}\n');
+      } else {
+        css.push(`${selector} {`);
+        css.push([...declarations].join('\n'));
+        css.push('}\n');
+      }
     }
   }
 
@@ -691,9 +699,60 @@ function generateTailwindConfig(results: Result[]): string {
     fontWeight: 'fontWeight',
     letterSpacing: 'letterSpacing',
     family: 'fontFamily',
+    style: 'fontStyle',
+    fontStyle: 'fontStyle',
+    'font-style': 'fontStyle',
     'line-height': 'lineHeight',
     'font-weight': 'fontWeight',
     'letter-spacing': 'letterSpacing',
+    'font-size': 'fontSize',
+    'font-family': 'fontFamily',
+    'text-align': 'textAlign',
+    'text-decoration': 'textDecoration',
+    'text-transform': 'textTransform',
+    'text-overflow': 'textOverflow',
+    'text-indent': 'textIndent',
+    'vertical-align': 'verticalAlign',
+    'white-space': 'whiteSpace',
+    'word-break': 'wordBreak',
+    'word-spacing': 'wordSpacing',
+    'word-wrap': 'wordWrap',
+    'line-clamp': 'lineClamp',
+    'list-style': 'listStyle',
+    'list-style-type': 'listStyleType',
+    'list-style-position': 'listStylePosition',
+    'text-decoration-color': 'textDecorationColor',
+    'text-decoration-style': 'textDecorationStyle',
+    'text-decoration-thickness': 'textDecorationThickness',
+    'text-underline-offset': 'textUnderlineOffset',
+    'font-variant-numeric': 'fontVariantNumeric',
+    'font-smoothing': 'fontSmoothing',
+    'hyphens': 'hyphens',
+    'caption': 'caption',
+    fontSize: 'fontSize',
+    fontFamily: 'fontFamily',
+    textAlign: 'textAlign',
+    textDecoration: 'textDecoration',
+    textTransform: 'textTransform',
+    textOverflow: 'textOverflow',
+    textIndent: 'textIndent',
+    verticalAlign: 'verticalAlign',
+    whiteSpace: 'whiteSpace',
+    wordBreak: 'wordBreak',
+    wordSpacing: 'wordSpacing',
+    wordWrap: 'wordWrap',
+    lineClamp: 'lineClamp',
+    listStyle: 'listStyle',
+    listStyleType: 'listStyleType',
+    listStylePosition: 'listStylePosition',
+    textDecorationColor: 'textDecorationColor',
+    textDecorationStyle: 'textDecorationStyle',
+    textDecorationThickness: 'textDecorationThickness',
+    textUnderlineOffset: 'textUnderlineOffset',
+    fontVariantNumeric: 'fontVariantNumeric',
+    fontSmoothing: 'fontSmoothing',
+    'variant-numeric': 'fontVariantNumeric',
+    'variant-smoothing': 'fontSmoothing',
   };
 
   // 创建属性名匹配模式

@@ -1,7 +1,10 @@
-import { Cards } from 'nextra/components'
+---
+title: CSS Variables
+---
+
 import { Callout } from 'nextra/components'
-import { Palette, Type, Layers } from 'lucide-react'
-import { Layout } from 'lucide-react'
+import { Cards } from 'nextra/components'
+import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck,Box,ChevronsLeftRightEllipsis } from 'lucide-react'
 
 # CSS Variables
 
@@ -47,8 +50,9 @@ import { Layout } from 'lucide-react'
 ```
 
 
+
   <Cards.Card
-    icon={<Layout />}
+    icon={<Columns3 />}
     title="多模式支持"
     href="/docs/features/multi-mode"
     className="mt-4"
@@ -56,20 +60,29 @@ import { Layout } from 'lucide-react'
 
 
 ## 变量组织建议
-
-虽然 CSS Variables 方式对变组织的要求较低，但我们仍然建议你遵循良好的组织原则，这样可以：
+相较于 [Tailwind CSS](/docs/export-modes/tailwind)，CSS Variables 导出方式对变量组织的要求较低，但是任然建议你遵循良好的组织原则，这样可以：
 
 - 提高变量的可维护性
 - 保持设计系统的一致性
 - 方便团队协作
 - 为将来可能的框架迁移做准备
 
-<Cards>
+### 基础原则
+你可以先了解变量组织的基础原则，它能帮助你在变量的命名、分组、层级方面做出更好的决策。
+
+
   <Cards.Card
-    icon={<Layers />}
+    icon={<BookOpenCheck  />}
     title="基本原则"
     href="/docs/organizing-your-variables/principles"
+    className="mt-4"
   />
+
+
+### 变量类型
+然后，你就可以根据不同的变量类型，进一步组织你的变量。
+
+<Cards>
   <Cards.Card
     icon={<Palette />}
     title="颜色系统"
@@ -80,8 +93,19 @@ import { Layout } from 'lucide-react'
     title="排版系统"
     href="/docs/organizing-your-variables/typography"
   />
+  <Cards.Card
+    icon={<ChevronsLeftRightEllipsis />}
+    title="间距和尺寸系统"
+    href="/docs/organizing-your-variables/spacing"
+  />
+  <Cards.Card
+    icon={<Box/>}
+    title="其他令牌"
+    href="/docs/organizing-your-variables/other-tokens"
+  />
+  <Cards.Card
+    icon={<Columns3 />}
+    title="多模式"
+    href="/docs/organizing-your-variables/multi-mode"
+  />
 </Cards>
-
-<Callout type="info" emoji="💡">
-  即使你现在不使用 Tailwind CSS，遵循这些组织原则也能让你的设计系统更加规范和专业。如果将来需要迁移到 Tailwind CSS，也会更加容易。
-</Callout> 

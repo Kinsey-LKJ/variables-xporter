@@ -1,6 +1,6 @@
 import { Callout } from 'nextra/components'
 import { Cards } from 'nextra/components'
-import { Moon } from 'lucide-react'
+import { Moon,Columns3 } from 'lucide-react'
 
 # 多模式支持
 
@@ -41,8 +41,16 @@ Variables Xporter **支持复合的多模式变量**，例如 `colors/primary/DE
   --colors-primary-dark-brand-modes: var(--colors-brand-b-500);
 }
 ```
-现在，`colors/primary/DEFAULT` 变量在不同的明暗主题以及品牌主题下，都会呈现不一样的结果。了解更多关于[多模式变量的组织建议](/docs/organizing-your-variables/multi-mode)。
+现在，`colors/primary/DEFAULT` 变量在不同的明暗主题以及品牌主题下，都会呈现不一样的结果。
 
+了解如何在 Figma 中创建和管理多模式变量:
+
+  <Cards.Card
+    icon={<Columns3  />}
+    title="多模式变量管理"
+    href="/docs/organizing-your-variables/multi-mode"
+    className="mt-4"
+  />
 
 ## 工作原理
 Variables Xporter 会追溯所选的导出集合中所有变量，直到找到变量的原始值。这意味着你可以跨集合引用变量，Variables Xporter 会完整的还原变量的引用链。

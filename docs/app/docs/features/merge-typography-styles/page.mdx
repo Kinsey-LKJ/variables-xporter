@@ -1,4 +1,5 @@
-import { Callout } from 'nextra/components'
+import { Callout, Cards } from 'nextra/components'
+import { Type } from 'lucide-react'
 
 # 合并排版样式
 
@@ -10,18 +11,17 @@ import { Callout } from 'nextra/components'
 
 1. 识别相关的变量
 2. 按照命名规则组合变量
-3. 生成 Tailwind 配置
+3. 生成 Tailwind CSS 配置
 
 ### 示例转换
 
 Figma 变量：
-```css
---font-size-heading-1: 2.5rem;
---line-height-heading-1: 1.2;
---font-weight-heading-1: 600;
-```
+- font/size/heading-1
+- font/line-height/heading-1
+- font/weight/heading-1
 
-转换后的 Tailwind 配置：
+
+转换后的 Tailwind CSS 配置：
 ```js
 fontSize: {
   'heading-1': ['2.5rem', {
@@ -36,19 +36,32 @@ fontSize: {
 为了让 Variables Xporter 正确识别和合并变量，建议遵循以下命名规则：
 
 1. **基础命名格式**
-   ```
-   {属性}-{组件}-{变体}
-   ```
 
-2. **支持的属性前缀**
+`font/{variable}/{property}`
+
+
+2. **支持的属性**
    - `font-size`
    - `line-height`
    - `font-weight`
    - `letter-spacing`
 
 3. **示例命名**
-   ```
-   font-size/heading/1
-   line-height/heading/1
-   font-weight/heading/1
-   ```
+
+- `font/size/sm`
+- `font/line-height/sm`
+
+- `font/size/base`
+- `font/line-height/base`
+
+- `font/size/lg`
+- `font/line-height/lg`
+
+详细了解如何在 Figma 中创建和管理字体变量:
+
+  <Cards.Card
+    icon={<Type  />}
+    title="字体变量管理"
+    href="/docs/organizing-your-variables/typography"
+    className="mt-4"
+  />

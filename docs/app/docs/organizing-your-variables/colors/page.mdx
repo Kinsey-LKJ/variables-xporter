@@ -2,10 +2,8 @@ import { Callout } from 'nextra/components'
 import { Tabs } from 'nextra/components'
 
 # 颜色系统
-颜色类变量的组织建议。
-
-如果你对颜色类变量的组织和命名没有头绪，[shadcn/ui 的命名约定](https://ui.shadcn.com/docs/theming#convention)是一个很好的开始：
-一般情况下，`background` 用于背景颜色，`foreground` 用于文本颜色，当 `background` 用于组件的背景颜色时，如 `colors/card/DEFAULT`[^1]，则省略 `background` 后缀。
+颜色系用几乎是 Design Tokens 里最重要的部分，如果你对颜色类变量的组织和命名没有头绪，[shadcn/ui 的命名约定](https://ui.shadcn.com/docs/theming#convention)是一个很好的开始：
+一般情况下，`background` 用于背景颜色，`foreground` 用于文本颜色，当 `background` 用于组件的背景颜色时，如 `colors/card/DEFAULT`[^1]，则省略 `background` 后缀，从这个基础出发逐渐扩展到更多的变量：
 
 {/* - `--background` - 背景色
 - `--foreground` - 前景色/文本色
@@ -78,23 +76,21 @@ import { Tabs } from 'nextra/components'
 
 ## 不透明度修饰符
 
-Variables Xporter 提供了强大的颜色处理功能，它会自动为你生成[符合 Tailwind CSS 规则](https://tailwindcss.com/docs/customizing-colors#using-css-variables)的颜色变量。在开发过程中，你可以轻松地使用不透明度修饰符来动态调整颜色的透明度，无需额外的变量定义。
+Variables Xporter 提供了强大的颜色处理功能，它会自动为你生成[符合 Tailwind CSS 规则](https://tailwindcss.com/docs/customizing-colors#using-css-variables)的颜色变量。在开发过程中，你可以轻松地使用不透明度修饰符灵活调整颜色的透明度，无需额外的变量定义。
 
-<Callout type="info" emoji="💡">
-  使用不透明度修饰符可以让你在开发时灵活调整颜色的透明度。以下是一些常见的使用场景：
 
   ```html
   <!-- 文本透明度调整 -->
-  <div class="text-primary/80">半透明主要文本</div>
-  <div class="text-secondary/60">更透明的次要文本</div>
+  <div class="text-primary/80">文本透明度调整</div>
+  <div class="text-secondary/60">文本透明度调整</div>
 
   <!-- 背景透明度调整 -->
-  <div class="bg-primary/10">淡色背景</div>
-  <div class="bg-accent/90">高对比度背景</div>
+  <div class="bg-primary/10">背景透明度调整</div>
+  <div class="bg-accent/90">背景透明度调整</div>
 
   <!-- 边框透明度调整 -->
-  <div class="border-2 border-primary/30">柔和边框效果</div>
+  <div class="border-2 border-primary/30">边框透明度调整</div>
   ```
-</Callout>
 
-[^1]: `DEFAULT` 是组织变量层级的一种方式，[了解更多](/docs/organizing-your-variables/principles#use-default-value)
+
+[^1]: `DEFAULT` 关键字是组织变量层级的一种方式，[了解更多](/docs/organizing-your-variables/principles#use-default-value)

@@ -6,15 +6,15 @@ const meta = {
   },
   docs: {
     type: 'page',
-    title: 'Documentation',
+    title: '文档',
   },
   example: {
     type: 'page',
-    title: 'Example'
+    title: '例子'
   },
   blog: {
     type: 'page',
-    title: 'Blog'
+    title: '博客'
   },
 
 }

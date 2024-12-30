@@ -5,7 +5,7 @@ title: 简介
 import { Callout } from 'nextra/components'
 import { Steps } from 'nextra/components'
 import { Cards } from 'nextra/components'
-import { Zap, RefreshCw, Palette, Type, Layout, Box } from 'lucide-react'
+import { Zap, RefreshCw, Palette, Type, Layout, Box,Columns3,EyeOff,Merge,Proportions,BookCopy } from 'lucide-react'
 
 # Variables Xporter
 
@@ -19,7 +19,7 @@ Variables Xporter 是一个 Figma 插件，它能将 Figma 变量导出为 Tailw
 我们提供了完整的 Figma 变量组织建议，帮助你更好地管理变量，并保证导出结果的可用性。
 
   <Cards.Card
-    icon={<Layout />}
+    icon={<BookCopy />}
     title="组织你的设计变量"
     href="/docs/organizing-your-variables"
     className="mt-4"
@@ -32,31 +32,26 @@ Variables Xporter 有许多独特的功能，并对 Tailwind CSS 项目提供了
 <Cards>
   <Cards.Card
     icon={<RefreshCw />}
-    title="变量引用"
-    href="/docs/features/variable-references"
-  />
-  <Cards.Card
-    icon={<Box />}
     title="单位转换"
     href="/docs/features/unit-conversion"
   />
   <Cards.Card
-    icon={<Layout />}
+    icon={<Columns3 />}
     title="多模式支持"
     href="/docs/features/multi-mode"
   />
   <Cards.Card
-    icon={<Palette />}
+    icon={<EyeOff />}
     title="忽略 Tailwind 调色板"
     href="/docs/features/ignore-tailwind-palette"
   />
   <Cards.Card
-    icon={<Type />}
+    icon={<Merge/>}
     title="合并排版样式"
     href="/docs/features/merge-typography-styles"
   />
   <Cards.Card
-    icon={<Zap />}
+    icon={<Proportions />}
     title="CSS 媒体查询模式"
     href="/docs/features/css-media-query-mode"
   />
@@ -98,8 +93,3 @@ Variables Xporter 有许多独特的功能，并对 Tailwind CSS 项目提供了
   </figcaption>
 </figure>
 </Steps>
-
-
-<Callout type="info">
-了解变量组织的最佳实践，将帮助你更好地规划设计系统。
-</Callout>
