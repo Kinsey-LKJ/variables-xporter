@@ -47,20 +47,22 @@ export default async function RootLayout({
   )
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
-      <Head faviconGlyph="✦" color={{
-        hue:{
-          light:51,
-          dark:51
-        },
-        saturation: {
-          light: 100,
-          dark: 100
-        },
-        lightness: {
-          light: 45,
-          dark: 65
-        },
-      }}/>
+      <Head faviconGlyph="✦" 
+      // color={{
+      //   hue:{
+      //     light:51,
+      //     dark:51
+      //   },
+      //   saturation: {
+      //     light: 100,
+      //     dark: 100
+      //   },
+      //   lightness: {
+      //     light: 45,
+      //     dark: 65
+      //   },
+      // }}
+      />
       <body>
         <Layout
           banner={<Banner storageKey="Variables Xporter">Variables Xporter now supports Tailwind CSS 4.0 ✨</Banner>}
