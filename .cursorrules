@@ -13,7 +13,7 @@
      - src/app/components/App.tsx (Main plugin UI)
      - src/lib/type.ts (TypeScript type definitions)
 
-2. Documentation Site (/docs):
+2. Documentation Site ():
    - Framework: Next.js
    - Content: MDX
    - UI Framework: Nextra
