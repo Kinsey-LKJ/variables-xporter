@@ -19,7 +19,7 @@ import { Callout } from 'nextra/components'
 - `font-weight/bold`
 
 ### 使用 `font` 作为顶层目录
-为了让 Design Tokens 的变量结构更加清晰，可以将所有排版和字体相关的变量都放在 `font` 目录下，例如：
+为了让 Design Tokens 的变量结构更加清晰，可以将所有排版和字体相关的变量以 `font/{property}/{variable}` 的格式都放在 `font` 目录下，例如：
 - `font/size/sm`
 - `font/size/base`
 - `font/size/lg`
@@ -35,7 +35,7 @@ import { Callout } from 'nextra/components'
 </Callout>
 
 ## 合并处理 [#merge-property]
-你还可以选择将相关的属性以 `font/{variable}/{property}` 的形式组合在一起。这种方式特别适合管理具有固定样式组合的文本相关变量。
+你还可以选择将相关的属性以 `font/{variable}/{property}` 的格式组合在一起。这种方式特别适合管理具有固定样式组合的文本相关变量。
 
 例如，Tailwind CSS 默认的 [Font Size 工具](https://tailwindcss.com/docs/font-size)由 `sm`、`base`、`lg` 等不同的级别组成，而每一个级别都包含默认的 `font-size`、`line-height` 两个属性，例如：
 
@@ -74,6 +74,10 @@ import { Callout } from 'nextra/components'
 - `font/body/weight`
 - `font/body/line-height`
 - `font/body/letter-spacing`
+
+<Callout type="info" emoji="💡">
+在以 `font/{variable}/{property}` 的格式合并处理变量时，如果 `{property}` 包含 `font-`前缀，例如 `font-size`、`font-weight`，则可以省略 `font-`。
+</Callout>
 
 这种组织方式会 Variables Xporter 会自动生成以下 Tailwind CSS 配置和对应的 CSS 变量：
 
