@@ -86,8 +86,14 @@ const nonUnits = [
 ];
 
 
+const figmaNameToKebabCase = (name: string): string => {
+  const nameArray = name.split('/');
+  const kebabCaseArray = nameArray.map((item) => changeCase.kebabCase(item));
+  return kebabCaseArray.join('/');
+}
+
 // 判断是否是媒体查询
-function isMediaQuery(modeName: string): boolean {
+const isMediaQuery = (modeName: string): boolean => {
   // 常见的媒体查询条件
   const mediaQueryFeatures = [
     'min-width',
@@ -213,7 +219,7 @@ function resolveVariableValue(variable: TVariable, context: ResolveContext): Res
   const result: Result = {
     initialVariable: {
       id: variable.id,
-      name: variable.name,
+      name: figmaNameToKebabCase(variable.name),
       collection: collection,
       resolvedDataType: variable.resolvedType,
       scopes: variable.scopes,
@@ -779,7 +785,7 @@ function generateTailwindConfig(results: Result[]): string {
     const fontConfigs: Record<
       string,
       {
-        size?: string;
+        fontSize?: string;
         lineHeight?: string;
         fontWeight?: string;
         letterSpacing?: string;
@@ -792,12 +798,12 @@ function generateTailwindConfig(results: Result[]): string {
     for (const result of results) {
       const { initialVariable } = result;
       const name = initialVariable.name;
-
+      console.log(name)
       // 检查是否是标准的字体配置
       const fontMatch = name.match(new RegExp(`^font\\/([^/]+)\\/(${propPattern})$`));
       if (fontMatch) {
         const [, variant, rawProp] = fontMatch;
-        const prop = Object.keys(propertyMap).includes(rawProp) ? normalizeProperty(rawProp) : rawProp;
+        const prop = Object.keys(propertyMap).includes(rawProp) ? propertyMap[rawProp] : rawProp;
 
         if (!fontConfigs[variant]) {
           fontConfigs[variant] = {};
@@ -810,7 +816,10 @@ function generateTailwindConfig(results: Result[]): string {
             .map((segment) => changeCase.kebabCase(segment))
             .join('-')})`;
           fontConfigs[variant][prop as keyof (typeof fontConfigs)[string]] = value;
-          if (prop === 'size' || fontConfigs[variant].size) {
+          console.log(value)
+          console.log(prop)
+          console.log(fontConfigs[variant])
+          if ( fontConfigs[variant].fontSize || prop === 'fontSize') {
             usedVariables.add(name);
           }
         }
@@ -819,7 +828,7 @@ function generateTailwindConfig(results: Result[]): string {
 
     // 移除不完整的配置（没有size的配置）
     for (const [variant, config] of Object.entries(fontConfigs)) {
-      if (!config.size) {
+      if (!config.fontSize) {
         delete fontConfigs[variant];
         // 移除这些变量的已使用标记
         for (const usedVar of usedVariables) {
@@ -833,14 +842,14 @@ function generateTailwindConfig(results: Result[]): string {
     // 生成合并的fontSize配置
     const mergedFontSize: Record<string, any> = {};
     for (const [variant, config] of Object.entries(fontConfigs)) {
-      if (!config.size) continue;
+      if (!config.fontSize) continue;
 
       const settings: Record<string, string> = {};
       if (config.lineHeight) settings.lineHeight = config.lineHeight;
       if (config.fontWeight) settings.fontWeight = config.fontWeight;
       if (config.letterSpacing) settings.letterSpacing = config.letterSpacing;
 
-      mergedFontSize[variant] = Object.keys(settings).length > 0 ? [config.size, settings] : config.size;
+      mergedFontSize[variant] = Object.keys(settings).length > 0 ? [ config.fontSize, settings] : config.fontSize;
     }
 
     return [mergedFontSize, usedVariables];
