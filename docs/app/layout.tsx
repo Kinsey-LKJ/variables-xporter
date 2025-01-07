@@ -1,10 +1,12 @@
 /* eslint-env node */
-import { Footer, Layout, Navbar } from 'nextra-theme-docs'
+
+import { Layout, Navbar } from 'nextra-theme-docs'
 import { Banner, Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import 'nextra-theme-docs/style.css'
 import './app.css'
-
+import Image from 'next/image'
+import { Footer } from './components/footer'
 
 export const { viewport } = Head
 
@@ -36,7 +38,8 @@ export default async function RootLayout({
   const navbar = (
     <Navbar
       logo={
-        <div>
+        <div className='flex items-center gap-2'>
+          <Image className='w-8 h-8' src="/Logo.png" alt="Variables Xporter" width={100} height={100} />
           <b>Variables Xporter</b>{' '}
           <span style={{ opacity: '60%' }}>The Figma plugin for exporting variables</span>
         </div>
@@ -45,6 +48,7 @@ export default async function RootLayout({
       chatLink="https://discord.gg/hEM84NMkRv"
     />
   )
+
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <Head faviconGlyph="✦" 
@@ -72,6 +76,10 @@ export default async function RootLayout({
           docsRepositoryBase="https://github.com/shuding/nextra/blob/main/examples/docs"
           sidebar={{ defaultMenuCollapseLevel: 1 }}
           pageMap={await getPageMap()}
+          nextThemes={{
+            defaultTheme: 'dark',
+            storageKey: 'variables-xporter-theme',
+          }}
         >
           {children}
         </Layout>
