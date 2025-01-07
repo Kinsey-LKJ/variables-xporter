@@ -38,7 +38,7 @@ module.exports = defineConfig({
         useAI: false,
         aiNumber: 1,
         themeColorCode: '',
-        scopes: ['docs', 'plugin'],
+        scopes: ['docs', 'plugin', 'website'],
         allowCustomScopes: true,
         allowEmptyScopes: true,
         customScopesAlign: 'bottom',
