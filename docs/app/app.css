@@ -1,6 +1,67 @@
 @import "tailwindcss";
+
+/* Default Mode */
+
+@theme {
+  --color-foreground-mute: oklch(0.99 0 0);
+  --color-background-default: 10 17 34 / 1;
+  --color-primary-default: 172 169 255 / 1;
+  --color-border-muted: 143 156 218 / 1;
+  --color-background-muted: 35 44 63 / 1;
+  --color-border-default: 72 103 255 / 1;
+  --color-border-subtlest: 33 37 56 / 1;
+  --color-shadow-default: 72 194 255 / 1;
+  --color-secondary-default: 229 180 234 / 1;
+  --color-primary-foreground: 25 44 91 / 1;
+  --color-foreground-default: 208 218 248 / 1;
+  --color-tag-primary-foreground: var(--colors-foreground-default);
+  --color-tag-red-foreground: var(--tailwind-color-red-100);
+  --color-tag-emerald-foreground: var(--tailwind-color-green-100);
+  --color-tag-purple-foreground: var(--tailwind-color-purple-100);
+  --color-tag-fuchsia-foreground: var(--tailwind-color-fuchsia-100);
+  --color-tag-red-border: var(--tailwind-color-red-400);
+  --color-tag-emerald-border: var(--tailwind-color-green-400);
+  --color-tag-purple-border: var(--tailwind-color-purple-400);
+  --color-tag-fuchsia-border: var(--tailwind-color-fuchsia-400);
+  --color-tag-primary-border: var(--colors-primary-default);
+}
+
+/* :root {
+  --colors-foreground-mute: 110 109 137 / 1;
+  --colors-background-default: 10 17 34 / 1;
+  --colors-primary-default: 172 169 255 / 1;
+  --colors-border-muted: 143 156 218 / 1;
+  --colors-background-muted: 35 44 63 / 1;
+  --colors-border-default: 72 103 255 / 1;
+  --colors-border-subtlest: 33 37 56 / 1;
+  --colors-shadow-default: 72 194 255 / 1;
+  --colors-secondary-default: 229 180 234 / 1;
+  --colors-primary-foreground: 25 44 91 / 1;
+  --colors-foreground-default: 208 218 248 / 1;
+  --colors-tag-primary-foreground: var(--colors-foreground-default);
+  --colors-tag-red-foreground: var(--tailwind-color-red-100);
+  --tailwind-color-red-100: 254 226 226 / 1;
+  --colors-tag-emerald-foreground: var(--tailwind-color-green-100);
+  --tailwind-color-green-100: 220 252 231 / 1;
+  --colors-tag-purple-foreground: var(--tailwind-color-purple-100);
+  --tailwind-color-purple-100: 243 232 255 / 1;
+  --colors-tag-fuchsia-foreground: var(--tailwind-color-fuchsia-100);
+  --tailwind-color-fuchsia-100: 250 232 255 / 1;
+  --colors-tag-red-border: var(--tailwind-color-red-400);
+  --tailwind-color-red-400: 248 113 113 / 1;
+  --colors-tag-emerald-border: var(--tailwind-color-green-400);
+  --tailwind-color-green-400: 74 222 128 / 1;
+  --colors-tag-purple-border: var(--tailwind-color-purple-400);
+  --tailwind-color-purple-400: 192 132 252 / 1;
+  --colors-tag-fuchsia-border: var(--tailwind-color-fuchsia-400);
+  --tailwind-color-fuchsia-400: 232 121 249 / 1;
+  --colors-tag-primary-border: var(--colors-primary-default);
+} */
+
 body {
-  font-feature-settings: "rlig" 1, "calt" 1;
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
 }
 
 figcaption {

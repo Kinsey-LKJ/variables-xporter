@@ -9,6 +9,8 @@ export default function IndexPage() {
         margin: '25vh 0',
         fontWeight: 'bold'
       }}
+
+      className=" text-foreground-default"
     >
       Variables Xporter
     </h1>
