@@ -116,6 +116,43 @@ const Export = (props: ExportProps) => {
               </div>
             </Tabs.Panel>
           </Tabs>
+        ) : exportFormat === 'Tailwind CSS 4.0' ? (
+          <Tabs key={'tw4Output'} defaultValue="tw4-css" className="h-auto grid gap-6 overflow-visible">
+            <Tabs.List className='sticky top-0 bg-background z-10'>
+              <Tabs.Tab value="tw4-css">css</Tabs.Tab>
+            </Tabs.List>
+            <Tabs.Panel value="tw4-css" className=" overflow-hidden">
+              <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
+                <div className="w-full">
+                  <Button
+                    type="button"
+                    variant="subtle"
+                    size="icon"
+                    className="!absolute top-2 right-2 !p-0 !size-9"
+                    onClick={() => {
+                      copyToClipboard(`${tailwindCSSOutput.globalsCSS}`);
+                    }}
+                  >
+                    <ClipboardList />
+                  </Button>
+                  <SyntaxHighlighter
+                    language="css"
+                    style={coldarkDark}
+                    customStyle={
+                      {
+                        padding: '1rem',
+                        marginTop: 0,
+                        background: 'rgb(43 43 42)',
+                        borderRadius: '0.5rem',
+                      } as React.CSSProperties
+                    }
+                  >
+                    {tailwindCSSOutput.globalsCSS}
+                  </SyntaxHighlighter>
+                </div>
+              </div>
+            </Tabs.Panel>
+          </Tabs>
         ) : (
           <Tabs key={'cssOutput'} defaultValue="css" className="h-auto grid gap-6 overflow-visible">
             <Tabs.List className='sticky top-0 bg-background z-10'>

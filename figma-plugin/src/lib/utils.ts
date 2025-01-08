@@ -1,4 +1,4 @@
-import { TVariable, TVariableCollection } from './type';
+import { TVariable, TVariableCollection, ExportFormat } from './type';
 import * as changeCase from 'change-case';
 
 export const ignoreGroup = [
@@ -1025,9 +1025,72 @@ export async function generateThemeFiles(
   appendCollectionName: boolean = true,
   useRemUnit: boolean = false,
   selectGroup: string[] = [],
-  ignoreGroup: string[] = []
+  ignoreGroup: string[] = [],
+  format?: ExportFormat
 ): Promise<{ css: string; tailwindConfig: string }> {
   try {
+    if (format === 'Tailwind CSS 4.0') {
+      const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup);
+      // Generate CSS with @theme directive for Tailwind CSS v4
+      const cssContent = ['@import "tailwindcss";', '@theme {'];
+      
+      // Process variables into CSS custom properties
+      for (const result of results) {
+        const { initialVariable, modes } = result;
+        const defaultMode = modes[initialVariable.collection.defaultModeId];
+        if (!defaultMode || defaultMode.value === undefined) continue;
+
+        const name = figmaNameToKebabCase(initialVariable.name);
+        let value;
+
+        // Handle the value based on its type
+        const rawValue = defaultMode.value;
+        
+        if (typeof rawValue === 'object' && !Array.isArray(rawValue) && rawValue !== null) {
+          // Handle nested mode structure
+          const modeValues = rawValue as { [key: string]: { value: ResolvedValue } };
+          const firstModeValue = Object.values(modeValues)[0]?.value;
+          
+          if (firstModeValue) {
+            if (isColorValue(firstModeValue)) {
+              value = processColorValue(firstModeValue);
+            } else {
+              value = processConstantValue(
+                firstModeValue as SimpleValue,
+                initialVariable.resolvedDataType,
+                initialVariable.scopes,
+                useRemUnit,
+                name
+              );
+            }
+          }
+        } else if (rawValue !== undefined) {
+          // Handle direct value
+          if (isColorValue(rawValue)) {
+            value = processColorValue(rawValue as ColorValue);
+          } else {
+            value = processConstantValue(
+              rawValue as SimpleValue,
+              initialVariable.resolvedDataType,
+              initialVariable.scopes,
+              useRemUnit,
+              name
+            );
+          }
+        }
+        
+        if (value !== undefined) {
+          cssContent.push(`  --${name}: ${value};`);
+        }
+      }
+      
+      cssContent.push('}');
+      return {
+        css: cssContent.join('\n'),
+        tailwindConfig: '' // v4 doesn't use tailwind.config.js
+      };
+    }
+    
     const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup);
     console.log(results);
     const css = generateCSSForMultipleVariables(results, collections, appendCollectionName, useRemUnit);
