@@ -351,12 +351,17 @@ function generateCSSForMultipleVariables(
       .split('/')
       .map((segment) => changeCase.kebabCase(segment))
       .join('-');
+
+    // 如果变量名以 -default 结尾,则删除它
+    const cssNameWithoutDefault = cssNameKebabCase.endsWith('-default') 
+      ? cssNameKebabCase.slice(0, -8) // 删除 '-default' (8个字符)
+      : cssNameKebabCase;
     if (variable.collection.id !== originalCollection.id && appendCollectionName) {
       const collectionName = sanitizeCollectionName(variable.collection.name);
-      return `${cssNameKebabCase}-${collectionName}`;
+      return `${cssNameWithoutDefault}-${collectionName}`;
     }
 
-    return cssNameKebabCase;
+    return cssNameWithoutDefault;
   }
 
   // 帮助函数：获取 mode 的 name 和所属集合
@@ -680,7 +685,7 @@ function generateTailwindConfig(results: Result[]): string {
       changeCase.camelCase(nameArr[0]),
       ...nameArr.slice(1).map((segment) => {
         if (segment === 'DEFAULT') return 'DEFAULT';
-        return changeCase.camelCase(segment);
+        return changeCase.kebabCase(segment);
       }),
     ];
   }
@@ -688,13 +693,19 @@ function generateTailwindConfig(results: Result[]): string {
   function setNestedValue(obj: any, path: string[], value: string) {
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
+      console.log(path[i])
       const key = path[i];
       if (!(key in current)) {
         current[key] = {};
       }
       current = current[key];
     }
-    current[path[path.length - 1]] = value;
+
+    if (path[path.length - 1] === 'default') {
+      current['DEFAULT'] = value;
+    } else {
+      current[path[path.length - 1]] = value;
+    }
   }
 
   // 属性名映射和匹配帮助函数
@@ -944,6 +955,7 @@ function generateTailwindConfig(results: Result[]): string {
     const { initialVariable } = result;
     const name = initialVariable.name;
     const path = parseVariablePath(initialVariable.name);
+    console.log(name)
 
     // 如果这个变量已经被用于合并配置，则跳过
     if (usedVariables.has(name)) {
