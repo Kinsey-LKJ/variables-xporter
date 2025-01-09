@@ -20,13 +20,14 @@ import { Badge, Button, Checkbox, Drawer, Menu, Modal, Select, Tooltip } from '@
 import { ArrowLeft, ChevronLeftIcon, CircleAlert, EarthIcon, Github, Info } from 'lucide-react';
 import { sendInstallationIdAndRepo } from '../../lib/action';
 import gh from 'parse-github-url';
-const validateGithubURL = (url) => gh(url);
 import ExportPage, { ExportPageHandles } from './export-page';
 import { Result } from 'parse-github-url';
 import { set } from 'zod';
 import { notifications } from '@mantine/notifications';
 import cn from '../zh.json';
 import en from '../en.json';
+
+const validateGithubURL = (url) => gh(url);
 
 export interface GithubDataProps {
   installationId: string;
@@ -268,6 +269,7 @@ function App() {
             </Button>
           </ConnectGithubFormProvider> */}
         </div>
+
 
         <ExportPage ref={exportPageRef} />
       </div>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  background-color: #1a1a1a;
+  background-color: rgb(var(--colors-background));
   --mantine-color-text: rgb(var(--colors-foreground));
   color: rgb(var(--colors-foreground));
 }
@@ -84,6 +84,7 @@ body {
   opacity: 0.3;
   animation: export-display 10s 2s linear infinite;
 }
+
 
 @keyframes red-light-move {
   0% {
@@ -304,12 +305,12 @@ body {
 
 @layer components {
   .special-text {
-    @apply text-transparent [text-shadow:0px_0px_4px_#fffef770,0_0_0_#FFF6B9,0px_0px_10px_#ffffdf20];
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-[#eae9ff3f] via-[#EAE9FF] to-[#eae9ffa2];
   }
 }
 
 @layer base {
-  :root {
+  /* :root {
     --colors-gold-50: 255 255 230;
     --colors-gold-100: 255 255 208;
     --colors-gold-200: 255 255 159;
@@ -349,7 +350,66 @@ body {
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-  }
+  } */
+/* Default Mode */
+:root {
+  --colors-gold-50: 255 255 230 / 1;
+  --colors-gold-100: 255 255 208 / 1;
+  --colors-gold-200: 255 255 159 / 1;
+  --colors-gold-300: 255 255 105 / 1;
+  --colors-gold-400: 255 255 64 / 1;
+  --colors-gold-500: 255 255 41 / 1;
+  --colors-gold-600: 255 255 29 / 1;
+  --colors-gold-700: 227 227 16 / 1;
+  --colors-gold-800: 201 201 0 / 1;
+  --colors-gold-900: 173 173 0 / 1;
+  --colors-foreground-mute: 110 109 137 / 1;
+  --colors-background: 10,17,34;
+  --colors-primary: var(--colors-biloba-flower-300);
+  --colors-biloba-flower-300: 172 169 255 / 1;
+  --colors-border-muted: 143 156 218 / 1;
+  --colors-background-muted: 35 44 63 / 1;
+  --colors-border: 72 103 255 / 1;
+  --colors-border-subtlest: 33 37 56 / 1;
+  --colors-shadow: 72 194 255 / 1;
+  --colors-secondary: 229 180 234 / 1;
+  --colors-primary-foreground: 25 44 91 / 1;
+  --colors-foreground: 208 218 248 / 1;
+  --colors-tag-primary-foreground: var(--colors-foreground);
+  --colors-tag-red-foreground: var(--tailwind-color-red-100);
+  --tailwind-color-red-100: 254 226 226 / 1;
+  --colors-tag-emerald-foreground: var(--tailwind-color-green-100);
+  --tailwind-color-green-100: 220 252 231 / 1;
+  --colors-tag-purple-foreground: var(--tailwind-color-purple-100);
+  --tailwind-color-purple-100: 243 232 255 / 1;
+  --colors-tag-fuchsia-foreground: var(--tailwind-color-fuchsia-100);
+  --tailwind-color-fuchsia-100: 250 232 255 / 1;
+  --colors-tag-red-border: var(--tailwind-color-red-400);
+  --tailwind-color-red-400: 248 113 113 / 1;
+  --colors-tag-emerald-border: var(--tailwind-color-green-400);
+  --tailwind-color-green-400: 74 222 128 / 1;
+  --colors-tag-purple-border: var(--tailwind-color-purple-400);
+  --tailwind-color-purple-400: 192 132 252 / 1;
+  --colors-tag-fuchsia-border: var(--tailwind-color-fuchsia-400);
+  --tailwind-color-fuchsia-400: 232 121 249 / 1;
+  --colors-tag-primary-border: var(--colors-primary);
+  --colors-biloba-flower-50: 237 238 255 / 1;
+  --colors-biloba-flower-100: 223 223 255 / 1;
+  --colors-biloba-flower-200: 197 197 255 / 1;
+  --colors-biloba-flower-400: 139 125 252 / 1;
+  --colors-biloba-flower-500: 123 94 246 / 1;
+  --colors-biloba-flower-600: 109 65 234 / 1;
+  --colors-biloba-flower-700: 95 51 207 / 1;
+  --colors-biloba-flower-800: 77 44 167 / 1;
+  --colors-biloba-flower-900: 64 43 132 / 1;
+  --colors-biloba-flower-950: 40 25 77 / 1;
+  --colors-input: 63 68 93 / 1;
+  --colors-ring: var(--colors-primary);
+  --colors-accent: var(--colors-background-muted);
+}
+
+
+
 }
 
 /* @layer base {
