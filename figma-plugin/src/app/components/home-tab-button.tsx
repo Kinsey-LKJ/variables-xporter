@@ -27,10 +27,10 @@ const HomeTabButton = (props: NavProps) => {
     formattingOutput,
     handleExport,
   } = props;
-  const { connectGithubState, openDrawer,textData } = useContext(AppContext);
+  const { connectGithubState, openDrawer, textData } = useContext(AppContext);
   const form = useVariableFormContext();
   return (
-    <div className=" grid gap-2 p-4 z-10 bg-gradient-to-t from-[#1A1A1A] from-80% to-100% absolute bottom-0 w-full">
+    <div className=" grid gap-2 p-4 z-10 bg-gradient-to-t from-background/100 from-80% to-100% absolute bottom-0 w-full">
       {selectedSnap === 2 ? (
         <div className=" grid gap-1  ">
           <Checkbox
@@ -63,8 +63,18 @@ const HomeTabButton = (props: NavProps) => {
 
       <div className="flex gap-4">
         {selectedSnap === 0 ? (
-          <SpecialButton
-            size="lg"
+          // <SpecialButton
+          //   size="lg"
+          //   fullWidth
+          //   loaderProps={{
+          //     size: 'sm',
+          //   }}
+          //   onClick={onNextButtonClick}
+          // >
+          //   {textData.get_started}
+          // </SpecialButton>
+          <Button
+            size="md"
             fullWidth
             loaderProps={{
               size: 'sm',
@@ -72,21 +82,32 @@ const HomeTabButton = (props: NavProps) => {
             onClick={onNextButtonClick}
           >
             {textData.get_started}
-          </SpecialButton>
+          </Button>
         ) : null}
 
         {selectedSnap === 1 ? (
-          <SpecialButton
-            size="lg"
+          // <SpecialButton
+          //   size="lg"
+          //   fullWidth
+          //   loaderProps={{
+          //     size: 'sm',
+          //   }}
+          //   loading={formattingOutput}
+          //   onClick={handleExport}
+          // >
+          //   {textData.export}
+          // </SpecialButton>
+          <Button
+            size="md"
             fullWidth
             loaderProps={{
               size: 'sm',
             }}
-            loading={formattingOutput}
-            onClick={handleExport}
-          >
+          loading={formattingOutput}
+          onClick={handleExport}
+        >
             {textData.export}
-          </SpecialButton>
+          </Button>
         ) : null}
 
         {/* {selectedSnap === 1 ? (

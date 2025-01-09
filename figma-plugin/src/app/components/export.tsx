@@ -73,7 +73,7 @@ const Export = (props: ExportProps) => {
                       {
                         padding: '1rem',
                         marginTop: 0,
-                        background: 'rgb(43 43 42)',
+                        background: 'rgb(32 37 46)',
                         borderRadius: '0.5rem',
                       } as React.CSSProperties
                     }
@@ -105,7 +105,7 @@ const Export = (props: ExportProps) => {
                       {
                         padding: '1rem',
                         marginTop: 0,
-                        background: 'rgb(43 43 42)',
+                        background: 'rgb(32 37 46)',
                         borderRadius: '0.5rem',
                       } as React.CSSProperties
                     }
@@ -142,7 +142,7 @@ const Export = (props: ExportProps) => {
                       {
                         padding: '1rem',
                         marginTop: 0,
-                        background: 'rgb(43 43 42)',
+                        background: 'rgb(32 37 46)',
                         borderRadius: '0.5rem',
                       } as React.CSSProperties
                     }

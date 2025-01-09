@@ -6,9 +6,12 @@ import SelectVariableGroups from './selectVariableGroups';
 import { useContext } from 'react';
 import { AppContext } from './App';
 import { ArrowUpRight } from 'lucide-react';
+import { useMantineTheme } from '@mantine/core';
+
 
 const Setup = () => {
   const { textData, collections, variables } = useContext(AppContext);
+  const theme = useMantineTheme();
 
   const form = useVariableFormContext();
   const formValus = form.values;
@@ -29,6 +32,7 @@ const Setup = () => {
               comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
               maxDropdownHeight={200}
               className=" shadow-2xl"
+              color='#C3FF36'
               {...form.getInputProps('selectCollectionID')}
             />
             <SelectVariableGroups collections={collections} variables={variables} />
@@ -41,6 +45,7 @@ const Setup = () => {
                   comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
                   maxDropdownHeight={200}
                   className=" shadow-2xl"
+                                color='#C3FF36'
                   {...form.getInputProps('exportFormat')}
                 />
 
