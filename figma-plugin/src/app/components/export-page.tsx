@@ -67,7 +67,7 @@ export interface ExportPageHandles {
 }
 
 const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
-  const { collections, variables, connectedRepoInfo, currentStep, setCurrentStep } = useContext(AppContext);
+  const { collections, variables, connectedRepoInfo, currentStep, setCurrentStep, textData } = useContext(AppContext);
   const [formattingOutput, setFormattingOutput] = useState<boolean>(false);
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [tailwindCSSOutput, setTailwindCSSOutput] = useState<{
@@ -137,7 +137,8 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
             true,
             formValues.useRemUnit,
             formValues.selectVariableGroup,
-            formValues.ignoreTailwindColor ? ignoreGroup : []
+            formValues.ignoreTailwindColor ? ignoreGroup : [],
+            onRequestPaidFeature
           );
           setTailwindCSSOutput({
             config: tailwindConfig,
@@ -164,6 +165,40 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
     }
   };
 
+  const onRequestPaidFeature = async (feature: string) => {
+    // 这里可以添加你的付费检查逻辑
+    // 例如：检查用户是否已付费，或者弹出付费提示
+
+    console.log(feature);
+    console.log(textData);
+    const userResponse = await new Promise<boolean>((resolve) => {
+      // 发送消息到 Figma UI，显示付费提示
+      parent.postMessage(
+        {
+          pluginMessage: {
+            type: 'check-and-run-paid-feature-code',
+            message: textData.you_need_to_upgrade_your_plan_to_use_the_following_features,
+            paidFeature: textData[feature],
+            paidSuccess: textData.paid_success,
+            paidError: textData.paid_error,
+          },
+        },
+        '*'
+      );
+
+      onmessage = async (event: MessageEvent) => {
+        const msg = event.data.pluginMessage;
+        switch (msg.type) {
+          case 'check-and-run-paid-feature-code-result':
+            resolve(msg.result);
+            break;
+        }
+      };
+    });
+
+    return userResponse;
+  };
+
   const handleExport = async () => {
     setFormattingOutput(true); // 显示加载图标
 
@@ -185,7 +220,8 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
             true,
             formValues.useRemUnit,
             formValues.selectVariableGroup,
-            formValues.ignoreTailwindColor ? ignoreGroup : []
+            formValues.ignoreTailwindColor ? ignoreGroup : [],
+            onRequestPaidFeature
           );
           setTailwindCSSOutput({
             config: tailwindConfig,
@@ -229,15 +265,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       d="M588.5 245V239.485C588.5 237.894 589.132 236.368 590.257 235.243L620.243 205.257C621.368 204.132 622.894 203.5 624.485 203.5L919 203.5H988.515C990.106 203.5 991.632 204.132 992.757 205.257L1024.74 237.243C1025.87 238.368 1026.5 239.894 1026.5 241.485V243"
                       stroke="url(#paint1_linear_375_1247)"
                     />
-                    <mask
-                      id="mask0_375_1247"
-                      
-                      maskUnits="userSpaceOnUse"
-                      x="1048"
-                      y="243"
-                      width="152"
-                      height="19"
-                    >
+                    <mask id="mask0_375_1247" maskUnits="userSpaceOnUse" x="1048" y="243" width="152" height="19">
                       <rect x="1048" y="243" width="152" height="19" fill="url(#paint2_linear_375_1247)" />
                     </mask>
                     <g mask="url(#mask0_375_1247)">
@@ -3255,15 +3283,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       />
                     </g>
                     <g clip-path="url(#clip1_375_1247)">
-                      <mask
-                        id="mask1_375_1247"
-                        
-                        maskUnits="userSpaceOnUse"
-                        x="1065"
-                        y="244"
-                        width="24"
-                        height="2"
-                      >
+                      <mask id="mask1_375_1247" maskUnits="userSpaceOnUse" x="1065" y="244" width="24" height="2">
                         <rect x="1065" y="244" width="24" height="2" fill="url(#paint318_linear_375_1247)" />
                       </mask>
                       <g mask="url(#mask1_375_1247)">
@@ -3278,15 +3298,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       </g>
                     </g>
                     <g clip-path="url(#clip2_375_1247)">
-                      <mask
-                        id="mask2_375_1247"
-                        
-                        maskUnits="userSpaceOnUse"
-                        x="1154"
-                        y="246"
-                        width="24"
-                        height="2"
-                      >
+                      <mask id="mask2_375_1247" maskUnits="userSpaceOnUse" x="1154" y="246" width="24" height="2">
                         <rect x="1154" y="246" width="24" height="2" fill="url(#paint320_linear_375_1247)" />
                       </mask>
                       <g mask="url(#mask2_375_1247)">
@@ -3301,15 +3313,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       </g>
                     </g>
                     <g clip-path="url(#clip3_375_1247)">
-                      <mask
-                        id="mask3_375_1247"
-                        
-                        maskUnits="userSpaceOnUse"
-                        x="1077"
-                        y="253"
-                        width="24"
-                        height="2"
-                      >
+                      <mask id="mask3_375_1247" maskUnits="userSpaceOnUse" x="1077" y="253" width="24" height="2">
                         <rect x="1077" y="253" width="24" height="2" fill="url(#paint322_linear_375_1247)" />
                       </mask>
                       <g mask="url(#mask3_375_1247)">
@@ -3324,15 +3328,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       </g>
                     </g>
                     <g clip-path="url(#clip4_375_1247)">
-                      <mask
-                        id="mask4_375_1247"
-                        
-                        maskUnits="userSpaceOnUse"
-                        x="1117"
-                        y="254"
-                        width="24"
-                        height="2"
-                      >
+                      <mask id="mask4_375_1247" maskUnits="userSpaceOnUse" x="1117" y="254" width="24" height="2">
                         <rect x="1117" y="254" width="24" height="2" fill="url(#paint324_linear_375_1247)" />
                       </mask>
                       <g mask="url(#mask4_375_1247)">
@@ -3346,15 +3342,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                         />
                       </g>
                     </g>
-                    <mask
-                      id="mask5_375_1247"
-                      
-                      maskUnits="userSpaceOnUse"
-                      x="1099"
-                      y="249"
-                      width="44"
-                      height="2"
-                    >
+                    <mask id="mask5_375_1247" maskUnits="userSpaceOnUse" x="1099" y="249" width="44" height="2">
                       <rect x="1099" y="249" width="44" height="2" fill="url(#paint326_linear_375_1247)" />
                     </mask>
                     <g mask="url(#mask5_375_1247)">

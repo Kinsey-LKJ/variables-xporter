@@ -63,34 +63,33 @@ const notSupportRemUnit = [
   'outline-width',
   'stroke-width',
   'z-index',
-  "skew"
+  'skew',
 ];
 
 const nonUnits = [
-  "aspectRatio",          // 比值
-  "hueRotate",            // 角度单位（如 deg）
-  "rotate",               // 角度单位（如 deg）
-  "skew",                 // 角度单位（如 deg）
-  "scale",                // 比例
-  "opacity",              // 0 到 1 的比值
-  "brightness",           // 0 到 1 的比值
-  "contrast",             // 0 到 1 的比值
-  "grayscale",            // 0 到 1 的比值
-  "invert",               // 0 到 1 的比值
-  "saturate",             // 0 到 1 的比值
-  "sepia",                // 0 到 1 的比值
-  "flexGrow",             // 整数
-  "flexShrink",           // 整数
-  "order",                // 整数
-  "zIndex"                // 整数
+  'aspectRatio', // 比值
+  'hueRotate', // 角度单位（如 deg）
+  'rotate', // 角度单位（如 deg）
+  'skew', // 角度单位（如 deg）
+  'scale', // 比例
+  'opacity', // 0 到 1 的比值
+  'brightness', // 0 到 1 的比值
+  'contrast', // 0 到 1 的比值
+  'grayscale', // 0 到 1 的比值
+  'invert', // 0 到 1 的比值
+  'saturate', // 0 到 1 的比值
+  'sepia', // 0 到 1 的比值
+  'flexGrow', // 整数
+  'flexShrink', // 整数
+  'order', // 整数
+  'zIndex', // 整数
 ];
-
 
 const figmaNameToKebabCase = (name: string): string => {
   const nameArray = name.split('/');
   const kebabCaseArray = nameArray.map((item) => changeCase.kebabCase(item));
   return kebabCaseArray.join('/');
-}
+};
 
 // 判断是否是媒体查询
 const isMediaQuery = (modeName: string): boolean => {
@@ -111,7 +110,7 @@ const isMediaQuery = (modeName: string): boolean => {
 
   // 检查是否以任一媒体查询特性开头
   return mediaQueryFeatures.some((feature) => modeName.startsWith(`${feature}:`));
-}
+};
 
 export function processColorValue(value: ColorValue): string {
   const r = Math.round(value.r * 255);
@@ -136,7 +135,7 @@ export function processConstantValue(
     return processColorValue(value);
   } else if (resolvedDataType === 'FLOAT') {
     const startWith = variableCSSName.split('-')[0];
-    
+
     const isMustPx = variableCSSName.includes('-px');
     const isNotSupportRemUnit = notSupportRemUnit.some((item: VariableScope) => startWith.includes(item));
     const isNonUnit = nonUnits.some((item: VariableScope) => startWith.includes(item));
@@ -276,7 +275,43 @@ function resolveVariableValue(variable: TVariable, context: ResolveContext): Res
   return result;
 }
 
-// 4. 批量处理函数
+// 添加跨集合引用检测函数
+export function hasCrossCollectionReferences(
+  variable: TVariable,
+  variables: TVariable[],
+  collections: TVariableCollection[],
+  visitedVariableIds: Set<string> = new Set()
+): boolean {
+  if (visitedVariableIds.has(variable.id)) {
+    return false; // 避免循环引用
+  }
+  visitedVariableIds.add(variable.id);
+
+  const collection = collections.find((c) => c.id === variable.variableCollectionId);
+  if (!collection) return false;
+
+  for (const mode of collection.modes) {
+    const value = variable.valuesByMode?.[mode.modeId];
+    if (isVariableAlias(value)) {
+      const referencedVariable = variables.find((v) => v.id === value.id);
+      if (!referencedVariable) continue;
+
+      // 检查是否是跨集合引用
+      if (referencedVariable.variableCollectionId !== variable.variableCollectionId) {
+        return true;
+      }
+
+      // 递归检查引用的变量
+      if (hasCrossCollectionReferences(referencedVariable, variables, collections, visitedVariableIds)) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+// 修改 resolveVariables 函数
 function resolveVariables(
   output: TVariable[],
   variables: TVariable[],
@@ -284,28 +319,28 @@ function resolveVariables(
   selectGroup: string[],
   ignoreGroup: string[]
 ): Result[] {
-  const results: Result[] = [];
-  const visitedVariableIds = new Set<string>();
+    const results: Result[] = [];
+    const visitedVariableIds = new Set<string>();
 
-  const filtered = output.filter((item) => {
-    return (
-      selectGroup.some((group) => item.name.startsWith(group + '/') || item.name === group) &&
-      !ignoreGroup.some((group) => item.name.startsWith(group + '/'))
-    );
-  });
+    const filtered = output.filter((item) => {
+      return (
+        selectGroup.some((group) => item.name.startsWith(group + '/') || item.name === group) &&
+        !ignoreGroup.some((group) => item.name.startsWith(group + '/'))
+      );
+    });
 
-  for (const variable of filtered) {
-    try {
-      const result = resolveVariableValue(variable, {
-        variables,
-        collections,
-        visitedVariableIds: new Set(visitedVariableIds),
-      });
-      results.push(result);
-    } catch (error) {
-      console.error(`解析变量 ${variable.name} 时出错:`, error);
+    for (const variable of filtered) {
+      try {
+        const result = resolveVariableValue(variable, {
+          variables,
+          collections,
+          visitedVariableIds: new Set(visitedVariableIds),
+        });
+        results.push(result);
+      } catch (error) {
+        console.error(`解析变量 ${variable.name} 时出错:`, error);
+      }
     }
-  }
 
   return results;
 }
@@ -353,7 +388,7 @@ function generateCSSForMultipleVariables(
       .join('-');
 
     // 如果变量名以 -default 结尾,则删除它
-    const cssNameWithoutDefault = cssNameKebabCase.endsWith('-default') 
+    const cssNameWithoutDefault = cssNameKebabCase.endsWith('-default')
       ? cssNameKebabCase.slice(0, -8) // 删除 '-default' (8个字符)
       : cssNameKebabCase;
     if (variable.collection.id !== originalCollection.id && appendCollectionName) {
@@ -693,7 +728,7 @@ function generateTailwindConfig(results: Result[]): string {
   function setNestedValue(obj: any, path: string[], value: string) {
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
-      console.log(path[i])
+      console.log(path[i]);
       const key = path[i];
       if (!(key in current)) {
         current[key] = {};
@@ -744,8 +779,8 @@ function generateTailwindConfig(results: Result[]): string {
     'text-underline-offset': 'textUnderlineOffset',
     'font-variant-numeric': 'fontVariantNumeric',
     'font-smoothing': 'fontSmoothing',
-    'hyphens': 'hyphens',
-    'caption': 'caption',
+    hyphens: 'hyphens',
+    caption: 'caption',
     fontSize: 'fontSize',
     fontFamily: 'fontFamily',
     textAlign: 'textAlign',
@@ -809,7 +844,7 @@ function generateTailwindConfig(results: Result[]): string {
     for (const result of results) {
       const { initialVariable } = result;
       const name = initialVariable.name;
-      console.log(name)
+      console.log(name);
       // 检查是否是标准的字体配置
       const fontMatch = name.match(new RegExp(`^font\\/([^/]+)\\/(${propPattern})$`));
       if (fontMatch) {
@@ -827,10 +862,10 @@ function generateTailwindConfig(results: Result[]): string {
             .map((segment) => changeCase.kebabCase(segment))
             .join('-')})`;
           fontConfigs[variant][prop as keyof (typeof fontConfigs)[string]] = value;
-          console.log(value)
-          console.log(prop)
-          console.log(fontConfigs[variant])
-          if ( fontConfigs[variant].fontSize || prop === 'fontSize') {
+          console.log(value);
+          console.log(prop);
+          console.log(fontConfigs[variant]);
+          if (fontConfigs[variant].fontSize || prop === 'fontSize') {
             usedVariables.add(name);
           }
         }
@@ -860,7 +895,7 @@ function generateTailwindConfig(results: Result[]): string {
       if (config.fontWeight) settings.fontWeight = config.fontWeight;
       if (config.letterSpacing) settings.letterSpacing = config.letterSpacing;
 
-      mergedFontSize[variant] = Object.keys(settings).length > 0 ? [ config.fontSize, settings] : config.fontSize;
+      mergedFontSize[variant] = Object.keys(settings).length > 0 ? [config.fontSize, settings] : config.fontSize;
     }
 
     return [mergedFontSize, usedVariables];
@@ -955,7 +990,7 @@ function generateTailwindConfig(results: Result[]): string {
     const { initialVariable } = result;
     const name = initialVariable.name;
     const path = parseVariablePath(initialVariable.name);
-    console.log(name)
+    console.log(name);
 
     // 如果这个变量已经被用于合并配置，则跳过
     if (usedVariables.has(name)) {
@@ -1037,11 +1072,35 @@ export async function generateThemeFiles(
   appendCollectionName: boolean = true,
   useRemUnit: boolean = false,
   selectGroup: string[] = [],
-  ignoreGroup: string[] = []
+  ignoreGroup: string[] = [],
+  onRequestPaidFeature: (feature: string) => Promise<boolean> // 新增参数
 ): Promise<{ css: string; tailwindConfig: string }> {
   try {
+    const filtered = output.filter((item) => {
+      return (
+        selectGroup.some((group) => item.name.startsWith(group + '/') || item.name === group) &&
+        !ignoreGroup.some((group) => item.name.startsWith(group + '/'))
+      );
+    });
+
+    // 检查是否存在跨集合引用
+    const hasCrossRefs = filtered.some((variable) => hasCrossCollectionReferences(variable, variables, collections));
+
+    // 如果存在跨集合引用且提供了回调函数，则调用它
+    if (hasCrossRefs && onRequestPaidFeature) {
+      try {
+        const canProceed = await onRequestPaidFeature('cross_collection_reference');
+        console.log(canProceed);
+        if (!canProceed) {
+          // throw new Error('需要付费功能来处理跨集合引用');
+          console.log('需要付费功能来处理跨集合引用');
+          return;
+        }
+      } catch (error) {
+        throw error;
+      }
+    }
     const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup);
-    console.log(results);
     const css = generateCSSForMultipleVariables(results, collections, appendCollectionName, useRemUnit);
     const tailwindConfig = generateTailwindConfig(results);
     return { css, tailwindConfig };

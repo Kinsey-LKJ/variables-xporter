@@ -13,5 +13,9 @@
     "ignore_tailwind_css_default_palette": "Ignore Tailwind CSS Default Palette",
     "ignore_default_palette_description": "This option will ignore Tailwind CSS's default color palettes like Slate, Gray, Zinc, Neutral... If you haven't modified them and are using the default values, you should ignore them.",
     "tailwind_css_figma_template": "Tailwind CSS Figma Template",
-    "documentation": "Documentation"
+    "documentation": "Documentation",
+    "cross_collection_reference": "Cross Collection Reference",
+    "you_need_to_upgrade_your_plan_to_use_the_following_features": "You need to upgrade your plan to use the following features",
+    "paid_success": "Paid Success!",
+    "paid_error": "Paid Error!"
   }

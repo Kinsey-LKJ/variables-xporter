@@ -2,6 +2,10 @@ import { TVariableCollection, TVariable } from '../lib/type';
 
 figma.showUI(__html__, { height: 500, width: 400 });
 
+figma.payments.setPaymentStatusInDevelopment({
+  type: 'UNPAID',
+})
+
 // get github settings
 function getLocalData (key) {
   console.log(key)
@@ -28,11 +32,40 @@ function init () {
 
 // init()
 
+
+async function checkAndRunPaidFeatureCode(message: string, paidFeature: string, paidSuccess: string, paidError: string) {
+  console.log(figma.payments.status.type)
+  if (figma.payments.status.type === "UNPAID") {
+    figma.notify(`${message} ${paidFeature}`)
+    await figma.payments.initiateCheckoutAsync({
+      interstitial: "PAID_FEATURE",
+    })
+    if (figma.payments.status.type === "UNPAID") {
+      figma.notify(message)
+      figma.ui.postMessage({ type: 'check-and-run-paid-feature-code-result', result: false })
+    }else if(figma.payments.status.type === "NOT_SUPPORTED") {
+      figma.notify(paidError)
+      figma.ui.postMessage({ type: 'check-and-run-paid-feature-code-result', result: false })
+    }
+  }
+
+  if (figma.payments.status.type === "PAID") {
+    figma.notify(paidSuccess)
+    figma.ui.postMessage({ type: 'check-and-run-paid-feature-code-result', result: true })
+  }
+
+
+}
+
 figma.ui.onmessage = msg => {
   switch (msg.type) {
     case 'set-github-data':
       console.log(msg)
       setLocalData('github-data', msg.githubData)
+      break
+
+    case 'check-and-run-paid-feature-code':
+      checkAndRunPaidFeatureCode(msg.message, msg.paidFeature, msg.paidSuccess, msg.paidError)
       break
 
     case 'cancel':

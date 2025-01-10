@@ -71,4 +71,8 @@ export interface TextData {
   ignore_tailwind_css_default_palette: string;
   ignore_default_palette_description: string;
   tailwind_css_figma_template: string;
+  you_need_to_upgrade_your_plan_to_use_the_following_features: string;
+  cross_collection_reference: string;
+  paid_success: string;
+  paid_error: string;
 }
