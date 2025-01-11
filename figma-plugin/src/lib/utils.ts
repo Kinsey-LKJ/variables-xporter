@@ -118,9 +118,9 @@ export function processColorValue(value: ColorValue): string {
   const g = Math.round(value.g * 255);
   const b = Math.round(value.b * 255);
 
-  if (isRGBA(value)) {
-    return `${r} ${g} ${b} / ${value.a}`;
-  }
+  // if (isRGBA(value)) {
+  //   return `${r} ${g} ${b} / ${value.a}`;
+  // }
 
   return `${r} ${g} ${b}`;
 }
@@ -247,7 +247,7 @@ function resolveVariableValue(variable: TVariable, context: ResolveContext): Res
         value: {},
         variable: {
           id: referencedVariable.id,
-          name: referencedVariable.name,
+          name: figmaNameToKebabCase(referencedVariable.name),
           collection: resolvedReference.initialVariable.collection,
         },
       };
@@ -702,7 +702,7 @@ function generateTailwindConfig(results: Result[]): string {
     }
 
     if (path[path.length - 1] === 'default') {
-      current['DEFAULT'] = value;
+      current['DEFAULT'] = value.replace('-default', '');
     } else {
       current[path[path.length - 1]] = value;
     }
@@ -938,7 +938,7 @@ function generateTailwindConfig(results: Result[]): string {
   function processVariableValue(variable: Result['initialVariable']): string {
     // 检查是否是颜色变量
     if (variable.resolvedDataType === 'COLOR') {
-      return `rgba(var(--${variable.name
+      return `rgb(var(--${variable.name
         .split('/')
         .map((segment) => changeCase.kebabCase(segment))
         .join('-')}))`;
@@ -1013,6 +1013,8 @@ function generateTailwindConfig(results: Result[]): string {
   if (config.font && Object.keys(config.font).length === 0) {
     delete config.font;
   }
+
+  console.log(config)
 
   // 生成配置文件内容
   const configContent = `module.exports = {
