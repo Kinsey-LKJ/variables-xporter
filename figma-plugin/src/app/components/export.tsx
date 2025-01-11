@@ -45,9 +45,9 @@ const Export = (props: ExportProps) => {
             defaultValue="tw-config"
             className="h-auto grid gap-6 overflow-visible"
           >
-            <Tabs.List className=' sticky top-0 bg-background z-10'>
-              <Tabs.Tab value="tw-config" className='hover:bg-background-muted'>tailwind.config</Tabs.Tab>
-              <Tabs.Tab value="tw-css" className='hover:bg-background-muted'>css</Tabs.Tab>
+            <Tabs.List className='sticky top-0 z-10'>
+              <Tabs.Tab value="tw-config" >tailwind.config</Tabs.Tab>
+              <Tabs.Tab value="tw-css">css</Tabs.Tab>
             </Tabs.List>
 
             <Tabs.Panel value="tw-config" className=" overflow-hidden">
@@ -118,7 +118,7 @@ const Export = (props: ExportProps) => {
           </Tabs>
         ) : (
           <Tabs key={'cssOutput'} defaultValue="css" className="h-auto grid gap-6 overflow-visible">
-            <Tabs.List className='sticky top-0 bg-background z-10'>
+            <Tabs.List className='sticky top-0 z-10'>
               <Tabs.Tab value="css">css</Tabs.Tab>
             </Tabs.List>
             <Tabs.Panel value="css" className=" overflow-hidden">

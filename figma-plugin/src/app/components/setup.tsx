@@ -16,7 +16,7 @@ const Setup = () => {
   const form = useVariableFormContext();
   const formValus = form.values;
   return (
-    <div className="w-full h-full overflow-y-hidden">
+    <div className="w-full h-full overflow-y-hidden p-1">
       <div className="grid gap-8">
         <div className="grid gap-3 text-center">
           <div className="text-4xl font-bold special-text">{textData.select_variables_to_export}</div>
