@@ -41,11 +41,11 @@ const Setup = () => {
                 <Select
                   size="sm"
                   placeholder={textData.format}
-                  data={['Tailwind CSS', 'CSS Variables']}
+                  data={['Tailwind CSS', 'CSS Variables',"Tailwind CSS 4.0"]}
                   comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
                   maxDropdownHeight={200}
                   className=" shadow-2xl"
-                                color='#C3FF36'
+                  color='#C3FF36'
                   {...form.getInputProps('exportFormat')}
                 />
 

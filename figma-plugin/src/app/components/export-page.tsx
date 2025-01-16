@@ -137,7 +137,8 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
             true,
             formValues.useRemUnit,
             formValues.selectVariableGroup,
-            formValues.ignoreTailwindColor ? ignoreGroup : []
+            formValues.ignoreTailwindColor ? ignoreGroup : [],
+            formValues.exportFormat
           );
           setTailwindCSSOutput({
             config: tailwindConfig,
@@ -185,7 +186,8 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
             true,
             formValues.useRemUnit,
             formValues.selectVariableGroup,
-            formValues.ignoreTailwindColor ? ignoreGroup : []
+            formValues.ignoreTailwindColor ? ignoreGroup : [],
+            formValues.exportFormat
           );
           setTailwindCSSOutput({
             config: tailwindConfig,

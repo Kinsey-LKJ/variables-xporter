@@ -54,7 +54,7 @@ export interface FileContent {
   content: string;
 }
 
-export type ExportFormat = 'Tailwind CSS' | 'CSS Variables';
+export type ExportFormat = 'Tailwind CSS' | 'CSS Variables' | 'Tailwind CSS 4.0';
 
 export interface TextData {
   back: string;

@@ -10,7 +10,7 @@ export default function IndexPage() {
         fontWeight: 'bold'
       }}
 
-      className=" text-foreground-default"
+      className=" text-foreground"
     >
       Variables Xporter
     </h1>
