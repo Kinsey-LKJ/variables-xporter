@@ -52,22 +52,28 @@ export default async function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <Head faviconGlyph="✦" 
-      // color={{
-      //   hue:{
-      //     light:51,
-      //     dark:51
-      //   },
-      //   saturation: {
-      //     light: 100,
-      //     dark: 100
-      //   },
-      //   lightness: {
-      //     light: 45,
-      //     dark: 65
-      //   },
-      // }}
+      backgroundColor={{
+        dark:'#0A1122',
+        light:'#F5F5F5'
+      }}
+      color={{
+        hue:{
+          light:242,
+          dark:242
+        },
+        saturation: {
+          light: 100,
+          dark: 100
+        },
+        lightness: {
+          light: 83,
+          dark: 83
+        },
+        
+      }}
       />
       <body>
+        <div className='bg-primary blur-[383px] w-[736px] h-[177px] absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2'></div>
         <Layout
           banner={<Banner storageKey="Variables Xporter">Variables Xporter now supports Tailwind CSS 4.0 ✨</Banner>}
           navbar={navbar}
