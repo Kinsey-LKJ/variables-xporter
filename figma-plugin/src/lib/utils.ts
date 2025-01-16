@@ -126,9 +126,8 @@ export function processColorValue(value: ColorValue, format: ExportFormat): stri
 
   if (format === 'Tailwind CSS 4.0') {
     // const oklch = convert([r,g,b],DisplayP3,OKLCH,[0,0,0]);
-    const color = new Color(`rgb(${r} ${g} ${b})`);
-    const oklch = color.to('oklch');
-    return `oklch(${oklch.l} ${oklch.c} ${oklch.h})`;
+    const oklch = convert([value.r, value.g, value.b], sRGB, OKLCH, [0, 0, 0]);
+    return `oklch(${oklch[0]} ${oklch[1]} ${oklch[2]})`;
   }
 
   return `${r} ${g} ${b}`;
@@ -169,6 +168,7 @@ const tailwindv3Rule = {
   space: 'spacing',
   leading: 'line-height',
   tracking: 'letter-spacing',
+  text:'font-size'
 };
 
 const tailwindv4Rule = {
