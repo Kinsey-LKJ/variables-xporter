@@ -1,7 +1,7 @@
 import { ExportFormat, TVariable, TVariableCollection } from './type';
 import * as changeCase from 'change-case';
-import { convert, OKLCH, sRGB,DisplayP3 } from "@texel/color";
-import Color from 'colorjs.io'
+import { convert, OKLCH, sRGB, DisplayP3 } from '@texel/color';
+import Color from 'colorjs.io';
 
 export const ignoreGroup = [
   'colors/slate',
@@ -65,34 +65,34 @@ const notSupportRemUnit = [
   'outline-width',
   'stroke-width',
   'z-index',
-  "skew"
+  'skew',
 ];
 
 const nonUnits = [
-  "aspectRatio",          // 比值
-  "hueRotate",            // 角度单位（如 deg）
-  "rotate",               // 角度单位（如 deg）
-  "skew",                 // 角度单位（如 deg）
-  "scale",                // 比例
-  "opacity",              // 0 到 1 的比值
-  "brightness",           // 0 到 1 的比值
-  "contrast",             // 0 到 1 的比值
-  "grayscale",            // 0 到 1 的比值
-  "invert",               // 0 到 1 的比值
-  "saturate",             // 0 到 1 的比值
-  "sepia",                // 0 到 1 的比值
-  "flexGrow",             // 整数
-  "flexShrink",           // 整数
-  "order",                // 整数
-  "zIndex"                // 整数
+  'aspectRatio', // 比值
+  'hueRotate', // 角度单位（如 deg）
+  'rotate', // 角度单位（如 deg）
+  'skew', // 角度单位（如 deg）
+  'scale', // 比例
+  'opacity', // 0 到 1 的比值
+  'brightness', // 0 到 1 的比值
+  'contrast', // 0 到 1 的比值
+  'grayscale', // 0 到 1 的比值
+  'invert', // 0 到 1 的比值
+  'saturate', // 0 到 1 的比值
+  'sepia', // 0 到 1 的比值
+  'flexGrow', // 整数
+  'flexShrink', // 整数
+  'order', // 整数
+  'zIndex', // 整数
+  'fontWeight', // 整数
 ];
-
 
 const figmaNameToKebabCase = (name: string): string => {
   const nameArray = name.split('/');
   const kebabCaseArray = nameArray.map((item) => changeCase.kebabCase(item));
   return kebabCaseArray.join('/');
-}
+};
 
 // 判断是否是媒体查询
 const isMediaQuery = (modeName: string): boolean => {
@@ -113,9 +113,9 @@ const isMediaQuery = (modeName: string): boolean => {
 
   // 检查是否以任一媒体查询特性开头
   return mediaQueryFeatures.some((feature) => modeName.startsWith(`${feature}:`));
-}
+};
 
-export function processColorValue(value: ColorValue,format: ExportFormat): string {
+export function processColorValue(value: ColorValue, format: ExportFormat): string {
   const r = Math.round(value.r * 255);
   const g = Math.round(value.g * 255);
   const b = Math.round(value.b * 255);
@@ -124,10 +124,10 @@ export function processColorValue(value: ColorValue,format: ExportFormat): strin
   //   return `${r} ${g} ${b} / ${value.a}`;
   // }
 
-  if(format === 'Tailwind CSS 4.0'){
+  if (format === 'Tailwind CSS 4.0') {
     // const oklch = convert([r,g,b],DisplayP3,OKLCH,[0,0,0]);
-    const color = new Color(`rgb(${r} ${g} ${b})`)
-    const oklch = color.to('oklch')
+    const color = new Color(`rgb(${r} ${g} ${b})`);
+    const oklch = color.to('oklch');
     return `oklch(${oklch.l} ${oklch.c} ${oklch.h})`;
   }
 
@@ -143,10 +143,10 @@ export function processConstantValue(
   format: ExportFormat
 ): string {
   if (isColorValue(value)) {
-    return processColorValue(value,format);
+    return processColorValue(value, format);
   } else if (resolvedDataType === 'FLOAT') {
     const startWith = variableCSSName.split('-')[0];
-    
+
     const isMustPx = variableCSSName.includes('-px');
     const isNotSupportRemUnit = notSupportRemUnit.some((item: VariableScope) => startWith.includes(item));
     const isNonUnit = nonUnits.some((item: VariableScope) => startWith.includes(item));
@@ -164,24 +164,93 @@ export function processConstantValue(
 }
 
 const tailwindv3Rule = {
-  'color':'colors',
-  'weight':'font-weight',
-  'space':'spacing',
-  "leading":"line-height",
-  "tracking":"letter-spacing",
-}
+  color: 'colors',
+  weight: 'font-weight',
+  space: 'spacing',
+  leading: 'line-height',
+  tracking: 'letter-spacing',
+};
 
 const tailwindv4Rule = {
-  'colors':'color',
-  'font-size':'text',
-  'weight':'font-weight',
-  'space':'spacing',
-  'line-height':'leading',
-  'letter-spacing':'tracking',
-}
+  colors: 'color',
+  'font-size': 'text',
+  weight: 'font-weight',
+  space: 'spacing',
+  'line-height': 'leading',
+  'letter-spacing': 'tracking',
+};
+
+// 属性名映射和匹配帮助函数
+const typographyPropertyMap = {
+  size: 'fontSize',
+  weight: 'fontWeight',
+  lineHeight: 'lineHeight',
+  fontWeight: 'fontWeight',
+  letterSpacing: 'letterSpacing',
+  family: 'fontFamily',
+  style: 'fontStyle',
+  fontStyle: 'fontStyle',
+  'font-style': 'fontStyle',
+  'line-height': 'lineHeight',
+  'font-weight': 'fontWeight',
+  'letter-spacing': 'letterSpacing',
+  'font-size': 'fontSize',
+  'font-family': 'fontFamily',
+  'text-align': 'textAlign',
+  'text-decoration': 'textDecoration',
+  'text-transform': 'textTransform',
+  'text-overflow': 'textOverflow',
+  'text-indent': 'textIndent',
+  'vertical-align': 'verticalAlign',
+  'white-space': 'whiteSpace',
+  'word-break': 'wordBreak',
+  'word-spacing': 'wordSpacing',
+  'word-wrap': 'wordWrap',
+  'line-clamp': 'lineClamp',
+  'list-style': 'listStyle',
+  'list-style-type': 'listStyleType',
+  'list-style-position': 'listStylePosition',
+  'text-decoration-color': 'textDecorationColor',
+  'text-decoration-style': 'textDecorationStyle',
+  'text-decoration-thickness': 'textDecorationThickness',
+  'text-underline-offset': 'textUnderlineOffset',
+  'font-variant-numeric': 'fontVariantNumeric',
+  'font-smoothing': 'fontSmoothing',
+  hyphens: 'hyphens',
+  caption: 'caption',
+  fontSize: 'fontSize',
+  fontFamily: 'fontFamily',
+  textAlign: 'textAlign',
+  textDecoration: 'textDecoration',
+  textTransform: 'textTransform',
+  textOverflow: 'textOverflow',
+  textIndent: 'textIndent',
+  verticalAlign: 'verticalAlign',
+  whiteSpace: 'whiteSpace',
+  wordBreak: 'wordBreak',
+  wordSpacing: 'wordSpacing',
+  wordWrap: 'wordWrap',
+  lineClamp: 'lineClamp',
+  listStyle: 'listStyle',
+  listStyleType: 'listStyleType',
+  listStylePosition: 'listStylePosition',
+  textDecorationColor: 'textDecorationColor',
+  textDecorationStyle: 'textDecorationStyle',
+  textDecorationThickness: 'textDecorationThickness',
+  textUnderlineOffset: 'textUnderlineOffset',
+  fontVariantNumeric: 'fontVariantNumeric',
+  fontSmoothing: 'fontSmoothing',
+  'variant-numeric': 'fontVariantNumeric',
+  'variant-smoothing': 'fontSmoothing',
+};
+
+// 创建属性名匹配模式
+const typographyPropPattern = Object.keys(typographyPropertyMap)
+  .map((key) => key.replace(/[-]/g, '\\-'))
+  .join('|');
 
 // 根据 Tailwind CSS 的命名规则，对变量名进行修正
-const variableNameCorrection = (name: string,format:ExportFormat): string => {
+const variableNameCorrection = (name: string, format: ExportFormat): string => {
   // 如果没有 / 符号，直接返回原名称
   if (!name.includes('/')) {
     return name;
@@ -200,6 +269,80 @@ const variableNameCorrection = (name: string,format:ExportFormat): string => {
   }
 
   return name;
+};
+// 处理需要合并的字体配置，并返回已使用的变量名集合
+function processMergedFontConfigs(results: Result[]): [Record<string, any>, Set<string>] {
+  const fontConfigs: Record<
+    string,
+    {
+      fontSize?: string;
+      lineHeight?: string;
+      fontWeight?: string;
+      letterSpacing?: string;
+    }
+  > = {};
+
+  const usedVariables = new Set<string>();
+
+  // 首先处理标准的字体配置
+  for (const result of results) {
+    const { initialVariable } = result;
+    const name = initialVariable.name;
+    console.log(name);
+    // 检查是否是标准的字体配置
+    const fontMatch = name.match(new RegExp(`^font\\/([^/]+)\\/(${typographyPropPattern})$`));
+    if (fontMatch) {
+      const [, variant, rawProp] = fontMatch;
+      const prop = Object.keys(typographyPropertyMap).includes(rawProp) ? typographyPropertyMap[rawProp] : rawProp;
+
+      if (!fontConfigs[variant]) {
+        fontConfigs[variant] = {};
+      }
+
+      const defaultMode = result.modes[initialVariable.collection.defaultModeId];
+      if (defaultMode && defaultMode.value !== undefined) {
+        const value = `var(--${name
+          .split('/')
+          .map((segment) => changeCase.kebabCase(segment))
+          .join('-')})`;
+        fontConfigs[variant][prop as keyof (typeof fontConfigs)[string]] = value;
+        console.log(value);
+        console.log(prop);
+        console.log(fontConfigs[variant]);
+        if (fontConfigs[variant].fontSize || prop === 'fontSize') {
+          usedVariables.add(name);
+        }
+      }
+    }
+  }
+
+  // 移除不完整的配置（没有size的配置）
+  for (const [variant, config] of Object.entries(fontConfigs)) {
+    if (!config.fontSize) {
+      delete fontConfigs[variant];
+      // 移除这些变量的已使用标记
+      for (const usedVar of usedVariables) {
+        if (usedVar.startsWith(`font/${variant}/`)) {
+          usedVariables.delete(usedVar);
+        }
+      }
+    }
+  }
+
+  // 生成合并的fontSize配置
+  const mergedFontSize: Record<string, any> = {};
+  for (const [variant, config] of Object.entries(fontConfigs)) {
+    if (!config.fontSize) continue;
+
+    const settings: Record<string, string> = {};
+    if (config.lineHeight) settings.lineHeight = config.lineHeight;
+    if (config.fontWeight) settings.fontWeight = config.fontWeight;
+    if (config.letterSpacing) settings.letterSpacing = config.letterSpacing;
+
+    mergedFontSize[variant] = Object.keys(settings).length > 0 ? [config.fontSize, settings] : config.fontSize;
+  }
+
+  return [mergedFontSize, usedVariables];
 }
 
 export type ResolvedValue =
@@ -255,7 +398,7 @@ export function isVariableAlias(value: VariableValue): value is VariableAlias {
 }
 
 // 3. 变量解析函数
-function resolveVariableValue(variable: TVariable, context: ResolveContext,format:ExportFormat): Result {
+function resolveVariableValue(variable: TVariable, context: ResolveContext, format: ExportFormat): Result {
   const { variables, collections, visitedVariableIds } = context;
 
   if (visitedVariableIds.has(variable.id)) {
@@ -271,7 +414,7 @@ function resolveVariableValue(variable: TVariable, context: ResolveContext,forma
   const result: Result = {
     initialVariable: {
       id: variable.id,
-      name: figmaNameToKebabCase(variableNameCorrection(variable.name,format)),
+      name: figmaNameToKebabCase(variableNameCorrection(variable.name, format)),
       _name: figmaNameToKebabCase(variable.name),
       collection: collection,
       resolvedDataType: variable.resolvedType,
@@ -289,18 +432,22 @@ function resolveVariableValue(variable: TVariable, context: ResolveContext,forma
         throw new Error(`找不到引用的变量: ${value.id}`);
       }
 
-      const resolvedReference = resolveVariableValue(referencedVariable, {
-        variables,
-        collections,
-        visitedVariableIds: new Set(visitedVariableIds),
-      },format);
+      const resolvedReference = resolveVariableValue(
+        referencedVariable,
+        {
+          variables,
+          collections,
+          visitedVariableIds: new Set(visitedVariableIds),
+        },
+        format
+      );
 
       result.modes[mode.modeId] = {
         name: mode.name,
         value: {},
         variable: {
           id: referencedVariable.id,
-          name: figmaNameToKebabCase(variableNameCorrection(referencedVariable.name,format)),
+          name: figmaNameToKebabCase(variableNameCorrection(referencedVariable.name, format)),
           _name: figmaNameToKebabCase(referencedVariable.name),
           collection: resolvedReference.initialVariable.collection,
         },
@@ -351,11 +498,15 @@ function resolveVariables(
 
   for (const variable of filtered) {
     try {
-      const result = resolveVariableValue(variable, {
-        variables,
-        collections,
-        visitedVariableIds: new Set(visitedVariableIds),
-      },format);
+      const result = resolveVariableValue(
+        variable,
+        {
+          variables,
+          collections,
+          visitedVariableIds: new Set(visitedVariableIds),
+        },
+        format
+      );
       results.push(result);
     } catch (error) {
       console.error(`解析变量 ${variable.name} 时出错:`, error);
@@ -410,7 +561,7 @@ function generateCSSForMultipleVariables(
       .join('-');
 
     // 如果变量名以 -default 结尾,则删除它
-    const cssNameWithoutDefault = cssNameKebabCase.endsWith('-default') 
+    const cssNameWithoutDefault = cssNameKebabCase.endsWith('-default')
       ? cssNameKebabCase.slice(0, -8) // 删除 '-default' (8个字符)
       : cssNameKebabCase;
     if (variable.collection.id !== originalCollection.id && appendCollectionName) {
@@ -567,8 +718,15 @@ function generateCSSForMultipleVariables(
     }
   }
 
-  // 在 for 循环中修改处理每个结果逻辑
-  for (const result of results) {
+  function processResult(
+    result: Result,
+    defaultValues: Map<string, string>,
+    modeOverrides: Map<string, Set<string>>,
+    allCollections: TVariableCollection[],
+    themeRootSelector: string,
+    useRemUnit: boolean,
+    format: ExportFormat
+  ) {
     const { initialVariable, modes } = result;
 
     // 处理默认模式
@@ -705,6 +863,68 @@ function generateCSSForMultipleVariables(
     }
   }
 
+  if (format === 'Tailwind CSS 4.0') {
+    const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results);
+
+    for (const [variantName, config] of Object.entries(mergedFontConfig)) {
+      if (Array.isArray(config)) {
+        const [fontSize, settings] = config as [string, Record<string, string>];
+        
+        // 提取原始值而不是变量名
+        const fontSizeValue = fontSize.match(/var\(--font-.*?-(size|fontSize)\)/i)
+          ? fontSize
+          : fontSize.replace('var(--font-', '').replace(')', '');
+
+        defaultValues.set(
+          `text-${variantName}`,
+          `  --text-${variantName}: ${fontSizeValue};`
+        );
+
+        if (settings) {
+          for (const [prop, value] of Object.entries(settings)) {
+            const propName = prop === 'lineHeight' ? 'line-height' :
+                            prop === 'fontWeight' ? 'font-weight' :
+                            prop === 'letterSpacing' ? 'letter-spacing' : prop;
+            
+            // 保持原始值
+            defaultValues.set(
+              `text-${variantName}--${propName}`,
+              `  --text-${variantName}--${propName}: ${value};`
+            );
+          }
+        }
+      } else {
+        // 处理单独的 fontSize
+        const fontSizeValue = config.match(/var\(--font-.*?-(size|fontSize)\)/i)
+          ? config
+          : config.replace('var(--font-', '').replace(')', '');
+
+        defaultValues.set(
+          `text-${variantName}`,
+          `  --text-${variantName}: ${fontSizeValue};`
+        );
+      }
+    }
+
+    // 处理每个结果
+    for (const result of results) {
+      const { initialVariable } = result;
+
+      // 如果变量已经在字体配置中处理过，跳过它
+      // if (usedVariables.has(initialVariable.name)) {
+      //   continue;
+      // }
+
+      // 继续处理其他变量...
+      processResult(result, defaultValues, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
+    }
+  } else {
+    // 非 Tailwind CSS 4.0 格式，使用原有的处理逻辑
+    for (const result of results) {
+      processResult(result, defaultValues, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
+    }
+  }
+
   if (defaultValues.size > 0) {
     css.push('/* Default Mode */');
     css.push(themeRootSelector + ' {');
@@ -753,7 +973,7 @@ function generateTailwindConfig(results: Result[]): string {
   function setNestedValue(obj: any, path: string[], value: string) {
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
-      console.log(path[i])
+      console.log(path[i]);
       const key = path[i];
       if (!(key in current)) {
         current[key] = {};
@@ -768,75 +988,6 @@ function generateTailwindConfig(results: Result[]): string {
     }
   }
 
-  // 属性名映射和匹配帮助函数
-  const propertyMap = {
-    size: 'fontSize',
-    weight: 'fontWeight',
-    lineHeight: 'lineHeight',
-    fontWeight: 'fontWeight',
-    letterSpacing: 'letterSpacing',
-    family: 'fontFamily',
-    style: 'fontStyle',
-    fontStyle: 'fontStyle',
-    'font-style': 'fontStyle',
-    'line-height': 'lineHeight',
-    'font-weight': 'fontWeight',
-    'letter-spacing': 'letterSpacing',
-    'font-size': 'fontSize',
-    'font-family': 'fontFamily',
-    'text-align': 'textAlign',
-    'text-decoration': 'textDecoration',
-    'text-transform': 'textTransform',
-    'text-overflow': 'textOverflow',
-    'text-indent': 'textIndent',
-    'vertical-align': 'verticalAlign',
-    'white-space': 'whiteSpace',
-    'word-break': 'wordBreak',
-    'word-spacing': 'wordSpacing',
-    'word-wrap': 'wordWrap',
-    'line-clamp': 'lineClamp',
-    'list-style': 'listStyle',
-    'list-style-type': 'listStyleType',
-    'list-style-position': 'listStylePosition',
-    'text-decoration-color': 'textDecorationColor',
-    'text-decoration-style': 'textDecorationStyle',
-    'text-decoration-thickness': 'textDecorationThickness',
-    'text-underline-offset': 'textUnderlineOffset',
-    'font-variant-numeric': 'fontVariantNumeric',
-    'font-smoothing': 'fontSmoothing',
-    'hyphens': 'hyphens',
-    'caption': 'caption',
-    fontSize: 'fontSize',
-    fontFamily: 'fontFamily',
-    textAlign: 'textAlign',
-    textDecoration: 'textDecoration',
-    textTransform: 'textTransform',
-    textOverflow: 'textOverflow',
-    textIndent: 'textIndent',
-    verticalAlign: 'verticalAlign',
-    whiteSpace: 'whiteSpace',
-    wordBreak: 'wordBreak',
-    wordSpacing: 'wordSpacing',
-    wordWrap: 'wordWrap',
-    lineClamp: 'lineClamp',
-    listStyle: 'listStyle',
-    listStyleType: 'listStyleType',
-    listStylePosition: 'listStylePosition',
-    textDecorationColor: 'textDecorationColor',
-    textDecorationStyle: 'textDecorationStyle',
-    textDecorationThickness: 'textDecorationThickness',
-    textUnderlineOffset: 'textUnderlineOffset',
-    fontVariantNumeric: 'fontVariantNumeric',
-    fontSmoothing: 'fontSmoothing',
-    'variant-numeric': 'fontVariantNumeric',
-    'variant-smoothing': 'fontSmoothing',
-  };
-
-  // 创建属性名匹配模式
-  const propPattern = Object.keys(propertyMap)
-    .map((key) => key.replace(/[-]/g, '\\-'))
-    .join('|');
-
   // 属性名标准化函数
   function normalizeProperty(prop: string): string {
     switch (prop) {
@@ -849,81 +1000,6 @@ function generateTailwindConfig(results: Result[]): string {
       default:
         return prop;
     }
-  }
-
-  // 处理需要合并的字体配置，并返回已使用的变量名集合
-  function processMergedFontConfigs(results: Result[]): [Record<string, any>, Set<string>] {
-    const fontConfigs: Record<
-      string,
-      {
-        fontSize?: string;
-        lineHeight?: string;
-        fontWeight?: string;
-        letterSpacing?: string;
-      }
-    > = {};
-
-    const usedVariables = new Set<string>();
-
-    // 首先处理标准的字体配置
-    for (const result of results) {
-      const { initialVariable } = result;
-      const name = initialVariable.name;
-      console.log(name)
-      // 检查是否是标准的字体配置
-      const fontMatch = name.match(new RegExp(`^font\\/([^/]+)\\/(${propPattern})$`));
-      if (fontMatch) {
-        const [, variant, rawProp] = fontMatch;
-        const prop = Object.keys(propertyMap).includes(rawProp) ? propertyMap[rawProp] : rawProp;
-
-        if (!fontConfigs[variant]) {
-          fontConfigs[variant] = {};
-        }
-
-        const defaultMode = result.modes[initialVariable.collection.defaultModeId];
-        if (defaultMode && defaultMode.value !== undefined) {
-          const value = `var(--${name
-            .split('/')
-            .map((segment) => changeCase.kebabCase(segment))
-            .join('-')})`;
-          fontConfigs[variant][prop as keyof (typeof fontConfigs)[string]] = value;
-          console.log(value)
-          console.log(prop)
-          console.log(fontConfigs[variant])
-          if ( fontConfigs[variant].fontSize || prop === 'fontSize') {
-            usedVariables.add(name);
-          }
-        }
-      }
-    }
-
-    // 移除不完整的配置（没有size的配置）
-    for (const [variant, config] of Object.entries(fontConfigs)) {
-      if (!config.fontSize) {
-        delete fontConfigs[variant];
-        // 移除这些变量的已使用标记
-        for (const usedVar of usedVariables) {
-          if (usedVar.startsWith(`font/${variant}/`)) {
-            usedVariables.delete(usedVar);
-          }
-        }
-      }
-    }
-
-    // 生成合并的fontSize配置
-    const mergedFontSize: Record<string, any> = {};
-    for (const [variant, config] of Object.entries(fontConfigs)) {
-      if (!config.fontSize) continue;
-
-      const settings: Record<string, string> = {};
-      if (config.lineHeight) settings.lineHeight = config.lineHeight;
-      if (config.fontWeight) settings.fontWeight = config.fontWeight;
-      if (config.letterSpacing) settings.letterSpacing = config.letterSpacing;
-
-      mergedFontSize[variant] = Object.keys(settings).length > 0 ? [ config.fontSize, settings] : config.fontSize;
-    }
-
-    return [mergedFontSize, usedVariables];
   }
 
   // 处理普通的字体属性
@@ -940,12 +1016,12 @@ function generateTailwindConfig(results: Result[]): string {
       }
 
       // 匹配 (font/)?property/xx 格式
-      const pattern = `^(font\\/|)(${propPattern})\\/([^/]+)$`;
+      const pattern = `^(font\\/|)(${typographyPropPattern})\\/([^/]+)$`;
       const match = name.match(new RegExp(pattern));
 
       if (match) {
         const [, , rawProp, variant] = match;
-        const configKey = propertyMap[rawProp];
+        const configKey = typographyPropertyMap[rawProp];
 
         if (!configs[configKey]) {
           configs[configKey] = {};
@@ -974,7 +1050,7 @@ function generateTailwindConfig(results: Result[]): string {
       const fontMatch = name.match(/^font\/(size|family|line-height|weight|letter-spacing)$/);
       if (fontMatch) {
         const [, prop] = fontMatch;
-        const configKey = propertyMap[prop];
+        const configKey = typographyPropertyMap[prop];
 
         if (configKey) {
           const defaultMode = result.modes[initialVariable.collection.defaultModeId];
@@ -1015,7 +1091,7 @@ function generateTailwindConfig(results: Result[]): string {
     const { initialVariable } = result;
     const name = initialVariable.name;
     const path = parseVariablePath(initialVariable.name);
-    console.log(name)
+    console.log(name);
 
     // 如果这个变量已经被用于合并配置，则跳过
     if (usedVariables.has(name)) {
@@ -1023,14 +1099,14 @@ function generateTailwindConfig(results: Result[]): string {
     }
 
     // 检查是否是标准字体配置模式
-    const fontMatch = name.match(new RegExp(`^font\\/([^/]+)\\/(${propPattern})$`));
+    const fontMatch = name.match(new RegExp(`^font\\/([^/]+)\\/(${typographyPropPattern})$`));
     if (fontMatch) {
       // 如果是标准字体配置，跳过
       continue;
     }
 
     // 检查是否是顶层字体属性 (font/size/xxx, font/line-height/xxx 等)
-    const topLevelFontMatch = name.match(new RegExp(`^font\\/(${Object.keys(propertyMap).join('|')})\\/`));
+    const topLevelFontMatch = name.match(new RegExp(`^font\\/(${Object.keys(typographyPropertyMap).join('|')})\\/`));
     if (topLevelFontMatch) {
       // 如果是顶层字体属性，跳过（这些会被处理到对应的顶层配中）
       continue;
@@ -1074,7 +1150,7 @@ function generateTailwindConfig(results: Result[]): string {
     delete config.font;
   }
 
-  console.log(config)
+  console.log(config);
 
   // 生成配置文件内容
   const configContent = `module.exports = {
@@ -1103,9 +1179,9 @@ export async function generateThemeFiles(
   exportFormat: ExportFormat
 ): Promise<{ css: string; tailwindConfig: string }> {
   try {
-    const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup,exportFormat);
+    const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup, exportFormat);
     console.log(results);
-    const css = generateCSSForMultipleVariables(results, collections, appendCollectionName, useRemUnit,exportFormat);
+    const css = generateCSSForMultipleVariables(results, collections, appendCollectionName, useRemUnit, exportFormat);
     const tailwindConfig = generateTailwindConfig(results);
     return { css, tailwindConfig };
   } catch (error) {
