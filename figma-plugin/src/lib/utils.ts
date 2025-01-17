@@ -69,8 +69,8 @@ const notSupportRemUnit = [
 ];
 
 const nonUnits = [
-  'aspectRatio', // 比值
-  'hueRotate', // 角度单位（如 deg）
+  'aspect-ratio', // 比值
+  'hue-rotate', // 角度单位（如 deg）
   'rotate', // 角度单位（如 deg）
   'skew', // 角度单位（如 deg）
   'scale', // 比例
@@ -81,11 +81,11 @@ const nonUnits = [
   'invert', // 0 到 1 的比值
   'saturate', // 0 到 1 的比值
   'sepia', // 0 到 1 的比值
-  'flexGrow', // 整数
-  'flexShrink', // 整数
+  'flex-grow', // 整数
+  'flex-shrink', // 整数
   'order', // 整数
-  'zIndex', // 整数
-  'fontWeight', // 整数
+  'z-index', // 整数
+  'font-weight', // 整数
 ];
 
 const figmaNameToKebabCase = (name: string): string => {
@@ -139,12 +139,15 @@ export function processConstantValue(
   scopes: VariableScope[],
   useRemUnit: boolean,
   variableCSSName: string,
+  variableName: string,
   format: ExportFormat
 ): string {
   if (isColorValue(value)) {
     return processColorValue(value, format);
   } else if (resolvedDataType === 'FLOAT') {
-    const startWith = variableCSSName.split('-')[0];
+    const startWith = variableName.split('/')[0] === 'font' ? variableName.split('/')[1] : variableName.split('/')[0];
+    console.log('startWith', startWith);
+    console.log('variableCSSName', variableCSSName);
 
     const isMustPx = variableCSSName.includes('-px');
     const isNotSupportRemUnit = notSupportRemUnit.some((item: VariableScope) => startWith.includes(item));
@@ -156,6 +159,8 @@ export function processConstantValue(
       return `${(value as number) / 16}rem`;
     } else if (!isNonUnit) {
       return `${value}px`;
+    } else {
+      return `${value}`;
     }
   } else {
     return `${value}`;
@@ -309,10 +314,11 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
     console.log(name);
     // 检查是否是标准的字体配置
 
+
     const fontMatch = name.match(
-      new RegExp(
-        `^font\\/([^/]+)\\/(${format === 'Tailwind CSS 4.0' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})$`
-      )
+      format === 'Tailwind CSS 4.0'
+        ? new RegExp(`^text\\/([^/]+)\\/(${tailwindV4TypographyPropPattern})$`)
+        : new RegExp(`^font-size\\/([^/]+)\\/(${tailwindV3TypographyPropPattern})$`)
     );
     if (fontMatch) {
       const [, variant, rawProp] = fontMatch;
@@ -345,7 +351,7 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
       delete fontConfigs[variant];
       // 移除这些变量的已使用标记
       for (const usedVar of usedVariables) {
-        if (usedVar.startsWith(`font/${variant}/`)) {
+        if (usedVar.startsWith(`font-size/${variant}/`)) {
           usedVariables.delete(usedVar);
         }
       }
@@ -364,6 +370,9 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
 
     mergedFontSize[variant] = Object.keys(settings).length > 0 ? [config.fontSize, settings] : config.fontSize;
   }
+
+  console.log('mergedFontSize', mergedFontSize);
+  console.log('fontConfigs', fontConfigs);
 
   return [mergedFontSize, usedVariables];
 }
@@ -660,6 +669,7 @@ function generateCSSForMultipleVariables(
         scopes,
         useRemUnit,
         variableCSSName,
+        variable.name,
         format
       );
       const declaration = `  --${variableCSSName}: ${processedValue};`;
@@ -788,6 +798,7 @@ function generateCSSForMultipleVariables(
                 initialVariable.scopes,
                 useRemUnit,
                 variableCSSName,
+                initialVariable.name,
                 format
               )
             : defaultMode.value;
@@ -856,6 +867,7 @@ function generateCSSForMultipleVariables(
                   initialVariable.scopes,
                   useRemUnit,
                   variableCSSName,
+                  initialVariable.name,
                   format
                 )
               : modeData.value;
@@ -888,11 +900,13 @@ function generateCSSForMultipleVariables(
 
   if (format === 'Tailwind CSS 4.0') {
     const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results, format);
+    console.log('mergedFontConfig', mergedFontConfig);
 
 
     for (const [variantName, config] of Object.entries(mergedFontConfig)) {
       if (Array.isArray(config)) {
         const [fontSize, settings] = config as [string, Record<string, string>];
+        console.log('fontSize', fontSize);
 
         // 提取原始值而不是变量名
         const fontSizeValue = fontSize.match(/var\(--font-.*?-(size|fontSize)\)/i)
