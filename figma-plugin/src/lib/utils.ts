@@ -315,14 +315,21 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
     // 检查是否是标准的字体配置
 
 
+    console.log("name", name)
+
+
     const fontMatch = name.match(
       format === 'Tailwind CSS 4.0'
-        ? new RegExp(`^text\\/([^/]+)\\/(${tailwindV4TypographyPropPattern})$`)
-        : new RegExp(`^font-size\\/([^/]+)\\/(${tailwindV3TypographyPropPattern})$`)
+        ? new RegExp(`^text\\/([^/]+)\\/(${tailwindV4TypographyPropPattern}|[Dd][Ee][Ff][Aa][Uu][Ll][Tt])$`)
+        : new RegExp(`^font-size\\/([^/]+)\\/(${tailwindV3TypographyPropPattern}|[Dd][Ee][Ff][Aa][Uu][Ll][Tt])$`)
     );
     if (fontMatch) {
+      console.log('fontMatch', fontMatch);
       const [, variant, rawProp] = fontMatch;
-      const prop = Object.keys(typographyPropertyMap).includes(rawProp) ? typographyPropertyMap[rawProp] : rawProp;
+      let prop = Object.keys(typographyPropertyMap).includes(rawProp) ? typographyPropertyMap[rawProp] : rawProp;
+      if (prop === 'default') {
+        prop = 'fontSize';
+      }
 
       if (!fontConfigs[variant]) {
         fontConfigs[variant] = {};
@@ -1104,6 +1111,7 @@ function generateTailwindConfig(results: Result[], format: ExportFormat): string
   const config: Record<string, any> = {};
   const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results, format);
   console.log('mergedFontConfig', mergedFontConfig);
+  console.log('usedVariables', usedVariables);
   const fontProperties = processFontProperties(results, usedVariables, format);
   const topLevelFontConfig = processTopLevelFontConfigs(results, format);
 
