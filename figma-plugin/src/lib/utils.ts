@@ -908,10 +908,11 @@ function generateCSSForMultipleVariables(
         const [fontSize, settings] = config as [string, Record<string, string>];
         console.log('fontSize', fontSize);
 
-        // 提取原始值而不是变量名
-        const fontSizeValue = fontSize.match(/var\(--font-.*?-(size|fontSize)\)/i)
-          ? fontSize
-          : fontSize.replace('var(--font-', '').replace(')', '');
+        // // 提取原始值而不是变量名
+        // const fontSizeValue = fontSize.match(/var\(--font-.*?-(size|fontSize)\)/i)
+        //   ? fontSize
+        //   : fontSize.replace('var(--font-', '').replace(')', '');
+        const fontSizeValue = fontSize;
 
         defaultValues.set(`text-${variantName}`, `  --text-${variantName}: ${fontSizeValue};`);
 
@@ -932,9 +933,10 @@ function generateCSSForMultipleVariables(
         }
       } else {
         // 处理单独的 fontSize
-        const fontSizeValue = config.match(/var\(--font-.*?-(size|fontSize)\)/i)
-          ? config
-          : config.replace('var(--font-', '').replace(')', '');
+        // const fontSizeValue = config.match(/var\(--font-.*?-(size|fontSize)\)/i)
+        //   ? config
+        //   : config.replace('var(--font-', '').replace(')', '');
+        const fontSizeValue = config;
 
         defaultValues.set(`text-${variantName}`, `  --text-${variantName}: ${fontSizeValue};`);
       }
