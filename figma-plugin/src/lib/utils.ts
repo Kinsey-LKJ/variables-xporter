@@ -269,6 +269,8 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
     return name;
   }
 
+  console.log('variableNameCorrectionName', name);
+
   // 获取第一个 / 之前的部分
   const firstPart = name.split('/')[0];
   const restParts = name.slice(name.indexOf('/'));
@@ -276,19 +278,50 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
   // 根据 format 选择规则集
   const rules = format === 'Tailwind CSS 4.0' ? tailwindv4Rule : tailwindv3Rule;
 
-  if (firstPart === 'font') {
-    const fontVariableFirstPart = restParts.split('/')[1];
-    const fontVariableRestParts = restParts.slice(restParts.indexOf('/', restParts.indexOf('/') + 1));
-    console.log('fontVariableFirstPart', fontVariableFirstPart);
-    console.log('fontVariableRestParts', fontVariableRestParts);
-    if (fontVariableFirstPart in rules) {
-      return `${rules[fontVariableFirstPart]}${fontVariableRestParts}`;
+  // if (firstPart === 'font') {
+  //   const fontVariableFirstPart = restParts.split('/')[1];
+  //   const fontVariableRestParts = restParts.slice(restParts.indexOf('/', restParts.indexOf('/') + 1));
+  //   console.log('fontVariableFirstPart', fontVariableFirstPart);
+  //   console.log('fontVariableRestParts', fontVariableRestParts);
+  //   if (fontVariableFirstPart in rules) {
+  //     return `${rules[fontVariableFirstPart]}${fontVariableRestParts}`;
+  //   }
+  // } else {
+  //   // 检查是否需要替换
+  //   if (firstPart in rules) {
+  //     return `${rules[firstPart]}${restParts}`;
+  //   }
+  // }
+
+  console.log('firstPart,restParts', firstPart, restParts);
+
+  if (firstPart in rules) {
+    // 获取所有值为 'fontSize' 的键
+    const fontSizeProps = Object.entries(typographyPropertyMap)
+      .filter(([_, value]) => value === 'fontSize')
+      .map(([key]) => key);
+
+    // 构建正则表达式模式
+    const fontSizePattern = fontSizeProps.map(prop => prop.replace(/[-]/g, '\\-')).join('|');
+    
+    // 构建新的名称
+    const name = `${rules[firstPart]}${restParts}`;
+    
+    // 匹配两种模式：
+    // 1. text/sm 或 font-size/sm
+    // 2. text/sm/font-size 或 font-size/sm/font-size
+    const fontSizeMatch = name.match(
+      format === 'Tailwind CSS 4.0'
+        ? new RegExp(`^text\\/([^/]+)(?:\\/(?:${fontSizePattern})?)?$`)
+        : new RegExp(`^font-size\\/([^/]+)(?:\\/(?:${fontSizePattern})?)?$`)
+    );
+
+    if (fontSizeMatch) {
+      // 无论是哪种情况，都返回 .../DEFAULT 格式
+      return `${name.split('/').slice(0, 2).join('/')}/DEFAULT`;
     }
-  } else {
-    // 检查是否需要替换
-    if (firstPart in rules) {
-      return `${rules[firstPart]}${restParts}`;
-    }
+
+    return name;
   }
 
   return name;
@@ -314,9 +347,7 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
     console.log(name);
     // 检查是否是标准的字体配置
 
-
-    console.log("name", name)
-
+    console.log('name', name);
 
     const fontMatch = name.match(
       format === 'Tailwind CSS 4.0'
@@ -331,6 +362,8 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
         prop = 'fontSize';
       }
 
+      console.log('prop', prop);
+
       if (!fontConfigs[variant]) {
         fontConfigs[variant] = {};
       }
@@ -344,8 +377,9 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
         fontConfigs[variant][prop as keyof (typeof fontConfigs)[string]] = value;
         console.log(value);
         console.log(prop);
-        console.log(fontConfigs[variant]);
+        console.log('fontConfigs[variant]', fontConfigs[variant]);
         if (fontConfigs[variant].fontSize || prop === 'fontSize') {
+          console.log('usedVariables.add(name)', name);
           usedVariables.add(name);
         }
       }
@@ -358,7 +392,7 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
       delete fontConfigs[variant];
       // 移除这些变量的已使用标记
       for (const usedVar of usedVariables) {
-        if (usedVar.startsWith(`font-size/${variant}/`)) {
+        if (usedVar.startsWith(`${ format === "Tailwind CSS 4.0" ? "text" : "font-size"}/${variant}/`)) {
           usedVariables.delete(usedVar);
         }
       }
@@ -486,7 +520,8 @@ function resolveVariableValue(variable: TVariable, context: ResolveContext, form
         value: {},
         variable: {
           id: referencedVariable.id,
-          name: figmaNameToKebabCase(variableNameCorrection(referencedVariable.name, format)),
+          // name: figmaNameToKebabCase(variableNameCorrection(referencedVariable.name, format)),
+          name: figmaNameToKebabCase(referencedVariable.name),
           _name: figmaNameToKebabCase(referencedVariable.name),
           collection: resolvedReference.initialVariable.collection,
         },
@@ -909,19 +944,20 @@ function generateCSSForMultipleVariables(
     const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results, format);
     console.log('mergedFontConfig', mergedFontConfig);
 
-
     for (const [variantName, config] of Object.entries(mergedFontConfig)) {
+      console.log('Tailwind CSS 4.0 config', config);
       if (Array.isArray(config)) {
         const [fontSize, settings] = config as [string, Record<string, string>];
-        console.log('fontSize', fontSize);
+        console.log('Tailwind CSS 4.0 fontSize', fontSize);
+        console.log('variantName', variantName);
+        console.log('settings', settings);
 
         // // 提取原始值而不是变量名
         // const fontSizeValue = fontSize.match(/var\(--font-.*?-(size|fontSize)\)/i)
         //   ? fontSize
         //   : fontSize.replace('var(--font-', '').replace(')', '');
         const fontSizeValue = fontSize;
-
-        defaultValues.set(`text-${variantName}`, `  --text-${variantName}: ${fontSizeValue};`);
+        defaultValues.set(`text-${variantName}`, `--text-${variantName}: ${fontSizeValue};`);
 
         if (settings) {
           for (const [prop, value] of Object.entries(settings)) {
@@ -948,6 +984,8 @@ function generateCSSForMultipleVariables(
         defaultValues.set(`text-${variantName}`, `  --text-${variantName}: ${fontSizeValue};`);
       }
     }
+
+    console.log('Tailwind CSS 4.0 defaultValues', defaultValues);
 
     // 处理每个结果
     for (const result of results) {
@@ -1014,9 +1052,12 @@ function generateTailwindConfig(results: Result[], format: ExportFormat): string
   }
 
   function setNestedValue(obj: any, path: string[], value: string) {
+    console.log('setNestedValue', obj, path, value);
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
-      console.log(path[i]);
+      console.log('path[i]', path[i]);
+      console.log('current', current);
+      console.log('current[key]', current[path[i]]);
       const key = path[i];
       if (!(key in current)) {
         current[key] = {};
@@ -1140,6 +1181,7 @@ function generateTailwindConfig(results: Result[], format: ExportFormat): string
 
     // 如果这个变量已经被用于合并配置，则跳过
     if (usedVariables.has(name)) {
+      console.log('usedVariables.has(name)', name);
       continue;
     }
 
