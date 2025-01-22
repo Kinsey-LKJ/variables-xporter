@@ -520,8 +520,8 @@ function resolveVariableValue(variable: TVariable, context: ResolveContext, form
         value: {},
         variable: {
           id: referencedVariable.id,
-          // name: figmaNameToKebabCase(variableNameCorrection(referencedVariable.name, format)),
-          name: figmaNameToKebabCase(referencedVariable.name),
+          name: figmaNameToKebabCase(variableNameCorrection(referencedVariable.name, format)),
+          // name: figmaNameToKebabCase(referencedVariable.name),
           _name: figmaNameToKebabCase(referencedVariable.name),
           collection: resolvedReference.initialVariable.collection,
         },
@@ -640,7 +640,7 @@ function generateCSSForMultipleVariables(
       : cssNameKebabCase;
     if (variable.collection.id !== originalCollection.id && appendCollectionName) {
       const collectionName = sanitizeCollectionName(variable.collection.name);
-      return `${cssNameWithoutDefault}-${collectionName}`;
+      return `${collectionName}-${cssNameWithoutDefault}`;
     }
 
     return cssNameWithoutDefault;
@@ -684,7 +684,10 @@ function generateCSSForMultipleVariables(
       return;
     }
 
-    const variableCSSName = getVariableCSSName(variable, originalCollection);
+    let variableCSSName = getVariableCSSName(variable, originalCollection);
+    if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS 4.0') {
+      variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
+    }
     console.log('--------------处理值---------------');
     console.log(variableCSSName);
 
@@ -714,6 +717,10 @@ function generateCSSForMultipleVariables(
         variable.name,
         format
       );
+
+
+
+
       const declaration = `  --${variableCSSName}: ${processedValue};`;
 
       if (selector === themeRootSelector) {
@@ -802,12 +809,17 @@ function generateCSSForMultipleVariables(
     useRemUnit: boolean,
     format: ExportFormat
   ) {
+
+
     const { initialVariable, modes } = result;
 
     // 处理默认模式
     const defaultMode = modes[initialVariable.collection.defaultModeId];
     if (defaultMode) {
-      const variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection);
+      let variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection);
+      if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS 4.0') {
+        variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
+      }
       console.log('--------------处理默认模式---------------');
       console.log(variableCSSName);
 
@@ -940,6 +952,8 @@ function generateCSSForMultipleVariables(
     }
   }
 
+  const tailwindcssv4NeedUpdateVariablesName: { [key: string]: string } = {};
+
   if (format === 'Tailwind CSS 4.0') {
     const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results, format);
     console.log('mergedFontConfig', mergedFontConfig);
@@ -956,22 +970,18 @@ function generateCSSForMultipleVariables(
         // const fontSizeValue = fontSize.match(/var\(--font-.*?-(size|fontSize)\)/i)
         //   ? fontSize
         //   : fontSize.replace('var(--font-', '').replace(')', '');
-        const fontSizeValue = fontSize;
-        defaultValues.set(`text-${variantName}`, `--text-${variantName}: ${fontSizeValue};`);
+        // const fontSizeValue = fontSize;
+        // defaultValues.set(`text-${variantName}`, `--text-${variantName}: ${fontSizeValue};`);
 
         if (settings) {
           for (const [prop, value] of Object.entries(settings)) {
-            const propName =
-              prop === 'lineHeight'
-                ? 'line-height'
-                : prop === 'fontWeight'
-                  ? 'font-weight'
-                  : prop === 'letterSpacing'
-                    ? 'letter-spacing'
-                    : prop;
 
+            console.log('variantName,prop', variantName, prop);
+
+            // 对于符合条件的其他字体变量，更改为 Tailwind CSS 4.0 指定的格式
+            tailwindcssv4NeedUpdateVariablesName[`text-${variantName}-${changeCase.kebabCase(prop)}`] = `text-${variantName}--${changeCase.kebabCase(prop)}`;
             // 保持原始值
-            defaultValues.set(`text-${variantName}--${propName}`, `  --text-${variantName}--${propName}: ${value};`);
+            // defaultValues.set(`text-${variantName}--${prop}`, `  --text-${variantName}--${prop}: ${value};`);
           }
         }
       } else {
@@ -979,9 +989,9 @@ function generateCSSForMultipleVariables(
         // const fontSizeValue = config.match(/var\(--font-.*?-(size|fontSize)\)/i)
         //   ? config
         //   : config.replace('var(--font-', '').replace(')', '');
-        const fontSizeValue = config;
+        // const fontSizeValue = config;
 
-        defaultValues.set(`text-${variantName}`, `  --text-${variantName}: ${fontSizeValue};`);
+        // defaultValues.set(`text-${variantName}`, `  --text-${variantName}: ${fontSizeValue};`);
       }
     }
 
