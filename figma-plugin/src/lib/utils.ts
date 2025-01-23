@@ -590,6 +590,154 @@ function resolveVariables(
   return results;
 }
 
+// 添加排序辅助函数
+function sortCSSDeclarationsByCollection(
+  declarations: string[],
+  currentCollectionId: string,
+  variableMap: Map<string, { collectionId: string; collectionName: string }>,
+  defaultCollectionId: string
+): { groupedDeclarations: Map<string, string[]>; collectionOrder: string[] } {
+  // 按集合分组
+  const groupedDeclarations = new Map<string, string[]>();
+  const collectionOrder: string[] = [];
+  const unknownDeclarations: string[] = [];
+
+  // 首先将声明按集合分组
+  declarations.forEach(declaration => {
+    const varName = declaration.match(/--([^:]+):/)?.[1] || '';
+    const varInfo = variableMap.get(varName);
+    
+    if (!varInfo) {
+      // 如果找不到变量信息，将其归类到默认集合
+      if (!groupedDeclarations.has(defaultCollectionId)) {
+        groupedDeclarations.set(defaultCollectionId, []);
+        if (!collectionOrder.includes(defaultCollectionId)) {
+          collectionOrder.push(defaultCollectionId);
+        }
+      }
+      groupedDeclarations.get(defaultCollectionId)!.push(declaration);
+      return;
+    }
+    
+    const { collectionId } = varInfo;
+    if (!groupedDeclarations.has(collectionId)) {
+      groupedDeclarations.set(collectionId, []);
+      if (!collectionOrder.includes(collectionId)) {
+        collectionOrder.push(collectionId);
+      }
+    }
+    groupedDeclarations.get(collectionId)!.push(declaration);
+  });
+
+  // 对每个组内的声明进行排序，并在首字母变化时添加空行
+  for (const [collectionId, group] of groupedDeclarations) {
+    const sortedGroup: string[] = [];
+    const sortedDeclarations = group.sort((a, b) => {
+      const varNameA = a.match(/--([^:]+):/)?.[1] || '';
+      const varNameB = b.match(/--([^:]+):/)?.[1] || '';
+      return varNameA.localeCompare(varNameB);
+    });
+
+    let lastFirstLetter = '';
+    sortedDeclarations.forEach((declaration, index) => {
+      const varName = declaration.match(/--([^-]+)-/)?.[1] || '';
+      const currentFirstLetter = varName.charAt(0);
+      
+      // 如果首字母变化了，并且不是第一个声明，添加空行
+      if (currentFirstLetter !== lastFirstLetter && lastFirstLetter !== '') {
+        sortedGroup.push('');
+      }
+      
+      sortedGroup.push(declaration);
+      lastFirstLetter = currentFirstLetter;
+    });
+
+    groupedDeclarations.set(collectionId, sortedGroup);
+  }
+
+  // 确保当前集合在最前面
+  const currentCollectionIndex = collectionOrder.indexOf(currentCollectionId);
+  if (currentCollectionIndex > -1) {
+    collectionOrder.splice(currentCollectionIndex, 1);
+    collectionOrder.unshift(currentCollectionId);
+  }
+
+  return { groupedDeclarations, collectionOrder };
+}
+
+function sortSelectors(selectors: string[]): string[] {
+  return selectors.sort((a, b) => {
+    // 媒体查询放在最后
+    if (a.startsWith('@media') && !b.startsWith('@media')) return 1;
+    if (!a.startsWith('@media') && b.startsWith('@media')) return -1;
+    // 其他选择器按字母顺序排序
+    return a.localeCompare(b);
+  });
+}
+
+// 帮助函数：将集合名称转换为合法的 CSS 标识符
+function sanitizeCollectionName(name: string): string {
+  return (
+    name
+      // 转换为小写
+      .toLowerCase()
+      // 在大写字母前添加连字符（处理驼峰命名）
+      .replace(/([A-Z])/g, '-$1')
+      // 将空格和其他特殊字符替换为连字符
+      .replace(/[^a-z0-9]+/g, '-')
+      // 将连续的连字符替换为单个连字符
+      .replace(/-+/g, '-')
+      // 移除开头和结尾的连字符
+      .replace(/^-+|-+$/g, '')
+      // 确保以字母开头
+      .replace(/^[^a-z]+/, '') ||
+    // 如果处理后为空
+    'collection'
+  );
+}
+
+// 帮助函数：获取变量的 CSS 变量名
+function getVariableCSSName(
+  variable: { name: string; collection: TVariableCollection },
+  originalCollection: TVariableCollection,
+  shouldAppendCollectionName: boolean
+): string {
+  const cssNameKebabCase = variable.name
+    .split('/')
+    .map((segment) => changeCase.kebabCase(segment))
+    .join('-');
+
+  // 如果变量名以 -default 结尾,则删除它
+  const cssNameWithoutDefault = cssNameKebabCase.endsWith('-default')
+    ? cssNameKebabCase.slice(0, -8) // 删除 '-default' (8个字符)
+    : cssNameKebabCase;
+  if (variable.collection.id !== originalCollection.id && shouldAppendCollectionName) {
+    const collectionName = sanitizeCollectionName(variable.collection.name);
+    return `${collectionName}-${cssNameWithoutDefault}`;
+  }
+
+  return cssNameWithoutDefault;
+}
+
+// 帮助函数：获取 mode 的 name 和所属集合
+function getModeNamesAndCollections(
+  modes: string[],
+  collections: TVariableCollection[]
+): Array<{ name: string; collection: TVariableCollection }> {
+  return modes.map((modeId) => {
+    for (const collection of collections) {
+      const mode = collection.modes.find((m) => m.modeId === modeId);
+      if (mode) {
+        return {
+          name: mode.name.toLowerCase().replace(/\s+/g, '-'),
+          collection,
+        };
+      }
+    }
+    return { name: modeId, collection: collections[0] };
+  });
+}
+
 // 5. CSS 生成函数
 function generateCSSForMultipleVariables(
   results: Result[],
@@ -602,69 +750,11 @@ function generateCSSForMultipleVariables(
   const css: string[] = [];
   const defaultValues: Map<string, string> = new Map();
   const modeOverrides: Map<string, Set<string>> = new Map();
+  
+  // 创建变量到集合的映射
+  const variableCollectionMap = new Map<string, { collectionId: string; collectionName: string }>();
 
-  // 帮助函数：将集合名称转换为合法的 CSS 标识符
-  function sanitizeCollectionName(name: string): string {
-    return (
-      name
-        // 转换为小写
-        .toLowerCase()
-        // 在大写字母前添加连字符（处理驼峰命名）
-        .replace(/([A-Z])/g, '-$1')
-        // 将空格和其他特殊字符替换为连字符
-        .replace(/[^a-z0-9]+/g, '-')
-        // 将连续的连字符替换为单个连字符
-        .replace(/-+/g, '-')
-        // 移除开头和结尾的连字符
-        .replace(/^-+|-+$/g, '')
-        // 确保以字母开头
-        .replace(/^[^a-z]+/, '') ||
-      // 如果处理后为
-      'collection'
-    );
-  }
-
-  // 帮助函数：获取变量的 CSS 变量名
-  function getVariableCSSName(
-    variable: { name: string; collection: TVariableCollection },
-    originalCollection: TVariableCollection
-  ): string {
-    const cssNameKebabCase = variable.name
-      .split('/')
-      .map((segment) => changeCase.kebabCase(segment))
-      .join('-');
-
-    // 如果变量名以 -default 结尾,则删除它
-    const cssNameWithoutDefault = cssNameKebabCase.endsWith('-default')
-      ? cssNameKebabCase.slice(0, -8) // 删除 '-default' (8个字符)
-      : cssNameKebabCase;
-    if (variable.collection.id !== originalCollection.id && appendCollectionName) {
-      const collectionName = sanitizeCollectionName(variable.collection.name);
-      return `${collectionName}-${cssNameWithoutDefault}`;
-    }
-
-    return cssNameWithoutDefault;
-  }
-
-  // 帮助函数：获取 mode 的 name 和所属集合
-  function getModeNamesAndCollections(
-    modes: string[],
-    collections: TVariableCollection[]
-  ): Array<{ name: string; collection: TVariableCollection }> {
-    return modes.map((modeId) => {
-      for (const collection of collections) {
-        const mode = collection.modes.find((m) => m.modeId === modeId);
-        if (mode) {
-          return {
-            name: mode.name.toLowerCase().replace(/\s+/g, '-'),
-            collection,
-          };
-        }
-      }
-      return { name: modeId, collection: collections[0] };
-    });
-  }
-
+  // 在处理变量时，记录变量所属的集合信息
   function processValue(
     value: ResolvedValue | undefined,
     parentModes: string[] = [],
@@ -676,20 +766,21 @@ function generateCSSForMultipleVariables(
     resolvedDataType?: VariableResolvedDataType,
     scopes?: VariableScope[]
   ) {
-    console.log(parentModes);
-    console.log(variable.name);
-    console.log(value);
     if (value === undefined || value === null) {
       console.warn(`处理变量 ${variable.name} 时遇到空值`);
       return;
     }
 
-    let variableCSSName = getVariableCSSName(variable, originalCollection);
+    let variableCSSName = getVariableCSSName(variable, originalCollection, appendCollectionName);
     if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS 4.0') {
       variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
     }
-    console.log('--------------处理值---------------');
-    console.log(variableCSSName);
+    
+    // 记录变量所属的集合信息
+    variableCollectionMap.set(variableCSSName, {
+      collectionId: referencingCollection.id,
+      collectionName: referencingCollection.name
+    });
 
     if (typeof value !== 'object' || isColorValue(value)) {
       const modeInfos = getModeNamesAndCollections(parentModes, allCollections).filter(
@@ -717,9 +808,6 @@ function generateCSSForMultipleVariables(
         variable.name,
         format
       );
-
-
-
 
       const declaration = `  --${variableCSSName}: ${processedValue};`;
 
@@ -758,7 +846,7 @@ function generateCSSForMultipleVariables(
                 })[0]
               : themeRootSelector;
 
-          const referencedVarName = getVariableCSSName(modeData.variable, originalCollection);
+          const referencedVarName = getVariableCSSName(modeData.variable, originalCollection, appendCollectionName);
           const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
 
           if (selector === themeRootSelector) {
@@ -809,14 +897,12 @@ function generateCSSForMultipleVariables(
     useRemUnit: boolean,
     format: ExportFormat
   ) {
-
-
     const { initialVariable, modes } = result;
 
     // 处理默认模式
     const defaultMode = modes[initialVariable.collection.defaultModeId];
     if (defaultMode) {
-      let variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection);
+      let variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection, appendCollectionName);
       if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS 4.0') {
         variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
       }
@@ -825,7 +911,7 @@ function generateCSSForMultipleVariables(
 
       if (defaultMode.variable) {
         // 如果是引用其他变量
-        const referencedVarName = getVariableCSSName(defaultMode.variable, initialVariable.collection);
+        const referencedVarName = getVariableCSSName(defaultMode.variable, initialVariable.collection, appendCollectionName);
         const rootReference = `  --${variableCSSName}: var(--${referencedVarName});`;
         defaultValues.set(variableCSSName, rootReference);
 
@@ -867,14 +953,14 @@ function generateCSSForMultipleVariables(
         if (!modeData || modeId === initialVariable.collection.defaultModeId) continue;
 
         const parentModes = [modeId];
-        const variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection);
+        const variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection, appendCollectionName);
 
         console.log('--------------处理其他模式---------------');
         console.log(variableCSSName);
 
         if (modeData.variable) {
           // 如果是引用其他变量
-          const referencedVarName = getVariableCSSName(modeData.variable, initialVariable.collection);
+          const referencedVarName = getVariableCSSName(modeData.variable, initialVariable.collection, appendCollectionName);
           const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
 
           const modeInfos = getModeNamesAndCollections(parentModes, allCollections).filter(
@@ -1019,22 +1105,98 @@ function generateCSSForMultipleVariables(
   if (defaultValues.size > 0) {
     css.push('/* Default Mode */');
     css.push(themeRootSelector + ' {');
-    css.push([...defaultValues.values()].join('\n'));
+    
+    const currentCollectionId = results[0].initialVariable.collection.id;
+    
+    // 对默认值进行分组排序
+    const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
+      [...defaultValues.values()],
+      currentCollectionId,
+      variableCollectionMap,
+      currentCollectionId
+    );
+
+    // 按集合顺序输出变量
+    for (let i = 0; i < collectionOrder.length; i++) {
+      const collectionId = collectionOrder[i];
+      const collection = allCollections.find(c => c.id === collectionId);
+      const declarations = groupedDeclarations.get(collectionId);
+      if (declarations && declarations.length > 0) {
+        css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
+        css.push(declarations.join('\n'));
+        // 如果不是最后一个集合，添加换行
+        if (i < collectionOrder.length - 1) {
+          css.push('');
+        }
+      }
+    }
+    
     css.push('}\n');
   }
 
-  for (const [selector, declarations] of modeOverrides.entries()) {
-    if (declarations.size > 0) {
+  // 对选择器进行排序
+  const sortedSelectors = sortSelectors([...modeOverrides.keys()]);
+  const currentCollectionId = results[0].initialVariable.collection.id;
+  
+  for (const selector of sortedSelectors) {
+    const declarations = modeOverrides.get(selector);
+    if (declarations?.size > 0) {
       css.push(`/* Mode Override */`);
       if (selector.startsWith('@media')) {
         css.push(`${selector} {`);
         css.push(themeRootSelector + ' {');
-        css.push([...declarations].join('\n'));
+        
+        // 对模式覆盖的值进行分组排序
+        const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
+          [...declarations],
+          currentCollectionId,
+          variableCollectionMap,
+          currentCollectionId
+        );
+
+        // 按集合顺序输出变量
+        for (let i = 0; i < collectionOrder.length; i++) {
+          const collectionId = collectionOrder[i];
+          const collection = allCollections.find(c => c.id === collectionId);
+          const modeDeclarations = groupedDeclarations.get(collectionId);
+          if (modeDeclarations && modeDeclarations.length > 0) {
+            css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
+            css.push(modeDeclarations.join('\n'));
+            // 如果不是最后一个集合，添加换行
+            if (i < collectionOrder.length - 1) {
+              css.push('');
+            }
+          }
+        }
+        
         css.push('  }');
         css.push('}\n');
       } else {
         css.push(`${selector} {`);
-        css.push([...declarations].join('\n'));
+        
+        // 对模式覆盖的值进行分组排序
+        const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
+          [...declarations],
+          currentCollectionId,
+          variableCollectionMap,
+          currentCollectionId
+        );
+
+        // 按集合顺序输出变量
+        for (let i = 0; i < collectionOrder.length; i++) {
+          const collectionId = collectionOrder[i];
+          const collection = allCollections.find(c => c.id === collectionId);
+          const modeDeclarations = groupedDeclarations.get(collectionId);
+          if (modeDeclarations && modeDeclarations.length > 0) {
+            css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
+            css.push(modeDeclarations.join('\n'));
+            // 如果不是最后一个集合，添加换行
+            if (i < collectionOrder.length - 1) {
+              css.push('');
+            }
+          }
+        }
+        
         css.push('}\n');
       }
     }
