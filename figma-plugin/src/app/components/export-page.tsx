@@ -11,7 +11,6 @@ import { Button, ScrollArea } from '@mantine/core';
 import {
   processColorValue as rgbObjectToColorString,
   processConstantValue as getCssValue,
-  ignoreGroup,
 } from '../../lib/utils';
 import prettier from 'prettier/standalone';
 import parserEstree from 'prettier/plugins/estree';
@@ -23,6 +22,56 @@ import Welcome from './welcome';
 import { notifications } from '@mantine/notifications';
 import * as changeCase from 'change-case';
 import { generateThemeFiles } from '../../lib/utils';
+
+export const tailwindV3IgnoreGroup = [
+  'colors/slate',
+  'colors/gray',
+  'colors/zinc',
+  'colors/neutral',
+  'colors/stone',
+  'colors/red',
+  'colors/orange',
+  'colors/amber',
+  'colors/yellow',
+  'colors/lime',
+  'colors/green',
+  'colors/emerald',
+  'colors/teal',
+  'colors/cyan',
+  'colors/sky',
+  'colors/blue',
+  'colors/indigo',
+  'colors/violet',
+  'colors/purple',
+  'colors/fuchsia',
+  'colors/pink',
+  'colors/rose',
+];
+
+export const tailwindV4IgnoreGroup = [
+  'color/slate',
+  'color/gray',
+  'color/zinc',
+  'color/neutral',
+  'color/stone',
+  'color/red',
+  'color/orange',
+  'color/amber',
+  'color/yellow',
+  'color/lime',
+  'color/green',
+  'color/emerald',
+  'color/teal',
+  'color/cyan',
+  'color/sky',
+  'color/blue',
+  'color/indigo',
+  'color/violet',
+  'color/purple',
+  'color/fuchsia',
+  'color/pink',
+  'color/rose',
+]
 
 function flattenConfig(config: object) {
   const newConfig = {};
@@ -129,6 +178,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
       if (variables && formValues.selectCollectionID) {
         try {
           const output = variables.filter((item) => item.variableCollectionId === formValues.selectCollectionID);
+          console.log('ignoreTailwindColor', formValues.ignoreTailwindColor);
 
           const { css, tailwindConfig } = await generateThemeFiles(
             output,
@@ -137,7 +187,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
             true,
             formValues.useRemUnit,
             formValues.selectVariableGroup,
-            formValues.ignoreTailwindColor ? ignoreGroup : [],
+            formValues.ignoreTailwindColor ? formValues.exportFormat === 'Tailwind CSS' ? tailwindV4IgnoreGroup : tailwindV3IgnoreGroup : [],
             formValues.exportFormat
           );
           setTailwindCSSOutput({
@@ -186,7 +236,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
             true,
             formValues.useRemUnit,
             formValues.selectVariableGroup,
-            formValues.ignoreTailwindColor ? ignoreGroup : [],
+            formValues.ignoreTailwindColor ? formValues.exportFormat === 'Tailwind CSS' ? tailwindV4IgnoreGroup : tailwindV3IgnoreGroup : [],
             formValues.exportFormat
           );
           setTailwindCSSOutput({

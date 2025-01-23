@@ -3,30 +3,7 @@ import * as changeCase from 'change-case';
 import { convert, OKLCH, sRGB, DisplayP3 } from '@texel/color';
 import Color from 'colorjs.io';
 
-export const ignoreGroup = [
-  'colors/slate',
-  'colors/gray',
-  'colors/zinc',
-  'colors/neutral',
-  'colors/stone',
-  'colors/red',
-  'colors/orange',
-  'colors/amber',
-  'colors/yellow',
-  'colors/lime',
-  'colors/green',
-  'colors/emerald',
-  'colors/teal',
-  'colors/cyan',
-  'colors/sky',
-  'colors/blue',
-  'colors/indigo',
-  'colors/violet',
-  'colors/purple',
-  'colors/fuchsia',
-  'colors/pink',
-  'colors/rose',
-];
+
 
 export type RGB = {
   r: number;
@@ -120,14 +97,27 @@ export function processColorValue(value: ColorValue, format: ExportFormat): stri
   const g = Math.round(value.g * 255);
   const b = Math.round(value.b * 255);
 
-  // if (isRGBA(value)) {
-  //   return `${r} ${g} ${b} / ${value.a}`;
-  // }
-
   if (format === 'Tailwind CSS 4.0') {
-    // const oklch = convert([r,g,b],DisplayP3,OKLCH,[0,0,0]);
     const oklch = convert([value.r, value.g, value.b], sRGB, OKLCH, [0, 0, 0]);
-    return `oklch(${oklch[0]} ${oklch[1]} ${oklch[2]})`;
+    
+    // 优化数字显示格式的辅助函数
+    const formatNumber = (num: number, precision: number) => {
+      // 如果数字为 0，直接返回 "0"
+      if (num === 0) return "0";
+      
+      const fixed = Number(num.toFixed(precision));
+      // 如果固定精度后的数字等于整数部分，返回整数
+      if (fixed === Math.floor(fixed)) return fixed.toString();
+      // 否则返回固定精度的数字
+      return fixed.toString();
+    };
+
+    // 分别格式化三个值
+    const l = formatNumber(oklch[0], 3); // lightness
+    const c = formatNumber(oklch[1], 3); // chroma
+    const h = formatNumber(oklch[2], 1); // hue
+
+    return `oklch(${l} ${c} ${h})`;
   }
 
   return `${r} ${g} ${b}`;
@@ -174,6 +164,9 @@ const tailwindv3Rule = {
   leading: 'line-height',
   tracking: 'letter-spacing',
   text: 'font-size',
+  breakpoint: 'screens',
+  radius: 'border-radius',
+  shadow: 'box-shadow',
 };
 
 const tailwindv4Rule = {
@@ -183,6 +176,9 @@ const tailwindv4Rule = {
   space: 'spacing',
   'line-height': 'leading',
   'letter-spacing': 'tracking',
+  screens: 'breakpoint',
+  'border-radius': 'radius',
+  'box-shadow': 'shadow',
 };
 
 // 属性名映射和匹配帮助函数
@@ -1441,6 +1437,7 @@ export async function generateThemeFiles(
   ignoreGroup: string[] = [],
   exportFormat: ExportFormat
 ): Promise<{ css: string; tailwindConfig: string }> {
+  console.log('ignoreGroup', ignoreGroup);
   try {
     const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup, exportFormat);
     console.log('results', results);

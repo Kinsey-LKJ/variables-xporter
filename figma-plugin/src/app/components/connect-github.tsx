@@ -81,7 +81,7 @@ const ConnectGithub = ({
                   <div className=" grid gap-4 text-2xl font-bold text-center text-white">
                     为储存库安装
                     <br />
-                    Tokens Sync Github App
+                    Variables Xporter Github App
                   </div>
 
                   <div className=" grid gap-2 justify-items-center absolute bottom-0">
@@ -131,7 +131,7 @@ const ConnectGithub = ({
                       </div>
                     </div>
                     {/* <div className=" text-sm text-muted-foreground">
-                      Tokens Sync 需要验证安装 ID，以确定你已经被授权可以向指定储存库提交数据
+                      Variables Xporter 需要验证安装 ID，以确定你已经被授权可以向指定储存库提交数据
                     </div> */}
                   </div>
                 </div>
