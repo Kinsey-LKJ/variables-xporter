@@ -1,6 +1,6 @@
 import { Callout } from 'nextra/components'
-import { Cards } from 'nextra/components'
-import { Moon,Columns3 } from 'lucide-react'
+import { Cards, Tabs } from 'nextra/components'
+import { Moon, Columns3 } from 'lucide-react'
 
 # 多模式支持
 
@@ -17,30 +17,136 @@ import { Moon,Columns3 } from 'lucide-react'
 
 Variables Xporter **支持复合的多模式变量**，例如 `colors/primary/DEFAULT`（主要颜色）变量可能同时受到明暗主题以及品牌主题的影响，这会导出以下结果：
 
-```css
-/* Default Mode */
-:root {
-  --colors-brand-a-500: 218 89 89 / 1;
-  --colors-brand-a-600: 192 57 57 / 1;
-  --colors-brand-b-500: 238 109 33 / 1;
-  --colors-brand-b-600: 229 85 23 / 1;
-  --colors-primary-default: var(--colors-primary-default-theme-modes);
-  --colors-primary-default-theme-modes: var(--colors-primary-light-brand-modes);
-  --colors-primary-light-brand-modes: var(--colors-brand-a-600);
-  --colors-primary-dark-brand-modes: var(--colors-brand-a-500);
-}
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
+  <Tabs.Tab>
+  ```css
+  /* Default Mode */
+@theme {
+  /* Collection: Design Tokens */
+  --color-brand-a-500: oklch(0.63 0.16 22.94);
+  --color-brand-a-600: oklch(0.54 0.17 24.90);
+  --color-brand-b-500: oklch(0.68 0.17 45.85);
+  --color-brand-b-600: oklch(0.63 0.19 39.71);
+  --color-primary: var(--theme-modes-color-primary);
 
-/* Mode Override */
-.dark {
-  --colors-primary-default-theme-modes: var(--colors-primary-dark-brand-modes);
+  /* Collection: Theme Modes */
+  --theme-modes-color-primary: var(--brand-modes-color-primary-light);
+
+  /* Collection: Brand Modes */
+  --brand-modes-color-primary-dark: var(--color-brand-a-500);
+  --brand-modes-color-primary-light: var(--color-brand-a-600);
 }
 
 /* Mode Override */
 .brand-b {
-  --colors-primary-light-brand-modes: var(--colors-brand-b-600);
-  --colors-primary-dark-brand-modes: var(--colors-brand-b-500);
+  /* Collection: Brand Modes */
+  --brand-modes-color-background-dark: var(--color-base-black);
+  --brand-modes-color-background-light: var(--color-base-white);
+  --brand-modes-color-primary-dark: var(--color-brand-b-500);
+  --brand-modes-color-primary-foreground-light: var(--color-base-white);
+  --brand-modes-color-primary-light: var(--color-brand-b-600);
+}
+
+/* Mode Override */
+.dark {
+  /* Collection: Theme Modes */
+  --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
+}
+
+  ```
+  </Tabs.Tab>
+
+  <Tabs.Tab>
+  ```js
+module.exports = {
+    theme: {
+      extend: {
+        colors: {
+      'brand-a': {
+            '500': 'rgb(var(--colors-brand-a-500))',
+            '600': 'rgb(var(--colors-brand-a-600))',
+      },
+      'brand-b': {
+            '400': 'rgb(var(--colors-brand-b-400))',
+            '500': 'rgb(var(--colors-brand-b-500))',
+            '600': 'rgb(var(--colors-brand-b-600))',
+      },
+      primary: 'rgb(var(--colors-primary))',
+        }
+      },
+    },
+  };
+```
+    ```css
+  /* Default Mode */
+  :root {
+
+  /* Collection: Design Tokens */
+  --colors-brand-a-500: 218 89 89;
+  --colors-brand-a-600: 192 57 57;
+  --colors-brand-b-500: 238 109 33;
+  --colors-brand-b-600: 229 85 23;
+  --colors-primary: var(--theme-modes-colors-primary);
+
+  /* Collection: Theme Modes */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-light);
+
+  /* Collection: Brand Modes */
+  --brand-modes-colors-primary-dark: var(--colors-brand-a-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-a-600);
+
+}
+
+/* Mode Override */
+.brand-b {
+  /* Collection: Brand Modes */
+  --brand-modes-colors-primary-dark: var(--colors-brand-b-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-b-600);
+}
+
+/* Mode Override */
+.dark {
+  /* Collection: Theme Modes */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-dark);
 }
 ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```css
+  /* Default Mode */
+  :root {
+  /* Collection: Design Tokens */
+  --colors-brand-a-500: 218 89 89;
+  --colors-brand-a-600: 192 57 57;
+  --colors-brand-b-500: 238 109 33;
+  --colors-brand-b-600: 229 85 23;
+  --colors-primary: var(--theme-modes-colors-primary);
+
+  /* Collection: Theme Modes */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-light);
+
+  /* Collection: Brand Modes */
+  --brand-modes-colors-primary-dark: var(--colors-brand-a-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-a-600);
+
+}
+
+/* Mode Override */
+.brand-b {
+  /* Collection: Brand Modes */
+  --brand-modes-colors-primary-dark: var(--colors-brand-b-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-b-600);
+}
+
+/* Mode Override */
+.dark {
+  /* Collection: Theme Modes */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-dark);
+}
+```
+  </Tabs.Tab>
+</Tabs>
+
 现在，`colors/primary/DEFAULT` 变量在不同的明暗主题以及品牌主题下，都会呈现不一样的结果。
 
 了解如何在 Figma 中创建和管理多模式变量:
