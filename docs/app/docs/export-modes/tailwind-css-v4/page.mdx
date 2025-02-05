@@ -1,33 +1,26 @@
 ---
-title: Tailwind CSS
+title: Tailwind CSS V4
 ---
 
 import { Callout } from 'nextra/components'
 import { Cards } from 'nextra/components'
-import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck,Box,Ruler } from 'lucide-react'
+import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck, Box, Ruler } from 'lucide-react'
 
-# Tailwind CSS
+# Tailwind CSS V4
 
-选择 Tailwind CSS 导出方式时，Variables Xporter 会生成两个文件：
+Tailwind CSS 迎来了 V4 版本，它引入了许多新的功能，并且更快。选择 Tailwind CSS V4 导出方式时，Variables Xporter 会生成一个文件：
 
-- `tailwind.config.js` - Tailwind CSS 的配置文件
-- `global.css` - 包含所有 CSS 变量定义
+- `app.css` - 包含所有的 Tailwind CSS 配置和 CSS 变量
 
 ## 特性和优化
 
 ### 1. 颜色值优化
 
-自动将颜色值转换为 RGB 通道格式，支持 Tailwind 的不透明度修饰符：
+自动将颜色值转换为 oklch 格式，支持不透明度修饰符：
 
-```js
-// tailwind.config.js
-colors: {
-  primary: 'rgb(var(--colors-primary-default))'
-}
-
-// global.css
-:root {
-  --colors-primary-default: 192 57 57;  /* RGB 通道格式 */
+```css
+@theme {
+  --color-primary: oklch(0.94 0.024 17.6);
 }
 ```
 
@@ -40,13 +33,14 @@ colors: {
 </div>
 ```
 
-### 2. 字体变量合并
+### 2. 合并排版样式
 
-自动合并相关的字体变量，符合 Tailwind 的约定：
+自动合并相关的排版样式变量，符合 Tailwind CSS V4的约定：
 
-```js
-fontSize: {
-  'heading-1': ['2.5rem', { lineHeight: '1.2' }]
+```css
+@theme {
+--text-lg: 1.125rem;
+--text-lg--line-height: 1.75rem;
 }
 ```
 
@@ -55,12 +49,14 @@ fontSize: {
 借助**变量追溯**和**单一出口原则**, Variables Xporter 能够实现复杂的多模式变量导出。
 
 ```css
-:root {
-  --colors-primary: var(--colors-primary-light);
+@theme {
+  --color-primary: var(--color-red-500);
 }
 
-.dark {
-  --colors-primary: var(--colors-primary-dark);
+@layer theme {
+  .dark {
+    --color-primary: var(--color-red-400);
+  }
 }
 ```
 
@@ -73,6 +69,9 @@ fontSize: {
     className="mt-4"
   />
 
+
+### 4. 强大的兼容性
+Variables Xporter 支持 Tailwind CSS V3 和 Tailwind CSS V4 两种导出方式，并且一套 Figma 变量可以在两种导出方式中无缝切换，而无需做任何更改。Variables Xporter 在内部会根据不同版本的命名规范自动调整导出。
 
 ---
 

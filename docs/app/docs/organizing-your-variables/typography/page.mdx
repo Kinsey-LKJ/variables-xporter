@@ -1,55 +1,56 @@
-import { Callout } from 'nextra/components'
+import { Callout, Tabs } from 'nextra/components'
 
 # 排版系统
 让我们来探索如何组织字体和排版相关的变量，包括 `font-family`（字体系列）、`font-size`（字体大小）、`font-weight`（字重）和 `line-height`（行高）等。
 
 ## 顶层目录
-为了保持变量结构的清晰和直观，且符合 Tailwind CSS 的配置结构，我们建议采用以下两种方式来组织字体相关变量：
-### 使用样式名称作为顶层目录
+为了保持变量结构的清晰和直观，且符合 Tailwind CSS 的配置结构，请按照以下规则命名：
+### Tailwind CSS V4 命名规则
+- `font/{variable}` -> **font-family**
+- `text/{variable}` -> **font-size**
+- `font-weight/{variable}` -> **font-weight**
+- `leading/{variable}` -> **line-height**
+- `tracking/{variable}` -> **letter-spacing**
+
+例如：
+- `text/sm`
+- `font/sans`
+- `font-weight/bold`
+
+### Tailwind CSS V3 命名规则
+
 - `font-family/{variable}`
 - `font-size/{variable}` 
 - `font-weight/{variable}` 
 - `line-height/{variable}` 
 - `letter-spacing/{variable}` 
-- `line-clamp/{variable}`
 
 例如：
 - `font-weight/normal`
 - `font-weight/medium`
 - `font-weight/bold`
 
-### 使用 `font` 作为顶层目录
-为了让 Design Tokens 的变量结构更加清晰，可以将所有排版和字体相关的变量以 `font/{property}/{variable}` 的格式都放在 `font` 目录下，例如：
-- `font/size/sm`
-- `font/size/base`
-- `font/size/lg`
-- `font/weight/normal`
-- `font/weight/medium`
-- `font/weight/bold`
-- `font/line-height/none`
-- `font/line-height/tight`
-- `font/line-height/relaxed`
 
-<Callout type="error" emoji="🚨">
-在 Tailwind CSS 项目中，遵循顶层目录的要求是必须的。
+<Callout emoji="💡">
+你可以任意选择以上两种命名规则，Variables Xporter 都能兼容，并根据导出的格式自动调整为对应 Tailwind CSS 配置的命名规则，但在以下的文档中，我们默认使用 Tailwind CSS V4 的命名规则。
 </Callout>
 
 ## 合并处理 [#merge-property]
-你还可以选择将相关的属性以 `font/{variable}/{property}` 的格式组合在一起。这种方式特别适合管理具有固定样式组合的文本相关变量。
+你还可以选择将相关的属性以 `text/{variable}/{property}` 的格式组合在一起。这种方式特别适合管理具有固定样式组合的文本相关变量。
 
-例如，Tailwind CSS 默认的 [Font Size 工具](https://tailwindcss.com/docs/font-size)由 `sm`、`base`、`lg` 等不同的级别组成，而每一个级别都包含默认的 `font-size`、`line-height` 两个属性，例如：
+例如，Tailwind CSS 默认的 [Font Size 工具](https://tailwindcss.com/docs/font-size)由 `sm`、`base`、`lg` 等不同的级别组成，而每一个级别除了包含默认的 `font-size` 属性，还包含 `line-height` 属性，例如：
 
 #### `sm`
-- `font/sm/size`
-- `font/sm/line-height`
+- `text/sm/DEFAULT`
+- `text/sm/line-height`
 
 #### `base`
-- `font/base/size`
-- `font/base/line-height`
+- `text/base/DEFAULT`
+- `text/base/line-height`
 
 #### `lg`
-- `font/lg/size`
-- `font/lg/line-height`
+- `text/lg/DEFAULT`
+- `text/lg/line-height`
 
 这是创建  `font-size` 的原子化变量的绝佳方式。
 
@@ -58,48 +59,66 @@ import { Callout } from 'nextra/components'
 除了以上的原子化变量，还有一个典型的示例，就是将这些字体属性进一步抽象成 `display`、`heading`、`body` 等变量：
 
 #### `display`
-- `font/display/size`
-- `font/display/weight`
-- `font/display/line-height`
-- `font/display/letter-spacing`
+- `text/display/DEFAULT`
+- `text/display/font-weight`
+- `text/display/line-height`
+- `text/display/letter-spacing`
 
 #### `heading`
-- `font/heading/size`
-- `font/heading/weight`
-- `font/heading/line-height`
-- `font/heading/letter-spacing`
+- `text/heading/DEFAULT`
+- `text/heading/font-weight`
+- `text/heading/line-height`
+- `text/heading/letter-spacing`
 
 #### `body`
-- `font/body/size`
-- `font/body/weight`
-- `font/body/line-height`
-- `font/body/letter-spacing`
+- `text/body/DEFAULT`
+- `text/body/font-weight`
+- `text/body/line-height`
+- `text/body/letter-spacing`
 
-<Callout type="info" emoji="💡">
-在以 `font/{variable}/{property}` 的格式合并处理变量时，如果 `{property}` 包含 `font-`前缀，例如 `font-size`、`font-weight`，则可以省略 `font-`。
-</Callout>
+这种组织方式 Variables Xporter 会自动生成以下 Tailwind CSS 配置和对应的 CSS 变量：
 
-这种组织方式会 Variables Xporter 会自动生成以下 Tailwind CSS 配置和对应的 CSS 变量：
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
+  <Tabs.Tab>
+  ```css
+@theme {
+  --text-display: 1.5rem;
+  --text-display--line-height: 2rem;
+  --text-display--letter-spacing: -0.01em;
+  --text-display--font-weight: 500;
 
-```js
+  --text-heading: 1.25rem;
+  --text-heading--line-height: 1.75rem;
+  --text-heading--letter-spacing: -0.01em;
+  --text-heading--font-weight: 500;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.5rem;
+  --text-body--letter-spacing: -0.01em;
+  --text-body--font-weight: 400;
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   theme: {
     fontSize: {
-      'display': ['var(--font-display-size)', {
-        lineHeight: 'var(--font-display-line-height)',
-        letterSpacing: 'var(--font-display-letter-spacing)',
-        fontWeight: 'var(--font-display-weight)',
+      'display': ['var(--font-size-display)', {
+        lineHeight: 'var(--font-size-display-line-height)',
+        letterSpacing: 'var(--font-size-display-letter-spacing)',
+        fontWeight: 'var(--font-size-display-font-weight)',
       }],
-      'heading': ['var(--font-heading-size)', {
-        lineHeight: 'var(--font-heading-line-height)',
-        letterSpacing: 'var(--font-heading-letter-spacing)',
-        fontWeight: 'var(--font-heading-weight)',
+      'heading': ['var(--font-size-heading)', {
+        lineHeight: 'var(--font-size-heading-line-height)',
+        letterSpacing: 'var(--font-size-heading-letter-spacing)',
+        fontWeight: 'var(--font-size-heading-font-weight)',
       }],
-      'body': ['var(--font-body-size)', {
-        lineHeight: 'var(--font-body-line-height)',
-        letterSpacing: 'var(--font-body-letter-spacing)',
-        fontWeight: 'var(--font-body-weight)',
+      'body': ['var(--font-size-body)', {
+        lineHeight: 'var(--font-size-body-line-height)',
+        letterSpacing: 'var(--font-size-body-letter-spacing)',
+        fontWeight: 'var(--font-size-body-font-weight)',
       }],
     }
   }
@@ -107,25 +126,49 @@ module.exports = {
 ```
 ```css
 :root {
-  --font-display-size: 1.5rem;
-  --font-display-line-height: 2rem;
-  --font-display-letter-spacing: -0.01em;
-  --font-display-weight: 500;
+  --font-size-display: 1.5rem;
+  --font-size-display-line-height: 2rem;
+  --font-size-display-letter-spacing: -0.01em;
+  --font-size-display-font-weight: 500;
 
-  --font-heading-size: 1.25rem;
-  --font-heading-line-height: 1.75rem;
-  --font-heading-letter-spacing: -0.01em;
-  --font-heading-weight: 500;
+  --font-size-heading: 1.25rem;
+  --font-size-heading-line-height: 1.75rem;
+  --font-size-heading-letter-spacing: -0.01em;
+  --font-size-heading-font-weight: 500;
 
-  --font-body-size: 1rem;
-  --font-body-line-height: 1.5rem;
-  --font-body-letter-spacing: -0.01em;
-  --font-body-weight: 400;
+  --font-size-body: 1rem;
+  --font-size-body-line-height: 1.5rem;
+  --font-size-body-letter-spacing: -0.01em;
+  --font-size-body-font-weight: 400;
 }
-
 ```
+  </Tabs.Tab>
+
+  <Tabs.Tab>
+  ```css
+:root {
+  --text-display: 1.5rem;
+  --text-display-line-height: 2rem;
+  --text-display-letter-spacing: -0.01em;
+  --text-display-font-weight: 500;
+
+  --text-heading: 1.25rem;
+  --text-heading-line-height: 1.75rem;
+  --text-heading-letter-spacing: -0.01em;
+  --text-heading-font-weight: 500;
+
+  --text-body: 1rem;
+  --text-body-line-height: 1.5rem;
+  --text-body-letter-spacing: -0.01em;
+  --text-body-font-weight: 400;
+}
+```
+  </Tabs.Tab>
+</Tabs>
+
+
 <Callout type="warning" emoji="⚠️">
-需要注意的是，合并处理功能仅支持四种样式属性：`font-size`、`font-weight`、`line-height` 和 `letter-spacing`。另外，只有在存在 `font/{variable}/size` 变量时，这个功能才会生效。这是为了与 Tailwind CSS 的 [`fontSize` 配置功能](https://tailwindcss.com/docs/font-size#customizing-your-theme)保持一致。
+需要注意的是，合并处理功能仅支持四种样式属性 font-size、font-weight、line-height 和 letter-spacing。另外，只有在存在 font-size 属性时，这个功能才会生效。这是为了与 Tailwind CSS 的 [`fontSize` 配置功能](https://tailwindcss.com/docs/font-size#customizing-your-theme)保持一致。
 </Callout>
 
 {/* ### 原子化变量

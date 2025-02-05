@@ -1,4 +1,4 @@
-import { Callout, Cards } from 'nextra/components'
+import { Callout, Cards, Tabs } from 'nextra/components'
 import { Type } from 'lucide-react'
 
 # 合并排版样式
@@ -16,28 +16,54 @@ import { Type } from 'lucide-react'
 ### 示例转换
 
 Figma 变量：
-- `font/heading-1/font-size`
-- `font/heading-1/line-height`
-- `font/heading-1/font-weight`
+- `font-size/heading-1/DEFAULT`
+- `font-size/heading-1/line-height`
+- `font-size/heading-1/font-weight`
 
-
-转换后的 Tailwind CSS 配置：
-```js
-fontSize: {
-  'heading-1': ['2.5rem', {
-    lineHeight: '1.2',
-    fontWeight: '600'
-  }]
+转换后的 Tailwind CSS 配置或 CSS 变量：
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
+  <Tabs.Tab>
+  ```css
+@theme {
+  --text-heading-1: 2.5rem;
+  --text-heading-1--line-height: 1.2;
+  --text-heading-1--font-weight: 600;
 }
 ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```js
+module.exports = {
+  theme: {
+    fontSize: {
+      'heading-1': ['2.5rem', {
+        lineHeight: '1.2',
+        fontWeight: '600'
+      }]
+    }
+  }
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```css
+:root {
+  --font-size-heading-1: 2.5rem;
+  --font-size-heading-1-line-height: 1.2;
+  --font-size-heading-1-font-weight: 600;
+}
+```
+  </Tabs.Tab>
+</Tabs>
+
 
 ## 命名约定
 
-为了让 Variables Xporter 正确识别和合并变量，建议遵循以下命名规则：
+为了让 Variables Xporter 正确识别和合并变量，请遵循以下命名规则：
 
 1. **基础命名格式**
 
-`font/{variable}/{property}`
+`font-size/{variable}/{property}`
 
 
 2. **支持的属性**
@@ -48,17 +74,17 @@ fontSize: {
 
 3. **示例命名**
 
-- `font/sm/font-size`
-- `font/sm/line-height`
-- `font/sm/font-weight`
-- `font/sm/letter-spacing`
+- `font-size/sm/DEFAULT`
+- `font-size/sm/line-height`
+- `font-size/sm/font-weight`
+- `font-size/sm/letter-spacing`
 
 
-详细了解如何在 Figma 中创建和管理字体变量:
+详细了解在 Figma 中排版和字体变量的组织建议:
 
   <Cards.Card
     icon={<Type  />}
-    title="字体变量管理"
+    title="排版和字体变量的组织建议"
     href="/docs/organizing-your-variables/typography"
     className="mt-4"
   />

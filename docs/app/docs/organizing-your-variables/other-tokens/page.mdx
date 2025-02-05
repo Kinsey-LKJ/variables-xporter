@@ -6,19 +6,27 @@ import { Callout } from 'nextra/components'
 
 ## 其他样式
 
-### `border-width`
+### 响应式断点
+使用 `breakpoint` 或 `screens` 作为顶层目录：
 
-使用 `border-width` 作为顶层目录：
-- `border-width/1`
-- `border-width/2` 
-- `border-width/3` 
+- `breakpoint/sm`
+- `breakpoint/md`
+- `breakpoint/lg`
+
+- `screens/sm`
+- `screens/md`
+- `screens/lg`
 
 ### `border-radius`
 
-使用 `border-radius` 作为顶层目录：
+使用 `border-radius` 或 `radius` 作为顶层目录：
 - `border-radius/sm`
 - `border-radius/md`
 - `border-radius/lg`
+
+- `radius/sm`
+- `radius/md`
+- `radius/lg`
 
 ### `filter:blur()`
 
@@ -27,11 +35,11 @@ import { Callout } from 'nextra/components'
 - `blur/md`
 - `blur/lg`
 
-你可以在 [Tailwind CSS 主题配置参考](https://tailwindcss.com/docs/theme#configuration-reference) 中查看完整的配置键列表。
+你可以在 [Tailwind CSS 主题配置参考](https://tailwindcss.com/docs/theme#theme-variable-namespaces) 中查看完整的配置键列表。
 
 ## 组件级变量
 
-对于组件级变量，顶层目录请依然遵循前面的原则，组件名称作为第二层，例如：
+对于组件级变量，顶层目录请依然遵循此文档中的原则，但是需要将组件名称作为第二层，例如：
 - `colors/button/DEFAULT`
 - `colors/button/foreground`
 - `colors/button/border`
