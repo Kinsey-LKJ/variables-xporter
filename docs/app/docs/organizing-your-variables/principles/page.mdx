@@ -109,7 +109,7 @@ import { Config } from "tailwindcss";
   </figcaption>
 </figure>
 想想当我们的变量变得越来越多时，要想找到 `colors/primary` 这个变量，会变得更麻烦，**因为我们无法依靠左边栏快速定位，而是要在 colors 这个目录下寻找**。
-这种情况不仅影响我们的工作效率，更重要的是，当我们尝试将这个结构转换为 Tailwind CSS 配置时，会遇到一个技术限制：**JavaScript 对象不允许同名键同时作为值和对象使用**。
+这种情况不仅影响我们的工作效率，更重要的是，当我们尝试将这个结构转换为 Tailwind CSS V3 版本的配置时，会遇到一个技术限制：**JavaScript 对象不允许同名键同时作为值和对象使用**。
 ```ts twoslash
 // @errors: 1117
 export default {

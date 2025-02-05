@@ -4,11 +4,11 @@ title: Tailwind CSS V4
 
 import { Callout } from 'nextra/components'
 import { Cards } from 'nextra/components'
-import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck,Box,Ruler } from 'lucide-react'
+import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck, Box, Ruler } from 'lucide-react'
 
 # Tailwind CSS V4
 
-Tailwind CSS V4 是 Tailwind CSS 的最新版本，它引入了许多新的特性和优化。选择 Tailwind CSS V4 导出方式时，Variables Xporter 会生成一个文件：
+Tailwind CSS 迎来了 V4 版本，它引入了许多新的功能，并且更快。选择 Tailwind CSS V4 导出方式时，Variables Xporter 会生成一个文件：
 
 - `app.css` - 包含所有的 Tailwind CSS 配置和 CSS 变量
 
@@ -35,7 +35,7 @@ Tailwind CSS V4 是 Tailwind CSS 的最新版本，它引入了许多新的特�
 
 ### 2. 合并排版样式
 
-自动合并相关的排版样式变量，符合 Tailwind 的约定：
+自动合并相关的排版样式变量，符合 Tailwind CSS V4的约定：
 
 ```css
 @theme {
@@ -50,11 +50,13 @@ Tailwind CSS V4 是 Tailwind CSS 的最新版本，它引入了许多新的特�
 
 ```css
 @theme {
-  --colors-primary: var(--colors-primary-light);
+  --color-primary: var(--color-red-500);
 }
 
-.dark {
-  --colors-primary: var(--colors-primary-dark);
+@layer theme {
+  .dark {
+    --color-primary: var(--color-red-400);
+  }
 }
 ```
 
@@ -69,7 +71,7 @@ Tailwind CSS V4 是 Tailwind CSS 的最新版本，它引入了许多新的特�
 
 
 ### 4. 强大的兼容性
-Variables Xporter 支持 Tailwind CSS V3 和 Tailwind CSS V4 的导出方式，并且一套 Figma 变量可以在两种导出方式中无缝切换，而无需做任何更改。Variables Xporter 在内部会根据不同版本的命名规范自动调整导出。
+Variables Xporter 支持 Tailwind CSS V3 和 Tailwind CSS V4 两种导出方式，并且一套 Figma 变量可以在两种导出方式中无缝切换，而无需做任何更改。Variables Xporter 在内部会根据不同版本的命名规范自动调整导出。
 
 ---
 

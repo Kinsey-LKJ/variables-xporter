@@ -1,4 +1,4 @@
-import { Callout } from 'nextra/components'
+import { Callout, Tabs } from 'nextra/components'
 
 # 忽略 Tailwind 调色板
 
@@ -25,7 +25,31 @@ Tailwind CSS 默认包含了丰富的调色板：
 
 ### 示例
 
-```js
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3']}>
+  <Tabs.Tab>
+  ```css
+/* 启用忽略选项前 */
+@theme {
+  --color-red-50: oklch(0.971 0.013 17.38);
+  ...
+  --color-orange-50: oklch(0.98 0.016 73.684);
+  ...
+  --color-amber-50: oklch(0.987 0.022 95.277);
+  ...
+
+  /* 你的自定义颜色 */
+  --color-primary: var(--color-red-400);
+}
+
+/* 启用忽略选项后 */
+@theme {
+  /* 只包含你的自定义颜色 */
+  --color-primary: oklch(0.704 0.191 22.216);
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```js
 // 启用忽略选项前
 module.exports = {
   theme: {
@@ -49,3 +73,5 @@ module.exports = {
   }
 }
 ```
+  </Tabs.Tab>
+</Tabs>
