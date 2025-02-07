@@ -1,70 +1,8 @@
 @import "tailwindcss";
 
-/* Default Mode */
+@plugin "tailwindcss-animate";
 
-/* Default Mode */
-/* Default Mode */
-@theme {
-  --color-gold-50: oklch(0.9934567554325112 0.03255171561940139 106.97774326749993);
-  --color-gold-100: oklch(0.9883705905931721 0.060443028285666126 107.45632351451775);
-  --color-gold-200: oklch(0.9792626445557032 0.11800509502081367 108.39438277679949);
-  --color-gold-300: oklch(0.972596614093684 0.16900968608598818 109.16970275678113);
-  --color-gold-400: oklch(0.9696595081590402 0.19494871424636015 109.5440996045657);
-  --color-gold-500: oklch(0.9687081943801841 0.20393488895956433 109.67071473333272);
-  --color-gold-600: oklch(0.968384752790583 0.20706321012600068 109.71442238581119);
-  --color-gold-700: oklch(0.8867111929717157 0.19125638765346964 109.73907312704193);
-  --color-gold-800: oklch(0.8091418434959915 0.1763809177050947 109.76923612816614);
-  --color-gold-900: oklch(0.723691090989829 0.15775392137957042 109.7692361281662);
-  --color-foreground-muted: oklch(0.5460224480990822 0.04331533784182072 286.50613184598234);
-  --color-background: oklch(0.18086108130283507 0.036769123514328844 265.9241439280327);
-  --color-primary: var(--color-biloba-flower-300);
-  --color-biloba-flower-300: oklch(0.7704202267877762 0.12183034404216575 284.7516994797829);
-  --color-border-muted: oklch(0.7061826410521345 0.09210257501259783 274.6992133189499);
-  --color-background-muted: oklch(0.293697077025735 0.03708454407777226 264.66586162862626);
-  --color-border: oklch(0.5827673537880725 0.2274148622441979 269.1728740242213);
-  --color-border-subtlest: oklch(0.2697458151461167 0.03590764430107908 274.6134759610446);
-  --color-shadow: oklch(0.7719497253214856 0.1372552861845802 234.58268075939145);
-  --color-secondary: var(--tailwind-color-fuchsia-200);
-  --tailwind-color-fuchsia-200: oklch(0.9029772721238376 0.07323718315005505 319.6197906812637);
-  --color-primary-foreground: oklch(0.30584881536376546 0.08785578270426697 265.0673160285124);
-  --color-foreground: oklch(0.8704699399863809 0.055053885155267726 285.19973386626657);
-  --color-tag-primary-foreground: var(--color-foreground);
-  --color-tag-red-foreground: var(--tailwind-color-red-100);
-  --tailwind-color-red-100: oklch(0.9356407454197607 0.030895846894281855 17.717103341555458);
-  --color-tag-emerald-foreground: var(--tailwind-color-green-100);
-  --tailwind-color-green-100: oklch(0.96241293682428 0.04337822282784585 156.74264870361742);
-  --color-tag-purple-foreground: var(--tailwind-color-purple-100);
-  --tailwind-color-purple-100: oklch(0.9464304060189398 0.03274181342046628 307.1744422985494);
-  --color-tag-fuchsia-foreground: var(--tailwind-color-fuchsia-100);
-  --tailwind-color-fuchsia-100: oklch(0.9520445884315745 0.03596649807064766 318.85184204271746);
-  --color-tag-red-border: var(--tailwind-color-red-400);
-  --tailwind-color-red-400: oklch(0.7106273511801254 0.16614791209892246 22.21621527803711);
-  --color-tag-emerald-border: var(--tailwind-color-green-400);
-  --tailwind-color-green-400: oklch(0.8003487792024322 0.18206037457341925 151.711040357868);
-  --color-tag-purple-border: var(--tailwind-color-purple-400);
-  --tailwind-color-purple-400: oklch(0.7216853890638155 0.1766884240095757 305.5037550006846);
-  --color-tag-fuchsia-border: var(--tailwind-color-fuchsia-400);
-  --tailwind-color-fuchsia-400: oklch(0.7477201332382566 0.20697175549291627 322.1604276501944);
-  --color-tag-primary-border: var(--color-primary);
-  --color-biloba-flower-50: oklch(0.9533533266834219 0.022793326760394503 283.2663838392675);
-  --color-biloba-flower-100: oklch(0.9135522303151972 0.043436842340265326 285.5083847038147);
-  --color-biloba-flower-200: oklch(0.8432827698202928 0.08061886800924252 284.539755521418);
-  --color-biloba-flower-400: oklch(0.6624228574824671 0.18235002432609146 285.29143367940003);
-  --color-biloba-flower-500: oklch(0.5943113074773334 0.21674278805654068 286.5671767803422);
-  --color-biloba-flower-600: oklch(0.5321965013376609 0.23667889308363205 287.3215307444265);
-  --color-biloba-flower-700: oklch(0.4782548233621155 0.22129743248975536 287.75227235160617);
-  --color-biloba-flower-800: oklch(0.4153292489997568 0.18351873739064453 287.8738506712606);
-  --color-biloba-flower-900: oklch(0.36957814600239713 0.14152130620476103 288.3101221804795);
-  --color-biloba-flower-950: oklch(0.26549443009030005 0.09151663834384208 292.3146581099171);
-  --color-input: oklch(0.39272093938711544 0.0429206654429011 275.4946345984784);
-  --color-ring: var(--color-primary);
-  --color-accent: var(--color-background-muted);
-  --color-secondary-foreground: oklch(0.351720105572049 0.1134941819787691 323.49643794036245);
-  --color-tag-secondary-foreground: var(--tailwind-color-fuchsia-100);
-  --color-tag-secondary-border: var(--color-secondary);
-}
-
-
+@custom-variant dark (&:is(.dark *));
 
 
 /* :root {
@@ -115,4 +53,164 @@ figcaption {
 
 code.text-\[\.9em\] {
   font-size: 14px;
+}
+
+:root {
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(0 0% 3.9%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(0 0% 3.9%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(0 0% 3.9%);
+  --primary: hsl(0 0% 9%);
+  --primary-foreground: hsl(0 0% 98%);
+  --secondary: hsl(0 0% 96.1%);
+  --secondary-foreground: hsl(0 0% 9%);
+  --muted: hsl(0 0% 96.1%);
+  --muted-foreground: hsl(0 0% 45.1%);
+  --accent: hsl(0 0% 96.1%);
+  --accent-foreground: hsl(0 0% 9%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 89.8%);
+  --input: hsl(0 0% 89.8%);
+  --ring: hsl(0 0% 3.9%);
+  --chart-1: hsl(12 76% 61%);
+  --chart-2: hsl(173 58% 39%);
+  --chart-3: hsl(197 37% 24%);
+  --chart-4: hsl(43 74% 66%);
+  --chart-5: hsl(27 87% 67%);
+  --radius: 0.6rem;
+}
+
+.dark {
+  --background: hsl(0 0% 3.9%);
+  --foreground: hsl(0 0% 98%);
+  --card: hsl(0 0% 3.9%);
+  --card-foreground: hsl(0 0% 98%);
+  --popover: hsl(0 0% 3.9%);
+  --popover-foreground: hsl(0 0% 98%);
+  --primary: hsl(0 0% 98%);
+  --primary-foreground: hsl(0 0% 9%);
+  --secondary: hsl(0 0% 14.9%);
+  --secondary-foreground: hsl(0 0% 98%);
+  --muted: hsl(0 0% 14.9%);
+  --muted-foreground: hsl(0 0% 63.9%);
+  --accent: hsl(0 0% 14.9%);
+  --accent-foreground: hsl(0 0% 98%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 14.9%);
+  --input: hsl(0 0% 14.9%);
+  --ring: hsl(0 0% 83.1%);
+  --chart-1: hsl(220 70% 50%);
+  --chart-2: hsl(160 60% 45%);
+  --chart-3: hsl(30 80% 55%);
+  --chart-4: hsl(280 65% 60%);
+  --chart-5: hsl(340 75% 55%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* Default Mode */
+@theme {
+  /* Collection: Design Tokens */
+  --color-accent: oklch(0.294 0.037 264.7);
+  --color-accent-foreground: var(--color-foreground);
+  --color-background: oklch(0.182 0.035 264);
+  --color-biloba-flower-100: oklch(0.914 0.043 285.5);
+  --color-biloba-flower-200: oklch(0.843 0.081 284.5);
+  --color-biloba-flower-300: oklch(0.771 0.121 284.7);
+  --color-biloba-flower-400: oklch(0.662 0.182 285.3);
+  --color-biloba-flower-50: oklch(0.953 0.023 283.3);
+  --color-biloba-flower-500: oklch(0.594 0.217 286.6);
+  --color-biloba-flower-600: oklch(0.532 0.237 287.3);
+  --color-biloba-flower-700: oklch(0.478 0.221 287.8);
+  --color-biloba-flower-800: oklch(0.415 0.184 287.9);
+  --color-biloba-flower-900: oklch(0.37 0.142 288.3);
+  --color-biloba-flower-950: oklch(0.265 0.092 292.3);
+  --color-border: oklch(0.582 0.228 269.3);
+  --color-border-muted: oklch(0.705 0.093 275.1);
+  --color-border-subtlest: oklch(0.268 0.036 275);
+  --color-foreground: oklch(0.87 0.056 285.9);
+  --color-fuchsia-100: oklch(0.952 0.036 318.9);
+  --color-fuchsia-200: oklch(0.903 0.073 319.6);
+  --color-fuchsia-400: oklch(0.748 0.207 322.2);
+  --color-green-100: oklch(0.962 0.043 156.7);
+  --color-green-400: oklch(0.8 0.182 151.7);
+  --color-input: oklch(0.393 0.043 275.5);
+  --color-muted: oklch(0.294 0.037 264.7);
+  --color-muted-foreground: oklch(0.545 0.043 286.4);
+  --color-primary: var(--color-biloba-flower-300);
+  --color-primary-foreground: oklch(0.307 0.086 264.9);
+  --color-purple-100: oklch(0.946 0.033 307.2);
+  --color-purple-400: oklch(0.722 0.177 305.5);
+  --color-red-100: oklch(0.936 0.031 17.7);
+  --color-red-400: oklch(0.711 0.166 22.2);
+  --color-ring: var(--color-primary);
+  --color-secondary: var(--color-fuchsia-200);
+  --color-secondary-foreground: oklch(0.352 0.113 323.1);
+  --color-shadow: oklch(0.772 0.137 234.6);
+  --color-tag-emerald-border: var(--color-green-400);
+  --color-tag-emerald-foreground: var(--color-green-100);
+  --color-tag-fuchsia-border: var(--color-fuchsia-400);
+  --color-tag-fuchsia-foreground: var(--color-fuchsia-100);
+  --color-tag-primary-border: var(--color-primary);
+  --color-tag-primary-foreground: var(--color-foreground);
+  --color-tag-purple-border: var(--color-purple-400);
+  --color-tag-purple-foreground: var(--color-purple-100);
+  --color-tag-red-border: var(--color-red-400);
+  --color-tag-red-foreground: var(--color-red-100);
+  --color-tag-secondary-border: var(--color-secondary);
+  --color-tag-secondary-foreground: var(--color-fuchsia-100);
+
+  --text-body: 1.125rem;
+  --text-body--font-weight: 400;
+  --text-body--line-height: 100%;
+  --text-display: 5rem;
+  --text-display--font-weight: 800;
+  --text-display--line-height: 100%;
+  --text-title: 2rem;
+  --text-title--font-weight: 400;
+  --text-title--line-height: 100%;
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }

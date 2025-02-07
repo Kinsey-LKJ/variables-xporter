@@ -81,7 +81,9 @@ export default async function RootLayout({
             storageKey: 'variables-xporter-theme',
           }}
         >
-          {children}
+          <main className=" min-h-screen">
+            {children}
+          </main>
         </Layout>
       </body>
     </html>
