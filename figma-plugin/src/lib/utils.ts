@@ -135,13 +135,11 @@ export function processConstantValue(
   if (isColorValue(value)) {
     return processColorValue(value, format);
   } else if (resolvedDataType === 'FLOAT') {
-    const startWith = variableName.split('/')[0] === 'font' ? variableName.split('/')[1] : variableName.split('/')[0];
-    console.log('startWith', startWith);
-    console.log('variableCSSName', variableCSSName);
+    const nameArray = variableName.split('/');
 
     const isMustPx = variableCSSName.includes('-px');
-    const isNotSupportRemUnit = notSupportRemUnit.some((item: VariableScope) => startWith.includes(item));
-    const isNonUnit = nonUnits.some((item: VariableScope) => startWith.includes(item));
+    const isNotSupportRemUnit = notSupportRemUnit.some((item: VariableScope) => nameArray.includes(item));
+    const isNonUnit = nonUnits.some((item: VariableScope) => nameArray.includes(item));
 
     if (['OPACITY', 'TEXT_CONTENT'].some((item: VariableScope) => scopes.includes(item))) {
       return `${value}`;
