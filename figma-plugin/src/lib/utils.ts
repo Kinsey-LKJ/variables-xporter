@@ -1138,6 +1138,9 @@ function generateCSSForMultipleVariables(
     const declarations = modeOverrides.get(selector);
     if (declarations?.size > 0) {
       css.push(`/* Mode Override */`);
+      if(format === 'Tailwind CSS 4.0'){
+        css.push("@layer theme {")
+      }
       if (selector.startsWith('@media')) {
         css.push(`${selector} {`);
         css.push(themeRootSelector + ' {');
@@ -1193,6 +1196,10 @@ function generateCSSForMultipleVariables(
           }
         }
         
+        css.push('}\n');
+      }
+
+      if(format === 'Tailwind CSS 4.0'){
         css.push('}\n');
       }
     }

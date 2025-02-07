@@ -200,7 +200,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
       }
     };
     generateTheme();
-  }, [formValues.useRemUnit, formValues.ignoreTailwindColor]);
+  }, [formValues.useRemUnit, formValues.ignoreTailwindColor,formValues.exportFormat]);
 
   const submitForm = async () => {
     setSubmitting(true);
