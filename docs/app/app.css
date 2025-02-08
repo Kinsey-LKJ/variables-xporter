@@ -4,7 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 /* :root {
   --colors-foreground-mute: 110 109 137 / 1;
   --colors-background-default: 10 17 34 / 1;
@@ -203,6 +202,7 @@ code.text-\[\.9em\] {
   --text-title--font-weight: 400;
   --text-title--line-height: 100%;
 }
+
 
 
 

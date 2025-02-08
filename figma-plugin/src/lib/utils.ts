@@ -1136,12 +1136,17 @@ function generateCSSForMultipleVariables(
     const declarations = modeOverrides.get(selector);
     if (declarations?.size > 0) {
       css.push(`/* Mode Override */`);
-      if(format === 'Tailwind CSS 4.0'){
+      if(format === 'Tailwind CSS 4.0' && selector.startsWith('@media')){
+        css.push(`${selector} {`);
+        css.push("@layer theme {")
+      }else if(format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')){
         css.push("@layer theme {")
       }
       if (selector.startsWith('@media')) {
-        css.push(`${selector} {`);
-        css.push(themeRootSelector + ' {');
+        if(format !== 'Tailwind CSS 4.0'){
+          css.push(`${selector} {`);
+        }
+        css.push(format === "Tailwind CSS 4.0" ? ':root {': themeRootSelector + ' {');
         
         // 对模式覆盖的值进行分组排序
         const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
@@ -1167,7 +1172,9 @@ function generateCSSForMultipleVariables(
         }
         
         css.push('  }');
-        css.push('}\n');
+        if(format !== 'Tailwind CSS 4.0'){
+          css.push('}\n');
+        }
       } else {
         css.push(`${selector} {`);
         
@@ -1197,8 +1204,11 @@ function generateCSSForMultipleVariables(
         css.push('}\n');
       }
 
-      if(format === 'Tailwind CSS 4.0'){
+      if(format === 'Tailwind CSS 4.0' && selector.startsWith('@media')){
         css.push('}\n');
+        css.push('}\n');
+      }else if(format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')){
+        css.push('}');
       }
     }
   }

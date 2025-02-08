@@ -46,7 +46,8 @@ export default async function RootLayout({
       }
       // Next.js discord server
       chatLink="https://discord.gg/hEM84NMkRv"
-    />
+    >
+    </Navbar>
   )
 
   return (
@@ -81,7 +82,7 @@ export default async function RootLayout({
             storageKey: 'variables-xporter-theme',
           }}
         >
-          <main className=" min-h-screen">
+          <main className=" min-h-screen flex flex-col items-center">
             {children}
           </main>
         </Layout>
