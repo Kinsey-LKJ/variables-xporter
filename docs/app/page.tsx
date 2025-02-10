@@ -91,7 +91,17 @@ export default function IndexPage() {
             description="导出响应式代码"
             className=" col-span-2 "
           >
-            <div></div>
+            <div className="grid w-full h-full justify-center">
+              <div className="w-fit h-fit self-end">
+                <div className="w-[26.7%] right-[13%] bottom-[20.5%] aspect-[213/215] border-1  border-secondary absolute z-10 shadow-[0_0_300px_-33px_var(--color-secondary)]"></div>
+                <Image
+                  src="/website/css-media-query.png"
+                  alt="css-media-query"
+                  width={672}
+                  height={356}
+                />
+              </div>
+            </div>
           </BentoItem>
         </div>
       </div>
