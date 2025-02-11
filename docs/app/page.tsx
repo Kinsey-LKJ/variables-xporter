@@ -1,15 +1,17 @@
 import BentoItem from "@/components/bento-item";
 import Blurer from "@/components/blurer";
+import Card from "@/components/card";
 import Illustration from "@/components/illustration";
 import Tag from "@/components/tag";
 import { Button } from "@/components/ui/button";
 import { TextRevealCard } from "@/components/ui/text-reveal-card";
 import Image from "next/image";
+import { BookOpen, Box, Columns3, Palette, Ruler, Type } from "lucide-react";
 export const metadata = {};
 
 export default function IndexPage() {
   return (
-    <div className="flex flex-col items-center max-w-[1200px]">
+    <div className="flex flex-col items-center max-w-[1200px] relative">
       <Blurer className="w-[736px] h-[137px] -translate-y-1/2 blur-[140px]" />
       <div className=" flex flex-col items-center justify-center top-36 absolute z-10">
         <div className=" flex flex-col gap-16 items-center">
@@ -26,10 +28,10 @@ export default function IndexPage() {
           </div>
         </div>
       </div>
-      <Illustration className="mt-36" />
-      <div className="w-full relative flex flex-col items-center">
+      <Illustration className="mt-52" />
+      <div className="w-full border-1 border-border-subtlest bg-border-subtlest relative grid gap-px">
         <Blurer className="w-full h-[137px] translate-y-full blur-[300px]" />
-        <div className="relative z-10 border-1 border-border-subtlest w-full grid grid-cols-3 gap-px bg-border-subtlest ">
+        <div className="relative z-10  w-full grid grid-cols-3 gap-px bg-border-subtlest ">
           <BentoItem
             tag="独家提供"
             title="多模式支持"
@@ -80,7 +82,7 @@ export default function IndexPage() {
             className=" col-span-1 "
           >
             <TextRevealCard
-              className="w-full h-full bg-background flex items-center justify-center"
+              className="w-full h-full bg-background flex items-center justify-center rounded-none border-none"
               text="font-size:16px"
               revealText="font-size:1rem"
             ></TextRevealCard>
@@ -103,6 +105,88 @@ export default function IndexPage() {
               </div>
             </div>
           </BentoItem>
+        </div>
+        <div className="h-6 bg-background"></div>
+
+        <div className="w-full  grid gap-px bg-border-subtlest">
+          <div className="bg-background text-heading text-foreground p-10">
+            Figma 变量组织建议
+          </div>
+
+          <div className="relative z-10  w-full grid grid-cols-3 gap-px bg-border-subtlest ">
+            <Card
+              color="pink"
+              title="基本原则"
+              description="变量的命名与分组"
+              icon={<BookOpen absoluteStrokeWidth={true} size={54} />}
+            />
+            <Card
+              color="purple"
+              title="颜色系统"
+              description="颜色变量的组织建议"
+              icon={<Palette absoluteStrokeWidth={true} size={54} />}
+            />
+
+            <Card
+              color="blue"
+              title="排版系统"
+              description="排版变量的组织建议"
+              icon={<Type absoluteStrokeWidth={true} size={54} />}
+            />
+
+            <Card
+              color="green"
+              title="间距系统"
+              description="间距变量的组织建议"
+              icon={<Ruler absoluteStrokeWidth={true} size={54} />}
+            />
+
+            <Card
+              color="orange"
+              title="其他变量"
+              description="其他变量的组织建议"
+              icon={<Box absoluteStrokeWidth={true} size={54} />}
+            />
+
+            <Card
+              color="cyan"
+              title="多模式变量"
+              description="构建多维变量系统"
+              icon={<Columns3 absoluteStrokeWidth={true} size={54} />}
+            />
+          </div>
+        </div>
+
+        <div className="h-6 bg-background"></div>
+
+        <div className="w-full  grid gap-px bg-border-subtlest">
+          <div className="bg-background text-heading text-foreground p-10">
+            Figma 模板
+          </div>
+
+          <div className="relative z-10  w-full grid  bg-background p-10 overflow-hidden">
+            <div className="grid gap-6 max-w-112">
+              <div className="text-heading text-primary">
+                包含构建 Design Tokens <br /> 所需的基础变量
+              </div>
+              <div className="text-body text-muted-foreground">
+                从这里开始构建属于你的 Design Tokens，包含
+                Colors、Spacing、Font、等变量，并且具有 Theme、Brand、Device
+                Modes、Density Modes 多个模式。
+              </div>
+              <Button className="w-fit">在Figna里打开</Button>
+            </div>
+
+            <div className="absolute -right-[5%] -bottom-[30%]">
+              <Image
+                className="border-1  border-secondary  shadow-[0_0_300px_-33px_var(--color-secondary)]"
+                src="/website/figma-template.png"
+                alt="figma-template"
+                width={672}
+                height={316}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

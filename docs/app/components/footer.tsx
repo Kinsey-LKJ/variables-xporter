@@ -4,12 +4,13 @@ import { useTheme } from "nextra-theme-docs";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Blurer from "@/components/blurer";
 
-const PREVIOUS_THEME_KEY = 'previous-theme';
+const PREVIOUS_THEME_KEY = "previous-theme";
 
 export const Footer = () => {
   const {
-    resolvedTheme,   // 最终解析后的主题
+    resolvedTheme, // 最终解析后的主题
     setTheme,
   } = useTheme();
   const pathname = usePathname();
@@ -18,7 +19,7 @@ export const Footer = () => {
     if (!resolvedTheme) return;
     if (pathname === "/") {
       // 在进入首页前保存当前主题
-      if (resolvedTheme !== 'dark') {
+      if (resolvedTheme !== "dark") {
         localStorage.setItem(PREVIOUS_THEME_KEY, resolvedTheme);
         setTheme("dark");
       }
@@ -32,8 +33,15 @@ export const Footer = () => {
   }, [pathname]);
 
   return (
-    <div className="text-center">
-        MIT 2025 © <Link href="https://kinsey.design" className=" underline">Kinsey</Link>.
+    <div className="text-center p-6 relative flex flex-col items-center overflow-hidden pt-56">
+      <Blurer className="w-[736px] h-[137px] blur-[140px] translate-y-[150%] bottom-0"></Blurer>
+      <div>
+        MIT 2025 ©{" "}
+        <Link href="https://kinsey.design" className=" underline">
+          Kinsey
+        </Link>
+        .
+      </div>
     </div>
   );
 };

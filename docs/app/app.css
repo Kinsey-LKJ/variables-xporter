@@ -194,10 +194,13 @@ code.text-\[\.9em\] {
 
   --text-body: 1.125rem;
   --text-body--font-weight: 400;
-  --text-body--line-height: 100%;
+  --text-body--line-height: 130%;
   --text-display: 5rem;
   --text-display--font-weight: 800;
   --text-display--line-height: 100%;
+  --text-heading: 2.25rem;
+  --text-heading--font-weight: 400;
+  --text-heading--line-height: 130%;
   --text-title: 2rem;
   --text-title--font-weight: 400;
   --text-title--line-height: 100%;
