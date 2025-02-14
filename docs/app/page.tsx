@@ -13,11 +13,13 @@ export default function IndexPage() {
   return (
     <div className="flex flex-col items-center max-w-[1200px] relative">
       <Blurer className="w-[736px] h-[137px] -translate-y-1/2 blur-[140px]" />
-      <div className=" flex flex-col items-center justify-center top-36 absolute z-10">
-        <div className=" flex flex-col gap-16 items-center">
+      <div className=" flex flex-col items-center justify-center top-24 absolute z-10">
+        <div className=" flex flex-col gap-12 items-center">
           <div className=" flex flex-col gap-4 items-center">
             <Tag color="primary">支持 Tailwind CSS V4</Tag>
-            <h1 className=" text-foreground text-display">Variables Xporter</h1>
+            <h1 className=" text-foreground text-display special-text">
+              Variables Xporter
+            </h1>
             <p className=" text-body text-muted-foreground">
               让 Figma Variables 无缝集成到 Tailwind CSS 或 CSS Variables
             </p>
@@ -28,7 +30,7 @@ export default function IndexPage() {
           </div>
         </div>
       </div>
-      <Illustration className="mt-52" />
+      <Illustration className="mt-40" />
       <div className="w-full border-1 border-border-subtlest bg-border-subtlest relative grid gap-px">
         <Blurer className="w-full h-[137px] translate-y-full blur-[300px]" />
         <div className="relative z-10  w-full grid grid-cols-3 gap-px bg-border-subtlest ">

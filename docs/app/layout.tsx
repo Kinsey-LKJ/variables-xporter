@@ -51,22 +51,26 @@ export default async function RootLayout({
   )
 
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning >
       <Head faviconGlyph="✦" 
-      // color={{
-      //   hue:{
-      //     light:51,
-      //     dark:51
-      //   },
-      //   saturation: {
-      //     light: 100,
-      //     dark: 100
-      //   },
-      //   lightness: {
-      //     light: 45,
-      //     dark: 65
-      //   },
-      // }}
+      color={{
+        hue:{
+          light:242,
+          dark:242
+        },
+        saturation: {
+          light: 50,
+          dark: 100
+        },
+        lightness: {
+          light: 46,
+          dark: 83
+        },
+      }}
+      backgroundColor={{
+        light:'#fcfcfc',
+        dark:'#111111'
+      }}
       />
       <body>
         <Layout

@@ -142,72 +142,127 @@ code.text-\[\.9em\] {
 
 /* Default Mode */
 @theme {
-  /* Collection: Design Tokens */
-  --color-accent: oklch(0.294 0.037 264.7);
-  --color-accent-foreground: var(--color-foreground);
-  --color-background: oklch(0.182 0.035 264);
-  --color-biloba-flower-100: oklch(0.914 0.043 285.5);
-  --color-biloba-flower-200: oklch(0.843 0.081 284.5);
-  --color-biloba-flower-300: oklch(0.771 0.121 284.7);
-  --color-biloba-flower-400: oklch(0.662 0.182 285.3);
-  --color-biloba-flower-50: oklch(0.953 0.023 283.3);
-  --color-biloba-flower-500: oklch(0.594 0.217 286.6);
-  --color-biloba-flower-600: oklch(0.532 0.237 287.3);
-  --color-biloba-flower-700: oklch(0.478 0.221 287.8);
-  --color-biloba-flower-800: oklch(0.415 0.184 287.9);
-  --color-biloba-flower-900: oklch(0.37 0.142 288.3);
-  --color-biloba-flower-950: oklch(0.265 0.092 292.3);
-  --color-border: oklch(0.582 0.228 269.3);
-  --color-border-muted: oklch(0.705 0.093 275.1);
-  --color-border-subtlest: oklch(0.268 0.036 275);
-  --color-foreground: oklch(0.87 0.056 285.9);
-  --color-fuchsia-100: oklch(0.952 0.036 318.9);
-  --color-fuchsia-200: oklch(0.903 0.073 319.6);
-  --color-fuchsia-400: oklch(0.748 0.207 322.2);
-  --color-green-100: oklch(0.962 0.043 156.7);
-  --color-green-400: oklch(0.8 0.182 151.7);
-  --color-input: oklch(0.393 0.043 275.5);
-  --color-muted: oklch(0.294 0.037 264.7);
-  --color-muted-foreground: oklch(0.545 0.043 286.4);
-  --color-primary: var(--color-biloba-flower-300);
-  --color-primary-foreground: oklch(0.307 0.086 264.9);
-  --color-purple-100: oklch(0.946 0.033 307.2);
-  --color-purple-400: oklch(0.722 0.177 305.5);
-  --color-red-100: oklch(0.936 0.031 17.7);
-  --color-red-400: oklch(0.711 0.166 22.2);
-  --color-ring: var(--color-primary);
-  --color-secondary: var(--color-fuchsia-200);
-  --color-secondary-foreground: oklch(0.352 0.113 323.1);
-  --color-shadow: oklch(0.772 0.137 234.6);
-  --color-tag-emerald-border: var(--color-green-400);
-  --color-tag-emerald-foreground: var(--color-green-100);
-  --color-tag-fuchsia-border: var(--color-fuchsia-400);
-  --color-tag-fuchsia-foreground: var(--color-fuchsia-100);
-  --color-tag-primary-border: var(--color-primary);
-  --color-tag-primary-foreground: var(--color-foreground);
-  --color-tag-purple-border: var(--color-purple-400);
-  --color-tag-purple-foreground: var(--color-purple-100);
-  --color-tag-red-border: var(--color-red-400);
-  --color-tag-red-foreground: var(--color-red-100);
-  --color-tag-secondary-border: var(--color-secondary);
-  --color-tag-secondary-foreground: var(--color-fuchsia-100);
+    /* Collection: Design Tokens */
+    --color-accent: oklch(0.294 0.037 264.7);
+    --color-accent-foreground: var(--color-foreground);
+    --color-background: oklch(1 0 0);
+    --color-biloba-flower-100: oklch(0.914 0.043 285.5);
+    --color-biloba-flower-200: oklch(0.843 0.081 284.5);
+    --color-biloba-flower-300: oklch(0.771 0.121 284.7);
+    --color-biloba-flower-400: oklch(0.662 0.182 285.3);
+    --color-biloba-flower-50: oklch(0.953 0.023 283.3);
+    --color-biloba-flower-500: oklch(0.594 0.217 286.6);
+    --color-biloba-flower-600: oklch(0.532 0.237 287.3);
+    --color-biloba-flower-700: oklch(0.478 0.221 287.8);
+    --color-biloba-flower-800: oklch(0.415 0.184 287.9);
+    --color-biloba-flower-900: oklch(0.37 0.142 288.3);
+    --color-biloba-flower-950: oklch(0.265 0.092 292.3);
+    --color-border: oklch(0.582 0.228 269.3);
+    --color-border-muted: oklch(0.705 0.093 275.1);
+    --color-border-subtlest: oklch(0.268 0.036 275);
+    --color-foreground: oklch(0.33 0.06 283.44);
+    --color-fuchsia-100: oklch(0.952 0.036 318.9);
+    --color-fuchsia-200: oklch(0.903 0.073 319.6);
+    --color-fuchsia-400: oklch(0.748 0.207 322.2);
+    --color-green-100: oklch(0.962 0.043 156.7);
+    --color-green-400: oklch(0.8 0.182 151.7);
+    --color-input: oklch(0.393 0.043 275.5);
+    --color-muted: oklch(0.294 0.037 264.7);
+    --color-muted-foreground: oklch(0.545 0.043 286.4);
+    --color-primary: var(--color-biloba-flower-300);
+    --color-primary-foreground: oklch(0.307 0.086 264.9);
+    --color-purple-100: oklch(0.946 0.033 307.2);
+    --color-purple-400: oklch(0.722 0.177 305.5);
+    --color-red-100: oklch(0.936 0.031 17.7);
+    --color-red-400: oklch(0.711 0.166 22.2);
+    --color-ring: var(--color-primary);
+    --color-secondary: var(--color-fuchsia-200);
+    --color-secondary-foreground: oklch(0.352 0.113 323.1);
+    --color-shadow: oklch(0.772 0.137 234.6);
+    --color-tag-emerald-border: var(--color-green-400);
+    --color-tag-emerald-foreground: var(--color-green-100);
+    --color-tag-fuchsia-border: var(--color-fuchsia-400);
+    --color-tag-fuchsia-foreground: var(--color-fuchsia-100);
+    --color-tag-primary-border: var(--color-primary);
+    --color-tag-primary-foreground: var(--color-foreground);
+    --color-tag-purple-border: var(--color-purple-400);
+    --color-tag-purple-foreground: var(--color-purple-100);
+    --color-tag-red-border: var(--color-red-400);
+    --color-tag-red-foreground: var(--color-red-100);
+    --color-tag-secondary-border: var(--color-secondary);
+    --color-tag-secondary-foreground: var(--color-fuchsia-100);
 
-  --text-body: 1.125rem;
-  --text-body--font-weight: 400;
-  --text-body--line-height: 130%;
-  --text-display: 5rem;
-  --text-display--font-weight: 800;
-  --text-display--line-height: 100%;
-  --text-heading: 2.25rem;
-  --text-heading--font-weight: 400;
-  --text-heading--line-height: 130%;
-  --text-title: 2rem;
-  --text-title--font-weight: 400;
-  --text-title--line-height: 100%;
+    --text-body: 1.125rem;
+    --text-body--font-weight: 400;
+    --text-body--line-height: 130%;
+    --text-display: 5rem;
+    --text-display--font-weight: 800;
+    --text-display--line-height: 100%;
+    --text-heading: 2.25rem;
+    --text-heading--font-weight: 400;
+    --text-heading--line-height: 130%;
+    --text-title: 2rem;
+    --text-title--font-weight: 400;
+    --text-title--line-height: 100%;
 }
 
+@layer theme {
+  .dark {
+    /* Collection: Design Tokens */
+    --color-accent: oklch(0.294 0.037 264.7);
+    --color-accent-foreground: var(--color-foreground);
+    --color-background: oklch(0.182 0.035 264);
+    --color-biloba-flower-100: oklch(0.914 0.043 285.5);
+    --color-biloba-flower-200: oklch(0.843 0.081 284.5);
+    --color-biloba-flower-300: oklch(0.771 0.121 284.7);
+    --color-biloba-flower-400: oklch(0.662 0.182 285.3);
+    --color-biloba-flower-50: oklch(0.953 0.023 283.3);
+    --color-biloba-flower-500: oklch(0.594 0.217 286.6);
+    --color-biloba-flower-600: oklch(0.532 0.237 287.3);
+    --color-biloba-flower-700: oklch(0.478 0.221 287.8);
+    --color-biloba-flower-800: oklch(0.415 0.184 287.9);
+    --color-biloba-flower-900: oklch(0.37 0.142 288.3);
+    --color-biloba-flower-950: oklch(0.265 0.092 292.3);
+    --color-border: oklch(0.582 0.228 269.3);
+    --color-border-muted: oklch(0.705 0.093 275.1);
+    --color-border-subtlest: oklch(0.268 0.036 275);
+    --color-foreground: oklch(0.87 0.056 285.9);
+    --color-fuchsia-100: oklch(0.952 0.036 318.9);
+    --color-fuchsia-200: oklch(0.903 0.073 319.6);
+    --color-fuchsia-400: oklch(0.748 0.207 322.2);
+    --color-green-100: oklch(0.962 0.043 156.7);
+    --color-green-400: oklch(0.8 0.182 151.7);
+    --color-input: oklch(0.393 0.043 275.5);
+    --color-muted: oklch(0.294 0.037 264.7);
+    --color-muted-foreground: oklch(0.545 0.043 286.4);
+    --color-primary: var(--color-biloba-flower-300);
+    --color-primary-foreground: oklch(0.307 0.086 264.9);
+    --color-purple-100: oklch(0.946 0.033 307.2);
+    --color-purple-400: oklch(0.722 0.177 305.5);
+    --color-red-100: oklch(0.936 0.031 17.7);
+    --color-red-400: oklch(0.711 0.166 22.2);
+    --color-ring: var(--color-primary);
+    --color-secondary: var(--color-fuchsia-200);
+    --color-secondary-foreground: oklch(0.352 0.113 323.1);
+    --color-shadow: oklch(0.772 0.137 234.6);
+    --color-tag-emerald-border: var(--color-green-400);
+    --color-tag-emerald-foreground: var(--color-green-100);
+    --color-tag-fuchsia-border: var(--color-fuchsia-400);
+    --color-tag-fuchsia-foreground: var(--color-fuchsia-100);
+    --color-tag-primary-border: var(--color-primary);
+    --color-tag-primary-foreground: var(--color-foreground);
+    --color-tag-purple-border: var(--color-purple-400);
+    --color-tag-purple-foreground: var(--color-purple-100);
+    --color-tag-red-border: var(--color-red-400);
+    --color-tag-red-foreground: var(--color-red-100);
+    --color-tag-secondary-border: var(--color-secondary);
+    --color-tag-secondary-foreground: var(--color-fuchsia-100);
+  }
+}
 
-
+.special-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-foreground/20 via-foreground to-foreground/64;
+}
 
 @layer base {
   * {
@@ -215,5 +270,9 @@ code.text-\[\.9em\] {
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  body.docs {
+    @apply bg-transparent;
   }
 }
