@@ -45,7 +45,7 @@ export default async function RootLayout({
         </div>
       }
       // Next.js discord server
-      chatLink="https://discord.gg/hEM84NMkRv"
+      // chatLink="https://discord.gg/hEM84NMkRv"
     >
     </Navbar>
   )
@@ -77,8 +77,8 @@ export default async function RootLayout({
           banner={<Banner storageKey="Variables Xporter">Variables Xporter now supports Tailwind CSS 4.0 ✨</Banner>}
           navbar={navbar}
           footer={<Footer />}
-          editLink="Edit this page on GitHub"
-          docsRepositoryBase="https://github.com/shuding/nextra/blob/main/examples/docs"
+          // editLink="Edit this page on GitHub"
+          // docsRepositoryBase="https://github.com/shuding/nextra/blob/main/examples/docs"
           sidebar={{ defaultMenuCollapseLevel: 1 }}
           pageMap={await getPageMap()}
           nextThemes={{

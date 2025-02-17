@@ -17,18 +17,29 @@ export const Footer = () => {
   const pathParts = pathname.split("/").filter((part) => part);
   const specificPart = pathParts[0];
 
+
+  // useEffect(() => {
+  //   if (pathname === "/") {
+  //     // 在进入首页前保存当前主题
+  //     document.body.classList.remove("docs");
+  //   } else {
+  //     // 在离开首页时恢复之前的主题
+  //     document.body.classList.add("docs");
+  //   }
+  // }, [pathname]);
+
   useEffect(() => {
     console.log(pathname, resolvedTheme);
     if (!resolvedTheme) return;
     if (pathname === "/") {
       // 在进入首页前保存当前主题
-      document.body.classList.remove("docs");
+      // document.body.classList.remove("docs");
 
       localStorage.setItem(PREVIOUS_THEME_KEY, resolvedTheme);
       setTheme("dark");
     } else {
       // 在离开首页时恢复之前的主题
-      document.body.classList.add("docs");
+      // document.body.classList.add("docs");
       const previousTheme = localStorage.getItem(PREVIOUS_THEME_KEY);
       if (previousTheme) {
         setTheme(previousTheme);
@@ -38,7 +49,11 @@ export const Footer = () => {
 
   return (
     <div className="text-center p-6 relative flex flex-col items-center overflow-hidden pt-56">
-      <Blurer className="w-[736px] h-[137px] blur-[140px] translate-y-[150%] bottom-0"></Blurer>
+      {
+        pathname === "/" && (
+          <Blurer className="w-[736px] h-[137px] blur-[140px] translate-y-[150%] bottom-0"></Blurer>
+        )
+      }
       <div>
         MIT 2025 ©
         <Link href="https://kinsey.design" className=" underline">
