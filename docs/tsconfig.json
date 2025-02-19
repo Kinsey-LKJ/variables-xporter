@@ -19,9 +19,20 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@app/*": ["./app/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "mdx-components.js", "app/docs/organizing-your-variables/colors/page.mdx", "app/docs/export-your-variables/tailwind-css/page.mdx", "tailwind.config.js", "next.config.js"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "mdx-components.ts",
+    "app/docs/organizing-your-variables/colors/page.mdx",
+    "app/docs/export-your-variables/tailwind-css/page.mdx",
+    "tailwind.config.js",
+    "next.config.js"
+  ],
   "exclude": ["node_modules"]
 }

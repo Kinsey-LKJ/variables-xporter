@@ -1,144 +1,121 @@
 /* eslint-env node */
-import { SwrIcon, VercelIcon } from '@app/_icons'
-import type { Metadata } from 'next'
-import {
-  Footer,
-  LastUpdated,
-  Layout,
-  Link,
-  LocaleSwitch,
-  Navbar
-} from 'nextra-theme-docs'
-import { Banner, Head } from 'nextra/components'
-import { getPageMap } from 'nextra/page-map'
-import { getDictionary, getDirection } from '../_dictionaries/get-dictionary'
-import { pageMap as graphqlEslintPageMap } from './remote/graphql-eslint/[[...slug]]/page'
-import { pageMap as graphqlYogaPageMap } from './remote/graphql-yoga/[[...slug]]/page'
-import './styles.css'
 
-export const { viewport } = Head
+import { Layout, LocaleSwitch, Navbar } from "nextra-theme-docs";
+import { Banner, Head } from "nextra/components";
+import { getPageMap } from "nextra/page-map";
+import "nextra-theme-docs/style.css";
+import "./app.css";
+import Image from "next/image";
+import { Footer } from "../components/footer";
+import { getDictionary, getDirection } from "../_dictionaries/get-dictionary";
+import { Locale } from "@app/_dictionaries/i18n-config";
+import Logo from "@/public/website/Logo.png";
 
-export const metadata: Metadata = {
-  description:
-    'SWR is a React Hooks library for data fetching. SWR first returns the data from cache (stale), then sends the fetch request (revalidate), and finally comes with the up-to-date data again.',
+export const { viewport } = Head;
+
+export const metadata = {
+  metadataBase: new URL("https://nextra.site"),
   title: {
-    absolute: '',
-    template: '%s | SWR'
+    template: "%s - Variables Xporter",
   },
-  metadataBase: new URL('https://swr.vercel.app'),
-  openGraph: {
-    images:
-      'https://assets.vercel.com/image/upload/v1572282926/swr/twitter-card.jpg'
-  },
-  twitter: {
-    site: '@vercel'
-  },
+  description: "Variables Xporter: the Figma plugin for exporting variables",
+  applicationName: "Variables Xporter",
+  generator: "Next.js",
   appleWebApp: {
-    title: 'SWR'
+    title: "Variables Xporter",
   },
   other: {
-    'msapplication-TileColor': '#fff'
-  }
-}
+    "msapplication-TileImage": "/ms-icon-144x144.png",
+    "msapplication-TileColor": "#fff",
+  },
+  twitter: {
+    site: "https://nextra.site",
+  },
+};
 
 export default async function RootLayout({ children, params }) {
-  const { lang } = await params
-  const dictionary = await getDictionary(lang)
-  let pageMap = await getPageMap(`/${lang}`)
-
-  if (lang === 'en') {
-    pageMap = [
-      ...pageMap,
-      {
-        name: 'remote',
-        route: '/remote',
-        children: [graphqlEslintPageMap, graphqlYogaPageMap]
-      }
-    ]
-  }
-  const banner = (
-    <Banner storageKey="swr-2">
-      SWR 2.0 is out! <Link href="#">Read more →</Link>
-    </Banner>
-  )
+  const { lang } = await params;
+  const pageMap = await getPageMap(`/${lang}`);
+  const dictionary = await getDictionary(lang);
   const navbar = (
     <Navbar
       logo={
-        <>
-          <SwrIcon height="12" />
-          <span
-            className="ms-2 font-extrabold select-none max-md:hidden"
-            title={`SWR: ${dictionary.logo.title}`}
-          >
-            SWR
+        <div className="flex items-center gap-2">
+          <Image
+            className="w-8 h-8"
+            src={Logo}
+            alt="Variables Xporter"
+            width={100}
+            height={100}
+          />
+          <b>Variables Xporter</b>{" "}
+          <span style={{ opacity: "60%" }}>
+            The Figma plugin for exporting variables
           </span>
-        </>
+        </div>
       }
-      projectLink="https://github.com/vercel/swr"
-      chatLink="https://discord.com"
+      // Next.js discord server
+      // chatLink="https://discord.gg/hEM84NMkRv"
     >
       <LocaleSwitch />
     </Navbar>
-  )
-  const footer = (
-    <Footer>
-      <a
-        rel="noreferrer"
-        target="_blank"
-        className="x:focus-visible:nextra-focus flex items-center gap-2 font-semibold"
-        href={dictionary.link.vercel}
-      >
-        {dictionary.poweredBy} <VercelIcon height="20" />
-      </a>
-    </Footer>
-  )
+  );
+
   return (
-    <html lang={lang} dir={getDirection(lang)} suppressHydrationWarning>
+    <html
+      lang={lang as Locale}
+      dir={getDirection(lang)}
+      suppressHydrationWarning
+    >
       <Head
-        backgroundColor={{
-          dark: 'rgb(15,23,42)',
-          light: 'rgb(254, 252, 232)'
-        }}
+        faviconGlyph="✦"
         color={{
-          hue: { dark: 120, light: 0 },
-          saturation: { dark: 100, light: 100 }
+          hue: {
+            light: 242,
+            dark: 242,
+          },
+          saturation: {
+            light: 50,
+            dark: 100,
+          },
+          lightness: {
+            light: 46,
+            dark: 83,
+          },
+        }}
+        backgroundColor={{
+          light: "#fcfcfc",
+          dark: "#111111",
         }}
       />
       <body>
         <Layout
-          banner={banner}
-          navbar={navbar}
-          footer={footer}
-          docsRepositoryBase="https://github.com/shuding/nextra/blob/main/examples/swr-site"
+          banner={
+            <Banner storageKey="Variables Xporter">
+              Variables Xporter now supports Tailwind CSS 4.0 ✨
+            </Banner>
+          }
           i18n={[
             { locale: 'en', name: 'English' },
             { locale: 'es', name: 'Español RTL' },
             { locale: 'ru', name: 'Русский' }
           ]}
-          sidebar={{
-            defaultMenuCollapseLevel: 1,
-            autoCollapse: true
-          }}
-          toc={{
-            backToTop: dictionary.backToTop,
-            extraContent: (
-              // eslint-disable-next-line @next/next/no-img-element -- we can't use with external urls
-              <img alt="placeholder cat" src="https://placecats.com/300/200" />
-            )
-          }}
-          editLink={dictionary.editPage}
+          navbar={navbar}
+          footer={<Footer />}
+          // editLink="Edit this page on GitHub"
+          // docsRepositoryBase="https://github.com/shuding/nextra/blob/main/examples/docs"
+          sidebar={{ defaultMenuCollapseLevel: 1 }}
           pageMap={pageMap}
-          nextThemes={{ defaultTheme: 'dark' }}
-          lastUpdated={<LastUpdated>{dictionary.lastUpdated}</LastUpdated>}
-          themeSwitch={{
-            dark: dictionary.dark,
-            light: dictionary.light,
-            system: dictionary.system
+          nextThemes={{
+            defaultTheme: "dark",
+            storageKey: "variables-xporter-theme",
           }}
         >
-          {children}
+          <main className=" min-h-screen flex flex-col items-center">
+            {children}
+          </main>
         </Layout>
       </body>
     </html>
-  )
+  );
 }
