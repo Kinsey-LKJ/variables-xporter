@@ -1,45 +1,47 @@
-# 其他设计变量
+# Other Design Variables
 
 import { Callout } from 'nextra/components'
 
-在设计系统中，除了颜色、排版和间距外，还有许多其他重要的设计变量。让我们来看看如何组织这些变量，以保持设计系统的一致性和可维护性。
+In a design system, beyond colors, typography, and spacing, there are many other important design variables. Let's explore how to organize these variables to maintain design system consistency and maintainability.
 
-## 其他样式
+## Other Styles
 
-### 响应式断点
-使用 `breakpoint` 或 `screens` 作为顶层目录：
+### Responsive Breakpoints
+Use `breakpoint` or `screens` as the top-level directory:
 
 - `breakpoint/sm`
 - `breakpoint/md`
 - `breakpoint/lg`
 
+or:
 - `screens/sm`
 - `screens/md`
 - `screens/lg`
 
 ### `border-radius`
 
-使用 `border-radius` 或 `radius` 作为顶层目录：
+Use `border-radius` or `radius` as the top-level directory:
 - `border-radius/sm`
 - `border-radius/md`
 - `border-radius/lg`
 
+or:
 - `radius/sm`
 - `radius/md`
 - `radius/lg`
 
 ### `filter:blur()`
 
-使用 `blur` 作为顶层目录：
+Use `blur` as the top-level directory:
 - `blur/sm`
 - `blur/md`
 - `blur/lg`
 
-你可以在 [Tailwind CSS 主题配置参考](https://tailwindcss.com/docs/theme#theme-variable-namespaces) 中查看完整的配置键列表。
+You can find a complete list of configuration keys in the [Tailwind CSS Theme Configuration Reference](https://tailwindcss.com/docs/theme#theme-variable-namespaces).
 
-## 组件级变量
+## Component-level Variables
 
-对于组件级变量，顶层目录请依然遵循此文档中的原则，但是需要将组件名称作为第二层，例如：
+For component-level variables, still follow the principles in this documentation for the top-level directory, but use the component name as the second level, for example:
 - `colors/button/DEFAULT`
 - `colors/button/foreground`
 - `colors/button/border`

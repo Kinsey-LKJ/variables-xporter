@@ -1,34 +1,33 @@
 import { Callout, Tabs } from 'nextra/components'
 
-# 忽略 Tailwind 调色板
+# Ignore Tailwind Palette
 
-当使用 Tailwind CSS 导出模式时，Variables Xporter 提供了一个实用的选项来忽略 Tailwind 默认的调色板，让你导出的配置文件更加简洁。
+When using the Tailwind CSS export mode, Variables Xporter provides a useful option to ignore Tailwind's default color palette, making your exported configuration file more concise.
 
-## 为什么需要这个功能？
+## Why This Feature?
 
-Tailwind CSS 默认包含了丰富的调色板：
+Tailwind CSS includes a rich default color palette:
 - Slate
 - Gray
 - Zinc
 - Neutral
 - Stone
-等...
+and more...
 
-但是在 Figma 中，如果我们使用了 Tailwind 调色板，导出的配置文件中会包含很多不必要的颜色，这会让配置文件变的很臃肿，因为在开发环境里这些 Tailwind CSS 默认的调色板是内置的。
+However, when we use the Tailwind color palette in Figma, including these colors in the exported configuration file would be redundant, as these color palettes are already built into Tailwind CSS in the development environment.
 
+## How to Use
 
-## 如何使用
+1. Check the "Ignore Tailwind CSS Default Palette" option in export settings
+2. Variables Xporter will only export the color variables you defined in Figma
+3. The generated configuration file won't include Tailwind's default colors
 
-1. 在导出设置中勾选"忽略 Tailwind CSS 默认色板"选项
-2. Variables Xporter 将只导出你在 Figma 中定义的颜色变量
-3. 生成的配置文件中不会包含 Tailwind 默认颜色
-
-### 示例
+### Example
 
 <Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3']}>
   <Tabs.Tab>
   ```css
-/* 启用忽略选项前 */
+/* Before enabling ignore option */
 @theme {
   --color-red-50: oklch(0.971 0.013 17.38);
   ...
@@ -37,37 +36,37 @@ Tailwind CSS 默认包含了丰富的调色板：
   --color-amber-50: oklch(0.987 0.022 95.277);
   ...
 
-  /* 你的自定义颜色 */
+  /* Your custom colors */
   --color-primary: var(--color-red-400);
 }
 
-/* 启用忽略选项后 */
+/* After enabling ignore option */
 @theme {
-  /* 只包含你的自定义颜色 */
+  /* Only includes your custom colors */
   --color-primary: oklch(0.704 0.191 22.216);
 }
 ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```js
-// 启用忽略选项前
+// Before enabling ignore option
 module.exports = {
   theme: {
     colors: {
       slate: { /* ... */ },
       gray: { /* ... */ },
       zinc: { /* ... */ },
-      // 你的自定义颜色
+      // Your custom colors
       primary: 'rgb(var(--colors-primary))',
     }
   }
 }
 
-// 启用忽略选项后
+// After enabling ignore option
 module.exports = {
   theme: {
     colors: {
-      // 只包含你的自定义颜色
+      // Only includes your custom colors
       primary: 'rgb(var(--colors-primary))',
     }
   }

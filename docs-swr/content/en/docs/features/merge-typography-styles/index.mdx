@@ -1,26 +1,26 @@
 import { Callout, Cards, Tabs } from 'nextra/components'
 import { Type } from 'lucide-react'
 
-# 合并排版样式
+# Merge Typography Styles
 
-合并排版样式是一个专门为 Tailwind CSS 设计的功能，它可以智能地将字体相关的变量组合成符合 Tailwind 约定的配置格式。
+Merge Typography Styles is a feature specifically designed for Tailwind CSS that intelligently combines font-related variables into configurations that follow Tailwind's conventions.
 
-## 工作原理
+## How It Works
 
-当你在 Figma 中定义了字体相关的变量（如字体大小、行高等），Variables Xporter 会：
+When you define font-related variables in Figma (such as font size, line height, etc.), Variables Xporter will:
 
-1. 识别相关的变量
-2. 按照命名规则组合变量
-3. 生成 Tailwind CSS 配置
+1. Identify related variables
+2. Combine variables according to naming rules
+3. Generate Tailwind CSS configuration
 
-### 示例转换
+### Example Conversion
 
-Figma 变量：
+Figma variables:
 - `font-size/heading-1/DEFAULT`
 - `font-size/heading-1/line-height`
 - `font-size/heading-1/font-weight`
 
-转换后的 Tailwind CSS 配置或 CSS 变量：
+Converted to Tailwind CSS configuration or CSS variables:
 <Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
   <Tabs.Tab>
   ```css
@@ -57,22 +57,22 @@ module.exports = {
 </Tabs>
 
 
-## 命名约定
+## Naming Conventions
 
-为了让 Variables Xporter 正确识别和合并变量，请遵循以下命名规则：
+For Variables Xporter to correctly identify and merge variables, please follow these naming rules:
 
-1. **基础命名格式**
+1. **Basic Naming Format**
 
 `font-size/{variable}/{property}`
 
 
-2. **支持的属性**
+2. **Supported Properties**
    - `font-size`
    - `line-height`
    - `font-weight`
    - `letter-spacing`
 
-3. **示例命名**
+3. **Example Names**
 
 - `font-size/sm/DEFAULT`
 - `font-size/sm/line-height`
@@ -80,11 +80,15 @@ module.exports = {
 - `font-size/sm/letter-spacing`
 
 
-详细了解在 Figma 中排版和字体变量的组织建议:
+Learn more about organizing typography and font variables in Figma:
 
   <Cards.Card
     icon={<Type  />}
-    title="排版和字体变量的组织建议"
+    title="Typography and Font Variable Organization"
     href="/docs/organizing-your-variables/typography"
     className="mt-4"
   />
+
+<Callout type="warning" emoji="⚠️">
+Note that the merge functionality only supports four style properties: font-size, font-weight, line-height, and letter-spacing. Additionally, this feature only works when a font-size property exists. This is to maintain consistency with Tailwind CSS's [`fontSize` configuration feature](https://tailwindcss.com/docs/font-size#customizing-your-theme).
+</Callout>

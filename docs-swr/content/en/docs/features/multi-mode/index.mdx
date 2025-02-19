@@ -2,20 +2,20 @@ import { Callout } from 'nextra/components'
 import { Cards, Tabs } from 'nextra/components'
 import { Moon, Columns3 } from 'lucide-react'
 
-# 多模式支持
+# Multi-mode Support
 
-多模式支持是 Variables Xporter 的一个强大特性，它让你能够轻松导出多模式的设计变量，如明暗主题、品牌主题等。
+Multi-mode support is a powerful feature of Variables Xporter that enables you to easily export multi-mode design variables, such as light/dark themes, brand themes, and more.
 
-## 什么是多模式？
+## What is Multi-mode?
 
-多模式允许一个变量在不同情况下拥有不同的值。了解常见的模式包括：
+Multi-mode allows a variable to have different values under different conditions. Common modes include:
 
-- 明暗主题
-- 品牌主题
-- 响应式断点
-- 布局松散度
+- Light/Dark themes
+- Brand themes
+- Responsive breakpoints
+- Layout density
 
-Variables Xporter **支持复合的多模式变量**，例如 `colors/primary/DEFAULT`（主要颜色）变量可能同时受到明暗主题以及品牌主题的影响，这会导出以下结果：
+Variables Xporter supports **compound multi-mode variables**. For example, the `colors/primary/DEFAULT` variable can be affected by both dark/light themes and brand themes simultaneously, resulting in the following output:
 
 <Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
   <Tabs.Tab>
@@ -150,16 +150,16 @@ module.exports = {
   </Tabs.Tab>
 </Tabs>
 
-现在，`colors/primary/DEFAULT` 变量在不同的明暗主题以及品牌主题下，都会呈现不一样的结果。
+Now, the `colors/primary/DEFAULT` variable will display different values depending on the current theme and brand mode.
 
-了解如何在 Figma 中创建和管理多模式变量:
+Learn more about creating and managing multi-mode variables in Figma:
 
   <Cards.Card
     icon={<Columns3  />}
-    title="多模式变量管理"
+    title="Multi-mode Variable Management"
     href="/docs/organizing-your-variables/multi-mode"
     className="mt-4"
   />
 
-## 工作原理
-Variables Xporter 会追溯所选的导出集合中所有引用的变量，直到找到变量的原始值。这意味着你可以跨集合引用变量，Variables Xporter 会完整的还原变量的引用链。
+## How It Works
+Variables Xporter traces all referenced variables in the selected export collection until it finds the original values. This means you can reference variables across collections, and Variables Xporter will fully reconstruct the reference chain.

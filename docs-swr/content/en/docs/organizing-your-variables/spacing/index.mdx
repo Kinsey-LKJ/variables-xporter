@@ -1,39 +1,38 @@
 import { Callout,Cards } from 'nextra/components'
 import {RefreshCw } from 'lucide-react'
 
-# 间距系统
+# Spacing System
 
-间距和尺寸是设计系统中的关键元素，它们帮助我们创建一致的视觉层次和布局节奏。让我们来看看如何组织这些重要的设计变量。
+Spacing and sizing are key elements in a design system, helping us create consistent visual hierarchy and layout rhythm. Let's explore how to organize these important design variables.
 
-## 顶层目录
-请使用 `spacing` 作为所有间距和尺寸变量的顶层目录。以下是一些常见的命名示例：
+## Top-level Directory
+Please use `spacing` as the top-level directory for all spacing and sizing variables. Here are some common naming examples:
 
-语义化命名：
-- `spacing/sm` - 小间距，适用于紧凑的元素布局
-- `spacing/md` - 中等间距，适用于常规元素间距
-- `spacing/lg` - 大间距，适用于区块分隔
-- `spacing/xl` - 超大间距，适用于主要区域分隔
+Semantic naming:
+- `spacing/sm` - Small spacing, suitable for compact element layouts
+- `spacing/md` - Medium spacing, suitable for regular element spacing
+- `spacing/lg` - Large spacing, suitable for section separation
+- `spacing/xl` - Extra large spacing, suitable for major area separation
 
-数值化命名（原子化变量）：
-- `spacing/0` - 无间距 (0px)
-- `spacing/1` - 最小间距 (通常 4px)
-- `spacing/2` - 双倍最小间距 (通常 8px)
-- `spacing/4` - 四倍最小间距 (通常 16px)
+Numeric naming (atomic variables):
+- `spacing/0` - No spacing (0px)
+- `spacing/1` - Minimum spacing (typically 4px)
+- `spacing/2` - Double minimum spacing (typically 8px)
+- `spacing/4` - Quadruple minimum spacing (typically 16px)
 
 {/* <Callout type="error" emoji="🚨">
 在 Tailwind CSS 项目中，遵循顶层目录的要求是必须的。
 </Callout> */}
 
-## 单位转换
+## Unit Conversion
 
-Variables Xporter 提供了智能的单位转换功能。你可以在 Figma 中使用更直观的 px 单位进行设计，然后在导出时选择"使用 Rem 单位"选项，工具会自动将其转换为可访问性友好的 rem 单位。
+Variables Xporter provides intelligent unit conversion functionality. You can use the more intuitive px units in Figma for design, then choose the "Use Rem Units" option during export, and the tool will automatically convert them to accessibility-friendly rem units.
 
-
-了解单位转换的更多内容：
+Learn more about unit conversion:
 
   <Cards.Card
     icon={<RefreshCw  />}
-    title="单位转换"
+    title="Unit Conversion"
     href="/docs/features/unit-conversion"
     className="mt-4"
   />

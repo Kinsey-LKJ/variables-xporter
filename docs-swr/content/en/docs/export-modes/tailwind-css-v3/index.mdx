@@ -8,16 +8,16 @@ import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck, Box, Ruler } fr
 
 # Tailwind CSS V3
 
-选择 Tailwind CSS 导出方式时，Variables Xporter 会生成两个文件：
+When choosing the Tailwind CSS export mode, Variables Xporter will generate two files:
 
-- `tailwind.config.js` - Tailwind CSS 的配置文件
-- `global.css` - 包含所有 CSS 变量定义
+- `tailwind.config.js` - Tailwind CSS configuration file
+- `global.css` - Contains all CSS variable definitions
 
-## 特性和优化
+## Features and Optimizations
 
-### 1. 颜色值优化
+### 1. Color Value Optimization
 
-自动将颜色值转换为 RGB 通道格式，支持 Tailwind 的不透明度修饰符：
+Automatically converts color values to RGB channel format, supporting Tailwind's opacity modifiers:
 
 ```js
 // tailwind.config.js
@@ -27,22 +27,22 @@ colors: {
 
 // global.css
 :root {
-  --colors-primary-default: 192 57 57;  /* RGB 通道格式 */
+  --colors-primary-default: 192 57 57;  /* RGB channel format */
 }
 ```
 
-使用示例：
+Usage example:
 
 ```html
 <div class="text-primary/80">
-  <!-- 80% 不透明度 -->
+  <!-- 80% opacity -->
   Hello World
 </div>
 ```
 
-### 2. 字体变量合并
+### 2. Typography Style Merging
 
-自动合并相关的字体变量，符合 Tailwind 的约定：
+Automatically merges related font variables, following Tailwind's conventions:
 
 ```js
 fontSize: {
@@ -50,9 +50,9 @@ fontSize: {
 }
 ```
 
-### 3. 多模式支持
+### 3. Multi-mode Support
 
-借助**变量追溯**和**单一出口原则**, Variables Xporter 能够实现复杂的多模式变量导出。
+Through **variable tracing** and the **Single Outlet Principle**, Variables Xporter can implement complex multi-mode variable exports.
 
 ```css
 :root {
@@ -64,66 +64,65 @@ fontSize: {
 }
 ```
 
-了解多模式支持的更多细节：
+Learn more about multi-mode support:
 
   <Cards.Card
     icon={<Columns3/>}
-    title="多模式支持"
+    title="Multi-mode Support"
     href="/docs/features/multi-mode"
     className="mt-4"
   />
 
-### 4. 强大的兼容性
-Variables Xporter 支持 Tailwind CSS V3 和 Tailwind CSS V4 的导出方式，并且一套 Figma 变量可以在两种导出方式中无缝切换，而无需做任何更改。Variables Xporter 在内部会根据不同版本的命名规范自动调整导出。
-
-
+### 4. Powerful Compatibility
+Variables Xporter supports both Tailwind CSS V3 and V4 export modes, and one set of Figma variables can seamlessly switch between the two export modes without any changes. Variables Xporter will automatically adjust the export based on different version naming conventions.
 
 ---
 
-## 变量组织建议
+## Variable Organization Guide
 
-要保证 Figma 变量的完美导出，变量的命名需要遵循一定的规则，这是因为需要与 Tailwind CSS 的配置键对应。并且，良好的变量组织方式可以带来诸多好处：
+To ensure perfect export of Figma variables, variable naming needs to follow certain rules as it needs to correspond with Tailwind CSS configuration keys. Additionally, good variable organization brings many benefits:
 
-- 提高变量的可维护性
-- 保持设计系统的一致性
-- 方便团队协作
+- Improves variable maintainability
+- Maintains design system consistency
+- Facilitates team collaboration
 
-### 基础原则
-你可以先了解变量组织的基础原则，它能帮助你在变量的命名、分组、层级方面做出更好的决策。
+### Basic Principles
+You can first understand the basic principles of variable organization, which will help you make better decisions regarding variable naming, grouping, and hierarchy.
+
   <Cards.Card
     icon={<BookOpenCheck />}
-    title="基本原则"
+    title="Basic Principles"
     href="/docs/organizing-your-variables/principles"
     className="mt-4"
   />
 
+### Variable Types
+Then, you can further organize your variables based on different variable types.
 
-### 变量类型
-然后，你就可以根据不同的变量类型，进一步组织你的变量。
 <Cards>
   <Cards.Card
     icon={<Palette />}
-    title="颜色系统"
+    title="Color System"
     href="/docs/organizing-your-variables/colors"
   />
   <Cards.Card
     icon={<Type />}
-    title="排版系统"
+    title="Typography System"
     href="/docs/organizing-your-variables/typography"
   />
   <Cards.Card
     icon={<Ruler />}
-    title="间距和尺寸系统"
+    title="Spacing and Size System"
     href="/docs/organizing-your-variables/spacing"
   />
   <Cards.Card
     icon={<Box/>}
-    title="其他令牌"
+    title="Other Tokens"
     href="/docs/organizing-your-variables/other-tokens"
   />
   <Cards.Card
     icon={<Columns3 />}
-    title="多模式"
+    title="Multi-mode"
     href="/docs/organizing-your-variables/multi-mode"
   />
 </Cards>

@@ -7,7 +7,7 @@ import "nextra-theme-docs/style.css";
 import "./app.css";
 import Image from "next/image";
 import { Footer } from "../components/footer";
-import { getDictionary, getDirection } from "../_dictionaries/get-dictionary";
+import { getDictionary} from "../_dictionaries/get-dictionary";
 import { Locale } from "@app/_dictionaries/i18n-config";
 import Logo from "@/public/website/Logo.png";
 
@@ -64,7 +64,6 @@ export default async function RootLayout({ children, params }) {
   return (
     <html
       lang={lang as Locale}
-      dir={getDirection(lang)}
       suppressHydrationWarning
     >
       <Head
@@ -96,9 +95,8 @@ export default async function RootLayout({ children, params }) {
             </Banner>
           }
           i18n={[
-            { locale: 'en', name: 'English' },
-            { locale: 'es', name: 'Español RTL' },
-            { locale: 'ru', name: 'Русский' }
+            { locale: "en", name: "English" },
+            { locale: "zh", name: "简体中文" },
           ]}
           navbar={navbar}
           footer={<Footer />}

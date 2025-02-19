@@ -20,8 +20,8 @@ const nextConfig = withBundleAnalyzer(
       ignoreDuringBuilds: true
     },
     i18n: {
-      locales: ['en', 'es', 'ru'],
-      defaultLocale: 'en'
+      locales: ["zh", "en"],
+      defaultLocale: "zh",
     },
     webpack(config) {
       // rule.exclude doesn't work starting from Next.js 15
