@@ -1,0 +1,90 @@
+import { Callout, Cards, Tabs } from 'nextra/components'
+import { Type } from 'lucide-react'
+
+# 合并排版样式
+
+合并排版样式是一个专门为 Tailwind CSS 设计的功能，它可以智能地将字体相关的变量组合成符合 Tailwind 约定的配置格式。
+
+## 工作原理
+
+当你在 Figma 中定义了字体相关的变量（如字体大小、行高等），Variables Xporter 会：
+
+1. 识别相关的变量
+2. 按照命名规则组合变量
+3. 生成 Tailwind CSS 配置
+
+### 示例转换
+
+Figma 变量：
+- `font-size/heading-1/DEFAULT`
+- `font-size/heading-1/line-height`
+- `font-size/heading-1/font-weight`
+
+转换后的 Tailwind CSS 配置或 CSS 变量：
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
+  <Tabs.Tab>
+  ```css
+@theme {
+  --text-heading-1: 2.5rem;
+  --text-heading-1--line-height: 1.2;
+  --text-heading-1--font-weight: 600;
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```js
+module.exports = {
+  theme: {
+    fontSize: {
+      'heading-1': ['2.5rem', {
+        lineHeight: '1.2',
+        fontWeight: '600'
+      }]
+    }
+  }
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```css
+:root {
+  --font-size-heading-1: 2.5rem;
+  --font-size-heading-1-line-height: 1.2;
+  --font-size-heading-1-font-weight: 600;
+}
+```
+  </Tabs.Tab>
+</Tabs>
+
+
+## 命名约定
+
+为了让 Variables Xporter 正确识别和合并变量，请遵循以下命名规则：
+
+1. **基础命名格式**
+
+`font-size/{variable}/{property}`
+
+
+2. **支持的属性**
+   - `font-size`
+   - `line-height`
+   - `font-weight`
+   - `letter-spacing`
+
+3. **示例命名**
+
+- `font-size/sm/DEFAULT`
+- `font-size/sm/line-height`
+- `font-size/sm/font-weight`
+- `font-size/sm/letter-spacing`
+
+
+详细了解在 Figma 中排版和字体变量的组织建议:
+
+  <Cards.Card
+    icon={<Type  />}
+    title="排版和字体变量的组织建议"
+    href="/docs/organizing-your-variables/typography"
+    className="mt-4"
+  />

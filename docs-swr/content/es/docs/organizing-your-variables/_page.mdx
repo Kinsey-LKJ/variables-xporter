@@ -1,0 +1,91 @@
+---
+asIndexPage: true
+---
+
+import {
+  Palette,
+  Type,
+  Ruler,
+  Box,
+  Moon
+} from 'lucide-react'
+import { Cards } from 'nextra/components'
+
+# 组织你的设计变量
+
+欢迎来到变量组织指南！在设计系统中，变量的组织方式就像是建筑的地基 —— 它不仅能提升设计和开发的效率，对于使用 Tailwind CSS 的项目来说，更是决定了设计令牌能否被正确导出和使用。让我们一起探索如何构建一个清晰、高效的变量体系。
+
+## 为什么变量组织很重要
+
+- **可维护性** ✨：清晰的变量结构让团队成员能够轻松找到和更新所需的设计令牌，就像整理得井井有条的工具箱
+- **可扩展性** 🌱：良好的组织方式为未来的设计系统扩展提供了坚实的基础，让系统能够随着项目成长而优雅地演进
+- **一致性** 🎯：统一的命名和分类确保了设计语言在整个产品中的一致性，让用户体验更加统一和专业
+- **效率** ⚡：合理的变量组织能够加速设计和开发的工作流程，减少沟通成本
+- **Tailwind 兼容性** 🔄：变量结构需要尽可能与 Tailwind CSS 的配置结构保持一致，确保正确的导出和映射
+
+## 基本原则
+
+在开始组织变量之前，我们为你准备了一些实用的建议和最佳实践。这些原则将帮助你建立一个强大而灵活的变量系统：
+
+<Cards>
+  <Cards.Card
+    icon={<Type />}
+    title="组织原则"
+    href="/docs/organizing-your-variables/principles"
+  />
+</Cards>
+
+这些建议可以帮助你：
+- 建立适合团队的变量命名方式，让代码更易读
+- 规划清晰的变量层次结构，提高可维护性
+- 提升变量的可维护性和可扩展性，适应项目成长
+- 正确匹配 Tailwind CSS 的配置结构，确保无缝集成
+
+## 变量类型
+
+了解了基本原则后，让我们深入探索不同类型变量的组织方式。每种类型都有其特定的组织策略和最佳实践：
+
+<Cards>
+  <Cards.Card
+    icon={<Palette />}
+    title="颜色系统"
+    href="/docs/organizing-your-variables/colors"
+  />
+  <Cards.Card
+    icon={<Type />}
+    title="排版系统"
+    href="/docs/organizing-your-variables/typography"
+  />
+  <Cards.Card
+    icon={<Ruler />}
+    title="间距和尺寸系统"
+    href="/docs/organizing-your-variables/spacing"
+  />
+  <Cards.Card
+    icon={<Box />}
+    title="其他令牌"
+    href="/docs/organizing-your-variables/other-tokens"
+  />
+  <Cards.Card
+    icon={<Moon />}
+    title="多模式"
+    href="/docs/organizing-your-variables/multi-mode"
+  />
+</Cards>
+
+## 实用建议
+
+以下是一些经过实践验证的建议，可以帮助你更好地组织和管理变量：
+
+- 根据团队习惯选择合适的命名方式，保持一致性
+- 按照项目需求组织变量结构，避免过度复杂
+- 严格遵循 Tailwind CSS 的配置结构（这是必须的）
+- 为变量添加清晰的描述，帮助团队理解使用场景
+- 定期检查和优化变量组织，及时调整不合理之处
+- 详细记录重要变量的使用场景和最佳实践
+- 善用集合（Collection）来归类变量，提高可维护性
+- 确保变量名称在导出时能被正确解析，避免冲突
+
+
+记住，好的变量组织就像一个优秀的管家，它能让你的设计系统运转更加顺畅，让团队协作更加高效。让我们开始这个激动人心的变量组织之旅吧！
+
