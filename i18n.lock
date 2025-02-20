@@ -26,8 +26,24 @@ checksums:
     organizingYourVariables/other/title: 2a95bc909e5213df9bd96d27684b2fc4
     organizingYourVariables/other/description: 7df741e3384d59d075dc90063d3e1997
     organizingYourVariables/multiMode/title: a8b19336d9574b897f6f108131b16e36
-    organizingYourVariables/multiMode/description: 487a3f28a173e219047b443ea33acb66
+    organizingYourVariables/multiMode/description: 4491d037ce3493892e6a489439f8fb23
     figmaTemplate/heading: 1d10d026f697bf59ee3a524fde5b2a63
     figmaTemplate/title: d8456a0aa7dcb35de2018946e297437f
     figmaTemplate/description: da44b0452ceb9b9f27a6e09112e35f10
     figmaTemplate/openInFigma: ebd3e531ec366f78d81dfdc44d8946f1
+  a06579c54fb7dfda1d27d2126ec7db7a:
+    back: d9aa975ba76c61034ce8282e321f0a55
+    export_figma_variables_tailwind_css_or_css_variables: b6c7e1f21d3bd7428cb1f72374728f78
+    get_started: 23c8739d668d91d25a4cbbd64ef5de89
+    select_variables_to_export: 694da5a5f71cf08b59645ba03da91f16
+    select_collection: 640d6561f8aebe33b239c7bdd5e6fab8
+    select_variables: 87a10d722eaa20ee541b56726cc69811
+    format: 83fb94fe68d5b66e53fb4b628bdfe2ef
+    export: d1c1923befd470e0e9785e0c5b8f89bf
+    export_successful: 77852d30a6213edd025532425427e701
+    import_as_tailwind_css_presets: 7258b2617b466ecb666922aabf53a40c
+    use_rem_as_unit: 817f5cd76c831d8d9389e34b35518b3d
+    ignore_tailwind_css_default_palette: f55c362c86bd3ae50dd6dc4265b10c2b
+    ignore_default_palette_description: 93cadacb97e80e00437998e967dc40bc
+    tailwind_css_figma_template: 1eafee06faeeb1f8b46745179dbe46f3
+    documentation: c3ac75f1d6ae0b9f28104800bc9b889c
