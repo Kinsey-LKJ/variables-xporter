@@ -1,25 +1,58 @@
 export default {
-  dark: 'Dark',
-  light: 'Light',
-  system: 'System',
-  backToTop: 'Scroll to top',
-  lastUpdated: 'Last updated on',
-  logo: {
-    title: 'React Hooks for Data Fetching'
+  supportTailwindCssV4: "Support Tailwind CSS V4",
+  pluginHighlight: 'Seamlessly integrate Figma Variables into Tailwind CSS or CSS Variables',
+  start: 'Get Started',
+  learnMore: 'Learn More',
+  exclusive: 'Exclusive',
+  features: {
+    multiMode: {
+      title: 'Multi-mode Support',
+      description: 'Export compound multi-dimensional mode variables'
+    },
+    mergeTypographyStyles: {
+      title: 'Merge Typography Styles',
+      description: 'Merge and export typography-related variables'
+    },
+    cssMediaQueryMode: {
+      title: 'CSS Media Query Mode',
+      description: 'Export media query mode variables'
+    },
+    unitConversion: {
+      title: 'Unit Conversion',
+      description: 'Convert px to rem units'
+    }
   },
-  // notFound: 'This page could not be found',
-  poweredBy: 'Powered by',
-  link: {
-    vercel: 'https://vercel.com/?utm_source=swr'
+  organizingYourVariables: {
+    heading: "Figma Variables Organization Guide",
+    principles: {
+      title: 'Basic Principles',
+      description: 'Variable naming and grouping'
+    },
+    colors: {
+      title: 'Color System',
+      description: 'Color variable organization guide'
+    },
+    typography: {
+      title: 'Typography System',
+      description: 'Typography and font variable organization guide'
+    },
+    spacing: {
+      title: 'Spacing System',
+      description: 'Spacing variable organization guide'
+    },
+    other: {
+      title: 'Other Variables',
+      description: 'Other variable organization guide'
+    },
+    multiMode: {
+      title: 'Multi-mode Support',
+      description: 'Build multi-dimensional variable systems'
+    },
   },
-  lightweight: 'Lightweight',
-  realtime: 'Realtime',
-  suspense: 'Suspense',
-  pagination: 'Pagination',
-  backendAgnostic: 'Backend Agnostic',
-  renderingStrategies: 'SSR / SSG Ready',
-  typescript: 'TypeScript Ready',
-  remoteLocal: 'Remote + Local',
-  editPage: 'Edit this page on GitHub',
-  by: 'by'
+  figmaTemplate: {
+    heading: 'Figma Template',
+    title: 'Contains basic variables needed for building Design Tokens',
+    description: 'Start building your Design Tokens here, including Colors, Spacing, Font, and other variables, with multiple modes like Theme, Brand, Device Modes, and Density Modes.',
+    openInFigma: 'Open in Figma',
+  },
 }

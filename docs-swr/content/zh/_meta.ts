@@ -1,6 +1,6 @@
 export default {
   docs: {
     type: 'page',
-    title: 'Documentation'
+    title: '文档'
   },
 }

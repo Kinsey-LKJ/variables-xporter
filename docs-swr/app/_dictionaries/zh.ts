@@ -1,27 +1,60 @@
 import type { Dictionary } from './i18n-config'
 
 export default {
-  dark: 'Темный',
-  light: 'Светлый',
-  system: 'Системный',
-  backToTop: 'Перейти наверх',
-  lastUpdated: 'Последнее обновление',
-  logo: {
-    title: 'React хуки для выборки данных'
+  supportTailwindCssV4: "支持 Tailwind CSS V4",
+  pluginHighlight: '让 Figma Variables 无缝集成到 Tailwind CSS 或 CSS Variables',
+  start: '开始使用',
+  learnMore: '了解更多',
+  exclusive: '独家提供',
+  features: {
+    multiMode: {
+      title: '多模式支持',
+      description: '支持导出复合的多维模式的变量'
+    },
+    mergeTypographyStyles: {
+      title: '合并排版变量',
+      description: '将文字和排版相关变量合并导出'
+    },
+    cssMediaQueryMode: {
+      title: 'CSS 媒体查询模式',
+      description: '导出媒体查询模式的变量'
+    },
+    unitConversion: {
+      title: '单位转换',
+      description: '将 px 转为为 rem 单位'
+    }
   },
-  // notFound: 'Эта страница не может быть найдена',
-  poweredBy: 'Работает на',
-  link: {
-    vercel: 'https://vercel.com/?utm_source=swr_ru'
+  organizingYourVariables: {
+    heading:"Figma 变量组织建议",
+    principles: {
+      title: '基本原则',
+      description: '变量的命名与分组'
+    },
+    colors: {
+      title: '颜色系统',
+      description: '颜色变量的组织建议'
+    },
+    typography: {
+      title: '排版系统',
+      description: '文字与排版变量的组织建议'
+    },
+    spacing: {
+      title: '间距系统',
+      description: '间距变量的组织建议'
+    },
+    other: {
+      title: '其他变量',
+      description: '其他变量的组织建议'
+    },
+    multiMode: {
+      title: '多模式支持',
+      description: '构建多维变量系统'
+    },
   },
-  lightweight: 'Лёгкий',
-  realtime: 'В реальном времени',
-  suspense: 'Задержка',
-  pagination: 'Пагинация',
-  backendAgnostic: 'Бэкэнд-независимый',
-  renderingStrategies: 'SSR / SSG',
-  typescript: 'TypeScript',
-  remoteLocal: 'Удалённо + Локально',
-  editPage: 'Редактировать на GitHub',
-  by: 'от'
+  figmaTemplate: {
+    heading: 'Figma 模板',
+    title: '包含构建 Design Tokens所需的基础变量',
+    description: '从这里开始构建属于你的 Design Tokens，包含 Colors、Spacing、Font、等变量，并且具有 Theme、Brand、Device Modes、Density Modes 多个模式。',
+    openInFigma: '在 Figma 中打开',
+  },
 } satisfies Dictionary
