@@ -14,13 +14,17 @@ import ThemeModes from "@/public/website/theme-modes.png";
 import CssMediaQuery from "@/public/website/css-media-query.png";
 import FigmaTemplate from "@/public/website/figma-template.png";
 import { getDictionary } from "../_dictionaries/get-dictionary";
-
+import { Locale } from "../_dictionaries/i18n-config";
 
 export const metadata = {};
 
-export default async function IndexPage({ params }: { params: { lang: string } }) {
+export default async function IndexPage({
+  params,
+}: {
+  params: Promise<{ lang: Locale }>;
+}) {
   const { lang } = await params;
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(lang);
   return (
     <div className="flex flex-col items-center max-w-[1200px] relative">
       <Blurer className="w-[736px] h-[137px] -translate-y-1/2 blur-[140px]" />
@@ -122,27 +126,35 @@ export default async function IndexPage({ params }: { params: { lang: string } }
             <Card
               color="pink"
               title={dictionary.organizingYourVariables.principles.title}
-              description={dictionary.organizingYourVariables.principles.description}
+              description={
+                dictionary.organizingYourVariables.principles.description
+              }
               icon={<BookOpen absoluteStrokeWidth={true} size={54} />}
             />
             <Card
               color="purple"
               title={dictionary.organizingYourVariables.colors.title}
-              description={dictionary.organizingYourVariables.colors.description}
+              description={
+                dictionary.organizingYourVariables.colors.description
+              }
               icon={<Palette absoluteStrokeWidth={true} size={54} />}
             />
 
             <Card
               color="blue"
               title={dictionary.organizingYourVariables.typography.title}
-              description={dictionary.organizingYourVariables.typography.description}
+              description={
+                dictionary.organizingYourVariables.typography.description
+              }
               icon={<Type absoluteStrokeWidth={true} size={54} />}
             />
 
             <Card
               color="green"
               title={dictionary.organizingYourVariables.spacing.title}
-              description={dictionary.organizingYourVariables.spacing.description}
+              description={
+                dictionary.organizingYourVariables.spacing.description
+              }
               icon={<Ruler absoluteStrokeWidth={true} size={54} />}
             />
 
@@ -156,7 +168,9 @@ export default async function IndexPage({ params }: { params: { lang: string } }
             <Card
               color="cyan"
               title={dictionary.organizingYourVariables.multiMode.title}
-              description={dictionary.organizingYourVariables.multiMode.description}
+              description={
+                dictionary.organizingYourVariables.multiMode.description
+              }
               icon={<Columns3 absoluteStrokeWidth={true} size={54} />}
             />
           </div>
@@ -177,7 +191,9 @@ export default async function IndexPage({ params }: { params: { lang: string } }
               <div className="text-body text-muted-foreground">
                 {dictionary.figmaTemplate.description}
               </div>
-              <Button className="w-fit">{dictionary.figmaTemplate.openInFigma}</Button>
+              <Button className="w-fit">
+                {dictionary.figmaTemplate.openInFigma}
+              </Button>
             </div>
 
             <div className="absolute -right-[5%] -bottom-[30%]">

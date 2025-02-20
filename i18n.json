@@ -1,0 +1,12 @@
+{
+  "version": 1.3,
+  "locale": {
+    "source": "zh",
+    "targets": ["en", "fr"]
+  },
+  "buckets": {
+    "json": {
+      "include": ["docs/app/_dictionaries/[locale].json", "figma-plugin/src/app/[locale].json"]
+    }
+  }
+}

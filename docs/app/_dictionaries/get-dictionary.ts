@@ -4,13 +4,13 @@ import type { Dictionaries, Dictionary, Locale } from './i18n-config'
 // We enumerate all dictionaries here for better linting and TypeScript support
 // We also get the default import for cleaner types
 const dictionaries: Dictionaries = {
-  en: () => import("./en"),
-  zh: () => import("./zh"),
+  en: () => import("./en.json"),
+  zh: () => import("./zh.json"),
 };
 
-export async function getDictionary(locale: string): Promise<Dictionary> {
+export async function getDictionary(locale: Locale): Promise<Dictionary> {
   const { default: dictionary } = await (
-    dictionaries[locale] || dictionaries.en
+    dictionaries[locale as keyof Dictionaries] || dictionaries.zh
   )()
 
   return dictionary

@@ -1,4 +1,4 @@
-import type EnglishLocale from './en'
+import type EnglishLocale from './en.json'
 
 export const i18n = {
   defaultLocale: 'en',
