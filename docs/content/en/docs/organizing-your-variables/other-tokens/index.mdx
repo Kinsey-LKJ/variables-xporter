@@ -1,19 +1,19 @@
-# Other Design Variables
+# Other design variables
 
 import { Callout } from 'nextra/components'
 
-In a design system, beyond colors, typography, and spacing, there are many other important design variables. Let's explore how to organize these variables to maintain design system consistency and maintainability.
+In a design system, besides colors, typography, and spacing, there are many other important design variables. Let's look at how to organize these variables to maintain consistency and maintainability in the design system.
 
-## Other Styles
+## Other styles
 
-### Responsive Breakpoints
+### Responsive breakpoints
+
 Use `breakpoint` or `screens` as the top-level directory:
 
 - `breakpoint/sm`
 - `breakpoint/md`
 - `breakpoint/lg`
 
-or:
 - `screens/sm`
 - `screens/md`
 - `screens/lg`
@@ -25,7 +25,6 @@ Use `border-radius` or `radius` as the top-level directory:
 - `border-radius/md`
 - `border-radius/lg`
 
-or:
 - `radius/sm`
 - `radius/md`
 - `radius/lg`
@@ -37,11 +36,11 @@ Use `blur` as the top-level directory:
 - `blur/md`
 - `blur/lg`
 
-You can find a complete list of configuration keys in the [Tailwind CSS Theme Configuration Reference](https://tailwindcss.com/docs/theme#theme-variable-namespaces).
+You can view the complete list of configuration keys in the [Tailwind CSS theme configuration reference](https://tailwindcss.com/docs/theme#theme-variable-namespaces).
 
-## Component-level Variables
+## Component-level variables
 
-For component-level variables, still follow the principles in this documentation for the top-level directory, but use the component name as the second level, for example:
+For component-level variables, the top-level directory should still follow the principles in this document, but the component name should be used as the second layer, for example:
 - `colors/button/DEFAULT`
 - `colors/button/foreground`
 - `colors/button/border`
@@ -51,5 +50,3 @@ For component-level variables, still follow the principles in this documentation
 - `colors/card/DEFAULT`
 - `colors/card/foreground`
 - `colors/card/border`
-
-

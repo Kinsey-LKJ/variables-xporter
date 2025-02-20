@@ -7,6 +7,11 @@
   "buckets": {
     "json": {
       "include": ["docs/app/_dictionaries/[locale].json", "figma-plugin/src/app/[locale].json"]
+    },
+    "markdown": {
+      "include": [
+        "docs/content/[locale]/docs/*/*.mdx","docs/content/[locale]/docs/*/*/*.mdx"
+      ]
     }
   }
 }

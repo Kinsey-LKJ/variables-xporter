@@ -1,0 +1,96 @@
+---
+title: Introduction
+---
+
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import { Cards } from 'nextra/components'
+import { Zap, RefreshCw, Palette, Type, Layout, Box,Columns3,EyeOff,Merge,Proportions,BookCopy } from 'lucide-react'
+
+# Variables xporter
+
+Variables xporter est un plugin Figma qui permet d'exporter les variables Figma vers un fichier de configuration Tailwind CSS ou des variables CSS. Synchronisez facilement votre système de design avec votre environnement de développement !
+
+## Formats d'exportation
+
+- **Tailwind CSS** : génère un fichier de configuration et le fichier CSS correspondant
+- **Variables CSS** : génère des variables CSS standard
+
+## Recommandations pour l'organisation des variables Figma
+
+Nous fournissons des recommandations complètes pour l'organisation des variables Figma, vous aidant à mieux gérer vos variables et à garantir l'utilisabilité des résultats exportés.
+
+  <Cards.Card
+    icon={<BookCopy />}
+    title="Organiser vos variables de design"
+    href="/docs/organizing-your-variables"
+    className="mt-4"
+  />
+
+## Caractéristiques
+
+Variables xporter possède de nombreuses fonctionnalités uniques et offre des optimisations spéciales pour les projets Tailwind CSS, vous aidant à mieux exporter les variables Figma vers votre environnement de développement.
+
+<Cards>
+  <Cards.Card
+    icon={<RefreshCw />}
+    title="Conversion d'unités"
+    href="/docs/features/unit-conversion"
+  />
+  <Cards.Card
+    icon={<Columns3 />}
+    title="Support multi-mode"
+    href="/docs/features/multi-mode"
+  />
+  <Cards.Card
+    icon={<EyeOff />}
+    title="Ignorer la palette Tailwind"
+    href="/docs/features/ignore-tailwind-palette"
+  />
+  <Cards.Card
+    icon={<Merge/>}
+    title="Fusionner les styles typographiques"
+    href="/docs/features/merge-typography-styles"
+  />
+  <Cards.Card
+    icon={<Proportions />}
+    title="Mode media query CSS"
+    href="/docs/features/css-media-query-mode"
+  />
+</Cards>
+
+## Commencer
+
+<Steps>
+
+### Organisez vos variables Figma selon les [recommandations](/docs/organizing-your-variables)
+
+C'est une étape cruciale, en particulier pour les projets Tailwind CSS.
+
+### Ouvrez [Variables xporter](https://www.figma.com/community/plugin/1255188943883240897) dans votre fichier Figma
+
+<figure className="mt-6 max-w-[400px]">
+  <>![Ouvrir Variables xporter](/get-started/open-variables-xporter.png)</>
+  <figcaption>
+    Ouvrir Variables xporter
+  </figcaption>
+</figure>
+
+### Sélectionnez les collections et les groupes à exporter
+
+<figure className="mt-6 max-w-[400px]">
+  <>![Choisir les collections et les groupes](/get-started/choose-collection-and-group.png)</>
+  <figcaption>
+    Choisir les collections et les groupes
+  </figcaption>
+</figure>
+
+### Choisissez le format et exportez
+
+<figure className="mt-6 max-w-[400px]">
+  <>![Choisir le format et exporter](/get-started/choose-format.png)</>
+  <figcaption>
+    Choisir le format et exporter
+  </figcaption>
+</figure>
+</Steps>

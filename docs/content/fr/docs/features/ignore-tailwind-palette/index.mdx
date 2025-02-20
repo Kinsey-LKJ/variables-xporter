@@ -1,0 +1,76 @@
+import { Callout, Tabs } from 'nextra/components'
+
+# Ignorer la palette de couleurs Tailwind
+
+Lors de l'utilisation du mode d'exportation Tailwind CSS, Variables Xporter offre une option pratique pour ignorer la palette de couleurs par défaut de Tailwind, rendant votre fichier de configuration exporté plus concis.
+
+## Pourquoi cette fonctionnalité est-elle nécessaire ?
+
+Tailwind CSS inclut par défaut une riche palette de couleurs :
+- Slate
+- Gray
+- Zinc
+- Neutral
+- Stone
+etc...
+
+Cependant, dans Figma, si nous utilisons la palette de couleurs Tailwind, le fichier de configuration exporté contiendra de nombreuses couleurs inutiles, ce qui rendra le fichier de configuration volumineux, car ces palettes de couleurs par défaut de Tailwind CSS sont intégrées dans l'environnement de développement.
+
+## Comment l'utiliser
+
+1. Cochez l'option "Ignorer la palette de couleurs par défaut de Tailwind CSS" dans les paramètres d'exportation
+2. Variables Xporter n'exportera que les variables de couleur que vous avez définies dans Figma
+3. Le fichier de configuration généré ne contiendra pas les couleurs par défaut de Tailwind
+
+### Exemple
+
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3']}>
+  <Tabs.Tab>
+  ```css
+/* Avant d'activer l'option d'ignorer */
+@theme {
+  --color-red-50: oklch(0.971 0.013 17.38);
+  ...
+  --color-orange-50: oklch(0.98 0.016 73.684);
+  ...
+  --color-amber-50: oklch(0.987 0.022 95.277);
+  ...
+
+  /* Vos couleurs personnalisées */
+  --color-primary: var(--color-red-400);
+}
+
+/* Après avoir activé l'option d'ignorer */
+@theme {
+  /* Ne contient que vos couleurs personnalisées */
+  --color-primary: oklch(0.704 0.191 22.216);
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```js
+// Avant d'activer l'option d'ignorer
+module.exports = {
+  theme: {
+    colors: {
+      slate: { /* ... */ },
+      gray: { /* ... */ },
+      zinc: { /* ... */ },
+      // Vos couleurs personnalisées
+      primary: 'rgb(var(--colors-primary))',
+    }
+  }
+}
+
+// Après avoir activé l'option d'ignorer
+module.exports = {
+  theme: {
+    colors: {
+      // Ne contient que vos couleurs personnalisées
+      primary: 'rgb(var(--colors-primary))',
+    }
+  }
+}
+```
+  </Tabs.Tab>
+</Tabs>

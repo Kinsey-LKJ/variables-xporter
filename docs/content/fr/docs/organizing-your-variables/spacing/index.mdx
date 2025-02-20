@@ -1,0 +1,40 @@
+import { Callout,Cards } from 'nextra/components'
+import {RefreshCw } from 'lucide-react'
+
+# Système d'espacement
+
+L'espacement et les dimensions sont des éléments clés dans un système de design, aidant à créer une hiérarchie visuelle cohérente et un rythme de mise en page. Examinons comment organiser ces importantes variables de design.
+
+## Répertoire de premier niveau
+
+Veuillez utiliser `spacing` comme répertoire de premier niveau pour toutes les variables d'espacement et de dimension. Voici quelques exemples courants de nommage :
+
+Nommage sémantique :
+- `spacing/sm` - Petit espacement, adapté aux mises en page d'éléments compacts
+- `spacing/md` - Espacement moyen, adapté à l'espacement régulier entre les éléments
+- `spacing/lg` - Grand espacement, adapté à la séparation des blocs
+- `spacing/xl` - Très grand espacement, adapté à la séparation des zones principales
+
+Nommage numérique (variables atomiques) :
+- `spacing/0` - Pas d'espacement (0px)
+- `spacing/1` - Espacement minimal (généralement 4px)
+- `spacing/2` - Double de l'espacement minimal (généralement 8px)
+- `spacing/4` - Quadruple de l'espacement minimal (généralement 16px)
+
+{/* <Callout type="error" emoji="🚨">
+Dans les projets Tailwind CSS, le respect de l'exigence du répertoire de premier niveau est obligatoire.
+</Callout> */}
+
+## Conversion d'unités
+
+Variables Xporter offre une fonction intelligente de conversion d'unités. Vous pouvez utiliser des unités px plus intuitives dans Figma pour la conception, puis choisir l'option "Utiliser les unités Rem" lors de l'exportation. L'outil convertira automatiquement en unités rem, plus adaptées à l'accessibilité.
+
+
+Pour en savoir plus sur la conversion d'unités :
+
+  <Cards.Card
+    icon={<RefreshCw  />}
+    title="Conversion d'unités"
+    href="/docs/features/unit-conversion"
+    className="mt-4"
+  />

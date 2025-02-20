@@ -1,41 +1,40 @@
 import { Callout,Cards } from 'nextra/components'
 import {RefreshCw } from 'lucide-react'
 
-# Spacing System
+# Spacing system
 
-Spacing and sizing are key elements in a design system, helping us create consistent visual hierarchy and layout rhythm. Let's explore how to organize these important design variables.
+Spacing and dimensions are key elements in a design system, helping us create consistent visual hierarchy and layout rhythm. Let's take a look at how to organize these important design variables.
 
-## Top-level Directory
-Please use `spacing` as the top-level directory for all spacing and sizing variables. Here are some common naming examples:
+## Top-level directory
+
+Please use `spacing` as the top-level directory for all spacing and dimension variables. Here are some common naming examples:
 
 Semantic naming:
-- `spacing/sm` - Small spacing, suitable for compact element layouts
-- `spacing/md` - Medium spacing, suitable for regular element spacing
-- `spacing/lg` - Large spacing, suitable for section separation
-- `spacing/xl` - Extra large spacing, suitable for major area separation
+- `spacing/sm` - small spacing, suitable for compact element layouts
+- `spacing/md` - medium spacing, suitable for regular element spacing
+- `spacing/lg` - large spacing, suitable for block separation
+- `spacing/xl` - extra large spacing, suitable for main area separation
 
 Numeric naming (atomic variables):
-- `spacing/0` - No spacing (0px)
-- `spacing/1` - Minimum spacing (typically 4px)
-- `spacing/2` - Double minimum spacing (typically 8px)
-- `spacing/4` - Quadruple minimum spacing (typically 16px)
+- `spacing/0` - no spacing (0px)
+- `spacing/1` - minimum spacing (usually 4px)
+- `spacing/2` - double minimum spacing (usually 8px)
+- `spacing/4` - quadruple minimum spacing (usually 16px)
 
 {/* <Callout type="error" emoji="🚨">
-在 Tailwind CSS 项目中，遵循顶层目录的要求是必须的。
+In Tailwind CSS projects, following the top-level directory requirement is mandatory.
 </Callout> */}
 
-## Unit Conversion
+## Unit conversion
 
-Variables Xporter provides intelligent unit conversion functionality. You can use the more intuitive px units in Figma for design, then choose the "Use Rem Units" option during export, and the tool will automatically convert them to accessibility-friendly rem units.
+Variables Xporter provides intelligent unit conversion functionality. You can use the more intuitive px units for design in Figma, and then choose the "Use Rem Units" option when exporting. The tool will automatically convert them to accessibility-friendly rem units.
+
 
 Learn more about unit conversion:
 
   <Cards.Card
     icon={<RefreshCw  />}
-    title="Unit Conversion"
+    title="Unit conversion"
     href="/docs/features/unit-conversion"
     className="mt-4"
   />
-
-
-

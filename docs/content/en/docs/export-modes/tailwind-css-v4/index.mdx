@@ -8,13 +8,13 @@ import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck, Box, Ruler } fr
 
 # Tailwind CSS V4
 
-Tailwind CSS has introduced V4, bringing many new features and improved performance. When choosing the Tailwind CSS V4 export mode, Variables Xporter will generate one file:
+Tailwind CSS has released version 4, introducing many new features and improved performance. When choosing the Tailwind CSS V4 export method, Variables Xporter will generate a file:
 
-- `app.css` - Contains all Tailwind CSS configuration and CSS variables
+- `app.css` - contains all Tailwind CSS configurations and CSS variables
 
-## Features and Optimizations
+## Features and optimizations
 
-### 1. Color Value Optimization
+### 1. Color value optimization
 
 Automatically converts color values to oklch format, supporting opacity modifiers:
 
@@ -33,9 +33,9 @@ Usage example:
 </div>
 ```
 
-### 2. Typography Style Merging
+### 2. Merged typography styles
 
-Automatically merges related typography style variables, following Tailwind CSS V4 conventions:
+Automatically merges related typography style variables, conforming to Tailwind CSS V4 conventions:
 
 ```css
 @theme {
@@ -44,9 +44,9 @@ Automatically merges related typography style variables, following Tailwind CSS 
 }
 ```
 
-### 3. Multi-mode Support
+### 3. Multi-mode support
 
-Through **variable tracing** and the **Single Outlet Principle**, Variables Xporter can implement complex multi-mode variable exports.
+With the help of **variable tracing** and **single source of truth principle**, Variables Xporter can achieve complex multi-mode variable exports.
 
 ```css
 @theme {
@@ -60,60 +60,61 @@ Through **variable tracing** and the **Single Outlet Principle**, Variables Xpor
 }
 ```
 
-Learn more about multi-mode support:
+Learn more details about multi-mode support:
 
   <Cards.Card
     icon={<Columns3/>}
-    title="Multi-mode Support"
+    title="Multi-mode support"
     href="/docs/features/multi-mode"
     className="mt-4"
   />
 
-### 4. Powerful Compatibility
-Variables Xporter supports both Tailwind CSS V3 and V4 export modes, and one set of Figma variables can seamlessly switch between the two export modes without any changes. Variables Xporter will automatically adjust the export based on different version naming conventions.
+### 4. Powerful compatibility
+
+Variables Xporter supports both Tailwind CSS V3 and Tailwind CSS V4 export methods, and a set of Figma variables can be seamlessly switched between the two export methods without any changes. Variables Xporter automatically adjusts the export internally according to the naming conventions of different versions.
 
 ---
 
-## Variable Organization Guide
+## Variable organization recommendations
 
-To ensure perfect export of Figma variables, variable naming needs to follow certain rules as it needs to correspond with Tailwind CSS configuration keys. Additionally, good variable organization brings many benefits:
+To ensure perfect export of Figma variables, variable naming needs to follow certain rules, as it needs to correspond to Tailwind CSS configuration keys. Moreover, a good variable organization method can bring many benefits:
 
-- Improves variable maintainability
-- Maintains design system consistency
-- Facilitates team collaboration
+- Improve variable maintainability
+- Maintain design system consistency
+- Facilitate team collaboration
 
-### Basic Principles
-You can first understand the basic principles of variable organization, which will help you make better decisions regarding variable naming, grouping, and hierarchy.
+### Basic principles
 
+You can first understand the basic principles of variable organization, which can help you make better decisions in variable naming, grouping, and hierarchy.
   <Cards.Card
     icon={<BookOpenCheck />}
-    title="Basic Principles"
+    title="Basic principles"
     href="/docs/organizing-your-variables/principles"
     className="mt-4"
   />
 
-### Variable Types
-Then, you can further organize your variables based on different variable types.
+### Variable types
 
+Then, you can further organize your variables according to different variable types.
 <Cards>
   <Cards.Card
     icon={<Palette />}
-    title="Color System"
+    title="Color system"
     href="/docs/organizing-your-variables/colors"
   />
   <Cards.Card
     icon={<Type />}
-    title="Typography System"
+    title="Typography system"
     href="/docs/organizing-your-variables/typography"
   />
   <Cards.Card
     icon={<Ruler />}
-    title="Spacing and Size System"
+    title="Spacing and sizing system"
     href="/docs/organizing-your-variables/spacing"
   />
   <Cards.Card
     icon={<Box/>}
-    title="Other Tokens"
+    title="Other tokens"
     href="/docs/organizing-your-variables/other-tokens"
   />
   <Cards.Card

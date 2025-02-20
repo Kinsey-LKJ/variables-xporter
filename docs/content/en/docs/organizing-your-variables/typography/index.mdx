@@ -1,13 +1,15 @@
 import { Callout, Tabs } from 'nextra/components'
 
-# Typography System
+# Typography system
 
 Let's explore how to organize font and typography-related variables, including `font-family`, `font-size`, `font-weight`, and `line-height`.
 
-## Top-level Directory
-To maintain a clear and intuitive variable structure that aligns with Tailwind CSS's configuration structure, please follow these naming rules:
+## Top-level directory
 
-### Tailwind CSS V4 Naming Rules
+To keep the variable structure clear and intuitive, and to align with Tailwind CSS configuration structure, please follow these naming rules:
+
+### Tailwind CSS V4 naming rules
+
 - `font/{variable}` -> **font-family**
 - `text/{variable}` -> **font-size**
 - `font-weight/{variable}` -> **font-weight**
@@ -19,7 +21,7 @@ For example:
 - `font/sans`
 - `font-weight/bold`
 
-### Tailwind CSS V3 Naming Rules
+### Tailwind CSS V3 naming rules
 
 - `font-family/{variable}`
 - `font-size/{variable}` 
@@ -32,52 +34,60 @@ For example:
 - `font-weight/medium`
 - `font-weight/bold`
 
+
 <Callout emoji="💡">
-You can choose either naming convention above, Variables Xporter is compatible with both and will automatically adjust to the corresponding Tailwind CSS configuration naming rules based on the export format. However, in the following documentation, we'll use Tailwind CSS V4 naming rules by default.
+You can choose either of the above naming conventions, and Variables Xporter will be compatible with both. It will automatically adjust to the corresponding Tailwind CSS configuration naming rules based on the exported format. However, in the following documentation, we will default to using the Tailwind CSS V4 naming rules.
 </Callout>
 
-## Merge Processing [#merge-property]
-You can also choose to combine related properties in a `text/{variable}/{property}` format. This approach is particularly suitable for managing text-related variables with fixed style combinations.
+## Merge processing [#merge-property]
 
-For example, Tailwind CSS's default [Font Size utilities](https://tailwindcss.com/docs/font-size) consist of different levels like `sm`, `base`, `lg`, etc., and each level includes not only the default `font-size` property but also the `line-height` property:
+You can also choose to combine related properties in the format of `text/{variable}/{property}`. This approach is particularly suitable for managing text-related variables with fixed style combinations.
+
+For example, Tailwind CSS's default [Font Size utility](https://tailwindcss.com/docs/font-size) consists of different levels such as `sm`, `base`, `lg`, etc. Each level includes not only the default `font-size` property but also the `line-height` property, for example:
 
 #### `sm`
+
 - `text/sm/DEFAULT`
 - `text/sm/line-height`
 
 #### `base`
+
 - `text/base/DEFAULT`
 - `text/base/line-height`
 
 #### `lg`
+
 - `text/lg/DEFAULT`
 - `text/lg/line-height`
 
-This is an excellent way to create atomic font-size variables.
+This is an excellent way to create atomic variables for `font-size`.
 
 ---
 
-Beyond these atomic variables, another typical example is further abstracting these font properties into variables like `display`, `heading`, `body`:
+In addition to the above atomic variables, there's a typical example of further abstracting these font properties into variables such as `display`, `heading`, `body`, etc.:
 
 #### `display`
+
 - `text/display/DEFAULT`
 - `text/display/font-weight`
 - `text/display/line-height`
 - `text/display/letter-spacing`
 
 #### `heading`
+
 - `text/heading/DEFAULT`
 - `text/heading/font-weight`
 - `text/heading/line-height`
 - `text/heading/letter-spacing`
 
 #### `body`
+
 - `text/body/DEFAULT`
 - `text/body/font-weight`
 - `text/body/line-height`
 - `text/body/letter-spacing`
 
-This organization method will automatically generate the following Tailwind CSS configuration and corresponding CSS variables in Variables Xporter:
+With this organization method, Variables Xporter will automatically generate the following Tailwind CSS configuration and corresponding CSS variables:
 
 <Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
   <Tabs.Tab>
@@ -144,6 +154,7 @@ module.exports = {
 }
 ```
   </Tabs.Tab>
+
   <Tabs.Tab>
   ```css
 :root {
@@ -166,6 +177,7 @@ module.exports = {
   </Tabs.Tab>
 </Tabs>
 
+
 <Callout type="warning" emoji="⚠️">
-Note that the merge functionality only supports four style properties: font-size, font-weight, line-height, and letter-spacing. Additionally, this feature only works when a font-size property exists. This is to maintain consistency with Tailwind CSS's [`fontSize` configuration feature](https://tailwindcss.com/docs/font-size#customizing-your-theme).
+It's important to note that the merge processing feature only supports four style properties: font-size, font-weight, line-height, and letter-spacing. Additionally, this feature will only take effect when the font-size property is present. This is to maintain consistency with Tailwind CSS's [`fontSize` configuration feature](https://tailwindcss.com/docs/font-size#customizing-your-theme).
 </Callout>

@@ -1,0 +1,125 @@
+---
+title: Tailwind CSS V4
+---
+
+import { Callout } from 'nextra/components'
+import { Cards } from 'nextra/components'
+import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck, Box, Ruler } from 'lucide-react'
+
+# Tailwind CSS V4
+
+Tailwind CSS a lancé sa version V4, qui introduit de nombreuses nouvelles fonctionnalités et est plus rapide. Lors de l'exportation avec Tailwind CSS V4, Variables Xporter génère un fichier :
+
+- `app.css` - contenant toute la configuration Tailwind CSS et les variables CSS
+
+## Caractéristiques et optimisations
+
+### 1. Optimisation des valeurs de couleur
+
+Conversion automatique des valeurs de couleur au format oklch, avec prise en charge des modificateurs d'opacité :
+
+```css
+@theme {
+  --color-primary: oklch(0.94 0.024 17.6);
+}
+```
+
+Exemple d'utilisation :
+
+```html
+<div class="text-primary/80">
+  <!-- 80% d'opacité -->
+  Bonjour le monde
+</div>
+```
+
+### 2. Fusion des styles typographiques
+
+Fusion automatique des variables de style typographique associées, conformément aux conventions de Tailwind CSS V4 :
+
+```css
+@theme {
+--text-lg: 1.125rem;
+--text-lg--line-height: 1.75rem;
+}
+```
+
+### 3. Prise en charge multi-mode
+
+Grâce au **traçage des variables** et au **principe de point d'entrée unique**, Variables Xporter peut réaliser une exportation complexe de variables multi-modes.
+
+```css
+@theme {
+  --color-primary: var(--color-red-500);
+}
+
+@layer theme {
+  .dark {
+    --color-primary: var(--color-red-400);
+  }
+}
+```
+
+Pour en savoir plus sur la prise en charge multi-mode :
+
+  <Cards.Card
+    icon={<Columns3/>}
+    title="Prise en charge multi-mode"
+    href="/docs/features/multi-mode"
+    className="mt-4"
+  />
+
+### 4. Forte compatibilité
+
+Variables Xporter prend en charge les modes d'exportation Tailwind CSS V3 et Tailwind CSS V4, et un ensemble de variables Figma peut être basculé sans problème entre les deux modes d'exportation sans nécessiter de modifications. Variables Xporter ajuste automatiquement l'exportation en interne selon les conventions de nommage des différentes versions.
+
+---
+
+## Recommandations pour l'organisation des variables
+
+Pour garantir une exportation parfaite des variables Figma, le nommage des variables doit suivre certaines règles, car elles doivent correspondre aux clés de configuration de Tailwind CSS. De plus, une bonne organisation des variables offre de nombreux avantages :
+
+- Améliore la maintenabilité des variables
+- Maintient la cohérence du système de design
+- Facilite la collaboration en équipe
+
+### Principes de base
+
+Vous pouvez d'abord vous familiariser avec les principes de base de l'organisation des variables, qui vous aideront à prendre de meilleures décisions en matière de nommage, de regroupement et de hiérarchie des variables.
+  <Cards.Card
+    icon={<BookOpenCheck />}
+    title="Principes de base"
+    href="/docs/organizing-your-variables/principles"
+    className="mt-4"
+  />
+
+### Types de variables
+
+Ensuite, vous pouvez organiser davantage vos variables en fonction des différents types de variables.
+<Cards>
+  <Cards.Card
+    icon={<Palette />}
+    title="Système de couleurs"
+    href="/docs/organizing-your-variables/colors"
+  />
+  <Cards.Card
+    icon={<Type />}
+    title="Système typographique"
+    href="/docs/organizing-your-variables/typography"
+  />
+  <Cards.Card
+    icon={<Ruler />}
+    title="Système d'espacement et de dimensions"
+    href="/docs/organizing-your-variables/spacing"
+  />
+  <Cards.Card
+    icon={<Box/>}
+    title="Autres jetons"
+    href="/docs/organizing-your-variables/other-tokens"
+  />
+  <Cards.Card
+    icon={<Columns3 />}
+    title="Multi-mode"
+    href="/docs/organizing-your-variables/multi-mode"
+  />
+</Cards>

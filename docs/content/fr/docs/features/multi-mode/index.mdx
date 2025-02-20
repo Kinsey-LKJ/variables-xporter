@@ -2,45 +2,45 @@ import { Callout } from 'nextra/components'
 import { Cards, Tabs } from 'nextra/components'
 import { Moon, Columns3 } from 'lucide-react'
 
-# Multi-mode support
+# Prise en charge multi-modes
 
-Multi-mode support is a powerful feature of Variables Xporter that allows you to easily export design variables for multiple modes, such as light and dark themes, brand themes, and more.
+La prise en charge multi-modes est une fonctionnalité puissante de Variables Xporter qui vous permet d'exporter facilement des variables de design pour plusieurs modes, tels que les thèmes clair et sombre, les thèmes de marque, etc.
 
-## What are multi-modes?
+## Qu'est-ce que le multi-modes ?
 
-Multi-modes allow a variable to have different values in different scenarios. Common modes include:
+Le multi-modes permet à une variable d'avoir différentes valeurs dans différentes situations. Voici quelques modes courants :
 
-- Light and dark themes
-- Brand themes
-- Responsive breakpoints
-- Layout density
+- Thèmes clair et sombre
+- Thèmes de marque
+- Points de rupture responsifs
+- Densité de mise en page
 
-Variables Xporter **supports compound multi-mode variables**. For example, the `colors/primary/DEFAULT` (primary color) variable might be affected by both light/dark themes and brand themes, resulting in the following output:
+Variables Xporter **prend en charge les variables multi-modes composées**. Par exemple, la variable `colors/primary/DEFAULT` (couleur primaire) peut être affectée à la fois par le thème clair/sombre et le thème de marque, ce qui donne le résultat suivant :
 
-<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'Variables CSS']}>
   <Tabs.Tab>
   ```css
-  /* Default Mode */
+  /* Mode par défaut */
 @theme {
-  /* Collection: Design Tokens */
+  /* Collection : Jetons de design */
   --color-brand-a-500: oklch(0.63 0.16 22.94);
   --color-brand-a-600: oklch(0.54 0.17 24.90);
   --color-brand-b-500: oklch(0.68 0.17 45.85);
   --color-brand-b-600: oklch(0.63 0.19 39.71);
   --color-primary: var(--theme-modes-color-primary);
 
-  /* Collection: Theme Modes */
+  /* Collection : Modes de thème */
   --theme-modes-color-primary: var(--brand-modes-color-primary-light);
 
-  /* Collection: Brand Modes */
+  /* Collection : Modes de marque */
   --brand-modes-color-primary-dark: var(--color-brand-a-500);
   --brand-modes-color-primary-light: var(--color-brand-a-600);
 }
 
-/* Mode Override */
+/* Remplacement de mode */
 @layer theme {
 .brand-b {
-  /* Collection: Brand Modes */
+  /* Collection : Modes de marque */
   --brand-modes-color-background-dark: var(--color-base-black);
   --brand-modes-color-background-light: var(--color-base-white);
   --brand-modes-color-primary-dark: var(--color-brand-b-500);
@@ -49,10 +49,10 @@ Variables Xporter **supports compound multi-mode variables**. For example, the `
   }
 }
 
-/* Mode Override */
+/* Remplacement de mode */
 @layer theme {
 .dark {
-  /* Collection: Theme Modes */
+  /* Collection : Modes de thème */
   --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
   }
 }
@@ -81,86 +81,86 @@ module.exports = {
   };
 ```
     ```css
-  /* Default Mode */
+  /* Mode par défaut */
   :root {
 
-  /* Collection: Design Tokens */
+  /* Collection : Jetons de design */
   --colors-brand-a-500: 218 89 89;
   --colors-brand-a-600: 192 57 57;
   --colors-brand-b-500: 238 109 33;
   --colors-brand-b-600: 229 85 23;
   --colors-primary: var(--theme-modes-colors-primary);
 
-  /* Collection: Theme Modes */
+  /* Collection : Modes de thème */
   --theme-modes-colors-primary: var(--brand-modes-colors-primary-light);
 
-  /* Collection: Brand Modes */
+  /* Collection : Modes de marque */
   --brand-modes-colors-primary-dark: var(--colors-brand-a-500);
   --brand-modes-colors-primary-light: var(--colors-brand-a-600);
 
 }
 
-/* Mode Override */
+/* Remplacement de mode */
 .brand-b {
-  /* Collection: Brand Modes */
+  /* Collection : Modes de marque */
   --brand-modes-colors-primary-dark: var(--colors-brand-b-500);
   --brand-modes-colors-primary-light: var(--colors-brand-b-600);
 }
 
-/* Mode Override */
+/* Remplacement de mode */
 .dark {
-  /* Collection: Theme Modes */
+  /* Collection : Modes de thème */
   --theme-modes-colors-primary: var(--brand-modes-colors-primary-dark);
 }
 ```
   </Tabs.Tab>
   <Tabs.Tab>
   ```css
-  /* Default Mode */
+  /* Mode par défaut */
   :root {
-  /* Collection: Design Tokens */
+  /* Collection : Jetons de design */
   --colors-brand-a-500: 218 89 89;
   --colors-brand-a-600: 192 57 57;
   --colors-brand-b-500: 238 109 33;
   --colors-brand-b-600: 229 85 23;
   --colors-primary: var(--theme-modes-colors-primary);
 
-  /* Collection: Theme Modes */
+  /* Collection : Modes de thème */
   --theme-modes-colors-primary: var(--brand-modes-colors-primary-light);
 
-  /* Collection: Brand Modes */
+  /* Collection : Modes de marque */
   --brand-modes-colors-primary-dark: var(--colors-brand-a-500);
   --brand-modes-colors-primary-light: var(--colors-brand-a-600);
 
 }
 
-/* Mode Override */
+/* Remplacement de mode */
 .brand-b {
-  /* Collection: Brand Modes */
+  /* Collection : Modes de marque */
   --brand-modes-colors-primary-dark: var(--colors-brand-b-500);
   --brand-modes-colors-primary-light: var(--colors-brand-b-600);
 }
 
-/* Mode Override */
+/* Remplacement de mode */
 .dark {
-  /* Collection: Theme Modes */
+  /* Collection : Modes de thème */
   --theme-modes-colors-primary: var(--brand-modes-colors-primary-dark);
 }
 ```
   </Tabs.Tab>
 </Tabs>
 
-Now, the `colors/primary/DEFAULT` variable will display different results under various light/dark themes and brand themes.
+Maintenant, la variable `colors/primary/DEFAULT` aura des résultats différents selon les différents thèmes clair/sombre et thèmes de marque.
 
-Learn how to create and manage multi-mode variables in Figma:
+Découvrez comment créer et gérer des variables multi-modes dans Figma :
 
   <Cards.Card
     icon={<Columns3  />}
-    title="Multi-mode variable management"
+    title="Gestion des variables multi-modes"
     href="/docs/organizing-your-variables/multi-mode"
     className="mt-4"
   />
 
-## How it works
+## Comment ça fonctionne
 
-Variables Xporter traces all referenced variables in the selected export collection until it finds the original values of the variables. This means you can reference variables across collections, and Variables Xporter will fully reconstruct the variable reference chain.
+Variables Xporter retrace toutes les variables référencées dans la collection d'exportation sélectionnée jusqu'à ce qu'il trouve la valeur originale de la variable. Cela signifie que vous pouvez référencer des variables à travers différentes collections, et Variables Xporter reconstituera complètement la chaîne de référence des variables.
