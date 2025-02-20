@@ -1,0 +1,76 @@
+import { Callout,Cards } from 'nextra/components'
+import { Columns3 } from 'lucide-react'
+
+# CSS Media Query Mode
+
+CSS Media Query Mode allows you to define variable values for different viewport sizes or device characteristics, enabling responsive design.
+
+## How It Works
+
+Variables Xporter supports standard media query syntax in variable mode names:
+
+Mode naming convention:
+**`{media-feature}:{value}`**
+
+For example:
+`min-width:768px`, `max-width:1024px`
+
+
+### Supported Media Features
+
+- `min-width`
+- `max-width`
+- `min-height`
+- `max-height`
+- `orientation`
+- `aspect-ratio`
+- `min-aspect-ratio`
+- `max-aspect-ratio`
+- `prefers-color-scheme`
+- `prefers-reduced-motion`
+- `display-mode`
+
+## Usage Examples
+
+### 1. Responsive Spacing
+Set different container widths for different breakpoints in Figma:
+
+```                                          
+ ┌────────────────────────┬──────────────────────┬─────────────────────┐
+ │                        │                      │                     │
+ │ Device Modes           │        default       │    min-width:1024   │
+ │                        │                      │                     │
+ ├────────────────────────┼──────────────────────┼─────────────────────┤
+ │                        │                      │                     │
+ │ spacing/lg             │ spacing/10           │ spacing/16          │
+ │                        │                      │                     │
+ │ ...                    │ ...                  │ ...                 │
+ │                        │                      │                     │
+ └────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+### 2. Responsive Font Sizes
+Set appropriate font sizes for different screen sizes:
+
+```
+ ┌────────────────────────┬──────────────────────┬─────────────────────┐
+ │                        │                      │                     │
+ │ Device Modes           │        default       │    min-width:1024   │
+ │                        │                      │                     │
+ ├────────────────────────┼──────────────────────┼─────────────────────┤
+ │                        │                      │                     │
+ │ font/hero/size         │ font/2xl/size        │ font/3xl/size       │
+ │                        │                      │                     │
+ │ ...                    │ ...                  │ ...                 │
+ │                        │                      │                     │
+ └────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+Learn how to create and manage multi-mode variables in Figma:
+
+  <Cards.Card
+    icon={<Columns3  />}
+    title="Multi-mode Variable Management"
+    href="/docs/organizing-your-variables/multi-mode"
+    className="mt-4"
+  />

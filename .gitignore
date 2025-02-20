@@ -11,6 +11,7 @@
 !.yarn/versions
 /docs/node_modules
 /figma-plugin/node_modules
+/docs-swr/node_modules
 
 # testing
 /coverage
@@ -20,6 +21,8 @@
 /out/
 /docs/.next/
 /docs/out/
+/docs-swr/.next/
+/docs-swr/out/
 
 #dist
 /figma-plugin/dist

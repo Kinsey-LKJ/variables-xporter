@@ -1,0 +1,76 @@
+import { Callout, Tabs } from 'nextra/components'
+
+# Ignore Tailwind Palette
+
+When using the Tailwind CSS export mode, Variables Xporter provides a useful option to ignore Tailwind's default color palette, making your exported configuration file more concise.
+
+## Why This Feature?
+
+Tailwind CSS includes a rich default color palette:
+- Slate
+- Gray
+- Zinc
+- Neutral
+- Stone
+and more...
+
+However, when we use the Tailwind color palette in Figma, including these colors in the exported configuration file would be redundant, as these color palettes are already built into Tailwind CSS in the development environment.
+
+## How to Use
+
+1. Check the "Ignore Tailwind CSS Default Palette" option in export settings
+2. Variables Xporter will only export the color variables you defined in Figma
+3. The generated configuration file won't include Tailwind's default colors
+
+### Example
+
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3']}>
+  <Tabs.Tab>
+  ```css
+/* Before enabling ignore option */
+@theme {
+  --color-red-50: oklch(0.971 0.013 17.38);
+  ...
+  --color-orange-50: oklch(0.98 0.016 73.684);
+  ...
+  --color-amber-50: oklch(0.987 0.022 95.277);
+  ...
+
+  /* Your custom colors */
+  --color-primary: var(--color-red-400);
+}
+
+/* After enabling ignore option */
+@theme {
+  /* Only includes your custom colors */
+  --color-primary: oklch(0.704 0.191 22.216);
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```js
+// Before enabling ignore option
+module.exports = {
+  theme: {
+    colors: {
+      slate: { /* ... */ },
+      gray: { /* ... */ },
+      zinc: { /* ... */ },
+      // Your custom colors
+      primary: 'rgb(var(--colors-primary))',
+    }
+  }
+}
+
+// After enabling ignore option
+module.exports = {
+  theme: {
+    colors: {
+      // Only includes your custom colors
+      primary: 'rgb(var(--colors-primary))',
+    }
+  }
+}
+```
+  </Tabs.Tab>
+</Tabs>

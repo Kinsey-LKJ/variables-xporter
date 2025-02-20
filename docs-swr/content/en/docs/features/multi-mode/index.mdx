@@ -1,0 +1,165 @@
+import { Callout } from 'nextra/components'
+import { Cards, Tabs } from 'nextra/components'
+import { Moon, Columns3 } from 'lucide-react'
+
+# Multi-mode Support
+
+Multi-mode support is a powerful feature of Variables Xporter that enables you to easily export multi-mode design variables, such as light/dark themes, brand themes, and more.
+
+## What is Multi-mode?
+
+Multi-mode allows a variable to have different values under different conditions. Common modes include:
+
+- Light/Dark themes
+- Brand themes
+- Responsive breakpoints
+- Layout density
+
+Variables Xporter supports **compound multi-mode variables**. For example, the `colors/primary/DEFAULT` variable can be affected by both dark/light themes and brand themes simultaneously, resulting in the following output:
+
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
+  <Tabs.Tab>
+  ```css
+  /* Default Mode */
+@theme {
+  /* Collection: Design Tokens */
+  --color-brand-a-500: oklch(0.63 0.16 22.94);
+  --color-brand-a-600: oklch(0.54 0.17 24.90);
+  --color-brand-b-500: oklch(0.68 0.17 45.85);
+  --color-brand-b-600: oklch(0.63 0.19 39.71);
+  --color-primary: var(--theme-modes-color-primary);
+
+  /* Collection: Theme Modes */
+  --theme-modes-color-primary: var(--brand-modes-color-primary-light);
+
+  /* Collection: Brand Modes */
+  --brand-modes-color-primary-dark: var(--color-brand-a-500);
+  --brand-modes-color-primary-light: var(--color-brand-a-600);
+}
+
+/* Mode Override */
+@layer theme {
+.brand-b {
+  /* Collection: Brand Modes */
+  --brand-modes-color-background-dark: var(--color-base-black);
+  --brand-modes-color-background-light: var(--color-base-white);
+  --brand-modes-color-primary-dark: var(--color-brand-b-500);
+  --brand-modes-color-primary-foreground-light: var(--color-base-white);
+  --brand-modes-color-primary-light: var(--color-brand-b-600);
+  }
+}
+
+/* Mode Override */
+@layer theme {
+.dark {
+  /* Collection: Theme Modes */
+  --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
+  }
+}
+  ```
+  </Tabs.Tab>
+
+  <Tabs.Tab>
+  ```js
+module.exports = {
+    theme: {
+      extend: {
+        colors: {
+      'brand-a': {
+            '500': 'rgb(var(--colors-brand-a-500))',
+            '600': 'rgb(var(--colors-brand-a-600))',
+      },
+      'brand-b': {
+            '400': 'rgb(var(--colors-brand-b-400))',
+            '500': 'rgb(var(--colors-brand-b-500))',
+            '600': 'rgb(var(--colors-brand-b-600))',
+      },
+      primary: 'rgb(var(--colors-primary))',
+        }
+      },
+    },
+  };
+```
+    ```css
+  /* Default Mode */
+  :root {
+
+  /* Collection: Design Tokens */
+  --colors-brand-a-500: 218 89 89;
+  --colors-brand-a-600: 192 57 57;
+  --colors-brand-b-500: 238 109 33;
+  --colors-brand-b-600: 229 85 23;
+  --colors-primary: var(--theme-modes-colors-primary);
+
+  /* Collection: Theme Modes */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-light);
+
+  /* Collection: Brand Modes */
+  --brand-modes-colors-primary-dark: var(--colors-brand-a-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-a-600);
+
+}
+
+/* Mode Override */
+.brand-b {
+  /* Collection: Brand Modes */
+  --brand-modes-colors-primary-dark: var(--colors-brand-b-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-b-600);
+}
+
+/* Mode Override */
+.dark {
+  /* Collection: Theme Modes */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-dark);
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```css
+  /* Default Mode */
+  :root {
+  /* Collection: Design Tokens */
+  --colors-brand-a-500: 218 89 89;
+  --colors-brand-a-600: 192 57 57;
+  --colors-brand-b-500: 238 109 33;
+  --colors-brand-b-600: 229 85 23;
+  --colors-primary: var(--theme-modes-colors-primary);
+
+  /* Collection: Theme Modes */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-light);
+
+  /* Collection: Brand Modes */
+  --brand-modes-colors-primary-dark: var(--colors-brand-a-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-a-600);
+
+}
+
+/* Mode Override */
+.brand-b {
+  /* Collection: Brand Modes */
+  --brand-modes-colors-primary-dark: var(--colors-brand-b-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-b-600);
+}
+
+/* Mode Override */
+.dark {
+  /* Collection: Theme Modes */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-dark);
+}
+```
+  </Tabs.Tab>
+</Tabs>
+
+Now, the `colors/primary/DEFAULT` variable will display different values depending on the current theme and brand mode.
+
+Learn more about creating and managing multi-mode variables in Figma:
+
+  <Cards.Card
+    icon={<Columns3  />}
+    title="Multi-mode Variable Management"
+    href="/docs/organizing-your-variables/multi-mode"
+    className="mt-4"
+  />
+
+## How It Works
+Variables Xporter traces all referenced variables in the selected export collection until it finds the original values. This means you can reference variables across collections, and Variables Xporter will fully reconstruct the reference chain.

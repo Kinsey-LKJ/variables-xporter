@@ -1,0 +1,55 @@
+# Other Design Variables
+
+import { Callout } from 'nextra/components'
+
+In a design system, beyond colors, typography, and spacing, there are many other important design variables. Let's explore how to organize these variables to maintain design system consistency and maintainability.
+
+## Other Styles
+
+### Responsive Breakpoints
+Use `breakpoint` or `screens` as the top-level directory:
+
+- `breakpoint/sm`
+- `breakpoint/md`
+- `breakpoint/lg`
+
+or:
+- `screens/sm`
+- `screens/md`
+- `screens/lg`
+
+### `border-radius`
+
+Use `border-radius` or `radius` as the top-level directory:
+- `border-radius/sm`
+- `border-radius/md`
+- `border-radius/lg`
+
+or:
+- `radius/sm`
+- `radius/md`
+- `radius/lg`
+
+### `filter:blur()`
+
+Use `blur` as the top-level directory:
+- `blur/sm`
+- `blur/md`
+- `blur/lg`
+
+You can find a complete list of configuration keys in the [Tailwind CSS Theme Configuration Reference](https://tailwindcss.com/docs/theme#theme-variable-namespaces).
+
+## Component-level Variables
+
+For component-level variables, still follow the principles in this documentation for the top-level directory, but use the component name as the second level, for example:
+- `colors/button/DEFAULT`
+- `colors/button/foreground`
+- `colors/button/border`
+
+- `colors/input/DEFAULT`
+
+- `colors/card/DEFAULT`
+- `colors/card/foreground`
+- `colors/card/border`
+
+

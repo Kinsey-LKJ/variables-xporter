@@ -1,0 +1,36 @@
+import { Callout } from 'nextra/components'
+import { Tabs } from 'nextra/components'
+
+# Color System
+
+The color system is perhaps the most important part of Design Tokens. If you're unsure about organizing and naming color variables, [shadcn/ui's naming convention](https://ui.shadcn.com/docs/theming#convention) is a great starting point:
+Generally, `background` is used for background colors, `foreground` for text colors, and when `background` is used for component background colors, such as `colors/card/DEFAULT`[^1], the `background` suffix is omitted. From this foundation, you can gradually expand to more variables.
+
+## Top-level Directory
+Please use `colors` or `color` as the top-level directory for all color-related variables. This not only makes your variable structure clearer but also ensures perfect compatibility with Tailwind CSS.
+
+<figure className="mt-6">
+  <>![Organizing color variables](/organizing-your-variables/colors/colors-1.png)</>
+  <figcaption>
+    Organizing color variables
+  </figcaption>
+</figure>
+
+## Opacity Modifiers
+
+Variables Xporter provides powerful color processing capabilities, automatically generating color variables that [comply with Tailwind CSS rules](https://tailwindcss.com/docs/customizing-colors#using-css-variables). During development, you can easily adjust color transparency using opacity modifiers without needing additional variable definitions.
+
+```html
+<!-- Text opacity adjustment -->
+<div class="text-primary/80">Text with adjusted opacity</div>
+<div class="text-secondary/60">Text with adjusted opacity</div>
+
+<!-- Background opacity adjustment -->
+<div class="bg-primary/10">Background with adjusted opacity</div>
+<div class="bg-accent/90">Background with adjusted opacity</div>
+
+<!-- Border opacity adjustment -->
+<div class="border-2 border-primary/30">Border with adjusted opacity</div>
+```
+
+[^1]: The `DEFAULT` keyword is a way to organize variable hierarchies, [learn more](/docs/organizing-your-variables/principles#use-default-value)
