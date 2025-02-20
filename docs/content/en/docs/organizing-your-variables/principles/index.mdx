@@ -15,6 +15,7 @@ To make variables more understandable and maintainable, we recommend following t
 - Keep it concise: Avoid overly long or complex naming, making code more readable and maintainable
 
 ## Top-level Names
+
 If your project uses Tailwind CSS, ensure that variable top-level names match Tailwind CSS's theme configuration keys. Here are some common configuration keys:
 
 - `colors`
@@ -27,6 +28,7 @@ If your project uses Tailwind CSS, ensure that variable top-level names match Ta
 You can find a complete list of configuration keys in the [Tailwind CSS Theme Configuration Reference](https://tailwindcss.com/docs/theme#configuration-reference).
 
 ## Separation Principles
+
 In design systems, we often need multiple words to describe a variable. Variables Xporter will automatically convert naming formats during export based on the target format:
 
 - Tailwind CSS configuration files: Uses camelCase format (e.g., fontSize, fontWeight)
@@ -50,6 +52,7 @@ Here are some common naming formats for reference:
 </Callout>
 
 ## Grouping Principles
+
 Proper variable grouping can greatly improve work efficiency. We recommend using the `/` symbol to organize variable hierarchies, just like managing a file system:
 
 Imagine how difficult it would be to find files if they were all piled in your computer's root directory. Similarly, we need to create clear hierarchical structures for variables:
@@ -70,6 +73,7 @@ These correspond to the following variables in Figma:
 - `colors/tertiary`
 
 ### Using the `DEFAULT` Keyword to Organize Variable Hierarchies
+
 The `DEFAULT` keyword serves a dual purpose: it can set default values, and more importantly, it can unify the levels of variables at the same hierarchy, making variable management clearer and more systematic. Let's look at a specific example:
 
 - `colors/primary`
