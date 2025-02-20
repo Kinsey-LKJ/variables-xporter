@@ -1,22 +1,22 @@
 import { Callout,Cards } from 'nextra/components'
 import { Columns3 } from 'lucide-react'
 
-# CSS 媒体查询模式
+# CSS Media Query Mode
 
-CSS 媒体查询模式让你能够为不同的视口尺寸或设备特性定义变量值，实现响应式设计。
+CSS Media Query Mode allows you to define variable values for different viewport sizes or device characteristics, enabling responsive design.
 
-## 工作原理
+## How It Works
 
-Variables Xporter 支持在变量模式名中使用标准的媒体查询语法：
+Variables Xporter supports standard media query syntax in variable mode names:
 
-变量模式命名规则：
+Mode naming convention:
 **`{media-feature}:{value}`**
 
-例如：
-`min-width:768px`、`max-width:1024px`
+For example:
+`min-width:768px`, `max-width:1024px`
 
 
-### 支持的媒体特性
+### Supported Media Features
 
 - `min-width`
 - `max-width`
@@ -30,10 +30,10 @@ Variables Xporter 支持在变量模式名中使用标准的媒体查询语法�
 - `prefers-reduced-motion`
 - `display-mode`
 
-## 使用示例
+## Usage Examples
 
-### 1. 响应式间距
-在 Figma 中设置不同断点的容器宽度：
+### 1. Responsive Spacing
+Set different container widths for different breakpoints in Figma:
 
 ```                                          
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -49,8 +49,8 @@ Variables Xporter 支持在变量模式名中使用标准的媒体查询语法�
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-### 2. 响应式字体大小
-为不同屏幕尺寸设置合适的字体大小：
+### 2. Responsive Font Sizes
+Set appropriate font sizes for different screen sizes:
 
 ```
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -66,11 +66,11 @@ Variables Xporter 支持在变量模式名中使用标准的媒体查询语法�
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-了解如何在 Figma 中创建和管理多模式变量:
+Learn how to create and manage multi-mode variables in Figma:
 
   <Cards.Card
     icon={<Columns3  />}
-    title="多模式变量管理"
+    title="Multi-mode Variable Management"
     href="/docs/organizing-your-variables/multi-mode"
     className="mt-4"
   />

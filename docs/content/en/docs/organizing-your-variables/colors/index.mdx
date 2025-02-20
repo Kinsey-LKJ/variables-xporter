@@ -1,96 +1,36 @@
 import { Callout } from 'nextra/components'
 import { Tabs } from 'nextra/components'
 
-# 颜色系统
-颜色系用几乎是 Design Tokens 里最重要的部分，如果你对颜色类变量的组织和命名没有头绪，[shadcn/ui 的命名约定](https://ui.shadcn.com/docs/theming#convention)是一个很好的开始：
-一般情况下，`background` 用于背景颜色，`foreground` 用于文本颜色，当 `background` 用于组件的背景颜色时，如 `colors/card/DEFAULT`[^1]，则省略 `background` 后缀，从这个基础出发逐渐扩展到更多的变量：
+# Color System
 
-{/* - `--background` - 背景色
-- `--foreground` - 前景色/文本色
-- `--muted` - 柔和的背景色
-- `--muted-foreground` - 柔和的前景色
-- `--popover` - 弹出层背景色
-- `--popover-foreground` - 弹出层前景色
-- `--card` - 卡片背景色
-- `--card-foreground` - 卡片前景色
-- `--border` - 边框色
-- `--input` - 输入框边框色
-- `--primary` - 主色调
-- `--primary-foreground` - 主色调上的前景色
-- `--secondary` - 次色调
-- `--secondary-foreground` - 次色调上的前景色
-- `--accent` - 强调色
-- `--accent-foreground` - 强调色上的前景色
-- `--destructive` - 危险/警告色
-- `--destructive-foreground` - 危险/警告色上的前景色
-- `--ring` - 聚焦环的颜色
+The color system is perhaps the most important part of Design Tokens. If you're unsure about organizing and naming color variables, [shadcn/ui's naming convention](https://ui.shadcn.com/docs/theming#convention) is a great starting point:
+Generally, `background` is used for background colors, `foreground` for text colors, and when `background` is used for component background colors, such as `colors/card/DEFAULT`[^1], the `background` suffix is omitted. From this foundation, you can gradually expand to more variables.
 
-<Callout type="warning" emoji="⚠️">
-  以上是 CSS Variables，请不要在 Figma 中使用 `--` 作为任何变量的前缀。
-</Callout> */}
-
-{/* 对应到 Figma 中，可以使用以下命名约定： */}
-
-<details>
-  {/* prettier-ignore */}
-  <summary>shadcn/ui 颜色变量命名参考</summary>
-- `colors/background/DEFAULT` - 页面主背景色
-- `colors/foreground/DEFAULT` - 主要文本颜色
-- `colors/muted/DEFAULT` - 次要背景色，用于柔和的视觉层次
-- `colors/muted/foreground` - 次要文本颜色，用于辅助信息
-- `colors/popover/DEFAULT` - 弹出层背景色，确保与主背景有适当区分
-- `colors/popover/foreground` - 弹出层文本颜色
-- `colors/card/DEFAULT` - 卡片背景色，用于内容区块
-- `colors/card/foreground` - 卡片内文本颜色
-- `colors/border/DEFAULT` - 边框颜色，用于分隔视觉元素
-- `colors/input/DEFAULT` - 输入框边框颜色
-- `colors/primary/DEFAULT` - 品牌主色调，用于主要按钮和重点元素
-- `colors/primary/foreground` - 主色调上的文本颜色
-- `colors/secondary/DEFAULT` - 品牌次色调，用于次要操作和界面元素
-- `colors/secondary/foreground` - 次色调上的文本颜色
-- `colors/accent/DEFAULT` - 强调色，用于突出显示特定元素
-- `colors/accent/foreground` - 强调色上的文本颜色
-- `colors/destructive/DEFAULT` - 警示色，用于危险操作和错误提示
-- `colors/destructive/foreground` - 警示色上的文本颜色
-- `colors/ring/DEFAULT` - 焦点环颜色，用于交互反馈
-</details>
-
-
-{/* <Callout type="info" emoji="💡">
-  Variables Xporter 会自动生成[符合 Tailwind CSS 规则](https://tailwindcss.com/docs/customizing-colors#using-css-variables)的颜色类 CSS 变量，并且支持与不透明度修饰符一起使用。
-</Callout> */}
-
-## 顶层目录
-请使用 `colors` 或 `color` 作为所有颜色相关变量的顶层目录。这不仅让你的变量结构更加清晰，也确保了与 Tailwind CSS 的完美兼容。
+## Top-level Directory
+Please use `colors` or `color` as the top-level directory for all color-related variables. This not only makes your variable structure clearer but also ensures perfect compatibility with Tailwind CSS.
 
 <figure className="mt-6">
-  <>![组织颜色类变量](/organizing-your-variables/colors/colors-1.png)</>
+  <>![Organizing color variables](/organizing-your-variables/colors/colors-1.png)</>
   <figcaption>
-    组织颜色类变量
+    Organizing color variables
   </figcaption>
 </figure>
 
-{/* <Callout type="error" emoji="🚨">
-  在 Tailwind CSS 项目中，颜色变量的顶层目录必须是 `colors`。这是因为 Tailwind CSS 的配置系统专门使用 `colors` 配置键来处理颜色相关的样式定义。使用其他名称可能导致颜色变量无法被正确识别和使用。
-</Callout> */}
+## Opacity Modifiers
 
-## 不透明度修饰符
+Variables Xporter provides powerful color processing capabilities, automatically generating color variables that [comply with Tailwind CSS rules](https://tailwindcss.com/docs/customizing-colors#using-css-variables). During development, you can easily adjust color transparency using opacity modifiers without needing additional variable definitions.
 
-Variables Xporter 提供了强大的颜色处理功能，它会自动为你生成[符合 Tailwind CSS 规则](https://tailwindcss.com/docs/customizing-colors#using-css-variables)的颜色变量。在开发过程中，你可以轻松地使用不透明度修饰符灵活调整颜色的透明度，无需额外的变量定义。
+```html
+<!-- Text opacity adjustment -->
+<div class="text-primary/80">Text with adjusted opacity</div>
+<div class="text-secondary/60">Text with adjusted opacity</div>
 
+<!-- Background opacity adjustment -->
+<div class="bg-primary/10">Background with adjusted opacity</div>
+<div class="bg-accent/90">Background with adjusted opacity</div>
 
-  ```html
-  <!-- 文本透明度调整 -->
-  <div class="text-primary/80">文本透明度调整</div>
-  <div class="text-secondary/60">文本透明度调整</div>
+<!-- Border opacity adjustment -->
+<div class="border-2 border-primary/30">Border with adjusted opacity</div>
+```
 
-  <!-- 背景透明度调整 -->
-  <div class="bg-primary/10">背景透明度调整</div>
-  <div class="bg-accent/90">背景透明度调整</div>
-
-  <!-- 边框透明度调整 -->
-  <div class="border-2 border-primary/30">边框透明度调整</div>
-  ```
-
-
-[^1]: `DEFAULT` 关键字是组织变量层级的一种方式，[了解更多](/docs/organizing-your-variables/principles#use-default-value)
+[^1]: The `DEFAULT` keyword is a way to organize variable hierarchies, [learn more](/docs/organizing-your-variables/principles#use-default-value)
