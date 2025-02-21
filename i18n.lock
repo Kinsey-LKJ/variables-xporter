@@ -33,6 +33,7 @@ checksums:
     figmaTemplate/description: da44b0452ceb9b9f27a6e09112e35f10
     figmaTemplate/openInFigma: ebd3e531ec366f78d81dfdc44d8946f1
   a06579c54fb7dfda1d27d2126ec7db7a:
+    language: 56d7ebc7e245c2150d34cd2908dec619
     back: d9aa975ba76c61034ce8282e321f0a55
     export_figma_variables_tailwind_css_or_css_variables: b6c7e1f21d3bd7428cb1f72374728f78
     get_started: 23c8739d668d91d25a4cbbd64ef5de89
