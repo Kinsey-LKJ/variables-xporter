@@ -1,4 +1,5 @@
 {
+  "language": "Français",
   "back": "Retour",
   "export_figma_variables_tailwind_css_or_css_variables": "Exporter les variables Figma en Tailwind CSS ou CSS Variables",
   "get_started": "Commencer",

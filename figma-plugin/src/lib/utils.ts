@@ -1,4 +1,4 @@
-import { ExportFormat, TVariable, TVariableCollection } from './type';
+import { ExportFormat, TVariable, TVariableCollection } from '../types/app';
 import * as changeCase from 'change-case';
 import { convert, OKLCH, sRGB, DisplayP3 } from '@texel/color';
 import Color from 'colorjs.io';

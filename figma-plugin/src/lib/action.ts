@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { FileContent } from './type';
+import { FileContent } from '../types/app';
 
 export const formSchema = z.object({
   selectCollectionID: z.string(),

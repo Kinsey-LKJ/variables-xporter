@@ -1,5 +1,5 @@
 // form-context.ts file
-import { ExportFormat } from '@/src/lib/type';
+import { ExportFormat } from '@/src/types/app';
 import { createFormContext } from '@mantine/form';
 
 interface VariableFormValues {
