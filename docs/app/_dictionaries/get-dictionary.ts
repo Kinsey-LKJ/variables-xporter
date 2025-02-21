@@ -1,18 +1,20 @@
 import 'server-only'
 import type { Dictionaries, Dictionary, Locale } from './i18n-config'
+import { allLanguages } from './i18n-config'
 
-// We enumerate all dictionaries here for better linting and TypeScript support
-// We also get the default import for cleaner types
-const dictionaries: Dictionaries = {
-  en: () => import("./en.json"),
-  zh: () => import("./zh.json"),
-};
+export const dictionaries = allLanguages.reduce((acc, locale) => ({
+  ...acc,
+  [locale]: () => import(`./${locale}.json`),
+}), {} as Dictionaries)
 
 export async function getDictionary(locale: Locale): Promise<Dictionary> {
-  const { default: dictionary } = await (
-    dictionaries[locale as keyof Dictionaries] || dictionaries.zh
-  )()
+  const dictionaryFn = dictionaries[locale as keyof Dictionaries]
+  
+  if (!dictionaryFn) {
+    throw new Error(`Dictionary not found for locale: ${locale}`)
+  }
 
+  const { default: dictionary } = await dictionaryFn()
   return dictionary
 }
 

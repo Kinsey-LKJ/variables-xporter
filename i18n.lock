@@ -1,6 +1,7 @@
 version: 1
 checksums:
   f3526ad01ba955a40cb854dadf22b848:
+    language: 56d7ebc7e245c2150d34cd2908dec619
     supportTailwindCssV4: 23bb17e4e92905a6366764e9dd2c9cf6
     pluginHighlight: 2fa4906c3d7931059064d6fe69963ebe
     start: 1840750f14ef54e8f90d24ada4c0ce17

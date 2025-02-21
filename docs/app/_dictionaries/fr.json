@@ -1,4 +1,5 @@
 {
+  "language": "Français",
   "supportTailwindCssV4": "Prise en charge de Tailwind CSS V4",
   "pluginHighlight": "Intégration transparente des variables Figma dans Tailwind CSS ou CSS Variables",
   "start": "Commencer",
