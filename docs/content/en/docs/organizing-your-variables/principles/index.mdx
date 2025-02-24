@@ -2,25 +2,25 @@ import { FileTree } from 'nextra/components'
 import { Callout } from 'nextra/components'
 import { Config } from "tailwindcss";
 
-# 变量组织原则
+# Variable organization principles
 
-在使用 Variables Xporter 时，变量的组织方式直接影响导出结果的质量。让我们一起学习如何在 Figma 中合理组织变量，确保导出的代码能完美适配你的开发环境。
+When using Variables Xporter, the way you organize your variables directly impacts the quality of your exported code. Let's explore how to effectively organize variables in Figma to ensure the exported code seamlessly integrates with your development environment.
 
-## 命名原则
+## Naming principles
 
-为了让变量更易于理解和维护，我们建议遵循以下命名原则：
+To make variables more understandable and maintainable, we recommend following these naming principles:
 
-- 使用英文命名：这不仅确保了与开发环境的兼容性，也让变量在导出为 Tailwind CSS 配置或 CSS 变量时保持一致性
-- 选择语义化命名：变量名应清晰表达其用途，让团队成员一眼就能理解
-- 保持简洁明了：避免过于冗长或复杂的命名，让代码更易读、更易维护
+- Use English names: this ensures compatibility with development environments and maintains consistency when exporting to Tailwind CSS configurations or CSS variables
+- Choose semantic naming: variable names should clearly express their purpose, making them instantly understandable to team members
+- Keep it concise: avoid overly long or complex naming to maintain code readability and maintainability
 
 {/* <Callout type="info" emoji="ℹ️">
-  在使用 Varibales Xporter 时，你必须使用 camelCase 或者 kebab-case 命名格式将多个单词分隔，例如 `borderRadius`，或者 `border-radius`。
+  When using Variables Xporter, you must use either camelCase or kebab-case naming conventions to separate multiple words, such as `borderRadius` or `border-radius`.
 </Callout> */}
 
-### 顶层名称
+### Top-level names
 
-如果你的项目使用 Tailwind CSS，请确保变量的顶层名称与 Tailwind CSS 的主题配置键保持一致。以下是一些常用的配置键示例：
+If your project uses Tailwind CSS, ensure that your top-level variable names align with Tailwind CSS theme configuration keys. Here are some common configuration keys:
 
 - `colors`
 - `spacing`
@@ -29,16 +29,16 @@ import { Config } from "tailwindcss";
 - `borderRadius`
 - `opacity`
 
-你可以在 [Tailwind CSS 主题配置参考](https://tailwindcss.com/docs/theme#configuration-reference) 中查看完整的配置键列表。
+You can find the complete list of configuration keys in the [Tailwind CSS Theme Configuration Reference](https://tailwindcss.com/docs/theme#configuration-reference).
 
-## 分隔原则
+## Naming conventions
 
-在设计系统中，我们经常需要使用多个单词来描述一个变量。Variables Xporter 在导出时会根据目标格式自动转换命名格式：
+In design systems, we often need to use multiple words to describe a variable. Variables Xporter automatically converts naming formats based on the target format:
 
-- Tailwind CSS 配置文件：使用 camelCase 格式（如：fontSize、fontWeight）
-- CSS 变量：使用 kebab-case 格式（如：font-size、font-weight）
+- Tailwind CSS configuration files: uses camelCase format (e.g., fontSize, fontWeight)
+- CSS variables: uses kebab-case format (e.g., font-size, font-weight)
 
-以下是一些常用的命名格式供参考：
+Here are some common naming formats for reference:
 - camelCase -> twoWords
 - constantCase -> TWO_WORDS
 - kebabCase -> two-words
@@ -50,16 +50,16 @@ import { Config } from "tailwindcss";
 - sentenceCase -> Two words
 
 <Callout type="info" emoji="ℹ️">
-  在导出变量时，不管你使用的是以上哪种格式，Varibales Xporter 会自动将导出的结果换为符合 Tailwind CSS 配置文件以及 CSS 变量习惯的或规定的格式：
-  - Tailwind CSS 配置文件：使用 camelCase 格式（如：fontSize、fontWeight）
-  - CSS 变量：使用 kebab-case 格式（如：font-size、font-weight）
+  When exporting variables, regardless of which format you use from the above, Variables Xporter will automatically convert the output to match the conventions or requirements of Tailwind CSS configuration files and CSS variables:
+  - Tailwind CSS configuration files: uses camelCase format (e.g., fontSize, fontWeight)
+  - CSS variables: uses kebab-case format (e.g., font-size, font-weight)
 </Callout>
 
-## 分组原则
+## Grouping principles
 
-合理的变量分组能大大提升工作效率。我们建议使用 `/` 符号来组织变量层级，就像管理文件系统一样：
+Proper variable grouping significantly improves workflow efficiency. We recommend using the `/` symbol to organize variable hierarchies, similar to managing a file system:
 
-想象一下，如果把所有文件都堆在电脑的根目录里，查找起来会有多麻烦。同样的道理，我们也需要给变量创建清晰的层级结构：
+Think about how difficult it would be to find files if they were all dumped in your computer's root directory. Similarly, we need to create clear hierarchical structures for our variables:
 
 <FileTree>
   <FileTree.Folder name="colors" defaultOpen>
@@ -70,20 +70,20 @@ import { Config } from "tailwindcss";
   </FileTree.Folder>
 </FileTree>
 
-这分别对应以下 Figma 中的变量：
+These correspond to the following variables in Figma:
 
 - `colors/primary`
 - `colors/secondary`
 - `colors/tertiary`
 
-### 使用 `DEFAULT` 关键字组织变量层级
+### Using the `DEFAULT` keyword to organize variable hierarchies
 
-`DEFAULT` 关键字具有双重作用：一方面它可以设置为默认值，更重要的是，它能够统一相同层级变量的级别，使得变量管理更加清晰和系统化。让我们来看一个具体的例子：
+The `DEFAULT` keyword serves a dual purpose: it sets a default value and, more importantly, unifies variables at the same level, making variable management clearer and more systematic. Let's look at a specific example:
 
 - `colors/primary`
 - `colors/primary/foreground`
 
-这是一组常见的变量，分别用于主色调和主色调上的文字颜色，但仅这样命名是不够的，我们依然用文件管理的方式来思考，例如：
+This is a common set of variables used for primary color and text color on primary backgrounds, but this naming alone isn't sufficient. Let's think about it in terms of file management:
 
 <FileTree>
   <FileTree.Folder name="colors" defaultOpen>
@@ -94,25 +94,27 @@ import { Config } from "tailwindcss";
   </FileTree.Folder>
 </FileTree>
 
-这里我们遇到了一个有趣的挑战：虽然从逻辑上来说，`colors/primary` 和 `colors/primary/foreground` 这两个变量应该在同一个目录下，但实际上它们却分散在不同的位置。让我们看看在 Figma 中的表现：
+Here we encounter an interesting challenge: while logically `colors/primary` and `colors/primary/foreground` should be in the same directory, they're actually scattered in different locations. Let's see how this appears in Figma:
 
 <figure className="mt-6">
-  <>![在 colors -> primary 目录中找不到 `colors/primary` 变量](/organizing-your-variables/organizing-your-variables-1.png)</>
+  <>![Cannot find `colors/primary` variable in colors -> primary directory](/organizing-your-variables/organizing-your-variables-1.png)</>
   <figcaption>
-    在 colors -> primary 目录中找不到 `colors/primary` 变量
+    Cannot find `colors/primary` variable in colors -> primary directory
   </figcaption>
 </figure>
 
-如果需要找到 `colors/primary` 这个变量，需要到 colors 目录下，然后才能看到 `colors/primary` 这个变量：
+To find the `colors/primary` variable, you need to go to the colors directory:
 
 <figure className="mt-6">
-  <>![在 colors 目录中找到 `colors/primary` 变量](/organizing-your-variables/organizing-your-variables-2.png)</>
+  <>![Finding `colors/primary` variable in colors directory](/organizing-your-variables/organizing-your-variables-2.png)</>
   <figcaption>
-    在 colors 目录中找到 `colors/primary` 变量
+    Finding `colors/primary` variable in colors directory
   </figcaption>
 </figure>
-想想当我们的变量变得越来越多时，要想找到 `colors/primary` 这个变量，会变得更麻烦，**因为我们无法依靠左边栏快速定位，而是要在 colors 这个目录下寻找**。
-这种情况不仅影响我们的工作效率，更重要的是，当我们尝试将这个结构转换为 Tailwind CSS V3 版本的配置时，会遇到一个技术限制：**JavaScript 对象不允许同名键同时作为值和对象使用**。
+
+As our variables grow in number, finding `colors/primary` becomes more cumbersome **because we can't rely on the sidebar for quick navigation and must search within the colors directory instead**.
+This not only affects our workflow efficiency but, more importantly, when we try to convert this structure to Tailwind CSS V3 configuration, we run into a technical limitation: **JavaScript objects cannot use the same key as both a value and an object**.
+
 ```ts twoslash
 // @errors: 1117
 export default {
@@ -128,10 +130,10 @@ export default {
   },
   plugins: [],
 };
-
 ```
 
-不过别担心，Tailwind CSS 为我们提供了一个优雅的解决方案 —— 使用 `DEFAULT` 关键字：
+Don't worry though, Tailwind CSS provides an elegant solution — using the `DEFAULT` keyword:
+
 ```ts twoslash
 // @errors: 1117
 export default {
@@ -148,24 +150,25 @@ export default {
   plugins: [],
 };
 ```
-最棒的是，在实际的开发中时，完全不需要写出 `DEFAULT` 这个关键字。Tailwind CSS 会自动处理这个细节，让你的代码保持简洁：
+
+The best part is that in actual development, you don't need to write out the `DEFAULT` keyword. Tailwind CSS handles this detail automatically, keeping your code clean:
 
 ```html
 <div class="text-primary">
-  <p>你好，世界！</p>
+  <p>Hello, world!</p>
 </div>
 ```
 
-有了这个技巧，我们就可以在 Figma 中优雅地组织我们的变量了。只需要使用 `DEFAULT` 作为默认值的标记：
+With this technique, we can elegantly organize our variables in Figma. Just use `DEFAULT` as a marker for default values:
 
-- `colors/primary/DEFAULT` - 主色调的默认值
-- `colors/primary/foreground` - 主色调上的文字颜色
+- `colors/primary/DEFAULT` - default value for primary color
+- `colors/primary/foreground` - text color on primary background
 
-他们便会出现在同一个目录下：
+They will appear in the same directory:
 
 <figure className="mt-6">
-  <>![用默认值组织变量层级](/organizing-your-variables/organizing-your-variables-3.png)</>
+  <>![Organizing variable hierarchy using default values](/organizing-your-variables/organizing-your-variables-3.png)</>
   <figcaption>
-    用默认值组织变量层级
+    Organizing variable hierarchy using default values
   </figcaption>
 </figure>

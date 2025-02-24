@@ -1,12 +1,12 @@
 import { Callout } from 'nextra/components'
 
-# 多模式变量管理
+# Multi-mode variable management
 
-Figma 的多模式功能为创建更强大的变量系统提供了基础，我们将介绍如何通过**单一出口原则**，创建复杂的多模式变量系统，例如同时包含明暗主题、品牌主题、响应式设计以及紧凑性模式等复合变量系统。
+Figma's multi-mode functionality provides the foundation for creating more powerful variable systems. We'll explore how to create complex multi-mode variable systems using the **single outlet principle**, which can include combinations of light/dark themes, brand themes, responsive design, and density modes.
 
-## 传统的多模式变量组织方式
+## Traditional multi-mode variable organization
 
-让我们先来看看传统的多模式变量组织方式。以明暗主题为例，传统做法是在同一个集合中为每个变量设置不同的模式值：
+Let's first look at the traditional way of organizing multi-mode variables. Taking light/dark themes as an example, the conventional approach is to set different mode values for each variable within the same collection:
 
 ```
 ┌──────────────────────┬──────────┬──────────┐
@@ -27,23 +27,23 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
 └──────────────────────┴──────────┴──────────┘
 ```
 
-这种方法在只处理明暗主题切换时看起来很直观，但随着项目的发展会遇到以下挑战：
+While this approach seems intuitive when dealing with just light/dark theme switching, it faces several challenges as the project grows:
 
-1. **变量和模式强耦合**
-   - 每个变量都必须为所有模式设置值
-   - 即使某些变量（如字体大小、字重和间距）在不同模式下保持不变，也需要重复设置
+1. **Strong coupling between variables and modes**
+   - Each variable must have values set for all modes
+   - Values must be repeated even for variables that remain constant across modes (like font sizes, weights, and spacing)
 
-2. **难以扩展和维护**
-   - 所有模式的变化都集中在一个地方，使得变量管理变得复杂
-   - 当需要添加新的模式维度（如品牌主题）时，模式组合会呈指数级增长
+2. **Difficult to scale and maintain**
+   - All mode variations are concentrated in one place, making variable management complex
+   - When adding new mode dimensions (like brand themes), mode combinations grow exponentially
 
-## 单一出口原则
+## Single outlet principle
 
-**单一出口原则是值一个变量系统中，所有的变量以一个集合作为唯一出口，这个集合只包含一个模式，并通过引用其他集合中的变量来实现多模式变量管理。** 让我们来看看如何运用单一出口原则来优雅地组织明暗主题变量，这种方法能够让我们的变量管理更加清晰和可维护。
+**The single outlet principle states that in a variable system, all variables should have a single collection as their sole outlet, containing only one mode, and implement multi-mode variable management through references to variables in other collections.** Let's see how to elegantly organize light/dark theme variables using this principle, making our variable management clearer and more maintainable.
 
-### 创建 Design Tokens 集合（主集合）
+### Creating the Design Tokens collection (main collection)
 
-首先，我们创建一个主集合来存放所有设计变量：
+First, we create a main collection to store all design variables:
 
 ```
 ┌────────────────────────┬────────────────────────┐
@@ -62,11 +62,11 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
 └────────────────────────┴────────────────────────┘
 ```
 
-这个主集合只包含一个默认模式，它是所有变量的统一出口。那么，如何实现明暗主题的切换呢？这就需要借助另一个专门的主题模式集合。
+This main collection contains only one default mode and serves as the unified outlet for all variables. So how do we implement light/dark theme switching? This is where a dedicated theme mode collection comes in.
 
-### 创建 Theme Modes 集合
+### Creating the Theme Modes collection
 
-接下来，我们创建一个专门用于管理主题模式的集合：
+Next, we create a collection specifically for managing theme modes:
 
 ```
 ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -80,9 +80,9 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
 └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-这个集合专门负责存放需要在明暗主题间切换的变量。**通过让主集合中的变量引用此集合中的对应变量，我们就能实现优雅的主题切换。**
+This collection is dedicated to storing variables that need to switch between light and dark themes. **By having variables in the main collection reference their corresponding variables in this collection, we achieve elegant theme switching.**
 
-### 变量引用链
+### Variable reference chain
 
 ```
                 ┌────────────────────────┬────────────────────────┐
@@ -121,25 +121,25 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-让我们以 `colors/primary/DEFAULT` 为例来详细说明这个工作流程：
+Let's take `colors/primary/DEFAULT` as an example to explain this workflow in detail:
 
-1. 在 Design Tokens 集合中，这个变量引用了 Theme Modes 集合中名为 `colors/primary/DEFAULT` 的变量
-2. 在 Theme Modes 集合中，这个变量在不同模式下设置了不同的值，从而实现了主题切换
-3. 重要的是，Theme Modes 集合只需包含那些在不同 Theme 模式下需要变化的变量，其他保持不变的变量无需在此出现
+1. In the Design Tokens collection, this variable references the `colors/primary/DEFAULT` variable from the Theme Modes collection
+2. In the Theme Modes collection, this variable has different values set for different modes, enabling theme switching
+3. Importantly, the Theme Modes collection only needs to include variables that change across different theme modes; unchanging variables don't need to appear here
 
 <Callout type="info" emoji="💡">
-**使用者视角：** 在 Figma 中，设计师只需从 Design Tokens 集合中选择所需的变量即可，无需关心背后的变量引用关系。这就是单一出口原则的优势 —— 提供一个统一的、清晰的接口。
+**Designer's perspective:** In Figma, designers only need to select variables from the Design Tokens collection, without worrying about the underlying variable reference relationships. This is the advantage of the single outlet principle — providing a unified, clear interface.
 
-**导出过程：** 使用 Variables Xporter 插件时，只需导出 Design Tokens 集合的变量。插件会自动追踪每个变量的引用链，确保获取最终的具体值。而无需选择 Theme Modes 集合导出。
+**Export process:** When using the Variables Xporter plugin, you only need to export variables from the Design Tokens collection. The plugin automatically traces each variable's reference chain to ensure it gets the final concrete values, without needing to export the Theme Modes collection.
 </Callout>
 
-## 创建复杂的多模式变量系统
+## Creating complex multi-mode variable systems
 
-使用单一出口原则能够创建复杂多维度的变量系统，例如包含明暗主题、品牌主题、响应式设计以及紧凑性模式等复合模式的变量系统，让我们一步步创建，并体会单一出口原则带来的好处。
+Using the single outlet principle enables us to create complex multi-dimensional variable systems, such as those combining light/dark themes, brand themes, responsive design, and density modes. Let's build this step by step and experience the benefits of the single outlet principle.
 
-### 从品牌主题组合开始
+### Starting with brand theme combinations
 
-我们目前已经拥有了一个支持明暗主题的变量系统，现在我们希望在明暗主题的基础上，再加入品牌主题的变量系统。
+We currently have a variable system that supports light/dark themes. Now we want to add brand theme variables on top of that.
 
 ```
                 ┌────────────────────────┬────────────────────────┐
@@ -178,9 +178,10 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### 加入品牌主题模式
+### Adding brand theme modes
 
-创建一个 Brands Modes 集合，用于管理品牌主题的变量，并创建两个不同的品牌模式（本例中是 `zhiyun` 和 `fiveray`），再创建两个变量 `colors/primary/light` 和 `colors/primary/dark`，并在两个模式下设置不同的值（本例中引用了主集合 Design Tokens 中的相关颜色）。
+Create a Brands Modes collection to manage brand theme variables, with two different brand modes (in this example, `zhiyun` and `fiveray`). Create two variables `colors/primary/light` and `colors/primary/dark`, setting different values for each mode (in this example, referencing related colors from the main Design Tokens collection).
+
 ```
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
  │                        │                      │                     │
@@ -196,7 +197,8 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
  │                        │                      │                     │
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
-接下来建立变量的引用关系：Theme Modes 集合中的变量根据当前主题引用 Brands Modes 集合中对应的变量，而 Brands Modes 集合中的变量则引用 Design Tokens 集合中的具体颜色值。这样，当切换品牌或主题时，整个系统的颜色都会相应更新。
+
+Next, establish variable reference relationships: variables in the Theme Modes collection reference corresponding variables from the Brands Modes collection based on the current theme, while variables in the Brands Modes collection reference concrete color values from the Design Tokens collection. This way, when switching brands or themes, all system colors update accordingly.
 
 ```
 
@@ -259,12 +261,12 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
    └─────────────────────────────────────────────────────────────┴──────────────────────┘
 
 ```
-就是这样！你创建了一个包含明暗主题和品牌主题的多维变量系统，并且通过单一出口原则，让设计系统变得更加灵活和可维护。
-整体的看变量的引用链会发现整体有些复杂，但是这样远比你在一个集合中管理所有变量要清晰和可维护，但我们还没有结束，让我们进一步扩展这个变量系统。
+That's it! You've created a multi-dimensional variable system incorporating light/dark themes and brand themes, made flexible and maintainable through the single outlet principle.
+Looking at the overall variable reference chain might seem complex, but it's far clearer and more maintainable than managing all variables in a single collection. But we're not done yet; let's further expand this variable system.
 
-### 响应式设计模式
+### Responsive design modes
 
-通常，字体尺寸变量会根据不同的屏幕尺寸进行调整，以 `font/hero/size` 这个变量为例，首先在 Design Tokens 集合中创建一个 `font/hero/size` 变量，并创建 `font/size/2xl` 和 `font/size/3xl` 两个变量。
+Typically, font size variables need to adjust based on different screen sizes. Taking the `font/hero/size` variable as an example, first create a `font/hero/size` variable in the Design Tokens collection, along with `font/size/2xl` and `font/size/3xl` variables.
 
 ```
     ┌────────────────────────┬────────────────────────┐
@@ -293,7 +295,8 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
     │                        │                        │
     └────────────────────────┴────────────────────────┘
 ```
-创建一个 Device Modes 集合，用于管理响应式设计的变量，并创建一个 `font/hero/size` 变量，然后在不同设备尺寸下设置不同的值。
+Create a Device Modes collection to manage responsive design variables, create a `font/hero/size` variable, and set different values for different device sizes.
+
 ```
 
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -309,7 +312,8 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-现在，只需将 Design Tokens 集合中 `font/hero/size` 变量的值改为引用 Device Modes 集合中的 `font/hero/size` 变量即可！
+Now, simply change the value of the `font/hero/size` variable in the Design Tokens collection to reference the `font/hero/size` variable from the Device Modes collection!
+
 ```
 
        ┌────────────────────────┬────────────────────────┐
@@ -357,12 +361,14 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
 │                                                │                      │
 └────────────────────────────────────────────────┴──────────────────────┘
 ```
-我们省略了 Theme Modes 集合，因为它的内容与之前相同。这也是单一出口原则的优势，我们只需要关注需要在特定模式下改变的变量。
+We've omitted the Theme Modes collection since its content remains the same. This is another advantage of the single outlet principle - we only need to focus on variables that need to change in specific modes.
 
-### 紧凑性模式
+### Density modes
 
-有的B端后台项目可能会有紧凑性模式，这种模式下，各种尺寸可能都会变小，比如字体、间距、容器宽度等。让我们进一步扩展我们的变量系统，加入紧凑性模式。
-首先，在 Design Tokens 集合中创建一系列的 `spacing` 变量，用于管理间距、尺寸。为了方便演示，我们只创建了 `spacing/1` 这一个变量，在实际的项目中，你需要创建更多的变量，比如 `spacing/2`、`spacing/3` `spacing/4` 等等。查看[Spacing 变量的组织建议](/docs/organizing-your-variables/spacing)。
+Some B2B backend projects might have a compact mode where various dimensions become smaller, such as font sizes, spacing, and container widths. Let's further expand our variable system to include density modes.
+
+First, create a series of `spacing` variables in the Design Tokens collection to manage spacing and dimensions. For demonstration purposes, we've only created one variable, `spacing/1`. In a real project, you'd need to create more variables like `spacing/2`, `spacing/3`, `spacing/4`, etc. See [Spacing variable organization recommendations](/docs/organizing-your-variables/spacing).
+
 ```
 
     ┌────────────────────────┬────────────────────────┐
@@ -393,7 +399,8 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
     │                        │                        │
     └────────────────────────┴────────────────────────┘
 ```
-创建一个 Density Modes 集合，用于管理布局的松散性，并创建 `spacing/1`、`font/size/2xl` 和 `font/size/3xl` 变量，然后在不同松散程度下设置不同的值。
+Create a Density Modes collection to manage layout density, and create `spacing/1`, `font/size/2xl`, and `font/size/3xl` variables, setting different values for different density levels.
+
 ```
 ┌────────────────────────┬──────────────────────┬─────────────────────┐
 │                        │                      │                     │
@@ -411,7 +418,8 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
 │                        │                      │                     │
 └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
-将 Design Tokens 集合中的 `spacing/1`、`font/size/2xl` 和 `font/size/3xl` 变量值改为引用 Density Modes 集合中的 `spacing/1`、`font/size/2xl` 和 `font/size/3xl` 变量。
+Change the values of `spacing/1`, `font/size/2xl`, and `font/size/3xl` variables in the Design Tokens collection to reference their corresponding variables from the Density Modes collection.
+
 ```
     ┌────────────────────────┬────────────────────────┐
     │                        │                        │
@@ -461,4 +469,4 @@ Figma 的多模式功能为创建更强大的变量系统提供了基础，我�
     │                        │                      │                     │
     └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
-恭喜你，你已经创建了一个十分强大的复合变量系统，并且易于扩展，这是一个好的开始，一切的付出都是值得的。作为维护设计系统的设计师，你的变量可能会被其他设计师使用无数次，并在开发实现时扮演设计到开发的桥梁，而他们无需关心这些引用关系。
+Congratulations! You've created a powerful composite variable system that's easy to extend. This is a great start, and all the effort is worth it. As a design system maintainer, your variables may be used countless times by other designers and serve as a bridge between design and development, while they don't need to worry about these reference relationships.

@@ -1,14 +1,14 @@
 import { Callout, Tabs } from 'nextra/components'
 
-# 排版系统
+# Système typographique
 
-让我们来探索如何组织字体和排版相关的变量，包括 `font-family`（字体系列）、`font-size`（字体大小）、`font-weight`（字重）和 `line-height`（行高）等。
+Explorons comment organiser les variables liées aux polices et à la typographie, y compris `font-family` (famille de polices), `font-size` (taille de police), `font-weight` (graisse de police) et `line-height` (hauteur de ligne).
 
-## 顶层目录
+## Répertoire racine
 
-为了保持变量结构的清晰和直观，且符合 Tailwind CSS 的配置结构，请按照以下规则命名：
+Pour maintenir une structure de variables claire et intuitive, et conforme à la structure de configuration de Tailwind CSS, veuillez suivre ces règles de nommage :
 
-### Tailwind CSS V4 命名规则
+### Règles de nommage Tailwind CSS V4
 
 - `font/{variable}` -> **font-family**
 - `text/{variable}` -> **font-size**
@@ -16,12 +16,12 @@ import { Callout, Tabs } from 'nextra/components'
 - `leading/{variable}` -> **line-height**
 - `tracking/{variable}` -> **letter-spacing**
 
-例如：
+Par exemple :
 - `text/sm`
 - `font/sans`
 - `font-weight/bold`
 
-### Tailwind CSS V3 命名规则
+### Règles de nommage Tailwind CSS V3
 
 - `font-family/{variable}`
 - `font-size/{variable}` 
@@ -29,21 +29,21 @@ import { Callout, Tabs } from 'nextra/components'
 - `line-height/{variable}` 
 - `letter-spacing/{variable}` 
 
-例如：
+Par exemple :
 - `font-weight/normal`
 - `font-weight/medium`
 - `font-weight/bold`
 
 
 <Callout emoji="💡">
-你可以任意选择以上两种命名规则，Variables Xporter 都能兼容，并根据导出的格式自动调整为对应 Tailwind CSS 配置的命名规则，但在以下的文档中，我们默认使用 Tailwind CSS V4 的命名规则。
+Vous pouvez choisir l'une ou l'autre de ces conventions de nommage, Variables Xporter est compatible avec les deux et ajustera automatiquement les noms selon le format d'exportation pour correspondre aux règles de nommage de la configuration Tailwind CSS. Dans la suite de cette documentation, nous utiliserons par défaut les règles de nommage de Tailwind CSS V4.
 </Callout>
 
-## 合并处理 [#merge-property]
+## Traitement fusionné [#merge-property]
 
-你还可以选择将相关的属性以 `text/{variable}/{property}` 的格式组合在一起。这种方式特别适合管理具有固定样式组合的文本相关变量。
+Vous pouvez également choisir de regrouper les propriétés associées au format `text/{variable}/{property}`. Cette approche est particulièrement adaptée à la gestion des variables textuelles ayant des combinaisons de styles fixes.
 
-例如，Tailwind CSS 默认的 [Font Size 工具](https://tailwindcss.com/docs/font-size)由 `sm`、`base`、`lg` 等不同的级别组成，而每一个级别除了包含默认的 `font-size` 属性，还包含 `line-height` 属性，例如：
+Par exemple, l'[outil Font Size](https://tailwindcss.com/docs/font-size) par défaut de Tailwind CSS est composé de différents niveaux comme `sm`, `base`, `lg`, et chaque niveau inclut non seulement la propriété `font-size` par défaut, mais aussi la propriété `line-height`. Par exemple :
 
 #### `sm`
 
@@ -60,11 +60,11 @@ import { Callout, Tabs } from 'nextra/components'
 - `text/lg/DEFAULT`
 - `text/lg/line-height`
 
-这是创建  `font-size` 的原子化变量的绝佳方式。
+C'est une excellente façon de créer des variables atomiques pour `font-size`.
 
 ---
 
-除了以上的原子化变量，还有一个典型的示例，就是将这些字体属性进一步抽象成 `display`、`heading`、`body` 等变量：
+En plus des variables atomiques ci-dessus, un autre exemple typique consiste à abstraire davantage ces propriétés de police en variables comme `display`, `heading`, `body` :
 
 #### `display`
 
@@ -87,7 +87,7 @@ import { Callout, Tabs } from 'nextra/components'
 - `text/body/line-height`
 - `text/body/letter-spacing`
 
-这种组织方式 Variables Xporter 会自动生成以下 Tailwind CSS 配置和对应的 CSS 变量：
+Cette organisation permettra à Variables Xporter de générer automatiquement la configuration Tailwind CSS suivante et les variables CSS correspondantes :
 
 <Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
   <Tabs.Tab>
@@ -179,33 +179,33 @@ module.exports = {
 
 
 <Callout type="warning" emoji="⚠️">
-需要注意的是，合并处理功能仅支持四种样式属性 font-size、font-weight、line-height 和 letter-spacing。另外，只有在存在 font-size 属性时，这个功能才会生效。这是为了与 Tailwind CSS 的 [`fontSize` 配置功能](https://tailwindcss.com/docs/font-size#customizing-your-theme)保持一致。
+Il est important de noter que la fonction de fusion ne prend en charge que quatre propriétés de style : font-size, font-weight, line-height et letter-spacing. De plus, cette fonctionnalité ne s'active que lorsque la propriété font-size est présente. Cela permet de maintenir la cohérence avec la [fonctionnalité de configuration `fontSize`](https://tailwindcss.com/docs/font-size#customizing-your-theme) de Tailwind CSS.
 </Callout>
 
-{/* ### 原子化变量
+{/* ### Variables atomiques
 
-为了保持变量的灵活性和可重用性，我们也支持原子化的变量命名方式。当变量名符合 `font/{property}/{value}` 的规则[^1]时，Variables Xporter 会自动将其转换为对应的属性目录，以确保与 Tailwind CSS 的配置结构保持一致。
+Pour maintenir la flexibilité et la réutilisabilité des variables, nous prenons également en charge une approche de nommage atomique. Lorsque le nom de la variable suit le modèle `font/{property}/{value}` [^1], Variables Xporter le convertira automatiquement dans le répertoire de propriétés correspondant pour assurer la cohérence avec la structure de configuration de Tailwind CSS.
 
-让我们来看一些实际的例子：
+Voici quelques exemples concrets :
 
-字体大小变量：
-- `font/size/sm` → `font-size/sm` （小号字体）
-- `font/size/base` → `font-size/base` （基础字体）
-- `font/size/lg` → `font-size/lg` （大号字体）
+Variables de taille de police :
+- `font/size/sm` → `font-size/sm` (petite taille)
+- `font/size/base` → `font-size/base` (taille de base)
+- `font/size/lg` → `font-size/lg` (grande taille)
 
-字重变量：
-- `font/weight/normal` → `font-weight/normal` （常规字重）
-- `font/weight/medium` → `font-weight/medium` （中等字重）
-- `font/weight/bold` → `font-weight/bold` （粗体字重）
+Variables de graisse :
+- `font/weight/normal` → `font-weight/normal` (graisse normale)
+- `font/weight/medium` → `font-weight/medium` (graisse moyenne)
+- `font/weight/bold` → `font-weight/bold` (graisse forte)
 
-行高变量：
-- `font/line-height/none` → `line-height/none` （无行高）
-- `font/line-height/tight` → `line-height/tight` （紧凑行高）
-- `font/line-height/relaxed` → `line-height/relaxed` （宽松行高）
+Variables de hauteur de ligne :
+- `font/line-height/none` → `line-height/none` (pas de hauteur de ligne)
+- `font/line-height/tight` → `line-height/tight` (hauteur serrée)
+- `font/line-height/relaxed` → `line-height/relaxed` (hauteur détendue)
 
-字间距变量：
-- `font/letter-spacing/normal` → `letter-spacing/normal` （标准字间距）
-- `font/letter-spacing/tight` → `letter-spacing/tight` （紧凑字间距）
-- `font/letter-spacing/wide` → `letter-spacing/wide` （宽松字间距）
+Variables d'espacement des lettres :
+- `font/letter-spacing/normal` → `letter-spacing/normal` (espacement normal)
+- `font/letter-spacing/tight` → `letter-spacing/tight` (espacement serré)
+- `font/letter-spacing/wide` → `letter-spacing/wide` (espacement large)
 
-[^1]: `font/size/{value}` 、`font/weight/{value}` 、`font/line-height/{value}` 、`font/letter-spacing/{value}`。 */}
+[^1]: `font/size/{value}`, `font/weight/{value}`, `font/line-height/{value}`, `font/letter-spacing/{value}`. */}
