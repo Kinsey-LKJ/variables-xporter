@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@app/lib/utils";
 import Blurer from "./blurer";
 import { cva, VariantProps } from "class-variance-authority";
 
@@ -37,7 +37,7 @@ const Card = ({
     <div
       {...props}
       className={cn(
-        `${cardVariants({ color })} grid gap-32 bg-background overflow-hidden relative py-7 px-5`,
+        `${cardVariants({ color })} grid gap-32 overflow-hidden relative py-7 px-5 w-full`,
         props.className
       )}
     >
