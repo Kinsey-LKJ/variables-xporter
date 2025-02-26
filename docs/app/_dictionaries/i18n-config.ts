@@ -1,4 +1,4 @@
-import type EnglishLocale from './en.json'
+import type ChineseLocale from './zh.json'
 import lingoI18nConfig from '../../../i18n.json'
 
 const locales = lingoI18nConfig.locale.targets
@@ -12,7 +12,7 @@ export const i18n = {
 
 export type Locale = (typeof i18n)['locales'][number]
 
-export type Dictionary = typeof EnglishLocale
+export type Dictionary = typeof ChineseLocale
 
 export type Dictionaries = Record<
   Locale,
