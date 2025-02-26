@@ -8,14 +8,14 @@ import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck, Box, Ruler } fr
 
 # Tailwind CSS V3
 
-When choosing the Tailwind CSS export mode, Variables Xporter will generate two files:
+When choosing the Tailwind CSS export method, Variables Xporter generates two files:
 
-- `tailwind.config.js` - Tailwind CSS configuration file
+- `tailwind.config.js` - The configuration file for Tailwind CSS
 - `global.css` - Contains all CSS variable definitions
 
-## Features and Optimizations
+## Features and optimizations
 
-### 1. Color Value Optimization
+### 1. Color value optimization
 
 Automatically converts color values to RGB channel format, supporting Tailwind's opacity modifiers:
 
@@ -40,9 +40,9 @@ Usage example:
 </div>
 ```
 
-### 2. Typography Style Merging
+### 2. Font variable merging
 
-Automatically merges related font variables, following Tailwind's conventions:
+Automatically merges related font variables, conforming to Tailwind's conventions:
 
 ```js
 fontSize: {
@@ -50,9 +50,9 @@ fontSize: {
 }
 ```
 
-### 3. Multi-mode Support
+### 3. Multi-mode support
 
-Through **variable tracing** and the **Single Outlet Principle**, Variables Xporter can implement complex multi-mode variable exports.
+With the help of **variable tracing** and **single source of truth principle**, Variables Xporter can achieve complex multi-mode variable export.
 
 ```css
 :root {
@@ -64,60 +64,61 @@ Through **variable tracing** and the **Single Outlet Principle**, Variables Xpor
 }
 ```
 
-Learn more about multi-mode support:
+Learn more details about multi-mode support:
 
   <Cards.Card
     icon={<Columns3/>}
-    title="Multi-mode Support"
+    title="Multi-mode support"
     href="/docs/features/multi-mode"
     className="mt-4"
   />
 
-### 4. Powerful Compatibility
-Variables Xporter supports both Tailwind CSS V3 and V4 export modes, and one set of Figma variables can seamlessly switch between the two export modes without any changes. Variables Xporter will automatically adjust the export based on different version naming conventions.
+### 4. Powerful compatibility
+
+Variables Xporter supports export methods for both Tailwind CSS V3 and Tailwind CSS V4. A single set of Figma variables can be seamlessly switched between these two export methods without any modifications. Variables Xporter automatically adjusts the export internally based on the naming conventions of different versions.
 
 ---
 
-## Variable Organization Guide
+## Variable organization recommendations
 
-To ensure perfect export of Figma variables, variable naming needs to follow certain rules as it needs to correspond with Tailwind CSS configuration keys. Additionally, good variable organization brings many benefits:
+To ensure perfect export of Figma variables, variable naming needs to follow certain rules. This is because they need to correspond to Tailwind CSS configuration keys. Moreover, a good variable organization approach can bring many benefits:
 
 - Improves variable maintainability
-- Maintains design system consistency
+- Maintains consistency in the design system
 - Facilitates team collaboration
 
-### Basic Principles
-You can first understand the basic principles of variable organization, which will help you make better decisions regarding variable naming, grouping, and hierarchy.
+### Basic principles
 
+You can first understand the basic principles of variable organization, which can help you make better decisions in terms of variable naming, grouping, and hierarchy.
   <Cards.Card
     icon={<BookOpenCheck />}
-    title="Basic Principles"
+    title="Basic principles"
     href="/docs/organizing-your-variables/principles"
     className="mt-4"
   />
 
-### Variable Types
-Then, you can further organize your variables based on different variable types.
+### Variable types
 
+Then, you can further organize your variables based on different variable types.
 <Cards>
   <Cards.Card
     icon={<Palette />}
-    title="Color System"
+    title="Color system"
     href="/docs/organizing-your-variables/colors"
   />
   <Cards.Card
     icon={<Type />}
-    title="Typography System"
+    title="Typography system"
     href="/docs/organizing-your-variables/typography"
   />
   <Cards.Card
     icon={<Ruler />}
-    title="Spacing and Size System"
+    title="Spacing and sizing system"
     href="/docs/organizing-your-variables/spacing"
   />
   <Cards.Card
     icon={<Box/>}
-    title="Other Tokens"
+    title="Other tokens"
     href="/docs/organizing-your-variables/other-tokens"
   />
   <Cards.Card

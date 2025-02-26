@@ -1,3 +1,5 @@
+import type TextDataFromZh from '../app/zh.json'
+
 export interface TVariableCollection {
   id: string;
   name: string;
@@ -56,19 +58,6 @@ export interface FileContent {
 
 export type ExportFormat = 'Tailwind CSS' | 'CSS Variables' | 'Tailwind CSS 4.0';
 
-export interface TextData {
-  back: string;
-  export_figma_variables_tailwind_css_or_css_variables: string;
-  get_started: string;
-  select_variables_to_export: string;
-  select_collection: string;
-  select_variables: string;
-  format: string;
-  export: string;
-  export_successful: string;
-  import_as_tailwind_css_presets: string;
-  use_rem_as_unit: string;
-  ignore_tailwind_css_default_palette: string;
-  ignore_default_palette_description: string;
-  tailwind_css_figma_template: string;
-}
+
+export type TextData = typeof TextDataFromZh
+

@@ -1,13 +1,14 @@
 ---
-title: Unit Conversion
+title: Unit conversion
 ---
 
-# Unit Conversion
+# Unit conversion
 
-Variables Xporter provides unit conversion functionality that automatically converts px units from Figma to rem units, which are preferred in Tailwind CSS.
+Variables Xporter provides a unit conversion feature that automatically converts px units in Figma to rem units, which are the default in Tailwind CSS.
 
-## How to Use
-1. Check the "Use Rem Units" option when exporting
+## How to use
+
+1. Check the "Use Rem units" option when exporting
 2. Variables Xporter will automatically convert px to rem (based on 16px = 1rem)
 
 For example:
@@ -23,15 +24,17 @@ For example:
 }
 ```
 
-## Variables Not Converted
-Not all variable values are converted to rem. Here are the exceptions:
+## Variables that won't be converted
+
+Not all variable values will be converted to rem. The following are exceptions:
 
 - Variables that are not of type `Number`
-- Variables with names containing `px`, e.g., `spacing/px`, will not be converted to rem
-- When a variable's value is a number but typically doesn't include units, it won't include any units in the generated CSS (e.g., opacity, scale)
+- When the variable name contains `px`, e.g., `spacing/px`, it won't be converted to rem
+- When the variable's value is a number but typically doesn't include units, it won't include any units in the generated CSS, e.g., opacity, scale, etc.
 
-All numeric variables except those meeting the above conditions will be converted when "Use Rem Units" is checked.
+Apart from the above conditions, all numeric type variables will be converted when the "Use Rem units" option is checked
 
 ## rem or px?
-This is quite a debated topic. Although Tailwind CSS has become a standard in web development and uses rem units by default, both rem and px have their pros and cons.
-We recommend reading [Josh Comeau's article](https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/) and making a decision based on your project's requirements and your development team's preferences.
+
+This is a rather controversial topic. Although Tailwind CSS is gradually becoming the standard for Web development and it uses rem units by default, both rem and px have their own advantages and disadvantages.
+It's recommended to check out [this article by Josh Comeau](https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/) and make a decision based on your project's circumstances and your development team's recommendations.

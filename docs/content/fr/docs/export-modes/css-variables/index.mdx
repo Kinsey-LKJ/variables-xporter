@@ -1,0 +1,115 @@
+---
+title: Variables CSS
+---
+
+import { Callout } from 'nextra/components'
+import { Cards } from 'nextra/components'
+import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck,Box,Ruler } from 'lucide-react'
+
+# Variables CSS
+
+Lorsque vous choisissez le mode d'exportation des variables CSS, Variables Xporter génère un fichier CSS contenant toutes les définitions de variables CSS. Cette méthode est plus simple et flexible, adaptée aux projets qui n'utilisent pas Tailwind CSS.
+
+## Caractéristiques
+
+### 1. Simple et intuitif
+
+Sortie directe des propriétés personnalisées CSS standard :
+
+```css
+:root {
+  --colors-primary: #c03939;
+  --colors-primary-foreground: #ffffff;
+  --font-size-heading-1: 2.5rem;
+  --line-height-heading-1: 1.2;
+}
+```
+
+### 2. Méthode d'utilisation flexible
+
+Ces variables peuvent être utilisées dans n'importe quelle règle CSS :
+
+```css
+.button {
+  background-color: var(--colors-primary);
+  color: var(--colors-primary-foreground);
+  font-size: var(--font-size-heading-1);
+  line-height: var(--line-height-heading-1);
+}
+```
+
+### 3. Prise en charge multi-mode
+
+Grâce au **traçage des variables** et au **principe de point de sortie unique**, Variables Xporter peut réaliser une exportation complexe de variables multi-modes.
+
+```css
+:root {
+  --colors-primary: var(--colors-primary-light);
+}
+
+.dark {
+  --colors-primary: var(--colors-primary-dark);
+}
+```
+
+
+
+  <Cards.Card
+    icon={<Columns3 />}
+    title="Prise en charge multi-mode"
+    href="/docs/features/multi-mode"
+    className="mt-4"
+  />
+
+## Suggestions d'organisation des variables
+
+Par rapport à [Tailwind CSS](/docs/export-modes/tailwind), le mode d'exportation des variables CSS a des exigences moindres en matière d'organisation des variables, mais il est toujours recommandé de suivre de bons principes d'organisation, ce qui permet de :
+
+- Améliorer la maintenabilité des variables
+- Maintenir la cohérence du système de design
+- Faciliter la collaboration en équipe
+- Se préparer à une éventuelle migration de framework
+
+### Principes de base
+
+Vous pouvez d'abord vous familiariser avec les principes de base de l'organisation des variables, ce qui vous aidera à prendre de meilleures décisions en termes de nommage, de regroupement et de hiérarchie des variables.
+
+
+  <Cards.Card
+    icon={<BookOpenCheck  />}
+    title="Principes de base"
+    href="/docs/organizing-your-variables/principles"
+    className="mt-4"
+  />
+
+### Types de variables
+
+Ensuite, vous pouvez organiser davantage vos variables en fonction des différents types de variables.
+
+<Cards>
+  <Cards.Card
+    icon={<Palette />}
+    title="Système de couleurs"
+    href="/docs/organizing-your-variables/colors"
+  />
+  <Cards.Card
+    icon={<Type />}
+    title="Système typographique"
+    href="/docs/organizing-your-variables/typography"
+  />
+  <Cards.Card
+    icon={<Ruler />}
+    title="Système d'espacement et de dimensions"
+    href="/docs/organizing-your-variables/spacing"
+  />
+  <Cards.Card
+    icon={<Box/>}
+    title="Autres jetons"
+    href="/docs/organizing-your-variables/other-tokens"
+  />
+  <Cards.Card
+    icon={<Columns3 />}
+    title="Multi-mode"
+    href="/docs/organizing-your-variables/multi-mode"
+  />
+</Cards>

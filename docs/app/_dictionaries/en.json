@@ -1,0 +1,59 @@
+{
+  "language": "English",
+  "supportTailwindCssV4": "Support for Tailwind CSS V4",
+  "pluginHighlight": "Seamlessly integrate Figma Variables into Tailwind CSS or CSS Variables",
+  "start": "Get started",
+  "learnMore": "Learn more",
+  "exclusive": "Exclusively available",
+  "features": {
+    "multiMode": {
+      "title": "Multi-mode support",
+      "description": "Support for exporting compound multi-dimensional mode variables"
+    },
+    "mergeTypographyStyles": {
+      "title": "Merge typography variables",
+      "description": "Merge and export text and typography-related variables"
+    },
+    "cssMediaQueryMode": {
+      "title": "CSS media query mode",
+      "description": "Export variables in media query mode"
+    },
+    "unitConversion": {
+      "title": "Unit conversion",
+      "description": "Convert px to rem units"
+    }
+  },
+  "organizingYourVariables": {
+    "heading": "Figma variable organization suggestions",
+    "principles": {
+      "title": "Basic principles",
+      "description": "Naming and grouping of variables"
+    },
+    "colors": {
+      "title": "Color system",
+      "description": "Suggestions for organizing color variables"
+    },
+    "typography": {
+      "title": "Typography system",
+      "description": "Suggestions for organizing text and typography variables"
+    },
+    "spacing": {
+      "title": "Spacing system",
+      "description": "Suggestions for organizing spacing variables"
+    },
+    "other": {
+      "title": "Other variables",
+      "description": "Suggestions for organizing other variables"
+    },
+    "multiMode": {
+      "title": "Multi-mode support",
+      "description": "Building powerful multi-dimensional variable systems"
+    }
+  },
+  "figmaTemplate": {
+    "heading": "Figma template",
+    "title": "Includes basic variables needed to build design tokens",
+    "description": "Start building your own design tokens here, including variables for colors, spacing, fonts, and more, with multiple modes for themes, brands, devices, and density.",
+    "openInFigma": "Open in Figma"
+  }
+}

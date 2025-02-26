@@ -1,0 +1,18 @@
+{
+  "language": "Français",
+  "back": "Retour",
+  "export_figma_variables_tailwind_css_or_css_variables": "Exporter les variables Figma en Tailwind CSS ou CSS Variables",
+  "get_started": "Commencer",
+  "select_variables_to_export": "Sélectionner les variables à exporter",
+  "select_collection": "Sélectionner la collection",
+  "select_variables": "Sélectionner les variables",
+  "format": "Format",
+  "export": "Exporter",
+  "export_successful": "Exportation réussie !",
+  "import_as_tailwind_css_presets": "Vous pouvez l'importer comme préréglages Tailwind CSS dans votre projet, ou simplement copier les parties dont vous avez besoin.",
+  "use_rem_as_unit": "Utiliser Rem comme unité",
+  "ignore_tailwind_css_default_palette": "Ignorer la palette par défaut de Tailwind CSS",
+  "ignore_default_palette_description": "Cette option ignorera les palettes par défaut de Tailwind CSS comme Slate, Gray, Zinc, Neutral... Si vous ne les avez pas modifiées et utilisez les valeurs par défaut, vous devriez les ignorer.",
+  "tailwind_css_figma_template": "Modèle Figma pour Tailwind CSS",
+  "documentation": "Documentation"
+}

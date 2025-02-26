@@ -1,4 +1,4 @@
-import { TVariable, TVariableCollection } from '@/src/lib/type';
+import { TVariable, TVariableCollection } from '@/src/types/app';
 import { MultiSelect, Select } from '@mantine/core';
 import { Button } from '@mantine/core';
 import { useVariableFormContext } from './variables-export-form-context';

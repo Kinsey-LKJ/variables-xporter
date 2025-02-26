@@ -1,0 +1,77 @@
+import { Callout,Cards } from 'nextra/components'
+import { Columns3 } from 'lucide-react'
+
+# Modèles de requêtes média CSS
+
+Les modèles de requêtes média CSS vous permettent de définir des valeurs de variables pour différentes tailles de viewport ou caractéristiques d'appareils, permettant ainsi un design responsive.
+
+## Comment ça fonctionne
+
+Variables Xporter prend en charge l'utilisation de la syntaxe standard des requêtes média dans les noms de modèles de variables :
+
+Règle de nommage des modèles de variables :
+**`{media-feature}:{value}`**
+
+Par exemple :
+`min-width:768px`, `max-width:1024px`
+
+### Caractéristiques média prises en charge
+
+- `min-width`
+- `max-width`
+- `min-height`
+- `max-height`
+- `orientation`
+- `aspect-ratio`
+- `min-aspect-ratio`
+- `max-aspect-ratio`
+- `prefers-color-scheme`
+- `prefers-reduced-motion`
+- `display-mode`
+
+## Exemples d'utilisation
+
+### 1. Espacement responsive
+
+Définissez la largeur du conteneur pour différents points de rupture dans Figma :
+
+```                                          
+ ┌────────────────────────┬──────────────────────┬─────────────────────┐
+ │                        │                      │                     │
+ │ Modes d'appareil       │        default       │    min-width:1024   │
+ │                        │                      │                     │
+ ├────────────────────────┼──────────────────────┼─────────────────────┤
+ │                        │                      │                     │
+ │ spacing/lg             │ spacing/10           │ spacing/16          │
+ │                        │                      │                     │
+ │ ...                    │ ...                  │ ...                 │
+ │                        │                      │                     │
+ └────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+### 2. Taille de police responsive
+
+Définissez des tailles de police appropriées pour différentes tailles d'écran :
+
+```
+ ┌────────────────────────┬──────────────────────┬─────────────────────┐
+ │                        │                      │                     │
+ │ Modes d'appareil       │        default       │    min-width:1024   │
+ │                        │                      │                     │
+ ├────────────────────────┼──────────────────────┼─────────────────────┤
+ │                        │                      │                     │
+ │ font/hero/size         │ font/2xl/size        │ font/3xl/size       │
+ │                        │                      │                     │
+ │ ...                    │ ...                  │ ...                 │
+ │                        │                      │                     │
+ └────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+Apprenez comment créer et gérer des variables multi-modes dans Figma :
+
+  <Cards.Card
+    icon={<Columns3  />}
+    title="Gestion des variables multi-modes"
+    href="/docs/organizing-your-variables/multi-mode"
+    className="mt-4"
+  />

@@ -1,0 +1,89 @@
+import { Callout, Cards, Tabs } from 'nextra/components'
+import { Type } from 'lucide-react'
+
+# Fusion des styles typographiques
+
+La fusion des styles typographiques est une fonctionnalité spécialement conçue pour Tailwind CSS, qui combine intelligemment les variables liées aux polices en une configuration conforme aux conventions de Tailwind.
+
+## Principe de fonctionnement
+
+Lorsque vous définissez des variables liées aux polices dans Figma (comme la taille de police, la hauteur de ligne, etc.), Variables Xporter va :
+
+1. Identifier les variables pertinentes
+2. Combiner les variables selon les règles de nommage
+3. Générer la configuration Tailwind CSS
+
+### Exemple de conversion
+
+Variables Figma :
+- `font-size/heading-1/DEFAULT`
+- `font-size/heading-1/line-height`
+- `font-size/heading-1/font-weight`
+
+Configuration Tailwind CSS ou variables CSS après conversion :
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'Variables CSS']}>
+  <Tabs.Tab>
+  ```css
+@theme {
+  --text-heading-1: 2.5rem;
+  --text-heading-1--line-height: 1.2;
+  --text-heading-1--font-weight: 600;
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```js
+module.exports = {
+  theme: {
+    fontSize: {
+      'heading-1': ['2.5rem', {
+        lineHeight: '1.2',
+        fontWeight: '600'
+      }]
+    }
+  }
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```css
+:root {
+  --font-size-heading-1: 2.5rem;
+  --font-size-heading-1-line-height: 1.2;
+  --font-size-heading-1-font-weight: 600;
+}
+```
+  </Tabs.Tab>
+</Tabs>
+
+## Conventions de nommage
+
+Pour que Variables Xporter identifie et fusionne correctement les variables, veuillez suivre ces règles de nommage :
+
+1. **Format de base du nommage**
+
+`font-size/{variable}/{property}`
+
+
+2. **Propriétés prises en charge**
+   - `font-size`
+   - `line-height`
+   - `font-weight`
+   - `letter-spacing`
+
+3. **Exemples de nommage**
+
+- `font-size/sm/DEFAULT`
+- `font-size/sm/line-height`
+- `font-size/sm/font-weight`
+- `font-size/sm/letter-spacing`
+
+
+Pour en savoir plus sur les recommandations d'organisation des variables typographiques et de police dans Figma :
+
+  <Cards.Card
+    icon={<Type  />}
+    title="Recommandations pour l'organisation des variables typographiques et de police"
+    href="/docs/organizing-your-variables/typography"
+    className="mt-4"
+  />

@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect, createContext, useRef } from 'react';
-import { TVariableCollection, TextData } from '@/src/lib/type';
-import { TVariable } from '@/src/lib/type';
+import { TVariableCollection, TextData } from '@/src/types/app';
+import { TVariable } from '@/src/types/app';
 import { createFormContext, useForm } from '@mantine/form';
 import { VariableFormProvider, useVariableForm } from './variables-export-form-context';
 import useEmblaCarousel from 'embla-carousel-react';
@@ -26,6 +26,8 @@ import { set } from 'zod';
 import { notifications } from '@mantine/notifications';
 import cn from '../zh.json';
 import en from '../en.json';
+import { translations } from '../dictionary';
+import { Locale, defaultLocale, allLanguages } from '../dictionary';
 
 const validateGithubURL = (url) => gh(url);
 
@@ -69,7 +71,7 @@ interface ExtendedResult extends Result {
 }
 
 interface AppContextProps {
-  language: 'zh-CN' | 'en-US';
+  language: Locale;
   textData: TextData;
   connectGithubState: GithubState;
   setConnectGithubState: React.Dispatch<React.SetStateAction<GithubState>>;
@@ -83,8 +85,8 @@ interface AppContextProps {
 }
 
 export const AppContext = createContext<AppContextProps>({
-  language: 'en-US',
-  textData: en,
+  language: defaultLocale,
+  textData: translations[defaultLocale],
   connectGithubState: 'not-connected',
   currentStep: 0,
   setConnectGithubState: () => {},
@@ -93,8 +95,8 @@ export const AppContext = createContext<AppContextProps>({
 });
 
 function App() {
-  const [language, setLanguage] = useState<'zh-CN' | 'en-US'>('en-US');
-  const [textData, setTextData] = useState(language === 'en-US' ? en : cn);
+  const [language, setLanguage] = useState<Locale>(defaultLocale);
+  const [textData, setTextData] = useState(translations[language]);
   const [collections, setCollections] = useState<TVariableCollection[] | undefined>(undefined);
   const [variables, setVariables] = useState<TVariable[] | undefined>(undefined);
   const [connectGithubState, setConnectGithubState] = useState<GithubState>('not-connected');
@@ -103,8 +105,10 @@ function App() {
   const [currentStep, setCurrentStep] = useState(0);
   const exportPageRef = useRef<ExportPageHandles>();
 
+  console.log(translations);
+
   useEffect(() => {
-    setTextData(language === 'en-US' ? en : cn);
+    setTextData(translations[language]);
   }, [language]);
 
   onmessage = async (event: MessageEvent) => {
@@ -220,25 +224,16 @@ function App() {
             <Menu>
               <Menu.Target>
                 <Button size="xs" variant="subtle">
-                  <EarthIcon size={16} className=" mr-2" /> {language === 'en-US' ? 'English' : '简体中文'}
+                  <EarthIcon size={16} className=" mr-2" /> {translations[language].language}
                 </Button>
               </Menu.Target>
 
               <Menu.Dropdown>
-                <Menu.Item
-                  onClick={() => {
-                    setLanguage('zh-CN');
-                  }}
-                >
-                  简体中文
-                </Menu.Item>
-                <Menu.Item
-                  onClick={() => {
-                    setLanguage('en-US');
-                  }}
-                >
-                  English
-                </Menu.Item>
+                {Object.keys(translations).map((lang) => (
+                  <Menu.Item key={lang} onClick={() => setLanguage(lang)}>
+                    {translations[lang].language}
+                  </Menu.Item>
+                ))}
               </Menu.Dropdown>
             </Menu>
           </div>
@@ -269,7 +264,6 @@ function App() {
             </Button>
           </ConnectGithubFormProvider> */}
         </div>
-
 
         <ExportPage ref={exportPageRef} />
       </div>

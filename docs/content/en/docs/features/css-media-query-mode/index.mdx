@@ -1,22 +1,21 @@
 import { Callout,Cards } from 'nextra/components'
 import { Columns3 } from 'lucide-react'
 
-# CSS Media Query Mode
+# CSS media query modes
 
-CSS Media Query Mode allows you to define variable values for different viewport sizes or device characteristics, enabling responsive design.
+CSS media query modes allow you to define variable values for different viewport sizes or device characteristics, enabling responsive design.
 
-## How It Works
+## How it works
 
-Variables Xporter supports standard media query syntax in variable mode names:
+Variables Xporter supports using standard media query syntax in variable mode names:
 
-Mode naming convention:
+Variable mode naming rule:
 **`{media-feature}:{value}`**
 
 For example:
 `min-width:768px`, `max-width:1024px`
 
-
-### Supported Media Features
+### Supported media features
 
 - `min-width`
 - `max-width`
@@ -30,10 +29,11 @@ For example:
 - `prefers-reduced-motion`
 - `display-mode`
 
-## Usage Examples
+## Usage examples
 
-### 1. Responsive Spacing
-Set different container widths for different breakpoints in Figma:
+### 1. Responsive spacing
+
+Set container widths for different breakpoints in Figma:
 
 ```                                          
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -49,7 +49,8 @@ Set different container widths for different breakpoints in Figma:
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-### 2. Responsive Font Sizes
+### 2. Responsive font sizes
+
 Set appropriate font sizes for different screen sizes:
 
 ```
@@ -70,7 +71,7 @@ Learn how to create and manage multi-mode variables in Figma:
 
   <Cards.Card
     icon={<Columns3  />}
-    title="Multi-mode Variable Management"
+    title="Multi-mode variable management"
     href="/docs/organizing-your-variables/multi-mode"
     className="mt-4"
   />

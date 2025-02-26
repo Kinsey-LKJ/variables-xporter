@@ -1,0 +1,211 @@
+import { Callout, Tabs } from 'nextra/components'
+
+# Système typographique
+
+Explorons comment organiser les variables liées aux polices et à la typographie, y compris `font-family` (famille de polices), `font-size` (taille de police), `font-weight` (graisse de police) et `line-height` (hauteur de ligne).
+
+## Répertoire racine
+
+Pour maintenir une structure de variables claire et intuitive, et conforme à la structure de configuration de Tailwind CSS, veuillez suivre ces règles de nommage :
+
+### Règles de nommage Tailwind CSS V4
+
+- `font/{variable}` -> **font-family**
+- `text/{variable}` -> **font-size**
+- `font-weight/{variable}` -> **font-weight**
+- `leading/{variable}` -> **line-height**
+- `tracking/{variable}` -> **letter-spacing**
+
+Par exemple :
+- `text/sm`
+- `font/sans`
+- `font-weight/bold`
+
+### Règles de nommage Tailwind CSS V3
+
+- `font-family/{variable}`
+- `font-size/{variable}` 
+- `font-weight/{variable}` 
+- `line-height/{variable}` 
+- `letter-spacing/{variable}` 
+
+Par exemple :
+- `font-weight/normal`
+- `font-weight/medium`
+- `font-weight/bold`
+
+
+<Callout emoji="💡">
+Vous pouvez choisir l'une ou l'autre de ces conventions de nommage, Variables Xporter est compatible avec les deux et ajustera automatiquement les noms selon le format d'exportation pour correspondre aux règles de nommage de la configuration Tailwind CSS. Dans la suite de cette documentation, nous utiliserons par défaut les règles de nommage de Tailwind CSS V4.
+</Callout>
+
+## Traitement fusionné [#merge-property]
+
+Vous pouvez également choisir de regrouper les propriétés associées au format `text/{variable}/{property}`. Cette approche est particulièrement adaptée à la gestion des variables textuelles ayant des combinaisons de styles fixes.
+
+Par exemple, l'[outil Font Size](https://tailwindcss.com/docs/font-size) par défaut de Tailwind CSS est composé de différents niveaux comme `sm`, `base`, `lg`, et chaque niveau inclut non seulement la propriété `font-size` par défaut, mais aussi la propriété `line-height`. Par exemple :
+
+#### `sm`
+
+- `text/sm/DEFAULT`
+- `text/sm/line-height`
+
+#### `base`
+
+- `text/base/DEFAULT`
+- `text/base/line-height`
+
+#### `lg`
+
+- `text/lg/DEFAULT`
+- `text/lg/line-height`
+
+C'est une excellente façon de créer des variables atomiques pour `font-size`.
+
+---
+
+En plus des variables atomiques ci-dessus, un autre exemple typique consiste à abstraire davantage ces propriétés de police en variables comme `display`, `heading`, `body` :
+
+#### `display`
+
+- `text/display/DEFAULT`
+- `text/display/font-weight`
+- `text/display/line-height`
+- `text/display/letter-spacing`
+
+#### `heading`
+
+- `text/heading/DEFAULT`
+- `text/heading/font-weight`
+- `text/heading/line-height`
+- `text/heading/letter-spacing`
+
+#### `body`
+
+- `text/body/DEFAULT`
+- `text/body/font-weight`
+- `text/body/line-height`
+- `text/body/letter-spacing`
+
+Cette organisation permettra à Variables Xporter de générer automatiquement la configuration Tailwind CSS suivante et les variables CSS correspondantes :
+
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
+  <Tabs.Tab>
+  ```css
+@theme {
+  --text-display: 1.5rem;
+  --text-display--line-height: 2rem;
+  --text-display--letter-spacing: -0.01em;
+  --text-display--font-weight: 500;
+
+  --text-heading: 1.25rem;
+  --text-heading--line-height: 1.75rem;
+  --text-heading--letter-spacing: -0.01em;
+  --text-heading--font-weight: 500;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.5rem;
+  --text-body--letter-spacing: -0.01em;
+  --text-body--font-weight: 400;
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  theme: {
+    fontSize: {
+      'display': ['var(--font-size-display)', {
+        lineHeight: 'var(--font-size-display-line-height)',
+        letterSpacing: 'var(--font-size-display-letter-spacing)',
+        fontWeight: 'var(--font-size-display-font-weight)',
+      }],
+      'heading': ['var(--font-size-heading)', {
+        lineHeight: 'var(--font-size-heading-line-height)',
+        letterSpacing: 'var(--font-size-heading-letter-spacing)',
+        fontWeight: 'var(--font-size-heading-font-weight)',
+      }],
+      'body': ['var(--font-size-body)', {
+        lineHeight: 'var(--font-size-body-line-height)',
+        letterSpacing: 'var(--font-size-body-letter-spacing)',
+        fontWeight: 'var(--font-size-body-font-weight)',
+      }],
+    }
+  }
+}
+```
+```css
+:root {
+  --font-size-display: 1.5rem;
+  --font-size-display-line-height: 2rem;
+  --font-size-display-letter-spacing: -0.01em;
+  --font-size-display-font-weight: 500;
+
+  --font-size-heading: 1.25rem;
+  --font-size-heading-line-height: 1.75rem;
+  --font-size-heading-letter-spacing: -0.01em;
+  --font-size-heading-font-weight: 500;
+
+  --font-size-body: 1rem;
+  --font-size-body-line-height: 1.5rem;
+  --font-size-body-letter-spacing: -0.01em;
+  --font-size-body-font-weight: 400;
+}
+```
+  </Tabs.Tab>
+
+  <Tabs.Tab>
+  ```css
+:root {
+  --text-display: 1.5rem;
+  --text-display-line-height: 2rem;
+  --text-display-letter-spacing: -0.01em;
+  --text-display-font-weight: 500;
+
+  --text-heading: 1.25rem;
+  --text-heading-line-height: 1.75rem;
+  --text-heading-letter-spacing: -0.01em;
+  --text-heading-font-weight: 500;
+
+  --text-body: 1rem;
+  --text-body-line-height: 1.5rem;
+  --text-body-letter-spacing: -0.01em;
+  --text-body-font-weight: 400;
+}
+```
+  </Tabs.Tab>
+</Tabs>
+
+
+<Callout type="warning" emoji="⚠️">
+Il est important de noter que la fonction de fusion ne prend en charge que quatre propriétés de style : font-size, font-weight, line-height et letter-spacing. De plus, cette fonctionnalité ne s'active que lorsque la propriété font-size est présente. Cela permet de maintenir la cohérence avec la [fonctionnalité de configuration `fontSize`](https://tailwindcss.com/docs/font-size#customizing-your-theme) de Tailwind CSS.
+</Callout>
+
+{/* ### Variables atomiques
+
+Pour maintenir la flexibilité et la réutilisabilité des variables, nous prenons également en charge une approche de nommage atomique. Lorsque le nom de la variable suit le modèle `font/{property}/{value}` [^1], Variables Xporter le convertira automatiquement dans le répertoire de propriétés correspondant pour assurer la cohérence avec la structure de configuration de Tailwind CSS.
+
+Voici quelques exemples concrets :
+
+Variables de taille de police :
+- `font/size/sm` → `font-size/sm` (petite taille)
+- `font/size/base` → `font-size/base` (taille de base)
+- `font/size/lg` → `font-size/lg` (grande taille)
+
+Variables de graisse :
+- `font/weight/normal` → `font-weight/normal` (graisse normale)
+- `font/weight/medium` → `font-weight/medium` (graisse moyenne)
+- `font/weight/bold` → `font-weight/bold` (graisse forte)
+
+Variables de hauteur de ligne :
+- `font/line-height/none` → `line-height/none` (pas de hauteur de ligne)
+- `font/line-height/tight` → `line-height/tight` (hauteur serrée)
+- `font/line-height/relaxed` → `line-height/relaxed` (hauteur détendue)
+
+Variables d'espacement des lettres :
+- `font/letter-spacing/normal` → `letter-spacing/normal` (espacement normal)
+- `font/letter-spacing/tight` → `letter-spacing/tight` (espacement serré)
+- `font/letter-spacing/wide` → `letter-spacing/wide` (espacement large)
+
+[^1]: `font/size/{value}`, `font/weight/{value}`, `font/line-height/{value}`, `font/letter-spacing/{value}`. */}

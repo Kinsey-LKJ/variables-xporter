@@ -2,20 +2,20 @@ import { Callout } from 'nextra/components'
 import { Cards, Tabs } from 'nextra/components'
 import { Moon, Columns3 } from 'lucide-react'
 
-# Multi-mode Support
+# Multi-mode support
 
-Multi-mode support is a powerful feature of Variables Xporter that enables you to easily export multi-mode design variables, such as light/dark themes, brand themes, and more.
+Multi-mode support is a powerful feature of Variables Xporter that allows you to easily export design variables for multiple modes, such as light and dark themes, brand themes, and more.
 
-## What is Multi-mode?
+## What are multi-modes?
 
-Multi-mode allows a variable to have different values under different conditions. Common modes include:
+Multi-modes allow a variable to have different values in different scenarios. Common modes include:
 
-- Light/Dark themes
+- Light and dark themes
 - Brand themes
 - Responsive breakpoints
 - Layout density
 
-Variables Xporter supports **compound multi-mode variables**. For example, the `colors/primary/DEFAULT` variable can be affected by both dark/light themes and brand themes simultaneously, resulting in the following output:
+Variables Xporter **supports compound multi-mode variables**. For example, the `colors/primary/DEFAULT` (primary color) variable might be affected by both light/dark themes and brand themes, resulting in the following output:
 
 <Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
   <Tabs.Tab>
@@ -150,16 +150,17 @@ module.exports = {
   </Tabs.Tab>
 </Tabs>
 
-Now, the `colors/primary/DEFAULT` variable will display different values depending on the current theme and brand mode.
+Now, the `colors/primary/DEFAULT` variable will display different results under various light/dark themes and brand themes.
 
-Learn more about creating and managing multi-mode variables in Figma:
+Learn how to create and manage multi-mode variables in Figma:
 
   <Cards.Card
     icon={<Columns3  />}
-    title="Multi-mode Variable Management"
+    title="Multi-mode variable management"
     href="/docs/organizing-your-variables/multi-mode"
     className="mt-4"
   />
 
-## How It Works
-Variables Xporter traces all referenced variables in the selected export collection until it finds the original values. This means you can reference variables across collections, and Variables Xporter will fully reconstruct the reference chain.
+## How it works
+
+Variables Xporter traces all referenced variables in the selected export collection until it finds the original values of the variables. This means you can reference variables across collections, and Variables Xporter will fully reconstruct the variable reference chain.

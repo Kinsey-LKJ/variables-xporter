@@ -11,7 +11,7 @@ import { Clipboard, ClipboardList, Info } from 'lucide-react';
 import prettier from 'prettier/standalone';
 import parserEstree from 'prettier/plugins/estree';
 import parserBabel from 'prettier/plugins/babel';
-import { ExportFormat, TVariable, TVariableCollection } from '@/src/lib/type';
+import { ExportFormat, TVariable, TVariableCollection } from '@/src/types/app';
 import React from 'react';
 import { AppContext } from './App';
 import { useDisclosure } from '@mantine/hooks';

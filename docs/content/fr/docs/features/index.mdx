@@ -1,0 +1,50 @@
+---
+asIndexPage: true
+---
+
+import { Cards } from 'nextra/components'
+import { Callout } from 'nextra/components'
+import { Zap, RefreshCw, Palette, Type, Layout, Box } from 'lucide-react'
+
+# Caractéristiques
+
+Variables Xporter offre une série de fonctionnalités uniques pour vous aider à mieux gérer et exporter vos variables de design.
+
+## Aperçu des fonctionnalités
+
+<Cards>
+  <Cards.Card
+    icon={<RefreshCw />}
+    title="Références de variables"
+    href="/docs/features/variable-references"
+  />
+  <Cards.Card
+    icon={<Box />}
+    title="Conversion d'unités"
+    href="/docs/features/unit-conversion"
+  />
+  <Cards.Card
+    icon={<Layout />}
+    title="Support multi-mode"
+    href="/docs/features/multi-mode"
+  />
+  <Cards.Card
+    icon={<Palette />}
+    title="Ignorer la palette Tailwind"
+    href="/docs/features/ignore-tailwind-palette"
+  />
+  <Cards.Card
+    icon={<Type />}
+    title="Fusionner les styles typographiques"
+    href="/docs/features/merge-typography-styles"
+  />
+  <Cards.Card
+    icon={<Zap />}
+    title="Mode de requête média CSS"
+    href="/docs/features/css-media-query-mode"
+  />
+</Cards>
+
+<Callout type="info" emoji="💡">
+  Ces fonctionnalités peuvent être combinées pour vous aider à construire des systèmes de design plus puissants et flexibles.
+</Callout>

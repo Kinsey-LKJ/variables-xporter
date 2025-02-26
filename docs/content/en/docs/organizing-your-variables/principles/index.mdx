@@ -2,20 +2,25 @@ import { FileTree } from 'nextra/components'
 import { Callout } from 'nextra/components'
 import { Config } from "tailwindcss";
 
-# Organization Principles
+# Variable organization principles
 
-When using Variables Xporter, how you organize variables directly affects the quality of the exported results. Let's learn how to properly organize variables in Figma to ensure the exported code perfectly fits your development environment.
+When using Variables Xporter, the way you organize your variables directly impacts the quality of your exported code. Let's explore how to effectively organize variables in Figma to ensure the exported code seamlessly integrates with your development environment.
 
-## Naming Principles
+## Naming principles
 
 To make variables more understandable and maintainable, we recommend following these naming principles:
 
-- Use English names: This ensures compatibility with development environments and maintains consistency when variables are exported to Tailwind CSS configurations or CSS variables
-- Choose semantic naming: Variable names should clearly express their purpose, making them instantly understandable to team members
-- Keep it concise: Avoid overly long or complex naming, making code more readable and maintainable
+- Use English names: this ensures compatibility with development environments and maintains consistency when exporting to Tailwind CSS configurations or CSS variables
+- Choose semantic naming: variable names should clearly express their purpose, making them instantly understandable to team members
+- Keep it concise: avoid overly long or complex naming to maintain code readability and maintainability
 
-## Top-level Names
-If your project uses Tailwind CSS, ensure that variable top-level names match Tailwind CSS's theme configuration keys. Here are some common configuration keys:
+{/* <Callout type="info" emoji="ℹ️">
+  When using Variables Xporter, you must use either camelCase or kebab-case naming conventions to separate multiple words, such as `borderRadius` or `border-radius`.
+</Callout> */}
+
+### Top-level names
+
+If your project uses Tailwind CSS, ensure that your top-level variable names align with Tailwind CSS theme configuration keys. Here are some common configuration keys:
 
 - `colors`
 - `spacing`
@@ -24,13 +29,14 @@ If your project uses Tailwind CSS, ensure that variable top-level names match Ta
 - `borderRadius`
 - `opacity`
 
-You can find a complete list of configuration keys in the [Tailwind CSS Theme Configuration Reference](https://tailwindcss.com/docs/theme#configuration-reference).
+You can find the complete list of configuration keys in the [Tailwind CSS Theme Configuration Reference](https://tailwindcss.com/docs/theme#configuration-reference).
 
-## Separation Principles
-In design systems, we often need multiple words to describe a variable. Variables Xporter will automatically convert naming formats during export based on the target format:
+## Naming conventions
 
-- Tailwind CSS configuration files: Uses camelCase format (e.g., fontSize, fontWeight)
-- CSS variables: Uses kebab-case format (e.g., font-size, font-weight)
+In design systems, we often need to use multiple words to describe a variable. Variables Xporter automatically converts naming formats based on the target format:
+
+- Tailwind CSS configuration files: uses camelCase format (e.g., fontSize, fontWeight)
+- CSS variables: uses kebab-case format (e.g., font-size, font-weight)
 
 Here are some common naming formats for reference:
 - camelCase -> twoWords
@@ -44,15 +50,16 @@ Here are some common naming formats for reference:
 - sentenceCase -> Two words
 
 <Callout type="info" emoji="ℹ️">
-  When exporting variables, regardless of which format you use above, Variables Xporter will automatically convert the output to formats that comply with or are required by Tailwind CSS configuration files and CSS variables:
-  - Tailwind CSS configuration files: Uses camelCase format (e.g., fontSize, fontWeight)
-  - CSS variables: Uses kebab-case format (e.g., font-size, font-weight)
+  When exporting variables, regardless of which format you use from the above, Variables Xporter will automatically convert the output to match the conventions or requirements of Tailwind CSS configuration files and CSS variables:
+  - Tailwind CSS configuration files: uses camelCase format (e.g., fontSize, fontWeight)
+  - CSS variables: uses kebab-case format (e.g., font-size, font-weight)
 </Callout>
 
-## Grouping Principles
-Proper variable grouping can greatly improve work efficiency. We recommend using the `/` symbol to organize variable hierarchies, just like managing a file system:
+## Grouping principles
 
-Imagine how difficult it would be to find files if they were all piled in your computer's root directory. Similarly, we need to create clear hierarchical structures for variables:
+Proper variable grouping significantly improves workflow efficiency. We recommend using the `/` symbol to organize variable hierarchies, similar to managing a file system:
+
+Think about how difficult it would be to find files if they were all dumped in your computer's root directory. Similarly, we need to create clear hierarchical structures for our variables:
 
 <FileTree>
   <FileTree.Folder name="colors" defaultOpen>
@@ -69,13 +76,14 @@ These correspond to the following variables in Figma:
 - `colors/secondary`
 - `colors/tertiary`
 
-### Using the `DEFAULT` Keyword to Organize Variable Hierarchies
-The `DEFAULT` keyword serves a dual purpose: it can set default values, and more importantly, it can unify the levels of variables at the same hierarchy, making variable management clearer and more systematic. Let's look at a specific example:
+### Using the `DEFAULT` keyword to organize variable hierarchies
+
+The `DEFAULT` keyword serves a dual purpose: it sets a default value and, more importantly, unifies variables at the same level, making variable management clearer and more systematic. Let's look at a specific example:
 
 - `colors/primary`
 - `colors/primary/foreground`
 
-This is a common set of variables, used for the primary color and text color on the primary color, but this naming alone is not enough. Let's think about it in terms of file management:
+This is a common set of variables used for primary color and text color on primary backgrounds, but this naming alone isn't sufficient. Let's think about it in terms of file management:
 
 <FileTree>
   <FileTree.Folder name="colors" defaultOpen>
@@ -86,26 +94,26 @@ This is a common set of variables, used for the primary color and text color on 
   </FileTree.Folder>
 </FileTree>
 
-Here we encounter an interesting challenge: although logically, the variables `colors/primary` and `colors/primary/foreground` should be in the same directory, they are actually scattered in different locations. Let's see how this appears in Figma:
+Here we encounter an interesting challenge: while logically `colors/primary` and `colors/primary/foreground` should be in the same directory, they're actually scattered in different locations. Let's see how this appears in Figma:
 
 <figure className="mt-6">
-  <>![Cannot find the `colors/primary` variable in the colors -> primary directory](/organizing-your-variables/organizing-your-variables-1.png)</>
+  <>![Cannot find `colors/primary` variable in colors -> primary directory](/organizing-your-variables/organizing-your-variables-1.png)</>
   <figcaption>
-    Cannot find the `colors/primary` variable in the colors -> primary directory
+    Cannot find `colors/primary` variable in colors -> primary directory
   </figcaption>
 </figure>
 
 To find the `colors/primary` variable, you need to go to the colors directory:
 
 <figure className="mt-6">
-  <>![Find the `colors/primary` variable in the colors directory](/organizing-your-variables/organizing-your-variables-2.png)</>
+  <>![Finding `colors/primary` variable in colors directory](/organizing-your-variables/organizing-your-variables-2.png)</>
   <figcaption>
-    Find the `colors/primary` variable in the colors directory
+    Finding `colors/primary` variable in colors directory
   </figcaption>
 </figure>
 
-Think about how troublesome it will become to find the `colors/primary` variable as we have more and more variables, **because we can't rely on the left sidebar for quick location, but have to search in the colors directory**.
-This situation not only affects our work efficiency, more importantly, when we try to convert this structure to Tailwind CSS V3 configuration, we'll encounter a technical limitation: **JavaScript objects don't allow the same key to be used as both a value and an object**.
+As our variables grow in number, finding `colors/primary` becomes more cumbersome **because we can't rely on the sidebar for quick navigation and must search within the colors directory instead**.
+This not only affects our workflow efficiency but, more importantly, when we try to convert this structure to Tailwind CSS V3 configuration, we run into a technical limitation: **JavaScript objects cannot use the same key as both a value and an object**.
 
 ```ts twoslash
 // @errors: 1117
@@ -124,8 +132,10 @@ export default {
 };
 ```
 
-Don't worry though, Tailwind CSS provides us with an elegant solution — using the `DEFAULT` keyword:
+Don't worry though, Tailwind CSS provides an elegant solution — using the `DEFAULT` keyword:
+
 ```ts twoslash
+// @errors: 1117
 export default {
   theme: {
     extend: {
@@ -141,24 +151,24 @@ export default {
 };
 ```
 
-The best part is that in actual development, you don't need to write out the `DEFAULT` keyword at all. Tailwind CSS will handle this detail automatically, keeping your code concise:
+The best part is that in actual development, you don't need to write out the `DEFAULT` keyword. Tailwind CSS handles this detail automatically, keeping your code clean:
 
 ```html
 <div class="text-primary">
-  <p>Hello, World!</p>
+  <p>Hello, world!</p>
 </div>
 ```
 
 With this technique, we can elegantly organize our variables in Figma. Just use `DEFAULT` as a marker for default values:
 
-- `colors/primary/DEFAULT` - Default value for primary color
-- `colors/primary/foreground` - Text color on primary color
+- `colors/primary/DEFAULT` - default value for primary color
+- `colors/primary/foreground` - text color on primary background
 
-They will then appear in the same directory:
+They will appear in the same directory:
 
 <figure className="mt-6">
-  <>![Organize variable hierarchy using default values](/organizing-your-variables/organizing-your-variables-3.png)</>
+  <>![Organizing variable hierarchy using default values](/organizing-your-variables/organizing-your-variables-3.png)</>
   <figcaption>
-    Organize variable hierarchy using default values
+    Organizing variable hierarchy using default values
   </figcaption>
 </figure>

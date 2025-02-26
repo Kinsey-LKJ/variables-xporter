@@ -1,0 +1,166 @@
+import { Callout } from 'nextra/components'
+import { Cards, Tabs } from 'nextra/components'
+import { Moon, Columns3 } from 'lucide-react'
+
+# Prise en charge multi-modes
+
+La prise en charge multi-modes est une fonctionnalité puissante de Variables Xporter qui vous permet d'exporter facilement des variables de design pour plusieurs modes, tels que les thèmes clair et sombre, les thèmes de marque, etc.
+
+## Qu'est-ce que le multi-modes ?
+
+Le multi-modes permet à une variable d'avoir différentes valeurs dans différentes situations. Voici quelques modes courants :
+
+- Thèmes clair et sombre
+- Thèmes de marque
+- Points de rupture responsifs
+- Densité de mise en page
+
+Variables Xporter **prend en charge les variables multi-modes composées**. Par exemple, la variable `colors/primary/DEFAULT` (couleur primaire) peut être affectée à la fois par le thème clair/sombre et le thème de marque, ce qui donne le résultat suivant :
+
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'Variables CSS']}>
+  <Tabs.Tab>
+  ```css
+  /* Mode par défaut */
+@theme {
+  /* Collection : Jetons de design */
+  --color-brand-a-500: oklch(0.63 0.16 22.94);
+  --color-brand-a-600: oklch(0.54 0.17 24.90);
+  --color-brand-b-500: oklch(0.68 0.17 45.85);
+  --color-brand-b-600: oklch(0.63 0.19 39.71);
+  --color-primary: var(--theme-modes-color-primary);
+
+  /* Collection : Modes de thème */
+  --theme-modes-color-primary: var(--brand-modes-color-primary-light);
+
+  /* Collection : Modes de marque */
+  --brand-modes-color-primary-dark: var(--color-brand-a-500);
+  --brand-modes-color-primary-light: var(--color-brand-a-600);
+}
+
+/* Remplacement de mode */
+@layer theme {
+.brand-b {
+  /* Collection : Modes de marque */
+  --brand-modes-color-background-dark: var(--color-base-black);
+  --brand-modes-color-background-light: var(--color-base-white);
+  --brand-modes-color-primary-dark: var(--color-brand-b-500);
+  --brand-modes-color-primary-foreground-light: var(--color-base-white);
+  --brand-modes-color-primary-light: var(--color-brand-b-600);
+  }
+}
+
+/* Remplacement de mode */
+@layer theme {
+.dark {
+  /* Collection : Modes de thème */
+  --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
+  }
+}
+  ```
+  </Tabs.Tab>
+
+  <Tabs.Tab>
+  ```js
+module.exports = {
+    theme: {
+      extend: {
+        colors: {
+      'brand-a': {
+            '500': 'rgb(var(--colors-brand-a-500))',
+            '600': 'rgb(var(--colors-brand-a-600))',
+      },
+      'brand-b': {
+            '400': 'rgb(var(--colors-brand-b-400))',
+            '500': 'rgb(var(--colors-brand-b-500))',
+            '600': 'rgb(var(--colors-brand-b-600))',
+      },
+      primary: 'rgb(var(--colors-primary))',
+        }
+      },
+    },
+  };
+```
+    ```css
+  /* Mode par défaut */
+  :root {
+
+  /* Collection : Jetons de design */
+  --colors-brand-a-500: 218 89 89;
+  --colors-brand-a-600: 192 57 57;
+  --colors-brand-b-500: 238 109 33;
+  --colors-brand-b-600: 229 85 23;
+  --colors-primary: var(--theme-modes-colors-primary);
+
+  /* Collection : Modes de thème */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-light);
+
+  /* Collection : Modes de marque */
+  --brand-modes-colors-primary-dark: var(--colors-brand-a-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-a-600);
+
+}
+
+/* Remplacement de mode */
+.brand-b {
+  /* Collection : Modes de marque */
+  --brand-modes-colors-primary-dark: var(--colors-brand-b-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-b-600);
+}
+
+/* Remplacement de mode */
+.dark {
+  /* Collection : Modes de thème */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-dark);
+}
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+  ```css
+  /* Mode par défaut */
+  :root {
+  /* Collection : Jetons de design */
+  --colors-brand-a-500: 218 89 89;
+  --colors-brand-a-600: 192 57 57;
+  --colors-brand-b-500: 238 109 33;
+  --colors-brand-b-600: 229 85 23;
+  --colors-primary: var(--theme-modes-colors-primary);
+
+  /* Collection : Modes de thème */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-light);
+
+  /* Collection : Modes de marque */
+  --brand-modes-colors-primary-dark: var(--colors-brand-a-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-a-600);
+
+}
+
+/* Remplacement de mode */
+.brand-b {
+  /* Collection : Modes de marque */
+  --brand-modes-colors-primary-dark: var(--colors-brand-b-500);
+  --brand-modes-colors-primary-light: var(--colors-brand-b-600);
+}
+
+/* Remplacement de mode */
+.dark {
+  /* Collection : Modes de thème */
+  --theme-modes-colors-primary: var(--brand-modes-colors-primary-dark);
+}
+```
+  </Tabs.Tab>
+</Tabs>
+
+Maintenant, la variable `colors/primary/DEFAULT` aura des résultats différents selon les différents thèmes clair/sombre et thèmes de marque.
+
+Découvrez comment créer et gérer des variables multi-modes dans Figma :
+
+  <Cards.Card
+    icon={<Columns3  />}
+    title="Gestion des variables multi-modes"
+    href="/docs/organizing-your-variables/multi-mode"
+    className="mt-4"
+  />
+
+## Comment ça fonctionne
+
+Variables Xporter retrace toutes les variables référencées dans la collection d'exportation sélectionnée jusqu'à ce qu'il trouve la valeur originale de la variable. Cela signifie que vous pouvez référencer des variables à travers différentes collections, et Variables Xporter reconstituera complètement la chaîne de référence des variables.

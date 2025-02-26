@@ -15,7 +15,7 @@ import {
 import prettier from 'prettier/standalone';
 import parserEstree from 'prettier/plugins/estree';
 import parserBabel from 'prettier/plugins/babel';
-import { FileContent, TVariable, TVariableCollection } from '../../lib/type';
+import { FileContent, TVariable, TVariableCollection } from '../../types/app';
 import SyncGithub from './sync-github';
 import { submitFormAction } from '../../lib/action';
 import Welcome from './welcome';

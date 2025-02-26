@@ -1,0 +1,61 @@
+import { Callout } from 'nextra/components'
+import { Tabs } from 'nextra/components'
+
+# Système de couleurs
+
+Le système de couleurs est probablement la partie la plus importante des Design Tokens. Si vous ne savez pas comment organiser et nommer vos variables de couleur, [la convention de nommage de shadcn/ui](https://ui.shadcn.com/docs/theming#convention) est un excellent point de départ :
+En général, `background` est utilisé pour les couleurs de fond, `foreground` pour les couleurs de texte. Lorsque `background` est utilisé pour la couleur de fond d'un composant, comme `colors/card/DEFAULT`[^1], le suffixe `background` est omis. À partir de cette base, on peut progressivement étendre à plus de variables :
+
+<details>
+  <summary>Référence de nommage des variables de couleur shadcn/ui</summary>
+- `colors/background/DEFAULT` - Couleur de fond principale de la page
+- `colors/foreground/DEFAULT` - Couleur de texte principale
+- `colors/muted/DEFAULT` - Couleur de fond secondaire, pour une hiérarchie visuelle douce
+- `colors/muted/foreground` - Couleur de texte secondaire, pour les informations auxiliaires
+- `colors/popover/DEFAULT` - Couleur de fond des pop-ups, assurez-vous qu'elle se distingue bien du fond principal
+- `colors/popover/foreground` - Couleur de texte des pop-ups
+- `colors/card/DEFAULT` - Couleur de fond des cartes, pour les zones de contenu
+- `colors/card/foreground` - Couleur de texte à l'intérieur des cartes
+- `colors/border/DEFAULT` - Couleur de bordure, pour séparer les éléments visuels
+- `colors/input/DEFAULT` - Couleur de bordure des champs de saisie
+- `colors/primary/DEFAULT` - Couleur principale de la marque, pour les boutons principaux et les éléments importants
+- `colors/primary/foreground` - Couleur de texte sur la couleur principale
+- `colors/secondary/DEFAULT` - Couleur secondaire de la marque, pour les actions secondaires et les éléments d'interface
+- `colors/secondary/foreground` - Couleur de texte sur la couleur secondaire
+- `colors/accent/DEFAULT` - Couleur d'accentuation, pour mettre en évidence des éléments spécifiques
+- `colors/accent/foreground` - Couleur de texte sur la couleur d'accentuation
+- `colors/destructive/DEFAULT` - Couleur d'avertissement, pour les actions dangereuses et les messages d'erreur
+- `colors/destructive/foreground` - Couleur de texte sur la couleur d'avertissement
+- `colors/ring/DEFAULT` - Couleur de l'anneau de focus, pour le retour d'interaction
+</details>
+
+## Répertoire de premier niveau
+
+Veuillez utiliser `colors` ou `color` comme répertoire de premier niveau pour toutes les variables liées aux couleurs. Cela rend non seulement la structure de vos variables plus claire, mais assure également une parfaite compatibilité avec Tailwind CSS.
+
+<figure className="mt-6">
+  <>![Organisation des variables de couleur](/organizing-your-variables/colors/colors-1.png)</>
+  <figcaption>
+    Organisation des variables de couleur
+  </figcaption>
+</figure>
+
+## Modificateurs d'opacité
+
+Variables Xporter offre de puissantes fonctionnalités de traitement des couleurs, générant automatiquement des variables de couleur [conformes aux règles de Tailwind CSS](https://tailwindcss.com/docs/customizing-colors#using-css-variables). Pendant le développement, vous pouvez facilement ajuster la transparence des couleurs en utilisant des modificateurs d'opacité, sans avoir besoin de définir des variables supplémentaires.
+
+
+  ```html
+  <!-- Ajustement de l'opacité du texte -->
+  <div class="text-primary/80">Ajustement de l'opacité du texte</div>
+  <div class="text-secondary/60">Ajustement de l'opacité du texte</div>
+
+  <!-- Ajustement de l'opacité du fond -->
+  <div class="bg-primary/10">Ajustement de l'opacité du fond</div>
+  <div class="bg-accent/90">Ajustement de l'opacité du fond</div>
+
+  <!-- Ajustement de l'opacité de la bordure -->
+  <div class="border-2 border-primary/30">Ajustement de l'opacité de la bordure</div>
+  ```
+
+[^1]: Le mot-clé `DEFAULT` est une façon d'organiser la hiérarchie des variables, [en savoir plus](/docs/organizing-your-variables/principles#use-default-value)

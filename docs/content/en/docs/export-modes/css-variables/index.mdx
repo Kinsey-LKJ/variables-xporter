@@ -8,11 +8,12 @@ import { Zap, RefreshCw, Palette, Type, Columns3, BookOpenCheck,Box,Ruler } from
 
 # CSS Variables
 
-When choosing the CSS Variables export mode, Variables Xporter will generate a CSS file containing all CSS variable definitions. This approach is simpler and more flexible, suitable for projects not using Tailwind CSS.
+When choosing the CSS Variables export method, Variables Xporter will generate a CSS file containing all CSS variable definitions. This approach is simpler and more flexible, suitable for projects not using Tailwind CSS.
 
 ## Features
 
-### 1. Simple and Intuitive
+### 1. Simple and intuitive
+
 Directly outputs standard CSS custom properties:
 
 ```css
@@ -24,7 +25,8 @@ Directly outputs standard CSS custom properties:
 }
 ```
 
-### 2. Flexible Usage
+### 2. Flexible usage
+
 These variables can be used in any CSS rule:
 
 ```css
@@ -36,8 +38,9 @@ These variables can be used in any CSS rule:
 }
 ```
 
-### 3. Multi-mode Support
-Through **variable tracing** and the **Single Outlet Principle**, Variables Xporter can implement complex multi-mode variable exports.
+### 3. Multi-mode support
+
+With the help of **variable tracing** and **single source of truth principle**, Variables Xporter can achieve complex multi-mode variable exports.
 
 ```css
 :root {
@@ -49,54 +52,59 @@ Through **variable tracing** and the **Single Outlet Principle**, Variables Xpor
 }
 ```
 
+
+
   <Cards.Card
     icon={<Columns3 />}
-    title="Multi-mode Support"
+    title="Multi-mode support"
     href="/docs/features/multi-mode"
     className="mt-4"
   />
 
-## Variable Organization Guide
+## Variable organization recommendations
 
-Compared to [Tailwind CSS](/docs/export-modes/tailwind), the CSS Variables export mode has lower requirements for variable organization, but it's still recommended to follow good organization principles to:
+Compared to [Tailwind CSS](/docs/export-modes/tailwind), the CSS Variables export method has lower requirements for variable organization. However, it's still recommended that you follow good organizational principles, which can:
 
 - Improve variable maintainability
 - Maintain design system consistency
 - Facilitate team collaboration
-- Prepare for possible framework migration in the future
+- Prepare for potential future framework migrations
 
-### Basic Principles
-You can first understand the basic principles of variable organization, which will help you make better decisions regarding variable naming, grouping, and hierarchy.
+### Basic principles
+
+You can start by understanding the basic principles of variable organization, which can help you make better decisions in naming, grouping, and hierarchical structuring of variables.
+
 
   <Cards.Card
     icon={<BookOpenCheck  />}
-    title="Basic Principles"
+    title="Basic principles"
     href="/docs/organizing-your-variables/principles"
     className="mt-4"
   />
 
-### Variable Types
+### Variable types
+
 Then, you can further organize your variables based on different variable types.
 
 <Cards>
   <Cards.Card
     icon={<Palette />}
-    title="Color System"
+    title="Color system"
     href="/docs/organizing-your-variables/colors"
   />
   <Cards.Card
     icon={<Type />}
-    title="Typography System"
+    title="Typography system"
     href="/docs/organizing-your-variables/typography"
   />
   <Cards.Card
     icon={<Ruler />}
-    title="Spacing and Size System"
+    title="Spacing and sizing system"
     href="/docs/organizing-your-variables/spacing"
   />
   <Cards.Card
     icon={<Box/>}
-    title="Other Tokens"
+    title="Other tokens"
     href="/docs/organizing-your-variables/other-tokens"
   />
   <Cards.Card

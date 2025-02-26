@@ -1,26 +1,26 @@
 import { Callout, Cards, Tabs } from 'nextra/components'
 import { Type } from 'lucide-react'
 
-# Merge Typography Styles
+# Merge typography styles
 
-Merge Typography Styles is a feature specifically designed for Tailwind CSS that intelligently combines font-related variables into configurations that follow Tailwind's conventions.
+Merge typography styles is a feature specifically designed for Tailwind CSS that intelligently combines font-related variables into a configuration format that adheres to Tailwind conventions.
 
-## How It Works
+## How it works
 
 When you define font-related variables in Figma (such as font size, line height, etc.), Variables Xporter will:
 
-1. Identify related variables
+1. Identify relevant variables
 2. Combine variables according to naming rules
 3. Generate Tailwind CSS configuration
 
-### Example Conversion
+### Example conversion
 
 Figma variables:
 - `font-size/heading-1/DEFAULT`
 - `font-size/heading-1/line-height`
 - `font-size/heading-1/font-weight`
 
-Converted to Tailwind CSS configuration or CSS variables:
+Converted Tailwind CSS configuration or CSS variables:
 <Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
   <Tabs.Tab>
   ```css
@@ -56,23 +56,22 @@ module.exports = {
   </Tabs.Tab>
 </Tabs>
 
+## Naming conventions
 
-## Naming Conventions
+To ensure Variables Xporter correctly identifies and merges variables, please follow these naming rules:
 
-For Variables Xporter to correctly identify and merge variables, please follow these naming rules:
-
-1. **Basic Naming Format**
+1. **Basic naming format**
 
 `font-size/{variable}/{property}`
 
 
-2. **Supported Properties**
+2. **Supported properties**
    - `font-size`
    - `line-height`
    - `font-weight`
    - `letter-spacing`
 
-3. **Example Names**
+3. **Example naming**
 
 - `font-size/sm/DEFAULT`
 - `font-size/sm/line-height`
@@ -84,11 +83,7 @@ Learn more about organizing typography and font variables in Figma:
 
   <Cards.Card
     icon={<Type  />}
-    title="Typography and Font Variable Organization"
+    title="Suggestions for organizing typography and font variables"
     href="/docs/organizing-your-variables/typography"
     className="mt-4"
   />
-
-<Callout type="warning" emoji="⚠️">
-Note that the merge functionality only supports four style properties: font-size, font-weight, line-height, and letter-spacing. Additionally, this feature only works when a font-size property exists. This is to maintain consistency with Tailwind CSS's [`fontSize` configuration feature](https://tailwindcss.com/docs/font-size#customizing-your-theme).
-</Callout>

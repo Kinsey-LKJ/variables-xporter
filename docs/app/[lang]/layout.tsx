@@ -7,9 +7,11 @@ import "nextra-theme-docs/style.css";
 import "./app.css";
 import Image from "next/image";
 import { Footer } from "../components/footer";
-import { getDictionary} from "../_dictionaries/get-dictionary";
+import { getDictionary, dictionaries } from "../_dictionaries/get-dictionary";
 import { Locale } from "@app/_dictionaries/i18n-config";
 import Logo from "@/public/website/Logo.png";
+import lingoI18nConfig from "../../../i18n.json";
+import { allLanguages } from "../_dictionaries/i18n-config";
 
 export const { viewport } = Head;
 
@@ -36,7 +38,20 @@ export const metadata = {
 export default async function RootLayout({ children, params }) {
   const { lang } = await params;
   const pageMap = await getPageMap(`/${lang}`);
-  const dictionary = await getDictionary(lang);
+
+  const dictionaries = await Promise.all(
+    allLanguages.map(async (locale) => ({
+      [locale]: await getDictionary(locale)
+    }))
+  );
+  const allDictionaries = Object.assign({}, ...dictionaries);
+
+  const i18n = allLanguages.map((locale) => ({
+    locale: locale,
+    name: allDictionaries[locale].language,
+  }));
+
+
   const navbar = (
     <Navbar
       logo={
@@ -49,9 +64,6 @@ export default async function RootLayout({ children, params }) {
             height={100}
           />
           <b>Variables Xporter</b>{" "}
-          <span style={{ opacity: "60%" }}>
-            The Figma plugin for exporting variables
-          </span>
         </div>
       }
       // Next.js discord server
@@ -62,10 +74,7 @@ export default async function RootLayout({ children, params }) {
   );
 
   return (
-    <html
-      lang={lang as Locale}
-      suppressHydrationWarning
-    >
+    <html lang={lang as Locale} suppressHydrationWarning>
       <Head
         faviconGlyph="✦"
         color={{
@@ -94,10 +103,7 @@ export default async function RootLayout({ children, params }) {
               Variables Xporter now supports Tailwind CSS 4.0 ✨
             </Banner>
           }
-          i18n={[
-            { locale: "en", name: "English" },
-            { locale: "zh", name: "简体中文" },
-          ]}
+          i18n={i18n}
           navbar={navbar}
           footer={<Footer />}
           // editLink="Edit this page on GitHub"

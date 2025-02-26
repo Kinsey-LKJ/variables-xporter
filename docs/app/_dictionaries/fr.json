@@ -1,0 +1,59 @@
+{
+  "language": "Français",
+  "supportTailwindCssV4": "Prise en charge de Tailwind CSS V4",
+  "pluginHighlight": "Intégration transparente des variables Figma dans Tailwind CSS ou CSS Variables",
+  "start": "Commencer",
+  "learnMore": "En savoir plus",
+  "exclusive": "Exclusivement disponible",
+  "features": {
+    "multiMode": {
+      "title": "Prise en charge multi-modes",
+      "description": "Prise en charge de l'exportation de variables composées multi-dimensionnelles"
+    },
+    "mergeTypographyStyles": {
+      "title": "Fusion des variables typographiques",
+      "description": "Fusion et exportation des variables liées au texte et à la typographie"
+    },
+    "cssMediaQueryMode": {
+      "title": "Mode de requêtes média CSS",
+      "description": "Exportation de variables en mode de requêtes média"
+    },
+    "unitConversion": {
+      "title": "Conversion d'unités",
+      "description": "Conversion des unités px en rem"
+    }
+  },
+  "organizingYourVariables": {
+    "heading": "Suggestions pour l'organisation des variables Figma",
+    "principles": {
+      "title": "Principes de base",
+      "description": "Nommage et regroupement des variables"
+    },
+    "colors": {
+      "title": "Système de couleurs",
+      "description": "Suggestions pour l'organisation des variables de couleur"
+    },
+    "typography": {
+      "title": "Système typographique",
+      "description": "Suggestions pour l'organisation des variables de texte et de typographie"
+    },
+    "spacing": {
+      "title": "Système d'espacement",
+      "description": "Suggestions pour l'organisation des variables d'espacement"
+    },
+    "other": {
+      "title": "Autres variables",
+      "description": "Suggestions pour l'organisation d'autres variables"
+    },
+    "multiMode": {
+      "title": "Prise en charge multi-modes",
+      "description": "Construire un système de variables multidimensionnel puissant"
+    }
+  },
+  "figmaTemplate": {
+    "heading": "Modèle Figma",
+    "title": "Contient les variables de base nécessaires pour construire des Design Tokens",
+    "description": "Commencez ici pour construire vos propres Design Tokens, incluant des variables pour les couleurs, l'espacement, les polices, etc., avec plusieurs modes comme le thème, la marque, les appareils et la densité.",
+    "openInFigma": "Ouvrir dans Figma"
+  }
+}

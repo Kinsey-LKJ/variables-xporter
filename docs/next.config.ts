@@ -1,5 +1,6 @@
 import bundleAnalyzer from '@next/bundle-analyzer'
 import nextra from 'nextra'
+import lingoI18nConfig from '../i18n.json'
 
 const withNextra = nextra({
   defaultShowCopyCode: true,
@@ -20,8 +21,8 @@ const nextConfig = withBundleAnalyzer(
       ignoreDuringBuilds: true
     },
     i18n: {
-      locales: ["zh", "en"],
-      defaultLocale: "zh",
+      locales: [lingoI18nConfig.locale.source, ...lingoI18nConfig.locale.targets],
+      defaultLocale: lingoI18nConfig.locale.source,
     },
     webpack(config) {
       // rule.exclude doesn't work starting from Next.js 15

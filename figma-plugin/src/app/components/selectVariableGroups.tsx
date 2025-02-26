@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
-import { TVariableCollection, TVariableOptions } from '@/src/lib/type';
-import { TVariable } from '@/src/lib/type';
+import { TVariableCollection, TVariableOptions } from '@/src/types/app';
+import { TVariable } from '@/src/types/app';
 import { MultiSelect } from '@mantine/core';
 import { useVariableFormContext } from './variables-export-form-context';
 import { AppContext } from './App';

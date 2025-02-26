@@ -1,4 +1,4 @@
-import { TVariableCollection, TVariable } from '../lib/type';
+import { TVariableCollection, TVariable } from '../types/app';
 
 figma.showUI(__html__, { height: 500, width: 400 });
 
