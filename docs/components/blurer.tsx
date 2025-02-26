@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@app/lib/utils";
 
 interface BlurerProps extends React.HTMLAttributes<HTMLDivElement> {
     className?: string;

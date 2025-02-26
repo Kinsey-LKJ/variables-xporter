@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@app/lib/utils";
 import { ReactNode } from "react";
 import Tag from "./tag";
 import Blurer from "./blurer";
