@@ -14,5 +14,6 @@
   "ignore_tailwind_css_default_palette": "忽略 Tailwind CSS 默认色板",
   "ignore_default_palette_description": "此选项将忽略 Tailwind CSS 默认的色板如 Slate、Gray、Zinc、Neutral... 如果你没有对它们进行修改，而是使用默认的值，你应该忽略它们。",
   "tailwind_css_figma_template": "Tailwind CSS Figma 模板",
-  "documentation": "文档"
+  "documentation": "文档",
+  "setting": "设置"
 }

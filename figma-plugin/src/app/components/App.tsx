@@ -17,7 +17,7 @@ import {
 import ConnectGithub from './connect-github';
 import { useDisclosure } from '@mantine/hooks';
 import { Badge, Button, Checkbox, Drawer, Menu, Modal, Select, Tooltip } from '@mantine/core';
-import { ArrowLeft, ChevronLeftIcon, CircleAlert, EarthIcon, Github, Info } from 'lucide-react';
+import { ArrowLeft, BookText, ChevronLeftIcon, CircleAlert, EarthIcon, Github, Info, Settings } from 'lucide-react';
 import { sendInstallationIdAndRepo } from '../../lib/action';
 import gh from 'parse-github-url';
 import ExportPage, { ExportPageHandles } from './export-page';
@@ -28,6 +28,7 @@ import cn from '../zh.json';
 import en from '../en.json';
 import { translations } from '../dictionary';
 import { Locale, defaultLocale, allLanguages } from '../dictionary';
+import Setting from './setting';
 
 const validateGithubURL = (url) => gh(url);
 
@@ -218,8 +219,23 @@ function App() {
           </Button>
           <div>
             <Button size="xs" variant="subtle" className=" text-xs" onClick={open}>
-              <CircleAlert size={16} className=" mr-2" />
+              <BookText size={16} className=" mr-2" />
               {textData.documentation}
+            </Button>
+            <Drawer
+              opened={opened}
+              onClose={close}
+              position="bottom"
+              title={textData.setting}
+              overlayProps={{ backgroundOpacity: 0.5, blur: 4}}
+
+            >
+              <Setting />
+            </Drawer>
+
+            <Button size="xs" variant="subtle" onClick={open}>
+              <Settings size={16} className=" mr-2" />
+              {textData.setting}
             </Button>
             <Menu>
               <Menu.Target>

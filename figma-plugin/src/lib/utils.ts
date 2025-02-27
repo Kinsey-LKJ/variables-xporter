@@ -3,8 +3,6 @@ import * as changeCase from 'change-case';
 import { convert, OKLCH, sRGB, DisplayP3 } from '@texel/color';
 import Color from 'colorjs.io';
 
-
-
 export type RGB = {
   r: number;
   g: number;
@@ -99,12 +97,12 @@ export function processColorValue(value: ColorValue, format: ExportFormat): stri
 
   if (format === 'Tailwind CSS 4.0') {
     const oklch = convert([value.r, value.g, value.b], sRGB, OKLCH, [0, 0, 0]);
-    
+
     // 优化数字显示格式的辅助函数
     const formatNumber = (num: number, precision: number) => {
       // 如果数字为 0，直接返回 "0"
-      if (num === 0) return "0";
-      
+      if (num === 0) return '0';
+
       const fixed = Number(num.toFixed(precision));
       // 如果固定精度后的数字等于整数部分，返回整数
       if (fixed === Math.floor(fixed)) return fixed.toString();
@@ -296,11 +294,11 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
       .map(([key]) => key);
 
     // 构建正则表达式模式
-    const fontSizePattern = fontSizeProps.map(prop => prop.replace(/[-]/g, '\\-')).join('|');
-    
+    const fontSizePattern = fontSizeProps.map((prop) => prop.replace(/[-]/g, '\\-')).join('|');
+
     // 构建新的名称
     const name = `${rules[firstPart]}${restParts}`;
-    
+
     // 匹配两种模式：
     // 1. text/sm 或 font-size/sm
     // 2. text/sm/font-size 或 font-size/sm/font-size
@@ -321,7 +319,11 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
   return name;
 };
 // 处理需要合并的字体配置，并返回已使用的变量名集合
-function processMergedFontConfigs(results: Result[], format: ExportFormat): [Record<string, any>, Set<string>] {
+function processMergedFontConfigs(
+  results: Result[],
+  format: ExportFormat,
+  ignoreTopLevelNames: boolean = true
+): [Record<string, any>, Set<string>] {
   const fontConfigs: Record<
     string,
     {
@@ -364,10 +366,14 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
 
       const defaultMode = result.modes[initialVariable.collection.defaultModeId];
       if (defaultMode && defaultMode.value !== undefined) {
-        const value = `var(--${name
-          .split('/')
-          .map((segment) => changeCase.kebabCase(segment))
-          .join('-')})`;
+        let nameArray: string[];
+        if (ignoreTopLevelNames) {
+          nameArray = name.split('/').slice(1);
+        } else {
+          nameArray = name.split('/');
+        }
+
+        const value = `var(--${nameArray.map((segment) => changeCase.kebabCase(segment)).join('-')})`;
         fontConfigs[variant][prop as keyof (typeof fontConfigs)[string]] = value;
         console.log(value);
         console.log(prop);
@@ -386,7 +392,7 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
       delete fontConfigs[variant];
       // 移除这些变量的已使用标记
       for (const usedVar of usedVariables) {
-        if (usedVar.startsWith(`${ format === "Tailwind CSS 4.0" ? "text" : "font-size"}/${variant}/`)) {
+        if (usedVar.startsWith(`${format === 'Tailwind CSS 4.0' ? 'text' : 'font-size'}/${variant}/`)) {
           usedVariables.delete(usedVar);
         }
       }
@@ -597,10 +603,10 @@ function sortCSSDeclarationsByCollection(
   const unknownDeclarations: string[] = [];
 
   // 首先将声明按集合分组
-  declarations.forEach(declaration => {
+  declarations.forEach((declaration) => {
     const varName = declaration.match(/--([^:]+):/)?.[1] || '';
     const varInfo = variableMap.get(varName);
-    
+
     if (!varInfo) {
       // 如果找不到变量信息，将其归类到默认集合
       if (!groupedDeclarations.has(defaultCollectionId)) {
@@ -612,7 +618,7 @@ function sortCSSDeclarationsByCollection(
       groupedDeclarations.get(defaultCollectionId)!.push(declaration);
       return;
     }
-    
+
     const { collectionId } = varInfo;
     if (!groupedDeclarations.has(collectionId)) {
       groupedDeclarations.set(collectionId, []);
@@ -636,12 +642,12 @@ function sortCSSDeclarationsByCollection(
     sortedDeclarations.forEach((declaration, index) => {
       const varName = declaration.match(/--([^-]+)-/)?.[1] || '';
       const currentFirstLetter = varName.charAt(0);
-      
+
       // 如果首字母变化了，并且不是第一个声明，添加空行
       if (currentFirstLetter !== lastFirstLetter && lastFirstLetter !== '') {
         sortedGroup.push('');
       }
-      
+
       sortedGroup.push(declaration);
       lastFirstLetter = currentFirstLetter;
     });
@@ -744,7 +750,7 @@ function generateCSSForMultipleVariables(
   const css: string[] = [];
   const defaultValues: Map<string, string> = new Map();
   const modeOverrides: Map<string, Set<string>> = new Map();
-  
+
   // 创建变量到集合的映射
   const variableCollectionMap = new Map<string, { collectionId: string; collectionName: string }>();
 
@@ -769,11 +775,11 @@ function generateCSSForMultipleVariables(
     if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS 4.0') {
       variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
     }
-    
+
     // 记录变量所属的集合信息
     variableCollectionMap.set(variableCSSName, {
       collectionId: referencingCollection.id,
-      collectionName: referencingCollection.name
+      collectionName: referencingCollection.name,
     });
 
     if (typeof value !== 'object' || isColorValue(value)) {
@@ -905,7 +911,11 @@ function generateCSSForMultipleVariables(
 
       if (defaultMode.variable) {
         // 如果是引用其他变量
-        const referencedVarName = getVariableCSSName(defaultMode.variable, initialVariable.collection, appendCollectionName);
+        const referencedVarName = getVariableCSSName(
+          defaultMode.variable,
+          initialVariable.collection,
+          appendCollectionName
+        );
         const rootReference = `  --${variableCSSName}: var(--${referencedVarName});`;
         defaultValues.set(variableCSSName, rootReference);
 
@@ -954,7 +964,11 @@ function generateCSSForMultipleVariables(
 
         if (modeData.variable) {
           // 如果是引用其他变量
-          const referencedVarName = getVariableCSSName(modeData.variable, initialVariable.collection, appendCollectionName);
+          const referencedVarName = getVariableCSSName(
+            modeData.variable,
+            initialVariable.collection,
+            appendCollectionName
+          );
           const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
 
           const modeInfos = getModeNamesAndCollections(parentModes, allCollections).filter(
@@ -1055,11 +1069,11 @@ function generateCSSForMultipleVariables(
 
         if (settings) {
           for (const [prop, value] of Object.entries(settings)) {
-
             console.log('variantName,prop', variantName, prop);
 
             // 对于符合条件的其他字体变量，更改为 Tailwind CSS 4.0 指定的格式
-            tailwindcssv4NeedUpdateVariablesName[`text-${variantName}-${changeCase.kebabCase(prop)}`] = `text-${variantName}--${changeCase.kebabCase(prop)}`;
+            tailwindcssv4NeedUpdateVariablesName[`text-${variantName}-${changeCase.kebabCase(prop)}`] =
+              `text-${variantName}--${changeCase.kebabCase(prop)}`;
             // 保持原始值
             // defaultValues.set(`text-${variantName}--${prop}`, `  --text-${variantName}--${prop}: ${value};`);
           }
@@ -1070,7 +1084,6 @@ function generateCSSForMultipleVariables(
         //   ? config
         //   : config.replace('var(--font-', '').replace(')', '');
         // const fontSizeValue = config;
-
         // defaultValues.set(`text-${variantName}`, `  --text-${variantName}: ${fontSizeValue};`);
       }
     }
@@ -1099,9 +1112,9 @@ function generateCSSForMultipleVariables(
   if (defaultValues.size > 0) {
     css.push('/* Default Mode */');
     css.push(themeRootSelector + ' {');
-    
+
     const currentCollectionId = results[0].initialVariable.collection.id;
-    
+
     // 对默认值进行分组排序
     const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
       [...defaultValues.values()],
@@ -1113,7 +1126,7 @@ function generateCSSForMultipleVariables(
     // 按集合顺序输出变量
     for (let i = 0; i < collectionOrder.length; i++) {
       const collectionId = collectionOrder[i];
-      const collection = allCollections.find(c => c.id === collectionId);
+      const collection = allCollections.find((c) => c.id === collectionId);
       const declarations = groupedDeclarations.get(collectionId);
       if (declarations && declarations.length > 0) {
         css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
@@ -1124,30 +1137,30 @@ function generateCSSForMultipleVariables(
         }
       }
     }
-    
+
     css.push('}\n');
   }
 
   // 对选择器进行排序
   const sortedSelectors = sortSelectors([...modeOverrides.keys()]);
   const currentCollectionId = results[0].initialVariable.collection.id;
-  
+
   for (const selector of sortedSelectors) {
     const declarations = modeOverrides.get(selector);
     if (declarations?.size > 0) {
       css.push(`/* Mode Override */`);
-      if(format === 'Tailwind CSS 4.0' && selector.startsWith('@media')){
+      if (format === 'Tailwind CSS 4.0' && selector.startsWith('@media')) {
         css.push(`${selector} {`);
-        css.push("@layer theme {")
-      }else if(format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')){
-        css.push("@layer theme {")
+        css.push('@layer theme {');
+      } else if (format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')) {
+        css.push('@layer theme {');
       }
       if (selector.startsWith('@media')) {
-        if(format !== 'Tailwind CSS 4.0'){
+        if (format !== 'Tailwind CSS 4.0') {
           css.push(`${selector} {`);
         }
-        css.push(format === "Tailwind CSS 4.0" ? ':root {': themeRootSelector + ' {');
-        
+        css.push(format === 'Tailwind CSS 4.0' ? ':root {' : themeRootSelector + ' {');
+
         // 对模式覆盖的值进行分组排序
         const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
           [...declarations],
@@ -1159,7 +1172,7 @@ function generateCSSForMultipleVariables(
         // 按集合顺序输出变量
         for (let i = 0; i < collectionOrder.length; i++) {
           const collectionId = collectionOrder[i];
-          const collection = allCollections.find(c => c.id === collectionId);
+          const collection = allCollections.find((c) => c.id === collectionId);
           const modeDeclarations = groupedDeclarations.get(collectionId);
           if (modeDeclarations && modeDeclarations.length > 0) {
             css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
@@ -1170,14 +1183,14 @@ function generateCSSForMultipleVariables(
             }
           }
         }
-        
+
         css.push('  }');
-        if(format !== 'Tailwind CSS 4.0'){
+        if (format !== 'Tailwind CSS 4.0') {
           css.push('}\n');
         }
       } else {
         css.push(`${selector} {`);
-        
+
         // 对模式覆盖的值进行分组排序
         const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
           [...declarations],
@@ -1189,7 +1202,7 @@ function generateCSSForMultipleVariables(
         // 按集合顺序输出变量
         for (let i = 0; i < collectionOrder.length; i++) {
           const collectionId = collectionOrder[i];
-          const collection = allCollections.find(c => c.id === collectionId);
+          const collection = allCollections.find((c) => c.id === collectionId);
           const modeDeclarations = groupedDeclarations.get(collectionId);
           if (modeDeclarations && modeDeclarations.length > 0) {
             css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
@@ -1200,14 +1213,14 @@ function generateCSSForMultipleVariables(
             }
           }
         }
-        
+
         css.push('}\n');
       }
 
-      if(format === 'Tailwind CSS 4.0' && selector.startsWith('@media')){
+      if (format === 'Tailwind CSS 4.0' && selector.startsWith('@media')) {
         css.push('}\n');
         css.push('}\n');
-      }else if(format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')){
+      } else if (format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')) {
         css.push('}');
       }
     }
@@ -1222,7 +1235,7 @@ type TailwindColorConfig = {
 };
 
 // 添加新的函数用于生成 Tailwind 配置
-function generateTailwindConfig(results: Result[], format: ExportFormat): string {
+function generateTailwindConfig(results: Result[], format: ExportFormat,ignoreTopLevelNames:boolean = true): string {
   function parseVariablePath(name: string): string[] {
     const nameArr = name.split('/');
     return [
@@ -1341,18 +1354,18 @@ function generateTailwindConfig(results: Result[], format: ExportFormat): string
 
   // 添加一个辅助函数来处理变量值
   function processVariableValue(variable: Result['initialVariable']): string {
+    let name: string[];
+    if (ignoreTopLevelNames) {
+      name = variable.name.split('/').slice(1);
+    } else {
+      name = variable.name.split('/');
+    }
     // 检查是否是颜色变量
     if (variable.resolvedDataType === 'COLOR') {
-      return `rgb(var(--${variable.name
-        .split('/')
-        .map((segment) => changeCase.kebabCase(segment))
-        .join('-')}))`;
+      return `rgb(var(--${name.map((segment) => changeCase.kebabCase(segment)).join('-')}))`;
     }
     // 其他类型的变量保持原样
-    return `var(--${variable.name
-      .split('/')
-      .map((segment) => changeCase.kebabCase(segment))
-      .join('-')})`;
+    return `var(--${name.map((segment) => changeCase.kebabCase(segment)).join('-')})`;
   }
 
   // 处理所有变量
