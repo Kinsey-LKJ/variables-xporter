@@ -76,7 +76,6 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={lang as Locale} suppressHydrationWarning>
       <Head
-        faviconGlyph="✦"
         color={{
           hue: {
             light: 242,

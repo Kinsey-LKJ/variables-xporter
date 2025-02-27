@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'SWR',
-    short_name: 'SWR',
+    name: 'Variables Xporter',
+    short_name: 'Variables Xporter',
     icons: [
       {
         src: '/android-chrome-192x192.png',
