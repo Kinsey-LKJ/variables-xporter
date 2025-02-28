@@ -230,7 +230,7 @@ function App() {
         minConstraints={[400, 500]} // 最小尺寸
         maxConstraints={[800, 1000]} // 最大尺寸
         handle={
-          <ChevronsDown className='absolute bottom-0 right-0 -rotate-45 cursor-nwse-resize z-50' />
+          <ChevronsDown size={20} className='absolute bottom-0 right-0 -rotate-45 cursor-nwse-resize z-50' />
         }
       >
         <div className="h-full grid grid-rows-[auto_1fr] relative overflow-hidden">

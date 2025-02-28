@@ -290,7 +290,7 @@ const ExportPage = forwardRef<ExportPageHandles, { windowSize: { width: number; 
           <div className=" overflow-x-hidden h-full" ref={emblaRef}>
             <div className=" flex h-full items-start">
               <div className=" absolute -z-10 left-0 top-0">
-                <svg width={(windowSize.width - 15) * 3} height={windowSize.height - 52} viewBox="0 0 1200 448" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width={(windowSize.width) * 3} height={windowSize.height - 52} viewBox="0 0 1200 448" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_375_1247)">
                     <rect width="1200" height="448" fill="#0A1122" />
                     <path
