@@ -102,7 +102,7 @@ function App() {
   const [variables, setVariables] = useState<TVariable[] | undefined>(undefined);
   const [connectGithubState, setConnectGithubState] = useState<GithubState>('not-connected');
   const [connectedRepoInfo, setConnectedRepoInfo] = useState<ExtendedResult>(undefined);
-  const [opened, { open, close }] = useDisclosure(false);
+
   const [currentStep, setCurrentStep] = useState(0);
   const exportPageRef = useRef<ExportPageHandles>();
 
@@ -218,22 +218,15 @@ function App() {
             {textData.back}
           </Button>
           <div>
-            <Button size="xs" variant="subtle" className=" text-xs" onClick={open}>
+            <Button size="xs" variant="subtle" className=" text-xs">
               <BookText size={16} className=" mr-2" />
               {textData.documentation}
             </Button>
-            <Drawer
-              opened={opened}
-              onClose={close}
-              position="bottom"
-              title={textData.setting}
-              overlayProps={{ backgroundOpacity: 0.5, blur: 4}}
 
-            >
-              <Setting />
-            </Drawer>
 
-            <Button size="xs" variant="subtle" onClick={open}>
+            <Button size="xs" variant="subtle" onClick={() => {
+              exportPageRef.current.openSetting();
+            }}>
               <Settings size={16} className=" mr-2" />
               {textData.setting}
             </Button>

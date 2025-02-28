@@ -28,6 +28,18 @@ const theme = createTheme({
       '#402b84',
       '#28194d',
     ],
+    dark:[
+      "#9FAAC1",
+      "#7C879E",
+      "#5C667B",
+      "#4A5365",
+      "#38404F",
+      "#2E3543",
+      "#252B38",
+      "#1E232E",
+      "#181e2c",
+      "#101219"
+    ]
   },
   primaryShade: 3,
   components:{
@@ -65,10 +77,10 @@ const theme = createTheme({
 
     Drawer: Drawer.extend({
       classNames:{
-        content:"bg-background-muted",
-        header:"bg-background-muted",
+        content:"bg-background",
+        header:"bg-background",
         close:"hover:bg-accent",
-        title:"font-bold",
+        title:"font-bold  text-xl",
       }
     })
   }

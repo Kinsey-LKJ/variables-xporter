@@ -412,11 +412,11 @@ body {
 
 }
 
-/* @layer base {
+@layer base {
   * {
     @apply border-border;
   }
-} */
+}
 
 .connect-github-drawer .mantine-Drawer-content {
   display: flex;
