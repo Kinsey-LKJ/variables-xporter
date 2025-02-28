@@ -2,24 +2,37 @@ import { TVariableCollection, TVariable } from '../types/app';
 
 figma.showUI(__html__, { height: 500, width: 400 });
 
+const saveWindowSize = (size: { width: number; height: number }) => {
+  figma.clientStorage.setAsync('windowSize', size);
+};
+
+figma.clientStorage.getAsync('windowSize').then((size) => {
+  if (size) {
+    figma.ui.resize(size.width, size.height);
+    figma.ui.postMessage({
+      type: 'initSize',
+      size
+    });
+  }
+});
+
 // get github settings
-function getLocalData (key) {
-  console.log(key)
-  console.log(figma.clientStorage.getAsync(key))
-  return figma.clientStorage.getAsync(key)
+function getLocalData(key) {
+  console.log(key);
+  console.log(figma.clientStorage.getAsync(key));
+  return figma.clientStorage.getAsync(key);
 }
 
 // set github settings
-function setLocalData (key, data) {
-  figma.clientStorage.setAsync(key, data)
+function setLocalData(key, data) {
+  figma.clientStorage.setAsync(key, data);
 }
 
 // send github data to UI
-function init () {
-  getLocalData('github-data')
-    .then(githubData => {
-      figma.ui.postMessage({ type: 'github-data-got', githubData })
-    })
+function init() {
+  getLocalData('github-data').then((githubData) => {
+    figma.ui.postMessage({ type: 'github-data-got', githubData });
+  });
   // getLocalData('webhookData')
   //   .then(webhookData => {
   //     figma.ui.postMessage({ type: 'webhookDataGot', webhookData })
@@ -28,34 +41,34 @@ function init () {
 
 // init()
 
-figma.ui.onmessage = msg => {
+figma.ui.onmessage = (msg) => {
   switch (msg.type) {
     case 'set-github-data':
-      console.log(msg)
-      setLocalData('github-data', msg.githubData)
-      break
+      console.log(msg);
+      setLocalData('github-data', msg.githubData);
+      break;
 
     case 'cancel':
-      figma.closePlugin()
-      break
-  }
-}
+      figma.closePlugin();
+      break;
 
+    case 'resize':
+      figma.ui.resize(msg.width, msg.height);
+      saveWindowSize({ width: msg.width, height: msg.height });
+  }
+};
 
 figma.variables.getLocalVariableCollectionsAsync().then((collections) => {
-  const simplifiedCollections: TVariableCollection[] = collections.map(
-    (collection) => ({
-      id: collection.id,
-      name: collection.name,
-      hiddenFromPublishing: collection.hiddenFromPublishing,
-      remote: collection.remote,
-      variableIds: collection.variableIds,
-      modes: collection.modes,
-      defaultModeId: collection.defaultModeId,
-      key: collection.key,
-    })
-  );
-
+  const simplifiedCollections: TVariableCollection[] = collections.map((collection) => ({
+    id: collection.id,
+    name: collection.name,
+    hiddenFromPublishing: collection.hiddenFromPublishing,
+    remote: collection.remote,
+    variableIds: collection.variableIds,
+    modes: collection.modes,
+    defaultModeId: collection.defaultModeId,
+    key: collection.key,
+  }));
 
   figma.variables.getLocalVariablesAsync().then((variables) => {
     const simplifiedVariables: TVariable[] = variables.map((variable) => ({
@@ -72,7 +85,7 @@ figma.variables.getLocalVariableCollectionsAsync().then((collections) => {
       codeSyntax: variable.codeSyntax,
     }));
     figma.ui.postMessage({
-      type: "get-variables-data",
+      type: 'get-variables-data',
       data: {
         collections: simplifiedCollections,
         variables: simplifiedVariables,

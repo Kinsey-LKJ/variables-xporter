@@ -17,7 +17,7 @@ import {
 import ConnectGithub from './connect-github';
 import { useDisclosure } from '@mantine/hooks';
 import { Badge, Button, Checkbox, Drawer, Menu, Modal, Select, Tooltip } from '@mantine/core';
-import { ArrowLeft, BookText, ChevronLeftIcon, CircleAlert, EarthIcon, Github, Info, Settings } from 'lucide-react';
+import { ArrowLeft, BookText, ChevronLeftIcon, ChevronsDown, CircleAlert, EarthIcon, Github, Info, Settings } from 'lucide-react';
 import { sendInstallationIdAndRepo } from '../../lib/action';
 import gh from 'parse-github-url';
 import ExportPage, { ExportPageHandles } from './export-page';
@@ -29,6 +29,8 @@ import en from '../en.json';
 import { translations } from '../dictionary';
 import { Locale, defaultLocale, allLanguages } from '../dictionary';
 import Setting from './setting';
+import { Resizable } from 'react-resizable';
+import AspectRatioResizable from './aspect-ratio-resizable';
 
 const validateGithubURL = (url) => gh(url);
 
@@ -96,6 +98,7 @@ export const AppContext = createContext<AppContextProps>({
 });
 
 function App() {
+  const [size, setSize] = useState({ width: 400, height: 500 });
   const [language, setLanguage] = useState<Locale>(defaultLocale);
   const [textData, setTextData] = useState(translations[language]);
   const [collections, setCollections] = useState<TVariableCollection[] | undefined>(undefined);
@@ -111,6 +114,7 @@ function App() {
   useEffect(() => {
     setTextData(translations[language]);
   }, [language]);
+  
 
   onmessage = async (event: MessageEvent) => {
     const msg = event.data.pluginMessage;
@@ -125,6 +129,7 @@ function App() {
       case 'get-variables-data':
         setCollections(msg.data.collections);
         setVariables(msg.data.variables);
+      
 
       // case 'webhookDataGot':
       //   if (msg.webhookData) {
@@ -133,8 +138,22 @@ function App() {
       //     })
       //   }
       //   break
+      case 'initSize':
+        setSize(msg.size);
+        break;
     }
   };
+
+    // 向 Figma 主线程发送调整大小请求
+    const sendResizeMessage = (width: number, height: number) => {
+      parent.postMessage({
+        pluginMessage: {
+          type: 'resize',
+          width,
+          height
+        }
+      }, '*');
+    };
 
   const connectGithubForm = useConnectGithubForm({
     initialValues: {
@@ -201,53 +220,69 @@ function App() {
         setCurrentStep,
       }}
     >
-      <div className="h-full grid grid-rows-[auto_1fr] relative">
-        <div className=" flex justify-between items-center p-2">
-          <Button
-            variant="subtle"
-            leftSection={<ChevronLeftIcon />}
-            className="!pl-1 !pr-3 nav-back-button"
-            style={{
-              opacity: currentStep === 0 ? 0 : 1,
-              pointerEvents: currentStep === 0 ? 'none' : 'auto',
-            }}
-            onClick={() => {
-              exportPageRef.current.onPrevButtonClick();
-            }}
-          >
-            {textData.back}
-          </Button>
-          <div>
-            <Button size="xs" variant="subtle" className=" text-xs">
-              <BookText size={16} className=" mr-2" />
-              {textData.documentation}
+      <AspectRatioResizable
+        width={size.width}
+        height={size.height}
+        onResize={(e, { size: newSize }) => {
+          setSize(newSize);
+          sendResizeMessage(newSize.width, newSize.height);
+        }}
+        minConstraints={[400, 500]} // 最小尺寸
+        maxConstraints={[800, 1000]} // 最大尺寸
+        handle={
+          <ChevronsDown className='absolute bottom-0 right-0 -rotate-45 cursor-nwse-resize z-50' />
+        }
+      >
+        <div className="h-full grid grid-rows-[auto_1fr] relative overflow-hidden">
+          <div className=" flex justify-between items-center p-2">
+            <Button
+              variant="subtle"
+              leftSection={<ChevronLeftIcon />}
+              className="!pl-1 !pr-3 nav-back-button"
+              style={{
+                opacity: currentStep === 0 ? 0 : 1,
+                pointerEvents: currentStep === 0 ? 'none' : 'auto',
+              }}
+              onClick={() => {
+                exportPageRef.current.onPrevButtonClick();
+              }}
+            >
+              {textData.back}
             </Button>
+            <div>
+              <Button size="xs" variant="subtle" className=" text-xs">
+                <BookText size={16} className=" mr-2" />
+                {textData.documentation}
+              </Button>
 
+              <Button
+                size="xs"
+                variant="subtle"
+                onClick={() => {
+                  exportPageRef.current.openSetting();
+                }}
+              >
+                <Settings size={16} className=" mr-2" />
+                {textData.setting}
+              </Button>
+              <Menu>
+                <Menu.Target>
+                  <Button size="xs" variant="subtle">
+                    <EarthIcon size={16} className=" mr-2" /> {translations[language].language}
+                  </Button>
+                </Menu.Target>
 
-            <Button size="xs" variant="subtle" onClick={() => {
-              exportPageRef.current.openSetting();
-            }}>
-              <Settings size={16} className=" mr-2" />
-              {textData.setting}
-            </Button>
-            <Menu>
-              <Menu.Target>
-                <Button size="xs" variant="subtle">
-                  <EarthIcon size={16} className=" mr-2" /> {translations[language].language}
-                </Button>
-              </Menu.Target>
+                <Menu.Dropdown>
+                  {Object.keys(translations).map((lang) => (
+                    <Menu.Item key={lang} onClick={() => setLanguage(lang)}>
+                      {translations[lang].language}
+                    </Menu.Item>
+                  ))}
+                </Menu.Dropdown>
+              </Menu>
+            </div>
 
-              <Menu.Dropdown>
-                {Object.keys(translations).map((lang) => (
-                  <Menu.Item key={lang} onClick={() => setLanguage(lang)}>
-                    {translations[lang].language}
-                  </Menu.Item>
-                ))}
-              </Menu.Dropdown>
-            </Menu>
-          </div>
-
-          {/* <ConnectGithubFormProvider form={connectGithubForm}>
+            {/* <ConnectGithubFormProvider form={connectGithubForm}>
             <Drawer.Root
               opened={opened}
               onClose={close}
@@ -272,10 +307,11 @@ function App() {
               </Badge>
             </Button>
           </ConnectGithubFormProvider> */}
-        </div>
+          </div>
 
-        <ExportPage ref={exportPageRef} />
-      </div>
+          <ExportPage ref={exportPageRef} windowSize={size} />
+        </div>
+      </AspectRatioResizable>
     </AppContext.Provider>
   );
 }
