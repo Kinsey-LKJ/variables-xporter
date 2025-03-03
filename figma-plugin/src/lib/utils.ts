@@ -128,7 +128,8 @@ export function processConstantValue(
   useRemUnit: boolean,
   variableCSSName: string,
   variableName: string,
-  format: ExportFormat
+  format: ExportFormat,
+  rootElementSize: number
 ): string {
   if (isColorValue(value)) {
     return processColorValue(value, format);
@@ -142,7 +143,7 @@ export function processConstantValue(
     if (['OPACITY', 'TEXT_CONTENT'].some((item: VariableScope) => scopes.includes(item))) {
       return `${value}`;
     } else if (!isMustPx && useRemUnit && !isNonUnit && !isNotSupportRemUnit) {
-      return `${(value as number) / 16}rem`;
+      return `${(value as number) / rootElementSize}rem`;
     } else if (!isNonUnit) {
       return `${value}px`;
     } else {
@@ -744,7 +745,8 @@ function generateCSSForMultipleVariables(
   allCollections: TVariableCollection[],
   appendCollectionName: boolean = false,
   useRemUnit: boolean = false,
-  format: ExportFormat
+  format: ExportFormat,
+  rootElementSize: number = 16
 ): string {
   const themeRootSelector = format === 'Tailwind CSS 4.0' ? '@theme' : ':root';
   const css: string[] = [];
@@ -806,7 +808,8 @@ function generateCSSForMultipleVariables(
         useRemUnit,
         variableCSSName,
         variable.name,
-        format
+        format,
+        rootElementSize
       );
 
       const declaration = `  --${variableCSSName}: ${processedValue};`;
@@ -943,7 +946,8 @@ function generateCSSForMultipleVariables(
                 useRemUnit,
                 variableCSSName,
                 initialVariable.name,
-                format
+                format,
+                rootElementSize
               )
             : defaultMode.value;
         const declaration = `  --${variableCSSName}: ${processedValue};`;
@@ -1016,7 +1020,8 @@ function generateCSSForMultipleVariables(
                   useRemUnit,
                   variableCSSName,
                   initialVariable.name,
-                  format
+                  format,
+                  rootElementSize
                 )
               : modeData.value;
           const declaration = `  --${variableCSSName}: ${processedValue};`;
@@ -1463,13 +1468,14 @@ export async function generateThemeFiles(
   useRemUnit: boolean = false,
   selectGroup: string[] = [],
   ignoreGroup: string[] = [],
-  exportFormat: ExportFormat
+  exportFormat: ExportFormat,
+  rootElementSize: number = 16
 ): Promise<{ css: string; tailwindConfig: string }> {
   console.log('ignoreGroup', ignoreGroup);
   try {
     const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup, exportFormat);
     console.log('results', results);
-    const css = generateCSSForMultipleVariables(results, collections, appendCollectionName, useRemUnit, exportFormat);
+    const css = generateCSSForMultipleVariables(results, collections, appendCollectionName, useRemUnit, exportFormat, rootElementSize);
     const tailwindConfig = generateTailwindConfig(results, exportFormat);
     return { css, tailwindConfig };
   } catch (error) {
