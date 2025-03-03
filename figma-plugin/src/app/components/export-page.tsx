@@ -136,6 +136,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
     initialValues: {
       selectCollectionID: '',
       useRemUnit: true,
+      rootElementSize: 16,
       selectVariableGroup: [],
       ignoreTailwindColor: true,
       fileName: '',
@@ -195,7 +196,8 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                 ? tailwindV4IgnoreGroup
                 : tailwindV3IgnoreGroup
               : [],
-            formValues.exportFormat
+            formValues.exportFormat,
+            formValues.rootElementSize
           );
           setTailwindCSSOutput({
             config: tailwindConfig,
@@ -207,7 +209,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
       }
     };
     generateTheme();
-  }, [formValues.useRemUnit, formValues.ignoreTailwindColor, formValues.exportFormat]);
+  }, [formValues.useRemUnit, formValues.ignoreTailwindColor, formValues.exportFormat, formValues.rootElementSize]);
 
   const submitForm = async () => {
     setSubmitting(true);
@@ -248,7 +250,8 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                 ? tailwindV4IgnoreGroup
                 : tailwindV3IgnoreGroup
               : [],
-            formValues.exportFormat
+            formValues.exportFormat,
+            formValues.rootElementSize
           );
           setTailwindCSSOutput({
             config: tailwindConfig,

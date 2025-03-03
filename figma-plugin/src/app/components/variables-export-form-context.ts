@@ -10,6 +10,7 @@ interface VariableFormValues {
   fileName: string;
   updateMessage: string;
   exportFormat:ExportFormat;
+  rootElementSize: number;
 }
 
 // You can give context variables any name
