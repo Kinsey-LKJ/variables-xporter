@@ -1,6 +1,6 @@
 import { TVariableCollection, TVariable } from '../types/app';
 
-figma.showUI(__html__, { height: 500, width: 400 });
+figma.showUI(__html__, { height: 625, width: 500 });
 
 const saveWindowSize = (size: { width: number; height: number }) => {
   figma.clientStorage.setAsync('windowSize', size);

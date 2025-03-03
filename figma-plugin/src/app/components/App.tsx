@@ -98,7 +98,7 @@ export const AppContext = createContext<AppContextProps>({
 });
 
 function App() {
-  const [size, setSize] = useState({ width: 400, height: 500 });
+  const [size, setSize] = useState({ width: 500, height: 625 });
   const [language, setLanguage] = useState<Locale>(defaultLocale);
   const [textData, setTextData] = useState(translations[language]);
   const [collections, setCollections] = useState<TVariableCollection[] | undefined>(undefined);

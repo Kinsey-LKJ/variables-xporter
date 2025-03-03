@@ -95,7 +95,7 @@ export function processColorValue(value: ColorValue, format: ExportFormat): stri
   const g = Math.round(value.g * 255);
   const b = Math.round(value.b * 255);
 
-  if (format === 'Tailwind CSS 4.0') {
+  if (format === 'Tailwind CSS V4') {
     const oklch = convert([value.r, value.g, value.b], sRGB, OKLCH, [0, 0, 0]);
 
     // 优化数字显示格式的辅助函数
@@ -269,7 +269,7 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
   const restParts = name.slice(name.indexOf('/'));
 
   // 根据 format 选择规则集
-  const rules = format === 'Tailwind CSS 4.0' ? tailwindv4Rule : tailwindv3Rule;
+  const rules = format === 'Tailwind CSS V4' ? tailwindv4Rule : tailwindv3Rule;
 
   // if (firstPart === 'font') {
   //   const fontVariableFirstPart = restParts.split('/')[1];
@@ -304,7 +304,7 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
     // 1. text/sm 或 font-size/sm
     // 2. text/sm/font-size 或 font-size/sm/font-size
     const fontSizeMatch = name.match(
-      format === 'Tailwind CSS 4.0'
+      format === 'Tailwind CSS V4'
         ? new RegExp(`^text\\/([^/]+)(?:\\/(?:${fontSizePattern})?)?$`)
         : new RegExp(`^font-size\\/([^/]+)(?:\\/(?:${fontSizePattern})?)?$`)
     );
@@ -347,7 +347,7 @@ function processMergedFontConfigs(
     console.log('name', name);
 
     const fontMatch = name.match(
-      format === 'Tailwind CSS 4.0'
+      format === 'Tailwind CSS V4'
         ? new RegExp(`^text\\/([^/]+)\\/(${tailwindV4TypographyPropPattern}|[Dd][Ee][Ff][Aa][Uu][Ll][Tt])$`)
         : new RegExp(`^font-size\\/([^/]+)\\/(${tailwindV3TypographyPropPattern}|[Dd][Ee][Ff][Aa][Uu][Ll][Tt])$`)
     );
@@ -393,7 +393,7 @@ function processMergedFontConfigs(
       delete fontConfigs[variant];
       // 移除这些变量的已使用标记
       for (const usedVar of usedVariables) {
-        if (usedVar.startsWith(`${format === 'Tailwind CSS 4.0' ? 'text' : 'font-size'}/${variant}/`)) {
+        if (usedVar.startsWith(`${format === 'Tailwind CSS V4' ? 'text' : 'font-size'}/${variant}/`)) {
           usedVariables.delete(usedVar);
         }
       }
@@ -564,12 +564,16 @@ function resolveVariables(
   const results: Result[] = [];
   const visitedVariableIds = new Set<string>();
 
+  console.log('ignoreGroup in resolveVariables', ignoreGroup);
+
   const filtered = output.filter((item) => {
     return (
       selectGroup.some((group) => item.name.startsWith(group + '/') || item.name === group) &&
-      !ignoreGroup.some((group) => item.name.startsWith(group + '/'))
+      !ignoreGroup.some((group) => variableNameCorrection(item.name, format).startsWith(group))
     );
   });
+
+  console.log('filtered', filtered);
 
   for (const variable of filtered) {
     try {
@@ -746,9 +750,10 @@ function generateCSSForMultipleVariables(
   appendCollectionName: boolean = false,
   useRemUnit: boolean = false,
   format: ExportFormat,
-  rootElementSize: number = 16
+  rootElementSize: number = 16,
+  selectCollectionID: string
 ): string {
-  const themeRootSelector = format === 'Tailwind CSS 4.0' ? '@theme' : ':root';
+  const themeRootSelector = format === 'Tailwind CSS V4' ? '@theme' : ':root';
   const css: string[] = [];
   const defaultValues: Map<string, string> = new Map();
   const modeOverrides: Map<string, Set<string>> = new Map();
@@ -774,7 +779,7 @@ function generateCSSForMultipleVariables(
     }
 
     let variableCSSName = getVariableCSSName(variable, originalCollection, appendCollectionName);
-    if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS 4.0') {
+    if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS V4') {
       variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
     }
 
@@ -906,7 +911,7 @@ function generateCSSForMultipleVariables(
     const defaultMode = modes[initialVariable.collection.defaultModeId];
     if (defaultMode) {
       let variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection, appendCollectionName);
-      if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS 4.0') {
+      if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS V4') {
         variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
       }
       console.log('--------------处理默认模式---------------');
@@ -1053,15 +1058,15 @@ function generateCSSForMultipleVariables(
 
   const tailwindcssv4NeedUpdateVariablesName: { [key: string]: string } = {};
 
-  if (format === 'Tailwind CSS 4.0') {
+  if (format === 'Tailwind CSS V4') {
     const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results, format);
     console.log('mergedFontConfig', mergedFontConfig);
 
     for (const [variantName, config] of Object.entries(mergedFontConfig)) {
-      console.log('Tailwind CSS 4.0 config', config);
+      console.log('Tailwind CSS V4 config', config);
       if (Array.isArray(config)) {
         const [fontSize, settings] = config as [string, Record<string, string>];
-        console.log('Tailwind CSS 4.0 fontSize', fontSize);
+        console.log('Tailwind CSS V4 fontSize', fontSize);
         console.log('variantName', variantName);
         console.log('settings', settings);
 
@@ -1076,7 +1081,7 @@ function generateCSSForMultipleVariables(
           for (const [prop, value] of Object.entries(settings)) {
             console.log('variantName,prop', variantName, prop);
 
-            // 对于符合条件的其他字体变量，更改为 Tailwind CSS 4.0 指定的格式
+            // 对于符合条件的其他字体变量，更改为 Tailwind CSS V4 指定的格式
             tailwindcssv4NeedUpdateVariablesName[`text-${variantName}-${changeCase.kebabCase(prop)}`] =
               `text-${variantName}--${changeCase.kebabCase(prop)}`;
             // 保持原始值
@@ -1093,7 +1098,7 @@ function generateCSSForMultipleVariables(
       }
     }
 
-    console.log('Tailwind CSS 4.0 defaultValues', defaultValues);
+    console.log('Tailwind CSS V4 defaultValues', defaultValues);
 
     // 处理每个结果
     for (const result of results) {
@@ -1108,11 +1113,13 @@ function generateCSSForMultipleVariables(
       processResult(result, defaultValues, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
     }
   } else {
-    // 非 Tailwind CSS 4.0 格式，使用原有的处理逻辑
+    // 非 Tailwind CSS V4 格式，使用原有的处理逻辑
     for (const result of results) {
       processResult(result, defaultValues, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
     }
   }
+
+  let defaultValuesCSSInOtherCollection = '';
 
   if (defaultValues.size > 0) {
     css.push('/* Default Mode */');
@@ -1120,7 +1127,9 @@ function generateCSSForMultipleVariables(
 
     const currentCollectionId = results[0].initialVariable.collection.id;
 
+    //**
     // 对默认值进行分组排序
+    // **
     const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
       [...defaultValues.values()],
       currentCollectionId,
@@ -1133,17 +1142,47 @@ function generateCSSForMultipleVariables(
       const collectionId = collectionOrder[i];
       const collection = allCollections.find((c) => c.id === collectionId);
       const declarations = groupedDeclarations.get(collectionId);
-      if (declarations && declarations.length > 0) {
-        css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
-        css.push(declarations.join('\n'));
-        // 如果不是最后一个集合，添加换行
-        if (i < collectionOrder.length - 1) {
-          css.push('');
+      if (format === 'Tailwind CSS V4') {
+        if (declarations && declarations.length > 0) {
+          if (collectionId === selectCollectionID) {
+            css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
+            css.push(declarations.join('\n'));
+            // 如果不是最后一个集合，添加换行
+            if (i < collectionOrder.length - 1) {
+              css.push('');
+            }
+          } else {
+            if (defaultValuesCSSInOtherCollection === '') {
+              defaultValuesCSSInOtherCollection += ':root{';
+              defaultValuesCSSInOtherCollection += '\n';
+            } else {
+              defaultValuesCSSInOtherCollection += '\n';
+              defaultValuesCSSInOtherCollection += '\n';
+            }
+            defaultValuesCSSInOtherCollection += `  /* Collection: ${collection?.name || 'Current Collection'} */`;
+            defaultValuesCSSInOtherCollection += '\n';
+            defaultValuesCSSInOtherCollection += declarations.join('\n');
+          }
+        }
+      } else {
+        if (declarations && declarations.length > 0) {
+          css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
+          css.push(declarations.join('\n'));
+          // 如果不是最后一个集合，添加换行
+          if (i < collectionOrder.length - 1) {
+            css.push('');
+          }
         }
       }
     }
 
     css.push('}\n');
+  }
+
+  if (defaultValuesCSSInOtherCollection) {
+    defaultValuesCSSInOtherCollection += '\n';
+    defaultValuesCSSInOtherCollection += '} \n';
+    css.push(defaultValuesCSSInOtherCollection);
   }
 
   // 对选择器进行排序
@@ -1154,17 +1193,14 @@ function generateCSSForMultipleVariables(
     const declarations = modeOverrides.get(selector);
     if (declarations?.size > 0) {
       css.push(`/* Mode Override */`);
-      if (format === 'Tailwind CSS 4.0' && selector.startsWith('@media')) {
+      if (format === 'Tailwind CSS V4' && selector.startsWith('@media')) {
         css.push(`${selector} {`);
-        css.push('@layer theme {');
-      } else if (format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')) {
-        css.push('@layer theme {');
       }
       if (selector.startsWith('@media')) {
-        if (format !== 'Tailwind CSS 4.0') {
+        if (format !== 'Tailwind CSS V4') {
           css.push(`${selector} {`);
         }
-        css.push(format === 'Tailwind CSS 4.0' ? ':root {' : themeRootSelector + ' {');
+        css.push(format === 'Tailwind CSS V4' ? ':root {' : themeRootSelector + ' {');
 
         // 对模式覆盖的值进行分组排序
         const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
@@ -1190,7 +1226,7 @@ function generateCSSForMultipleVariables(
         }
 
         css.push('  }');
-        if (format !== 'Tailwind CSS 4.0') {
+        if (format !== 'Tailwind CSS V4') {
           css.push('}\n');
         }
       } else {
@@ -1222,11 +1258,9 @@ function generateCSSForMultipleVariables(
         css.push('}\n');
       }
 
-      if (format === 'Tailwind CSS 4.0' && selector.startsWith('@media')) {
+      if (format === 'Tailwind CSS V4' && selector.startsWith('@media')) {
         css.push('}\n');
-        css.push('}\n');
-      } else if (format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')) {
-        css.push('}');
+        // css.push('}\n');
       }
     }
   }
@@ -1240,7 +1274,7 @@ type TailwindColorConfig = {
 };
 
 // 添加新的函数用于生成 Tailwind 配置
-function generateTailwindConfig(results: Result[], format: ExportFormat,ignoreTopLevelNames:boolean = true): string {
+function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreTopLevelNames: boolean = false): string {
   function parseVariablePath(name: string): string[] {
     const nameArr = name.split('/');
     return [
@@ -1301,7 +1335,7 @@ function generateTailwindConfig(results: Result[], format: ExportFormat,ignoreTo
       }
 
       // 匹配 (font/)?property/xx 格式
-      const pattern = `^(font\\/|)(${format === 'Tailwind CSS 4.0' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})\\/([^/]+)$`;
+      const pattern = `^(font\\/|)(${format === 'Tailwind CSS V4' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})\\/([^/]+)$`;
       const match = name.match(new RegExp(pattern));
 
       if (match) {
@@ -1389,7 +1423,7 @@ function generateTailwindConfig(results: Result[], format: ExportFormat,ignoreTo
     // 检查是否是标准字体配置模式
     const fontMatch = name.match(
       new RegExp(
-        `^font\\/([^/]+)\\/(${format === 'Tailwind CSS 4.0' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})$`
+        `^font\\/([^/]+)\\/(${format === 'Tailwind CSS V4' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})$`
       )
     );
     if (fontMatch) {
@@ -1469,13 +1503,23 @@ export async function generateThemeFiles(
   selectGroup: string[] = [],
   ignoreGroup: string[] = [],
   exportFormat: ExportFormat,
-  rootElementSize: number = 16
+  rootElementSize: number = 16,
+  selectCollectionID: string
 ): Promise<{ css: string; tailwindConfig: string }> {
   console.log('ignoreGroup', ignoreGroup);
   try {
+    console.log('ignoreGroup', ignoreGroup);
     const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup, exportFormat);
     console.log('results', results);
-    const css = generateCSSForMultipleVariables(results, collections, appendCollectionName, useRemUnit, exportFormat, rootElementSize);
+    const css = generateCSSForMultipleVariables(
+      results,
+      collections,
+      appendCollectionName,
+      useRemUnit,
+      exportFormat,
+      rootElementSize,
+      selectCollectionID
+    );
     const tailwindConfig = generateTailwindConfig(results, exportFormat);
     return { css, tailwindConfig };
   } catch (error) {

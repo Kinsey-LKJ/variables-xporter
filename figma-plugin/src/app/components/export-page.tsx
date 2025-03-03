@@ -141,7 +141,7 @@ const ExportPage = forwardRef<ExportPageHandles, { windowSize: { width: number; 
       ignoreTailwindColor: true,
       fileName: '',
       updateMessage: '',
-      exportFormat: 'Tailwind CSS',
+      exportFormat: 'Tailwind CSS V3',
     },
   });
 
@@ -192,12 +192,13 @@ const ExportPage = forwardRef<ExportPageHandles, { windowSize: { width: number; 
             formValues.useRemUnit,
             formValues.selectVariableGroup,
             formValues.ignoreTailwindColor
-              ? formValues.exportFormat === 'Tailwind CSS'
+              ? formValues.exportFormat === 'Tailwind CSS V4'
                 ? tailwindV4IgnoreGroup
                 : tailwindV3IgnoreGroup
               : [],
             formValues.exportFormat,
-            formValues.rootElementSize
+            formValues.rootElementSize,
+            formValues.selectCollectionID
           );
           setTailwindCSSOutput({
             config: tailwindConfig,
@@ -246,12 +247,13 @@ const ExportPage = forwardRef<ExportPageHandles, { windowSize: { width: number; 
             formValues.useRemUnit,
             formValues.selectVariableGroup,
             formValues.ignoreTailwindColor
-              ? formValues.exportFormat === 'Tailwind CSS'
+              ? formValues.exportFormat === 'Tailwind CSS V4'
                 ? tailwindV4IgnoreGroup
                 : tailwindV3IgnoreGroup
               : [],
             formValues.exportFormat,
-            formValues.rootElementSize
+            formValues.rootElementSize,
+            formValues.selectCollectionID
           );
           setTailwindCSSOutput({
             config: tailwindConfig,
