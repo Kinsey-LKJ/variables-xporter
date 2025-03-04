@@ -49,6 +49,8 @@ checksums:
     ignore_default_palette_description: 93cadacb97e80e00437998e967dc40bc
     tailwind_css_figma_template: 1eafee06faeeb1f8b46745179dbe46f3
     documentation: c3ac75f1d6ae0b9f28104800bc9b889c
+    setting: 7db29f8adfdc827695da1ebe5a513d4f
+    root_element_size: 754f0e1f04939a01096ed541bbfba94b
   3a510916633619a36c46f7b6ae466490:
     md-section-0: 2bb2c65131ca6c14a40dc0473968447f
     md-section-1: 2f146f38a72aadaa46cceaa266400b3b

@@ -14,5 +14,7 @@
   "ignore_tailwind_css_default_palette": "Ignorer la palette par défaut de Tailwind CSS",
   "ignore_default_palette_description": "Cette option ignorera les palettes par défaut de Tailwind CSS comme Slate, Gray, Zinc, Neutral... Si vous ne les avez pas modifiées et utilisez les valeurs par défaut, vous devriez les ignorer.",
   "tailwind_css_figma_template": "Modèle Figma pour Tailwind CSS",
-  "documentation": "Documentation"
+  "documentation": "Documentation",
+  "setting": "Paramètres",
+  "root_element_size": "Taille de l'élément racine"
 }
