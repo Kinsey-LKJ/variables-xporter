@@ -50,6 +50,11 @@ const SelectVariableGroups = (props: SelectVariableGroupsProps) => {
       }
     }
   }, [selectCollectionID]);
+  
+
+  useEffect(() => {
+    form.setFieldValue('selectVariableGroup', []);
+  }, [selectCollectionID]);
 
   return selectCollectionID ? (
     <MultiSelect

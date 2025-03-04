@@ -99,7 +99,7 @@ export default async function RootLayout({ children, params }) {
         <Layout
           banner={
             <Banner storageKey="Variables Xporter">
-              Variables Xporter now supports Tailwind CSS 4.0 ✨
+              Variables Xporter now supports Tailwind CSS V4 ✨
             </Banner>
           }
           i18n={i18n}

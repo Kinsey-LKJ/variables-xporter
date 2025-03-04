@@ -3,8 +3,6 @@ import * as changeCase from 'change-case';
 import { convert, OKLCH, sRGB, DisplayP3 } from '@texel/color';
 import Color from 'colorjs.io';
 
-
-
 export type RGB = {
   r: number;
   g: number;
@@ -97,14 +95,14 @@ export function processColorValue(value: ColorValue, format: ExportFormat): stri
   const g = Math.round(value.g * 255);
   const b = Math.round(value.b * 255);
 
-  if (format === 'Tailwind CSS 4.0') {
+  if (format === 'Tailwind CSS V4') {
     const oklch = convert([value.r, value.g, value.b], sRGB, OKLCH, [0, 0, 0]);
-    
+
     // 优化数字显示格式的辅助函数
     const formatNumber = (num: number, precision: number) => {
       // 如果数字为 0，直接返回 "0"
-      if (num === 0) return "0";
-      
+      if (num === 0) return '0';
+
       const fixed = Number(num.toFixed(precision));
       // 如果固定精度后的数字等于整数部分，返回整数
       if (fixed === Math.floor(fixed)) return fixed.toString();
@@ -130,7 +128,8 @@ export function processConstantValue(
   useRemUnit: boolean,
   variableCSSName: string,
   variableName: string,
-  format: ExportFormat
+  format: ExportFormat,
+  rootElementSize: number
 ): string {
   if (isColorValue(value)) {
     return processColorValue(value, format);
@@ -144,7 +143,7 @@ export function processConstantValue(
     if (['OPACITY', 'TEXT_CONTENT'].some((item: VariableScope) => scopes.includes(item))) {
       return `${value}`;
     } else if (!isMustPx && useRemUnit && !isNonUnit && !isNotSupportRemUnit) {
-      return `${(value as number) / 16}rem`;
+      return `${(value as number) / rootElementSize}rem`;
     } else if (!isNonUnit) {
       return `${value}px`;
     } else {
@@ -270,7 +269,7 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
   const restParts = name.slice(name.indexOf('/'));
 
   // 根据 format 选择规则集
-  const rules = format === 'Tailwind CSS 4.0' ? tailwindv4Rule : tailwindv3Rule;
+  const rules = format === 'Tailwind CSS V4' ? tailwindv4Rule : tailwindv3Rule;
 
   // if (firstPart === 'font') {
   //   const fontVariableFirstPart = restParts.split('/')[1];
@@ -296,16 +295,16 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
       .map(([key]) => key);
 
     // 构建正则表达式模式
-    const fontSizePattern = fontSizeProps.map(prop => prop.replace(/[-]/g, '\\-')).join('|');
-    
+    const fontSizePattern = fontSizeProps.map((prop) => prop.replace(/[-]/g, '\\-')).join('|');
+
     // 构建新的名称
     const name = `${rules[firstPart]}${restParts}`;
-    
+
     // 匹配两种模式：
     // 1. text/sm 或 font-size/sm
     // 2. text/sm/font-size 或 font-size/sm/font-size
     const fontSizeMatch = name.match(
-      format === 'Tailwind CSS 4.0'
+      format === 'Tailwind CSS V4'
         ? new RegExp(`^text\\/([^/]+)(?:\\/(?:${fontSizePattern})?)?$`)
         : new RegExp(`^font-size\\/([^/]+)(?:\\/(?:${fontSizePattern})?)?$`)
     );
@@ -321,7 +320,11 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
   return name;
 };
 // 处理需要合并的字体配置，并返回已使用的变量名集合
-function processMergedFontConfigs(results: Result[], format: ExportFormat): [Record<string, any>, Set<string>] {
+function processMergedFontConfigs(
+  results: Result[],
+  format: ExportFormat,
+  ignoreTopLevelNames: boolean = true
+): [Record<string, any>, Set<string>] {
   const fontConfigs: Record<
     string,
     {
@@ -344,7 +347,7 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
     console.log('name', name);
 
     const fontMatch = name.match(
-      format === 'Tailwind CSS 4.0'
+      format === 'Tailwind CSS V4'
         ? new RegExp(`^text\\/([^/]+)\\/(${tailwindV4TypographyPropPattern}|[Dd][Ee][Ff][Aa][Uu][Ll][Tt])$`)
         : new RegExp(`^font-size\\/([^/]+)\\/(${tailwindV3TypographyPropPattern}|[Dd][Ee][Ff][Aa][Uu][Ll][Tt])$`)
     );
@@ -364,10 +367,14 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
 
       const defaultMode = result.modes[initialVariable.collection.defaultModeId];
       if (defaultMode && defaultMode.value !== undefined) {
-        const value = `var(--${name
-          .split('/')
-          .map((segment) => changeCase.kebabCase(segment))
-          .join('-')})`;
+        let nameArray: string[];
+        if (ignoreTopLevelNames) {
+          nameArray = name.split('/').slice(1);
+        } else {
+          nameArray = name.split('/');
+        }
+
+        const value = `var(--${nameArray.map((segment) => changeCase.kebabCase(segment)).join('-')})`;
         fontConfigs[variant][prop as keyof (typeof fontConfigs)[string]] = value;
         console.log(value);
         console.log(prop);
@@ -386,7 +393,7 @@ function processMergedFontConfigs(results: Result[], format: ExportFormat): [Rec
       delete fontConfigs[variant];
       // 移除这些变量的已使用标记
       for (const usedVar of usedVariables) {
-        if (usedVar.startsWith(`${ format === "Tailwind CSS 4.0" ? "text" : "font-size"}/${variant}/`)) {
+        if (usedVar.startsWith(`${format === 'Tailwind CSS V4' ? 'text' : 'font-size'}/${variant}/`)) {
           usedVariables.delete(usedVar);
         }
       }
@@ -557,12 +564,16 @@ function resolveVariables(
   const results: Result[] = [];
   const visitedVariableIds = new Set<string>();
 
+  console.log('ignoreGroup in resolveVariables', ignoreGroup);
+
   const filtered = output.filter((item) => {
     return (
       selectGroup.some((group) => item.name.startsWith(group + '/') || item.name === group) &&
-      !ignoreGroup.some((group) => item.name.startsWith(group + '/'))
+      !ignoreGroup.some((group) => variableNameCorrection(item.name, format).startsWith(group))
     );
   });
+
+  console.log('filtered', filtered);
 
   for (const variable of filtered) {
     try {
@@ -597,10 +608,10 @@ function sortCSSDeclarationsByCollection(
   const unknownDeclarations: string[] = [];
 
   // 首先将声明按集合分组
-  declarations.forEach(declaration => {
+  declarations.forEach((declaration) => {
     const varName = declaration.match(/--([^:]+):/)?.[1] || '';
     const varInfo = variableMap.get(varName);
-    
+
     if (!varInfo) {
       // 如果找不到变量信息，将其归类到默认集合
       if (!groupedDeclarations.has(defaultCollectionId)) {
@@ -612,7 +623,7 @@ function sortCSSDeclarationsByCollection(
       groupedDeclarations.get(defaultCollectionId)!.push(declaration);
       return;
     }
-    
+
     const { collectionId } = varInfo;
     if (!groupedDeclarations.has(collectionId)) {
       groupedDeclarations.set(collectionId, []);
@@ -636,12 +647,12 @@ function sortCSSDeclarationsByCollection(
     sortedDeclarations.forEach((declaration, index) => {
       const varName = declaration.match(/--([^-]+)-/)?.[1] || '';
       const currentFirstLetter = varName.charAt(0);
-      
+
       // 如果首字母变化了，并且不是第一个声明，添加空行
       if (currentFirstLetter !== lastFirstLetter && lastFirstLetter !== '') {
         sortedGroup.push('');
       }
-      
+
       sortedGroup.push(declaration);
       lastFirstLetter = currentFirstLetter;
     });
@@ -738,13 +749,15 @@ function generateCSSForMultipleVariables(
   allCollections: TVariableCollection[],
   appendCollectionName: boolean = false,
   useRemUnit: boolean = false,
-  format: ExportFormat
+  format: ExportFormat,
+  rootElementSize: number = 16,
+  selectCollectionID: string
 ): string {
-  const themeRootSelector = format === 'Tailwind CSS 4.0' ? '@theme' : ':root';
+  const themeRootSelector = format === 'Tailwind CSS V4' ? '@theme' : ':root';
   const css: string[] = [];
   const defaultValues: Map<string, string> = new Map();
   const modeOverrides: Map<string, Set<string>> = new Map();
-  
+
   // 创建变量到集合的映射
   const variableCollectionMap = new Map<string, { collectionId: string; collectionName: string }>();
 
@@ -766,14 +779,14 @@ function generateCSSForMultipleVariables(
     }
 
     let variableCSSName = getVariableCSSName(variable, originalCollection, appendCollectionName);
-    if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS 4.0') {
+    if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS V4') {
       variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
     }
-    
+
     // 记录变量所属的集合信息
     variableCollectionMap.set(variableCSSName, {
       collectionId: referencingCollection.id,
-      collectionName: referencingCollection.name
+      collectionName: referencingCollection.name,
     });
 
     if (typeof value !== 'object' || isColorValue(value)) {
@@ -800,7 +813,8 @@ function generateCSSForMultipleVariables(
         useRemUnit,
         variableCSSName,
         variable.name,
-        format
+        format,
+        rootElementSize
       );
 
       const declaration = `  --${variableCSSName}: ${processedValue};`;
@@ -897,7 +911,7 @@ function generateCSSForMultipleVariables(
     const defaultMode = modes[initialVariable.collection.defaultModeId];
     if (defaultMode) {
       let variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection, appendCollectionName);
-      if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS 4.0') {
+      if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS V4') {
         variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
       }
       console.log('--------------处理默认模式---------------');
@@ -905,7 +919,11 @@ function generateCSSForMultipleVariables(
 
       if (defaultMode.variable) {
         // 如果是引用其他变量
-        const referencedVarName = getVariableCSSName(defaultMode.variable, initialVariable.collection, appendCollectionName);
+        const referencedVarName = getVariableCSSName(
+          defaultMode.variable,
+          initialVariable.collection,
+          appendCollectionName
+        );
         const rootReference = `  --${variableCSSName}: var(--${referencedVarName});`;
         defaultValues.set(variableCSSName, rootReference);
 
@@ -933,7 +951,8 @@ function generateCSSForMultipleVariables(
                 useRemUnit,
                 variableCSSName,
                 initialVariable.name,
-                format
+                format,
+                rootElementSize
               )
             : defaultMode.value;
         const declaration = `  --${variableCSSName}: ${processedValue};`;
@@ -954,7 +973,11 @@ function generateCSSForMultipleVariables(
 
         if (modeData.variable) {
           // 如果是引用其他变量
-          const referencedVarName = getVariableCSSName(modeData.variable, initialVariable.collection, appendCollectionName);
+          const referencedVarName = getVariableCSSName(
+            modeData.variable,
+            initialVariable.collection,
+            appendCollectionName
+          );
           const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
 
           const modeInfos = getModeNamesAndCollections(parentModes, allCollections).filter(
@@ -1002,7 +1025,8 @@ function generateCSSForMultipleVariables(
                   useRemUnit,
                   variableCSSName,
                   initialVariable.name,
-                  format
+                  format,
+                  rootElementSize
                 )
               : modeData.value;
           const declaration = `  --${variableCSSName}: ${processedValue};`;
@@ -1034,15 +1058,15 @@ function generateCSSForMultipleVariables(
 
   const tailwindcssv4NeedUpdateVariablesName: { [key: string]: string } = {};
 
-  if (format === 'Tailwind CSS 4.0') {
+  if (format === 'Tailwind CSS V4') {
     const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results, format);
     console.log('mergedFontConfig', mergedFontConfig);
 
     for (const [variantName, config] of Object.entries(mergedFontConfig)) {
-      console.log('Tailwind CSS 4.0 config', config);
+      console.log('Tailwind CSS V4 config', config);
       if (Array.isArray(config)) {
         const [fontSize, settings] = config as [string, Record<string, string>];
-        console.log('Tailwind CSS 4.0 fontSize', fontSize);
+        console.log('Tailwind CSS V4 fontSize', fontSize);
         console.log('variantName', variantName);
         console.log('settings', settings);
 
@@ -1055,11 +1079,11 @@ function generateCSSForMultipleVariables(
 
         if (settings) {
           for (const [prop, value] of Object.entries(settings)) {
-
             console.log('variantName,prop', variantName, prop);
 
-            // 对于符合条件的其他字体变量，更改为 Tailwind CSS 4.0 指定的格式
-            tailwindcssv4NeedUpdateVariablesName[`text-${variantName}-${changeCase.kebabCase(prop)}`] = `text-${variantName}--${changeCase.kebabCase(prop)}`;
+            // 对于符合条件的其他字体变量，更改为 Tailwind CSS V4 指定的格式
+            tailwindcssv4NeedUpdateVariablesName[`text-${variantName}-${changeCase.kebabCase(prop)}`] =
+              `text-${variantName}--${changeCase.kebabCase(prop)}`;
             // 保持原始值
             // defaultValues.set(`text-${variantName}--${prop}`, `  --text-${variantName}--${prop}: ${value};`);
           }
@@ -1070,12 +1094,11 @@ function generateCSSForMultipleVariables(
         //   ? config
         //   : config.replace('var(--font-', '').replace(')', '');
         // const fontSizeValue = config;
-
         // defaultValues.set(`text-${variantName}`, `  --text-${variantName}: ${fontSizeValue};`);
       }
     }
 
-    console.log('Tailwind CSS 4.0 defaultValues', defaultValues);
+    console.log('Tailwind CSS V4 defaultValues', defaultValues);
 
     // 处理每个结果
     for (const result of results) {
@@ -1090,19 +1113,23 @@ function generateCSSForMultipleVariables(
       processResult(result, defaultValues, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
     }
   } else {
-    // 非 Tailwind CSS 4.0 格式，使用原有的处理逻辑
+    // 非 Tailwind CSS V4 格式，使用原有的处理逻辑
     for (const result of results) {
       processResult(result, defaultValues, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
     }
   }
 
+  let defaultValuesCSSInOtherCollection = '';
+
   if (defaultValues.size > 0) {
     css.push('/* Default Mode */');
     css.push(themeRootSelector + ' {');
-    
+
     const currentCollectionId = results[0].initialVariable.collection.id;
-    
+
+    //**
     // 对默认值进行分组排序
+    // **
     const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
       [...defaultValues.values()],
       currentCollectionId,
@@ -1113,41 +1140,68 @@ function generateCSSForMultipleVariables(
     // 按集合顺序输出变量
     for (let i = 0; i < collectionOrder.length; i++) {
       const collectionId = collectionOrder[i];
-      const collection = allCollections.find(c => c.id === collectionId);
+      const collection = allCollections.find((c) => c.id === collectionId);
       const declarations = groupedDeclarations.get(collectionId);
-      if (declarations && declarations.length > 0) {
-        css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
-        css.push(declarations.join('\n'));
-        // 如果不是最后一个集合，添加换行
-        if (i < collectionOrder.length - 1) {
-          css.push('');
+      if (format === 'Tailwind CSS V4') {
+        if (declarations && declarations.length > 0) {
+          if (collectionId === selectCollectionID) {
+            css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
+            css.push(declarations.join('\n'));
+            // 如果不是最后一个集合，添加换行
+            if (i < collectionOrder.length - 1) {
+              css.push('');
+            }
+          } else {
+            if (defaultValuesCSSInOtherCollection === '') {
+              defaultValuesCSSInOtherCollection += ':root{';
+              defaultValuesCSSInOtherCollection += '\n';
+            } else {
+              defaultValuesCSSInOtherCollection += '\n';
+              defaultValuesCSSInOtherCollection += '\n';
+            }
+            defaultValuesCSSInOtherCollection += `  /* Collection: ${collection?.name || 'Current Collection'} */`;
+            defaultValuesCSSInOtherCollection += '\n';
+            defaultValuesCSSInOtherCollection += declarations.join('\n');
+          }
+        }
+      } else {
+        if (declarations && declarations.length > 0) {
+          css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
+          css.push(declarations.join('\n'));
+          // 如果不是最后一个集合，添加换行
+          if (i < collectionOrder.length - 1) {
+            css.push('');
+          }
         }
       }
     }
-    
+
     css.push('}\n');
+  }
+
+  if (defaultValuesCSSInOtherCollection) {
+    defaultValuesCSSInOtherCollection += '\n';
+    defaultValuesCSSInOtherCollection += '} \n';
+    css.push(defaultValuesCSSInOtherCollection);
   }
 
   // 对选择器进行排序
   const sortedSelectors = sortSelectors([...modeOverrides.keys()]);
   const currentCollectionId = results[0].initialVariable.collection.id;
-  
+
   for (const selector of sortedSelectors) {
     const declarations = modeOverrides.get(selector);
     if (declarations?.size > 0) {
       css.push(`/* Mode Override */`);
-      if(format === 'Tailwind CSS 4.0' && selector.startsWith('@media')){
+      if (format === 'Tailwind CSS V4' && selector.startsWith('@media')) {
         css.push(`${selector} {`);
-        css.push("@layer theme {")
-      }else if(format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')){
-        css.push("@layer theme {")
       }
       if (selector.startsWith('@media')) {
-        if(format !== 'Tailwind CSS 4.0'){
+        if (format !== 'Tailwind CSS V4') {
           css.push(`${selector} {`);
         }
-        css.push(format === "Tailwind CSS 4.0" ? ':root {': themeRootSelector + ' {');
-        
+        css.push(format === 'Tailwind CSS V4' ? ':root {' : themeRootSelector + ' {');
+
         // 对模式覆盖的值进行分组排序
         const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
           [...declarations],
@@ -1159,7 +1213,7 @@ function generateCSSForMultipleVariables(
         // 按集合顺序输出变量
         for (let i = 0; i < collectionOrder.length; i++) {
           const collectionId = collectionOrder[i];
-          const collection = allCollections.find(c => c.id === collectionId);
+          const collection = allCollections.find((c) => c.id === collectionId);
           const modeDeclarations = groupedDeclarations.get(collectionId);
           if (modeDeclarations && modeDeclarations.length > 0) {
             css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
@@ -1170,14 +1224,14 @@ function generateCSSForMultipleVariables(
             }
           }
         }
-        
+
         css.push('  }');
-        if(format !== 'Tailwind CSS 4.0'){
+        if (format !== 'Tailwind CSS V4') {
           css.push('}\n');
         }
       } else {
         css.push(`${selector} {`);
-        
+
         // 对模式覆盖的值进行分组排序
         const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
           [...declarations],
@@ -1189,7 +1243,7 @@ function generateCSSForMultipleVariables(
         // 按集合顺序输出变量
         for (let i = 0; i < collectionOrder.length; i++) {
           const collectionId = collectionOrder[i];
-          const collection = allCollections.find(c => c.id === collectionId);
+          const collection = allCollections.find((c) => c.id === collectionId);
           const modeDeclarations = groupedDeclarations.get(collectionId);
           if (modeDeclarations && modeDeclarations.length > 0) {
             css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
@@ -1200,15 +1254,13 @@ function generateCSSForMultipleVariables(
             }
           }
         }
-        
+
         css.push('}\n');
       }
 
-      if(format === 'Tailwind CSS 4.0' && selector.startsWith('@media')){
+      if (format === 'Tailwind CSS V4' && selector.startsWith('@media')) {
         css.push('}\n');
-        css.push('}\n');
-      }else if(format === 'Tailwind CSS 4.0' && !selector.startsWith('@media')){
-        css.push('}');
+        // css.push('}\n');
       }
     }
   }
@@ -1222,7 +1274,7 @@ type TailwindColorConfig = {
 };
 
 // 添加新的函数用于生成 Tailwind 配置
-function generateTailwindConfig(results: Result[], format: ExportFormat): string {
+function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreTopLevelNames: boolean = false): string {
   function parseVariablePath(name: string): string[] {
     const nameArr = name.split('/');
     return [
@@ -1283,7 +1335,7 @@ function generateTailwindConfig(results: Result[], format: ExportFormat): string
       }
 
       // 匹配 (font/)?property/xx 格式
-      const pattern = `^(font\\/|)(${format === 'Tailwind CSS 4.0' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})\\/([^/]+)$`;
+      const pattern = `^(font\\/|)(${format === 'Tailwind CSS V4' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})\\/([^/]+)$`;
       const match = name.match(new RegExp(pattern));
 
       if (match) {
@@ -1341,18 +1393,18 @@ function generateTailwindConfig(results: Result[], format: ExportFormat): string
 
   // 添加一个辅助函数来处理变量值
   function processVariableValue(variable: Result['initialVariable']): string {
+    let name: string[];
+    if (ignoreTopLevelNames) {
+      name = variable.name.split('/').slice(1);
+    } else {
+      name = variable.name.split('/');
+    }
     // 检查是否是颜色变量
     if (variable.resolvedDataType === 'COLOR') {
-      return `rgb(var(--${variable.name
-        .split('/')
-        .map((segment) => changeCase.kebabCase(segment))
-        .join('-')}))`;
+      return `rgb(var(--${name.map((segment) => changeCase.kebabCase(segment)).join('-')}))`;
     }
     // 其他类型的变量保持原样
-    return `var(--${variable.name
-      .split('/')
-      .map((segment) => changeCase.kebabCase(segment))
-      .join('-')})`;
+    return `var(--${name.map((segment) => changeCase.kebabCase(segment)).join('-')})`;
   }
 
   // 处理所有变量
@@ -1371,7 +1423,7 @@ function generateTailwindConfig(results: Result[], format: ExportFormat): string
     // 检查是否是标准字体配置模式
     const fontMatch = name.match(
       new RegExp(
-        `^font\\/([^/]+)\\/(${format === 'Tailwind CSS 4.0' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})$`
+        `^font\\/([^/]+)\\/(${format === 'Tailwind CSS V4' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})$`
       )
     );
     if (fontMatch) {
@@ -1450,13 +1502,24 @@ export async function generateThemeFiles(
   useRemUnit: boolean = false,
   selectGroup: string[] = [],
   ignoreGroup: string[] = [],
-  exportFormat: ExportFormat
+  exportFormat: ExportFormat,
+  rootElementSize: number = 16,
+  selectCollectionID: string
 ): Promise<{ css: string; tailwindConfig: string }> {
   console.log('ignoreGroup', ignoreGroup);
   try {
+    console.log('ignoreGroup', ignoreGroup);
     const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup, exportFormat);
     console.log('results', results);
-    const css = generateCSSForMultipleVariables(results, collections, appendCollectionName, useRemUnit, exportFormat);
+    const css = generateCSSForMultipleVariables(
+      results,
+      collections,
+      appendCollectionName,
+      useRemUnit,
+      exportFormat,
+      rootElementSize,
+      selectCollectionID
+    );
     const tailwindConfig = generateTailwindConfig(results, exportFormat);
     return { css, tailwindConfig };
   } catch (error) {

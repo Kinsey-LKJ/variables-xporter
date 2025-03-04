@@ -33,13 +33,13 @@ const Export = (props: ExportProps) => {
     <div className=" grid gap-4">
       <div className="grid gap-3 text-center">
         <div className="text-4xl font-bold special-text">{textData.export_successful}</div>
-        {exportFormat === 'Tailwind CSS' ? (
+        {exportFormat === 'Tailwind CSS V3' ? (
           <div className=" text-sm">{textData.import_as_tailwind_css_presets}</div>
         ) : null}
       </div>
 
       {tailwindCSSOutput ? (
-        exportFormat === 'Tailwind CSS' ? (
+        exportFormat === 'Tailwind CSS V3' ? (
           <Tabs
             key={'tailwindCSSOutput'}
             defaultValue="tw-config"

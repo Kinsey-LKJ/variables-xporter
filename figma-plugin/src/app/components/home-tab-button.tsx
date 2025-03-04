@@ -30,8 +30,8 @@ const HomeTabButton = (props: NavProps) => {
   const { connectGithubState, openDrawer, textData } = useContext(AppContext);
   const form = useVariableFormContext();
   return (
-    <div className=" grid gap-2 p-4 z-10 bg-gradient-to-t from-background/100 from-80% to-100% absolute bottom-0 w-full">
-      {selectedSnap === 2 ? (
+    <div className=" grid gap-2 p-4 z-10 absolute bottom-0 w-full">
+      {/* {selectedSnap === 2 ? (
         <div className=" grid gap-1  ">
           <Checkbox
             size="xs"
@@ -59,7 +59,7 @@ const HomeTabButton = (props: NavProps) => {
             {...form.getInputProps('ignoreTailwindColor')}
           />
         </div>
-      ) : null}
+      ) : null} */}
 
       <div className="flex gap-4">
         {selectedSnap === 0 ? (

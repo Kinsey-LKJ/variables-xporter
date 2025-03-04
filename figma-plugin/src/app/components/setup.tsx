@@ -41,7 +41,7 @@ const Setup = () => {
                 <Select
                   size="sm"
                   placeholder={textData.format}
-                  data={['Tailwind CSS', 'CSS Variables',"Tailwind CSS 4.0"]}
+                  data={['Tailwind CSS V3', 'CSS Variables',"Tailwind CSS V4"]}
                   comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
                   maxDropdownHeight={200}
                   className=" shadow-2xl"
@@ -49,7 +49,7 @@ const Setup = () => {
                   {...form.getInputProps('exportFormat')}
                 />
 
-                {formValus.exportFormat === 'Tailwind CSS' ? (
+                {formValus.exportFormat === 'Tailwind CSS V3' ? (
                   <a
                     className=" text-xs justify-self-end text-blue-300 flex items-center justify-center"
                     target="_blank"

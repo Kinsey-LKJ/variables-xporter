@@ -7,11 +7,8 @@ import Setup from './setup';
 import useEmblaCarousel from 'embla-carousel-react';
 import { forwardRef, useContext, useEffect, useImperativeHandle, useMemo, useState } from 'react';
 import { AppContext } from './App';
-import { Button, ScrollArea } from '@mantine/core';
-import {
-  processColorValue as rgbObjectToColorString,
-  processConstantValue as getCssValue,
-} from '../../lib/utils';
+import { Button, Drawer, ScrollArea } from '@mantine/core';
+import { processColorValue as rgbObjectToColorString, processConstantValue as getCssValue } from '../../lib/utils';
 import prettier from 'prettier/standalone';
 import parserEstree from 'prettier/plugins/estree';
 import parserBabel from 'prettier/plugins/babel';
@@ -22,6 +19,8 @@ import Welcome from './welcome';
 import { notifications } from '@mantine/notifications';
 import * as changeCase from 'change-case';
 import { generateThemeFiles } from '../../lib/utils';
+import Setting from './setting';
+import { useDisclosure } from '@mantine/hooks';
 
 export const tailwindV3IgnoreGroup = [
   'colors/slate',
@@ -71,7 +70,7 @@ export const tailwindV4IgnoreGroup = [
   'color/fuchsia',
   'color/pink',
   'color/rose',
-]
+];
 
 function flattenConfig(config: object) {
   const newConfig = {};
@@ -113,10 +112,11 @@ async function writeConfig(config: object) {
 
 export interface ExportPageHandles {
   onPrevButtonClick: () => void;
+  openSetting: () => void;
 }
 
-const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
-  const { collections, variables, connectedRepoInfo, currentStep, setCurrentStep } = useContext(AppContext);
+const ExportPage = forwardRef<ExportPageHandles, { windowSize: { width: number; height: number } }>(({ windowSize }, ref) => {
+  const { collections, variables, connectedRepoInfo, currentStep, setCurrentStep, textData } = useContext(AppContext);
   const [formattingOutput, setFormattingOutput] = useState<boolean>(false);
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [tailwindCSSOutput, setTailwindCSSOutput] = useState<{
@@ -136,13 +136,16 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
     initialValues: {
       selectCollectionID: '',
       useRemUnit: true,
+      rootElementSize: 16,
       selectVariableGroup: [],
       ignoreTailwindColor: true,
       fileName: '',
       updateMessage: '',
-      exportFormat: 'Tailwind CSS',
+      exportFormat: 'Tailwind CSS V3',
     },
   });
+
+  const [opened, { open, close }] = useDisclosure(false);
 
   const formValues = variableForm.values;
 
@@ -156,6 +159,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     onPrevButtonClick,
+    openSetting: open,
   }));
 
   useEffect(() => {
@@ -187,8 +191,14 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
             true,
             formValues.useRemUnit,
             formValues.selectVariableGroup,
-            formValues.ignoreTailwindColor ? formValues.exportFormat === 'Tailwind CSS' ? tailwindV4IgnoreGroup : tailwindV3IgnoreGroup : [],
-            formValues.exportFormat
+            formValues.ignoreTailwindColor
+              ? formValues.exportFormat === 'Tailwind CSS V4'
+                ? tailwindV4IgnoreGroup
+                : tailwindV3IgnoreGroup
+              : [],
+            formValues.exportFormat,
+            formValues.rootElementSize,
+            formValues.selectCollectionID
           );
           setTailwindCSSOutput({
             config: tailwindConfig,
@@ -200,7 +210,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
       }
     };
     generateTheme();
-  }, [formValues.useRemUnit, formValues.ignoreTailwindColor,formValues.exportFormat]);
+  }, [formValues.useRemUnit, formValues.ignoreTailwindColor, formValues.exportFormat, formValues.rootElementSize]);
 
   const submitForm = async () => {
     setSubmitting(true);
@@ -236,8 +246,14 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
             true,
             formValues.useRemUnit,
             formValues.selectVariableGroup,
-            formValues.ignoreTailwindColor ? formValues.exportFormat === 'Tailwind CSS' ? tailwindV4IgnoreGroup : tailwindV3IgnoreGroup : [],
-            formValues.exportFormat
+            formValues.ignoreTailwindColor
+              ? formValues.exportFormat === 'Tailwind CSS V4'
+                ? tailwindV4IgnoreGroup
+                : tailwindV3IgnoreGroup
+              : [],
+            formValues.exportFormat,
+            formValues.rootElementSize,
+            formValues.selectCollectionID
           );
           setTailwindCSSOutput({
             config: tailwindConfig,
@@ -266,11 +282,20 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
   return (
     <VariableFormProvider form={variableForm}>
       <form className=" h-full flex flex-col !mb-0 overflow-hidden" onSubmit={variableForm.onSubmit(submitForm)}>
+        <Drawer
+          opened={opened}
+          onClose={close}
+          position="bottom"
+          title={textData.setting}
+          overlayProps={{ backgroundOpacity: 0.74, blur: 4 }}
+        >
+          <Setting />
+        </Drawer>
         <div className=" overflow-x-hidden h-full">
           <div className=" overflow-x-hidden h-full" ref={emblaRef}>
             <div className=" flex h-full items-start">
               <div className=" absolute -z-10 left-0 top-0">
-                <svg width="1200" height="448" viewBox="0 0 1200 448" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width={(windowSize.width) * 3} height={windowSize.height - 52} viewBox="0 0 1200 448" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_375_1247)">
                     <rect width="1200" height="448" fill="#0A1122" />
                     <path
@@ -281,15 +306,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       d="M588.5 245V239.485C588.5 237.894 589.132 236.368 590.257 235.243L620.243 205.257C621.368 204.132 622.894 203.5 624.485 203.5L919 203.5H988.515C990.106 203.5 991.632 204.132 992.757 205.257L1024.74 237.243C1025.87 238.368 1026.5 239.894 1026.5 241.485V243"
                       stroke="url(#paint1_linear_375_1247)"
                     />
-                    <mask
-                      id="mask0_375_1247"
-                      
-                      maskUnits="userSpaceOnUse"
-                      x="1048"
-                      y="243"
-                      width="152"
-                      height="19"
-                    >
+                    <mask id="mask0_375_1247" maskUnits="userSpaceOnUse" x="1048" y="243" width="152" height="19">
                       <rect x="1048" y="243" width="152" height="19" fill="url(#paint2_linear_375_1247)" />
                     </mask>
                     <g mask="url(#mask0_375_1247)">
@@ -3307,15 +3324,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       />
                     </g>
                     <g clip-path="url(#clip1_375_1247)">
-                      <mask
-                        id="mask1_375_1247"
-                        
-                        maskUnits="userSpaceOnUse"
-                        x="1065"
-                        y="244"
-                        width="24"
-                        height="2"
-                      >
+                      <mask id="mask1_375_1247" maskUnits="userSpaceOnUse" x="1065" y="244" width="24" height="2">
                         <rect x="1065" y="244" width="24" height="2" fill="url(#paint318_linear_375_1247)" />
                       </mask>
                       <g mask="url(#mask1_375_1247)">
@@ -3330,15 +3339,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       </g>
                     </g>
                     <g clip-path="url(#clip2_375_1247)">
-                      <mask
-                        id="mask2_375_1247"
-                        
-                        maskUnits="userSpaceOnUse"
-                        x="1154"
-                        y="246"
-                        width="24"
-                        height="2"
-                      >
+                      <mask id="mask2_375_1247" maskUnits="userSpaceOnUse" x="1154" y="246" width="24" height="2">
                         <rect x="1154" y="246" width="24" height="2" fill="url(#paint320_linear_375_1247)" />
                       </mask>
                       <g mask="url(#mask2_375_1247)">
@@ -3353,15 +3354,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       </g>
                     </g>
                     <g clip-path="url(#clip3_375_1247)">
-                      <mask
-                        id="mask3_375_1247"
-                        
-                        maskUnits="userSpaceOnUse"
-                        x="1077"
-                        y="253"
-                        width="24"
-                        height="2"
-                      >
+                      <mask id="mask3_375_1247" maskUnits="userSpaceOnUse" x="1077" y="253" width="24" height="2">
                         <rect x="1077" y="253" width="24" height="2" fill="url(#paint322_linear_375_1247)" />
                       </mask>
                       <g mask="url(#mask3_375_1247)">
@@ -3376,15 +3369,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                       </g>
                     </g>
                     <g clip-path="url(#clip4_375_1247)">
-                      <mask
-                        id="mask4_375_1247"
-                        
-                        maskUnits="userSpaceOnUse"
-                        x="1117"
-                        y="254"
-                        width="24"
-                        height="2"
-                      >
+                      <mask id="mask4_375_1247" maskUnits="userSpaceOnUse" x="1117" y="254" width="24" height="2">
                         <rect x="1117" y="254" width="24" height="2" fill="url(#paint324_linear_375_1247)" />
                       </mask>
                       <g mask="url(#mask4_375_1247)">
@@ -3398,15 +3383,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
                         />
                       </g>
                     </g>
-                    <mask
-                      id="mask5_375_1247"
-                      
-                      maskUnits="userSpaceOnUse"
-                      x="1099"
-                      y="249"
-                      width="44"
-                      height="2"
-                    >
+                    <mask id="mask5_375_1247" maskUnits="userSpaceOnUse" x="1099" y="249" width="44" height="2">
                       <rect x="1099" y="249" width="44" height="2" fill="url(#paint326_linear_375_1247)" />
                     </mask>
                     <g mask="url(#mask5_375_1247)">
@@ -8061,7 +8038,7 @@ const ExportPage = forwardRef<ExportPageHandles>((props, ref) => {
               <ScrollArea className=" flex-[0_0_100%] h-full min-w-0 p-8 overflow-y-hidden relative">
                 <Setup />
               </ScrollArea>
-              <ScrollArea className={`flex-[0_0_100%] h-full min-w-0 p-8 relative `}>
+              <ScrollArea className={`flex-[0_0_100%] h-full min-w-0 p-8 pb-0 relative `}>
                 <Export tailwindCSSOutput={tailwindCSSOutput} exportFormat={formValues.exportFormat} />
               </ScrollArea>
             </div>

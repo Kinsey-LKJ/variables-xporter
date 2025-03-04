@@ -3,7 +3,7 @@ import App from './components/App';
 import '@mantine/core/styles.css';
 import '@mantine/code-highlight/styles.css';
 import '@mantine/notifications/styles.css';
-import { Button, MantineProvider, Menu, MultiSelect, Select, Tabs, createTheme } from '@mantine/core';
+import { Button, Drawer, MantineProvider, Menu, MultiSelect, Select, Tabs, createTheme } from '@mantine/core';
 import { Notifications } from '@mantine/notifications';
 import './global.css';
 
@@ -28,6 +28,18 @@ const theme = createTheme({
       '#402b84',
       '#28194d',
     ],
+    dark:[
+      "#9FAAC1",
+      "#7C879E",
+      "#5C667B",
+      "#4A5365",
+      "#38404F",
+      "#2E3543",
+      "#252B38",
+      "#1E232E",
+      "#181e2c",
+      "#101219"
+    ]
   },
   primaryShade: 3,
   components:{
@@ -61,6 +73,15 @@ const theme = createTheme({
         tab:"hover:bg-accent",
         // list:"[--tab-border-color:rgb(var(--colors-background-muted))]"
       }
+    }),
+
+    Drawer: Drawer.extend({
+      classNames:{
+        content:"bg-background",
+        header:"bg-background",
+        close:"hover:bg-accent",
+        title:"font-bold  text-xl",
+      }
     })
   }
   
@@ -79,3 +100,7 @@ root.render(
     <App />
   </MantineProvider>
 );
+function generateColors(arg0: string): import("@mantine/core").MantineColorsTuple {
+  throw new Error('Function not implemented.');
+}
+

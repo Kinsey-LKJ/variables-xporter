@@ -56,7 +56,7 @@ export interface FileContent {
   content: string;
 }
 
-export type ExportFormat = 'Tailwind CSS' | 'CSS Variables' | 'Tailwind CSS 4.0';
+export type ExportFormat = 'Tailwind CSS V3' | 'CSS Variables' | 'Tailwind CSS V4';
 
 
 export type TextData = typeof TextDataFromZh

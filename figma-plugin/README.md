@@ -21,3 +21,6 @@ This repo is using:
 - React + Webpack
 - TypeScript
 - Prettier precommit hook
+
+## TEST
+- 测试本地分支修改后同步远程分支的问题
