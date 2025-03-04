@@ -119,7 +119,7 @@ export function MagicCard({
             radial-gradient(${gradientSize}px circle at ${mouseX}px ${mouseY}px,
               var(--color-primary), 
               var(--color-secondary), 
-              var(--color-border-subtlest) 100%
+              var(--color-border) 100%
             )
           `,
         }}

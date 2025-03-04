@@ -51,9 +51,9 @@ export default async function IndexPage({
           </div>
         </div>
         <Illustration className="mt-40" />
-        <div className="w-full border-1 border-border-subtlest bg-border-subtlest relative grid gap-px">
+        <div className="w-full border-1 border-border bg-border relative grid gap-px">
           <Blurer className="w-full h-[137px] translate-y-full blur-[300px]" />
-          <div className="relative z-10  w-full grid grid-cols-3 gap-px bg-border-subtlest ">
+          <div className="relative z-10  w-full grid grid-cols-3 gap-px bg-border ">
             <BentoItem
               tag={dictionary.exclusive}
               title={dictionary.features.multiMode.title}
@@ -149,7 +149,7 @@ export default async function IndexPage({
           </div>
           <div className="h-6 bg-background"></div>
 
-          <div className="w-full  grid bg-border-subtlest">
+          <div className="w-full  grid bg-border">
             <div className="bg-background text-heading text-foreground p-10">
               {dictionary.organizingYourVariables.heading}
             </div>
@@ -237,7 +237,7 @@ export default async function IndexPage({
 
           <div className="h-6 bg-background"></div>
 
-          <div className="w-full  grid gap-px bg-border-subtlest">
+          <div className="w-full  grid gap-px bg-border">
             <div className="bg-background text-heading text-foreground p-10">
               {dictionary.figmaTemplate.heading}
             </div>
