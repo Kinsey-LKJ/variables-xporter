@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-import { Layout, LocaleSwitch, Navbar } from "nextra-theme-docs";
+import { Layout, LocaleSwitch, Navbar, ThemeSwitch } from "nextra-theme-docs";
 import { Banner, Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import "nextra-theme-docs/style.css";
@@ -41,7 +41,7 @@ export default async function RootLayout({ children, params }) {
 
   const dictionaries = await Promise.all(
     allLanguages.map(async (locale) => ({
-      [locale]: await getDictionary(locale)
+      [locale]: await getDictionary(locale),
     }))
   );
   const allDictionaries = Object.assign({}, ...dictionaries);
@@ -50,7 +50,6 @@ export default async function RootLayout({ children, params }) {
     locale: locale,
     name: allDictionaries[locale].language,
   }));
-
 
   const navbar = (
     <Navbar
@@ -69,7 +68,10 @@ export default async function RootLayout({ children, params }) {
       // Next.js discord server
       // chatLink="https://discord.gg/hEM84NMkRv"
     >
-      <LocaleSwitch />
+      <>
+        <LocaleSwitch />
+        <ThemeSwitch />
+      </>
     </Navbar>
   );
 
@@ -114,9 +116,7 @@ export default async function RootLayout({ children, params }) {
             storageKey: "variables-xporter-theme",
           }}
         >
-          <main className=" min-h-screen flex flex-col items-center">
-            {children}
-          </main>
+          {children}
         </Layout>
       </body>
     </html>
