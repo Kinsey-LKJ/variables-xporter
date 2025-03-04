@@ -38,7 +38,6 @@ Variables Xporter **支持复合的多模式变量**，例如 `colors/primary/DE
 }
 
 /* Mode Override */
-@layer theme {
 .brand-b {
   /* Collection: Brand Modes */
   --brand-modes-color-background-dark: var(--color-base-black);
@@ -46,17 +45,14 @@ Variables Xporter **支持复合的多模式变量**，例如 `colors/primary/DE
   --brand-modes-color-primary-dark: var(--color-brand-b-500);
   --brand-modes-color-primary-foreground-light: var(--color-base-white);
   --brand-modes-color-primary-light: var(--color-brand-b-600);
-  }
 }
 
 /* Mode Override */
-@layer theme {
 .dark {
   /* Collection: Theme Modes */
   --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
-  }
 }
-  ```
+```
   </Tabs.Tab>
 
   <Tabs.Tab>
