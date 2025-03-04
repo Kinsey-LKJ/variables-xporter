@@ -38,8 +38,8 @@ checksums:
     export_figma_variables_tailwind_css_or_css_variables: b6c7e1f21d3bd7428cb1f72374728f78
     get_started: 23c8739d668d91d25a4cbbd64ef5de89
     select_variables_to_export: 694da5a5f71cf08b59645ba03da91f16
-    select_collection: 640d6561f8aebe33b239c7bdd5e6fab8
-    select_variables: 87a10d722eaa20ee541b56726cc69811
+    select_collection: c3f1931477e8a64ddcb274cb13eb0e8b
+    select_variables: d9f71fb2d44923cb283c1d2b32766023
     format: 83fb94fe68d5b66e53fb4b628bdfe2ef
     export: d1c1923befd470e0e9785e0c5b8f89bf
     export_successful: 77852d30a6213edd025532425427e701
@@ -99,7 +99,7 @@ checksums:
     md-section-5: 7268c09d6e5fb8047d11654081e47172
     md-section-6: f4df3811e8d1498c87b1b8d738b39b26
     md-section-7: 3d0d6b2ad3f7d444b96ffca1bba5b13c
-    md-section-8: bd09a9c2fdf8e6e7f01583efaec76338
+    md-section-8: 635de0463547ebde2ab5e826aac2fb70
     md-section-9: f0875849f9df17c8f06636f59f7b07da
     md-section-10: b78f896882659d873dec2c59ad84609e
     md-section-11: f6614268277c932232f1b1d09b11cbf0
@@ -198,7 +198,7 @@ checksums:
     md-section-1: 44528ad3d1114f358ea87499581903b9
     md-section-2: 368efe520f07db1459bc3b31fd0f139f
     md-section-3: 905c632a0f418f42b0f21e41a7351c42
-    md-section-4: 217fb5ad965a13227f3473602c9fd3d9
+    md-section-4: 8e64dc8b20acdda47a3581e426fe2932
     md-section-5: f77622d6116aac2c7a839453c0d92b89
     md-section-6: 6a2b4cbbad3d1e1aaf9cf72b75a74e81
   9d83f36cbd88969502fafb8154908c63:
@@ -244,7 +244,7 @@ checksums:
     md-section-6: 3dfc3be253319e283ed239c506423cb5
     md-section-7: 7e1f0f4e2d6f433d50c066d3f31464cf
     md-section-8: aa1b8c5cbc26b4d0dbb39cee0334dd2c
-    md-section-9: 1f05e7c61646c8d8bc321a3227f76a93
+    md-section-9: f886efde199106885e00a823e4fbc927
     md-section-10: eeffee6d057d17c9fe864683c07abdc0
     md-section-11: fb160750f1f1e5f646122f3010d3537a
     md-section-12: 51adf33450cab2ef392e93147386647c

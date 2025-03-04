@@ -8,14 +8,14 @@ Multi-mode support is a powerful feature of Variables Xporter that allows you to
 
 ## What are multi-modes?
 
-Multi-modes allow a variable to have different values in different scenarios. Common modes include:
+Multi-mode allows a variable to have different values in different scenarios. Common modes include:
 
 - Light and dark themes
 - Brand themes
 - Responsive breakpoints
 - Layout density
 
-Variables Xporter **supports compound multi-mode variables**. For example, the `colors/primary/DEFAULT` (primary color) variable might be affected by both light/dark themes and brand themes, resulting in the following output:
+Variables Xporter **supports compound multi-mode variables**. For example, the `colors/primary/DEFAULT` variable might be affected by both light/dark themes and brand themes, resulting in the following output:
 
 <Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
   <Tabs.Tab>
@@ -38,7 +38,6 @@ Variables Xporter **supports compound multi-mode variables**. For example, the `
 }
 
 /* Mode Override */
-@layer theme {
 .brand-b {
   /* Collection: Brand Modes */
   --brand-modes-color-background-dark: var(--color-base-black);
@@ -46,21 +45,17 @@ Variables Xporter **supports compound multi-mode variables**. For example, the `
   --brand-modes-color-primary-dark: var(--color-brand-b-500);
   --brand-modes-color-primary-foreground-light: var(--color-base-white);
   --brand-modes-color-primary-light: var(--color-brand-b-600);
-  }
 }
 
 /* Mode Override */
-@layer theme {
 .dark {
   /* Collection: Theme Modes */
   --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
-  }
 }
-  ```
   </Tabs.Tab>
 
   <Tabs.Tab>
-  ```js
+  js
 module.exports = {
     theme: {
       extend: {
@@ -79,8 +74,7 @@ module.exports = {
       },
     },
   };
-```
-    ```css
+    css
   /* Default Mode */
   :root {
 
@@ -112,10 +106,9 @@ module.exports = {
   /* Collection: Theme Modes */
   --theme-modes-colors-primary: var(--brand-modes-colors-primary-dark);
 }
-```
   </Tabs.Tab>
   <Tabs.Tab>
-  ```css
+  css
   /* Default Mode */
   :root {
   /* Collection: Design Tokens */

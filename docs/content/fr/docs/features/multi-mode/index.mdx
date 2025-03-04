@@ -8,16 +8,16 @@ La prise en charge multi-modes est une fonctionnalité puissante de Variables Xp
 
 ## Qu'est-ce que le multi-modes ?
 
-Le multi-modes permet à une variable d'avoir différentes valeurs dans différentes situations. Voici quelques modes courants :
+Le multi-mode permet à une variable d'avoir différentes valeurs dans différentes situations. Voici quelques modes courants :
 
 - Thèmes clair et sombre
 - Thèmes de marque
 - Points de rupture responsifs
 - Densité de mise en page
 
-Variables Xporter **prend en charge les variables multi-modes composées**. Par exemple, la variable `colors/primary/DEFAULT` (couleur primaire) peut être affectée à la fois par le thème clair/sombre et le thème de marque, ce qui donne le résultat suivant :
+Variables Xporter **prend en charge les variables multi-modes composées**. Par exemple, la variable `colors/primary/DEFAULT` (couleur primaire) peut être affectée à la fois par le thème clair/sombre et le thème de marque, ce qui donnera le résultat suivant :
 
-<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'Variables CSS']}>
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
   <Tabs.Tab>
   ```css
   /* Mode par défaut */
@@ -38,7 +38,6 @@ Variables Xporter **prend en charge les variables multi-modes composées**. Par 
 }
 
 /* Remplacement de mode */
-@layer theme {
 .brand-b {
   /* Collection : Modes de marque */
   --brand-modes-color-background-dark: var(--color-base-black);
@@ -46,17 +45,14 @@ Variables Xporter **prend en charge les variables multi-modes composées**. Par 
   --brand-modes-color-primary-dark: var(--color-brand-b-500);
   --brand-modes-color-primary-foreground-light: var(--color-base-white);
   --brand-modes-color-primary-light: var(--color-brand-b-600);
-  }
 }
 
 /* Remplacement de mode */
-@layer theme {
 .dark {
   /* Collection : Modes de thème */
   --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
-  }
 }
-  ```
+```
   </Tabs.Tab>
 
   <Tabs.Tab>

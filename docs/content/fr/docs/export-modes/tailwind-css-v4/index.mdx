@@ -46,25 +46,24 @@ Fusion automatique des variables de style typographique associées, conformémen
 
 ### 3. Prise en charge multi-mode
 
-Grâce au **traçage des variables** et au **principe de point d'entrée unique**, Variables Xporter peut réaliser une exportation complexe de variables multi-modes.
+Grâce à la **traçabilité des variables** et au **principe de point de sortie unique**, Variables Xporter peut réaliser des exportations complexes de variables multi-modes.
 
 ```css
 @theme {
   --color-primary: var(--color-red-500);
 }
 
-@layer theme {
-  .dark {
-    --color-primary: var(--color-red-400);
-  }
+.dark {
+  --color-primary: var(--color-red-400);
 }
+
 ```
 
-Pour en savoir plus sur la prise en charge multi-mode :
+Pour en savoir plus sur les détails du support multi-mode :
 
   <Cards.Card
     icon={<Columns3/>}
-    title="Prise en charge multi-mode"
+    title="Support multi-mode"
     href="/docs/features/multi-mode"
     className="mt-4"
   />

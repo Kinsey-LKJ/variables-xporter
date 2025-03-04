@@ -5,7 +5,7 @@
   "get_started": "Commencer",
   "select_variables_to_export": "Sélectionner les variables à exporter",
   "select_collection": "Sélectionner la collection",
-  "select_variables": "Sélectionner les variables",
+  "select_variables": "Sélectionner le groupe",
   "format": "Format",
   "export": "Exporter",
   "export_successful": "Exportation réussie !",
