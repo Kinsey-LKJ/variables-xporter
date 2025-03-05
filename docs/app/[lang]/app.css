@@ -165,9 +165,10 @@ code.text-\[\.9em\] {
 }
 
 /* Default Mode */
-@theme {
+@theme inline {
   /* Collection: Design Tokens */
-  --color-accent: oklch(0.294 0.037 264.7);
+  --color-accent: var(--theme-modes-color-accent);
+  --color-accent-foreground: var(--theme-modes-color-accent-foreground);
   --color-background: var(--theme-modes-color-background);
   --color-biloba-flower-100: oklch(0.914 0.043 285.5);
   --color-biloba-flower-200: oklch(0.843 0.081 284.5);
@@ -183,6 +184,7 @@ code.text-\[\.9em\] {
   --color-border: var(--theme-modes-color-border);
   --color-border-muted: var(--theme-modes-color-border-muted);
   --color-card: var(--color-background);
+  --color-card-foreground: var(--theme-modes-color-foreground);
   --color-foreground: var(--theme-modes-color-foreground);
   --color-fuchsia-100: oklch(0.952 0.036 318.9);
   --color-fuchsia-200: oklch(0.903 0.073 319.6);
@@ -215,23 +217,12 @@ code.text-\[\.9em\] {
   --color-tag-secondary-border: var(--color-secondary);
   --color-tag-secondary-foreground: var(--color-fuchsia-100);
 
-  --text-body: 1.125rem;
-  --text-body--font-weight: 400;
-  --text-body--line-height: 100%;
-  --text-display: 5rem;
-  --text-display--font-weight: 800;
-  --text-display--line-height: 100%;
-  --text-heading: 2.25rem;
-  --text-heading--font-weight: 400;
-  --text-heading--line-height: 130%;
-  --text-title: 2rem;
-  --text-title--font-weight: 400;
-  --text-title--line-height: 100%;
-
 }
 
-:root {
+:root{
   /* Collection: Theme Modes */
+  --theme-modes-color-accent: oklch(0.976 0.008 271.3);
+  --theme-modes-color-accent-foreground: var(--theme-modes-color-foreground);
   --theme-modes-color-background: oklch(1 0 0);
   --theme-modes-color-border: oklch(0.893 0.024 275.3);
   --theme-modes-color-border-muted: oklch(0.705 0.093 275.1);
@@ -246,6 +237,8 @@ code.text-\[\.9em\] {
 /* Mode Override */
 .dark {
   /* Collection: Theme Modes */
+  --theme-modes-color-accent: oklch(0.294 0.037 264.7);
+  --theme-modes-color-accent-foreground: var(--theme-modes-color-foreground);
   --theme-modes-color-background: oklch(0.181 0.037 265.9);
   --theme-modes-color-border: oklch(0.268 0.036 275);
   --theme-modes-color-border-muted: oklch(0.705 0.093 275.1);
