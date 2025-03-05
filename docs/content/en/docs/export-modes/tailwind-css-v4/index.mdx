@@ -46,18 +46,17 @@ Automatically merges related typography style variables, conforming to Tailwind 
 
 ### 3. Multi-mode support
 
-With the help of **variable tracing** and **single source of truth principle**, Variables Xporter can achieve complex multi-mode variable exports.
+With the help of **variable tracing** and the **single source of truth principle**, Variables Xporter can achieve complex multi-mode variable exports.
 
 ```css
 @theme {
   --color-primary: var(--color-red-500);
 }
 
-@layer theme {
-  .dark {
-    --color-primary: var(--color-red-400);
-  }
+.dark {
+  --color-primary: var(--color-red-400);
 }
+
 ```
 
 Learn more details about multi-mode support:

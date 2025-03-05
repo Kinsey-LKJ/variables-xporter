@@ -262,7 +262,7 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
     return name;
   }
 
-  console.log('variableNameCorrectionName', name);
+  // console.log('variableNameCorrectionName', name);
 
   // 获取第一个 / 之前的部分
   const firstPart = name.split('/')[0];
@@ -762,6 +762,8 @@ function generateCSSForMultipleVariables(
   const variableCollectionMap = new Map<string, { collectionId: string; collectionName: string }>();
 
   // 在处理变量时，记录变量所属的集合信息
+  const processedVarsMap = new Map<string, Set<string>>();
+
   function processValue(
     value: ResolvedValue | undefined,
     parentModes: string[] = [],
@@ -789,12 +791,12 @@ function generateCSSForMultipleVariables(
       collectionName: referencingCollection.name,
     });
 
+    // 如果是简单值或颜色值
     if (typeof value !== 'object' || isColorValue(value)) {
       const modeInfos = getModeNamesAndCollections(parentModes, allCollections).filter(
         (info) => info.collection.id === referencingCollection.id
       );
 
-      // 处理选择器生成
       const selector =
         modeInfos.length > 0
           ? modeInfos.map((info) => {
@@ -805,6 +807,19 @@ function generateCSSForMultipleVariables(
               return `.${modeName}`;
             })[0]
           : themeRootSelector;
+
+      // 检查这个变量是否已经在这个选择器中处理过
+      if (!processedVarsMap.has(selector)) {
+        processedVarsMap.set(selector, new Set());
+      }
+      
+      // 如果变量已在此选择器中处理过，跳过
+      if (processedVarsMap.get(selector)!.has(variableCSSName)) {
+        return;
+      }
+      
+      // 标记为已处理
+      processedVarsMap.get(selector)!.add(variableCSSName);
 
       const processedValue = processConstantValue(
         value as SimpleValue | ColorValue,
@@ -819,79 +834,103 @@ function generateCSSForMultipleVariables(
 
       const declaration = `  --${variableCSSName}: ${processedValue};`;
 
+      // 如果是默认选择器，只在没有默认值时设置
       if (selector === themeRootSelector) {
-        defaultValues.set(variableCSSName, declaration);
+        if (!defaultValues.has(variableCSSName)) {
+          defaultValues.set(variableCSSName, declaration);
+        }
       } else {
         if (!modeOverrides.has(selector)) {
           modeOverrides.set(selector, new Set());
         }
         modeOverrides.get(selector)!.add(declaration);
       }
-    } else if (typeof value === 'object') {
-      const entries = Object.entries(value);
-      for (const [modeId, modeData] of entries) {
-        if (!modeData) continue;
+      return;
+    }
 
-        const newParentModes = [...parentModes];
-        if (modeId !== variableCollection.defaultModeId) {
-          newParentModes.push(modeId);
+    // 如果是对象（包含模式信息）
+    const entries = Object.entries(value);
+    for (const [modeId, modeData] of entries) {
+      if (!modeData) continue;
+
+      const newParentModes = [...parentModes];
+      // 只有非默认模式才添加到父模式列表中
+      if (modeId !== variableCollection.defaultModeId) {
+        newParentModes.push(modeId);
+      }
+
+      // 如果是变量引用
+      if (modeData.variable) {
+        const modeInfos = getModeNamesAndCollections(newParentModes, allCollections).filter(
+          (info) => info.collection.id === referencingCollection.id
+        );
+
+        const selector =
+          modeInfos.length > 0
+            ? modeInfos.map((info) => {
+                const modeName = info.name;
+                if (isMediaQuery(modeName)) {
+                  return `@media (${modeName})`;
+                }
+                return `.${modeName}`;
+              })[0]
+            : themeRootSelector;
+        
+        // 检查这个变量是否已经在这个选择器中处理过
+        if (!processedVarsMap.has(selector)) {
+          processedVarsMap.set(selector, new Set());
+        }
+        
+        // 如果变量已在此选择器中处理过，跳过
+        if (processedVarsMap.get(selector)!.has(variableCSSName)) {
+          continue;
+        }
+        
+        // 标记为已处理
+        processedVarsMap.get(selector)!.add(variableCSSName);
+
+        const referencedVarName = getVariableCSSName(modeData.variable, originalCollection, appendCollectionName);
+        const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
+
+        // 如果是默认选择器，只在没有默认值时设置
+        if (selector === themeRootSelector) {
+          if (!defaultValues.has(variableCSSName)) {
+            defaultValues.set(variableCSSName, varReference);
+          }
+        } else {
+          if (!modeOverrides.has(selector)) {
+            modeOverrides.set(selector, new Set());
+          }
+          modeOverrides.get(selector)!.add(varReference);
         }
 
-        if (modeData.variable) {
-          const modeInfos = getModeNamesAndCollections(newParentModes, allCollections).filter(
-            (info) => info.collection.id === referencingCollection.id
-          );
-
-          // 处理选择器生成
-          const selector =
-            modeInfos.length > 0
-              ? modeInfos.map((info) => {
-                  const modeName = info.name;
-                  if (isMediaQuery(modeName)) {
-                    return `@media (${modeName})`;
-                  }
-                  return `.${modeName}`;
-                })[0]
-              : themeRootSelector;
-
-          const referencedVarName = getVariableCSSName(modeData.variable, originalCollection, appendCollectionName);
-          const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
-
-          if (selector === themeRootSelector) {
-            defaultValues.set(variableCSSName, varReference);
-          } else {
-            if (!modeOverrides.has(selector)) {
-              modeOverrides.set(selector, new Set());
-            }
-            modeOverrides.get(selector)!.add(varReference);
-          }
-
-          if (modeData.value !== undefined) {
-            processValue(
-              modeData.value,
-              newParentModes,
-              modeData.variable,
-              modeData.variable.collection,
-              allCollections,
-              modeData.variable.collection,
-              originalCollection,
-              resolvedDataType,
-              scopes
-            );
-          }
-        } else if (modeData.value !== undefined) {
+        // 如果引用的变量有值，继续处理
+        if (modeData.value !== undefined) {
           processValue(
             modeData.value,
             newParentModes,
-            variable,
-            variableCollection,
+            modeData.variable,
+            modeData.variable.collection,
             allCollections,
-            referencingCollection,
+            modeData.variable.collection,
             originalCollection,
             resolvedDataType,
             scopes
           );
         }
+      } else if (modeData.value !== undefined) {
+        // 如果是直接值，递归处理
+        processValue(
+          modeData.value,
+          newParentModes,
+          variable,
+          variableCollection,
+          allCollections,
+          referencingCollection,
+          originalCollection,
+          resolvedDataType,
+          scopes
+        );
       }
     }
   }
@@ -915,7 +954,7 @@ function generateCSSForMultipleVariables(
         variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
       }
       console.log('--------------处理默认模式---------------');
-      console.log(variableCSSName);
+      // console.log('variableCSSName',variableCSSName);
 
       if (defaultMode.variable) {
         // 如果是引用其他变量
@@ -969,7 +1008,7 @@ function generateCSSForMultipleVariables(
         const variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection, appendCollectionName);
 
         console.log('--------------处理其他模式---------------');
-        console.log(variableCSSName);
+        console.log('variableCSSName',variableCSSName);
 
         if (modeData.variable) {
           // 如果是引用其他变量
@@ -1055,6 +1094,8 @@ function generateCSSForMultipleVariables(
       }
     }
   }
+
+  console.log('modeOverrides', modeOverrides);
 
   const tailwindcssv4NeedUpdateVariablesName: { [key: string]: string } = {};
 
@@ -1187,10 +1228,12 @@ function generateCSSForMultipleVariables(
 
   // 对选择器进行排序
   const sortedSelectors = sortSelectors([...modeOverrides.keys()]);
+  console.log('sortedSelectors', sortedSelectors);
   const currentCollectionId = results[0].initialVariable.collection.id;
 
   for (const selector of sortedSelectors) {
     const declarations = modeOverrides.get(selector);
+    console.log('declarations', declarations);
     if (declarations?.size > 0) {
       css.push(`/* Mode Override */`);
       if (format === 'Tailwind CSS V4' && selector.startsWith('@media')) {
@@ -1240,11 +1283,14 @@ function generateCSSForMultipleVariables(
           currentCollectionId
         );
 
+
+
         // 按集合顺序输出变量
         for (let i = 0; i < collectionOrder.length; i++) {
           const collectionId = collectionOrder[i];
           const collection = allCollections.find((c) => c.id === collectionId);
           const modeDeclarations = groupedDeclarations.get(collectionId);
+          console.log('modeDeclarations', modeDeclarations);
           if (modeDeclarations && modeDeclarations.length > 0) {
             css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
             css.push(modeDeclarations.join('\n'));
