@@ -553,7 +553,7 @@ function resolveVariableValue(variable: TVariable, context: ResolveContext, form
 }
 
 // 4. 批量处理函数
-function resolveVariables(
+export function resolveVariables(
   output: TVariable[],
   variables: TVariable[],
   collections: TVariableCollection[],
