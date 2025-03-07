@@ -183,7 +183,7 @@ code.text-\[\.9em\] {
   --color-biloba-flower-950: oklch(0.265 0.092 292.3);
   --color-border: var(--theme-modes-color-border);
   --color-border-muted: var(--theme-modes-color-border-muted);
-  --color-card: var(--color-background);
+  --color-card: var(--theme-modes-color-background);
   --color-card-foreground: var(--theme-modes-color-foreground);
   --color-foreground: var(--theme-modes-color-foreground);
   --color-fuchsia-100: oklch(0.952 0.036 318.9);
@@ -204,6 +204,14 @@ code.text-\[\.9em\] {
   --color-secondary: var(--color-fuchsia-200);
   --color-secondary-foreground: oklch(0.352 0.113 323.1);
   --color-shadow: oklch(0.772 0.137 234.6);
+  --color-sidebar: var(--theme-modes-color-background);
+  --color-sidebar-accent: var(--theme-modes-color-accent);
+  --color-sidebar-accent-foreground: var(--theme-modes-color-accent-foreground);
+  --color-sidebar-border: var(--theme-modes-color-border);
+  --color-sidebar-foreground: var(--theme-modes-color-foreground);
+  --color-sidebar-primary: var(--theme-modes-color-primary);
+  --color-sidebar-primary-foreground: var(--theme-modes-color-primary-foreground);
+  --color-sidebar-ring: var(--theme-modes-color-primary);
   --color-tag-emerald-border: var(--color-green-400);
   --color-tag-emerald-foreground: var(--color-green-100);
   --color-tag-fuchsia-border: var(--color-fuchsia-400);
@@ -216,6 +224,38 @@ code.text-\[\.9em\] {
   --color-tag-red-foreground: var(--color-red-100);
   --color-tag-secondary-border: var(--color-secondary);
   --color-tag-secondary-foreground: var(--color-fuchsia-100);
+
+  --spacing-0: var(--density-modes-spacing-0);
+  --spacing-0-5: var(--density-modes-spacing-0-5);
+  --spacing-1: var(--density-modes-spacing-1);
+  --spacing-10: var(--density-modes-spacing-10);
+  --spacing-12: var(--density-modes-spacing-12);
+  --spacing-16: var(--density-modes-spacing-16);
+  --spacing-2: var(--density-modes-spacing-2);
+  --spacing-20: var(--density-modes-spacing-20);
+  --spacing-24: var(--density-modes-spacing-24);
+  --spacing-3: var(--density-modes-spacing-3);
+  --spacing-32: var(--density-modes-spacing-32);
+  --spacing-4: var(--density-modes-spacing-4);
+  --spacing-40: var(--density-modes-spacing-40);
+  --spacing-5: var(--density-modes-spacing-5);
+  --spacing-6: var(--density-modes-spacing-6);
+  --spacing-60: var(--density-modes-spacing-60);
+  --spacing-8: var(--density-modes-spacing-8);
+  --spacing-px: var(--density-modes-spacing-px);
+
+  --text-body: 1.125rem;
+  --text-body--font-weight: 400;
+  --text-body--line-height: 100%;
+  --text-display: 5rem;
+  --text-display--font-weight: 800;
+  --text-display--line-height: 100%;
+  --text-heading: 2.25rem;
+  --text-heading--font-weight: 400;
+  --text-heading--line-height: 130%;
+  --text-title: 2rem;
+  --text-title--font-weight: 400;
+  --text-title--line-height: 100%;
 
 }
 
@@ -232,7 +272,50 @@ code.text-\[\.9em\] {
   --theme-modes-color-muted-foreground: oklch(0.545 0.043 286.4);
   --theme-modes-color-primary: var(--color-biloba-flower-500);
   --theme-modes-color-primary-foreground: oklch(1 0 0);
+
+  /* Collection: Density Modes */
+  --density-modes-spacing-0: 0rem;
+  --density-modes-spacing-0-5: 0.125rem;
+  --density-modes-spacing-1: 0.25rem;
+  --density-modes-spacing-10: 2.5rem;
+  --density-modes-spacing-12: 3rem;
+  --density-modes-spacing-16: 4rem;
+  --density-modes-spacing-2: 0.5rem;
+  --density-modes-spacing-20: 5rem;
+  --density-modes-spacing-24: 6rem;
+  --density-modes-spacing-3: 0.75rem;
+  --density-modes-spacing-32: 8rem;
+  --density-modes-spacing-4: 1rem;
+  --density-modes-spacing-40: 10rem;
+  --density-modes-spacing-5: 1.25rem;
+  --density-modes-spacing-6: 1.5rem;
+  --density-modes-spacing-60: 15rem;
+  --density-modes-spacing-8: 2rem;
+  --density-modes-spacing-px: 1px;
 } 
+
+/* Mode Override */
+.compact {
+  /* Collection: Density Modes */
+  --density-modes-spacing-0: 0rem;
+  --density-modes-spacing-0-5: 0.0625rem;
+  --density-modes-spacing-1: 0.1875rem;
+  --density-modes-spacing-10: 2rem;
+  --density-modes-spacing-12: 2.25rem;
+  --density-modes-spacing-16: 3rem;
+  --density-modes-spacing-2: 0.375rem;
+  --density-modes-spacing-20: 4rem;
+  --density-modes-spacing-24: 5rem;
+  --density-modes-spacing-3: 0.5625rem;
+  --density-modes-spacing-32: 6.25rem;
+  --density-modes-spacing-4: 0.875rem;
+  --density-modes-spacing-40: 8.75rem;
+  --density-modes-spacing-5: 1rem;
+  --density-modes-spacing-6: 1.25rem;
+  --density-modes-spacing-60: 11.25rem;
+  --density-modes-spacing-8: 1.5rem;
+  --density-modes-spacing-px: 1px;
+}
 
 /* Mode Override */
 .dark {
@@ -249,9 +332,6 @@ code.text-\[\.9em\] {
   --theme-modes-color-primary: var(--color-biloba-flower-300);
   --theme-modes-color-primary-foreground: oklch(0.306 0.088 265.1);
 }
-
-
-
 
 
 :root {
