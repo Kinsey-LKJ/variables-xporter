@@ -70,7 +70,6 @@ export default async function RootLayout({ children, params }) {
     >
       <>
         <LocaleSwitch />
-        <ThemeSwitch />
       </>
     </Navbar>
   );

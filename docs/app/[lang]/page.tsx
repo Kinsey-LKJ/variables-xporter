@@ -28,6 +28,7 @@ export default async function IndexPage({
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
   return (
+
     <div className="w-full flex flex-col items-center">
       <div className="flex flex-col items-center max-w-[1200px] relative">
         <Blurer className="w-[736px] h-[137px] -translate-y-1/2 blur-[140px]" />
