@@ -7,13 +7,18 @@ import { useState } from "react";
 import { cn } from "@app/lib/utils";
 
 const Example = () => {
-  const { theme, setTheme } = useTheme();
+  // const { theme, setTheme } = useTheme();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
   const [density, setDensity] = useState<"default" | "compact">("default");
+  const [brand, setBrand] = useState<"brand-a" | "brand-b">("brand-a");
 
   return (
     <div className="grid gap-6">
       <div className="flex gap-4">
-        <Tabs value={theme || "light"} onValueChange={setTheme}>
+        <Tabs
+          value={theme}
+          onValueChange={(value) => setTheme(value as "light" | "dark")}
+        >
           <TabsList>
             <TabsTrigger value="light">Light</TabsTrigger>
             <TabsTrigger value="dark">Dark</TabsTrigger>
@@ -28,9 +33,25 @@ const Example = () => {
             <TabsTrigger value="compact">Compact</TabsTrigger>
           </TabsList>
         </Tabs>
+        <Tabs
+          value={brand}
+          onValueChange={(value: "brand-a" | "brand-b") => setBrand(value)}
+        >
+          <TabsList>
+            <TabsTrigger value="brand-a">Brand A</TabsTrigger>
+            <TabsTrigger value="brand-b">Brand B</TabsTrigger>
+          </TabsList>
+        </Tabs>
       </div>
 
-      <div className={density === "compact" ? "compact" : "default"}>
+      <div
+        className={cn(
+          theme === "dark" ? "dark" : "light",
+          density === "compact" ? "compact" : "",
+          brand === "brand-b" ? "brand-b" : "",
+          "example"
+        )}
+      >
         <CardsDemo />
       </div>
     </div>

@@ -51,11 +51,11 @@ const data = [
 const chartConfig = {
   revenue: {
     label: "Revenue",
-    color: "var(--color-chart-1)",
+    color: "var(--color-primary)",
   },
   subscription: {
     label: "Subscriptions",
-    color: "var(--color-chart-1)",
+    color: "var(--color-primary)",
   },
 } satisfies ChartConfig
 
