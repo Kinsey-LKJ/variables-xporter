@@ -23,6 +23,7 @@ const nextConfig = withBundleAnalyzer(
     i18n: {
       locales: [lingoI18nConfig.locale.source, ...lingoI18nConfig.locale.targets],
       defaultLocale: lingoI18nConfig.locale.source,
+      localeDetection: false
     },
     webpack(config) {
       // rule.exclude doesn't work starting from Next.js 15

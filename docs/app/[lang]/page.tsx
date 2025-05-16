@@ -13,6 +13,8 @@ import DeviceModes from "@/public/website/device-modes.png";
 import ThemeModes from "@/public/website/theme-modes.png";
 import CssMediaQuery from "@/public/website/css-media-query.png";
 import FigmaTemplate from "@/public/website/figma-template.png";
+import Blur1 from "@/public/website/blur-1.png";
+import Blur2 from "@/public/website/blur-2.png";
 import { getDictionary } from "../_dictionaries/get-dictionary";
 import { Locale } from "../_dictionaries/i18n-config";
 import Link from "next/link";
@@ -29,9 +31,10 @@ export default async function IndexPage({
   const dictionary = await getDictionary(lang);
   return (
 
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center overflow-hidden">
       <div className="flex flex-col items-center max-w-[1200px] relative">
-        <Blurer className="w-[736px] h-[137px] -translate-y-1/2 blur-[140px]" />
+        {/* <Blurer className="w-[736px] h-[137px] -translate-y-1/2 blur-[140px]" /> */}
+        <Image src={Blur1} alt="background" className="absolute w-[150%] max-w-[150%]  -translate-y-[60%]" />
         <div className=" flex flex-col items-center justify-center top-24 absolute z-10">
           <div className=" flex flex-col gap-12 items-center">
             <div className=" flex flex-col gap-4 items-center">
@@ -52,8 +55,9 @@ export default async function IndexPage({
           </div>
         </div>
         <Illustration className="mt-40" />
-        <div className="w-full border-1 border-border bg-border relative grid gap-px">
-          <Blurer className="w-full h-[137px] translate-y-full blur-[300px]" />
+        <div className="w-full border-1 border-border bg-border relative grid gap-px ">
+          {/* <Blurer className="w-full h-[137px] translate-y-full blur-[300px]" /> */}
+          <Image src={Blur2} alt="background" className="absolute w-[180%] max-w-[180%] translate-y-[-30%] justify-self-center" />
           <div className="relative z-10  w-full grid grid-cols-3 gap-px bg-border ">
             <BentoItem
               tag={dictionary.exclusive}
@@ -248,7 +252,7 @@ export default async function IndexPage({
                 <div className="text-heading text-primary">
                   {dictionary.figmaTemplate.title}
                 </div>
-                <div className="text-body text-muted-foreground">
+                <div className="text-body text-muted-foreground leading-tight">
                   {dictionary.figmaTemplate.description}
                 </div>
                 <Button className="w-fit">
@@ -256,13 +260,13 @@ export default async function IndexPage({
                 </Button>
               </div>
 
-              <div className="absolute -right-[5%] top-[30%]">
+              <div className="w-[80%] absolute right-0 bottom-0 translate-x-[30%] translate-y-[43%]">
                 <Image
-                  className="border-1  border-secondary  shadow-[0_0_300px_-33px_var(--color-secondary)]"
+                  className="w-full"
                   src={FigmaTemplate}
                   alt="figma-template"
-                  width={672}
-                  height={316}
+                  width={3216}
+                  height={2149}
                 />
               </div>
             </div>

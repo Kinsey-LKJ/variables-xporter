@@ -178,7 +178,7 @@ code.text-\[\.9em\] {
   --text-title--font-weight: 400;
   --text-title--line-height: 100%;
 }
-:root {
+:root{
   /* Collection: Theme Modes */
   --theme-modes-color-accent: oklch(0.976 0.008 271.3);
   --theme-modes-color-accent-foreground: var(--theme-modes-color-foreground);
@@ -240,71 +240,10 @@ code.text-\[\.9em\] {
   --density-modes-spacing-px: 1px;
 }
 
-.example {
-  /* Collection: Theme Modes */
-  --theme-modes-color-accent: oklch(0.976 0.008 271.3);
-  --theme-modes-color-accent-foreground: var(--theme-modes-color-foreground);
-  --theme-modes-color-background: oklch(1 0 0);
-  --theme-modes-color-border: oklch(0.893 0.024 275.3);
-  --theme-modes-color-border-muted: oklch(0.705 0.093 275.1);
-  --theme-modes-color-chart-1: var(--theme-modes-color-primary);
-  --theme-modes-color-chart-2: var(--theme-modes-color-secondary);
-  --theme-modes-color-chart-3: var(--color-cyan-400);
-  --theme-modes-color-chart-4: var(--color-green-400);
-  --theme-modes-color-foreground: oklch(0.33 0.06 282.6);
-  --theme-modes-color-input: oklch(0.893 0.024 275.3);
-  --theme-modes-color-muted: oklch(0.957 0.007 260.7);
-  --theme-modes-color-muted-foreground: oklch(0.545 0.043 286.4);
-  --theme-modes-color-primary: var(--brand-modes-color-primary-light);
-  --theme-modes-color-primary-foreground: var(
-    --brand-modes-color-primary-foreground-light
-  );
-  --theme-modes-color-secondary: var(--color-fuchsia-500);
 
-  /* Collection: Brand Modes */
-  --brand-modes-color-primary-dark: var(--color-biloba-flower-300);
-  --brand-modes-color-primary-foreground-dark: var(--color-biloba-flower-950);
-  --brand-modes-color-primary-foreground-light: oklch(1 0 0);
-  --brand-modes-color-primary-light: var(--color-biloba-flower-500);
-
-  /* Collection: Density Modes */
-  --density-modes-container-2xl: 42rem;
-  --density-modes-container-2xs: 18rem;
-  --density-modes-container-3xl: 48rem;
-  --density-modes-container-3xs: 16rem;
-  --density-modes-container-4xl: 56rem;
-  --density-modes-container-5xl: 64rem;
-  --density-modes-container-6xl: 72rem;
-  --density-modes-container-7xl: 80rem;
-  --density-modes-container-lg: 32rem;
-  --density-modes-container-md: 28rem;
-  --density-modes-container-sm: 17.75rem;
-  --density-modes-container-xl: 36rem;
-  --density-modes-container-xs: 20rem;
-  --density-modes-spacing-0: 0rem;
-  --density-modes-spacing-0-5: 0.125rem;
-  --density-modes-spacing-1: 0.25rem;
-  --density-modes-spacing-10: 2.5rem;
-  --density-modes-spacing-12: 3rem;
-  --density-modes-spacing-16: 4rem;
-  --density-modes-spacing-2: 0.5rem;
-  --density-modes-spacing-20: 5rem;
-  --density-modes-spacing-24: 6rem;
-  --density-modes-spacing-3: 0.75rem;
-  --density-modes-spacing-32: 8rem;
-  --density-modes-spacing-4: 1rem;
-  --density-modes-spacing-40: 10rem;
-  --density-modes-spacing-5: 1.25rem;
-  --density-modes-spacing-6: 1.5rem;
-  --density-modes-spacing-60: 15rem;
-  --density-modes-spacing-8: 2rem;
-  --density-modes-spacing-9: 2.25rem;
-  --density-modes-spacing-px: 1px;
-}
 
 /* Mode Override */
 .brand-b {
-  --color-primary: var(--theme-modes-color-primary);
   /* Collection: Brand Modes */
   --brand-modes-color-primary-dark: var(--color-cyan-300);
   --brand-modes-color-primary-foreground-dark: var(--color-cyan-950);

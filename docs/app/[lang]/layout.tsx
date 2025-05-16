@@ -13,8 +13,7 @@ import Logo from "@/public/website/Logo.png";
 import lingoI18nConfig from "../../../i18n.json";
 import { allLanguages } from "../_dictionaries/i18n-config";
 
-export const { viewport } = Head;
-
+    
 export const metadata = {
   metadataBase: new URL("https://nextra.site"),
   title: {
@@ -27,7 +26,7 @@ export const metadata = {
     title: "Variables Xporter",
   },
   other: {
-    "msapplication-TileImage": "/ms-icon-144x144.png",
+    "msapplication-TileImage": "/mstile-150x150.png",
     "msapplication-TileColor": "#fff",
   },
   twitter: {
