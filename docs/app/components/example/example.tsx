@@ -3,19 +3,32 @@
 import { CardsDemo } from "../shadcn-ui-cards";
 import { useTheme } from "nextra-theme-docs";
 import { Tabs, TabsList, TabsTrigger } from "@app/components/ui/tabs";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@app/lib/utils";
+import { Calendar } from "../ui/calendar";
 
 const Example = () => {
-  // const { theme, setTheme } = useTheme();
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const { theme, setTheme } = useTheme();
   const [density, setDensity] = useState<"default" | "compact">("default");
   const [brand, setBrand] = useState<"brand-a" | "brand-b">("brand-a");
+
+
+ // 在全局改变主题或部分区域改变主题时都需要以下代码，部分区域需要是因为解决 shadcn/ui chart 的样式无法覆盖的问题
+  useEffect(() => {
+    document.documentElement.classList.toggle("compact", density === "compact");
+    document.documentElement.classList.toggle("brand-b", brand === "brand-b");
+
+    return () => {
+      document.documentElement.classList.remove("compact");
+      document.documentElement.classList.remove("brand-b");
+    };
+  }, [density, brand]);
 
   return (
     <div className="grid gap-6">
       <div className="flex gap-4">
         <Tabs
+          defaultValue={theme === "dark" ? "dark" : "light"}
           value={theme}
           onValueChange={(value) => setTheme(value as "light" | "dark")}
         >
@@ -44,14 +57,7 @@ const Example = () => {
         </Tabs>
       </div>
 
-      <div
-        className={cn(
-          theme === "dark" ? "dark" : "light",
-          density === "compact" ? "compact" : "",
-          brand === "brand-b" ? "brand-b" : "",
-          "example"
-        )}
-      >
+      <div>
         <CardsDemo />
       </div>
     </div>

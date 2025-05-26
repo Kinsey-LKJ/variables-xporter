@@ -2,14 +2,14 @@
 
 import { addDays } from "date-fns"
 
-import { Calendar } from "@app/components/ui/calendar"
-import { Card, CardContent } from "@app/components/ui/card"
+import { Calendar } from "@/app/components/ui/calendar"
+import { Card, CardContent } from "@/app/components/ui/card"
 
 const start = new Date(2023, 5, 5)
 
 export function CardsCalendar() {
   return (
-    <Card>
+    <Card className="max-w-[260px]">
       <CardContent className="p-1">
         <Calendar
           numberOfMonths={1}

@@ -6,15 +6,15 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@app/components/ui/avatar"
-import { Button } from "@app/components/ui/button"
+} from "@/app/components/ui/avatar"
+import { Button } from "@/app/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@app/components/ui/card"
+} from "@/app/components/ui/card"
 import {
   Command,
   CommandEmpty,
@@ -22,12 +22,12 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@app/components/ui/command"
+} from "@/app/components/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@app/components/ui/popover"
+} from "@/app/components/ui/popover"
 
 export function CardsTeamMembers() {
   return (

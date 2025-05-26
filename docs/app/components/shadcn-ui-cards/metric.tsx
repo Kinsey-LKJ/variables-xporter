@@ -8,13 +8,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@app/components/ui/card"
+} from "@/app/components/ui/card"
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@app/components/ui/chart"
+} from "@/app/components/ui/chart"
 
 const data = [
   {

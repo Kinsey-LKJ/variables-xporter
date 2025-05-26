@@ -4,7 +4,7 @@ import * as React from "react"
 import { Minus, Plus } from "lucide-react"
 import { Bar, BarChart } from "recharts"
 
-import { Button } from "@app/components/ui/button"
+import { Button } from "@/app/components/ui/button"
 import {
   Card,
   CardContent,
@@ -12,8 +12,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@app/components/ui/card"
-import { ChartConfig, ChartContainer } from "@app/components/ui/chart"
+} from "@/app/components/ui/card"
+import { ChartConfig, ChartContainer } from "@/app/components/ui/chart"
 
 const data = [
   {
@@ -60,7 +60,7 @@ const data = [
 const chartConfig = {
   goal: {
     label: "Goal",
-    color: "var(--color-primary)",
+    color: "var(--color-chart-1)",
   },
 } satisfies ChartConfig
 

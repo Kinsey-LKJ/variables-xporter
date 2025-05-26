@@ -8,6 +8,8 @@ export default {
     title: '示例',
     theme: {
       layout: 'full',
+      sidebar: false,
+      toc: false 
     }
   }
 }

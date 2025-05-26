@@ -15,15 +15,15 @@ import {
 } from "@tanstack/react-table"
 import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
 
-import { Button } from "@app/components/ui/button"
+import { Button } from "@/app/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@app/components/ui/card"
-import { Checkbox } from "@app/components/ui/checkbox"
+} from "@/app/components/ui/card"
+import { Checkbox } from "@/app/components/ui/checkbox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -32,8 +32,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@app/components/ui/dropdown-menu"
-import { Input } from "@app/components/ui/input"
+} from "@/app/components/ui/dropdown-menu"
+import { Input } from "@/app/components/ui/input"
 import {
   Table,
   TableBody,
@@ -41,7 +41,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@app/components/ui/table"
+} from "@/app/components/ui/table"
 
 const data: Payment[] = [
   {

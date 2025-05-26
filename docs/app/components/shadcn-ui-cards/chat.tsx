@@ -3,19 +3,19 @@
 import * as React from "react"
 import { Check, Plus, Send } from "lucide-react"
 
-import { cn } from "@app/lib/utils"
+import { cn } from "@/app/lib/utils"
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@app/components/ui/avatar"
-import { Button } from "@app/components/ui/button"
+} from "@/app/components/ui/avatar"
+import { Button } from "@/app/components/ui/button"
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@app/components/ui/card"
+} from "@/app/components/ui/card"
 import {
   Command,
   CommandEmpty,
@@ -23,7 +23,7 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@app/components/ui/command"
+} from "@/app/components/ui/command"
 import {
   Dialog,
   DialogContent,
@@ -31,14 +31,14 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from "@app/components/ui/dialog"
-import { Input } from "@app/components/ui/input"
+} from "@/app/components/ui/dialog"
+import { Input } from "@/app/components/ui/input"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@app/components/ui/tooltip"
+} from "@/app/components/ui/tooltip"
 
 const users = [
   {

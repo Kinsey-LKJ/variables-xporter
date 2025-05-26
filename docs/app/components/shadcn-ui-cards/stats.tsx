@@ -7,11 +7,8 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-} from "@app/components/ui/card"
-import {
-  ChartConfig,
-  ChartContainer,
-} from "@app/components/ui/chart"
+} from "@/app/components/ui/card"
+import { ChartConfig, ChartContainer } from "@/app/components/ui/chart"
 
 const data = [
   {
@@ -51,11 +48,11 @@ const data = [
 const chartConfig = {
   revenue: {
     label: "Revenue",
-    color: "var(--color-primary)",
+    color: "var(--color-chart-1)",
   },
   subscription: {
     label: "Subscriptions",
-    color: "var(--color-primary)",
+    color: "var(--color-chart-1)",
   },
 } satisfies ChartConfig
 

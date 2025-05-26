@@ -4,25 +4,25 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@app/components/ui/avatar"
-import { Button } from "@app/components/ui/button"
+} from "@/app/components/ui/avatar"
+import { Button } from "@/app/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
+  CardDescription,    
   CardHeader,
   CardTitle,
-} from "@app/components/ui/card"
-import { Input } from "@app/components/ui/input"
-import { Label } from "@app/components/ui/label"
+} from "@/app/components/ui/card"
+import { Input } from "@/app/components/ui/input"
+import { Label } from "@/app/components/ui/label"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@app/components/ui/select"
-import { Separator } from "@app/components/ui/separator"
+} from "@/app/components/ui/select"
+import { Separator } from "@/app/components/ui/separator"
 
 export function CardsShare() {
   return (
