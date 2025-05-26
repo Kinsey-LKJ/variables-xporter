@@ -55,7 +55,7 @@ code.text-\[\.9em\] {
 }
 
 /* Default Mode */
-@theme inline {
+@theme {
   /* Collection: Design Tokens */
   --color-accent: var(--theme-modes-color-accent);
   --color-accent-foreground: var(--theme-modes-color-accent-foreground);
@@ -80,9 +80,11 @@ code.text-\[\.9em\] {
   --color-chart-2: var(--theme-modes-color-chart-2);
   --color-chart-3: var(--theme-modes-color-chart-3);
   --color-chart-4: var(--theme-modes-color-chart-4);
+  --color-cyan-200: oklch(0.917 0.077 205);
   --color-cyan-300: oklch(0.865 0.115 207.1);
   --color-cyan-400: oklch(0.797 0.134 211.5);
   --color-cyan-500: oklch(0.715 0.126 215.2);
+  --color-cyan-900: oklch(0.398 0.066 227.4);
   --color-cyan-950: oklch(0.302 0.054 229.7);
   --color-foreground: var(--theme-modes-color-foreground);
   --color-fuchsia-100: oklch(0.952 0.036 318.9);
@@ -114,9 +116,7 @@ code.text-\[\.9em\] {
   --color-sidebar-border: var(--theme-modes-color-border);
   --color-sidebar-foreground: var(--theme-modes-color-foreground);
   --color-sidebar-primary: var(--theme-modes-color-primary);
-  --color-sidebar-primary-foreground: var(
-    --theme-modes-color-primary-foreground
-  );
+  --color-sidebar-primary-foreground: var(--theme-modes-color-primary-foreground);
   --color-sidebar-ring: var(--theme-modes-color-primary);
   --color-tag-emerald-border: var(--color-green-400);
   --color-tag-emerald-foreground: var(--color-green-100);
@@ -131,6 +131,8 @@ code.text-\[\.9em\] {
   --color-tag-secondary-border: var(--color-secondary);
   --color-tag-secondary-foreground: var(--color-fuchsia-100);
   --color-teal-200: oklch(0.91 0.093 180.4);
+  --color-yellow-200: oklch(0.945 0.124 101.5);
+  --color-yellow-500: oklch(0.795 0.162 86);
   --container-2xl: var(--density-modes-container-2xl);
   --container-2xs: var(--density-modes-container-2xs);
   --container-3xl: var(--density-modes-container-3xl);
@@ -177,33 +179,53 @@ code.text-\[\.9em\] {
   --text-title: 2rem;
   --text-title--font-weight: 400;
   --text-title--line-height: 100%;
+
 }
+
 :root{
   /* Collection: Theme Modes */
-  --theme-modes-color-accent: oklch(0.976 0.008 271.3);
-  --theme-modes-color-accent-foreground: var(--theme-modes-color-foreground);
-  --theme-modes-color-background: oklch(1 0 0);
-  --theme-modes-color-border: oklch(0.893 0.024 275.3);
-  --theme-modes-color-border-muted: oklch(0.705 0.093 275.1);
+  --theme-modes-color-accent: var(--brand-modes-color-accent-light);
+  --theme-modes-color-accent-foreground: var(--brand-modes-color-accent-foreground-light);
+  --theme-modes-color-background: var(--brand-modes-color-background-light);
+  --theme-modes-color-border: var(--brand-modes-color-border-light);
+  --theme-modes-color-border-muted: var(--brand-modes-color-border-muted-light);
   --theme-modes-color-chart-1: var(--theme-modes-color-primary);
   --theme-modes-color-chart-2: var(--theme-modes-color-secondary);
   --theme-modes-color-chart-3: var(--color-cyan-400);
   --theme-modes-color-chart-4: var(--color-green-400);
-  --theme-modes-color-foreground: oklch(0.33 0.06 282.6);
-  --theme-modes-color-input: oklch(0.893 0.024 275.3);
-  --theme-modes-color-muted: oklch(0.957 0.007 260.7);
-  --theme-modes-color-muted-foreground: oklch(0.545 0.043 286.4);
+  --theme-modes-color-foreground: var(--brand-modes-color-foreground-light);
+  --theme-modes-color-input: var(--brand-modes-color-input-light);
+  --theme-modes-color-muted: var(--brand-modes-color-muted-light);
+  --theme-modes-color-muted-foreground: var(--brand-modes-color-muted-foreground-light);
   --theme-modes-color-primary: var(--brand-modes-color-primary-light);
-  --theme-modes-color-primary-foreground: var(
-    --brand-modes-color-primary-foreground-light
-  );
-  --theme-modes-color-secondary: var(--color-fuchsia-500);
+  --theme-modes-color-primary-foreground: var(--brand-modes-color-primary-foreground-light);
+  --theme-modes-color-secondary: var(--brand-modes-color-secondary-light);
 
   /* Collection: Brand Modes */
+  --brand-modes-color-accent-dark: oklch(0.294 0.037 264.7);
+  --brand-modes-color-accent-foreground-dark: var(--brand-modes-color-foreground-dark);
+  --brand-modes-color-accent-foreground-light: var(--brand-modes-color-foreground-light);
+  --brand-modes-color-accent-light: oklch(0.976 0.008 271.3);
+  --brand-modes-color-background-dark: oklch(0.181 0.037 265.9);
+  --brand-modes-color-background-light: oklch(1 0 0);
+  --brand-modes-color-border-dark: oklch(0.268 0.036 275);
+  --brand-modes-color-border-light: oklch(0.893 0.024 275.3);
+  --brand-modes-color-border-muted-dark: oklch(0.705 0.093 275.1);
+  --brand-modes-color-border-muted-light: oklch(0.705 0.093 275.1);
+  --brand-modes-color-foreground-dark: var(--color-biloba-flower-200);
+  --brand-modes-color-foreground-light: var(--color-biloba-flower-900);
+  --brand-modes-color-input-dark: oklch(0.393 0.043 275.5);
+  --brand-modes-color-input-light: oklch(0.893 0.024 275.3);
+  --brand-modes-color-muted-dark: oklch(0.294 0.037 264.7);
+  --brand-modes-color-muted-foreground-dark: oklch(0.545 0.043 286.4);
+  --brand-modes-color-muted-foreground-light: oklch(0.545 0.043 286.4);
+  --brand-modes-color-muted-light: oklch(0.957 0.007 260.7);
   --brand-modes-color-primary-dark: var(--color-biloba-flower-300);
   --brand-modes-color-primary-foreground-dark: var(--color-biloba-flower-950);
   --brand-modes-color-primary-foreground-light: oklch(1 0 0);
   --brand-modes-color-primary-light: var(--color-biloba-flower-500);
+  --brand-modes-color-secondary-dark: var(--color-fuchsia-200);
+  --brand-modes-color-secondary-light: var(--color-fuchsia-500);
 
   /* Collection: Density Modes */
   --density-modes-container-2xl: 42rem;
@@ -238,16 +260,34 @@ code.text-\[\.9em\] {
   --density-modes-spacing-8: 2rem;
   --density-modes-spacing-9: 2.25rem;
   --density-modes-spacing-px: 1px;
-}
-
-
+} 
 
 /* Mode Override */
 .brand-b {
   /* Collection: Brand Modes */
+  --brand-modes-color-accent-dark: oklch(0.335 0.031 209.8);
+  --brand-modes-color-accent-foreground-dark: var(--brand-modes-color-foreground-dark);
+  --brand-modes-color-accent-foreground-light: var(--brand-modes-color-foreground-light);
+  --brand-modes-color-accent-light: oklch(0.986 0.007 209.4);
+  --brand-modes-color-background-dark: oklch(0.222 0.027 210.5);
+  --brand-modes-color-background-light: oklch(1 0 0);
+  --brand-modes-color-border-dark: oklch(0.311 0.026 209.7);
+  --brand-modes-color-border-light: oklch(0.921 0.019 209.4);
+  --brand-modes-color-border-muted-dark: oklch(0.815 0.066 209.7);
+  --brand-modes-color-border-muted-light: oklch(0.815 0.066 209.7);
+  --brand-modes-color-foreground-dark: var(--color-cyan-200);
+  --brand-modes-color-foreground-light: var(--color-cyan-900);
+  --brand-modes-color-input-dark: oklch(0.443 0.031 209.6);
+  --brand-modes-color-input-light: oklch(0.921 0.019 209.4);
+  --brand-modes-color-muted-dark: oklch(0.335 0.031 209.8);
+  --brand-modes-color-muted-foreground-dark: oklch(0.597 0.028 209.5);
+  --brand-modes-color-muted-foreground-light: oklch(0.597 0.028 209.5);
+  --brand-modes-color-muted-light: oklch(0.965 0.007 209.4);
   --brand-modes-color-primary-dark: var(--color-cyan-300);
   --brand-modes-color-primary-foreground-dark: var(--color-cyan-950);
   --brand-modes-color-primary-light: var(--color-cyan-500);
+  --brand-modes-color-secondary-dark: var(--color-yellow-200);
+  --brand-modes-color-secondary-light: var(--color-yellow-500);
 }
 
 /* Mode Override */
@@ -290,25 +330,24 @@ code.text-\[\.9em\] {
 /* Mode Override */
 .dark {
   /* Collection: Theme Modes */
-  --theme-modes-color-accent: oklch(0.294 0.037 264.7);
-  --theme-modes-color-accent-foreground: var(--theme-modes-color-foreground);
-  --theme-modes-color-background: oklch(0.181 0.037 265.9);
-  --theme-modes-color-border: oklch(0.268 0.036 275);
-  --theme-modes-color-border-muted: oklch(0.705 0.093 275.1);
+  --theme-modes-color-accent: var(--brand-modes-color-accent-dark);
+  --theme-modes-color-accent-foreground: var(--brand-modes-color-accent-foreground-dark);
+  --theme-modes-color-background: var(--brand-modes-color-background-dark);
+  --theme-modes-color-border: var(--brand-modes-color-border-dark);
+  --theme-modes-color-border-muted: var(--brand-modes-color-border-muted-dark);
   --theme-modes-color-chart-1: var(--theme-modes-color-primary);
   --theme-modes-color-chart-2: var(--theme-modes-color-secondary);
   --theme-modes-color-chart-3: var(--color-teal-200);
   --theme-modes-color-chart-4: var(--color-green-300);
-  --theme-modes-color-foreground: oklch(0.87 0.055 285.2);
-  --theme-modes-color-input: oklch(0.393 0.043 275.5);
-  --theme-modes-color-muted: oklch(0.294 0.037 264.7);
-  --theme-modes-color-muted-foreground: oklch(0.545 0.043 286.4);
+  --theme-modes-color-foreground: var(--brand-modes-color-foreground-dark);
+  --theme-modes-color-input: var(--brand-modes-color-input-dark);
+  --theme-modes-color-muted: var(--brand-modes-color-muted-dark);
+  --theme-modes-color-muted-foreground: var(--brand-modes-color-muted-foreground-dark);
   --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
-  --theme-modes-color-primary-foreground: var(
-    --brand-modes-color-primary-foreground-dark
-  );
-  --theme-modes-color-secondary: var(--color-fuchsia-200);
+  --theme-modes-color-primary-foreground: var(--brand-modes-color-primary-foreground-dark);
+  --theme-modes-color-secondary: var(--brand-modes-color-secondary-dark);
 }
+
 
 :root {
   --x-color-black: var(--x-color-neutral-950);

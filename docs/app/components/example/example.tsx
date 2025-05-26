@@ -28,8 +28,7 @@ const Example = () => {
     <div className="grid gap-6">
       <div className="flex gap-4">
         <Tabs
-          defaultValue={theme === "dark" ? "dark" : "light"}
-          value={theme}
+          value={theme === "dark" ? "dark" : "light"}
           onValueChange={(value) => setTheme(value as "light" | "dark")}
         >
           <TabsList>
