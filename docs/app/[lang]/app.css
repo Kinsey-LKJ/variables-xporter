@@ -57,82 +57,77 @@ code.text-\[\.9em\] {
 /* Default Mode */
 @theme {
   /* Collection: Design Tokens */
-  --color-accent: var(--theme-modes-color-accent);
-  --color-accent-foreground: var(--theme-modes-color-accent-foreground);
-  --color-background: var(--theme-modes-color-background);
-  --color-biloba-flower-100: oklch(0.914 0.043 285.5);
-  --color-biloba-flower-200: oklch(0.843 0.081 284.5);
-  --color-biloba-flower-300: oklch(0.771 0.121 284.7);
-  --color-biloba-flower-400: oklch(0.662 0.182 285.3);
-  --color-biloba-flower-50: oklch(0.953 0.023 283.3);
-  --color-biloba-flower-500: oklch(0.594 0.217 286.6);
-  --color-biloba-flower-600: oklch(0.532 0.237 287.3);
-  --color-biloba-flower-700: oklch(0.478 0.221 287.8);
-  --color-biloba-flower-800: oklch(0.415 0.184 287.9);
-  --color-biloba-flower-900: oklch(0.37 0.142 288.3);
-  --color-biloba-flower-950: oklch(0.265 0.092 292.3);
-  --color-border: var(--theme-modes-color-border);
-  --color-border-muted: var(--theme-modes-color-border-muted);
-  --color-card: var(--theme-modes-color-background);
-  --color-card-foreground: var(--theme-modes-color-foreground);
-  --color-chart-1: var(--theme-modes-color-chart-1);
-  --color-chart-1-2: oklch(1 0 0);
-  --color-chart-2: var(--theme-modes-color-chart-2);
-  --color-chart-3: var(--theme-modes-color-chart-3);
-  --color-chart-4: var(--theme-modes-color-chart-4);
-  --color-cyan-200: oklch(0.917 0.077 205);
-  --color-cyan-300: oklch(0.865 0.115 207.1);
-  --color-cyan-400: oklch(0.797 0.134 211.5);
-  --color-cyan-500: oklch(0.715 0.126 215.2);
-  --color-cyan-900: oklch(0.398 0.066 227.4);
-  --color-cyan-950: oklch(0.302 0.054 229.7);
-  --color-foreground: var(--theme-modes-color-foreground);
-  --color-fuchsia-100: oklch(0.952 0.036 318.9);
-  --color-fuchsia-200: oklch(0.903 0.073 319.6);
-  --color-fuchsia-400: oklch(0.748 0.207 322.2);
-  --color-fuchsia-500: oklch(0.667 0.259 322.1);
-  --color-fuchsia-950: oklch(0.293 0.131 325.7);
-  --color-green-100: oklch(0.962 0.043 156.7);
-  --color-green-300: oklch(0.871 0.136 154.4);
-  --color-green-400: oklch(0.8 0.182 151.7);
-  --color-input: var(--theme-modes-color-input);
-  --color-muted: var(--theme-modes-color-muted);
-  --color-muted-foreground: var(--theme-modes-color-muted-foreground);
-  --color-popover: var(--theme-modes-color-background);
-  --color-popover-foreground: var(--theme-modes-color-foreground);
-  --color-primary: var(--theme-modes-color-primary);
-  --color-primary-foreground: var(--theme-modes-color-primary-foreground);
-  --color-purple-100: oklch(0.946 0.033 307.2);
-  --color-purple-400: oklch(0.722 0.177 305.5);
-  --color-red-100: oklch(0.936 0.031 17.7);
-  --color-red-400: oklch(0.711 0.166 22.2);
+  --color-accent: var(--brand-modes-color-accent);
+  --color-background: var(--brand-modes-color-background);
+  --color-border: var(--brand-modes-color-border);
+  --color-border-muted: var(--brand-modes-color-border-muted);
+  --color-card: var(--brand-modes-color-background);
+  --color-card-foreground: var(--brand-modes-color-foreground);
+  --color-chart-1: var(--brand-modes-color-chart-1);
+  --color-chart-1-2: var(--brand-modes-color-chart-1-2);
+  --color-chart-2: var(--brand-modes-color-chart-2);
+  --color-chart-3: var(--brand-modes-color-chart-3);
+  --color-chart-4: var(--brand-modes-color-chart-4);
+  --color-foreground: var(--brand-modes-color-foreground);
+  --color-input: var(--brand-modes-color-input);
+  --color-muted: var(--brand-modes-color-muted);
+  --color-muted-foreground: var(--brand-modes-color-muted-foreground);
+  --color-palette-biloba-flower-0: var(--theme-modes-color-palette-biloba-flower-0);
+  --color-palette-biloba-flower-100: var(--theme-modes-color-palette-biloba-flower-100);
+  --color-palette-biloba-flower-1000: var(--theme-modes-color-palette-biloba-flower-1000);
+  --color-palette-biloba-flower-300: var(--theme-modes-color-palette-biloba-flower-300);
+  --color-palette-biloba-flower-50: var(--theme-modes-color-palette-biloba-flower-50);
+  --color-palette-biloba-flower-500: var(--theme-modes-color-palette-biloba-flower-500);
+  --color-palette-biloba-flower-800: var(--theme-modes-color-palette-biloba-flower-800);
+  --color-palette-cyan-100: var(--theme-modes-color-palette-cyan-100);
+  --color-palette-cyan-1000: var(--theme-modes-color-palette-cyan-1000);
+  --color-palette-cyan-300: var(--theme-modes-color-palette-cyan-300);
+  --color-palette-cyan-50: var(--theme-modes-color-palette-cyan-50);
+  --color-palette-cyan-500: var(--theme-modes-color-palette-cyan-500);
+  --color-palette-cyan-800: var(--theme-modes-color-palette-cyan-800);
+  --color-palette-emerald-500: var(--theme-modes-color-palette-emerald-500);
+  --color-palette-fuchsia-100: var(--theme-modes-color-palette-fuchsia-100);
+  --color-palette-fuchsia-200: var(--theme-modes-color-palette-fuchsia-200);
+  --color-palette-fuchsia-400: var(--theme-modes-color-palette-fuchsia-400);
+  --color-palette-fuchsia-50: var(--theme-modes-color-palette-fuchsia-50);
+  --color-palette-fuchsia-500: var(--theme-modes-color-palette-fuchsia-500-2);
+  --color-palette-green-100: var(--theme-modes-color-palette-green-100);
+  --color-palette-green-400: var(--theme-modes-color-palette-green-400);
+  --color-palette-orange-500: var(--theme-modes-color-palette-orange-500);
+  --color-palette-purple-100: var(--theme-modes-color-palette-purple-100);
+  --color-palette-purple-400: var(--theme-modes-color-palette-purple-400);
+  --color-palette-purple-500: var(--theme-modes-color-palette-purple-500);
+  --color-palette-red-100: var(--theme-modes-color-palette-red-100);
+  --color-palette-red-400: var(--theme-modes-color-palette-red-400);
+  --color-palette-red-500: var(--theme-modes-color-palette-red-500);
+  --color-palette-yellow-500: var(--theme-modes-color-palette-yellow-500);
+  --color-popover: var(--brand-modes-color-background);
+  --color-popover-foreground: var(--brand-modes-color-foreground);
+  --color-primary: var(--brand-modes-color-primary);
+  --color-primary-foreground: var(--brand-modes-color-primary-foreground);
   --color-ring: var(--color-primary);
-  --color-secondary: var(--color-fuchsia-200);
-  --color-secondary-foreground: var(--color-fuchsia-950);
+  --color-secondary: var(--brand-modes-color-secondary);
+  --color-secondary-foreground: var(--brand-modes-color-secondary-foreground);
   --color-shadow: oklch(0.772 0.137 234.6);
-  --color-sidebar: var(--theme-modes-color-background);
-  --color-sidebar-accent: var(--theme-modes-color-accent);
-  --color-sidebar-accent-foreground: var(--theme-modes-color-accent-foreground);
-  --color-sidebar-border: var(--theme-modes-color-border);
-  --color-sidebar-foreground: var(--theme-modes-color-foreground);
-  --color-sidebar-primary: var(--theme-modes-color-primary);
-  --color-sidebar-primary-foreground: var(--theme-modes-color-primary-foreground);
-  --color-sidebar-ring: var(--theme-modes-color-primary);
-  --color-tag-emerald-border: var(--color-green-400);
-  --color-tag-emerald-foreground: var(--color-green-100);
-  --color-tag-fuchsia-border: var(--color-fuchsia-400);
-  --color-tag-fuchsia-foreground: var(--color-fuchsia-100);
+  --color-sidebar: var(--brand-modes-color-background);
+  --color-sidebar-accent: var(--brand-modes-color-accent);
+  --color-sidebar-border: var(--brand-modes-color-border);
+  --color-sidebar-foreground: var(--brand-modes-color-foreground);
+  --color-sidebar-primary: var(--brand-modes-color-primary);
+  --color-sidebar-primary-foreground: var(--brand-modes-color-primary-foreground);
+  --color-sidebar-ring: var(--brand-modes-color-primary);
+  --color-tag-emerald-border: var(--color-palette-green-400);
+  --color-tag-emerald-foreground: var(--color-palette-green-100);
+  --color-tag-fuchsia-border: var(--color-palette-fuchsia-400);
+  --color-tag-fuchsia-foreground: var(--color-palette-fuchsia-100);
   --color-tag-primary-border: var(--color-primary);
   --color-tag-primary-foreground: var(--color-foreground);
-  --color-tag-purple-border: var(--color-purple-400);
-  --color-tag-purple-foreground: var(--color-purple-100);
-  --color-tag-red-border: var(--color-red-400);
-  --color-tag-red-foreground: var(--color-red-100);
+  --color-tag-purple-border: var(--color-palette-purple-400);
+  --color-tag-purple-foreground: var(--color-palette-purple-100);
+  --color-tag-red-border: var(--color-palette-red-400);
+  --color-tag-red-foreground: var(--color-palette-red-100);
   --color-tag-secondary-border: var(--color-secondary);
-  --color-tag-secondary-foreground: var(--color-fuchsia-100);
-  --color-teal-200: oklch(0.91 0.093 180.4);
-  --color-yellow-200: oklch(0.945 0.124 101.5);
-  --color-yellow-500: oklch(0.795 0.162 86);
+  --color-tag-secondary-foreground: var(--color-palette-fuchsia-100);
   --container-2xl: var(--density-modes-container-2xl);
   --container-2xs: var(--density-modes-container-2xs);
   --container-3xl: var(--density-modes-container-3xl);
@@ -170,6 +165,7 @@ code.text-\[\.9em\] {
   --text-body: 1.125rem;
   --text-body--font-weight: 400;
   --text-body--line-height: 100%;
+  --text-color: oklch(1 0 0);
   --text-display: 5rem;
   --text-display--font-weight: 800;
   --text-display--line-height: 100%;
@@ -183,49 +179,57 @@ code.text-\[\.9em\] {
 }
 
 :root{
-  /* Collection: Theme Modes */
-  --theme-modes-color-accent: var(--brand-modes-color-accent-light);
-  --theme-modes-color-accent-foreground: var(--brand-modes-color-accent-foreground-light);
-  --theme-modes-color-background: var(--brand-modes-color-background-light);
-  --theme-modes-color-border: var(--brand-modes-color-border-light);
-  --theme-modes-color-border-muted: var(--brand-modes-color-border-muted-light);
-  --theme-modes-color-chart-1: var(--theme-modes-color-primary);
-  --theme-modes-color-chart-2: var(--theme-modes-color-secondary);
-  --theme-modes-color-chart-3: var(--color-cyan-400);
-  --theme-modes-color-chart-4: var(--color-green-400);
-  --theme-modes-color-foreground: var(--brand-modes-color-foreground-light);
-  --theme-modes-color-input: var(--brand-modes-color-input-light);
-  --theme-modes-color-muted: var(--brand-modes-color-muted-light);
-  --theme-modes-color-muted-foreground: var(--brand-modes-color-muted-foreground-light);
-  --theme-modes-color-primary: var(--brand-modes-color-primary-light);
-  --theme-modes-color-primary-foreground: var(--brand-modes-color-primary-foreground-light);
-  --theme-modes-color-secondary: var(--brand-modes-color-secondary-light);
-
   /* Collection: Brand Modes */
-  --brand-modes-color-accent-dark: oklch(0.294 0.037 264.7);
-  --brand-modes-color-accent-foreground-dark: var(--brand-modes-color-foreground-dark);
-  --brand-modes-color-accent-foreground-light: var(--brand-modes-color-foreground-light);
-  --brand-modes-color-accent-light: oklch(0.976 0.008 271.3);
-  --brand-modes-color-background-dark: oklch(0.181 0.037 265.9);
-  --brand-modes-color-background-light: oklch(1 0 0);
-  --brand-modes-color-border-dark: oklch(0.268 0.036 275);
-  --brand-modes-color-border-light: oklch(0.893 0.024 275.3);
-  --brand-modes-color-border-muted-dark: oklch(0.705 0.093 275.1);
-  --brand-modes-color-border-muted-light: oklch(0.705 0.093 275.1);
-  --brand-modes-color-foreground-dark: var(--color-biloba-flower-200);
-  --brand-modes-color-foreground-light: var(--color-biloba-flower-900);
-  --brand-modes-color-input-dark: oklch(0.393 0.043 275.5);
-  --brand-modes-color-input-light: oklch(0.893 0.024 275.3);
-  --brand-modes-color-muted-dark: oklch(0.294 0.037 264.7);
-  --brand-modes-color-muted-foreground-dark: oklch(0.545 0.043 286.4);
-  --brand-modes-color-muted-foreground-light: oklch(0.545 0.043 286.4);
-  --brand-modes-color-muted-light: oklch(0.957 0.007 260.7);
-  --brand-modes-color-primary-dark: var(--color-biloba-flower-300);
-  --brand-modes-color-primary-foreground-dark: var(--color-biloba-flower-950);
-  --brand-modes-color-primary-foreground-light: oklch(1 0 0);
-  --brand-modes-color-primary-light: var(--color-biloba-flower-500);
-  --brand-modes-color-secondary-dark: var(--color-fuchsia-200);
-  --brand-modes-color-secondary-light: var(--color-fuchsia-500);
+  --brand-modes-color-accent: var(--color-palette-biloba-flower-50);
+  --brand-modes-color-background: var(--color-palette-biloba-flower-0);
+  --brand-modes-color-border: var(--color-palette-biloba-flower-50);
+  --brand-modes-color-border-muted: var(--theme-modes-color-palette-biloba-flower-300);
+  --brand-modes-color-chart-1: var(--color-palette-biloba-flower-500);
+  --brand-modes-color-chart-1-2: var(--color-palette-biloba-flower-300);
+  --brand-modes-color-chart-2: var(--color-palette-fuchsia-500);
+  --brand-modes-color-chart-3: var(--color-palette-orange-500);
+  --brand-modes-color-chart-4: var(--color-palette-purple-500);
+  --brand-modes-color-foreground: var(--color-palette-biloba-flower-1000);
+  --brand-modes-color-input: var(--color-palette-biloba-flower-100);
+  --brand-modes-color-muted: var(--color-palette-biloba-flower-100);
+  --brand-modes-color-muted-foreground: var(--color-palette-biloba-flower-800);
+  --brand-modes-color-primary: var(--color-palette-biloba-flower-500);
+  --brand-modes-color-primary-foreground: oklch(1 0 0);
+  --brand-modes-color-secondary: var(--color-palette-fuchsia-200);
+  --brand-modes-color-secondary-foreground: var(--color-palette-fuchsia-50);
+
+  /* Collection: Theme Modes */
+  --theme-modes-color-palette-biloba-flower-0: oklch(0.976 0.012 283.5);
+  --theme-modes-color-palette-biloba-flower-100: oklch(0.914 0.043 285.5);
+  --theme-modes-color-palette-biloba-flower-1000: oklch(0.225 0.018 298.2);
+  --theme-modes-color-palette-biloba-flower-300: oklch(0.771 0.121 284.7);
+  --theme-modes-color-palette-biloba-flower-50: oklch(0.953 0.023 283.3);
+  --theme-modes-color-palette-biloba-flower-500: oklch(0.594 0.217 286.6);
+  --theme-modes-color-palette-biloba-flower-800: oklch(0.415 0.184 287.9);
+  --theme-modes-color-palette-cyan-0: oklch(0.991 0.011 201);
+  --theme-modes-color-palette-cyan-100: oklch(0.956 0.044 203.4);
+  --theme-modes-color-palette-cyan-1000: oklch(0.243 0.011 223.7);
+  --theme-modes-color-palette-cyan-300: oklch(0.865 0.115 207.1);
+  --theme-modes-color-palette-cyan-50: oklch(0.984 0.019 200.9);
+  --theme-modes-color-palette-cyan-500: oklch(0.715 0.126 215.2);
+  --theme-modes-color-palette-cyan-800: oklch(0.45 0.077 224.3);
+  --theme-modes-color-palette-emerald-500: oklch(0.696 0.149 162.5);
+  --theme-modes-color-palette-fuchsia-100: oklch(0.952 0.036 318.9);
+  --theme-modes-color-palette-fuchsia-200: oklch(0.903 0.073 319.6);
+  --theme-modes-color-palette-fuchsia-400: oklch(0.748 0.207 322.2);
+  --theme-modes-color-palette-fuchsia-50: oklch(0.977 0.017 320.1);
+  --theme-modes-color-palette-fuchsia-500-2: oklch(0.667 0.259 322.1);
+  --theme-modes-color-palette-green-100: oklch(0.962 0.043 156.7);
+  --theme-modes-color-palette-green-400: oklch(0.8 0.182 151.7);
+  --theme-modes-color-palette-orange-500: oklch(0.705 0.187 47.6);
+  --theme-modes-color-palette-purple-100: oklch(0.946 0.033 307.2);
+  --theme-modes-color-palette-purple-400: oklch(0.722 0.177 305.5);
+  --theme-modes-color-palette-purple-500: oklch(0.627 0.233 303.9);
+  --theme-modes-color-palette-red-100: oklch(0.936 0.031 17.7);
+  --theme-modes-color-palette-red-400: oklch(0.711 0.166 22.2);
+  --theme-modes-color-palette-red-500: oklch(0.637 0.208 25.3);
+  --theme-modes-color-palette-yellow-50: oklch(0.987 0.026 102.2);
+  --theme-modes-color-palette-yellow-500: oklch(0.795 0.162 86);
 
   /* Collection: Density Modes */
   --density-modes-container-2xl: 42rem;
@@ -265,29 +269,22 @@ code.text-\[\.9em\] {
 /* Mode Override */
 .brand-b {
   /* Collection: Brand Modes */
-  --brand-modes-color-accent-dark: oklch(0.335 0.031 209.8);
-  --brand-modes-color-accent-foreground-dark: var(--brand-modes-color-foreground-dark);
-  --brand-modes-color-accent-foreground-light: var(--brand-modes-color-foreground-light);
-  --brand-modes-color-accent-light: oklch(0.986 0.007 209.4);
-  --brand-modes-color-background-dark: oklch(0.222 0.027 210.5);
-  --brand-modes-color-background-light: oklch(1 0 0);
-  --brand-modes-color-border-dark: oklch(0.311 0.026 209.7);
-  --brand-modes-color-border-light: oklch(0.921 0.019 209.4);
-  --brand-modes-color-border-muted-dark: oklch(0.815 0.066 209.7);
-  --brand-modes-color-border-muted-light: oklch(0.815 0.066 209.7);
-  --brand-modes-color-foreground-dark: var(--color-cyan-200);
-  --brand-modes-color-foreground-light: var(--color-cyan-900);
-  --brand-modes-color-input-dark: oklch(0.443 0.031 209.6);
-  --brand-modes-color-input-light: oklch(0.921 0.019 209.4);
-  --brand-modes-color-muted-dark: oklch(0.335 0.031 209.8);
-  --brand-modes-color-muted-foreground-dark: oklch(0.597 0.028 209.5);
-  --brand-modes-color-muted-foreground-light: oklch(0.597 0.028 209.5);
-  --brand-modes-color-muted-light: oklch(0.965 0.007 209.4);
-  --brand-modes-color-primary-dark: var(--color-cyan-300);
-  --brand-modes-color-primary-foreground-dark: var(--color-cyan-950);
-  --brand-modes-color-primary-light: var(--color-cyan-500);
-  --brand-modes-color-secondary-dark: var(--color-yellow-200);
-  --brand-modes-color-secondary-light: var(--color-yellow-500);
+  --brand-modes-color-accent: var(--color-palette-cyan-50);
+  --brand-modes-color-background: var(--theme-modes-color-palette-cyan-0);
+  --brand-modes-color-border: var(--color-palette-cyan-50);
+  --brand-modes-color-border-muted: var(--theme-modes-color-palette-cyan-300);
+  --brand-modes-color-chart-1: var(--theme-modes-color-palette-cyan-500);
+  --brand-modes-color-chart-1-2: var(--color-palette-cyan-300);
+  --brand-modes-color-chart-2: var(--color-palette-yellow-500);
+  --brand-modes-color-chart-3: var(--color-palette-emerald-500);
+  --brand-modes-color-chart-4: var(--color-palette-red-500);
+  --brand-modes-color-foreground: var(--color-palette-cyan-1000);
+  --brand-modes-color-input: var(--color-palette-cyan-100);
+  --brand-modes-color-muted: var(--color-palette-cyan-100);
+  --brand-modes-color-muted-foreground: var(--color-palette-cyan-800);
+  --brand-modes-color-primary: var(--color-palette-cyan-500);
+  --brand-modes-color-secondary: var(--theme-modes-color-palette-yellow-500);
+  --brand-modes-color-secondary-foreground: var(--theme-modes-color-palette-yellow-50);
 }
 
 /* Mode Override */
@@ -330,35 +327,63 @@ code.text-\[\.9em\] {
 /* Mode Override */
 .dark {
   /* Collection: Theme Modes */
-  --theme-modes-color-accent: var(--brand-modes-color-accent-dark);
-  --theme-modes-color-accent-foreground: var(--brand-modes-color-accent-foreground-dark);
-  --theme-modes-color-background: var(--brand-modes-color-background-dark);
-  --theme-modes-color-border: var(--brand-modes-color-border-dark);
-  --theme-modes-color-border-muted: var(--brand-modes-color-border-muted-dark);
-  --theme-modes-color-chart-1: var(--theme-modes-color-primary);
-  --theme-modes-color-chart-2: var(--theme-modes-color-secondary);
-  --theme-modes-color-chart-3: var(--color-teal-200);
-  --theme-modes-color-chart-4: var(--color-green-300);
-  --theme-modes-color-foreground: var(--brand-modes-color-foreground-dark);
-  --theme-modes-color-input: var(--brand-modes-color-input-dark);
-  --theme-modes-color-muted: var(--brand-modes-color-muted-dark);
-  --theme-modes-color-muted-foreground: var(--brand-modes-color-muted-foreground-dark);
-  --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
-  --theme-modes-color-primary-foreground: var(--brand-modes-color-primary-foreground-dark);
-  --theme-modes-color-secondary: var(--brand-modes-color-secondary-dark);
+  --theme-modes-color-palette-biloba-flower-0: oklch(0.225 0.018 300.2);
+  --theme-modes-color-palette-biloba-flower-100: oklch(0.37 0.142 288.3);
+  --theme-modes-color-palette-biloba-flower-1000: oklch(0.976 0.012 286.2);
+  --theme-modes-color-palette-biloba-flower-300: oklch(0.478 0.221 287.8);
+  --theme-modes-color-palette-biloba-flower-50: oklch(0.265 0.092 292.3);
+  --theme-modes-color-palette-biloba-flower-500: oklch(0.594 0.217 286.6);
+  --theme-modes-color-palette-biloba-flower-800: oklch(0.843 0.081 284.5);
+  --theme-modes-color-palette-cyan-0: oklch(0.242 0.012 225.7);
+  --theme-modes-color-palette-cyan-100: oklch(0.398 0.066 227.4);
+  --theme-modes-color-palette-cyan-1000: oklch(0.99 0.011 204.1);
+  --theme-modes-color-palette-cyan-300: oklch(0.52 0.094 223.1);
+  --theme-modes-color-palette-cyan-50: oklch(0.302 0.054 229.7);
+  --theme-modes-color-palette-cyan-500: oklch(0.715 0.126 215.2);
+  --theme-modes-color-palette-cyan-800: oklch(0.917 0.077 205);
+  --theme-modes-color-palette-emerald-500: oklch(0.696 0.149 162.5);
+  --theme-modes-color-palette-fuchsia-100: oklch(0.401 0.16 325.6);
+  --theme-modes-color-palette-fuchsia-200: oklch(0.452 0.192 324.6);
+  --theme-modes-color-palette-fuchsia-400: oklch(0.591 0.257 322.9);
+  --theme-modes-color-palette-fuchsia-50: oklch(0.293 0.131 325.7);
+  --theme-modes-color-palette-fuchsia-500-2: oklch(0.667 0.259 322.1);
+  --theme-modes-color-palette-green-100: oklch(0.393 0.09 152.5);
+  --theme-modes-color-palette-green-400: oklch(0.627 0.17 149.2);
+  --theme-modes-color-palette-orange-500: oklch(0.705 0.187 47.6);
+  --theme-modes-color-palette-purple-100: oklch(0.381 0.166 305);
+  --theme-modes-color-palette-purple-400: oklch(0.558 0.252 302.3);
+  --theme-modes-color-palette-purple-500: oklch(0.627 0.233 303.9);
+  --theme-modes-color-palette-red-100: oklch(0.396 0.133 25.7);
+  --theme-modes-color-palette-red-400: oklch(0.577 0.215 27.3);
+  --theme-modes-color-palette-red-500: oklch(0.637 0.208 25.3);
+  --theme-modes-color-palette-yellow-50: oklch(0.286 0.064 53.8);
+  --theme-modes-color-palette-yellow-500: oklch(0.795 0.162 86);
 }
 
 
 :root {
   --x-color-black: var(--x-color-neutral-950);
-  --x-color-primary-100: var(--color-biloba-flower-100);
-  --x-color-primary-400: var(--color-biloba-flower-400);
   --x-color-neutral-400: oklch(0.62 0.02 265.72);
   --x-color-neutral-700: oklch(0.37 0.02 265.74);
   --x-color-neutral-800: oklch(0.26 0.04 264.8);
   --x-color-neutral-900: oklch(0.24 0.03 265);
   --x-color-neutral-950: oklch(0.18 0.02 265.45);
   --x-color-nextra-bg: var(--color-background);
+  --x-color-primary-600: var(--color-primary);
+}
+
+.x\:nextra-focus {
+  --tw-ring-color: color-mix(in oklab, var(--color-ring) 50%, transparent);
+  border-color: var(--color-ring);
+  --tw-ring-offset-color: var(--color-ring);
+}
+
+.x\:text-primary-800 {
+  color: var(--x-color-primary-600);
+}
+
+.x-local-switch {
+  color: var(--color-foreground);
 }
 
 .special-text {

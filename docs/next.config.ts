@@ -1,16 +1,17 @@
-import bundleAnalyzer from '@next/bundle-analyzer'
-import nextra from 'nextra'
-import lingoI18nConfig from '../i18n.json'
+import bundleAnalyzer from "@next/bundle-analyzer";
+import nextra from "nextra";
+import lingoI18nConfig from "../i18n.json";
+import { I18NConfig } from "next/dist/server/config-shared";
 
 const withNextra = nextra({
   defaultShowCopyCode: true,
   latex: true,
-  contentDirBasePath: '/'
-})
+  contentDirBasePath: "/",
+});
 
 const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true'
-})
+  enabled: process.env.ANALYZE === "true",
+});
 
 const nextConfig = withBundleAnalyzer(
   withNextra({
@@ -18,44 +19,57 @@ const nextConfig = withBundleAnalyzer(
     eslint: {
       // Warning: This allows production builds to successfully complete even if
       // your project has ESLint errors.
-      ignoreDuringBuilds: true
+      ignoreDuringBuilds: true,
     },
     i18n: {
-      locales: [lingoI18nConfig.locale.source, ...lingoI18nConfig.locale.targets],
+      locales: [
+        lingoI18nConfig.locale.source,
+        ...lingoI18nConfig.locale.targets,
+      ],
       defaultLocale: lingoI18nConfig.locale.source,
-      localeDetection: false
+      localeDetection: false,
+    },
+    publicRuntimeConfig: {
+      i18n: {
+        locales: [
+          lingoI18nConfig.locale.source,
+          ...lingoI18nConfig.locale.targets,
+        ],
+        defaultLocale: lingoI18nConfig.locale.source,
+        localeDetection: false,
+      } as I18NConfig,
     },
     webpack(config) {
       // rule.exclude doesn't work starting from Next.js 15
       const { test: _test, ...imageLoaderOptions } = config.module.rules.find(
-        rule => rule.test?.test?.('.svg')
-      )
+        (rule) => rule.test?.test?.(".svg")
+      );
       config.module.rules.push({
         test: /\.svg$/,
         oneOf: [
           {
             resourceQuery: /svgr/,
-            use: ['@svgr/webpack']
+            use: ["@svgr/webpack"],
           },
-          imageLoaderOptions
-        ]
-      })
-      return config
+          imageLoaderOptions,
+        ],
+      });
+      return config;
     },
     experimental: {
       turbo: {
         rules: {
-          './app/_icons/*.svg': {
-            loaders: ['@svgr/webpack'],
-            as: '*.js'
-          }
-        }
+          "./app/_icons/*.svg": {
+            loaders: ["@svgr/webpack"],
+            as: "*.js",
+          },
+        },
       },
       optimizePackageImports: [
         // '@app/_icons'
-      ]
-    }
+      ],
+    },
   })
-)
+);
 
-export default nextConfig
+export default nextConfig;

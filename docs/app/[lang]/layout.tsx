@@ -12,6 +12,9 @@ import { Locale } from "@app/_dictionaries/i18n-config";
 import Logo from "@/public/website/Logo.png";
 import lingoI18nConfig from "../../../i18n.json";
 import { allLanguages } from "../_dictionaries/i18n-config";
+import getConfig from 'next/config';
+import { I18NConfig } from "next/dist/server/config-shared";
+import LocalSwitch from "../components/local-switch";
 
     
 export const metadata = {
@@ -50,6 +53,8 @@ export default async function RootLayout({ children, params }) {
     name: allDictionaries[locale].language,
   }));
 
+  console.log(i18n)
+
   const navbar = (
     <Navbar
       logo={
@@ -68,7 +73,8 @@ export default async function RootLayout({ children, params }) {
       // chatLink="https://discord.gg/hEM84NMkRv"
     >
       <>
-        <LocaleSwitch />
+        {/* <LocaleSwitch className="x-local-switch" /> */}
+        <LocalSwitch i18n={i18n} lang={lang} />
       </>
     </Navbar>
   );
@@ -76,32 +82,27 @@ export default async function RootLayout({ children, params }) {
   return (
     <html lang={lang as Locale} suppressHydrationWarning>
       <Head
-        color={{
-          hue: {
-            light: 242,
-            dark: 242,
-          },
-          saturation: {
-            light: 50,
-            dark: 100,
-          },
-          lightness: {
-            light: 46,
-            dark: 83,
-          },
-        }}
-        backgroundColor={{
-          light: "#fcfcfc",
-          dark: "#111111",
-        }}
+        // color={{
+        //   hue: {
+        //     light: 242,
+        //     dark: 242,
+        //   },
+        //   saturation: {
+        //     light: 50,
+        //     dark: 100,
+        //   },
+        //   lightness: {
+        //     light: 46,
+        //     dark: 83,
+        //   },
+        // }}
+        // backgroundColor={{
+        //   light: "#fcfcfc",
+        //   dark: "#111111",
+        // }}
       />
       <body>
         <Layout
-          banner={
-            <Banner storageKey="Variables Xporter">
-              Variables Xporter now supports Tailwind CSS V4 ✨
-            </Banner>
-          }
           i18n={i18n}
           navbar={navbar}
           footer={<Footer />}
