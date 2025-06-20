@@ -1,7 +1,7 @@
 import { cn } from "@app/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 
-const tagVariants = cva("w-fit text-sm border-1 bg-muted shadow-[0_0_4px_rgba(255,255,255,0.49)] inset-shadow-[0_0_3px_rgba(255,255,255,1)] px-3 py-0.5 rounded-full", {
+const tagVariants = cva("w-fit text-sm border-1 bg-muted shadow-[0_0_4px_rgba(255,255,255,0.49)] inset-shadow-[0_0_6px_-2px_rgba(255,255,255,1)] px-3 py-0.5 rounded-full", {
   variants: {
     color: {
       primary: "border-tag-primary-border text-tag-primary-foreground shadow-[0_0_24px_var(--color-primary)]",
