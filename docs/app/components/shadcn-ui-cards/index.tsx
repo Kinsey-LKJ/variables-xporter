@@ -1,5 +1,5 @@
 import { CardsActivityGoal } from "@/app/components/shadcn-ui-cards/activity-goal"
-import { CardsCalendar } from "@/app/components/shadcn-ui-cards/calendar"
+
 import { CardsChat } from "@/app/components/shadcn-ui-cards/chat"
 import { CardsCookieSettings } from "@/app/components/shadcn-ui-cards/cookie-settings"
 import { CardsCreateAccount } from "@/app/components/shadcn-ui-cards/create-account"
