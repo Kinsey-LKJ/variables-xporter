@@ -55,5 +55,13 @@
     "title": "Contient les variables de base nécessaires pour construire des Design Tokens",
     "description": "Commencez ici pour construire vos propres Design Tokens, incluant des variables pour les couleurs, l'espacement, les polices, etc., avec plusieurs modes comme le thème, la marque, les appareils et la densité.",
     "openInFigma": "Ouvrir dans Figma"
+  },
+  "example": {
+    "heading": "Exemple",
+    "title": "Exemple",
+    "description": "Prise en charge de Dark et Light modes, ainsi que des différentes densités et des différentes configurations de marque.",
+    "note": "Les composants de l'exemple proviennent de shadcn/ui.",
+    "default": "Par défaut",
+    "compact": "Compact"
   }
 }

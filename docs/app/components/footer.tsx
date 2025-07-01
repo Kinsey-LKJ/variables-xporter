@@ -15,6 +15,7 @@ export const Footer = () => {
     setTheme,
   } = useTheme();
   const pathname = usePathname();
+  console.log(resolvedTheme);
   const config = useThemeConfig();
 
   useEffect(() => {
@@ -53,7 +54,7 @@ export const Footer = () => {
       )}
       <div>
         MIT 2025 ©
-        <Link href="https://kinsey.design" className=" underline">
+        <Link href="https://lkj.design" className=" underline">
           Kinsey
         </Link>
         .

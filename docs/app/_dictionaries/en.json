@@ -55,5 +55,13 @@
     "title": "Includes basic variables needed to build design tokens",
     "description": "Start building your own design tokens here, including variables for colors, spacing, fonts, and more, with multiple modes for themes, brands, devices, and density.",
     "openInFigma": "Open in Figma"
+  },
+  "example": {
+    "heading": "Example",
+    "title": "Example",
+    "description": "Support for Dark and Light modes, as well as different densities and different brand configurations.",
+    "note": "The components in the example come from shadcn/ui.",
+    "default": "Default",
+    "compact": "Compact"
   }
 }

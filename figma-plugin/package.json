@@ -19,6 +19,7 @@
     "@types/react-resizable": "^3.0.8",
     "change-case": "^5.4.4",
     "colorjs.io": "^0.5.2",
+    "css-tree": "^3.1.0",
     "embla-carousel-auto-height": "^8.0.0",
     "embla-carousel-react": "^8.0.0",
     "figx": "^0.1.3",

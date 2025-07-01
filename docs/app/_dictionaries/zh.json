@@ -55,5 +55,13 @@
     "title": "包含构建 Design Tokens所需的基础变量",
     "description": "从这里开始构建属于你的 Design Tokens，包含 Colors、Spacing、Font、等变量，并且具有 Theme、Brand、Device Modes、Density Modes 多个模式。",
     "openInFigma": "在 Figma 中打开"
+  },
+  "example": {
+    "heading": "示例",
+    "title": "示例",
+    "description": "同时支持 Dark 和 Light 模式，以及不同的密度和不同品牌的变量配置。",
+    "note": "以下示例的组件来自 shadcn/ui。",
+    "default": "默认",
+    "compact": "紧凑"
   }
 }

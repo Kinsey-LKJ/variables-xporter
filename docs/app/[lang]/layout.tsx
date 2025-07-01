@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-import { Layout, LocaleSwitch, Navbar } from "nextra-theme-docs";
+import { Layout, LocaleSwitch, Navbar, ThemeSwitch } from "nextra-theme-docs";
 import { Banner, Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import "nextra-theme-docs/style.css";
@@ -12,9 +12,11 @@ import { Locale } from "@app/_dictionaries/i18n-config";
 import Logo from "@/public/website/Logo.png";
 import lingoI18nConfig from "../../../i18n.json";
 import { allLanguages } from "../_dictionaries/i18n-config";
+import getConfig from 'next/config';
+import { I18NConfig } from "next/dist/server/config-shared";
+import LocalSwitch from "../components/local-switch";
 
-export const { viewport } = Head;
-
+    
 export const metadata = {
   metadataBase: new URL("https://nextra.site"),
   title: {
@@ -27,7 +29,7 @@ export const metadata = {
     title: "Variables Xporter",
   },
   other: {
-    "msapplication-TileImage": "/ms-icon-144x144.png",
+    "msapplication-TileImage": "/mstile-150x150.png",
     "msapplication-TileColor": "#fff",
   },
   twitter: {
@@ -41,7 +43,7 @@ export default async function RootLayout({ children, params }) {
 
   const dictionaries = await Promise.all(
     allLanguages.map(async (locale) => ({
-      [locale]: await getDictionary(locale)
+      [locale]: await getDictionary(locale),
     }))
   );
   const allDictionaries = Object.assign({}, ...dictionaries);
@@ -51,6 +53,7 @@ export default async function RootLayout({ children, params }) {
     name: allDictionaries[locale].language,
   }));
 
+  console.log(i18n)
 
   const navbar = (
     <Navbar
@@ -69,39 +72,37 @@ export default async function RootLayout({ children, params }) {
       // Next.js discord server
       // chatLink="https://discord.gg/hEM84NMkRv"
     >
-      <LocaleSwitch />
+      <>
+        {/* <LocaleSwitch className="x-local-switch" /> */}
+        <LocalSwitch i18n={i18n} lang={lang} />
+      </>
     </Navbar>
   );
 
   return (
     <html lang={lang as Locale} suppressHydrationWarning>
       <Head
-        color={{
-          hue: {
-            light: 242,
-            dark: 242,
-          },
-          saturation: {
-            light: 50,
-            dark: 100,
-          },
-          lightness: {
-            light: 46,
-            dark: 83,
-          },
-        }}
-        backgroundColor={{
-          light: "#fcfcfc",
-          dark: "#111111",
-        }}
+        // color={{
+        //   hue: {
+        //     light: 242,
+        //     dark: 242,
+        //   },
+        //   saturation: {
+        //     light: 50,
+        //     dark: 100,
+        //   },
+        //   lightness: {
+        //     light: 46,
+        //     dark: 83,
+        //   },
+        // }}
+        // backgroundColor={{
+        //   light: "#fcfcfc",
+        //   dark: "#111111",
+        // }}
       />
       <body>
         <Layout
-          banner={
-            <Banner storageKey="Variables Xporter">
-              Variables Xporter now supports Tailwind CSS V4 ✨
-            </Banner>
-          }
           i18n={i18n}
           navbar={navbar}
           footer={<Footer />}
@@ -114,9 +115,7 @@ export default async function RootLayout({ children, params }) {
             storageKey: "variables-xporter-theme",
           }}
         >
-          <main className=" min-h-screen flex flex-col items-center">
-            {children}
-          </main>
+          {children}
         </Layout>
       </body>
     </html>

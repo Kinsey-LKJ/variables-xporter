@@ -2,6 +2,7 @@ import { ExportFormat, TVariable, TVariableCollection } from '../types/app';
 import * as changeCase from 'change-case';
 import { convert, OKLCH, sRGB, DisplayP3 } from '@texel/color';
 import Color from 'colorjs.io';
+import { optimizeCSSVariableReferences } from './optimize-css';
 
 export type RGB = {
   r: number;
@@ -812,12 +813,12 @@ function generateCSSForMultipleVariables(
       if (!processedVarsMap.has(selector)) {
         processedVarsMap.set(selector, new Set());
       }
-      
+
       // 如果变量已在此选择器中处理过，跳过
       if (processedVarsMap.get(selector)!.has(variableCSSName)) {
         return;
       }
-      
+
       // 标记为已处理
       processedVarsMap.get(selector)!.add(variableCSSName);
 
@@ -875,17 +876,17 @@ function generateCSSForMultipleVariables(
                 return `.${modeName}`;
               })[0]
             : themeRootSelector;
-        
+
         // 检查这个变量是否已经在这个选择器中处理过
         if (!processedVarsMap.has(selector)) {
           processedVarsMap.set(selector, new Set());
         }
-        
+
         // 如果变量已在此选择器中处理过，跳过
         if (processedVarsMap.get(selector)!.has(variableCSSName)) {
           continue;
         }
-        
+
         // 标记为已处理
         processedVarsMap.get(selector)!.add(variableCSSName);
 
@@ -903,6 +904,8 @@ function generateCSSForMultipleVariables(
           }
           modeOverrides.get(selector)!.add(varReference);
         }
+
+        console.log('varReference', varReference);
 
         // 如果引用的变量有值，继续处理
         if (modeData.value !== undefined) {
@@ -1000,15 +1003,16 @@ function generateCSSForMultipleVariables(
     }
 
     // 处理其他模式
+    // 似乎是冗余代码
     if (modes) {
       for (const [modeId, modeData] of Object.entries(modes)) {
         if (!modeData || modeId === initialVariable.collection.defaultModeId) continue;
-
+        console.log('modes', modes);
         const parentModes = [modeId];
         const variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection, appendCollectionName);
 
         console.log('--------------处理其他模式---------------');
-        console.log('variableCSSName',variableCSSName);
+        console.log('variableCSSName', variableCSSName);
 
         if (modeData.variable) {
           // 如果是引用其他变量
@@ -1039,6 +1043,8 @@ function generateCSSForMultipleVariables(
             modeOverrides.set(selector, new Set());
           }
           modeOverrides.get(selector)!.add(varReference);
+
+          console.log('varReference', varReference);
 
           if (modeData.value !== undefined) {
             processValue(
@@ -1282,8 +1288,6 @@ function generateCSSForMultipleVariables(
           variableCollectionMap,
           currentCollectionId
         );
-
-
 
         // 按集合顺序输出变量
         for (let i = 0; i < collectionOrder.length; i++) {
@@ -1557,7 +1561,7 @@ export async function generateThemeFiles(
     console.log('ignoreGroup', ignoreGroup);
     const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup, exportFormat);
     console.log('results', results);
-    const css = generateCSSForMultipleVariables(
+    let css = generateCSSForMultipleVariables(
       results,
       collections,
       appendCollectionName,
@@ -1566,6 +1570,9 @@ export async function generateThemeFiles(
       rootElementSize,
       selectCollectionID
     );
+    // 应用 CSS 变量引用优化
+    // css = optimizeCSSVariableReferences(css);
+    
     const tailwindConfig = generateTailwindConfig(results, exportFormat);
     return { css, tailwindConfig };
   } catch (error) {

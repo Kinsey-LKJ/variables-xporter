@@ -21,6 +21,8 @@ import * as changeCase from 'change-case';
 import { generateThemeFiles } from '../../lib/utils';
 import Setting from './setting';
 import { useDisclosure } from '@mantine/hooks';
+import background from '../assets/background.svg';
+
 
 export const tailwindV3IgnoreGroup = [
   'colors/slate',
@@ -295,7 +297,7 @@ const ExportPage = forwardRef<ExportPageHandles, { windowSize: { width: number; 
           <div className=" overflow-x-hidden h-full" ref={emblaRef}>
             <div className=" flex h-full items-start">
               <div className=" absolute -z-10 left-0 top-0">
-                <svg width={(windowSize.width) * 3} height={windowSize.height - 52} viewBox="0 0 1200 448" fill="none" xmlns="http://www.w3.org/2000/svg">
+                {/* <svg width={(windowSize.width) * 3} height={windowSize.height - 52} viewBox="0 0 1200 448" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g clip-path="url(#clip0_375_1247)">
                     <rect width="1200" height="448" fill="#0A1122" />
                     <path
@@ -8030,7 +8032,8 @@ const ExportPage = forwardRef<ExportPageHandles, { windowSize: { width: number; 
                       <rect width="24" height="2" fill="white" transform="translate(1117 254)" />
                     </clipPath>
                   </defs>
-                </svg>
+                </svg> */}
+                <img  width={(windowSize.width) * 3} height={windowSize.height - 52} src={background} alt="export-page-bg" />
               </div>
               <ScrollArea className=" flex-[0_0_100%] h-full min-w-0 p-8 overflow-y-hidden relative">
                 <Welcome />

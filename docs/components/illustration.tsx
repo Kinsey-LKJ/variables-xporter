@@ -40,14 +40,14 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="152"
           height="19"
           fill="url(#paint3_linear_445_1592)"
-          fill-opacity="0.15"
+          fillOpacity="0.15"
         />
       </g>
       <g filter="url(#filter0_d_445_1592)">
         <path
           d="M1025 244H1049C1051.21 244 1053 245.791 1053 248V257C1053 259.209 1051.21 261 1049 261H1025V244Z"
           fill="url(#paint4_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter1_df_445_1592)">
@@ -80,7 +80,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint7_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter4_d_445_1592)">
@@ -91,7 +91,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint8_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter5_d_445_1592)">
@@ -102,7 +102,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint9_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter6_d_445_1592)">
@@ -113,7 +113,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint10_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <path d="M631 252.5H230H0" stroke="#212538" />
@@ -228,7 +228,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="15"
           rx="3"
           fill="#232C3F"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
         <rect
           x="566.5"
@@ -237,7 +237,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="14"
           rx="2.5"
           stroke="url(#paint24_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
         <path
           d="M570.793 256V249.455H574.743V250.158H571.585V252.369H574.538V253.072H571.585V255.297H574.794V256H570.793ZM576.555 249.455L578.243 252.178H578.294L579.981 249.455H580.914L578.856 252.727L580.914 256H579.981L578.294 253.328H578.243L576.555 256H575.622L577.731 252.727L575.622 249.455H576.555ZM581.946 256V249.455H584.158C584.671 249.455 585.091 249.547 585.417 249.733C585.745 249.916 585.988 250.164 586.146 250.477C586.303 250.79 586.382 251.14 586.382 251.526C586.382 251.911 586.303 252.262 586.146 252.577C585.99 252.892 585.749 253.144 585.423 253.331C585.097 253.517 584.68 253.609 584.17 253.609H582.585V252.906H584.145C584.496 252.906 584.779 252.846 584.992 252.724C585.205 252.603 585.359 252.439 585.455 252.232C585.553 252.023 585.602 251.788 585.602 251.526C585.602 251.263 585.553 251.029 585.455 250.822C585.359 250.616 585.204 250.454 584.989 250.337C584.773 250.217 584.488 250.158 584.132 250.158H582.739V256H581.946ZM593.182 252.727C593.182 253.418 593.057 254.014 592.808 254.517C592.558 255.02 592.216 255.408 591.782 255.68C591.347 255.953 590.851 256.089 590.292 256.089C589.734 256.089 589.238 255.953 588.803 255.68C588.368 255.408 588.026 255.02 587.777 254.517C587.528 254.014 587.403 253.418 587.403 252.727C587.403 252.037 587.528 251.44 587.777 250.938C588.026 250.435 588.368 250.047 588.803 249.774C589.238 249.501 589.734 249.365 590.292 249.365C590.851 249.365 591.347 249.501 591.782 249.774C592.216 250.047 592.558 250.435 592.808 250.938C593.057 251.44 593.182 252.037 593.182 252.727ZM592.415 252.727C592.415 252.161 592.32 251.682 592.13 251.292C591.943 250.902 591.688 250.607 591.366 250.407C591.047 250.207 590.689 250.107 590.292 250.107C589.896 250.107 589.537 250.207 589.215 250.407C588.896 250.607 588.641 250.902 588.451 251.292C588.264 251.682 588.17 252.161 588.17 252.727C588.17 253.294 588.264 253.772 588.451 254.162C588.641 254.552 588.896 254.847 589.215 255.048C589.537 255.248 589.896 255.348 590.292 255.348C590.689 255.348 591.047 255.248 591.366 255.048C591.688 254.847 591.943 254.552 592.13 254.162C592.32 253.772 592.415 253.294 592.415 252.727ZM594.514 256V249.455H596.726C597.237 249.455 597.657 249.542 597.985 249.717C598.313 249.889 598.556 250.127 598.714 250.429C598.872 250.732 598.95 251.076 598.95 251.462C598.95 251.847 598.872 252.189 598.714 252.488C598.556 252.786 598.314 253.02 597.988 253.191C597.662 253.359 597.246 253.443 596.739 253.443H594.949V252.727H596.713C597.063 252.727 597.344 252.676 597.557 252.574C597.772 252.472 597.928 252.327 598.024 252.139C598.122 251.95 598.171 251.724 598.171 251.462C598.171 251.2 598.122 250.971 598.024 250.775C597.926 250.578 597.769 250.427 597.554 250.321C597.339 250.212 597.054 250.158 596.7 250.158H595.307V256H594.514ZM597.595 253.06L599.206 256H598.286L596.7 253.06H597.595ZM599.913 250.158V249.455H604.822V250.158H602.764V256H601.971V250.158H599.913Z"
@@ -253,7 +253,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint25_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="900"
@@ -263,7 +263,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint26_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="910"
@@ -273,7 +273,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint27_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="920"
@@ -283,7 +283,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint28_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="930"
@@ -293,7 +293,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint29_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           opacity="0.6"
@@ -318,7 +318,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint30_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="902"
@@ -328,7 +328,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint31_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="912"
@@ -338,7 +338,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint32_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="922"
@@ -348,7 +348,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint33_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="932"
@@ -358,7 +358,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint34_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <circle cx="983.5" cy="244.5" r="2.5" stroke="#8F9CDA" />
         <path
@@ -379,7 +379,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="15"
           rx="3"
           fill="#232C3F"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
         <rect
           x="1005.5"
@@ -388,7 +388,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="14"
           rx="2.5"
           stroke="url(#paint35_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
         <path
           d="M1015.32 252.727C1015.32 253.418 1015.19 254.014 1014.94 254.517C1014.69 255.02 1014.35 255.408 1013.92 255.68C1013.48 255.953 1012.98 256.089 1012.43 256.089C1011.87 256.089 1011.37 255.953 1010.94 255.68C1010.5 255.408 1010.16 255.02 1009.91 254.517C1009.66 254.014 1009.54 253.418 1009.54 252.727C1009.54 252.037 1009.66 251.44 1009.91 250.938C1010.16 250.435 1010.5 250.047 1010.94 249.774C1011.37 249.501 1011.87 249.365 1012.43 249.365C1012.98 249.365 1013.48 249.501 1013.92 249.774C1014.35 250.047 1014.69 250.435 1014.94 250.938C1015.19 251.44 1015.32 252.037 1015.32 252.727ZM1014.55 252.727C1014.55 252.161 1014.45 251.682 1014.26 251.292C1014.08 250.902 1013.82 250.607 1013.5 250.407C1013.18 250.207 1012.82 250.107 1012.43 250.107C1012.03 250.107 1011.67 250.207 1011.35 250.407C1011.03 250.607 1010.77 250.902 1010.59 251.292C1010.4 251.682 1010.3 252.161 1010.3 252.727C1010.3 253.294 1010.4 253.772 1010.59 254.162C1010.77 254.552 1011.03 254.847 1011.35 255.048C1011.67 255.248 1012.03 255.348 1012.43 255.348C1012.82 255.348 1013.18 255.248 1013.5 255.048C1013.82 254.847 1014.08 254.552 1014.26 254.162C1014.45 253.772 1014.55 253.294 1014.55 252.727ZM1020.94 249.455H1021.74V253.788C1021.74 254.236 1021.63 254.635 1021.42 254.987C1021.21 255.336 1020.92 255.612 1020.53 255.815C1020.15 256.015 1019.71 256.115 1019.19 256.115C1018.68 256.115 1018.23 256.015 1017.85 255.815C1017.47 255.612 1017.17 255.336 1016.96 254.987C1016.75 254.635 1016.65 254.236 1016.65 253.788V249.455H1017.44V253.724C1017.44 254.044 1017.51 254.328 1017.65 254.578C1017.79 254.825 1017.99 255.02 1018.25 255.163C1018.51 255.303 1018.83 255.374 1019.19 255.374C1019.56 255.374 1019.87 255.303 1020.13 255.163C1020.39 255.02 1020.59 254.825 1020.73 254.578C1020.87 254.328 1020.94 254.044 1020.94 253.724V249.455ZM1022.96 250.158V249.455H1027.87V250.158H1025.81V256H1025.02V250.158H1022.96ZM1029.09 256V249.455H1031.31C1031.82 249.455 1032.24 249.547 1032.56 249.733C1032.89 249.916 1033.14 250.164 1033.29 250.477C1033.45 250.79 1033.53 251.14 1033.53 251.526C1033.53 251.911 1033.45 252.262 1033.29 252.577C1033.14 252.892 1032.9 253.144 1032.57 253.331C1032.24 253.517 1031.83 253.609 1031.32 253.609H1029.73V252.906H1031.29C1031.64 252.906 1031.93 252.846 1032.14 252.724C1032.35 252.603 1032.51 252.439 1032.6 252.232C1032.7 252.023 1032.75 251.788 1032.75 251.526C1032.75 251.263 1032.7 251.029 1032.6 250.822C1032.51 250.616 1032.35 250.454 1032.14 250.337C1031.92 250.217 1031.64 250.158 1031.28 250.158H1029.89V256H1029.09ZM1039.1 249.455H1039.89V253.788C1039.89 254.236 1039.79 254.635 1039.58 254.987C1039.37 255.336 1039.07 255.612 1038.69 255.815C1038.31 256.015 1037.86 256.115 1037.35 256.115C1036.84 256.115 1036.39 256.015 1036.01 255.815C1035.63 255.612 1035.33 255.336 1035.12 254.987C1034.91 254.635 1034.81 254.236 1034.81 253.788V249.455H1035.6V253.724C1035.6 254.044 1035.67 254.328 1035.81 254.578C1035.95 254.825 1036.15 255.02 1036.41 255.163C1036.67 255.303 1036.99 255.374 1037.35 255.374C1037.71 255.374 1038.03 255.303 1038.29 255.163C1038.55 255.02 1038.75 254.825 1038.89 254.578C1039.03 254.328 1039.1 254.044 1039.1 253.724V249.455ZM1041.12 250.158V249.455H1046.03V250.158H1043.97V256H1043.18V250.158H1041.12Z"
@@ -402,7 +402,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             height="1"
             rx="0.5"
             fill="url(#paint36_linear_445_1592)"
-            shape-rendering="crispEdges"
+            shapeRendering="crispEdges"
           />
         </g>
         <g filter="url(#filter19_d_445_1592)">
@@ -413,7 +413,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             height="1"
             rx="0.5"
             fill="url(#paint37_linear_445_1592)"
-            shape-rendering="crispEdges"
+            shapeRendering="crispEdges"
           />
         </g>
         <g filter="url(#filter20_d_445_1592)">
@@ -424,7 +424,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             height="1"
             rx="0.5"
             fill="url(#paint38_linear_445_1592)"
-            shape-rendering="crispEdges"
+            shapeRendering="crispEdges"
           />
         </g>
       </g>
@@ -438,7 +438,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             rx="0.5"
             fill="#232C3F"
             stroke="url(#paint39_linear_445_1592)"
-            stroke-width="0.5"
+            strokeWidth="0.5"
           />
           <path
             opacity="0.6"
@@ -463,7 +463,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             rx="0.5"
             fill="#232C3F"
             stroke="url(#paint40_linear_445_1592)"
-            stroke-width="0.5"
+            strokeWidth="0.5"
           />
           <rect
             x="591"
@@ -473,7 +473,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             rx="0.5"
             fill="#232C3F"
             stroke="url(#paint41_linear_445_1592)"
-            stroke-width="0.5"
+            strokeWidth="0.5"
           />
           <rect
             x="598"
@@ -483,7 +483,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             rx="0.5"
             fill="#232C3F"
             stroke="url(#paint42_linear_445_1592)"
-            stroke-width="0.5"
+            strokeWidth="0.5"
           />
           <rect
             x="605"
@@ -493,7 +493,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             rx="0.5"
             fill="#232C3F"
             stroke="url(#paint43_linear_445_1592)"
-            stroke-width="0.5"
+            strokeWidth="0.5"
           />
           <rect
             x="612"
@@ -503,7 +503,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             rx="0.5"
             fill="#232C3F"
             stroke="url(#paint44_linear_445_1592)"
-            stroke-width="0.5"
+            strokeWidth="0.5"
           />
           <circle cx="691.5" cy="354.5" r="2.5" stroke="#8F9CDA" />
         </g>
@@ -546,7 +546,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint49_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="554"
@@ -556,7 +556,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint50_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="559"
@@ -566,7 +566,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint51_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="564"
@@ -576,7 +576,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint52_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="569"
@@ -586,7 +586,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint53_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="574"
@@ -596,7 +596,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint54_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="579"
@@ -606,7 +606,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint55_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="584"
@@ -616,7 +616,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint56_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <circle cx="671.5" cy="159.5" r="2.5" stroke="#8F9CDA" />
         <path d="M585 133.5H593" stroke="#212538" />
@@ -628,7 +628,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint57_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           opacity="0.6"
@@ -649,7 +649,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint58_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="551"
@@ -659,7 +659,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint59_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="551"
@@ -669,7 +669,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint60_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="547"
@@ -679,7 +679,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint61_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="547"
@@ -689,7 +689,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint62_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="555"
@@ -699,7 +699,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint63_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="555"
@@ -709,7 +709,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint64_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="559"
@@ -719,7 +719,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint65_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="559"
@@ -729,7 +729,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint66_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="563"
@@ -739,7 +739,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint67_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="563"
@@ -749,7 +749,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint68_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="567"
@@ -759,7 +759,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint69_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="567"
@@ -769,7 +769,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint70_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="571"
@@ -779,7 +779,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint71_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="571"
@@ -789,7 +789,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint72_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="575"
@@ -799,7 +799,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint73_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="575"
@@ -809,7 +809,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint74_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="579"
@@ -819,7 +819,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint75_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="579"
@@ -829,7 +829,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint76_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           d="M504.585 170.455V177H503.793V170.455H504.585ZM511.441 172.5H510.649C510.602 172.272 510.52 172.072 510.403 171.899C510.288 171.727 510.147 171.582 509.981 171.464C509.817 171.345 509.635 171.256 509.434 171.196C509.234 171.136 509.025 171.107 508.808 171.107C508.412 171.107 508.053 171.207 507.731 171.407C507.411 171.607 507.157 171.902 506.967 172.292C506.78 172.682 506.686 173.161 506.686 173.727C506.686 174.294 506.78 174.772 506.967 175.162C507.157 175.552 507.411 175.847 507.731 176.048C508.053 176.248 508.412 176.348 508.808 176.348C509.025 176.348 509.234 176.318 509.434 176.259C509.635 176.199 509.817 176.11 509.981 175.993C510.147 175.874 510.288 175.728 510.403 175.555C510.52 175.381 510.602 175.18 510.649 174.955H511.441C511.382 175.289 511.273 175.588 511.116 175.853C510.958 176.117 510.762 176.342 510.527 176.527C510.293 176.71 510.03 176.85 509.738 176.946C509.448 177.042 509.138 177.089 508.808 177.089C508.25 177.089 507.753 176.953 507.319 176.68C506.884 176.408 506.542 176.02 506.293 175.517C506.043 175.014 505.919 174.418 505.919 173.727C505.919 173.037 506.043 172.44 506.293 171.938C506.542 171.435 506.884 171.047 507.319 170.774C507.753 170.501 508.25 170.365 508.808 170.365C509.138 170.365 509.448 170.413 509.738 170.509C510.03 170.605 510.293 170.745 510.527 170.931C510.762 171.114 510.958 171.338 511.116 171.602C511.273 171.864 511.382 172.163 511.441 172.5ZM512.812 177L515.739 171.209V171.158H512.364V170.455H516.558V171.196L513.643 177H512.812ZM519.782 177.089C519.513 177.085 519.245 177.034 518.976 176.936C518.708 176.838 518.463 176.673 518.241 176.441C518.019 176.206 517.842 175.89 517.707 175.491C517.573 175.091 517.506 174.588 517.506 173.983C517.506 173.403 517.56 172.89 517.669 172.442C517.778 171.993 517.935 171.615 518.142 171.308C518.349 170.999 518.598 170.765 518.89 170.605C519.184 170.445 519.515 170.365 519.884 170.365C520.25 170.365 520.576 170.439 520.862 170.586C521.149 170.73 521.384 170.933 521.565 171.193C521.746 171.453 521.863 171.752 521.916 172.091H521.137C521.064 171.797 520.924 171.553 520.715 171.359C520.506 171.165 520.229 171.068 519.884 171.068C519.377 171.068 518.977 171.289 518.685 171.73C518.396 172.171 518.25 172.79 518.247 173.587H518.299C518.418 173.406 518.56 173.251 518.724 173.123C518.89 172.993 519.073 172.893 519.273 172.823C519.474 172.752 519.686 172.717 519.909 172.717C520.284 172.717 520.627 172.811 520.938 172.999C521.25 173.184 521.499 173.441 521.686 173.769C521.874 174.095 521.968 174.469 521.968 174.891C521.968 175.295 521.877 175.666 521.696 176.003C521.515 176.337 521.26 176.604 520.932 176.802C520.606 176.998 520.223 177.094 519.782 177.089ZM519.782 176.386C520.05 176.386 520.291 176.319 520.504 176.185C520.719 176.051 520.888 175.871 521.012 175.645C521.138 175.419 521.201 175.168 521.201 174.891C521.201 174.62 521.14 174.374 521.018 174.152C520.899 173.929 520.734 173.751 520.523 173.619C520.314 173.487 520.076 173.42 519.807 173.42C519.605 173.42 519.416 173.461 519.241 173.542C519.067 173.621 518.913 173.729 518.781 173.868C518.651 174.006 518.549 174.165 518.474 174.344C518.4 174.521 518.362 174.707 518.362 174.903C518.362 175.163 518.423 175.406 518.545 175.632C518.668 175.858 518.837 176.04 519.05 176.179C519.265 176.317 519.509 176.386 519.782 176.386ZM523.339 177V170.455H524.132V176.297H527.175V177H523.339ZM528.402 177V170.455H529.195V173.702H529.271L532.212 170.455H533.247L530.499 173.408L533.247 177H532.288L530.013 173.957L529.195 174.878V177H528.402Z"
@@ -854,7 +854,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint81_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="265"
@@ -864,7 +864,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint82_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="277"
@@ -874,7 +874,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint83_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="283"
@@ -884,7 +884,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint84_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="289"
@@ -894,7 +894,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint85_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="296"
@@ -904,7 +904,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint86_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <path
         d="M318.5 289.5H320.5C321.052 289.5 321.5 289.052 321.5 288.5V273.914C321.5 273.649 321.605 273.395 321.793 273.207L326.207 268.793C326.395 268.605 326.5 268.351 326.5 268.086V259"
@@ -936,7 +936,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint88_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <circle cx="367" cy="241" r="1" fill="url(#paint89_radial_445_1592)" />
       <circle cx="367" cy="245" r="1" fill="url(#paint90_radial_445_1592)" />
@@ -970,7 +970,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="15"
           rx="3"
           fill="#232C3F"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
         <rect
           x="301.5"
@@ -979,7 +979,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="14"
           rx="2.5"
           stroke="url(#paint101_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
         <path
           d="M305.435 250.158V249.455H310.344V250.158H308.286V256H307.493V250.158H305.435ZM316.817 252.727C316.817 253.418 316.693 254.014 316.443 254.517C316.194 255.02 315.852 255.408 315.417 255.68C314.983 255.953 314.486 256.089 313.928 256.089C313.37 256.089 312.873 255.953 312.439 255.68C312.004 255.408 311.662 255.02 311.413 254.517C311.164 254.014 311.039 253.418 311.039 252.727C311.039 252.037 311.164 251.44 311.413 250.938C311.662 250.435 312.004 250.047 312.439 249.774C312.873 249.501 313.37 249.365 313.928 249.365C314.486 249.365 314.983 249.501 315.417 249.774C315.852 250.047 316.194 250.435 316.443 250.938C316.693 251.44 316.817 252.037 316.817 252.727ZM316.05 252.727C316.05 252.161 315.955 251.682 315.766 251.292C315.578 250.902 315.324 250.607 315.002 250.407C314.682 250.207 314.324 250.107 313.928 250.107C313.532 250.107 313.173 250.207 312.851 250.407C312.531 250.607 312.277 250.902 312.087 251.292C311.9 251.682 311.806 252.161 311.806 252.727C311.806 253.294 311.9 253.772 312.087 254.162C312.277 254.552 312.531 254.847 312.851 255.048C313.173 255.248 313.532 255.348 313.928 255.348C314.324 255.348 314.682 255.248 315.002 255.048C315.324 254.847 315.578 254.552 315.766 254.162C315.955 253.772 316.05 253.294 316.05 252.727ZM318.15 256V249.455H318.943V252.702H319.019L321.96 249.455H322.995L320.247 252.408L322.995 256H322.036L319.761 252.957L318.943 253.878V256H318.15ZM324.021 256V249.455H327.971V250.158H324.814V252.369H327.767V253.072H324.814V255.297H328.023V256H324.021ZM334.59 249.455V256H333.823L330.257 250.861H330.193V256H329.4V249.455H330.167L333.747 254.607H333.811V249.455H334.59ZM339.756 251.091C339.718 250.767 339.562 250.516 339.289 250.337C339.017 250.158 338.682 250.068 338.286 250.068C337.996 250.068 337.742 250.115 337.525 250.209C337.31 250.303 337.142 250.431 337.02 250.596C336.901 250.76 336.841 250.946 336.841 251.155C336.841 251.33 336.883 251.48 336.966 251.605C337.051 251.729 337.16 251.832 337.292 251.915C337.424 251.996 337.562 252.064 337.707 252.117C337.852 252.168 337.985 252.21 338.107 252.241L338.772 252.42C338.942 252.465 339.132 252.527 339.34 252.606C339.551 252.685 339.753 252.792 339.945 252.929C340.138 253.063 340.298 253.235 340.424 253.446C340.55 253.657 340.612 253.916 340.612 254.223C340.612 254.577 340.52 254.896 340.334 255.182C340.151 255.467 339.883 255.694 339.529 255.863C339.177 256.031 338.75 256.115 338.247 256.115C337.779 256.115 337.373 256.039 337.03 255.888C336.689 255.737 336.42 255.526 336.224 255.255C336.03 254.985 335.921 254.67 335.895 254.312H336.713C336.735 254.56 336.818 254.764 336.963 254.926C337.11 255.086 337.295 255.205 337.519 255.284C337.745 255.361 337.987 255.399 338.247 255.399C338.55 255.399 338.822 255.35 339.062 255.252C339.303 255.152 339.494 255.013 339.634 254.837C339.775 254.658 339.845 254.449 339.845 254.21C339.845 253.993 339.785 253.816 339.663 253.68C339.542 253.543 339.382 253.433 339.184 253.347C338.986 253.262 338.772 253.187 338.541 253.124L337.736 252.893C337.225 252.746 336.82 252.537 336.522 252.264C336.223 251.991 336.074 251.634 336.074 251.193C336.074 250.827 336.173 250.507 336.371 250.234C336.572 249.96 336.84 249.746 337.177 249.595C337.516 249.442 337.894 249.365 338.311 249.365C338.733 249.365 339.108 249.441 339.436 249.592C339.764 249.741 340.024 249.946 340.216 250.206C340.41 250.466 340.512 250.761 340.523 251.091H339.756Z"
@@ -1013,7 +1013,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint102_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path d="M347 348.5H355.5L397.5 306.5L412 306.5" stroke="#212538" />
         <rect
@@ -1024,7 +1024,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint103_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="308"
@@ -1034,7 +1034,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint104_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="312"
@@ -1044,7 +1044,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint105_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="312"
@@ -1054,7 +1054,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint106_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="316"
@@ -1064,7 +1064,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint107_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="316"
@@ -1074,7 +1074,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint108_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="320"
@@ -1084,7 +1084,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint109_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="320"
@@ -1094,7 +1094,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint110_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="324"
@@ -1104,7 +1104,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint111_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="324"
@@ -1114,7 +1114,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint112_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="328"
@@ -1124,7 +1124,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint113_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="328"
@@ -1134,7 +1134,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint114_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="332"
@@ -1144,7 +1144,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint115_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="332"
@@ -1154,7 +1154,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint116_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="336"
@@ -1164,7 +1164,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint117_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="336"
@@ -1174,7 +1174,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint118_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="340"
@@ -1184,7 +1184,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint119_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="340"
@@ -1194,7 +1194,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint120_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <circle cx="228.5" cy="328.5" r="2.5" stroke="#8F9CDA" />
         <circle cx="414.5" cy="306.5" r="2.5" stroke="#8F9CDA" />
@@ -1206,7 +1206,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint121_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="399"
@@ -1216,7 +1216,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint122_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="405"
@@ -1226,7 +1226,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint123_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="411"
@@ -1236,7 +1236,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint124_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="417"
@@ -1246,7 +1246,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint125_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <circle cx="417" cy="350" r="1" fill="url(#paint126_radial_445_1592)" />
         <path
@@ -1277,7 +1277,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint133_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="356"
@@ -1287,7 +1287,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint134_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="353"
@@ -1297,7 +1297,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint135_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="361"
@@ -1307,7 +1307,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint136_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="343"
@@ -1317,7 +1317,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint137_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="340"
@@ -1327,7 +1327,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint138_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="348"
@@ -1337,7 +1337,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint139_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="369"
@@ -1347,7 +1347,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint140_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="366"
@@ -1357,7 +1357,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint141_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="374"
@@ -1367,7 +1367,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint142_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="262"
@@ -1377,7 +1377,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint143_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="262"
@@ -1387,7 +1387,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint144_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="249"
@@ -1397,7 +1397,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint145_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           opacity="0.6"
@@ -1435,7 +1435,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 967 421)"
           fill="#232C3F"
           stroke="url(#paint147_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="870"
@@ -1446,7 +1446,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 870 454)"
           fill="#232C3F"
           stroke="url(#paint148_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="873"
@@ -1457,7 +1457,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 873 452)"
           fill="#232C3F"
           stroke="url(#paint149_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="865"
@@ -1468,7 +1468,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 865 452)"
           fill="#232C3F"
           stroke="url(#paint150_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="883"
@@ -1479,7 +1479,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 883 454)"
           fill="#232C3F"
           stroke="url(#paint151_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="886"
@@ -1490,7 +1490,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 886 452)"
           fill="#232C3F"
           stroke="url(#paint152_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="878"
@@ -1501,7 +1501,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 878 452)"
           fill="#232C3F"
           stroke="url(#paint153_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="857"
@@ -1512,7 +1512,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 857 454)"
           fill="#232C3F"
           stroke="url(#paint154_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="860"
@@ -1523,7 +1523,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 860 452)"
           fill="#232C3F"
           stroke="url(#paint155_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="852"
@@ -1534,7 +1534,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 852 452)"
           fill="#232C3F"
           stroke="url(#paint156_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="964"
@@ -1545,7 +1545,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 964 431)"
           fill="#232C3F"
           stroke="url(#paint157_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="964"
@@ -1556,7 +1556,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 964 405)"
           fill="#232C3F"
           stroke="url(#paint158_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="977"
@@ -1567,7 +1567,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 977 418)"
           fill="#232C3F"
           stroke="url(#paint159_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           opacity="0.6"
@@ -1593,7 +1593,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint160_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="639"
@@ -1603,7 +1603,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint161_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="645"
@@ -1613,7 +1613,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint162_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="645"
@@ -1623,7 +1623,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint163_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="651"
@@ -1633,7 +1633,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint164_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="651"
@@ -1643,7 +1643,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint165_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="657"
@@ -1653,7 +1653,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint166_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="657"
@@ -1663,7 +1663,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint167_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="663"
@@ -1673,7 +1673,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint168_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="663"
@@ -1683,7 +1683,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint169_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="669"
@@ -1693,7 +1693,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint170_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="669"
@@ -1703,7 +1703,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint171_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="626"
@@ -1714,7 +1714,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 626 236)"
         fill="#232C3F"
         stroke="url(#paint172_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="692"
@@ -1725,7 +1725,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 692 236)"
         fill="#232C3F"
         stroke="url(#paint173_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="626"
@@ -1736,7 +1736,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 626 242)"
         fill="#232C3F"
         stroke="url(#paint174_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="692"
@@ -1747,7 +1747,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 692 242)"
         fill="#232C3F"
         stroke="url(#paint175_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="626"
@@ -1758,7 +1758,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 626 248)"
         fill="#232C3F"
         stroke="url(#paint176_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="692"
@@ -1769,7 +1769,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 692 248)"
         fill="#232C3F"
         stroke="url(#paint177_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="626"
@@ -1780,7 +1780,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 626 254)"
         fill="#232C3F"
         stroke="url(#paint178_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="692"
@@ -1791,7 +1791,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 692 254)"
         fill="#232C3F"
         stroke="url(#paint179_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="626"
@@ -1802,7 +1802,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 626 260)"
         fill="#232C3F"
         stroke="url(#paint180_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="692"
@@ -1813,7 +1813,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 692 260)"
         fill="#232C3F"
         stroke="url(#paint181_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="626"
@@ -1824,7 +1824,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 626 266)"
         fill="#232C3F"
         stroke="url(#paint182_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="692"
@@ -1835,7 +1835,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 692 266)"
         fill="#232C3F"
         stroke="url(#paint183_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         opacity="0.4"
@@ -1854,7 +1854,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint184_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <path
         d="M646.585 261.455V268H645.793V261.455H646.585ZM653.697 264.727C653.697 265.418 653.573 266.014 653.323 266.517C653.074 267.02 652.732 267.408 652.297 267.68C651.863 267.953 651.366 268.089 650.808 268.089C650.25 268.089 649.753 267.953 649.319 267.68C648.884 267.408 648.542 267.02 648.293 266.517C648.043 266.014 647.919 265.418 647.919 264.727C647.919 264.037 648.043 263.44 648.293 262.938C648.542 262.435 648.884 262.047 649.319 261.774C649.753 261.501 650.25 261.365 650.808 261.365C651.366 261.365 651.863 261.501 652.297 261.774C652.732 262.047 653.074 262.435 653.323 262.938C653.573 263.44 653.697 264.037 653.697 264.727ZM652.93 264.727C652.93 264.161 652.835 263.682 652.646 263.292C652.458 262.902 652.204 262.607 651.882 262.407C651.562 262.207 651.204 262.107 650.808 262.107C650.412 262.107 650.053 262.207 649.731 262.407C649.411 262.607 649.157 262.902 648.967 263.292C648.78 263.682 648.686 264.161 648.686 264.727C648.686 265.294 648.78 265.772 648.967 266.162C649.157 266.552 649.411 266.847 649.731 267.048C650.053 267.248 650.412 267.348 650.808 267.348C651.204 267.348 651.562 267.248 651.882 267.048C652.204 266.847 652.458 266.552 652.646 266.162C652.835 265.772 652.93 265.294 652.93 264.727ZM654.915 268V267.425L657.075 265.06C657.329 264.783 657.538 264.542 657.702 264.337C657.866 264.131 657.987 263.937 658.066 263.756C658.147 263.572 658.188 263.381 658.188 263.18C658.188 262.95 658.132 262.751 658.021 262.583C657.913 262.414 657.764 262.284 657.574 262.193C657.384 262.101 657.171 262.055 656.935 262.055C656.683 262.055 656.464 262.108 656.276 262.212C656.091 262.314 655.947 262.458 655.845 262.643C655.745 262.829 655.695 263.046 655.695 263.295H654.94C654.94 262.912 655.029 262.575 655.206 262.286C655.383 261.996 655.623 261.77 655.928 261.608C656.235 261.446 656.579 261.365 656.96 261.365C657.344 261.365 657.684 261.446 657.98 261.608C658.276 261.77 658.508 261.988 658.677 262.263C658.845 262.538 658.929 262.844 658.929 263.18C658.929 263.421 658.885 263.657 658.798 263.887C658.713 264.115 658.564 264.369 658.351 264.651C658.14 264.93 657.847 265.271 657.472 265.673L656.002 267.246V267.297H659.044V268H654.915ZM662.41 268.089C662.035 268.089 661.697 268.015 661.396 267.866C661.096 267.717 660.855 267.512 660.674 267.252C660.493 266.992 660.394 266.696 660.377 266.364H661.144C661.174 266.66 661.308 266.905 661.547 267.099C661.787 267.29 662.075 267.386 662.41 267.386C662.678 267.386 662.917 267.324 663.125 267.198C663.336 267.072 663.502 266.9 663.621 266.68C663.742 266.458 663.803 266.208 663.803 265.929C663.803 265.643 663.74 265.389 663.614 265.165C663.491 264.939 663.32 264.761 663.103 264.631C662.886 264.501 662.638 264.435 662.358 264.433C662.158 264.431 661.953 264.462 661.742 264.526C661.531 264.588 661.357 264.668 661.221 264.766L660.479 264.676L660.875 261.455H664.276V262.158H661.54L661.31 264.088H661.348C661.483 263.982 661.651 263.893 661.853 263.823C662.056 263.752 662.267 263.717 662.486 263.717C662.887 263.717 663.244 263.813 663.557 264.005C663.872 264.195 664.119 264.455 664.298 264.785C664.479 265.115 664.57 265.492 664.57 265.916C664.57 266.334 664.476 266.707 664.289 267.035C664.103 267.361 663.848 267.619 663.522 267.808C663.196 267.996 662.825 268.089 662.41 268.089Z"
@@ -1868,7 +1868,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint185_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="635"
@@ -1878,7 +1878,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint186_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="641"
@@ -1888,7 +1888,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint187_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="641"
@@ -1898,7 +1898,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint188_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="647"
@@ -1908,7 +1908,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint189_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="647"
@@ -1918,7 +1918,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint190_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="653"
@@ -1928,7 +1928,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint191_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="653"
@@ -1938,7 +1938,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint192_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="659"
@@ -1948,7 +1948,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint193_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="659"
@@ -1958,7 +1958,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint194_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="665"
@@ -1968,7 +1968,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint195_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="665"
@@ -1978,7 +1978,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint196_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="671"
@@ -1988,7 +1988,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint197_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="671"
@@ -1998,7 +1998,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint198_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="677"
@@ -2008,7 +2008,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint199_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="677"
@@ -2018,7 +2018,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint200_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="638"
@@ -2028,7 +2028,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint201_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="638"
@@ -2038,7 +2038,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint202_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="644"
@@ -2048,7 +2048,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint203_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="644"
@@ -2058,7 +2058,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint204_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="650"
@@ -2068,7 +2068,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint205_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="650"
@@ -2078,7 +2078,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint206_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="656"
@@ -2088,7 +2088,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint207_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="656"
@@ -2098,7 +2098,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint208_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="662"
@@ -2108,7 +2108,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint209_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="662"
@@ -2118,7 +2118,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint210_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="668"
@@ -2128,7 +2128,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint211_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="668"
@@ -2138,7 +2138,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint212_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="674"
@@ -2148,7 +2148,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint213_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2159,7 +2159,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 231)"
         fill="#232C3F"
         stroke="url(#paint214_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2170,7 +2170,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 237)"
         fill="#232C3F"
         stroke="url(#paint215_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2181,7 +2181,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 243)"
         fill="#232C3F"
         stroke="url(#paint216_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2192,7 +2192,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 249)"
         fill="#232C3F"
         stroke="url(#paint217_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2203,7 +2203,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 255)"
         fill="#232C3F"
         stroke="url(#paint218_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2214,7 +2214,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 261)"
         fill="#232C3F"
         stroke="url(#paint219_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2225,7 +2225,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 267)"
         fill="#232C3F"
         stroke="url(#paint220_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2236,7 +2236,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 273)"
         fill="#232C3F"
         stroke="url(#paint221_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2247,7 +2247,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 234)"
         fill="#232C3F"
         stroke="url(#paint222_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2258,7 +2258,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 240)"
         fill="#232C3F"
         stroke="url(#paint223_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2269,7 +2269,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 246)"
         fill="#232C3F"
         stroke="url(#paint224_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2280,7 +2280,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 252)"
         fill="#232C3F"
         stroke="url(#paint225_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2291,7 +2291,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 258)"
         fill="#232C3F"
         stroke="url(#paint226_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2302,7 +2302,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 264)"
         fill="#232C3F"
         stroke="url(#paint227_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="632"
@@ -2313,7 +2313,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(90 632 270)"
         fill="#232C3F"
         stroke="url(#paint228_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="674"
@@ -2323,7 +2323,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         rx="0.5"
         fill="#232C3F"
         stroke="url(#paint229_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2334,7 +2334,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 274)"
         fill="#232C3F"
         stroke="url(#paint230_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2345,7 +2345,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 268)"
         fill="#232C3F"
         stroke="url(#paint231_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2356,7 +2356,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 262)"
         fill="#232C3F"
         stroke="url(#paint232_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2367,7 +2367,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 256)"
         fill="#232C3F"
         stroke="url(#paint233_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2378,7 +2378,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 250)"
         fill="#232C3F"
         stroke="url(#paint234_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2389,7 +2389,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 244)"
         fill="#232C3F"
         stroke="url(#paint235_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2400,7 +2400,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 238)"
         fill="#232C3F"
         stroke="url(#paint236_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2411,7 +2411,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 232)"
         fill="#232C3F"
         stroke="url(#paint237_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2422,7 +2422,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 271)"
         fill="#232C3F"
         stroke="url(#paint238_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2433,7 +2433,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 265)"
         fill="#232C3F"
         stroke="url(#paint239_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2444,7 +2444,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 259)"
         fill="#232C3F"
         stroke="url(#paint240_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2455,7 +2455,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 253)"
         fill="#232C3F"
         stroke="url(#paint241_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <g filter="url(#filter22_dddii_445_1592)">
         <circle cx="199.5" cy="252.5" r="30.5" fill="#232C3F" />
@@ -2468,8 +2468,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
       </g>
       <g filter="url(#filter23_di_445_1592)">
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           d="M192.084 238H185.222L196.069 252.5L185.222 267H192.084L199.5 257.087L202.931 252.5L199.5 247.913L192.084 238ZM213.778 238L204.481 250.428L201.05 245.842L206.916 238H213.778ZM204.481 254.571L201.05 259.158L206.916 267H213.779L204.481 254.571Z"
           fill="#716CFF"
         />
@@ -2504,7 +2504,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 247)"
         fill="#232C3F"
         stroke="url(#paint243_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2515,7 +2515,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 241)"
         fill="#232C3F"
         stroke="url(#paint244_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <rect
         x="681"
@@ -2526,7 +2526,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         transform="rotate(-90 681 235)"
         fill="#232C3F"
         stroke="url(#paint245_linear_445_1592)"
-        stroke-width="0.5"
+        strokeWidth="0.5"
       />
       <g opacity="0.2">
         <path
@@ -2542,19 +2542,19 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint246_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           d="M914 149V147C914.07 146.374 913.89 145.745 913.5 145.25C915 145.25 916.5 144.25 916.5 142.5C916.54 141.875 916.365 141.26 916 140.75C916.14 140.175 916.14 139.575 916 139C916 139 915.5 139 914.5 139.75C913.18 139.5 911.82 139.5 910.5 139.75C909.5 139 909 139 909 139C908.85 139.575 908.85 140.175 909 140.75C908.636 141.258 908.459 141.876 908.5 142.5C908.5 144.25 910 145.25 911.5 145.25C911.305 145.495 911.16 145.775 911.075 146.075C910.99 146.375 910.965 146.69 911 147V149"
           stroke="#6E6D89"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M911 147C908.745 148 908.5 146 907.5 146"
           stroke="#6E6D89"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <rect
           x="857.5"
@@ -2564,7 +2564,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint247_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="865.5"
@@ -2574,7 +2574,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint248_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="865.5"
@@ -2584,7 +2584,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint249_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="861.5"
@@ -2594,7 +2594,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint250_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="861.5"
@@ -2604,7 +2604,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint251_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="869.5"
@@ -2614,7 +2614,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint252_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="869.5"
@@ -2624,7 +2624,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint253_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="873.5"
@@ -2634,7 +2634,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint254_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="873.5"
@@ -2644,7 +2644,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint255_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="877.5"
@@ -2654,7 +2654,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint256_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="877.5"
@@ -2664,7 +2664,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint257_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="881.5"
@@ -2674,7 +2674,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint258_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="881.5"
@@ -2684,7 +2684,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint259_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="885.5"
@@ -2694,7 +2694,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint260_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="885.5"
@@ -2704,7 +2704,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint261_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="889.5"
@@ -2714,7 +2714,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint262_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="889.5"
@@ -2724,7 +2724,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint263_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="893.5"
@@ -2734,7 +2734,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint264_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="893.5"
@@ -2744,7 +2744,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint265_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           opacity="0.6"
@@ -2787,7 +2787,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint266_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="776"
@@ -2797,7 +2797,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint267_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="781"
@@ -2807,7 +2807,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint268_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="786"
@@ -2817,7 +2817,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint269_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="791"
@@ -2827,7 +2827,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint270_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="796"
@@ -2837,7 +2837,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint271_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="801"
@@ -2847,7 +2847,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint272_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="806"
@@ -2857,7 +2857,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint273_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <circle cx="893.5" cy="270.5" r="2.5" stroke="#8F9CDA" />
         <path d="M807 244.5H815" stroke="#212538" />
@@ -2869,7 +2869,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint274_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           opacity="0.6"
@@ -2890,7 +2890,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint275_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="773"
@@ -2900,7 +2900,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint276_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="773"
@@ -2910,7 +2910,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint277_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="769"
@@ -2920,7 +2920,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint278_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="769"
@@ -2930,7 +2930,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint279_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="777"
@@ -2940,7 +2940,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint280_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="777"
@@ -2950,7 +2950,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint281_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="781"
@@ -2960,7 +2960,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint282_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="781"
@@ -2970,7 +2970,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint283_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="785"
@@ -2980,7 +2980,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint284_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="785"
@@ -2990,7 +2990,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint285_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="789"
@@ -3000,7 +3000,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint286_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="789"
@@ -3010,7 +3010,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint287_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="793"
@@ -3020,7 +3020,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint288_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="793"
@@ -3030,7 +3030,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint289_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="797"
@@ -3040,7 +3040,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint290_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="797"
@@ -3050,7 +3050,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint291_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="801"
@@ -3060,7 +3060,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint292_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="801"
@@ -3070,7 +3070,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           rx="0.5"
           fill="#232C3F"
           stroke="url(#paint293_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           d="M726.585 281.455V288H725.793V281.455H726.585ZM733.441 283.5H732.649C732.602 283.272 732.52 283.072 732.403 282.899C732.288 282.727 732.147 282.582 731.981 282.464C731.817 282.345 731.635 282.256 731.434 282.196C731.234 282.136 731.025 282.107 730.808 282.107C730.412 282.107 730.053 282.207 729.731 282.407C729.411 282.607 729.157 282.902 728.967 283.292C728.78 283.682 728.686 284.161 728.686 284.727C728.686 285.294 728.78 285.772 728.967 286.162C729.157 286.552 729.411 286.847 729.731 287.048C730.053 287.248 730.412 287.348 730.808 287.348C731.025 287.348 731.234 287.318 731.434 287.259C731.635 287.199 731.817 287.11 731.981 286.993C732.147 286.874 732.288 286.728 732.403 286.555C732.52 286.381 732.602 286.18 732.649 285.955H733.441C733.382 286.289 733.273 286.588 733.116 286.853C732.958 287.117 732.762 287.342 732.527 287.527C732.293 287.71 732.03 287.85 731.738 287.946C731.448 288.042 731.138 288.089 730.808 288.089C730.25 288.089 729.753 287.953 729.319 287.68C728.884 287.408 728.542 287.02 728.293 286.517C728.043 286.014 727.919 285.418 727.919 284.727C727.919 284.037 728.043 283.44 728.293 282.938C728.542 282.435 728.884 282.047 729.319 281.774C729.753 281.501 730.25 281.365 730.808 281.365C731.138 281.365 731.448 281.413 731.738 281.509C732.03 281.605 732.293 281.745 732.527 281.931C732.762 282.114 732.958 282.338 733.116 282.602C733.273 282.864 733.382 283.163 733.441 283.5ZM734.454 286.658V286.006L737.33 281.455H737.803V282.464H737.484L735.31 285.903V285.955H739.184V286.658H734.454ZM737.535 288V286.46V286.156V281.455H738.289V288H737.535ZM740.586 288L743.514 282.209V282.158H740.139V281.455H744.332V282.196L741.417 288H740.586ZM745.638 288V281.455H746.431V287.297H749.474V288H745.638ZM750.701 288V281.455H751.493V284.702H751.57L754.51 281.455H755.546L752.797 284.408L755.546 288H754.587L752.312 284.957L751.493 285.878V288H750.701Z"
@@ -3163,7 +3163,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint310_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter29_d_445_1592)">
@@ -3174,7 +3174,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint311_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter30_d_445_1592)">
@@ -3185,7 +3185,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint312_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter31_d_445_1592)">
@@ -3196,7 +3196,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint313_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter32_d_445_1592)">
@@ -3207,7 +3207,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint314_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter33_d_445_1592)">
@@ -3218,7 +3218,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint315_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter34_d_445_1592)">
@@ -3229,7 +3229,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint316_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
       <g filter="url(#filter35_d_445_1592)">
@@ -3240,10 +3240,10 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           height="1"
           rx="0.5"
           fill="url(#paint317_linear_445_1592)"
-          shape-rendering="crispEdges"
+          shapeRendering="crispEdges"
         />
       </g>
-      <g clip-path="url(#clip0_445_1592)">
+      <g clipPath="url(#clip0_445_1592)">
         <mask
           id="mask1_445_1592"
           maskUnits="userSpaceOnUse"
@@ -3267,11 +3267,11 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             width="24"
             height="2"
             fill="url(#paint319_linear_445_1592)"
-            fill-opacity="0.15"
+            fillOpacity="0.15"
           />
         </g>
       </g>
-      <g clip-path="url(#clip1_445_1592)">
+      <g clipPath="url(#clip1_445_1592)">
         <mask
           id="mask2_445_1592"
           maskUnits="userSpaceOnUse"
@@ -3295,11 +3295,11 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             width="24"
             height="2"
             fill="url(#paint321_linear_445_1592)"
-            fill-opacity="0.15"
+            fillOpacity="0.15"
           />
         </g>
       </g>
-      <g clip-path="url(#clip2_445_1592)">
+      <g clipPath="url(#clip2_445_1592)">
         <mask
           id="mask3_445_1592"
           maskUnits="userSpaceOnUse"
@@ -3323,11 +3323,11 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             width="24"
             height="2"
             fill="url(#paint323_linear_445_1592)"
-            fill-opacity="0.15"
+            fillOpacity="0.15"
           />
         </g>
       </g>
-      <g clip-path="url(#clip3_445_1592)">
+      <g clipPath="url(#clip3_445_1592)">
         <mask
           id="mask4_445_1592"
           maskUnits="userSpaceOnUse"
@@ -3351,7 +3351,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
             width="24"
             height="2"
             fill="url(#paint325_linear_445_1592)"
-            fill-opacity="0.15"
+            fillOpacity="0.15"
           />
         </g>
       </g>
@@ -3378,7 +3378,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="44"
           height="2"
           fill="url(#paint327_linear_445_1592)"
-          fill-opacity="0.15"
+          fillOpacity="0.15"
         />
       </g>
       <g opacity="0.2">
@@ -3392,7 +3392,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 668 434)"
           fill="#232C3F"
           stroke="url(#paint328_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <path
           opacity="0.6"
@@ -3415,7 +3415,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 715 434)"
           fill="#232C3F"
           stroke="url(#paint329_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="707"
@@ -3426,7 +3426,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 707 440)"
           fill="#232C3F"
           stroke="url(#paint330_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="707"
@@ -3437,7 +3437,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 707 417)"
           fill="#232C3F"
           stroke="url(#paint331_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="711"
@@ -3448,7 +3448,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 711 440)"
           fill="#232C3F"
           stroke="url(#paint332_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="711"
@@ -3459,7 +3459,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 711 417)"
           fill="#232C3F"
           stroke="url(#paint333_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="703"
@@ -3470,7 +3470,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 703 440)"
           fill="#232C3F"
           stroke="url(#paint334_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="703"
@@ -3481,7 +3481,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 703 417)"
           fill="#232C3F"
           stroke="url(#paint335_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="699"
@@ -3492,7 +3492,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 699 440)"
           fill="#232C3F"
           stroke="url(#paint336_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="699"
@@ -3503,7 +3503,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 699 417)"
           fill="#232C3F"
           stroke="url(#paint337_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="695"
@@ -3514,7 +3514,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 695 440)"
           fill="#232C3F"
           stroke="url(#paint338_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="695"
@@ -3525,7 +3525,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 695 417)"
           fill="#232C3F"
           stroke="url(#paint339_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="691"
@@ -3536,7 +3536,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 691 440)"
           fill="#232C3F"
           stroke="url(#paint340_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="691"
@@ -3547,7 +3547,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 691 417)"
           fill="#232C3F"
           stroke="url(#paint341_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="687"
@@ -3558,7 +3558,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 687 440)"
           fill="#232C3F"
           stroke="url(#paint342_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="687"
@@ -3569,7 +3569,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 687 417)"
           fill="#232C3F"
           stroke="url(#paint343_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="683"
@@ -3580,7 +3580,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 683 440)"
           fill="#232C3F"
           stroke="url(#paint344_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="683"
@@ -3591,7 +3591,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 683 417)"
           fill="#232C3F"
           stroke="url(#paint345_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="679"
@@ -3602,7 +3602,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 679 440)"
           fill="#232C3F"
           stroke="url(#paint346_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
         <rect
           x="679"
@@ -3613,7 +3613,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           transform="rotate(-180 679 417)"
           fill="#232C3F"
           stroke="url(#paint347_linear_445_1592)"
-          stroke-width="0.5"
+          strokeWidth="0.5"
         />
       </g>
       <defs>
@@ -3624,9 +3624,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="52.2"
           height="41.2"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -3659,9 +3659,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="13"
           height="22"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -3698,9 +3698,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="36"
           height="20"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -3737,9 +3737,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -3772,9 +3772,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -3807,9 +3807,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -3842,9 +3842,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -3877,9 +3877,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="31"
           height="25"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -3898,9 +3898,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="15"
           height="15"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -3919,9 +3919,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="7"
           height="7"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -3940,9 +3940,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="31"
           height="25"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -3961,9 +3961,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="15"
           height="15"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -3982,9 +3982,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="7"
           height="7"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -4003,9 +4003,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="25"
           height="31"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -4024,9 +4024,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="15"
           height="15"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -4045,9 +4045,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="7"
           height="7"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -4066,9 +4066,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="124"
           height="95"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4101,9 +4101,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="126"
           height="95"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4172,9 +4172,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4207,9 +4207,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4242,9 +4242,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4277,9 +4277,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="123.6"
           height="93.6"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4312,9 +4312,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="153.2"
           height="153.2"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4425,9 +4425,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="57.357"
           height="57.7998"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4478,9 +4478,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="30.6779"
           height="44.716"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -4499,9 +4499,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="17.4894"
           height="28.8201"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -4520,9 +4520,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="32.4235"
           height="38.9206"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -4541,9 +4541,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="11"
           height="11"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
@@ -4562,9 +4562,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4597,9 +4597,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4632,9 +4632,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4667,9 +4667,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4702,9 +4702,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4737,9 +4737,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4772,9 +4772,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4807,9 +4807,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           width="5.4"
           height="4.4"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -4843,8 +4843,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="290.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#C1CFFA" />
-          <stop offset="1" stop-color="#212538" />
+          <stop stopColor="#C1CFFA" />
+          <stop offset="1" stopColor="#212538" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_445_1592"
@@ -4854,8 +4854,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="214.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#C1CFFA" />
-          <stop offset="1" stop-color="#212538" />
+          <stop stopColor="#C1CFFA" />
+          <stop offset="1" stopColor="#212538" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_445_1592"
@@ -4865,9 +4865,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="252.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="0.429267" stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="0.429267" stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_445_1592"
@@ -4877,9 +4877,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="262"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#56C7FF" stop-opacity="0" />
-          <stop offset="0.478642" stop-color="#B0E5FF" />
-          <stop offset="1" stop-color="#56C7FF" stop-opacity="0" />
+          <stop stopColor="#56C7FF" stopOpacity="0" />
+          <stop offset="0.478642" stopColor="#B0E5FF" />
+          <stop offset="1" stopColor="#56C7FF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_445_1592"
@@ -4889,8 +4889,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="252.053"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0.8" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0.8" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_445_1592"
@@ -4900,8 +4900,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="261"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_445_1592"
@@ -4911,8 +4911,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="260"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_445_1592"
@@ -4922,8 +4922,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="242.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_445_1592"
@@ -4933,8 +4933,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="260.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint9_linear_445_1592"
@@ -4944,8 +4944,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="241.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint10_linear_445_1592"
@@ -4955,8 +4955,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="263.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint11_linear_445_1592"
@@ -4966,9 +4966,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="171.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F24E1E" stop-opacity="0" />
-          <stop offset="0.5" stop-color="#F24E1E" />
-          <stop offset="1" stop-color="#F24E1E" stop-opacity="0" />
+          <stop stopColor="#F24E1E" stopOpacity="0" />
+          <stop offset="0.5" stopColor="#F24E1E" />
+          <stop offset="1" stopColor="#F24E1E" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint12_linear_445_1592"
@@ -4978,8 +4978,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="171.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.360704" stop-color="#F24E1E" />
-          <stop offset="0.568083" stop-color="#F24E1E" />
+          <stop offset="0.360704" stopColor="#F24E1E" />
+          <stop offset="0.568083" stopColor="#F24E1E" />
         </linearGradient>
         <radialGradient
           id="paint13_radial_445_1592"
@@ -4989,8 +4989,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(128.5 171.5) rotate(90) scale(4.5)"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="#F24E1E" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#F24E1E" stopOpacity="0" />
         </radialGradient>
         <linearGradient
           id="paint14_linear_445_1592"
@@ -5000,9 +5000,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="252.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.02" stop-color="#CE9DFF" stop-opacity="0" />
-          <stop offset="0.496873" stop-color="#CE9DFF" />
-          <stop offset="1" stop-color="#CE9DFF" stop-opacity="0" />
+          <stop offset="0.02" stopColor="#CE9DFF" stopOpacity="0" />
+          <stop offset="0.496873" stopColor="#CE9DFF" />
+          <stop offset="1" stopColor="#CE9DFF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint15_linear_445_1592"
@@ -5012,8 +5012,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="252.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.360704" stop-color="#CE9DFF" />
-          <stop offset="0.568083" stop-color="#CE9DFF" />
+          <stop offset="0.360704" stopColor="#CE9DFF" />
+          <stop offset="0.568083" stopColor="#CE9DFF" />
         </linearGradient>
         <radialGradient
           id="paint16_radial_445_1592"
@@ -5023,8 +5023,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(28.5 252.5) rotate(90) scale(4.5)"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="#EFEFC3" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#EFEFC3" stopOpacity="0" />
         </radialGradient>
         <linearGradient
           id="paint17_linear_445_1592"
@@ -5034,9 +5034,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="310"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.02" stop-color="#0DCD85" stop-opacity="0" />
-          <stop offset="0.496873" stop-color="#0DCD85" />
-          <stop offset="1" stop-color="#0DCD85" stop-opacity="0" />
+          <stop offset="0.02" stopColor="#0DCD85" stopOpacity="0" />
+          <stop offset="0.496873" stopColor="#0DCD85" />
+          <stop offset="1" stopColor="#0DCD85" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint18_linear_445_1592"
@@ -5046,8 +5046,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="328.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.360704" stop-color="#0DCD85" />
-          <stop offset="0.568083" stop-color="#0DCD85" />
+          <stop offset="0.360704" stopColor="#0DCD85" />
+          <stop offset="0.568083" stopColor="#0DCD85" />
         </linearGradient>
         <radialGradient
           id="paint19_radial_445_1592"
@@ -5057,8 +5057,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(199.5 328.5) rotate(90) scale(4.5)"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="#0DCD85" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="#0DCD85" stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="paint20_radial_445_1592"
@@ -5068,8 +5068,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(942 99) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint21_radial_445_1592"
@@ -5079,8 +5079,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(942 110) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint22_radial_445_1592"
@@ -5090,8 +5090,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(977 99) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint23_radial_445_1592"
@@ -5101,8 +5101,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(977 110) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <linearGradient
           id="paint24_linear_445_1592"
@@ -5112,8 +5112,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="235.619"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F5D0FE" />
-          <stop offset="1" stop-color="#ACA9FF" />
+          <stop stopColor="#F5D0FE" />
+          <stop offset="1" stopColor="#ACA9FF" />
         </linearGradient>
         <linearGradient
           id="paint25_linear_445_1592"
@@ -5123,7 +5123,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.946"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint26_linear_445_1592"
@@ -5133,7 +5133,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.946"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint27_linear_445_1592"
@@ -5143,7 +5143,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.946"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint28_linear_445_1592"
@@ -5153,7 +5153,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.946"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint29_linear_445_1592"
@@ -5163,7 +5163,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.946"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint30_linear_445_1592"
@@ -5173,7 +5173,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="237.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint31_linear_445_1592"
@@ -5183,7 +5183,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="237.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint32_linear_445_1592"
@@ -5193,7 +5193,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="237.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint33_linear_445_1592"
@@ -5203,7 +5203,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="237.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint34_linear_445_1592"
@@ -5213,7 +5213,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="237.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint35_linear_445_1592"
@@ -5223,8 +5223,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="278.068"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F5D0FE" />
-          <stop offset="1" stop-color="#ACA9FF" />
+          <stop stopColor="#F5D0FE" />
+          <stop offset="1" stopColor="#ACA9FF" />
         </linearGradient>
         <linearGradient
           id="paint36_linear_445_1592"
@@ -5234,8 +5234,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="256.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint37_linear_445_1592"
@@ -5245,8 +5245,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="247.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint38_linear_445_1592"
@@ -5256,8 +5256,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="255.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint39_linear_445_1592"
@@ -5267,7 +5267,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="317.349"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint40_linear_445_1592"
@@ -5277,7 +5277,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="345.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint41_linear_445_1592"
@@ -5287,7 +5287,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="345.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint42_linear_445_1592"
@@ -5297,7 +5297,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="345.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint43_linear_445_1592"
@@ -5307,7 +5307,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="345.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint44_linear_445_1592"
@@ -5317,7 +5317,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="345.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <radialGradient
           id="paint45_radial_445_1592"
@@ -5327,8 +5327,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(632 356) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint46_radial_445_1592"
@@ -5338,8 +5338,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(632 368) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint47_radial_445_1592"
@@ -5349,8 +5349,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(664 356) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint48_radial_445_1592"
@@ -5360,8 +5360,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(664 368) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <linearGradient
           id="paint49_linear_445_1592"
@@ -5371,7 +5371,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="172.877"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint50_linear_445_1592"
@@ -5381,7 +5381,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="177.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint51_linear_445_1592"
@@ -5391,7 +5391,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="177.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint52_linear_445_1592"
@@ -5401,7 +5401,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="177.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint53_linear_445_1592"
@@ -5411,7 +5411,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="177.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint54_linear_445_1592"
@@ -5421,7 +5421,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="177.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint55_linear_445_1592"
@@ -5431,7 +5431,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="177.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint56_linear_445_1592"
@@ -5441,7 +5441,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="173.238"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint57_linear_445_1592"
@@ -5451,7 +5451,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="129.766"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint58_linear_445_1592"
@@ -5461,7 +5461,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="116.983"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint59_linear_445_1592"
@@ -5471,7 +5471,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="123.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint60_linear_445_1592"
@@ -5481,7 +5481,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="146.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint61_linear_445_1592"
@@ -5491,7 +5491,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="123.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint62_linear_445_1592"
@@ -5501,7 +5501,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="146.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint63_linear_445_1592"
@@ -5511,7 +5511,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="123.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint64_linear_445_1592"
@@ -5521,7 +5521,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="146.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint65_linear_445_1592"
@@ -5531,7 +5531,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="123.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint66_linear_445_1592"
@@ -5541,7 +5541,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="146.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint67_linear_445_1592"
@@ -5551,7 +5551,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="123.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint68_linear_445_1592"
@@ -5561,7 +5561,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="146.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint69_linear_445_1592"
@@ -5571,7 +5571,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="123.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint70_linear_445_1592"
@@ -5581,7 +5581,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="146.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint71_linear_445_1592"
@@ -5591,7 +5591,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="123.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint72_linear_445_1592"
@@ -5601,7 +5601,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="146.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint73_linear_445_1592"
@@ -5611,7 +5611,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="123.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint74_linear_445_1592"
@@ -5621,7 +5621,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="146.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint75_linear_445_1592"
@@ -5631,7 +5631,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="123.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint76_linear_445_1592"
@@ -5641,7 +5641,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="146.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <radialGradient
           id="paint77_radial_445_1592"
@@ -5651,8 +5651,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(502 167) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint78_radial_445_1592"
@@ -5662,8 +5662,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(502 179) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint79_radial_445_1592"
@@ -5673,8 +5673,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(535 167) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint80_radial_445_1592"
@@ -5684,8 +5684,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(535 179) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <linearGradient
           id="paint81_linear_445_1592"
@@ -5695,7 +5695,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.511"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint82_linear_445_1592"
@@ -5705,7 +5705,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.511"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint83_linear_445_1592"
@@ -5715,7 +5715,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.511"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint84_linear_445_1592"
@@ -5725,7 +5725,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.511"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint85_linear_445_1592"
@@ -5735,7 +5735,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.511"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint86_linear_445_1592"
@@ -5745,7 +5745,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="284.355"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint87_linear_445_1592"
@@ -5755,8 +5755,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="203.52"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F5D0FE" />
-          <stop offset="1" stop-color="#ACA9FF" />
+          <stop stopColor="#F5D0FE" />
+          <stop offset="1" stopColor="#ACA9FF" />
         </linearGradient>
         <linearGradient
           id="paint88_linear_445_1592"
@@ -5766,7 +5766,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="208.973"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <radialGradient
           id="paint89_radial_445_1592"
@@ -5776,8 +5776,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(367 241) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint90_radial_445_1592"
@@ -5787,8 +5787,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(367 245) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint91_radial_445_1592"
@@ -5798,8 +5798,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(371 237) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint92_radial_445_1592"
@@ -5809,8 +5809,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(367 237) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint93_radial_445_1592"
@@ -5820,8 +5820,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(371 241) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint94_radial_445_1592"
@@ -5831,8 +5831,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(371 245) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint95_radial_445_1592"
@@ -5842,8 +5842,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(375 237) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint96_radial_445_1592"
@@ -5853,8 +5853,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(379 237) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint97_radial_445_1592"
@@ -5864,8 +5864,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(375 241) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint98_radial_445_1592"
@@ -5875,8 +5875,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(379 241) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint99_radial_445_1592"
@@ -5886,8 +5886,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(375 245) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint100_radial_445_1592"
@@ -5897,8 +5897,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(379 245) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <linearGradient
           id="paint101_linear_445_1592"
@@ -5908,8 +5908,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="235.451"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F5D0FE" />
-          <stop offset="1" stop-color="#ACA9FF" />
+          <stop stopColor="#F5D0FE" />
+          <stop offset="1" stopColor="#ACA9FF" />
         </linearGradient>
         <linearGradient
           id="paint102_linear_445_1592"
@@ -5919,7 +5919,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="339.398"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint103_linear_445_1592"
@@ -5929,7 +5929,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="343.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint104_linear_445_1592"
@@ -5939,7 +5939,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="359.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint105_linear_445_1592"
@@ -5949,7 +5949,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="343.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint106_linear_445_1592"
@@ -5959,7 +5959,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="359.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint107_linear_445_1592"
@@ -5969,7 +5969,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="343.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint108_linear_445_1592"
@@ -5979,7 +5979,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="359.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint109_linear_445_1592"
@@ -5989,7 +5989,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="343.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint110_linear_445_1592"
@@ -5999,7 +5999,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="359.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint111_linear_445_1592"
@@ -6009,7 +6009,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="343.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint112_linear_445_1592"
@@ -6019,7 +6019,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="359.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint113_linear_445_1592"
@@ -6029,7 +6029,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="343.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint114_linear_445_1592"
@@ -6039,7 +6039,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="359.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint115_linear_445_1592"
@@ -6049,7 +6049,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="343.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint116_linear_445_1592"
@@ -6059,7 +6059,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="359.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint117_linear_445_1592"
@@ -6069,7 +6069,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="343.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint118_linear_445_1592"
@@ -6079,7 +6079,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="359.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint119_linear_445_1592"
@@ -6089,7 +6089,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="343.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint120_linear_445_1592"
@@ -6099,7 +6099,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="359.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint121_linear_445_1592"
@@ -6109,7 +6109,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="264.841"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint122_linear_445_1592"
@@ -6119,7 +6119,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="283.496"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint123_linear_445_1592"
@@ -6129,7 +6129,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="283.496"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint124_linear_445_1592"
@@ -6139,7 +6139,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="283.496"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint125_linear_445_1592"
@@ -6149,7 +6149,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="283.496"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <radialGradient
           id="paint126_radial_445_1592"
@@ -6159,8 +6159,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(417 350) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint127_radial_445_1592"
@@ -6170,8 +6170,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(322 318) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint128_radial_445_1592"
@@ -6181,8 +6181,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(322 330) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint129_radial_445_1592"
@@ -6192,8 +6192,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(355 318) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint130_radial_445_1592"
@@ -6203,8 +6203,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(355 330) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint131_radial_445_1592"
@@ -6214,8 +6214,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(424 350) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <linearGradient
           id="paint132_linear_445_1592"
@@ -6225,8 +6225,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="201.434"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F5D0FE" />
-          <stop offset="1" stop-color="#ACA9FF" />
+          <stop stopColor="#F5D0FE" />
+          <stop offset="1" stopColor="#ACA9FF" />
         </linearGradient>
         <linearGradient
           id="paint133_linear_445_1592"
@@ -6236,7 +6236,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="202.877"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint134_linear_445_1592"
@@ -6246,7 +6246,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="172.403"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint135_linear_445_1592"
@@ -6256,7 +6256,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="170.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint136_linear_445_1592"
@@ -6266,7 +6266,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="170.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint137_linear_445_1592"
@@ -6276,7 +6276,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="172.403"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint138_linear_445_1592"
@@ -6286,7 +6286,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="170.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint139_linear_445_1592"
@@ -6296,7 +6296,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="170.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint140_linear_445_1592"
@@ -6306,7 +6306,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="172.403"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint141_linear_445_1592"
@@ -6316,7 +6316,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="170.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint142_linear_445_1592"
@@ -6326,7 +6326,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="170.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint143_linear_445_1592"
@@ -6336,7 +6336,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="190.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint144_linear_445_1592"
@@ -6346,7 +6346,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="216.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint145_linear_445_1592"
@@ -6356,7 +6356,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="203.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint146_linear_445_1592"
@@ -6366,8 +6366,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="430.434"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F5D0FE" />
-          <stop offset="1" stop-color="#ACA9FF" />
+          <stop stopColor="#F5D0FE" />
+          <stop offset="1" stopColor="#ACA9FF" />
         </linearGradient>
         <linearGradient
           id="paint147_linear_445_1592"
@@ -6377,7 +6377,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="423.877"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint148_linear_445_1592"
@@ -6387,7 +6387,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="459.403"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint149_linear_445_1592"
@@ -6397,7 +6397,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="453.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint150_linear_445_1592"
@@ -6407,7 +6407,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="453.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint151_linear_445_1592"
@@ -6417,7 +6417,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="459.403"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint152_linear_445_1592"
@@ -6427,7 +6427,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="453.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint153_linear_445_1592"
@@ -6437,7 +6437,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="453.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint154_linear_445_1592"
@@ -6447,7 +6447,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="459.403"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint155_linear_445_1592"
@@ -6457,7 +6457,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="453.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint156_linear_445_1592"
@@ -6467,7 +6467,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="453.801"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint157_linear_445_1592"
@@ -6477,7 +6477,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="431.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint158_linear_445_1592"
@@ -6487,7 +6487,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="405.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint159_linear_445_1592"
@@ -6497,7 +6497,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="418.959"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint160_linear_445_1592"
@@ -6507,7 +6507,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="286.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint161_linear_445_1592"
@@ -6517,7 +6517,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="220.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint162_linear_445_1592"
@@ -6527,7 +6527,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="286.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint163_linear_445_1592"
@@ -6537,7 +6537,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="220.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint164_linear_445_1592"
@@ -6547,7 +6547,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="286.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint165_linear_445_1592"
@@ -6557,7 +6557,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="220.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint166_linear_445_1592"
@@ -6567,7 +6567,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="286.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint167_linear_445_1592"
@@ -6577,7 +6577,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="220.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint168_linear_445_1592"
@@ -6587,7 +6587,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="286.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint169_linear_445_1592"
@@ -6597,7 +6597,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="220.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint170_linear_445_1592"
@@ -6607,7 +6607,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="286.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint171_linear_445_1592"
@@ -6617,7 +6617,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="220.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint172_linear_445_1592"
@@ -6627,7 +6627,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="239.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint173_linear_445_1592"
@@ -6637,7 +6637,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="239.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint174_linear_445_1592"
@@ -6647,7 +6647,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="245.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint175_linear_445_1592"
@@ -6657,7 +6657,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="245.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint176_linear_445_1592"
@@ -6667,7 +6667,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="251.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint177_linear_445_1592"
@@ -6677,7 +6677,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="251.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint178_linear_445_1592"
@@ -6687,7 +6687,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint179_linear_445_1592"
@@ -6697,7 +6697,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint180_linear_445_1592"
@@ -6707,7 +6707,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="263.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint181_linear_445_1592"
@@ -6717,7 +6717,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="263.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint182_linear_445_1592"
@@ -6727,7 +6727,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="269.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint183_linear_445_1592"
@@ -6737,7 +6737,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="269.917"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint184_linear_445_1592"
@@ -6747,7 +6747,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="245.467"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint185_linear_445_1592"
@@ -6757,7 +6757,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint186_linear_445_1592"
@@ -6767,7 +6767,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint187_linear_445_1592"
@@ -6777,7 +6777,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint188_linear_445_1592"
@@ -6787,7 +6787,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint189_linear_445_1592"
@@ -6797,7 +6797,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint190_linear_445_1592"
@@ -6807,7 +6807,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint191_linear_445_1592"
@@ -6817,7 +6817,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint192_linear_445_1592"
@@ -6827,7 +6827,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint193_linear_445_1592"
@@ -6837,7 +6837,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint194_linear_445_1592"
@@ -6847,7 +6847,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint195_linear_445_1592"
@@ -6857,7 +6857,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint196_linear_445_1592"
@@ -6867,7 +6867,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint197_linear_445_1592"
@@ -6877,7 +6877,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint198_linear_445_1592"
@@ -6887,7 +6887,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint199_linear_445_1592"
@@ -6897,7 +6897,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint200_linear_445_1592"
@@ -6907,7 +6907,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint201_linear_445_1592"
@@ -6917,7 +6917,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint202_linear_445_1592"
@@ -6927,7 +6927,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint203_linear_445_1592"
@@ -6937,7 +6937,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint204_linear_445_1592"
@@ -6947,7 +6947,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint205_linear_445_1592"
@@ -6957,7 +6957,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint206_linear_445_1592"
@@ -6967,7 +6967,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint207_linear_445_1592"
@@ -6977,7 +6977,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint208_linear_445_1592"
@@ -6987,7 +6987,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint209_linear_445_1592"
@@ -6997,7 +6997,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint210_linear_445_1592"
@@ -7007,7 +7007,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint211_linear_445_1592"
@@ -7017,7 +7017,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint212_linear_445_1592"
@@ -7027,7 +7027,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint213_linear_445_1592"
@@ -7037,7 +7037,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="280.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint214_linear_445_1592"
@@ -7047,7 +7047,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint215_linear_445_1592"
@@ -7057,7 +7057,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="240.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint216_linear_445_1592"
@@ -7067,7 +7067,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="246.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint217_linear_445_1592"
@@ -7077,7 +7077,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="252.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint218_linear_445_1592"
@@ -7087,7 +7087,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="258.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint219_linear_445_1592"
@@ -7097,7 +7097,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="264.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint220_linear_445_1592"
@@ -7107,7 +7107,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="270.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint221_linear_445_1592"
@@ -7117,7 +7117,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="276.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint222_linear_445_1592"
@@ -7127,7 +7127,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="237.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint223_linear_445_1592"
@@ -7137,7 +7137,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="243.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint224_linear_445_1592"
@@ -7147,7 +7147,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="249.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint225_linear_445_1592"
@@ -7157,7 +7157,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="255.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint226_linear_445_1592"
@@ -7167,7 +7167,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="261.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint227_linear_445_1592"
@@ -7177,7 +7177,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="267.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint228_linear_445_1592"
@@ -7187,7 +7187,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="273.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint229_linear_445_1592"
@@ -7197,7 +7197,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="228.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint230_linear_445_1592"
@@ -7207,7 +7207,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="277.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint231_linear_445_1592"
@@ -7217,7 +7217,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="271.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint232_linear_445_1592"
@@ -7227,7 +7227,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="265.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint233_linear_445_1592"
@@ -7237,7 +7237,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="259.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint234_linear_445_1592"
@@ -7247,7 +7247,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="253.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint235_linear_445_1592"
@@ -7257,7 +7257,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="247.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint236_linear_445_1592"
@@ -7267,7 +7267,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="241.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint237_linear_445_1592"
@@ -7277,7 +7277,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="235.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint238_linear_445_1592"
@@ -7287,7 +7287,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="274.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint239_linear_445_1592"
@@ -7297,7 +7297,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="268.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint240_linear_445_1592"
@@ -7307,7 +7307,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="262.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint241_linear_445_1592"
@@ -7317,7 +7317,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="256.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint242_linear_445_1592"
@@ -7327,8 +7327,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="241.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F5D0FE" />
-          <stop offset="1" stop-color="#ACA9FF" />
+          <stop stopColor="#F5D0FE" />
+          <stop offset="1" stopColor="#ACA9FF" />
         </linearGradient>
         <linearGradient
           id="paint243_linear_445_1592"
@@ -7338,7 +7338,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="250.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint244_linear_445_1592"
@@ -7348,7 +7348,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="244.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint245_linear_445_1592"
@@ -7358,7 +7358,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="238.221"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint246_linear_445_1592"
@@ -7368,7 +7368,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="139.766"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint247_linear_445_1592"
@@ -7378,7 +7378,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="126.983"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint248_linear_445_1592"
@@ -7388,7 +7388,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="133.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint249_linear_445_1592"
@@ -7398,7 +7398,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="156.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint250_linear_445_1592"
@@ -7408,7 +7408,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="133.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint251_linear_445_1592"
@@ -7418,7 +7418,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="156.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint252_linear_445_1592"
@@ -7428,7 +7428,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="133.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint253_linear_445_1592"
@@ -7438,7 +7438,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="156.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint254_linear_445_1592"
@@ -7448,7 +7448,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="133.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint255_linear_445_1592"
@@ -7458,7 +7458,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="156.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint256_linear_445_1592"
@@ -7468,7 +7468,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="133.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint257_linear_445_1592"
@@ -7478,7 +7478,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="156.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint258_linear_445_1592"
@@ -7488,7 +7488,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="133.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint259_linear_445_1592"
@@ -7498,7 +7498,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="156.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint260_linear_445_1592"
@@ -7508,7 +7508,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="133.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint261_linear_445_1592"
@@ -7518,7 +7518,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="156.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint262_linear_445_1592"
@@ -7528,7 +7528,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="133.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint263_linear_445_1592"
@@ -7538,7 +7538,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="156.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint264_linear_445_1592"
@@ -7548,7 +7548,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="133.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint265_linear_445_1592"
@@ -7558,7 +7558,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="156.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint266_linear_445_1592"
@@ -7568,7 +7568,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="283.877"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint267_linear_445_1592"
@@ -7578,7 +7578,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint268_linear_445_1592"
@@ -7588,7 +7588,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint269_linear_445_1592"
@@ -7598,7 +7598,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint270_linear_445_1592"
@@ -7608,7 +7608,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint271_linear_445_1592"
@@ -7618,7 +7618,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint272_linear_445_1592"
@@ -7628,7 +7628,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="288.854"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint273_linear_445_1592"
@@ -7638,7 +7638,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="284.238"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint274_linear_445_1592"
@@ -7648,7 +7648,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="240.766"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint275_linear_445_1592"
@@ -7658,7 +7658,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="227.983"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint276_linear_445_1592"
@@ -7668,7 +7668,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint277_linear_445_1592"
@@ -7678,7 +7678,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint278_linear_445_1592"
@@ -7688,7 +7688,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint279_linear_445_1592"
@@ -7698,7 +7698,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint280_linear_445_1592"
@@ -7708,7 +7708,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint281_linear_445_1592"
@@ -7718,7 +7718,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint282_linear_445_1592"
@@ -7728,7 +7728,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint283_linear_445_1592"
@@ -7738,7 +7738,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint284_linear_445_1592"
@@ -7748,7 +7748,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint285_linear_445_1592"
@@ -7758,7 +7758,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint286_linear_445_1592"
@@ -7768,7 +7768,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint287_linear_445_1592"
@@ -7778,7 +7778,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint288_linear_445_1592"
@@ -7788,7 +7788,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint289_linear_445_1592"
@@ -7798,7 +7798,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint290_linear_445_1592"
@@ -7808,7 +7808,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint291_linear_445_1592"
@@ -7818,7 +7818,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint292_linear_445_1592"
@@ -7828,7 +7828,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="234.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint293_linear_445_1592"
@@ -7838,7 +7838,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="257.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <radialGradient
           id="paint294_radial_445_1592"
@@ -7848,8 +7848,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(724 278) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint295_radial_445_1592"
@@ -7859,8 +7859,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(724 290) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint296_radial_445_1592"
@@ -7870,8 +7870,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(757 278) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint297_radial_445_1592"
@@ -7881,8 +7881,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(757 290) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint298_radial_445_1592"
@@ -7892,8 +7892,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1123 218) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint299_radial_445_1592"
@@ -7903,8 +7903,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1123 222) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint300_radial_445_1592"
@@ -7914,8 +7914,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1123 226) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint301_radial_445_1592"
@@ -7925,8 +7925,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1127 218) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint302_radial_445_1592"
@@ -7936,8 +7936,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1127 222) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint303_radial_445_1592"
@@ -7947,8 +7947,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1127 226) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint304_radial_445_1592"
@@ -7958,8 +7958,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1131 218) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint305_radial_445_1592"
@@ -7969,8 +7969,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1135 218) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint306_radial_445_1592"
@@ -7980,8 +7980,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1131 222) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint307_radial_445_1592"
@@ -7991,8 +7991,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1135 222) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint308_radial_445_1592"
@@ -8002,8 +8002,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1131 226) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <radialGradient
           id="paint309_radial_445_1592"
@@ -8013,8 +8013,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(1135 226) rotate(90) scale(1.5)"
         >
-          <stop stop-color="#0A1122" />
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop stopColor="#0A1122" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </radialGradient>
         <linearGradient
           id="paint310_linear_445_1592"
@@ -8024,8 +8024,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="250.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint311_linear_445_1592"
@@ -8035,8 +8035,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="253.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint312_linear_445_1592"
@@ -8046,8 +8046,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="251.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint313_linear_445_1592"
@@ -8057,8 +8057,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="247.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint314_linear_445_1592"
@@ -8068,8 +8068,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="254.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint315_linear_445_1592"
@@ -8079,8 +8079,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="252.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint316_linear_445_1592"
@@ -8090,8 +8090,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="249.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint317_linear_445_1592"
@@ -8101,8 +8101,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="253.5"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint318_linear_445_1592"
@@ -8112,9 +8112,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="245"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.454411" stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.454411" stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint319_linear_445_1592"
@@ -8124,9 +8124,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="246"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#56C7FF" stop-opacity="0" />
-          <stop offset="0.478642" stop-color="white" />
-          <stop offset="1" stop-color="#56C7FF" stop-opacity="0" />
+          <stop stopColor="#56C7FF" stopOpacity="0" />
+          <stop offset="0.478642" stopColor="white" />
+          <stop offset="1" stopColor="#56C7FF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint320_linear_445_1592"
@@ -8136,9 +8136,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="247"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.454411" stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.454411" stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint321_linear_445_1592"
@@ -8148,9 +8148,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="248"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#56C7FF" stop-opacity="0" />
-          <stop offset="0.478642" stop-color="white" />
-          <stop offset="1" stop-color="#56C7FF" stop-opacity="0" />
+          <stop stopColor="#56C7FF" stopOpacity="0" />
+          <stop offset="0.478642" stopColor="white" />
+          <stop offset="1" stopColor="#56C7FF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint322_linear_445_1592"
@@ -8160,9 +8160,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="254"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.454411" stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.454411" stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint323_linear_445_1592"
@@ -8172,9 +8172,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="255"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#56C7FF" stop-opacity="0" />
-          <stop offset="0.478642" stop-color="white" />
-          <stop offset="1" stop-color="#56C7FF" stop-opacity="0" />
+          <stop stopColor="#56C7FF" stopOpacity="0" />
+          <stop offset="0.478642" stopColor="white" />
+          <stop offset="1" stopColor="#56C7FF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint324_linear_445_1592"
@@ -8184,9 +8184,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="255"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.454411" stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.454411" stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint325_linear_445_1592"
@@ -8196,9 +8196,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="256"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#56C7FF" stop-opacity="0" />
-          <stop offset="0.478642" stop-color="white" />
-          <stop offset="1" stop-color="#56C7FF" stop-opacity="0" />
+          <stop stopColor="#56C7FF" stopOpacity="0" />
+          <stop offset="0.478642" stopColor="white" />
+          <stop offset="1" stopColor="#56C7FF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint326_linear_445_1592"
@@ -8208,9 +8208,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="250"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="white" stop-opacity="0" />
-          <stop offset="0.454411" stop-color="white" />
-          <stop offset="1" stop-color="white" stop-opacity="0" />
+          <stop stopColor="white" stopOpacity="0" />
+          <stop offset="0.454411" stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint327_linear_445_1592"
@@ -8220,9 +8220,9 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="251"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#56C7FF" stop-opacity="0" />
-          <stop offset="0.478642" stop-color="white" />
-          <stop offset="1" stop-color="#56C7FF" stop-opacity="0" />
+          <stop stopColor="#56C7FF" stopOpacity="0" />
+          <stop offset="0.478642" stopColor="white" />
+          <stop offset="1" stopColor="#56C7FF" stopOpacity="0" />
         </linearGradient>
         <linearGradient
           id="paint328_linear_445_1592"
@@ -8232,7 +8232,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="437.766"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint329_linear_445_1592"
@@ -8242,7 +8242,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="424.983"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint330_linear_445_1592"
@@ -8252,7 +8252,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="443.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint331_linear_445_1592"
@@ -8262,7 +8262,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="420.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint332_linear_445_1592"
@@ -8272,7 +8272,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="443.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint333_linear_445_1592"
@@ -8282,7 +8282,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="420.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint334_linear_445_1592"
@@ -8292,7 +8292,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="443.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint335_linear_445_1592"
@@ -8302,7 +8302,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="420.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint336_linear_445_1592"
@@ -8312,7 +8312,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="443.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint337_linear_445_1592"
@@ -8322,7 +8322,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="420.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint338_linear_445_1592"
@@ -8332,7 +8332,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="443.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint339_linear_445_1592"
@@ -8342,7 +8342,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="420.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint340_linear_445_1592"
@@ -8352,7 +8352,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="443.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint341_linear_445_1592"
@@ -8362,7 +8362,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="420.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint342_linear_445_1592"
@@ -8372,7 +8372,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="443.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint343_linear_445_1592"
@@ -8382,7 +8382,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="420.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint344_linear_445_1592"
@@ -8392,7 +8392,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="443.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint345_linear_445_1592"
@@ -8402,7 +8402,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="420.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint346_linear_445_1592"
@@ -8412,7 +8412,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="443.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <linearGradient
           id="paint347_linear_445_1592"
@@ -8422,7 +8422,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           y2="420.602"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="1" stop-color="#8F9CDA" />
+          <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
         <clipPath id="clip0_445_1592">
           <rect

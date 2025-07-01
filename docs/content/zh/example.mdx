@@ -1,0 +1,16 @@
+import Example from "../../app/components/example/example"
+import { getDictionary } from "../../app/_dictionaries/get-dictionary"
+
+export async function ExampleWrapper({ params }) {
+  const dictionary = await getDictionary(params.lang)
+  return <Example params={params} dictionary={dictionary} />
+}
+
+# 示例
+
+<div className="mt-10 text-foreground">
+<ExampleWrapper params={props.params} />
+</div>
+
+
+

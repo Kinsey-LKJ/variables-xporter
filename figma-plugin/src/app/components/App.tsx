@@ -139,7 +139,9 @@ function App() {
       //   }
       //   break
       case 'initSize':
-        setSize(msg.size);
+        if (msg.size && typeof msg.size.width === 'number' && typeof msg.size.height === 'number') {
+          setSize(msg.size);
+        }
         break;
     }
   };
@@ -224,8 +226,10 @@ function App() {
         width={size.width}
         height={size.height}
         onResize={(e, { size: newSize }) => {
-          setSize(newSize);
-          sendResizeMessage(newSize.width, newSize.height);
+          if (newSize && typeof newSize.width === 'number' && typeof newSize.height === 'number') {
+            setSize(newSize);
+            sendResizeMessage(newSize.width, newSize.height);
+          }
         }}
         minConstraints={[400, 500]} // 最小尺寸
         maxConstraints={[800, 1000]} // 最大尺寸
