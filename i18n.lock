@@ -32,6 +32,12 @@ checksums:
     figmaTemplate/title: d8456a0aa7dcb35de2018946e297437f
     figmaTemplate/description: da44b0452ceb9b9f27a6e09112e35f10
     figmaTemplate/openInFigma: ebd3e531ec366f78d81dfdc44d8946f1
+    example/heading: 90200d75b52cc8ee58f7891d67b52f3f
+    example/title: 90200d75b52cc8ee58f7891d67b52f3f
+    example/description: 534b2735c68f12e392041e89e02dcdff
+    example/note: 365ebaae0e688297a31c12eb7b09cd9d
+    example/default: 23414e038c5dbb9fedd5853d7bc71fe6
+    example/compact: 7b4c0c320562615c6d467db58419ba2d
   a06579c54fb7dfda1d27d2126ec7db7a:
     language: 56d7ebc7e245c2150d34cd2908dec619
     back: d9aa975ba76c61034ce8282e321f0a55
