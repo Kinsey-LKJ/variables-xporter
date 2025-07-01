@@ -2,6 +2,7 @@ import bundleAnalyzer from "@next/bundle-analyzer";
 import nextra from "nextra";
 import lingoI18nConfig from "../i18n.json";
 import { I18NConfig } from "next/dist/server/config-shared";
+import TerserPlugin from "terser-webpack-plugin";
 
 const withNextra = nextra({
   defaultShowCopyCode: true,
@@ -39,7 +40,7 @@ const nextConfig = withBundleAnalyzer(
         localeDetection: false,
       } as I18NConfig,
     },
-    webpack(config) {
+    webpack(config, { dev }) {
       // rule.exclude doesn't work starting from Next.js 15
       const { test: _test, ...imageLoaderOptions } = config.module.rules.find(
         (rule) => rule.test?.test?.(".svg")
@@ -54,6 +55,34 @@ const nextConfig = withBundleAnalyzer(
           imageLoaderOptions,
         ],
       });
+
+      // 生产环境下移除 console.log
+      if (!dev) {
+        config.optimization.minimizer = [
+          new TerserPlugin({
+            terserOptions: {
+              compress: {
+                // 移除 console 语句
+                drop_console: true,
+                drop_debugger: true,
+                // 移除未使用的代码
+                dead_code: true,
+                // 移除无用的函数参数
+                unused: true,
+              },
+              mangle: {
+                // 混淆变量名
+                toplevel: true,
+              },
+              format: {
+                // 移除注释
+                comments: false,
+              },
+            },
+          }),
+        ];
+      }
+
       return config;
     },
     experimental: {
