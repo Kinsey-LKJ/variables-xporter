@@ -129,6 +129,7 @@ function App() {
       case 'get-variables-data':
         setCollections(msg.data.collections);
         setVariables(msg.data.variables);
+        break;
       
 
       // case 'webhookDataGot':
@@ -138,24 +139,10 @@ function App() {
       //     })
       //   }
       //   break
-      case 'initSize':
-        if (msg.size && typeof msg.size.width === 'number' && typeof msg.size.height === 'number') {
-          setSize(msg.size);
-        }
-        break;
     }
   };
 
-    // 向 Figma 主线程发送调整大小请求
-    const sendResizeMessage = (width: number, height: number) => {
-      parent.postMessage({
-        pluginMessage: {
-          type: 'resize',
-          width,
-          height
-        }
-      }, '*');
-    };
+
 
   const connectGithubForm = useConnectGithubForm({
     initialValues: {
@@ -222,21 +209,7 @@ function App() {
         setCurrentStep,
       }}
     >
-      <AspectRatioResizable
-        width={size.width}
-        height={size.height}
-        onResize={(e, { size: newSize }) => {
-          if (newSize && typeof newSize.width === 'number' && typeof newSize.height === 'number') {
-            setSize(newSize);
-            sendResizeMessage(newSize.width, newSize.height);
-          }
-        }}
-        minConstraints={[400, 500]} // 最小尺寸
-        maxConstraints={[800, 1000]} // 最大尺寸
-        handle={
-          <ChevronsDown size={20} className='absolute bottom-0 right-0 -rotate-45 cursor-nwse-resize z-50' />
-        }
-      >
+      {/* <AspectRatioResizable> */}
         <div className="h-full grid grid-rows-[auto_1fr] relative overflow-hidden">
           <div className=" flex justify-between items-center p-2">
             <Button
@@ -313,9 +286,9 @@ function App() {
           </ConnectGithubFormProvider> */}
           </div>
 
-          <ExportPage ref={exportPageRef} windowSize={size} />
+          <ExportPage ref={exportPageRef}  />
         </div>
-      </AspectRatioResizable>
+      {/* </AspectRatioResizable> */}
     </AppContext.Provider>
   );
 }

@@ -16,5 +16,9 @@
   "tailwind_css_figma_template": "Modèle Figma pour Tailwind CSS",
   "documentation": "Documentation",
   "setting": "Paramètres",
-  "root_element_size": "Taille de l'élément racine"
+  "root_element_size": "Taille de l'élément racine",
+  "window_size": "Taille de la fenêtre",
+  "large": "Grand",
+  "medium": "Moyen",
+  "small": "Petit"
 }

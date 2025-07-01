@@ -2,19 +2,19 @@ import { TVariableCollection, TVariable } from '../types/app';
 
 figma.showUI(__html__, { height: 625, width: 500 });
 
-const saveWindowSize = (size: { width: number; height: number }) => {
-  figma.clientStorage.setAsync('windowSize', size);
-};
+// const saveWindowSize = (size: { width: number; height: number }) => {
+//   figma.clientStorage.setAsync('windowSize', size);
+// };
 
-figma.clientStorage.getAsync('windowSize').then((size) => {
-  if (size) {
-    figma.ui.resize(size.width, size.height);
-    figma.ui.postMessage({
-      type: 'initSize',
-      size
-    });
-  }
-});
+// figma.clientStorage.getAsync('windowSize').then((size) => {
+//   if (size) {
+//     figma.ui.resize(size.width, size.height);
+//     figma.ui.postMessage({
+//       type: 'initSize',
+//       size
+//     });
+//   }
+// });
 
 // get github settings
 function getLocalData(key) {
@@ -54,7 +54,7 @@ figma.ui.onmessage = (msg) => {
 
     case 'resize':
       figma.ui.resize(msg.width, msg.height);
-      saveWindowSize({ width: msg.width, height: msg.height });
+      // saveWindowSize({ width: msg.width, height: msg.height });
   }
 };
 
@@ -84,6 +84,7 @@ figma.variables.getLocalVariableCollectionsAsync().then((collections) => {
       scopes: variable.scopes,
       codeSyntax: variable.codeSyntax,
     }));
+
     figma.ui.postMessage({
       type: 'get-variables-data',
       data: {

@@ -8,7 +8,6 @@ import { AppContext } from './App';
 import { ArrowUpRight } from 'lucide-react';
 import { useMantineTheme } from '@mantine/core';
 
-
 const Setup = () => {
   const { textData, collections, variables } = useContext(AppContext);
   const theme = useMantineTheme();
@@ -25,6 +24,29 @@ const Setup = () => {
 
         {collections ? (
           <div className=" grid gap-4">
+            <div className=" grid gap-2">
+              <Select
+                size="sm"
+                placeholder={textData.format}
+                data={['Tailwind CSS V3', 'CSS Variables', 'Tailwind CSS V4']}
+                comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
+                maxDropdownHeight={200}
+                className=" shadow-2xl"
+                color="#C3FF36"
+                {...form.getInputProps('exportFormat')}
+              />
+
+              {/* {formValus.exportFormat === 'Tailwind CSS V3' ? (
+                <a
+                  className=" text-xs justify-self-end text-blue-300 flex items-center justify-center"
+                  target="_blank"
+                  href="https://www.figma.com/community/file/1052575036916494414/tailwindcss-v3-4-3-design-system"
+                >
+                  {textData.tailwind_css_figma_template}
+                  <ArrowUpRight size={12} />
+                </a>
+              ) : null} */}
+            </div>
             <Select
               size="sm"
               placeholder={textData.select_collection}
@@ -32,20 +54,20 @@ const Setup = () => {
               comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
               maxDropdownHeight={200}
               className=" shadow-2xl"
-              color='#C3FF36'
+              color="#C3FF36"
               {...form.getInputProps('selectCollectionID')}
             />
             <SelectVariableGroups collections={collections} variables={variables} />
-            {formValus.selectVariableGroup.length > 0 ? (
-              <div className=' grid gap-2'>
+            {/* {formValus.selectVariableGroup.length > 0 ? (
+              <div className=" grid gap-2">
                 <Select
                   size="sm"
                   placeholder={textData.format}
-                  data={['Tailwind CSS V3', 'CSS Variables',"Tailwind CSS V4"]}
+                  data={['Tailwind CSS V3', 'CSS Variables', 'Tailwind CSS V4']}
                   comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
                   maxDropdownHeight={200}
                   className=" shadow-2xl"
-                  color='#C3FF36'
+                  color="#C3FF36"
                   {...form.getInputProps('exportFormat')}
                 />
 
@@ -54,14 +76,13 @@ const Setup = () => {
                     className=" text-xs justify-self-end text-blue-300 flex items-center justify-center"
                     target="_blank"
                     href="https://www.figma.com/community/file/1052575036916494414/tailwindcss-v3-4-3-design-system"
-                    
                   >
                     {textData.tailwind_css_figma_template}
                     <ArrowUpRight size={12} />
                   </a>
                 ) : null}
               </div>
-            ) : null}
+            ) : null} */}
           </div>
         ) : null}
       </div>

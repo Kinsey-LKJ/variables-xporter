@@ -16,5 +16,9 @@
   "tailwind_css_figma_template": "Tailwind CSS Figma 模板",
   "documentation": "文档",
   "setting": "设置",
-  "root_element_size": "根元素大小"
+  "root_element_size": "根元素大小",
+  "window_size": "窗口大小",
+  "large": "大",
+  "medium": "中",
+  "small": "小"
 }

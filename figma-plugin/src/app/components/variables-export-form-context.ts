@@ -11,6 +11,7 @@ interface VariableFormValues {
   updateMessage: string;
   exportFormat:ExportFormat;
   rootElementSize: number;
+  windowSize: 'large' | 'medium' | 'small';
 }
 
 // You can give context variables any name

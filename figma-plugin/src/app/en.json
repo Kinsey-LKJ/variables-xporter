@@ -16,5 +16,9 @@
   "tailwind_css_figma_template": "Tailwind CSS Figma template",
   "documentation": "Documentation",
   "setting": "Settings",
-  "root_element_size": "Root element size"
+  "root_element_size": "Root element size",
+  "window_size": "Window size",
+  "large": "Large",
+  "medium": "Medium",
+  "small": "Small"
 }
