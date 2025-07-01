@@ -9,7 +9,7 @@ import Image from "next/image";
 import { Footer } from "../components/footer";
 import { getDictionary, dictionaries } from "../_dictionaries/get-dictionary";
 import { Locale } from "@app/_dictionaries/i18n-config";
-import Logo from "@/public/website/Logo.png";
+import Logo from "@/public/logo.svg";
 import lingoI18nConfig from "../../../i18n.json";
 import { allLanguages } from "../_dictionaries/i18n-config";
 import getConfig from 'next/config';
@@ -107,7 +107,7 @@ export default async function RootLayout({ children, params }) {
           navbar={navbar}
           footer={<Footer />}
           // editLink="Edit this page on GitHub"
-          // docsRepositoryBase="https://github.com/shuding/nextra/blob/main/examples/docs"
+          docsRepositoryBase="https://github.com/Kinsey-LKJ/variables-xporter"
           sidebar={{ defaultMenuCollapseLevel: 1 }}
           pageMap={pageMap}
           nextThemes={{

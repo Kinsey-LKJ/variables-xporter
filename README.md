@@ -1,7 +1,7 @@
 # Variables Xporter
 
 <div align="center">
-  <img src="docs/public/Logo.png" alt="Variables Xporter Logo" width="120" height="120">
+  <img src="docs/public/logo.svg" alt="Variables Xporter Logo" width="120" height="120">
   
   **一个强大的 Figma 插件，轻松的链接设计与开发**
   
