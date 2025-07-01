@@ -52,7 +52,7 @@ Variables Xporter 采用"单一出口原则"来组织复杂的多模式设计系
 传统的多模式变量组织方式：
 ```
 传统集合 (所有变量强耦合到一个集合)
-├── Light 模式    ├── Dark 模式
+├── Light 模式                  ├── Dark 模式
 ├── colors/primary: #3B82F6    ├── colors/primary: #60A5FA
 ├── colors/secondary: #10B981  ├── colors/secondary: #F59E0B
 ├── spacing/sm: 8px            ├── spacing/sm: 8px (重复设置)
@@ -68,7 +68,7 @@ Design Tokens (主集合 - 唯一出口)
 └── font/size/base: 16px (直接值，无需多模式)
 
 Theme Modes (辅助集合 - 仅存放变化的变量)
-├── Light 模式    ├── Dark 模式
+├── Light 模式                          ├── Dark 模式
 ├── colors/primary/DEFAULT: #3B82F6    ├── colors/primary/DEFAULT: #60A5FA
 └── colors/secondary/DEFAULT: #10B981  └── colors/secondary/DEFAULT: #F59E0B
 ```

@@ -53,7 +53,7 @@ Variables Xporter adopts the "Single Outlet Principle" to organize complex multi
 Traditional multi-mode variable organization:
 ```
 Traditional Collection (All variables tightly coupled in one collection)
-├── Light Mode    ├── Dark Mode
+├── Light Mode                 ├── Dark Mode
 ├── colors/primary: #3B82F6    ├── colors/primary: #60A5FA
 ├── colors/secondary: #10B981  ├── colors/secondary: #F59E0B
 ├── spacing/sm: 8px            ├── spacing/sm: 8px (redundant setting)
@@ -69,7 +69,7 @@ Design Tokens (Main Collection - Single Outlet)
 └── font/size/base: 16px (direct value, no multi-mode needed)
 
 Theme Modes (Auxiliary Collection - Only stores changing variables)
-├── Light Mode    ├── Dark Mode
+├── Light Mode                         ├── Dark Mode
 ├── colors/primary/DEFAULT: #3B82F6    ├── colors/primary/DEFAULT: #60A5FA
 └── colors/secondary/DEFAULT: #10B981  └── colors/secondary/DEFAULT: #F59E0B
 ```
