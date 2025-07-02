@@ -15,6 +15,7 @@ import { allLanguages } from "../_dictionaries/i18n-config";
 import getConfig from 'next/config';
 import { I18NConfig } from "next/dist/server/config-shared";
 import LocalSwitch from "../components/local-switch";
+import { GithubIcon } from "lucide-react";
 
     
 export const metadata = {
@@ -70,7 +71,8 @@ export default async function RootLayout({ children, params }) {
         </div>
       }
       // Next.js discord server
-      // chatLink="https://discord.gg/hEM84NMkRv"
+      chatLink="https://github.com/Kinsey-LKJ/variables-xporter"
+      chatIcon={<GithubIcon />}
     >
       <>
         {/* <LocaleSwitch className="x-local-switch" /> */}

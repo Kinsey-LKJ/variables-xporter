@@ -53,9 +53,9 @@ export const Footer = () => {
         <Blurer className="w-[736px] h-[137px] blur-[140px] translate-y-[150%] bottom-0"></Blurer>
       )}
       <div>
-        MIT 2025 ©
-        <Link href="https://lkj.design" className=" underline">
-          Kinsey
+        Built with ❤️ by {" "}
+        <Link href="https://lkj.design" className=" underline" target="_blank">
+           Kinsey
         </Link>
         .
       </div>
