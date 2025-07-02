@@ -1,0 +1,234 @@
+# Principe de sortie unique
+
+Le principe de sortie unique est la philosophie d'organisation des variables recommandée par Variables Xporter, spécialement conçue pour résoudre les problèmes complexes de gestion des variables multi-modes dans les grands systèmes de design.
+
+## Qu'est-ce que le principe de sortie unique ?
+
+**Le principe de sortie unique signifie que dans un système de variables, toutes les variables utilisent une collection comme point de sortie unique. Cette collection contient seulement un mode et implémente la gestion des variables multi-modes en référençant des variables d'autres collections.**
+
+## Problèmes des approches traditionnelles
+
+Dans la gestion traditionnelle des variables de Figma, les designers mettent généralement toutes les variables de mode dans la même collection :
+
+```
+Collection traditionnelle (Toutes les variables fortement couplées dans une collection)
+├── Mode clair                  ├── Mode sombre
+├── colors/primary: #3B82F6    ├── colors/primary: #60A5FA
+├── colors/secondary: #10B981  ├── colors/secondary: #F59E0B
+├── spacing/sm: 8px            ├── spacing/sm: 8px (paramétrage dupliqué)
+└── font/size/base: 16px       └── font/size/base: 16px (paramétrage dupliqué)
+```
+
+Cette approche présente les problèmes suivants :
+
+- **Paramètres redondants** : Beaucoup de variables ont les mêmes valeurs dans différents modes mais nécessitent des paramètres dupliqués
+- **Complexité de gestion** : Quand les modes augmentent, les collections deviennent grandes et difficiles à gérer
+- **Confusion d'usage** : Les designers doivent basculer entre plusieurs modes pour trouver les variables appropriées
+- **Difficultés d'extension** : Ajouter de nouvelles dimensions de mode nécessite un travail de duplication extensif
+
+## Solution avec le principe de sortie unique
+
+Le principe de sortie unique résout ces problèmes par la séparation des préoccupations :
+
+```
+Design Tokens (Collection principale - Sortie unique)
+├── colors/primary/DEFAULT → Référence la collection Theme Modes
+├── colors/secondary/DEFAULT → Référence la collection Theme Modes
+├── spacing/sm: 8px (valeur directe, pas de multi-mode nécessaire)
+└── font/size/base: 16px (valeur directe, pas de multi-mode nécessaire)
+
+Theme Modes (Collection auxiliaire - Stocke uniquement les variables changeantes)
+├── Mode clair                         ├── Mode sombre
+├── colors/primary/DEFAULT: #3B82F6    ├── colors/primary/DEFAULT: #60A5FA
+└── colors/secondary/DEFAULT: #10B981  └── colors/secondary/DEFAULT: #F59E0B
+```
+
+## Avantages principaux
+
+- **Interface unifiée** : Les designers sélectionnent uniquement des variables de la collection principale
+- **Export efficace** : Exporter seulement la collection principale, le plugin trace automatiquement les références
+- **Extension facile** : Ajouter de nouvelles dimensions de mode n'affecte pas les structures existantes
+- **Éviter la redondance** : Seules les variables changeantes sont placées dans les collections de modes
+- **Combinaisons flexibles** : Supporte des combinaisons multi-dimensionnelles complexes
+
+## Exemples d'application pratique
+
+Démontrons comment appliquer le principe de sortie unique à travers des exemples spécifiques.
+
+### Implémentation de base thème clair/sombre
+
+#### Étape 1 : Créer la collection Design Tokens (Collection principale)
+
+D'abord, nous créons une collection principale pour stocker toutes les variables de design :
+
+```
+┌────────────────────────┬────────────────────────┐
+│                        │                        │
+│ Design Tokens          │         default        │
+│                        │                        │
+├────────────────────────┼────────────────────────┤
+│                        │                        │
+│ colors/primary/DEFAULT │ #EE6D21                │
+│ colors/zhiyun/600      │ #EE6D21                │
+│ colors/zhiyun/500      │ #E55517                │
+│ colors/fiveray/600     │ #DA5959                │
+│ colors/fiveray/500     │ #C03939                │
+│ ...                    │ ...                    │
+│                        │                        │
+└────────────────────────┴────────────────────────┘
+```
+
+Cette collection principale contient seulement un mode par défaut et sert de point de sortie unifié pour toutes les variables.
+
+#### Étape 2 : Créer la collection Theme Modes
+
+Ensuite, nous créons une collection spécifiquement pour gérer les modes de thème :
+
+```
+┌────────────────────────┬──────────────────────┬─────────────────────┐
+│                        │                      │                     │
+│ Theme Modes            │         light        │         dark        │
+│                        │                      │                     │
+├────────────────────────┼──────────────────────┼─────────────────────┤
+│                        │                      │                     │
+│ colors/primary/DEFAULT │ colors/primary/light │ colors/primary/dark │
+│                        │                      │                     │
+└────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+Cette collection est dédiée au stockage des variables qui doivent basculer entre les thèmes clair et sombre.
+
+#### Étape 3 : Établir les relations de référence
+
+En faisant référencer par les variables de la collection principale leurs variables correspondantes dans cette collection, nous réalisons un basculement de thème élégant :
+
+```
+                ┌────────────────────────┬────────────────────────┐
+                │                        │                        │
+                │ Design Tokens          │         default        │
+                │                        │                        │
+                ├────────────────────────┼────────────────────────┤
+                │                        │                        │
+                │ colors/primary/DEFAULT │ colors/primary/DEFAULT |───────┐
+                │                        │                        │       │
+┌──────────────►│ colors/zhiyun/600      │ #E55517                │       │
+│               │                        │                        │       │
+├──────────────►│ colors/zhiyun/500      │ #C03939                │       │
+│               │                        │                        │       │
+│               │ ...                    │ ...                    │       │
+│               │                        │                        │       │
+│               └────────────────────────┴────────────────────────┘       │
+│                                                                         │
+│                                                                         │
+│    ┌────────────────────────────────────────────────────────────────────┘
+│    │
+│    │
+│    │           ┌────────────────────────┬──────────────────────┬─────────────────────┐
+│    │           │                        │                      │                     │
+│    │           │ Theme Modes            │         light        │         dark        │
+│    │           │                        │                      │                     │
+│    │           ├────────────────────────┼──────────────────────┼─────────────────────┤
+│    │           │                        │                      │                     │
+│    └──────────►│ colors/primary/DEFAULT │ colors/zhiyun/600──┐ │ colors/zhiyun/500─┐ │
+│                │                        │                    │ │                   │ │
+│                │ ...                    │ ...                │ │ ...               │ │
+│                │                        │                    │ │                   │ │
+│                └────────────────────────┴────────────────────┼─┴───────────────────┼─┘
+│                                                              │                     │
+│                                                              │                     │
+└──────────────────────────────────────────────────────────────┴─────────────────────┘
+```
+
+### Implémentation de système multi-dimensionnel complexe
+
+L'utilisation du principe de sortie unique permet la création de systèmes de variables multi-dimensionnels complexes, comme ceux combinant thèmes clair/sombre, thèmes de marque, design responsive et modes de densité.
+
+#### Combinaisons de thèmes de marque
+
+En plus des thèmes clair/sombre, nous pouvons ajouter des variables de thème de marque. Créez une collection Brands Modes pour gérer les variables de thème de marque :
+
+```
+ ┌────────────────────────┬──────────────────────┬─────────────────────┐
+ │                        │                      │                     │
+ │ Brands Modes           │        zhiyun        │        fiveray      │
+ │                        │                      │                     │
+ ├────────────────────────┼──────────────────────┼─────────────────────┤
+ │                        │                      │                     │
+ │ colors/primary/light   │ colors/zhiyun/600    │ colors/fiveray/600  │
+ │                        │                      │                     │
+ │ colors/primary/dark    │ colors/zhiyun/600    │ colors/fiveray/500  │
+ │                        │                      │                     │
+ │ ...                    │ ...                  │ ...                 │
+ │                        │                      │                     │
+ └────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+Établissez des relations de référence de variables : Les variables dans la collection Theme Modes référencent les variables correspondantes de la collection Brands Modes basées sur le thème actuel.
+
+#### Modes de design responsive
+
+Typiquement, les variables de taille de police s'ajustent basées sur différentes tailles d'écran. Créez une collection Device Modes pour gérer les variables de design responsive :
+
+```
+ ┌────────────────────────┬──────────────────────┬─────────────────────┐
+ │                        │                      │                     │
+ │ Device Modes           │        default       │    min-width:1024   │
+ │                        │                      │                     │
+ ├────────────────────────┼──────────────────────┼─────────────────────┤
+ │                        │                      │                     │
+ │ font/hero/size         │ font/size/2xl        │ font/size/3xl       │
+ │                        │                      │                     │
+ │ ...                    │ ...                  │ ...                 │
+ │                        │                      │                     │
+ └────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+#### Modes de densité
+
+Pour les projets B2B backend, il pourrait y avoir des modes compacts. Créez une collection Density Modes :
+
+```
+┌────────────────────────┬──────────────────────┬─────────────────────┐
+│                        │                      │                     │
+│ Density Modes          │        default       │       compact       │
+│                        │                      │                     │
+├────────────────────────┼──────────────────────┼─────────────────────┤
+│                        │                      │                     │
+│ spacing/1              │ 4                    │ 3                   │
+│                        │                      │                     │
+│ font/size/2xl          │ 24                   │ 22                  │
+│                        │                      │                     │
+│ font/size/3xl          │ 30                   │ 26                  │
+│                        │                      │                     │
+│ ...                    │ ...                  │ ...                 │
+│                        │                      │                     │
+└────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+### Perspective utilisateur
+
+#### Usage du designer
+
+Dans Figma, les designers n'ont besoin que de sélectionner des variables de la collection Design Tokens, sans se soucier des relations de référence sous-jacentes. C'est l'avantage du principe de sortie unique — fournir une interface unifiée et claire.
+
+#### Processus d'export
+
+Lors de l'utilisation du plugin Variables Xporter, vous n'avez besoin d'exporter que les variables de la collection Design Tokens. Le plugin trace automatiquement la chaîne de référence de chaque variable pour obtenir les valeurs finales concrètes, sans avoir besoin d'exporter d'autres collections de modes.
+
+## Scénarios applicables
+
+Le principe de sortie unique est particulièrement adapté pour :
+
+- **Systèmes de design multi-modes** : Incluant thèmes clair/sombre, thèmes de marque et autres dimensions de mode
+- **Grands systèmes de design** : Avec de nombreuses variables nécessitant une structure organisationnelle claire
+- **Collaboration d'équipe** : Quand plusieurs personnes ont besoin d'un point d'entrée unifié pour l'usage des variables
+- **Produits complexes** : Supportant plusieurs appareils, états et marques
+
+## Considérations importantes
+
+- **Contrôle du niveau de référence** : Éviter l'imbrication de référence trop profonde
+- **Conventions de nommage** : Maintenir des standards de nommage de variables cohérents
+- **Documentation** : Ajouter des descriptions pour les relations de référence importantes
+- **Maintenance régulière** : Vérifier l'intégrité et la pertinence de la chaîne de référence
+
+En adoptant le principe de sortie unique, vous pouvez construire un système de variables à la fois puissant et simple, rendant les systèmes de design multi-modes complexes clairs et gérables. 

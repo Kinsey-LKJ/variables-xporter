@@ -1,0 +1,234 @@
+# Single Outlet Principle
+
+The Single Outlet Principle is the core variable organization philosophy recommended by Variables Xporter, specifically designed to solve complex multi-mode variable management problems in large design systems.
+
+## What is the Single Outlet Principle?
+
+**The Single Outlet Principle means that in a variable system, all variables use one collection as the sole outlet. This collection contains only one mode and implements multi-mode variable management by referencing variables from other collections.**
+
+## Problems with Traditional Approaches
+
+In traditional Figma variable management, designers typically put all mode variables in the same collection:
+
+```
+Traditional Collection (All variables tightly coupled in one collection)
+├── Light Mode                 ├── Dark Mode
+├── colors/primary: #3B82F6    ├── colors/primary: #60A5FA
+├── colors/secondary: #10B981  ├── colors/secondary: #F59E0B
+├── spacing/sm: 8px            ├── spacing/sm: 8px (duplicate setting)
+└── font/size/base: 16px       └── font/size/base: 16px (duplicate setting)
+```
+
+This approach has the following problems:
+
+- **Redundant settings**: Many variables have the same values across different modes but require duplicate settings
+- **Management complexity**: As modes increase, collections become large and difficult to manage
+- **Usage confusion**: Designers need to switch between multiple modes to find appropriate variables
+- **Scaling difficulties**: Adding new mode dimensions requires extensive duplicate work
+
+## Solution with Single Outlet Principle
+
+The Single Outlet Principle solves these problems through separation of concerns:
+
+```
+Design Tokens (Main Collection - Sole Outlet)
+├── colors/primary/DEFAULT → References Theme Modes collection
+├── colors/secondary/DEFAULT → References Theme Modes collection  
+├── spacing/sm: 8px (direct value, no multi-mode needed)
+└── font/size/base: 16px (direct value, no multi-mode needed)
+
+Theme Modes (Auxiliary Collection - Only stores changing variables)
+├── Light Mode                         ├── Dark Mode
+├── colors/primary/DEFAULT: #3B82F6    ├── colors/primary/DEFAULT: #60A5FA
+└── colors/secondary/DEFAULT: #10B981  └── colors/secondary/DEFAULT: #F59E0B
+```
+
+## Core Advantages
+
+- **Unified Interface**: Designers only select variables from the main collection, no switching needed
+- **Efficient Export**: Export only the main collection, plugin automatically tracks reference chains
+- **Easy Extension**: Adding new mode dimensions doesn't affect existing structures
+- **Avoiding Redundancy**: Only changing variables are placed in mode collections
+- **Flexible Combinations**: Supports complex multi-dimensional mode combinations
+
+## Practical Application Examples
+
+Let's demonstrate how to apply the Single Outlet Principle through specific examples.
+
+### Basic Light/Dark Theme Implementation
+
+#### Step 1: Create Design Tokens Collection (Main Collection)
+
+First, we create a main collection to store all design variables:
+
+```
+┌────────────────────────┬────────────────────────┐
+│                        │                        │
+│ Design Tokens          │         default        │
+│                        │                        │
+├────────────────────────┼────────────────────────┤
+│                        │                        │
+│ colors/primary/DEFAULT │ #EE6D21                │
+│ colors/zhiyun/600      │ #EE6D21                │
+│ colors/zhiyun/500      │ #E55517                │
+│ colors/fiveray/600     │ #DA5959                │
+│ colors/fiveray/500     │ #C03939                │
+│ ...                    │ ...                    │
+│                        │                        │
+└────────────────────────┴────────────────────────┘
+```
+
+This main collection contains only one default mode and serves as the unified outlet for all variables.
+
+#### Step 2: Create Theme Modes Collection
+
+Next, we create a collection specifically for managing theme modes:
+
+```
+┌────────────────────────┬──────────────────────┬─────────────────────┐
+│                        │                      │                     │
+│ Theme Modes            │         light        │         dark        │
+│                        │                      │                     │
+├────────────────────────┼──────────────────────┼─────────────────────┤
+│                        │                      │                     │
+│ colors/primary/DEFAULT │ colors/primary/light │ colors/primary/dark │
+│                        │                      │                     │
+└────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+This collection is dedicated to storing variables that need to switch between light and dark themes.
+
+#### Step 3: Establish Reference Relationships
+
+By having variables in the main collection reference corresponding variables in this collection, we achieve elegant theme switching:
+
+```
+                ┌────────────────────────┬────────────────────────┐
+                │                        │                        │
+                │ Design Tokens          │         default        │
+                │                        │                        │
+                ├────────────────────────┼────────────────────────┤
+                │                        │                        │
+                │ colors/primary/DEFAULT │ colors/primary/DEFAULT |───────┐
+                │                        │                        │       │
+┌──────────────►│ colors/zhiyun/600      │ #E55517                │       │
+│               │                        │                        │       │
+├──────────────►│ colors/zhiyun/500      │ #C03939                │       │
+│               │                        │                        │       │
+│               │ ...                    │ ...                    │       │
+│               │                        │                        │       │
+│               └────────────────────────┴────────────────────────┘       │
+│                                                                         │
+│                                                                         │
+│    ┌────────────────────────────────────────────────────────────────────┘
+│    │
+│    │
+│    │           ┌────────────────────────┬──────────────────────┬─────────────────────┐
+│    │           │                        │                      │                     │
+│    │           │ Theme Modes            │         light        │         dark        │
+│    │           │                        │                      │                     │
+│    │           ├────────────────────────┼──────────────────────┼─────────────────────┤
+│    │           │                        │                      │                     │
+│    └──────────►│ colors/primary/DEFAULT │ colors/zhiyun/600──┐ │ colors/zhiyun/500─┐ │
+│                │                        │                    │ │                   │ │
+│                │ ...                    │ ...                │ │ ...               │ │
+│                │                        │                    │ │                   │ │
+│                └────────────────────────┴────────────────────┼─┴───────────────────┼─┘
+│                                                              │                     │
+│                                                              │                     │
+└──────────────────────────────────────────────────────────────┴─────────────────────┘
+```
+
+### Complex Multi-dimensional System Implementation
+
+Using the Single Outlet Principle enables creation of complex multi-dimensional variable systems, such as those combining light/dark themes, brand themes, responsive design, and density modes.
+
+#### Brand Theme Combinations
+
+On top of light/dark themes, we can add brand theme variables. Create a Brands Modes collection to manage brand theme variables:
+
+```
+ ┌────────────────────────┬──────────────────────┬─────────────────────┐
+ │                        │                      │                     │
+ │ Brands Modes           │        zhiyun        │        fiveray      │
+ │                        │                      │                     │
+ ├────────────────────────┼──────────────────────┼─────────────────────┤
+ │                        │                      │                     │
+ │ colors/primary/light   │ colors/zhiyun/600    │ colors/fiveray/600  │
+ │                        │                      │                     │
+ │ colors/primary/dark    │ colors/zhiyun/600    │ colors/fiveray/500  │
+ │                        │                      │                     │
+ │ ...                    │ ...                  │ ...                 │
+ │                        │                      │                     │
+ └────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+Establish variable reference relationships: Variables in the Theme Modes collection reference corresponding variables from the Brands Modes collection based on the current theme.
+
+#### Responsive Design Modes
+
+Typically, font size variables adjust based on different screen sizes. Create a Device Modes collection to manage responsive design variables:
+
+```
+ ┌────────────────────────┬──────────────────────┬─────────────────────┐
+ │                        │                      │                     │
+ │ Device Modes           │        default       │    min-width:1024   │
+ │                        │                      │                     │
+ ├────────────────────────┼──────────────────────┼─────────────────────┤
+ │                        │                      │                     │
+ │ font/hero/size         │ font/size/2xl        │ font/size/3xl       │
+ │                        │                      │                     │
+ │ ...                    │ ...                  │ ...                 │
+ │                        │                      │                     │
+ └────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+#### Density Modes
+
+For B2B backend projects, there might be compact modes. Create a Density Modes collection:
+
+```
+┌────────────────────────┬──────────────────────┬─────────────────────┐
+│                        │                      │                     │
+│ Density Modes          │        default       │       compact       │
+│                        │                      │                     │
+├────────────────────────┼──────────────────────┼─────────────────────┤
+│                        │                      │                     │
+│ spacing/1              │ 4                    │ 3                   │
+│                        │                      │                     │
+│ font/size/2xl          │ 24                   │ 22                  │
+│                        │                      │                     │
+│ font/size/3xl          │ 30                   │ 26                  │
+│                        │                      │                     │
+│ ...                    │ ...                  │ ...                 │
+│                        │                      │                     │
+└────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+### User Perspective
+
+#### Designer Usage
+
+In Figma, designers only need to select variables from the Design Tokens collection, without worrying about underlying variable reference relationships. This is the advantage of the Single Outlet Principle — providing a unified, clear interface.
+
+#### Export Process
+
+When using the Variables Xporter plugin, you only need to export variables from the Design Tokens collection. The plugin automatically traces each variable's reference chain to ensure it gets the final concrete values, without needing to export other mode collections.
+
+## Applicable Scenarios
+
+The Single Outlet Principle is particularly suitable for:
+
+- **Multi-mode design systems**: Including light/dark themes, brand themes, and other mode dimensions
+- **Large design systems**: With numerous variables requiring clear organizational structure
+- **Team collaboration**: When multiple people need a unified variable usage entry point
+- **Complex products**: Supporting multiple devices, states, and brands
+
+## Important Considerations
+
+- **Reference level control**: Avoid overly deep reference nesting
+- **Naming conventions**: Maintain consistent variable naming standards
+- **Documentation**: Add descriptions for important reference relationships
+- **Regular maintenance**: Check reference chain integrity and reasonableness
+
+By adopting the Single Outlet Principle, you can build a variable system that is both powerful and simple, making complex multi-mode design systems clear and manageable. 

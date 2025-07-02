@@ -13,15 +13,7 @@ import { Cards } from 'nextra/components'
 
 # Organizing your design variables
 
-Welcome to the variable organization guide! In a design system, the way variables are organized is like the foundation of a building — it not only enhances the efficiency of design and development, but for projects using Tailwind CSS, it also determines whether design tokens can be correctly exported and used. Let's explore together how to build a clear and efficient variable system.
-
-## Why variable organization matters
-
-- **Maintainability** ✨: A clear variable structure allows team members to easily find and update the required design tokens, like a well-organized toolbox
-- **Scalability** 🌱: A good organization method provides a solid foundation for future design system expansion, allowing the system to evolve gracefully as the project grows
-- **Consistency** 🎯: Unified naming and classification ensure the consistency of design language across the entire product, making the user experience more uniform and professional
-- **Efficiency** ⚡: Reasonable variable organization can accelerate design and development workflows, reducing communication costs
-- **Tailwind compatibility** 🔄: The variable structure needs to be as consistent as possible with Tailwind CSS's configuration structure to ensure correct export and mapping
+Facing the increasingly complex needs of Design Tokens management, Variables Xporter recommends using the [single outlet principle](/docs/single-outlet-principle) to organize your variable system. Proper variable organization not only improves the quality of exported code, but also makes complex multi-mode design systems clear and manageable.
 
 ## Basic principles
 
@@ -35,15 +27,11 @@ Before you start organizing variables, we've prepared some practical advice and 
   />
 </Cards>
 
-These suggestions can help you:
-- Establish a variable naming method suitable for your team, making the code more readable
-- Plan a clear variable hierarchy to improve maintainability
-- Enhance the maintainability and scalability of variables to adapt to project growth
-- Correctly match Tailwind CSS's configuration structure to ensure seamless integration
+The basic principles cover the core elements of variable organization, including naming conventions, hierarchical structures, grouping strategies, and other key content. These principles will help you build a clear variable system.
 
-## Variable types
+## Variable Type Organization Strategies
 
-After understanding the basic principles, let's delve into how to organize different types of variables. Each type has its specific organization strategy and best practices:
+Different types of design tokens require corresponding organization strategies. Here are organization guides for common design token types:
 
 <Cards>
   <Cards.Card
@@ -73,18 +61,27 @@ After understanding the basic principles, let's delve into how to organize diffe
   />
 </Cards>
 
-## Practical tips
+## Organization essentials
 
-Here are some proven suggestions that can help you better organize and manage variables:
+### Collection design
 
-- Choose an appropriate naming convention based on team habits and maintain consistency
-- Organize the variable structure according to project requirements, avoiding excessive complexity
-- Strictly follow Tailwind CSS's configuration structure (this is mandatory)
-- Add clear descriptions to variables to help the team understand usage scenarios
-- Regularly check and optimize variable organization, adjusting unreasonable aspects promptly
-- Document in detail the usage scenarios and best practices for important variables
-- Make good use of collections to categorize variables, improving maintainability
-- Ensure variable names can be correctly parsed when exported, avoiding conflicts
+Organize collection structure according to the [single outlet principle](/docs/single-outlet-principle):
 
+- **Main collection**: Contains all externally provided variables, serving as the unified outlet
+- **Mode collections**: Only store variables that need to change in different modes
+- **Reference relationships**: Connect main collection and mode collection variables through references
 
-Remember, good variable organization is like an excellent housekeeper, it can make your design system run more smoothly and make team collaboration more efficient. Let's start this exciting journey of variable organization!
+### Naming conventions
+
+- Strictly follow Tailwind CSS configuration key structure
+- Use slash `/` for variable grouping
+- Properly use the `DEFAULT` keyword for base values, facilitating clear variable hierarchy
+
+### Practical tips
+
+- Regularly check variable structure to ensure clear reference relationships
+- Add descriptions to important variables for team understanding
+- Avoid overly complex nested structures
+- Maintain consistency and predictability in naming
+
+By adopting these organization strategies, you can effectively manage complex Design Tokens and build a design system that is both powerful and maintainable.

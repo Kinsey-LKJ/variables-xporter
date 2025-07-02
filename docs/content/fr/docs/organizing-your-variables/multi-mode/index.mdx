@@ -1,145 +1,36 @@
 import { Callout } from 'nextra/components'
 
-# Gestion des variables multi-modes
+# Organisation des variables multi-modes
 
-La fonctionnalité multi-modes de Figma fournit la base pour créer des systèmes de variables plus puissants. Nous allons explorer comment créer des systèmes de variables multi-modes complexes en utilisant le **principe de sortie unique**, qui peut inclure des combinaisons de thèmes clair/sombre, de thèmes de marque, de design responsive et de modes de densité.
+Le multi-mode est une fonctionnalité puissante du système de variables de Figma qui permet à une même variable d'avoir différentes valeurs dans différents contextes. Organiser correctement les variables multi-modes est essentiel pour construire un système de design évolutif. Nous recommandons d'utiliser le [principe de sortie unique](/docs/single-outlet-principle) pour gérer des systèmes de variables multi-modes complexes.
 
-## Organisation traditionnelle des variables multi-modes
+## Scénarios d'application multi-modes
 
-Examinons d'abord la façon traditionnelle d'organiser les variables multi-modes. En prenant l'exemple des thèmes clair/sombre, l'approche conventionnelle consiste à définir différentes valeurs de mode pour chaque variable au sein de la même collection :
+Les systèmes de variables multi-modes conviennent aux scénarios suivants :
+- **Modes de thème** : Changement de thème clair/sombre
+- **Modes de marque** : Support multi-marques de produits
+- **Modes d'appareil** : Adaptation de design responsive
+- **Modes de densité** : Ajustement de la densité d'interface
+- **Modes d'état** : États d'interaction des composants
 
-```
-┌──────────────────────┬──────────┬──────────┐
-│ Collection           │ light    │ dark     │
-├──────────────────────┼──────────┼──────────┤
-│ colors/primary       │ #E55517  │ #EE6D21  │
-│ colors/background    │ #FFFFFF  │ #1F2937  │
-│ colors/text          │ #111827  │ #F9FAFB  │
-│ font/size/base       │ 16px     │ 16px     │
-│ font/size/lg         │ 18px     │ 18px     │
-│ font/size/xl         │ 20px     │ 20px     │
-│ font/weight/normal   │ 400      │ 400      │
-│ font/weight/medium   │ 500      │ 500      │
-│ font/weight/bold     │ 700      │ 700      │
-│ spacing/base         │ 16px     │ 16px     │
-│ spacing/loose        │ 24px     │ 24px     │
-│ spacing/tight        │ 8px      │ 8px      │
-└──────────────────────┴──────────┴──────────┘
-```
+## Stratégies d'organisation
 
-Bien que cette approche semble intuitive lorsqu'il s'agit uniquement de la gestion des thèmes clair/sombre, elle présente plusieurs défis à mesure que le projet se développe :
+### Séparer les collections par dimension
+Chaque dimension de mode utilise une gestion de collection indépendante, combinée avec le [principe de sortie unique](/docs/single-outlet-principle) pour établir des hiérarchies de référence claires.
 
-1. **Fort couplage entre les variables et les modes**
-   - Chaque variable doit avoir des valeurs définies pour tous les modes
-   - Les valeurs doivent être répétées même pour les variables qui restent constantes entre les modes (comme les tailles de police, les poids et les espacements)
+### Rationaliser les variables
+Les collections de modes n'incluent que les variables qui doivent réellement changer dans cette dimension.
 
-2. **Difficile à étendre et à maintenir**
-   - Toutes les variations de mode sont concentrées au même endroit, rendant la gestion des variables complexe
-   - Lors de l'ajout de nouvelles dimensions de mode (comme les thèmes de marque), les combinaisons de modes croissent de manière exponentielle
+### Nommage sémantique
+Utilisez des noms de variables et de modes descriptifs, comme `colors/primary` et `light/dark`.
 
-## Principe de sortie unique
+## Création de systèmes de variables multi-modes complexes
 
-**Le principe de sortie unique stipule que dans un système de variables, toutes les variables doivent avoir une seule collection comme point de sortie unique, ne contenant qu'un seul mode, et implémenter la gestion des variables multi-modes à travers des références aux variables d'autres collections.** Voyons comment organiser élégamment les variables de thème clair/sombre en utilisant ce principe, rendant notre gestion des variables plus claire et plus maintenable.
+En utilisant le principe de sortie unique, vous pouvez créer des systèmes de variables multi-dimensionnels complexes qui incluent des combinaisons comme les thèmes clair/sombre, les thèmes de marque, le design responsive et les modes de densité. Construisons cela étape par étape et expérimentons les avantages du principe de sortie unique.
 
-### Création de la collection Design Tokens (collection principale)
+### Commencer par les combinaisons de thèmes de marque
 
-Tout d'abord, nous créons une collection principale pour stocker toutes les variables de design :
-
-```
-┌────────────────────────┬────────────────────────┐
-│                        │                        │
-│ Design Tokens          │         default        │
-│                        │                        │
-├────────────────────────┼────────────────────────┤
-│                        │                        │
-│ colors/primary/DEFAULT │ #EE6D21                │
-│ colors/zhiyun/600      │ #EE6D21                │
-│ colors/zhiyun/500      │ #E55517                │
-│ colors/fiveray/600     │ #DA5959                │
-│ colors/fiveray/500     │ #C03939                │
-│ ...                    │ ...                    │
-│                        │                        │
-└────────────────────────┴────────────────────────┘
-```
-
-Cette collection principale ne contient qu'un mode par défaut et sert de point de sortie unifié pour toutes les variables. Alors, comment implémenter le basculement entre les thèmes clair/sombre ? C'est là qu'intervient une collection dédiée aux modes de thème.
-
-### Création de la collection Theme Modes
-
-Ensuite, nous créons une collection spécifiquement dédiée à la gestion des modes de thème :
-
-```
-┌────────────────────────┬──────────────────────┬─────────────────────┐
-│                        │                      │                     │
-│ Theme Modes            │         light        │         dark        │
-│                        │                      │                     │
-├────────────────────────┼──────────────────────┼─────────────────────┤
-│                        │                      │                     │
-│ colors/primary/DEFAULT │ colors/primary/light │ colors/primary/dark │
-│                        │                      │                     │
-└────────────────────────┴──────────────────────┴─────────────────────┘
-```
-
-Cette collection est dédiée au stockage des variables qui doivent basculer entre les thèmes clair et sombre. **En faisant référencer par les variables de la collection principale leurs variables correspondantes dans cette collection, nous réalisons un basculement de thème élégant.**
-
-### Chaîne de référence des variables
-
-```
-                ┌────────────────────────┬────────────────────────┐
-                │                        │                        │
-                │ Design Tokens          │         defalut        │
-                │                        │                        │
-                ├────────────────────────┼────────────────────────┤
-                │                        │                        │
-                │ colors/primary/DEFAULT │ colors/primary/DEFAULT |───────┐
-                │                        │                        │       │
-┌──────────────►│ colors/zhiyun/600      │ #E55517                │       │
-│               │                        │                        │       │
-├──────────────►│ colors/zhiyun/500      │ #C03939                │       │
-│               │                        │                        │       │
-│               │ ...                    │ ...                    │       │
-│               │                        │                        │       │
-│               └────────────────────────┴────────────────────────┘       │
-│                                                                         │
-│                                                                         │
-│    ┌────────────────────────────────────────────────────────────────────┘
-│    │
-│    │
-│    │           ┌────────────────────────┬──────────────────────┬─────────────────────┐
-│    │           │                        │                      │                     │
-│    │           │ Theme Modes            │         light        │         dark        │
-│    │           │                        │                      │                     │
-│    │           ├────────────────────────┼──────────────────────┼─────────────────────┤
-│    │           │                        │                      │                     │
-│    └──────────►│ colors/primary/DEFAULT │ colors/zhiyun/600──┐ │ colors/zhiyun/500─┐ │
-│                │                        │                    │ │                   │ │
-│                │ ...                    │ ...                │ │ ...               │ │
-│                │                        │                    │ │                   │ │
-│                └────────────────────────┴────────────────────┼─┴───────────────────┼─┘
-│                                                              │                     │
-│                                                              │                     │
-└──────────────────────────────────────────────────────────────┴─────────────────────┘
-```
-
-Prenons `colors/primary/DEFAULT` comme exemple pour expliquer ce flux de travail en détail :
-
-1. Dans la collection Design Tokens, cette variable fait référence à la variable `colors/primary/DEFAULT` de la collection Theme Modes
-2. Dans la collection Theme Modes, cette variable a différentes valeurs définies pour différents modes, permettant le basculement de thème
-3. Important : la collection Theme Modes n'a besoin d'inclure que les variables qui changent entre les différents modes de thème ; les variables inchangées n'ont pas besoin d'y apparaître
-
-<Callout type="info" emoji="💡">
-**Point de vue de l'utilisateur :** Dans Figma, les designers n'ont besoin que de sélectionner des variables de la collection Design Tokens, sans se soucier des relations de référence sous-jacentes. C'est l'avantage du principe de sortie unique — fournir une interface unifiée et claire.
-
-**Processus d'exportation :** Lors de l'utilisation du plugin Variables Xporter, vous n'avez besoin d'exporter que les variables de la collection Design Tokens. Le plugin trace automatiquement la chaîne de référence de chaque variable pour obtenir les valeurs finales concrètes, sans avoir besoin d'exporter la collection Theme Modes.
-</Callout>
-
-## Création d'un système de variables multi-modes complexe
-
-L'utilisation du principe de sortie unique permet de créer des systèmes de variables multidimensionnels complexes, comme des systèmes combinant thèmes clair/sombre, thèmes de marque, design responsive et modes de densité. Créons-le étape par étape et découvrons les avantages du principe de sortie unique.
-
-### Commencer par la combinaison des thèmes de marque
-
-Nous avons déjà un système de variables prenant en charge les thèmes clair/sombre, et maintenant nous souhaitons ajouter un système de variables pour les thèmes de marque.
+Nous avons déjà un système de variables qui prend en charge les thèmes clair/sombre. Maintenant, nous voulons ajouter des variables de thème de marque en plus du système de thème clair/sombre existant.
 
 ```
                 ┌────────────────────────┬────────────────────────┐
@@ -178,9 +69,8 @@ Nous avons déjà un système de variables prenant en charge les thèmes clair/s
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### Ajout du mode de thème de marque
-
-Créez une collection Brands Modes pour gérer les variables de thème de marque, avec deux modes de marque différents (dans cet exemple, `zhiyun` et `fiveray`), puis créez deux variables `colors/primary/light` et `colors/primary/dark`, et définissez différentes valeurs pour les deux modes (dans cet exemple, en référençant les couleurs correspondantes de la collection principale Design Tokens).
+### Ajout des modes de thème de marque
+Créez une collection Brands Modes pour gérer les variables de thème de marque, et créez deux modes de marque différents (dans cet exemple `zhiyun` et `fiveray`), puis créez deux variables `colors/primary/light` et `colors/primary/dark`, en définissant des valeurs différentes pour chaque mode (dans cet exemple, référençant les couleurs associées de la collection principale Design Tokens).
 
 ```
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -191,20 +81,82 @@ Créez une collection Brands Modes pour gérer les variables de thème de marque
  │                        │                      │                     │
  │ colors/primary/light   │ colors/zhiyun/600    │ colors/fiveray/600  │
  │                        │                      │                     │
- │ colors/primary/dark    │ colors/zhiyun/600    │ colors/fiveray/50   │
+ │ colors/primary/dark    │ colors/zhiyun/600    │ colors/fiveray/500  │
  │                        │                      │                     │
  │ ...                    │ ...                  │ ...                 │
  │                        │                      │                     │
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-Et voilà ! Vous avez créé un système de variables multidimensionnel incluant les thèmes clair/sombre et les thèmes de marque, et grâce au principe de sortie unique, le système de design est devenu plus flexible et maintenable.
+Ensuite, établissez les relations de référence des variables : les variables de la collection Theme Modes référencent les variables correspondantes de la collection Brands Modes en fonction du thème actuel, tandis que les variables de la collection Brands Modes référencent des valeurs de couleur spécifiques dans la collection Design Tokens. De cette façon, lors du changement de marque ou de thème, toutes les couleurs du système se mettront à jour en conséquence.
 
-En examinant la chaîne de référence des variables dans son ensemble, on peut voir que c'est un peu complexe, mais c'est beaucoup plus clair et maintenable que de gérer toutes les variables dans une seule collection. Mais nous n'avons pas fini, continuons à étendre ce système de variables.
+```
 
-### Mode de design responsive
 
-Généralement, les variables de taille de police sont ajustées en fonction des différentes tailles d'écran. Prenons l'exemple de la variable `font/hero/size` : commencez par créer une variable `font/hero/size` dans la collection Design Tokens, ainsi que deux variables `font/size/2xl` et `font/size/3xl`.
+                   ┌────────────────────────┬────────────────────────┐
+                   │                        │                        │
+                   │ Design Tokens          │         defalut        │
+                   │                        │                        │
+                   ├────────────────────────┼────────────────────────┤
+                   │                        │                        │
+                   │ colors/primary/DEFAULT │ colors/primary/DEFAULT │───────┐
+                   │                        │                        │       │
+   ┌──────────────►│ colors/zhiyun/600      │ #E55517                │       │
+   │               │                        │                        │       │
+   ├──────────────►│ colors/zhiyun/500      │ #C03939                │       │
+   │               │                        │                        │       │
+   ├──────────────►│ colors/fiveray/600     │ #EE6D21                │       │
+   │               │                        │                        │       │
+   ├──────────────►│ colors/fiveray/500     │ #DA5959                │       │
+   │               │                        │                        │       │
+   │               │ ...                    │ ...                    │       │
+   │               │                        │                        │       │
+   │               └────────────────────────┴────────────────────────┘       │
+   │                                                                         │
+   │                                                                         │
+   │   ┌─────────────────────────────────────────────────────────────────────┘
+   │   │
+   │   │
+   │   │           ┌────────────────────────┬──────────────────────┬─────────────────────┐
+   │   │           │                        │                      │                     │
+   │   │           │ Theme Modes            │         light        │         dark        │
+   │   │           │                        │                      │                     │
+   │   │           ├────────────────────────┼──────────────────────┼─────────────────────┤
+   │   │           │                        │                      │                     │
+   │   └──────────►│ colors/primary/DEFAULT │ colors/primary/light │ colors/primary/dark │
+   │               │                        │                      │                     │
+   │               │ ...                    │ ...      │           │ ...       │         │
+   │               │                        │          │           │           │         │
+   │               └────────────────────────┴──────────┼───────────┴───────────┼─────────┘
+   │                                                   │                       │
+   │                                                   │                       │
+   │   ┌───────────────────────────────────────────────┴───────────────────────┘
+   │   │
+   │   │
+   │   │           ┌────────────────────────┬──────────────────────┬─────────────────────┐
+   │   │           │                        │                      │                     │
+   │   │           │ Brands Modes           │        zhiyun        │        fiveray      │
+   │   │           │                        │                      │                     │
+   │   │           ├────────────────────────┼──────────────────────┼─────────────────────┤
+   │   │           │                        │                      │                     │
+   │   ├──────────►│ colors/primary/light   │ colors/zhiyun/600──┐ │ colors/fiveray/600─┐│
+   │   │           │                        │                    │ │                    ││
+   │   └──────────►│ colors/primary/dark    │ colors/zhiyun/600──┤ │ colors/fiveray/500──┤│
+   │               │                        │                    │ │                    ││
+   │               │ ...                    │ ...                │ │ ...                ││
+   │               │                        │                    │ │                    ││
+   │               └────────────────────────┴────────────────────┼─┴────────────────────┼┘
+   │                                                             │                      │
+   │                                                             │                      │
+   └─────────────────────────────────────────────────────────────┴──────────────────────┘
+
+```
+
+C'est fait ! Vous avez créé un système de variables multi-dimensionnel qui inclut les thèmes clair/sombre et les thèmes de marque, et grâce au principe de sortie unique, rendu votre système de design plus flexible et maintenable.
+En regardant la chaîne de références des variables dans son ensemble, vous constaterez qu'elle est quelque peu complexe, mais c'est beaucoup plus clair et maintenable que de gérer toutes les variables dans une seule collection. Mais nous n'avons pas encore terminé - étendons davantage ce système de variables.
+
+### Modes de design responsive
+Typiquement, les variables de taille de police s'ajustent en fonction des différentes tailles d'écran. En prenant la variable `font/hero/size` comme exemple, créez d'abord une variable `font/hero/size` dans la collection Design Tokens, ainsi que les variables `font/size/2xl` et `font/size/3xl`.
 
 ```
     ┌────────────────────────┬────────────────────────┐
@@ -223,18 +175,18 @@ Généralement, les variables de taille de police sont ajustées en fonction des
     │                        │                        │
     │ colors/fiveray/500     │ #DA5959                │
     │                        │                        │
-    │ font/hero/size         │ font/size/2xl          │
+───►│ font/hero/size         │ font/size/2xl          │
     │                        │                        │
-    │ font/size/2xl          │ 24                     │
+───►│ font/size/2xl          │ 24                     │
     │                        │                        │
-    │ font/size/3xl          │ 30                     │
+───►│ font/size/3xl          │ 30                     │
     │                        │                        │
     │ ...                    │ ...                    │
     │                        │                        │
     └────────────────────────┴────────────────────────┘
 ```
 
-Créez une collection Device Modes pour gérer les variables de design responsive, créez une variable `font/hero/size`, puis définissez différentes valeurs pour différentes tailles d'appareil.
+Créez une collection Device Modes pour gérer les variables de design responsive, et créez une variable `font/hero/size`, puis définissez des valeurs différentes pour différentes tailles d'appareils.
 
 ```
 
@@ -251,7 +203,7 @@ Créez une collection Device Modes pour gérer les variables de design responsiv
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-Maintenant, il suffit de modifier la valeur de la variable `font/hero/size` dans la collection Design Tokens pour référencer la variable `font/hero/size` de la collection Device Modes !
+Maintenant, changez simplement la valeur de la variable `font/hero/size` dans la collection Design Tokens pour référencer la variable `font/hero/size` dans la collection Device Modes !
 
 ```
 
@@ -298,49 +250,15 @@ Maintenant, il suffit de modifier la valeur de la variable `font/hero/size` dans
 │      └────────────────────────┴────────────────┼─────┴────────────────┼────┘
 │                                                │                      │
 │                                                │                      │
-│   ┌────────────────────────────────────────────┴──────────────────────┘
-│   │
-│   │
-│   │           ┌────────────────────────┬──────────────────────┬─────────────────────┐
-│   │           │                        │                      │                     │
-│   │           │ Theme Modes            │         light        │         dark        │
-│   │           │                        │                      │                     │
-│   │           ├────────────────────────┼──────────────────────┼─────────────────────┤
-│   │           │                        │                      │                     │
-│   └──────────►│ colors/primary/DEFAULT │ colors/primary/light │ colors/primary/dark │
-│               │                        │                      │                     │
-│               │ ...                    │ ...      │           │ ...       │         │
-│               │                        │          │           │           │         │
-│               └────────────────────────┴──────────┼───────────┴───────────┼─────────┘
-│                                                   │                       │
-│                                                   │                       │
-│   ┌───────────────────────────────────────────────┴───────────────────────┘
-│   │
-│   │
-│   │           ┌────────────────────────┬──────────────────────┬─────────────────────┐
-│   │           │                        │                      │                     │
-│   │           │ Brands Modes           │        zhiyun        │        fiveray      │
-│   │           │                        │                      │                     │
-│   │           ├────────────────────────┼──────────────────────┼─────────────────────┤
-│   │           │                        │                      │                     │
-│   ├──────────►│ colors/primary/light   │ colors/zhiyun/600──┐ │ colors/fiveray/600─┐│
-│   │           │                        │                    │ │                    ││
-│   └──────────►│ colors/primary/dark    │ colors/zhiyun/600──┤ │ colors/fiveray/50──┤│
-│               │                        │                    │ │                    ││
-│               │ ...                    │ ...                │ │ ...                ││
-│               │                        │                    │ │                    ││
-│               └────────────────────────┴────────────────────┼─┴────────────────────┼┘
-│                                                             │                      │
-│                                                             │                      │
-└─────────────────────────────────────────────────────────────┴──────────────────────┘
-
+└────────────────────────────────────────────────┴──────────────────────┘
 ```
 
-### Mode de densité
+Nous avons omis la collection Theme Modes car son contenu reste le même qu'avant. C'est aussi un avantage du principe de sortie unique - nous n'avons besoin de nous concentrer que sur les variables qui doivent changer dans des modes spécifiques.
 
-Certains projets B2B backend peuvent avoir un mode de densité où diverses dimensions peuvent être réduites, comme les polices, les espacements et les largeurs de conteneur. Étendons davantage notre système de variables en ajoutant le mode de densité.
+### Modes de densité
+Certains projets backend B2B peuvent avoir des modes de densité où diverses tailles deviennent plus petites, comme les polices, l'espacement, les largeurs de conteneurs, etc. Étendons davantage notre système de variables en ajoutant des modes de densité.
 
-Tout d'abord, créez une série de variables `spacing` dans la collection Design Tokens pour gérer les espacements et les dimensions. Pour simplifier la démonstration, nous n'avons créé qu'une seule variable `spacing/1`, mais dans un projet réel, vous devrez créer plus de variables comme `spacing/2`, `spacing/3`, `spacing/4`, etc. Consultez les [recommandations d'organisation des variables Spacing](/docs/organizing-your-variables/spacing).
+D'abord, créez une série de variables `spacing` dans la collection Design Tokens pour gérer l'espacement et les dimensions. À des fins de démonstration, nous n'avons créé qu'une variable `spacing/1`. Dans les projets réels, vous devriez créer plus de variables comme `spacing/2`, `spacing/3`, `spacing/4`, etc. Voir [Recommandations d'organisation des variables d'espacement](/docs/organizing-your-variables/spacing).
 
 ```
 
@@ -373,7 +291,7 @@ Tout d'abord, créez une série de variables `spacing` dans la collection Design
     └────────────────────────┴────────────────────────┘
 ```
 
-Créez une collection Density Modes pour gérer la densité de la mise en page, créez les variables `spacing/1`, `font/size/2xl` et `font/size/3xl`, puis définissez différentes valeurs pour différents niveaux de densité.
+Créez une collection Density Modes pour gérer la densité de mise en page, et créez les variables `spacing/1`, `font/size/2xl` et `font/size/3xl`, puis définissez des valeurs différentes pour différents niveaux de densité.
 
 ```
 ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -393,7 +311,7 @@ Créez une collection Density Modes pour gérer la densité de la mise en page, 
 └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-Modifiez les valeurs des variables `spacing/1`, `font/size/2xl` et `font/size/3xl` dans la collection Design Tokens pour référencer les variables `spacing/1`, `font/size/2xl` et `font/size/3xl` de la collection Density Modes.
+Changez les valeurs des variables `spacing/1`, `font/size/2xl` et `font/size/3xl` dans la collection Design Tokens pour référencer les variables correspondantes dans la collection Density Modes.
 
 ```
     ┌────────────────────────┬────────────────────────┐
@@ -445,4 +363,6 @@ Modifiez les valeurs des variables `spacing/1`, `font/size/2xl` et `font/size/3x
     └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-Félicitations ! Vous avez créé un système de variables composé très puissant et facilement extensible. C'est un excellent début, et tous ces efforts en valent la peine. En tant que designer maintenant le système de design, vos variables seront probablement utilisées d'innombrables fois par d'autres designers et serviront de pont entre la conception et le développement, sans qu'ils aient besoin de se soucier de ces relations de référence.
+Félicitations ! Vous avez créé un système de variables composite très puissant et facile à étendre. C'est un excellent début, et tous les efforts en valent la peine. En tant que designer maintenant un système de design, vos variables peuvent être utilisées d'innombrables fois par d'autres designers et servir de pont entre le design et le développement, sans qu'ils aient besoin de se soucier de ces relations de référence.
+
+Grâce à une organisation appropriée des variables multi-modes, vous pouvez construire un système de design à la fois flexible et maintenable, soutenant efficacement des exigences de design complexes.

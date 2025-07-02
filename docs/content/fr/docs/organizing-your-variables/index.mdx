@@ -13,15 +13,7 @@ import { Cards } from 'nextra/components'
 
 # Organiser vos variables de design
 
-Bienvenue dans le guide d'organisation des variables ! Dans un système de design, la façon dont vous organisez vos variables est comme les fondations d'un bâtiment - non seulement elle améliore l'efficacité de la conception et du développement, mais pour les projets utilisant Tailwind CSS, elle détermine également si les design tokens peuvent être correctement exportés et utilisés. Explorons ensemble comment construire un système de variables clair et efficace.
-
-## Pourquoi l'organisation des variables est importante
-
-- **Maintenabilité** ✨ : Une structure de variables claire permet aux membres de l'équipe de trouver et de mettre à jour facilement les design tokens nécessaires, comme une boîte à outils bien rangée
-- **Évolutivité** 🌱 : Une bonne organisation fournit une base solide pour l'expansion future du système de design, permettant au système d'évoluer élégamment avec la croissance du projet
-- **Cohérence** 🎯 : Une nomenclature et une classification unifiées assurent la cohérence du langage de conception dans l'ensemble du produit, rendant l'expérience utilisateur plus uniforme et professionnelle
-- **Efficacité** ⚡ : Une organisation raisonnable des variables peut accélérer les flux de travail de conception et de développement, réduisant les coûts de communication
-- **Compatibilité Tailwind** 🔄 : La structure des variables doit être aussi proche que possible de la structure de configuration de Tailwind CSS, assurant une exportation et un mappage corrects
+Face aux besoins de plus en plus complexes de gestion des Design Tokens, Variables Xporter recommande d'utiliser le [principe de sortie unique](/docs/single-outlet-principle) pour organiser votre système de variables. Une organisation appropriée des variables améliore non seulement la qualité du code exporté, mais rend également les systèmes de design multi-modes complexes clairs et gérables.
 
 ## Principes de base
 
@@ -35,15 +27,11 @@ Avant de commencer à organiser vos variables, nous avons préparé quelques con
   />
 </Cards>
 
-Ces suggestions peuvent vous aider à :
-- Établir une méthode de nommage des variables adaptée à votre équipe, rendant le code plus lisible
-- Planifier une structure hiérarchique claire pour les variables, améliorant la maintenabilité
-- Améliorer la maintenabilité et l'évolutivité des variables, s'adaptant à la croissance du projet
-- Correspondre correctement à la structure de configuration de Tailwind CSS, assurant une intégration transparente
+Les principes de base couvrent les éléments essentiels de l'organisation des variables, y compris les conventions de nommage, les structures hiérarchiques, les stratégies de regroupement et d'autres contenus clés. Ces principes vous aideront à construire un système de variables clair.
 
-## Types de variables
+## Stratégies d'Organisation des Types de Variables
 
-Après avoir compris les principes de base, plongeons dans l'organisation des différents types de variables. Chaque type a ses propres stratégies d'organisation et meilleures pratiques :
+Différents types de design tokens nécessitent des stratégies d'organisation correspondantes. Voici les guides d'organisation pour les types de design tokens courants :
 
 <Cards>
   <Cards.Card
@@ -73,18 +61,27 @@ Après avoir compris les principes de base, plongeons dans l'organisation des di
   />
 </Cards>
 
-## Conseils pratiques
+## Éléments essentiels d'organisation
 
-Voici quelques conseils éprouvés qui peuvent vous aider à mieux organiser et gérer vos variables :
+### Conception des collections
 
-- Choisissez une méthode de nommage appropriée en fonction des habitudes de l'équipe, maintenez la cohérence
-- Organisez la structure des variables selon les besoins du projet, évitez une complexité excessive
-- Suivez strictement la structure de configuration de Tailwind CSS (c'est obligatoire)
-- Ajoutez des descriptions claires aux variables pour aider l'équipe à comprendre les scénarios d'utilisation
-- Vérifiez et optimisez régulièrement l'organisation des variables, ajustez rapidement les aspects déraisonnables
-- Documentez en détail les scénarios d'utilisation et les meilleures pratiques pour les variables importantes
-- Utilisez judicieusement les collections pour catégoriser les variables, améliorant la maintenabilité
-- Assurez-vous que les noms des variables peuvent être correctement analysés lors de l'exportation, évitez les conflits
+Organiser la structure des collections selon le [principe de sortie unique](/docs/single-outlet-principle) :
 
+- **Collection principale** : Contient toutes les variables fournies externellement, servant de sortie unifiée
+- **Collections de mode** : Stockent seulement les variables qui doivent changer dans différents modes
+- **Relations de référence** : Connectent les variables de la collection principale et des collections de mode par des références
 
-Souvenez-vous, une bonne organisation des variables est comme un excellent majordome, elle permet à votre système de design de fonctionner plus efficacement et à votre équipe de collaborer plus efficacement. Commençons ce passionnant voyage d'organisation des variables !
+### Conventions de nommage
+
+- Suivre strictement la structure des clés de configuration de Tailwind CSS
+- Utiliser la barre oblique `/` pour le regroupement des variables
+- Utiliser correctement le mot-clé `DEFAULT` pour les valeurs de base, facilitant l'établissement d'une hiérarchie claire des variables
+
+### Conseils pratiques
+
+- Vérifier régulièrement la structure des variables pour assurer des relations de référence claires
+- Ajouter des descriptions aux variables importantes pour la compréhension de l'équipe
+- Éviter les structures imbriquées trop complexes
+- Maintenir la cohérence et la prévisibilité dans le nommage
+
+En adoptant ces stratégies d'organisation, vous pouvez gérer efficacement les Design Tokens complexes et construire un système de design à la fois puissant et maintenable.

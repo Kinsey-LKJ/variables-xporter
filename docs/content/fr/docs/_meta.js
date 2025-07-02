@@ -1,8 +1,9 @@
 const meta = {
   index: "",
-  'export-modes':"",
-  "organizing-your-variables": '',
-  features: "",
+  "single-outlet-principle": "Principe de Sortie Unique",
+  'export-modes':"Modes d'Exportation",
+  "organizing-your-variables": 'Organiser Vos Variables',
+  features: "Fonctionnalités",
 };
 
 export default meta;
