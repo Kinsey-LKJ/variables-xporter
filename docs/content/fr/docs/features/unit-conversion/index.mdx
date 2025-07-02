@@ -4,14 +4,14 @@ title: Conversion d'unités
 
 # Conversion d'unités
 
-Variables Xporter offre une fonctionnalité de conversion d'unités, qui peut automatiquement convertir les unités px de Figma en unités rem par défaut de Tailwind CSS.
+Variables Xporter offre une fonctionnalité de conversion d'unités, permettant de convertir automatiquement les unités px de Figma en unités rem, qui sont les unités par défaut dans Tailwind CSS.
 
 ## Comment l'utiliser
 
 1. Cochez l'option "Utiliser les unités Rem" lors de l'exportation
 2. Variables Xporter convertira automatiquement les px en rem (basé sur 16px = 1rem)
 
-Par exemple :
+Exemple :
 ```css
 :root {
 /* Valeurs dans Figma */
@@ -36,5 +36,5 @@ En dehors de ces conditions, toutes les variables de type numérique seront conv
 
 ## rem ou px ?
 
-C'est un sujet assez controversé. Bien que Tailwind CSS devienne progressivement la norme pour le développement Web et utilise par défaut l'unité rem, l'utilisation de rem ou de px présente chacune ses avantages et ses inconvénients.
-Il est recommandé de consulter [cet article de Josh Comeau](https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/) et de prendre une décision en fonction de la situation de votre projet et des recommandations de votre équipe de développement.
+C'est un sujet assez controversé. Bien que Tailwind CSS devienne progressivement une norme dans le développement Web et utilise rem par défaut, l'utilisation de rem ou de px présente chacune ses avantages et inconvénients.
+Je vous recommande de consulter [cet article de Josh Comeau](https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/) et de prendre une décision en fonction de votre projet et des recommandations de votre équipe de développement.

@@ -13,11 +13,11 @@ import { Cards } from 'nextra/components'
 
 # Organiser vos variables de design
 
-Face aux besoins de plus en plus complexes de gestion des Design Tokens, Variables Xporter recommande d'utiliser le [principe de sortie unique](/docs/single-outlet-principle) pour organiser votre système de variables. Une organisation appropriée des variables améliore non seulement la qualité du code exporté, mais rend également les systèmes de design multi-modes complexes clairs et gérables.
+Face aux besoins croissants de gestion des Design Tokens, Variables Xporter recommande d'utiliser le [principe de point de sortie unique](/docs/single-outlet-principle) pour organiser votre système de variables. Une organisation judicieuse des variables améliore non seulement la qualité du code exporté, mais rend également les systèmes de design multi-modes complexes plus clairs et faciles à gérer.
 
-## Principes de base
+## Principes fondamentaux
 
-Avant de commencer à organiser vos variables, nous avons préparé quelques conseils pratiques et meilleures pratiques. Ces principes vous aideront à établir un système de variables robuste et flexible :
+Avant de commencer à organiser vos variables, nous avons préparé quelques conseils pratiques et bonnes pratiques. Ces principes vous aideront à établir un système de variables robuste et flexible :
 
 <Cards>
   <Cards.Card
@@ -27,11 +27,11 @@ Avant de commencer à organiser vos variables, nous avons préparé quelques con
   />
 </Cards>
 
-Les principes de base couvrent les éléments essentiels de l'organisation des variables, y compris les conventions de nommage, les structures hiérarchiques, les stratégies de regroupement et d'autres contenus clés. Ces principes vous aideront à construire un système de variables clair.
+Les principes fondamentaux couvrent les éléments essentiels de l'organisation des variables, y compris les conventions de nommage, la structure hiérarchique, les stratégies de regroupement et d'autres contenus clés. Ces principes vous aideront à construire un système de variables clair.
 
-## Stratégies d'Organisation des Types de Variables
+## Stratégies d'organisation par type de variable
 
-Différents types de design tokens nécessitent des stratégies d'organisation correspondantes. Voici les guides d'organisation pour les types de design tokens courants :
+Différents types de design tokens nécessitent des stratégies d'organisation appropriées. Voici des guides d'organisation pour les types courants de design tokens :
 
 <Cards>
   <Cards.Card
@@ -61,15 +61,15 @@ Différents types de design tokens nécessitent des stratégies d'organisation c
   />
 </Cards>
 
-## Éléments essentiels d'organisation
+## Points clés d'organisation
 
 ### Conception des collections
 
-Organiser la structure des collections selon le [principe de sortie unique](/docs/single-outlet-principle) :
+Organisez la structure des collections selon le [principe de point de sortie unique](/docs/single-outlet-principle) :
 
-- **Collection principale** : Contient toutes les variables fournies externellement, servant de sortie unifiée
-- **Collections de mode** : Stockent seulement les variables qui doivent changer dans différents modes
-- **Relations de référence** : Connectent les variables de la collection principale et des collections de mode par des références
+- **Collection principale** : contient toutes les variables exposées, servant de point de sortie unifié
+- **Collections de modes** : stockent uniquement les variables qui doivent changer selon les différents modes
+- **Relations de référence** : connectent les variables correspondantes entre la collection principale et les collections de modes par référencement
 
 ### Conventions de nommage
 

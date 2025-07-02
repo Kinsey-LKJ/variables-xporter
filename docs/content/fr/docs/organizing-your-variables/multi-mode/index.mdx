@@ -2,34 +2,37 @@ import { Callout } from 'nextra/components'
 
 # Organisation des variables multi-modes
 
-Le multi-mode est une fonctionnalité puissante du système de variables de Figma qui permet à une même variable d'avoir différentes valeurs dans différents contextes. Organiser correctement les variables multi-modes est essentiel pour construire un système de design évolutif. Nous recommandons d'utiliser le [principe de sortie unique](/docs/single-outlet-principle) pour gérer des systèmes de variables multi-modes complexes.
+Le multi-mode est une fonctionnalité puissante du système de variables Figma qui permet à une même variable d'avoir différentes valeurs dans différents contextes. Organiser judicieusement les variables multi-modes est essentiel pour construire un système de design évolutif. Nous recommandons d'utiliser le [principe du point de sortie unique](/docs/single-outlet-principle) pour gérer des systèmes complexes de variables multi-modes.
 
 ## Scénarios d'application multi-modes
 
-Les systèmes de variables multi-modes conviennent aux scénarios suivants :
-- **Modes de thème** : Changement de thème clair/sombre
-- **Modes de marque** : Support multi-marques de produits
-- **Modes d'appareil** : Adaptation de design responsive
-- **Modes de densité** : Ajustement de la densité d'interface
+Les systèmes de variables multi-modes sont adaptés aux scénarios suivants :
+- **Mode thème** : basculement entre thèmes clair et sombre
+- **Mode marque** : prise en charge de produits multi-marques
+- **Mode appareil** : adaptation au design responsive
+- **Mode densité** : ajustement de la compacité de l'interface
 
 ## Stratégies d'organisation
 
-### Séparer les collections par dimension
-Chaque dimension de mode utilise une gestion de collection indépendante, combinée avec le [principe de sortie unique](/docs/single-outlet-principle) pour établir des hiérarchies de référence claires.
+### Séparation des collections par dimension
 
-### Rationaliser les variables
-Les collections de modes n'incluent que les variables qui doivent réellement changer dans cette dimension.
+Chaque dimension de mode est gérée dans une collection indépendante, en combinaison avec le [principe du point de sortie unique](/docs/single-outlet-principle) pour établir une hiérarchie de référence claire.
+
+### Variables épurées
+
+Les collections de modes ne contiennent que les variables qui nécessitent réellement des variations dans cette dimension.
 
 ### Nommage sémantique
-Utilisez des noms de variables et de modes descriptifs, comme `colors/primary` et `light/dark`.
 
-## Création de systèmes de variables multi-modes complexes
+Utilisez des noms descriptifs pour les variables et les modes, comme `colors/primary` et `light/dark`.
 
-En utilisant le principe de sortie unique, vous pouvez créer des systèmes de variables multi-dimensionnels complexes qui incluent des combinaisons comme les thèmes clair/sombre, les thèmes de marque, le design responsive et les modes de densité. Construisons cela étape par étape et expérimentons les avantages du principe de sortie unique.
+## Création d'un système complexe de variables multi-modes
 
-### Commencer par les combinaisons de thèmes de marque
+L'utilisation du principe du point de sortie unique permet de créer un système de variables multidimensionnel complexe, par exemple un système comprenant des modes composés comme les thèmes clair/sombre, les thèmes de marque, le design responsive et les modes de compacité. Créons-le étape par étape et apprécions les avantages du principe du point de sortie unique.
 
-Nous avons déjà un système de variables qui prend en charge les thèmes clair/sombre. Maintenant, nous voulons ajouter des variables de thème de marque en plus du système de thème clair/sombre existant.
+### Commençons par la combinaison des thèmes de marque
+
+Nous disposons déjà d'un système de variables prenant en charge les thèmes clair et sombre. Maintenant, nous souhaitons ajouter un système de variables pour les thèmes de marque sur cette base.
 
 ```
                 ┌────────────────────────┬────────────────────────┐
@@ -68,9 +71,9 @@ Nous avons déjà un système de variables qui prend en charge les thèmes clair
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### Ajout des modes de thème de marque
-Créez une collection Brands Modes pour gérer les variables de thème de marque, et créez deux modes de marque différents (dans cet exemple `zhiyun` et `fiveray`), puis créez deux variables `colors/primary/light` et `colors/primary/dark`, en définissant des valeurs différentes pour chaque mode (dans cet exemple, référençant les couleurs associées de la collection principale Design Tokens).
+### Ajout du mode thème de marque
 
+Créez une collection Brands Modes pour gérer les variables de thème de marque, puis créez deux modes de marque différents (dans cet exemple, `zhiyun` et `fiveray`). Ensuite, créez deux variables `colors/primary/light` et `colors/primary/dark` et définissez différentes valeurs pour chaque mode (dans cet exemple, en référençant les couleurs correspondantes de la collection principale Design Tokens).
 ```
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
  │                        │                      │                     │
@@ -86,8 +89,7 @@ Créez une collection Brands Modes pour gérer les variables de thème de marque
  │                        │                      │                     │
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
-
-Ensuite, établissez les relations de référence des variables : les variables de la collection Theme Modes référencent les variables correspondantes de la collection Brands Modes en fonction du thème actuel, tandis que les variables de la collection Brands Modes référencent des valeurs de couleur spécifiques dans la collection Design Tokens. De cette façon, lors du changement de marque ou de thème, toutes les couleurs du système se mettront à jour en conséquence.
+Établissez ensuite les relations de référence entre les variables : les variables de la collection Theme Modes font référence aux variables correspondantes de la collection Brands Modes en fonction du thème actuel, tandis que les variables de la collection Brands Modes font référence aux valeurs de couleur spécifiques de la collection Design Tokens. Ainsi, lorsque vous changez de marque ou de thème, toutes les couleurs du système sont mises à jour en conséquence.
 
 ```
 
@@ -150,12 +152,12 @@ Ensuite, établissez les relations de référence des variables : les variables 
    └─────────────────────────────────────────────────────────────┴──────────────────────┘
 
 ```
+Voilà ! Vous avez créé un système de variables multidimensionnel comprenant des thèmes clairs/sombres et des thèmes de marque, et grâce au principe du point de sortie unique, votre système de design est devenu plus flexible et maintenable.
+En examinant la chaîne de référence des variables dans son ensemble, on constate que c'est un peu complexe, mais c'est beaucoup plus clair et maintenable que de gérer toutes les variables dans une seule collection. Mais nous n'avons pas encore terminé, continuons à étendre ce système de variables.
 
-C'est fait ! Vous avez créé un système de variables multi-dimensionnel qui inclut les thèmes clair/sombre et les thèmes de marque, et grâce au principe de sortie unique, rendu votre système de design plus flexible et maintenable.
-En regardant la chaîne de références des variables dans son ensemble, vous constaterez qu'elle est quelque peu complexe, mais c'est beaucoup plus clair et maintenable que de gérer toutes les variables dans une seule collection. Mais nous n'avons pas encore terminé - étendons davantage ce système de variables.
+### Modèles de design responsive
 
-### Modes de design responsive
-Typiquement, les variables de taille de police s'ajustent en fonction des différentes tailles d'écran. En prenant la variable `font/hero/size` comme exemple, créez d'abord une variable `font/hero/size` dans la collection Design Tokens, ainsi que les variables `font/size/2xl` et `font/size/3xl`.
+Généralement, les variables de taille de police sont ajustées en fonction des différentes tailles d'écran. Prenons l'exemple de la variable `font/hero/size` : commencez par créer une variable `font/hero/size` dans la collection Design Tokens, ainsi que deux variables `font/size/2xl` et `font/size/3xl`.
 
 ```
     ┌────────────────────────┬────────────────────────┐
@@ -184,9 +186,7 @@ Typiquement, les variables de taille de police s'ajustent en fonction des diffé
     │                        │                        │
     └────────────────────────┴────────────────────────┘
 ```
-
-Créez une collection Device Modes pour gérer les variables de design responsive, et créez une variable `font/hero/size`, puis définissez des valeurs différentes pour différentes tailles d'appareils.
-
+Créez ensuite une collection Device Modes pour gérer les variables de design responsive, avec une variable `font/hero/size` qui aura différentes valeurs selon les tailles d'appareils.
 ```
 
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -202,8 +202,7 @@ Créez une collection Device Modes pour gérer les variables de design responsiv
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-Maintenant, changez simplement la valeur de la variable `font/hero/size` dans la collection Design Tokens pour référencer la variable `font/hero/size` dans la collection Device Modes !
-
+Maintenant, il suffit de modifier la valeur de la variable `font/hero/size` dans la collection Design Tokens pour qu'elle référence la variable `font/hero/size` de la collection Device Modes !
 ```
 
        ┌────────────────────────┬────────────────────────┐
@@ -251,13 +250,13 @@ Maintenant, changez simplement la valeur de la variable `font/hero/size` dans la
 │                                                │                      │
 └────────────────────────────────────────────────┴──────────────────────┘
 ```
+Nous avons omis la collection Theme Modes car son contenu reste identique à celui présenté précédemment. C'est là l'avantage du principe de point d'entrée unique : nous n'avons besoin de nous concentrer que sur les variables qui doivent changer dans des modes spécifiques.
 
-Nous avons omis la collection Theme Modes car son contenu reste le même qu'avant. C'est aussi un avantage du principe de sortie unique - nous n'avons besoin de nous concentrer que sur les variables qui doivent changer dans des modes spécifiques.
+### Mode compact
 
-### Modes de densité
-Certains projets backend B2B peuvent avoir des modes de densité où diverses tailles deviennent plus petites, comme les polices, l'espacement, les largeurs de conteneurs, etc. Étendons davantage notre système de variables en ajoutant des modes de densité.
+Certains projets d'administration B2B peuvent nécessiter un mode compact, où diverses dimensions sont réduites, comme les polices, les espacements, les largeurs de conteneurs, etc. Développons davantage notre système de variables pour intégrer ce mode compact.
 
-D'abord, créez une série de variables `spacing` dans la collection Design Tokens pour gérer l'espacement et les dimensions. À des fins de démonstration, nous n'avons créé qu'une variable `spacing/1`. Dans les projets réels, vous devriez créer plus de variables comme `spacing/2`, `spacing/3`, `spacing/4`, etc. Voir [Recommandations d'organisation des variables d'espacement](/docs/organizing-your-variables/spacing).
+Tout d'abord, créons une série de variables `spacing` dans la collection Design Tokens pour gérer les espacements et les dimensions. Pour simplifier la démonstration, nous ne créons que la variable `spacing/1`, mais dans un projet réel, vous devrez créer davantage de variables comme `spacing/2`, `spacing/3`, `spacing/4`, etc. Consultez les [recommandations d'organisation des variables d'espacement](/docs/organizing-your-variables/spacing).
 
 ```
 
@@ -290,7 +289,7 @@ D'abord, créez une série de variables `spacing` dans la collection Design Toke
     └────────────────────────┴────────────────────────┘
 ```
 
-Créez une collection Density Modes pour gérer la densité de mise en page, et créez les variables `spacing/1`, `font/size/2xl` et `font/size/3xl`, puis définissez des valeurs différentes pour différents niveaux de densité.
+Créons maintenant une collection Density Modes pour gérer la densité de la mise en page, avec les variables `spacing/1`, `font/size/2xl` et `font/size/3xl`, en définissant différentes valeurs selon le niveau de densité.
 
 ```
 ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -310,7 +309,7 @@ Créez une collection Density Modes pour gérer la densité de mise en page, et 
 └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-Changez les valeurs des variables `spacing/1`, `font/size/2xl` et `font/size/3xl` dans la collection Design Tokens pour référencer les variables correspondantes dans la collection Density Modes.
+Modifions maintenant les valeurs des variables `spacing/1`, `font/size/2xl` et `font/size/3xl` dans la collection Design Tokens pour qu'elles référencent les variables correspondantes dans la collection Density Modes.
 
 ```
     ┌────────────────────────┬────────────────────────┐
@@ -362,6 +361,6 @@ Changez les valeurs des variables `spacing/1`, `font/size/2xl` et `font/size/3xl
     └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-Félicitations ! Vous avez créé un système de variables composite très puissant et facile à étendre. C'est un excellent début, et tous les efforts en valent la peine. En tant que designer maintenant un système de design, vos variables peuvent être utilisées d'innombrables fois par d'autres designers et servir de pont entre le design et le développement, sans qu'ils aient besoin de se soucier de ces relations de référence.
+Félicitations ! Vous avez créé un système de variables composites très puissant et facilement extensible. C'est un excellent début, et tous vos efforts en valent la peine. En tant que designer responsable du système de design, vos variables seront probablement utilisées d'innombrables fois par d'autres designers et serviront de pont entre la conception et le développement, sans qu'ils aient à se préoccuper de ces relations de référence.
 
-Grâce à une organisation appropriée des variables multi-modes, vous pouvez construire un système de design à la fois flexible et maintenable, soutenant efficacement des exigences de design complexes.
+En organisant judicieusement vos variables en plusieurs modes, vous pouvez construire un système de design à la fois flexible et facile à maintenir, qui répond efficacement aux exigences complexes de conception.

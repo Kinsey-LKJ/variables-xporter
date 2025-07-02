@@ -2,34 +2,37 @@ import { Callout } from 'nextra/components'
 
 # Multi-mode variable organization
 
-Multi-mode is a powerful feature of Figma's variable system that allows the same variable to have different values in different contexts. Properly organizing multi-mode variables is key to building a scalable design system. We recommend using the [single outlet principle](/docs/single-outlet-principle) to manage complex multi-mode variable systems.
+Multi-mode is a powerful feature of Figma's variable system that allows the same variable to have different values in different contexts. Properly organizing multi-mode variables is key to building scalable design systems. We recommend using the [single outlet principle](/docs/single-outlet-principle) to manage complex multi-mode variable systems.
 
-## Multi-mode application scenarios
+## Multi-mode use cases
 
 Multi-mode variable systems are suitable for the following scenarios:
-- **Theme modes**: Light/dark theme switching
+- **Theme modes**: Light and dark theme switching
 - **Brand modes**: Multi-brand product support
 - **Device modes**: Responsive design adaptation
-- **Density modes**: Interface density adjustment
+- **Density modes**: Interface compactness adjustment
 
 ## Organization strategies
 
 ### Separate collections by dimension
-Each mode dimension uses independent collection management, combined with the [single outlet principle](/docs/single-outlet-principle) to establish clear reference hierarchies.
+
+Manage each mode dimension using independent collections, combined with the [single outlet principle](/docs/single-outlet-principle) to establish a clear reference hierarchy.
 
 ### Streamline variables
-Mode collections only include variables that actually need to change in that dimension.
+
+Mode collections should only include variables that actually need to change within that dimension.
 
 ### Semantic naming
+
 Use descriptive variable names and mode names, such as `colors/primary` and `light/dark`.
 
-## Creating Complex Multi-Mode Variable Systems
+## Creating complex multi-mode variable systems
 
-Using the single outlet principle, you can create complex multi-dimensional variable systems that include combinations like light/dark themes, brand themes, responsive design, and density modes. Let's build this step by step and experience the benefits of the single outlet principle.
+Using the single outlet principle enables the creation of complex multi-dimensional variable systems, such as variable systems with compound modes including light/dark themes, brand themes, responsive design, and density modes. Let's create one step by step and experience the benefits of the single outlet principle.
 
-### Starting with Brand Theme Combinations
+### Starting with brand theme combinations
 
-We already have a variable system that supports light/dark themes. Now we want to add brand theme variables on top of the existing light/dark theme system.
+We already have a variable system that supports light and dark themes. Now we want to add a brand theme variable system on top of the light/dark themes.
 
 ```
                 ┌────────────────────────┬────────────────────────┐
@@ -68,9 +71,9 @@ We already have a variable system that supports light/dark themes. Now we want t
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### Adding Brand Theme Modes
-Create a Brands Modes collection to manage brand theme variables, and create two different brand modes (in this example `zhiyun` and `fiveray`), then create two variables `colors/primary/light` and `colors/primary/dark`, setting different values for each mode (in this example referencing related colors from the main Design Tokens collection).
+### Adding brand theme modes
 
+Create a Brands Modes collection to manage brand theme variables, and create two different brand modes (in this example, `zhiyun` and `fiveray`). Then create two variables `colors/primary/light` and `colors/primary/dark`, and set different values for them in each mode (in this example, referencing the relevant colors from the main Design Tokens collection).
 ```
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
  │                        │                      │                     │
@@ -86,8 +89,7 @@ Create a Brands Modes collection to manage brand theme variables, and create two
  │                        │                      │                     │
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
-
-Next, establish variable reference relationships: variables in the Theme Modes collection reference corresponding variables in the Brands Modes collection based on the current theme, while variables in the Brands Modes collection reference specific color values in the Design Tokens collection. This way, when switching brands or themes, the entire system's colors will update accordingly.
+Next, establish the variable reference relationships: variables in the Theme Modes collection reference the corresponding variables in the Brands Modes collection based on the current theme, while variables in the Brands Modes collection reference specific color values in the Design Tokens collection. This way, when switching brands or themes, all colors in the system will update accordingly.
 
 ```
 
@@ -150,12 +152,12 @@ Next, establish variable reference relationships: variables in the Theme Modes c
    └─────────────────────────────────────────────────────────────┴──────────────────────┘
 
 ```
+That's it! You've created a multi-dimensional variable system that includes both light/dark themes and brand themes, and through the single outlet principle, you've made your design system more flexible and maintainable.
+Looking at the overall variable reference chain, it may seem somewhat complex, but this approach is much clearer and more maintainable than managing all variables in a single collection. But we're not done yet—let's further expand this variable system.
 
-That's it! You've created a multi-dimensional variable system that includes light/dark themes and brand themes, and through the single outlet principle, made your design system more flexible and maintainable.
-Looking at the overall variable reference chain, you'll find it somewhat complex, but this is far clearer and more maintainable than managing all variables in a single collection. But we're not done yet - let's further expand this variable system.
+### Responsive design patterns
 
-### Responsive Design Modes
-Typically, font size variables adjust based on different screen sizes. Taking the `font/hero/size` variable as an example, first create a `font/hero/size` variable in the Design Tokens collection, along with `font/size/2xl` and `font/size/3xl` variables.
+Typically, font size variables are adjusted based on different screen sizes. Taking the `font/hero/size` variable as an example, first create a `font/hero/size` variable in the Design Tokens collection, along with two variables `font/size/2xl` and `font/size/3xl`.
 
 ```
     ┌────────────────────────┬────────────────────────┐
@@ -184,9 +186,7 @@ Typically, font size variables adjust based on different screen sizes. Taking th
     │                        │                        │
     └────────────────────────┴────────────────────────┘
 ```
-
-Create a Device Modes collection to manage responsive design variables, and create a `font/hero/size` variable, then set different values for different device sizes.
-
+Create a Device Modes collection to manage responsive design variables, create a `font/hero/size` variable, and then set different values for different device sizes.
 ```
 
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -203,7 +203,6 @@ Create a Device Modes collection to manage responsive design variables, and crea
 ```
 
 Now, simply change the value of the `font/hero/size` variable in the Design Tokens collection to reference the `font/hero/size` variable in the Device Modes collection!
-
 ```
 
        ┌────────────────────────┬────────────────────────┐
@@ -251,19 +250,19 @@ Now, simply change the value of the `font/hero/size` variable in the Design Toke
 │                                                │                      │
 └────────────────────────────────────────────────┴──────────────────────┘
 ```
+We've omitted the Theme Modes collection since its content remains the same as before. This demonstrates the advantage of the single source of truth principle - we only need to focus on variables that need to change in specific modes.
 
-We omitted the Theme Modes collection because its content remains the same as before. This is also an advantage of the single outlet principle - we only need to focus on variables that need to change in specific modes.
+### Compact mode
 
-### Density Modes
-Some B2B backend projects might have density modes where various sizes become smaller, such as fonts, spacing, container widths, etc. Let's further expand our variable system by adding density modes.
+Some B2B backend projects may have a compact mode where various dimensions become smaller, such as fonts, spacing, container widths, etc. Let's further expand our variable system by adding compact mode.
 
-First, create a series of `spacing` variables in the Design Tokens collection to manage spacing and dimensions. For demonstration purposes, we only created a `spacing/1` variable. In actual projects, you would need to create more variables like `spacing/2`, `spacing/3`, `spacing/4`, etc. See [Spacing Variable Organization Recommendations](/docs/organizing-your-variables/spacing).
+First, create a series of `spacing` variables in the Design Tokens collection to manage spacing and dimensions. For demonstration purposes, we've only created the `spacing/1` variable, but in actual projects, you'll need to create more variables like `spacing/2`, `spacing/3`, `spacing/4`, etc. Check out the [recommendations for organizing spacing variables](/docs/organizing-your-variables/spacing).
 
 ```
 
     ┌────────────────────────┬────────────────────────┐
     │                        │                        │
-    │ Design Tokens          │         defalut        │
+    │ Design Tokens          │         default        │
     │                        │                        │
     ├────────────────────────┼────────────────────────┤
     │                        │                        │
@@ -315,7 +314,7 @@ Change the values of `spacing/1`, `font/size/2xl`, and `font/size/3xl` variables
 ```
     ┌────────────────────────┬────────────────────────┐
     │                        │                        │
-    │ Design Tokens          │         defalut        │
+    │ Design Tokens          │         default        │
     │                        │                        │
     ├────────────────────────┼────────────────────────┤
     │                        │                        │
@@ -362,6 +361,6 @@ Change the values of `spacing/1`, `font/size/2xl`, and `font/size/3xl` variables
     └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-Congratulations! You've created a very powerful composite variable system that's easy to extend. This is a great start, and all the effort is worthwhile. As a designer maintaining a design system, your variables may be used countless times by other designers and serve as a bridge from design to development, while they don't need to worry about these reference relationships.
+Congratulations! You've created a powerful compound variable system that's easy to extend. This is a great start, and all your efforts are worthwhile. As a designer maintaining the design system, your variables may be used countless times by other designers and serve as a bridge between design and development, while they don't need to worry about these reference relationships.
 
-Through proper multi-mode variable organization, you can build a design system that is both flexible and maintainable, effectively supporting complex design requirements.
+By organizing multi-mode variables appropriately, you can build a design system that is both flexible and easy to maintain, effectively supporting complex design requirements.
