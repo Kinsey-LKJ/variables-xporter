@@ -256,8 +256,10 @@ export default async function IndexPage({
                 <div className="text-body text-muted-foreground leading-tight">
                   {dictionary.figmaTemplate.description}
                 </div>
-                <Button className="w-fit">
-                  {dictionary.figmaTemplate.openInFigma}
+                <Button className="w-fit" asChild>
+                  <Link href="https://www.figma.com/community/file/1522188131593288033" target="_blank">
+                    {dictionary.figmaTemplate.openInFigma}
+                  </Link>
                 </Button>
               </div>
 
