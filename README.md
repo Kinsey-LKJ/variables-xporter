@@ -304,7 +304,7 @@ We welcome community contributions! Please follow these steps:
 - Update relevant documentation
 
 ### Report Issues
-If you find bugs or have feature suggestions, please create a new issue in [Issues](https://github.com/yourusername/variables-xporter/issues).
+If you find bugs or have feature suggestions, please create a new issue in [Issues](https://github.com/Variables-Xporter/variables-xporter/issues).
 
 ## 🎯 Roadmap
 

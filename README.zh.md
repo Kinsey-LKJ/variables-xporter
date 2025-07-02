@@ -188,7 +188,7 @@ Tailwind CSS V4 采用全新的 CSS 优先配置方式，导出后只需要一�
 
 #### CSS Variables
 
-最简单直接的方式，适合适合不使用 Tailwind CSS 的项目：
+最简单直接的方式，适合不使用 Tailwind CSS 的项目：
 
 ```css
 /* 直接将导出内容添加到任何 CSS 文件中 */
@@ -305,7 +305,7 @@ pnpm build:docs
 - 更新相关文档
 
 ### 报告问题
-如果您发现 bug 或有功能建议，请在 [Issues](https://github.com/yourusername/variables-xporter/issues) 中创建新的 issue。
+如果您发现 bug 或有功能建议，请在 [Issues](https://github.com/Variables-Xporter/variables-xporter/issues) 中创建新的 issue。
 
 ## 🎯 路线图
 
