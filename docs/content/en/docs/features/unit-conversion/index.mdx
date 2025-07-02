@@ -4,7 +4,7 @@ title: Unit conversion
 
 # Unit conversion
 
-Variables Xporter provides a unit conversion feature that automatically converts px units in Figma to rem units, which are the default in Tailwind CSS.
+Variables Xporter provides unit conversion functionality, automatically converting px units in Figma to the default rem units in Tailwind CSS.
 
 ## How to use
 
@@ -18,7 +18,7 @@ For example:
 --spacing-lg: 24px;
 --font-size-base: 16px;
 
-/* Exported values (with rem conversion enabled) */
+/* Values after export (with rem conversion enabled) */
 --spacing-lg: 1.5rem;    /* 24/16 = 1.5 */
 --font-size-base: 1rem;  /* 16/16 = 1 */
 }
@@ -36,5 +36,5 @@ Apart from the above conditions, all numeric type variables will be converted wh
 
 ## rem or px?
 
-This is a rather controversial topic. Although Tailwind CSS is gradually becoming the standard for Web development and it uses rem units by default, both rem and px have their own advantages and disadvantages.
-It's recommended to check out [this article by Josh Comeau](https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/) and make a decision based on your project's circumstances and your development team's recommendations.
+This is quite a controversial topic. While Tailwind CSS is gradually becoming the standard for web development and uses rem units by default, both rem and px have their own advantages and disadvantages.
+I recommend reading [Josh Comeau's article](https://www.joshwcomeau.com/css/surprising-truth-about-pixels-and-accessibility/) and making a decision based on your project's circumstances and your development team's recommendations.
