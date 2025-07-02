@@ -1,8 +1,12 @@
 {
   "name": "Variables Xporter",
-  "id": "00000000",
+"id": "1522142900835722038",
   "api": "1.0.0",
   "main": "dist/code.js",
   "ui": "dist/ui.html",
-  "editorType": ["figma"]
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": ["https://variables-xporter.com"]
+  },
+  "documentAccess": "dynamic-page"
 }

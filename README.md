@@ -32,7 +32,6 @@ Variables Xporter is a professional Figma plugin that seamlessly exports Figma d
 - **Theme Modes** - Perfect Dark/Light mode support
 - **Brand Modes** - Multi-brand theme management
 - **Device Modes** - Responsive breakpoint adaptation
-- **State Modes** - Hover, Focus, and other interactive states
 
 ### Professional Features
 - **Variable Optimization** - Ignore Tailwind default palette to simplify exported code
@@ -304,7 +303,7 @@ We welcome community contributions! Please follow these steps:
 - Update relevant documentation
 
 ### Report Issues
-If you find bugs or have feature suggestions, please create a new issue in [Issues](https://github.com/Variables-Xporter/variables-xporter/issues).
+If you find bugs or have feature suggestions, please create a new issue in [Issues](https://github.com/Kinsey-LKJ/variables-xporter/issues).
 
 ## 🎯 Roadmap
 

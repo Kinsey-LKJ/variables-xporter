@@ -227,7 +227,7 @@ function App() {
               {textData.back}
             </Button>
             <div>
-              <Button size="xs" variant="subtle" className=" text-xs">
+              <Button size="xs" variant="subtle" className=" text-xs" component='a' href='https://variables-xporter.com/docs' target='_blank'>
                 <BookText size={16} className=" mr-2" />
                 {textData.documentation}
               </Button>
