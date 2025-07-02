@@ -4,12 +4,13 @@ import { useContext, useEffect } from 'react';
 import { AppContext } from './App';
 
 const Setting = ({ windowSizeMap }: { windowSizeMap: { [key: string]: { width: number; height: number } } }) => {
-  const { textData } = useContext(AppContext);
+  const { textData, windowSize, setWindowSize } = useContext(AppContext);
   const form = useVariableFormContext();
   const formValues = form.values;
 
   useEffect(() => {
     sendResizeMessage(windowSizeMap[formValues.windowSize].width, windowSizeMap[formValues.windowSize].height);
+    setWindowSize(formValues.windowSize);
   }, [formValues.windowSize]);
 
   const sendResizeMessage = (width: number, height: number) => {
@@ -61,7 +62,7 @@ const Setting = ({ windowSizeMap }: { windowSizeMap: { [key: string]: { width: n
             { label: textData.medium, value: 'medium' },
             { label: textData.small, value: 'small' },
           ]}
-          defaultValue={formValues.windowSize}
+          defaultValue={windowSize}
           {...form.getInputProps('windowSize')}
         />
       </div>

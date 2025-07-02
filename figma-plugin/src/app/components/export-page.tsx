@@ -123,7 +123,7 @@ export interface ExportPageHandles {
 }
 
 const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
-  const { collections, variables, connectedRepoInfo, currentStep, setCurrentStep, textData } = useContext(AppContext);
+  const { collections, variables, connectedRepoInfo, currentStep, setCurrentStep, textData, windowSize } = useContext(AppContext);
   const [formattingOutput, setFormattingOutput] = useState<boolean>(false);
   const [submitting, setSubmitting] = useState<boolean>(false);
   const [tailwindCSSOutput, setTailwindCSSOutput] = useState<{
@@ -149,7 +149,7 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
       fileName: '',
       updateMessage: '',
       exportFormat: 'Tailwind CSS V4',
-      windowSize: 'medium',
+      windowSize: windowSize,
     },
   });
 

@@ -6,7 +6,7 @@
   **A powerful Figma plugin that seamlessly bridges design and development**
   
   [![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
-  [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple.svg)](https://www.figma.com/community/plugin/1255188943883240897)
+  [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple.svg)](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter)
   [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
   [![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
 </div>
@@ -105,7 +105,7 @@ This organization approach makes your design system both powerful and simple, pe
 ## 🚀 Quick Start
 
 ### 1. Install Plugin
-Search for and install [Variables Xporter](https://www.figma.com/community/plugin/1255188943883240897) plugin in Figma.
+Search for and install [Variables Xporter](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter) plugin in Figma.
 
 ### 2. Organize Design Variables
 Organize your Figma variables according to our [Variable Organization Guidelines](https://variables-xporter.com/docs/organizing-your-variables).

@@ -6,7 +6,7 @@
   **一个强大的 Figma 插件，轻松的链接设计与开发**
   
   [![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
-  [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple.svg)](https://www.figma.com/community/plugin/1255188943883240897)
+  [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple.svg)](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter)
   [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
   [![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
 </div>
@@ -105,7 +105,7 @@ Theme Modes (辅助集合 - 仅存放变化的变量)
 ## 🚀 快速开始
 
 ### 1. 安装插件
-在 Figma 中搜索并安装 [Variables Xporter](https://www.figma.com/community/plugin/1255188943883240897) 插件。
+在 Figma 中搜索并安装 [Variables Xporter](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter) 插件。
 
 ### 2. 组织设计变量
 按照我们的 [变量组织建议](https://variables-xporter.com/docs/organizing-your-variables) 整理您的 Figma 变量：

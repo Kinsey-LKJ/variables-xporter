@@ -61,3 +61,5 @@ export type ExportFormat = 'Tailwind CSS V3' | 'CSS Variables' | 'Tailwind CSS V
 
 export type TextData = typeof TextDataFromZh
 
+export type WindowSize = 'small' | 'medium' | 'large';
+

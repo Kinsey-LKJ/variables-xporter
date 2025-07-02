@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect, createContext, useRef } from 'react';
-import { TVariableCollection, TextData } from '@/src/types/app';
+import { TVariableCollection, TextData, WindowSize } from '@/src/types/app';
 import { TVariable } from '@/src/types/app';
 import { createFormContext, useForm } from '@mantine/form';
 import { VariableFormProvider, useVariableForm } from './variables-export-form-context';
@@ -17,7 +17,17 @@ import {
 import ConnectGithub from './connect-github';
 import { useDisclosure } from '@mantine/hooks';
 import { Badge, Button, Checkbox, Drawer, Menu, Modal, Select, Tooltip } from '@mantine/core';
-import { ArrowLeft, BookText, ChevronLeftIcon, ChevronsDown, CircleAlert, EarthIcon, Github, Info, Settings } from 'lucide-react';
+import {
+  ArrowLeft,
+  BookText,
+  ChevronLeftIcon,
+  ChevronsDown,
+  CircleAlert,
+  EarthIcon,
+  Github,
+  Info,
+  Settings,
+} from 'lucide-react';
 import { sendInstallationIdAndRepo } from '../../lib/action';
 import gh from 'parse-github-url';
 import ExportPage, { ExportPageHandles } from './export-page';
@@ -85,6 +95,8 @@ interface AppContextProps {
   openDrawer?: () => void;
   currentStep: number;
   setCurrentStep: React.Dispatch<React.SetStateAction<number>>;
+  windowSize: WindowSize;
+  setWindowSize: React.Dispatch<React.SetStateAction<WindowSize>>;
 }
 
 export const AppContext = createContext<AppContextProps>({
@@ -95,17 +107,18 @@ export const AppContext = createContext<AppContextProps>({
   setConnectGithubState: () => {},
   setConnectedRepoInfo: () => {},
   setCurrentStep: () => {},
+  windowSize: 'medium',
+  setWindowSize: () => {},
 });
 
 function App() {
-  const [size, setSize] = useState({ width: 500, height: 625 });
   const [language, setLanguage] = useState<Locale>(defaultLocale);
   const [textData, setTextData] = useState(translations[language]);
   const [collections, setCollections] = useState<TVariableCollection[] | undefined>(undefined);
   const [variables, setVariables] = useState<TVariable[] | undefined>(undefined);
   const [connectGithubState, setConnectGithubState] = useState<GithubState>('not-connected');
   const [connectedRepoInfo, setConnectedRepoInfo] = useState<ExtendedResult>(undefined);
-
+  const [windowSize, setWindowSize] = useState<WindowSize>('medium');
   const [currentStep, setCurrentStep] = useState(0);
   const exportPageRef = useRef<ExportPageHandles>();
 
@@ -114,7 +127,6 @@ function App() {
   useEffect(() => {
     setTextData(translations[language]);
   }, [language]);
-  
 
   onmessage = async (event: MessageEvent) => {
     const msg = event.data.pluginMessage;
@@ -130,7 +142,6 @@ function App() {
         setCollections(msg.data.collections);
         setVariables(msg.data.variables);
         break;
-      
 
       // case 'webhookDataGot':
       //   if (msg.webhookData) {
@@ -141,8 +152,6 @@ function App() {
       //   break
     }
   };
-
-
 
   const connectGithubForm = useConnectGithubForm({
     initialValues: {
@@ -207,59 +216,67 @@ function App() {
         openDrawer: open,
         currentStep,
         setCurrentStep,
+        windowSize,
+        setWindowSize,
       }}
     >
       {/* <AspectRatioResizable> */}
-        <div className="h-full grid grid-rows-[auto_1fr] relative overflow-hidden">
-          <div className=" flex justify-between items-center p-2">
+      <div className="h-full grid grid-rows-[auto_1fr] relative overflow-hidden">
+        <div className=" flex justify-between items-center p-2">
+          <Button
+            variant="subtle"
+            leftSection={<ChevronLeftIcon />}
+            className="!pl-1 !pr-3 nav-back-button"
+            style={{
+              opacity: currentStep === 0 ? 0 : 1,
+              pointerEvents: currentStep === 0 ? 'none' : 'auto',
+            }}
+            onClick={() => {
+              exportPageRef.current.onPrevButtonClick();
+            }}
+          >
+            <div>{textData.back}</div>
+          </Button>
+          <div>
             <Button
+              size="xs"
               variant="subtle"
-              leftSection={<ChevronLeftIcon />}
-              className="!pl-1 !pr-3 nav-back-button"
-              style={{
-                opacity: currentStep === 0 ? 0 : 1,
-                pointerEvents: currentStep === 0 ? 'none' : 'auto',
-              }}
+              component="a"
+              href="https://variables-xporter.com/docs"
+              target="_blank"
+            >
+              <BookText size={16} />
+              {windowSize !== 'small' && <div className='ml-2'>{textData.documentation}</div>}
+            </Button>
+
+            <Button
+              size="xs"
+              variant="subtle"
               onClick={() => {
-                exportPageRef.current.onPrevButtonClick();
+                exportPageRef.current.openSetting();
               }}
             >
-              {textData.back}
+              <Settings size={16} />
+              {windowSize !== 'small' && <div className='ml-2'>{textData.setting}</div>}
             </Button>
-            <div>
-              <Button size="xs" variant="subtle" className=" text-xs" component='a' href='https://variables-xporter.com/docs' target='_blank'>
-                <BookText size={16} className=" mr-2" />
-                {textData.documentation}
-              </Button>
+            <Menu>
+              <Menu.Target>
+                <Button size="xs" variant="subtle">
+                  <EarthIcon size={16} /> <div className='ml-2'>{translations[language].language}</div>
+                </Button>
+              </Menu.Target>
 
-              <Button
-                size="xs"
-                variant="subtle"
-                onClick={() => {
-                  exportPageRef.current.openSetting();
-                }}
-              >
-                <Settings size={16} className=" mr-2" />
-                {textData.setting}
-              </Button>
-              <Menu>
-                <Menu.Target>
-                  <Button size="xs" variant="subtle">
-                    <EarthIcon size={16} className=" mr-2" /> {translations[language].language}
-                  </Button>
-                </Menu.Target>
+              <Menu.Dropdown>
+                {Object.keys(translations).map((lang) => (
+                  <Menu.Item key={lang} onClick={() => setLanguage(lang)}>
+                    {translations[lang].language}
+                  </Menu.Item>
+                ))}
+              </Menu.Dropdown>
+            </Menu>
+          </div>
 
-                <Menu.Dropdown>
-                  {Object.keys(translations).map((lang) => (
-                    <Menu.Item key={lang} onClick={() => setLanguage(lang)}>
-                      {translations[lang].language}
-                    </Menu.Item>
-                  ))}
-                </Menu.Dropdown>
-              </Menu>
-            </div>
-
-            {/* <ConnectGithubFormProvider form={connectGithubForm}>
+          {/* <ConnectGithubFormProvider form={connectGithubForm}>
             <Drawer.Root
               opened={opened}
               onClose={close}
@@ -284,10 +301,10 @@ function App() {
               </Badge>
             </Button>
           </ConnectGithubFormProvider> */}
-          </div>
-
-          <ExportPage ref={exportPageRef}  />
         </div>
+
+        <ExportPage ref={exportPageRef} />
+      </div>
       {/* </AspectRatioResizable> */}
     </AppContext.Provider>
   );
