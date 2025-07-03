@@ -8,7 +8,7 @@
   "features": {
     "multiMode": {
       "title": "多模式支持",
-      "description": "支持导出复合多维模式变量" 
+      "description": "支持导出复合多维模式变量"
     },
     "mergeTypographyStyles": {
       "title": "合并排版变量",

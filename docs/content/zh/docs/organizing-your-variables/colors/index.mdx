@@ -2,6 +2,7 @@ import { Callout } from 'nextra/components'
 import { Tabs } from 'nextra/components'
 
 # 颜色系统
+
 颜色系用几乎是 Design Tokens 里最重要的部分，如果你对颜色类变量的组织和命名没有头绪，[shadcn/ui 的命名约定](https://ui.shadcn.com/docs/theming#convention)是一个很好的开始：
 一般情况下，`background` 用于背景颜色，`foreground` 用于文本颜色，当 `background` 用于组件的背景颜色时，如 `colors/card/DEFAULT`[^1]，则省略 `background` 后缀，从这个基础出发逐渐扩展到更多的变量：
 
@@ -61,6 +62,7 @@ import { Tabs } from 'nextra/components'
 </Callout> */}
 
 ## 顶层目录
+
 在 Figma Variables 中，请使用 `colors` 或 `color` 作为所有颜色相关变量的顶层目录。这是让颜色变量在开发环境被正常使用的关键。
 
 <figure className="mt-6">
@@ -75,10 +77,11 @@ import { Tabs } from 'nextra/components'
 </Callout> */}
 
 ## 创建色板
+
 在 Design System 中，我们通常会使用一系列的色板作为颜色变量的原子变量，例如 `colors/blue/400`,`colors/red/300` 等。要创建这样的色板，并在开发环境使用它们，你同样需要遵循顶层目录的规则，在 Figma Variables 中将它们放在 `colors` 或者 `color` 目录下。例如：
 
-
 ### Blue 色板
+
 - `colors/blue/50`
 - `colors/blue/100`
 - `colors/blue/200`
@@ -92,6 +95,7 @@ import { Tabs } from 'nextra/components'
 - `colors/blue/950`
 
 ### Red 色板
+
 - `colors/red/50`
 - `colors/red/100`
 - `colors/red/200`
@@ -108,11 +112,12 @@ import { Tabs } from 'nextra/components'
 或者从简单出发：
 
 ### Blue 色板
+
 - `colors/blue`
 
 ### Red 色板
-- `colors/red`
 
+- `colors/red`
 
 ### 使用色板
 
@@ -120,7 +125,6 @@ import { Tabs } from 'nextra/components'
 
 - `colors/primary` 引用 `colors/blue/500`
 - `colors/secondary` 引用 `colors/red/500`
-
 
 ## 不透明度修饰符
 
@@ -139,6 +143,5 @@ Variables Xporter 提供了强大的颜色处理功能，它会自动为你生�
   <!-- 边框透明度调整 -->
   <div class="border-2 border-primary/30">边框透明度调整</div>
   ```
-
 
 [^1]: `DEFAULT` 关键字是组织变量层级的一种方式，[了解更多](/docs/organizing-your-variables/principles#use-default-value)
