@@ -1,5 +1,5 @@
 {
-  "language": "英语",
+  "language": "简体中文",
   "supportTailwindCssV4": "支持 Tailwind CSS V4",
   "pluginHighlight": "将 Figma 变量无缝集成到 Tailwind CSS 或 CSS 变量中",
   "start": "开始使用",
@@ -8,7 +8,7 @@
   "features": {
     "multiMode": {
       "title": "多模式支持",
-      "description": "支持导出复合多维模式变量"
+      "description": "支持导出复合多维模式变量" 
     },
     "mergeTypographyStyles": {
       "title": "合并排版变量",
