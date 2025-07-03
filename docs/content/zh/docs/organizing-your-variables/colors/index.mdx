@@ -61,7 +61,7 @@ import { Tabs } from 'nextra/components'
 </Callout> */}
 
 ## 顶层目录
-请使用 `colors` 或 `color` 作为所有颜色相关变量的顶层目录。这不仅让你的变量结构更加清晰，也确保了与 Tailwind CSS 的完美兼容。
+在 Figma Variables 中，请使用 `colors` 或 `color` 作为所有颜色相关变量的顶层目录。这是让颜色变量在开发环境被正常使用的关键。
 
 <figure className="mt-6">
   <>![组织颜色类变量](/organizing-your-variables/colors/colors-1.png)</>
@@ -74,9 +74,57 @@ import { Tabs } from 'nextra/components'
   在 Tailwind CSS 项目中，颜色变量的顶层目录必须是 `colors`。这是因为 Tailwind CSS 的配置系统专门使用 `colors` 配置键来处理颜色相关的样式定义。使用其他名称可能导致颜色变量无法被正确识别和使用。
 </Callout> */}
 
+## 创建色板
+在 Design System 中，我们通常会使用一系列的色板作为颜色变量的原子变量，例如 `colors/blue/400`,`colors/red/300` 等。要创建这样的色板，并在开发环境使用它们，你同样需要遵循顶层目录的规则，在 Figma Variables 中将它们放在 `colors` 或者 `color` 目录下。例如：
+
+
+### Blue 色板
+- `colors/blue/50`
+- `colors/blue/100`
+- `colors/blue/200`
+- `colors/blue/300`
+- `colors/blue/400`
+- `colors/blue/500`
+- `colors/blue/600`
+- `colors/blue/700`
+- `colors/blue/800`
+- `colors/blue/900`
+- `colors/blue/950`
+
+### Red 色板
+- `colors/red/50`
+- `colors/red/100`
+- `colors/red/200`
+- `colors/red/300`
+- `colors/red/400`
+- `colors/red/500`
+- `colors/red/600`
+- `colors/red/700`
+- `colors/red/800`
+- `colors/red/900`
+- `colors/red/950`
+
+
+或者从简单出发：
+
+### Blue 色板
+- `colors/blue`
+
+### Red 色板
+- `colors/red`
+
+
+### 使用色板
+
+在 Figma 中，将更高抽象级别的颜色引用指向色板，例如：
+
+- `colors/primary` 引用 `colors/blue/500`
+- `colors/secondary` 引用 `colors/red/500`
+
+
 ## 不透明度修饰符
 
-Variables Xporter 提供了强大的颜色处理功能，它会自动为你生成[符合 Tailwind CSS 规则](https://tailwindcss.com/docs/customizing-colors#using-css-variables)的颜色变量。在开发过程中，你可以轻松地使用不透明度修饰符灵活调整颜色的透明度，无需额外的变量定义。
+Variables Xporter 提供了强大的颜色处理功能，它会自动为你生成符合 Tailwind CSS 规则的颜色变量。在开发过程中，你可以轻松地使用不透明度修饰符[灵活调整颜色的透明度](https://tailwindcss.com/docs/colors#adjusting-opacity)，无需额外的变量定义。
 
 
   ```html

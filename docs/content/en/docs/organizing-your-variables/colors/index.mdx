@@ -77,9 +77,57 @@ Please use `colors` or `color` as the top-level directory for all color-related 
   In Tailwind CSS projects, the top-level directory for color variables must be `colors`. This is because Tailwind CSS's configuration system specifically uses the `colors` configuration key to handle color-related style definitions. Using other names may result in color variables not being correctly recognized and used.
 </Callout> */}
 
+## Create color palettes
+
+In a Design System, we often use a series of color palettes as atomic variables, such as `colors/blue/400`, `colors/red/300`, etc. To create such palettes and use them in the development environment, you need to follow the rules of the top-level directory, placing them under the `colors` or `color` directory in Figma Variables. For example:
+
+### Blue palette
+
+- `colors/blue/50`
+- `colors/blue/100`
+- `colors/blue/200`
+- `colors/blue/300`
+- `colors/blue/400`
+- `colors/blue/500`
+- `colors/blue/600`
+- `colors/blue/700`
+- `colors/blue/800`
+- `colors/blue/900`
+- `colors/blue/950`
+
+### Red palette
+
+- `colors/red/50`
+- `colors/red/100`
+- `colors/red/200`
+- `colors/red/300`
+- `colors/red/400`
+- `colors/red/500`
+- `colors/red/600`
+- `colors/red/700`
+- `colors/red/800`
+- `colors/red/900`
+- `colors/red/950`
+
+Or from a simple starting point:
+
+### Blue palette
+- `colors/blue`
+
+### Red palette
+- `colors/red`
+
+### Use color palettes
+
+In Figma, reference higher-level color palettes, such as:
+
+- `colors/primary` references `colors/blue/500`
+- `colors/secondary` references `colors/red/500`
+
+
 ## Opacity modifiers
 
-Variables Xporter provides powerful color processing capabilities, automatically generating color variables that [comply with Tailwind CSS rules](https://tailwindcss.com/docs/customizing-colors#using-css-variables). During development, you can easily use opacity modifiers to flexibly adjust the transparency of colors without the need for additional variable definitions.
+Variables Xporter provides powerful color processing capabilities, automatically generating color variables that comply with Tailwind CSS rules. During development, you can easily use opacity modifiers to [flexibly adjust the transparency of colors](https://tailwindcss.com/docs/colors#adjusting-opacity) without the need for additional variable definitions.
 
 
   ```html

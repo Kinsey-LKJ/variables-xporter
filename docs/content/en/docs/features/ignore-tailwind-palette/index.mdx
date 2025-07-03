@@ -14,7 +14,11 @@ Tailwind CSS includes a rich default color palette:
 - Stone
 etc...
 
-However, in Figma, if we use the Tailwind color palette, the exported configuration file will include many unnecessary colors, making the file bloated, because these Tailwind CSS default color palettes are built-in in the development environment.
+However, in Figma, if your Figma Variables contain Tailwind CSS default color palettes and you haven't modified them, you should ignore them. Because these default color palettes are built-in in the development environment.
+
+<Callout type="info">
+  Variables Xporter will only ignore Tailwind CSS default color palettes that start with color/ or colors/.
+</Callout>
 
 ## How to use
 
@@ -42,8 +46,8 @@ However, in Figma, if we use the Tailwind color palette, the exported configurat
 
 /* After enabling the ignore option */
 @theme {
-  /* Only includes your custom colors */
-  --color-primary: oklch(0.704 0.191 22.216);
+  /* Only includes your custom colors, no need to declare Tailwind CSS default colors again, they are built-in in the development environment */
+  --color-primary: var(--color-red-400);
 }
 ```
   </Tabs.Tab>
@@ -66,7 +70,7 @@ module.exports = {
 module.exports = {
   theme: {
     colors: {
-      // Only includes your custom colors
+      // Only includes your custom colors, no need to declare Tailwind CSS default colors again, they are built-in in the development environment
       primary: 'rgb(var(--colors-primary))',
     }
   }

@@ -14,7 +14,11 @@ Tailwind CSS 默认包含了丰富的调色板：
 - Stone
 等...
 
-但是在 Figma 中，如果我们使用了 Tailwind 调色板，导出的配置文件中会包含很多不必要的颜色，这会让配置文件变的很臃肿，因为在开发环境里这些 Tailwind CSS 默认的调色板是内置的。
+但是在 Figma 中，如果你的 Figma Variables 中包含了 Tailwind CSS 的默认色板，并且你只是引用了它们而没有进行修改，你应该忽略它们。因为在开发环境中，这些默认色板是内置的。
+
+<Callout type="info">
+  Variables Xporter 只会忽略以 color/ 和 colors/ 作为顶层目录的 Tailwind CSS 默认色板。
+</Callout>
 
 
 ## 如何使用
@@ -43,8 +47,8 @@ Tailwind CSS 默认包含了丰富的调色板：
 
 /* 启用忽略选项后 */
 @theme {
-  /* 只包含你的自定义颜色 */
-  --color-primary: oklch(0.704 0.191 22.216);
+  /* 只包含你的自定义颜色，无需再次声明 Tailwind CSS 默认颜色，在开发环境中已内置 */
+  --color-primary: var(--color-red-400);
 }
 ```
   </Tabs.Tab>
@@ -67,7 +71,7 @@ module.exports = {
 module.exports = {
   theme: {
     colors: {
-      // 只包含你的自定义颜色
+      // 只包含你的自定义颜色，无需再次声明 Tailwind CSS 默认颜色，在开发环境中已内置
       primary: 'rgb(var(--colors-primary))',
     }
   }

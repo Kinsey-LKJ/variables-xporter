@@ -40,9 +40,63 @@ Veuillez utiliser `colors` ou `color` comme répertoire de premier niveau pour t
   </figcaption>
 </figure>
 
+## Créer des palettes de couleurs
+
+
+Dans un Design System, nous utilisons souvent des palettes de couleurs comme variables atomiques, telles que `colors/blue/400`, `colors/red/300`, etc. Pour créer de telles palettes et les utiliser dans l'environnement de développement, vous devez suivre les règles du répertoire de premier niveau, en les plaçant sous le répertoire `colors` ou `color` dans Figma Variables. Par exemple :
+
+### Palette de couleurs bleue
+
+- `colors/blue/50`
+- `colors/blue/100`
+- `colors/blue/200`
+- `colors/blue/300`
+- `colors/blue/400`
+- `colors/blue/500`
+- `colors/blue/600`
+- `colors/blue/700`
+- `colors/blue/800`
+- `colors/blue/900`
+- `colors/blue/950`
+
+
+### Palette de couleurs rouge
+
+
+- `colors/red/50`
+- `colors/red/100`
+- `colors/red/200`
+- `colors/red/300`
+- `colors/red/400`
+- `colors/red/500`
+- `colors/red/600`
+- `colors/red/700`
+- `colors/red/800`
+- `colors/red/900`
+- `colors/red/950`
+
+
+Ou à partir d'un point de départ simple :
+
+### Palette de couleurs bleue
+
+- `colors/blue`
+
+### Palette de couleurs rouge
+
+- `colors/red`
+
+### Utiliser des palettes de couleurs
+
+Dans Figma, référencez des palettes de couleurs plus abstraites, telles que :
+
+- `colors/primary` référence `colors/blue/500`
+- `colors/secondary` référence `colors/red/500`
+
+
 ## Modificateurs d'opacité
 
-Variables Xporter offre de puissantes fonctionnalités de traitement des couleurs, générant automatiquement des variables de couleur [conformes aux règles de Tailwind CSS](https://tailwindcss.com/docs/customizing-colors#using-css-variables). Pendant le développement, vous pouvez facilement ajuster la transparence des couleurs en utilisant des modificateurs d'opacité, sans avoir besoin de définir des variables supplémentaires.
+Variables Xporter offre de puissantes fonctionnalités de traitement des couleurs, générant automatiquement des variables de couleur conformes aux règles de Tailwind CSS. Pendant le développement, vous pouvez facilement ajuster la transparence des couleurs en utilisant des [modificateurs d'opacité](https://tailwindcss.com/docs/colors#adjusting-opacity), sans avoir besoin de définir des variables supplémentaires.
 
 
   ```html
