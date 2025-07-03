@@ -31,7 +31,9 @@ Variables Xporter is a professional Figma plugin that seamlessly exports Figma d
 ### Powerful Multi-Mode Support
 - **Theme Modes** - Perfect Dark/Light mode support
 - **Brand Modes** - Multi-brand theme management
+- **Density Modes** - Interface different density adaptation
 - **Device Modes** - Responsive breakpoint adaptation
+- ...
 
 ### Professional Features
 - **Variable Optimization** - Ignore Tailwind default palette to simplify exported code
