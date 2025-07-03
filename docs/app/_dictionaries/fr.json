@@ -1,65 +1,65 @@
 {
   "language": "Français",
   "supportTailwindCssV4": "Prise en charge de Tailwind CSS V4",
-  "pluginHighlight": "Intégration transparente des variables Figma dans Tailwind CSS ou CSS Variables",
+  "pluginHighlight": "Intégrez facilement les variables Figma dans Tailwind CSS ou les variables CSS",
   "start": "Commencer",
   "learnMore": "En savoir plus",
-  "exclusive": "Exclusivement disponible",
+  "exclusive": "Disponible exclusivement",
   "features": {
     "multiMode": {
       "title": "Prise en charge multi-modes",
-      "description": "Prise en charge de l'exportation de variables composées multi-dimensionnelles"
+      "description": "Prise en charge de l'exportation de variables composées multidimensionnelles"
     },
     "mergeTypographyStyles": {
       "title": "Fusion des variables typographiques",
-      "description": "Fusion et exportation des variables liées au texte et à la typographie"
+      "description": "Fusionner et exporter les variables liées au texte et à la typographie"
     },
     "cssMediaQueryMode": {
-      "title": "Mode de requêtes média CSS",
-      "description": "Exportation de variables en mode de requêtes média"
+      "title": "Mode media query CSS",
+      "description": "Exporter les variables en mode media query"
     },
     "unitConversion": {
       "title": "Conversion d'unités",
-      "description": "Conversion des unités px en rem"
+      "description": "Convertir les unités px en rem"
     }
   },
   "organizingYourVariables": {
-    "heading": "Suggestions pour l'organisation des variables Figma",
+    "heading": "Suggestions d'organisation des variables Figma",
     "principles": {
       "title": "Principes de base",
       "description": "Nommage et regroupement des variables"
     },
     "colors": {
       "title": "Système de couleurs",
-      "description": "Suggestions pour l'organisation des variables de couleur"
+      "description": "Suggestions pour organiser les variables de couleur"
     },
     "typography": {
       "title": "Système typographique",
-      "description": "Suggestions pour l'organisation des variables de texte et de typographie"
+      "description": "Suggestions pour organiser les variables de texte et de typographie"
     },
     "spacing": {
       "title": "Système d'espacement",
-      "description": "Suggestions pour l'organisation des variables d'espacement"
+      "description": "Suggestions pour organiser les variables d'espacement"
     },
     "other": {
       "title": "Autres variables",
-      "description": "Suggestions pour l'organisation d'autres variables"
+      "description": "Suggestions pour organiser les autres variables"
     },
     "multiMode": {
       "title": "Prise en charge multi-modes",
-      "description": "Construire un système de variables multidimensionnel puissant"
+      "description": "Construction de systèmes de variables multidimensionnels puissants"
     }
   },
   "figmaTemplate": {
     "heading": "Modèle Figma",
-    "title": "Contient les variables de base nécessaires pour construire des Design Tokens",
-    "description": "Commencez ici pour construire vos propres Design Tokens, incluant des variables pour les couleurs, l'espacement, les polices, etc., avec plusieurs modes comme le thème, la marque, les appareils et la densité.",
+    "title": "Inclut les variables de base nécessaires pour créer des design tokens",
+    "description": "Commencez à créer vos propres design tokens ici, y compris des variables pour les couleurs, l'espacement, les polices et plus encore, avec plusieurs modes pour les thèmes, les marques, les appareils et la densité.",
     "openInFigma": "Ouvrir dans Figma"
   },
   "example": {
     "heading": "Exemple",
     "title": "Exemple",
-    "description": "Prise en charge de Dark et Light modes, ainsi que des différentes densités et des différentes configurations de marque.",
+    "description": "Prise en charge des modes Sombre et Clair, ainsi que différentes densités et différentes configurations de marque.",
     "note": "Les composants de l'exemple proviennent de shadcn/ui.",
     "default": "Par défaut",
     "compact": "Compact"

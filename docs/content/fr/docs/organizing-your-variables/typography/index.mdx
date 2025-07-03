@@ -1,12 +1,12 @@
 import { Callout, Tabs } from 'nextra/components'
 
-# Système typographique
+# Système de typographie
 
-Explorons comment organiser les variables liées aux polices et à la typographie, y compris `font-family` (famille de polices), `font-size` (taille de police), `font-weight` (graisse de police) et `line-height` (hauteur de ligne).
+Explorons comment organiser les variables liées aux polices et à la typographie, notamment `font-family`, `font-size`, `font-weight` et `line-height`.
 
-## Répertoire racine
+## Répertoire de premier niveau
 
-Pour maintenir une structure de variables claire et intuitive, et conforme à la structure de configuration de Tailwind CSS, veuillez suivre ces règles de nommage :
+Pour maintenir la structure des variables claire et intuitive, et pour s'aligner sur la structure de configuration de Tailwind CSS, veuillez suivre ces règles de nommage :
 
 ### Règles de nommage Tailwind CSS V4
 
@@ -36,14 +36,14 @@ Par exemple :
 
 
 <Callout emoji="💡">
-Vous pouvez choisir librement l'une ou l'autre de ces conventions de nommage. Variables Xporter est compatible avec les deux et ajustera automatiquement les noms selon les règles de configuration de Tailwind CSS correspondantes lors de l'exportation. Cependant, dans la documentation suivante, nous utiliserons par défaut les conventions de nommage de Tailwind CSS V4.
+Vous pouvez choisir l'une ou l'autre des conventions de nommage ci-dessus, et Variables Xporter sera compatible avec les deux. Il s'adaptera automatiquement aux règles de nommage de configuration Tailwind CSS correspondantes en fonction du format exporté. Cependant, dans la documentation suivante, nous utiliserons la convention de nommage Tailwind CSS V4 par défaut.
 </Callout>
 
-## Traitement fusionné [#merge-property]
+## Traitement de fusion [#merge-property]
 
-Vous pouvez également choisir de regrouper les propriétés associées au format `text/{variable}/{property}`. Cette approche est particulièrement adaptée à la gestion des variables textuelles ayant des combinaisons de styles fixes.
+Vous pouvez également choisir de combiner des propriétés associées dans le format `text/{variable}/{property}`. Cette approche est particulièrement adaptée à la gestion des variables liées au texte avec des combinaisons de style fixes.
 
-Par exemple, l'[outil Font Size](https://tailwindcss.com/docs/font-size) par défaut de Tailwind CSS est composé de différents niveaux comme `sm`, `base`, `lg`, et chaque niveau inclut non seulement la propriété `font-size` par défaut, mais aussi la propriété `line-height`. Par exemple :
+Par exemple, l'utilitaire [Font Size](https://tailwindcss.com/docs/font-size) par défaut de Tailwind CSS comprend différents niveaux tels que `sm`, `base`, `lg`, etc. Chaque niveau inclut non seulement la propriété `font-size` par défaut mais aussi la propriété `line-height`, par exemple :
 
 #### `sm`
 
@@ -64,7 +64,7 @@ C'est une excellente façon de créer des variables atomiques pour `font-size`.
 
 ---
 
-En plus des variables atomiques ci-dessus, un autre exemple typique consiste à abstraire davantage ces propriétés de police en variables comme `display`, `heading`, `body` :
+En plus des variables atomiques ci-dessus, il existe un exemple typique d'abstraction plus poussée de ces propriétés de police en variables telles que `display`, `heading`, `body`, etc. :
 
 #### `display`
 
@@ -87,9 +87,9 @@ En plus des variables atomiques ci-dessus, un autre exemple typique consiste à 
 - `text/body/line-height`
 - `text/body/letter-spacing`
 
-Cette organisation permettra à Variables Xporter de générer automatiquement la configuration Tailwind CSS suivante et les variables CSS correspondantes :
+Avec cette méthode d'organisation, Variables Xporter générera automatiquement la configuration Tailwind CSS suivante et les variables CSS correspondantes :
 
-<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
+<Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'Variables CSS']}>
   <Tabs.Tab>
   ```css
 @theme {
@@ -179,33 +179,5 @@ module.exports = {
 
 
 <Callout type="warning" emoji="⚠️">
-Il est important de noter que la fonction de fusion ne prend en charge que quatre propriétés de style : font-size, font-weight, line-height et letter-spacing. De plus, cette fonctionnalité ne s'active que lorsque la propriété font-size est présente. Cela permet de maintenir la cohérence avec la [fonctionnalité de configuration `fontSize`](https://tailwindcss.com/docs/font-size#customizing-your-theme) de Tailwind CSS.
+Il est important de noter que la fonctionnalité de traitement par fusion ne prend en charge que quatre propriétés de style : font-size, font-weight, line-height et letter-spacing. De plus, cette fonctionnalité ne prendra effet que lorsque la propriété font-size est présente. Cela permet de maintenir la cohérence avec la [fonctionnalité de configuration `fontSize` de Tailwind CSS](https://tailwindcss.com/docs/font-size#customizing-your-theme).
 </Callout>
-
-{/* ### Variables atomiques
-
-Pour maintenir la flexibilité et la réutilisabilité des variables, nous prenons également en charge une approche de nommage atomique. Lorsque le nom de la variable suit le modèle `font/{property}/{value}` [^1], Variables Xporter le convertira automatiquement dans le répertoire de propriétés correspondant pour assurer la cohérence avec la structure de configuration de Tailwind CSS.
-
-Voici quelques exemples concrets :
-
-Variables de taille de police :
-- `font/size/sm` → `font-size/sm` (petite taille)
-- `font/size/base` → `font-size/base` (taille de base)
-- `font/size/lg` → `font-size/lg` (grande taille)
-
-Variables de graisse :
-- `font/weight/normal` → `font-weight/normal` (graisse normale)
-- `font/weight/medium` → `font-weight/medium` (graisse moyenne)
-- `font/weight/bold` → `font-weight/bold` (graisse forte)
-
-Variables de hauteur de ligne :
-- `font/line-height/none` → `line-height/none` (pas de hauteur de ligne)
-- `font/line-height/tight` → `line-height/tight` (hauteur serrée)
-- `font/line-height/relaxed` → `line-height/relaxed` (hauteur détendue)
-
-Variables d'espacement des lettres :
-- `font/letter-spacing/normal` → `letter-spacing/normal` (espacement normal)
-- `font/letter-spacing/tight` → `letter-spacing/tight` (espacement serré)
-- `font/letter-spacing/wide` → `letter-spacing/wide` (espacement large)
-
-[^1]: `font/size/{value}`, `font/weight/{value}`, `font/line-height/{value}`, `font/letter-spacing/{value}`. */}

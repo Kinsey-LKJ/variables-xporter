@@ -11,13 +11,13 @@ import {
 } from 'lucide-react'
 import { Cards } from 'nextra/components'
 
-# Organiser vos variables de design
+# Organisation de vos variables de design
 
-Face aux besoins croissants de gestion des Design Tokens, Variables Xporter recommande d'utiliser le [principe de point de sortie unique](/docs/single-outlet-principle) pour organiser votre système de variables. Une organisation judicieuse des variables améliore non seulement la qualité du code exporté, mais rend également les systèmes de design multi-modes complexes plus clairs et faciles à gérer.
+Face à des besoins de gestion de Design Tokens de plus en plus complexes, Variables Xporter recommande d'utiliser le [Principe de Source Unique](/docs/single-outlet-principle) pour organiser votre système de variables. Une organisation bien structurée des variables améliore non seulement la qualité du code exporté, mais rend également les systèmes de design multi-modes clairs et faciles à gérer.
 
 ## Principes fondamentaux
 
-Avant de commencer à organiser vos variables, nous avons préparé quelques conseils pratiques et bonnes pratiques. Ces principes vous aideront à établir un système de variables robuste et flexible :
+Avant de commencer à organiser vos variables, nous avons préparé quelques suggestions pratiques et bonnes pratiques. Ces principes vous aideront à construire un système de variables robuste et flexible :
 
 <Cards>
   <Cards.Card
@@ -27,11 +27,11 @@ Avant de commencer à organiser vos variables, nous avons préparé quelques con
   />
 </Cards>
 
-Les principes fondamentaux couvrent les éléments essentiels de l'organisation des variables, y compris les conventions de nommage, la structure hiérarchique, les stratégies de regroupement et d'autres contenus clés. Ces principes vous aideront à construire un système de variables clair.
+Les principes fondamentaux couvrent les éléments essentiels de l'organisation des variables, notamment les conventions de nommage, la structure hiérarchique, les stratégies de regroupement et autres contenus clés. Ces principes vous aideront à construire un système de variables clair.
 
 ## Stratégies d'organisation par type de variable
 
-Différents types de design tokens nécessitent des stratégies d'organisation appropriées. Voici des guides d'organisation pour les types courants de design tokens :
+Différents types de design tokens nécessitent des stratégies d'organisation correspondantes. Voici des directives d'organisation pour les types courants de design tokens :
 
 <Cards>
   <Cards.Card
@@ -46,7 +46,7 @@ Différents types de design tokens nécessitent des stratégies d'organisation a
   />
   <Cards.Card
     icon={<Ruler />}
-    title="Système d'espacement et de dimensions"
+    title="Système d'espacement et de dimensionnement"
     href="/docs/organizing-your-variables/spacing"
   />
   <Cards.Card
@@ -56,7 +56,7 @@ Différents types de design tokens nécessitent des stratégies d'organisation a
   />
   <Cards.Card
     icon={<Moon />}
-    title="Multi-modes"
+    title="Multi-mode"
     href="/docs/organizing-your-variables/multi-mode"
   />
 </Cards>
@@ -65,23 +65,23 @@ Différents types de design tokens nécessitent des stratégies d'organisation a
 
 ### Conception des collections
 
-Organisez la structure des collections selon le [principe de point de sortie unique](/docs/single-outlet-principle) :
+Organisez les structures de collection selon le [Principe de Source Unique](/docs/single-outlet-principle) :
 
-- **Collection principale** : contient toutes les variables exposées, servant de point de sortie unifié
-- **Collections de modes** : stockent uniquement les variables qui doivent changer selon les différents modes
-- **Relations de référence** : connectent les variables correspondantes entre la collection principale et les collections de modes par référencement
+- **Collection principale** : Contient toutes les variables fournies en externe, servant de point de sortie unifié
+- **Collections de modes** : Stockent uniquement les variables qui doivent changer selon les différents modes
+- **Relations de référence** : Connectent les variables correspondantes entre la collection principale et les collections de modes via des références
 
 ### Conventions de nommage
 
-- Suivre strictement la structure des clés de configuration de Tailwind CSS
-- Utiliser la barre oblique `/` pour le regroupement des variables
-- Utiliser correctement le mot-clé `DEFAULT` pour les valeurs de base, facilitant l'établissement d'une hiérarchie claire des variables
+- Suivez strictement la structure de clés de configuration de Tailwind CSS
+- Utilisez le slash `/` pour le regroupement des variables
+- Utilisez correctement le mot-clé `DEFAULT` pour les valeurs de base, facilitant une hiérarchie claire des variables
 
 ### Conseils pratiques
 
-- Vérifier régulièrement la structure des variables pour assurer des relations de référence claires
-- Ajouter des descriptions aux variables importantes pour la compréhension de l'équipe
-- Éviter les structures imbriquées trop complexes
-- Maintenir la cohérence et la prévisibilité dans le nommage
+- Vérifiez régulièrement la structure des variables pour garantir des relations de référence claires
+- Ajoutez des descriptions aux variables importantes pour la compréhension de l'équipe
+- Évitez les structures imbriquées trop complexes
+- Maintenez la cohérence et la prévisibilité dans la nomenclature
 
-En adoptant ces stratégies d'organisation, vous pouvez gérer efficacement les Design Tokens complexes et construire un système de design à la fois puissant et maintenable.
+En adoptant ces stratégies d'organisation, vous pouvez gérer efficacement des Design Tokens complexes et construire un système de design à la fois puissant et maintenable.

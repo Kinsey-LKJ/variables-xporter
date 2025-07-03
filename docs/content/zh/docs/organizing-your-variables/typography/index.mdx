@@ -1,11 +1,15 @@
 import { Callout, Tabs } from 'nextra/components'
 
-# 排版系统
-让我们来探索如何组织字体和排版相关的变量，包括 `font-family`（字体系列）、`font-size`（字体大小）、`font-weight`（字重）和 `line-height`（行高）等。
+# 字体系统
 
-## 顶层目录
-为了保持变量结构的清晰和直观，且符合 Tailwind CSS 的配置结构，请按照以下规则命名：
+让我们探索如何组织字体和排版相关的变量，包括 `font-family`、`font-size`、`font-weight` 和 `line-height`。
+
+## 顶级目录
+
+为了保持变量结构清晰直观，并与 Tailwind CSS 的配置结构保持一致，请遵循以下命名规则：
+
 ### Tailwind CSS V4 命名规则
+
 - `font/{variable}` -> **font-family**
 - `text/{variable}` -> **font-size**
 - `font-weight/{variable}` -> **font-weight**
@@ -32,51 +36,58 @@ import { Callout, Tabs } from 'nextra/components'
 
 
 <Callout emoji="💡">
-你可以任意选择以上两种命名规则，Variables Xporter 都能兼容，并根据导出的格式自动调整为对应 Tailwind CSS 配置的命名规则，但在以下的文档中，我们默认使用 Tailwind CSS V4 的命名规则。
+您可以选择以上任意一种命名规范，Variables Xporter 将兼容两者。它会根据导出的格式自动调整为相应的 Tailwind CSS 配置命名规则。然而，在接下来的文档中，我们将默认使用 Tailwind CSS V4 的命名规范。
 </Callout>
 
 ## 合并处理 [#merge-property]
-你还可以选择将相关的属性以 `text/{variable}/{property}` 的格式组合在一起。这种方式特别适合管理具有固定样式组合的文本相关变量。
 
-例如，Tailwind CSS 默认的 [Font Size 工具](https://tailwindcss.com/docs/font-size)由 `sm`、`base`、`lg` 等不同的级别组成，而每一个级别除了包含默认的 `font-size` 属性，还包含 `line-height` 属性，例如：
+您还可以选择以 `text/{variable}/{property}` 的格式组合相关属性。这种方法特别适合管理具有固定样式组合的文本相关变量。
+
+例如，Tailwind CSS 默认的 [Font Size utility](https://tailwindcss.com/docs/font-size) 包含不同的级别，如 `sm`、`base`、`lg` 等。每个级别不仅包括默认的 `font-size` 属性，还包括 `line-height` 属性，例如：
 
 #### `sm`
+
 - `text/sm/DEFAULT`
 - `text/sm/line-height`
 
 #### `base`
+
 - `text/base/DEFAULT`
 - `text/base/line-height`
 
 #### `lg`
+
 - `text/lg/DEFAULT`
 - `text/lg/line-height`
 
-这是创建  `font-size` 的原子化变量的绝佳方式。
+这是为 `font-size` 创建原子变量的绝佳方式。
 
 ---
 
-除了以上的原子化变量，还有一个典型的示例，就是将这些字体属性进一步抽象成 `display`、`heading`、`body` 等变量：
+除了上述的原子变量，还有一个典型的例子是将这些字体属性进一步抽象为变量，例如 `display`、`heading`、`body` 等：
 
 #### `display`
+
 - `text/display/DEFAULT`
 - `text/display/font-weight`
 - `text/display/line-height`
 - `text/display/letter-spacing`
 
 #### `heading`
+
 - `text/heading/DEFAULT`
 - `text/heading/font-weight`
 - `text/heading/line-height`
 - `text/heading/letter-spacing`
 
 #### `body`
+
 - `text/body/DEFAULT`
 - `text/body/font-weight`
 - `text/body/line-height`
 - `text/body/letter-spacing`
 
-这种组织方式 Variables Xporter 会自动生成以下 Tailwind CSS 配置和对应的 CSS 变量：
+通过这种组织方法，Variables Xporter 将自动生成以下 Tailwind CSS 配置和对应的 CSS 变量：
 
 <Tabs items={['Tailwind CSS V4', 'Tailwind CSS V3', 'CSS Variables']}>
   <Tabs.Tab>
@@ -168,33 +179,5 @@ module.exports = {
 
 
 <Callout type="warning" emoji="⚠️">
-需要注意的是，合并处理功能仅支持四种样式属性 font-size、font-weight、line-height 和 letter-spacing。另外，只有在存在 font-size 属性时，这个功能才会生效。这是为了与 Tailwind CSS 的 [`fontSize` 配置功能](https://tailwindcss.com/docs/font-size#customizing-your-theme)保持一致。
+需要注意的是，合并处理功能仅支持四种样式属性：font-size、font-weight、line-height 和 letter-spacing。此外，该功能仅在存在 font-size 属性时才会生效。这是为了与 Tailwind CSS 的 [`fontSize` 配置功能](https://tailwindcss.com/docs/font-size#customizing-your-theme) 保持一致。
 </Callout>
-
-{/* ### 原子化变量
-
-为了保持变量的灵活性和可重用性，我们也支持原子化的变量命名方式。当变量名符合 `font/{property}/{value}` 的规则[^1]时，Variables Xporter 会自动将其转换为对应的属性目录，以确保与 Tailwind CSS 的配置结构保持一致。
-
-让我们来看一些实际的例子：
-
-字体大小变量：
-- `font/size/sm` → `font-size/sm` （小号字体）
-- `font/size/base` → `font-size/base` （基础字体）
-- `font/size/lg` → `font-size/lg` （大号字体）
-
-字重变量：
-- `font/weight/normal` → `font-weight/normal` （常规字重）
-- `font/weight/medium` → `font-weight/medium` （中等字重）
-- `font/weight/bold` → `font-weight/bold` （粗体字重）
-
-行高变量：
-- `font/line-height/none` → `line-height/none` （无行高）
-- `font/line-height/tight` → `line-height/tight` （紧凑行高）
-- `font/line-height/relaxed` → `line-height/relaxed` （宽松行高）
-
-字间距变量：
-- `font/letter-spacing/normal` → `letter-spacing/normal` （标准字间距）
-- `font/letter-spacing/tight` → `letter-spacing/tight` （紧凑字间距）
-- `font/letter-spacing/wide` → `letter-spacing/wide` （宽松字间距）
-
-[^1]: `font/size/{value}` 、`font/weight/{value}` 、`font/line-height/{value}` 、`font/letter-spacing/{value}`。 */}
