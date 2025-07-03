@@ -20,5 +20,7 @@
   "window_size": "Window size",
   "large": "Large",
   "medium": "Medium",
-  "small": "Small"
+  "small": "Small",
+  "when_do_you_need_to_do_this": "When do you need to do this?",
+  "when_do_you_need_to_do_this_description": "If your Figma Variables contain Tailwind CSS default color palettes and you haven't modified them, you should ignore them. Variables Xporter will only ignore Tailwind CSS default color palettes that start with color/ or colors/."
 }

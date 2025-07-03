@@ -20,5 +20,7 @@
   "window_size": "Taille de la fenêtre",
   "large": "Grand",
   "medium": "Moyen",
-  "small": "Petit"
+  "small": "Petit",
+  "when_do_you_need_to_do_this": "Quand est-ce que vous avez besoin de faire cela ?",
+  "when_do_you_need_to_do_this_description": "Si vos variables Figma contiennent des palettes par défaut de Tailwind CSS et que vous n'avez pas modifié ces valeurs, vous devriez les ignorer. Variables Xporter ignorera uniquement les palettes par défaut de Tailwind CSS qui commencent par color/ ou colors/."
 }

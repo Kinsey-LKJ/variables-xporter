@@ -1,7 +1,8 @@
-import { Switch, NumberInput, SegmentedControl } from '@mantine/core';
+import { Switch, NumberInput, SegmentedControl, Tooltip } from '@mantine/core';
 import { useVariableFormContext } from './variables-export-form-context';
 import { useContext, useEffect } from 'react';
 import { AppContext } from './App';
+import { Info } from 'lucide-react';
 
 const Setting = ({ windowSizeMap }: { windowSizeMap: { [key: string]: { width: number; height: number } } }) => {
   const { textData, windowSize, setWindowSize } = useContext(AppContext);
@@ -34,15 +35,6 @@ const Setting = ({ windowSizeMap }: { windowSizeMap: { [key: string]: { width: n
       </div> */}
 
       <div className="flex items-center justify-between gap-2">
-        {textData.ignore_tailwind_css_default_palette}
-        <Switch
-          size="md"
-          defaultChecked={form.values.ignoreTailwindColor}
-          {...form.getInputProps('ignoreTailwindColor')}
-        />
-      </div>
-
-      <div className="flex items-center justify-between gap-2">
         {textData.use_rem_as_unit}
         <Switch size="md" defaultChecked={form.values.useRemUnit} {...form.getInputProps('useRemUnit')} />
       </div>
@@ -64,6 +56,30 @@ const Setting = ({ windowSizeMap }: { windowSizeMap: { [key: string]: { width: n
           ]}
           defaultValue={windowSize}
           {...form.getInputProps('windowSize')}
+        />
+      </div>
+
+      <div className="flex items-center justify-between gap-2">
+        <div className="grid gap-1">
+          {textData.ignore_tailwind_css_default_palette}
+          <Tooltip
+            multiline
+            w={220}
+            withArrow
+            transitionProps={{ duration: 200 }}
+            label={textData.when_do_you_need_to_do_this_description}
+          >
+            <div className="flex items-center gap-1 text-xs">
+              <span>{textData.when_do_you_need_to_do_this}</span>
+              <Info size={12} />
+            </div>
+          </Tooltip>
+        </div>
+
+        <Switch
+          size="md"
+          defaultChecked={form.values.ignoreTailwindColor}
+          {...form.getInputProps('ignoreTailwindColor')}
         />
       </div>
     </div>

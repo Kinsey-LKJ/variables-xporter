@@ -20,5 +20,7 @@
   "window_size": "窗口大小",
   "large": "大",
   "medium": "中",
-  "small": "小"
+  "small": "小",
+  "when_do_you_need_to_do_this": "什么时候需要这样做？",
+  "when_do_you_need_to_do_this_description": "如果你的 Figma Variables 中包含了 Tailwind CSS 的默认色板，并且你只是引用了它们而没有进行修改，你应该忽略它们。Variables Xporter 只会忽略以 color/ 和 colors/ 作为顶层目录的 Tailwind CSS 默认色板。"
 }
