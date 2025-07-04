@@ -14,7 +14,7 @@ export default {
   },
   figmaTemplate: {
     type: 'page',
-    title: 'Figma 变量模板',
+    title: 'Figma Variables 模板',
     href: 'https://www.figma.com/community/file/1522188131593288033'
   }
 }

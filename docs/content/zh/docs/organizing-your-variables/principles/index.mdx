@@ -10,7 +10,7 @@ import { Config } from "tailwindcss";
 
 为了使变量更易于理解和维护，我们建议遵循以下命名原则：
 
-- 使用英文命名：这可以确保与开发环境的兼容性，并在导出到 Tailwind CSS 配置或 CSS 变量时保持一致性
+- 使用英文命名：这可以确保与开发环境的兼容性，并在导出到 Tailwind CSS 配置或 CSS Variables 时保持一致性
 - 选择语义化命名：变量名应清晰表达其用途，使团队成员能够快速理解
 - 保持简洁：避免过长或复杂的命名，以维护代码的可读性和可维护性
 
@@ -36,7 +36,7 @@ import { Config } from "tailwindcss";
 在设计系统中，我们经常需要使用多个单词来描述一个变量。Variables Xporter 会根据目标格式自动转换命名格式：
 
 - Tailwind CSS 配置文件：使用 camelCase 格式（例如：fontSize, fontWeight）
-- CSS 变量：使用 kebab-case 格式（例如：font-size, font-weight）
+- CSS Variables：使用 kebab-case 格式（例如：font-size, font-weight）
 
 以下是一些常见的命名格式供参考：
 - camelCase -> twoWords
@@ -50,9 +50,9 @@ import { Config } from "tailwindcss";
 - sentenceCase -> Two words
 
 <Callout type="info" emoji="ℹ️">
-  在导出变量时，无论您使用上述哪种格式，Variables Xporter 都会自动转换输出以匹配 Tailwind CSS 配置文件和 CSS 变量的约定或要求：
+  在导出变量时，无论您使用上述哪种格式，Variables Xporter 都会自动转换输出以匹配 Tailwind CSS 配置文件和 CSS Variables 的约定或要求：
   - Tailwind CSS 配置文件：使用 camelCase 格式（例如：fontSize, fontWeight）
-  - CSS 变量：使用 kebab-case 格式（例如：font-size, font-weight）
+  - CSS Variables：使用 kebab-case 格式（例如：font-size, font-weight）
 </Callout>
 
 ## 分组原则

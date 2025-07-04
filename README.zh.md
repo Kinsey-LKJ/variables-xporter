@@ -18,7 +18,7 @@
 
 ## 📖 项目简介
 
-Variables Xporter 是一个专业的 Figma 插件，它能将 Figma 设计变量无缝导出为 **Tailwind CSS 配置文件**或 **CSS 变量**，完美解决设计与开发之间的同步问题。让设计系统轻松落地到开发环境！
+Variables Xporter 是一个专业的 Figma 插件，它能将 Figma 设计变量无缝导出为 **Tailwind CSS 配置文件**或 **CSS Variables**，完美解决设计与开发之间的同步问题。让设计系统轻松落地到开发环境！
 
 ## ✨ 核心特性
 
@@ -110,11 +110,11 @@ Theme Modes (辅助集合 - 仅存放变化的变量)
 在 Figma 中搜索并安装 [Variables Xporter](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter) 插件。
 
 ### 2. 组织设计变量
-按照我们的 [变量组织建议](https://variables-xporter.com/docs/organizing-your-variables) 整理您的 Figma 变量：
+按照我们的 [变量组织建议](https://variables-xporter.com/docs/organizing-your-variables) 整理您的 Figma Variables：
 
 ### 3. 导出变量
 1. 在 Figma 中打开插件
-2. 选择导出格式（Tailwind CSS 或 CSS 变量）
+2. 选择导出格式（Tailwind CSS 或 CSS Variables）
 3. 选择要导出的变量集合和分组
 4. 点击导出获取代码
 
@@ -149,10 +149,10 @@ module.exports = {
 ```
 
 **global.css**
-将 CSS 变量定义添加到您的全局样式文件中：
+将 CSS Variables 定义添加到您的全局样式文件中：
 
 ```css
-/* 将导出的 CSS 变量粘贴到 global.css 中 */
+/* 将导出的 CSS Variables 粘贴到 global.css 中 */
 :root {
   --colors-primary-default: 59 130 246;
   --colors-primary-foreground: 255 255 255;
