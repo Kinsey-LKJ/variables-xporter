@@ -62,7 +62,9 @@ checksums:
     medium: 43983f2178fb28aacaef6c5f41282c4a
     small: 3adb3ae7891c5736776df840cff2360b
     when_do_you_need_to_do_this: 73832ce0e6e602bd26974d8a43ea7ddf
-    when_do_you_need_to_do_this_description: 4fff1678b05ca0797ff89dddc174b467
+    when_do_you_need_to_do_this_description: f3b3c3193bff92d79d1b89777eb9effa
+    tailwind_css_variable_naming_specification: 730974223f9936f11c9fcdc8389ed450
+    view_our_variable_organization_suggestions: bd7a5dc9a1558a9d766c94b8527be838
   3a510916633619a36c46f7b6ae466490:
     md-section-0: 2bb2c65131ca6c14a40dc0473968447f
     md-section-1: 2f146f38a72aadaa46cceaa266400b3b
@@ -86,7 +88,7 @@ checksums:
     fm-attr-title: 6ffc4403292720e4db67e1436693f948
   421abf4e9b57e6555d87637d4573c9c0:
     md-section-0: f585fd2264d56f463d95f9b0811d400e
-    md-section-1: dc4a6549e22ba52fa241223ffcdd7e29
+    md-section-1: 3ab248110c2bc5717071d5dfd6b12b42
     md-section-2: 47c6f3ea84f91d736333e50cdf3270c4
     md-section-3: 7c8c2a4310b6b7b4efb15ad15735c11b
     md-section-4: a3198863464e2b37f4314cfcb6f3faee
@@ -99,6 +101,8 @@ checksums:
     md-section-11: 1253c2d1afea8fbd2a065132bc0d9d79
     md-section-12: 1bd10350a0bf4cbd854ec200670a3fb0
     md-section-13: c2d0f6db56b30c552245bd2d64c8387c
+    md-section-14: a38f340fe6df582def9b403ffe701279
+    md-section-15: 8480183bc0a8b51bedf55a3408e6eab4
   526eb653e310e3a55d22ac15b1fda056:
     md-section-0: eca3ef68f46869882f559d83219092f4
     md-section-1: eba766baf71fa1c389b1bd61f1d866a5
