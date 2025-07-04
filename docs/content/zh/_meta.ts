@@ -16,5 +16,9 @@ export default {
     type: 'page',
     title: 'Figma Variables 模板',
     href: 'https://www.figma.com/community/file/1522188131593288033'
+  },
+  support: {
+    type: 'page',
+    title: '☕ 赞助项目'
   }
 }

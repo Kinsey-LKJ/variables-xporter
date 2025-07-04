@@ -104,6 +104,22 @@ This organization approach makes your design system both powerful and simple, pe
 - 🇺🇸 English
 - 🇫🇷 Français
 
+## ☕ Support This Project
+
+If Variables Xporter has been helpful to you, please consider buying me a coffee to support the continued development of this project!
+
+<div align="center">
+  <a href="https://www.buymeacoffee.com/kinseylkj" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >
+  </a>
+</div>
+
+Your support helps me:
+- 🚀 Continue developing new features
+- 🐛 Fix bugs and improve performance
+- 📚 Maintain and update documentation
+- 🎯 Respond to community feedback
+
 ## 🚀 Quick Start
 
 ### 1. Install Plugin

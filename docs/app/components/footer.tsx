@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Blurer from "@/components/blurer";
+import { BuyMeACoffee } from "@/components/buy-me-a-coffee";
 
 const PREVIOUS_THEME_KEY = "previous-theme";
 
@@ -52,12 +53,15 @@ export const Footer = () => {
       {pathname === "/" && (
         <Blurer className="w-[736px] h-[137px] blur-[140px] translate-y-[150%] bottom-0"></Blurer>
       )}
-      <div>
-        Built with ❤️ by {" "}
-        <Link href="https://lkj.design" className=" underline" target="_blank">
-           Kinsey
-        </Link>
-        .
+      <div className="flex flex-col items-center gap-4">
+        <div>
+          Built with ❤️ by {" "}
+          <Link href="https://lkj.design" className=" underline" target="_blank">
+             Kinsey
+          </Link>
+          .
+        </div>
+        <BuyMeACoffee />
       </div>
     </div>
   );

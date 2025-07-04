@@ -104,6 +104,22 @@ Theme Modes (辅助集合 - 仅存放变化的变量)
 - 🇺🇸 English  
 - 🇫🇷 Français
 
+## ☕ 支持这个项目
+
+如果 Variables Xporter 对你有帮助，请考虑请我喝杯咖啡来支持项目的持续开发！
+
+<div align="center">
+  <a href="https://www.buymeacoffee.com/kinseylkj" target="_blank">
+    <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >
+  </a>
+</div>
+
+你的支持将帮助我：
+- 🚀 持续开发新功能
+- 🐛 修复 bug 和改进性能
+- 📚 维护和更新文档
+- 🎯 响应社区反馈
+
 ## 🚀 快速开始
 
 ### 1. 安装插件
