@@ -61,7 +61,7 @@ export const Footer = () => {
           </Link>
           .
         </div>
-        <BuyMeACoffee />
+        {/* <BuyMeACoffee /> */}
       </div>
     </div>
   );
