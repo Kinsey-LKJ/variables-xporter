@@ -24,5 +24,12 @@
   "when_do_you_need_to_do_this": "什么时候需要这样做？",
   "when_do_you_need_to_do_this_description": "如果你的 Figma Variables 中包含了 Tailwind CSS 的默认色板，并且你只是引用了它们而没有进行修改，你应该忽略它们。Variables Xporter 只会忽略以 color/ 和 colors/ 作为顶层目录的 Tailwind CSS 默认色板。",
   "tailwind_css_variable_naming_specification": "你的 Figma Variables 需要符合 Tailwind CSS 命名规范，",
-  "view_our_variable_organization_suggestions": "查看组织建议"
+  "view_our_variable_organization_suggestions": "查看组织建议",
+  "export_feedback_message_part1": "满意导出结果？请考虑",
+  "buy_me_coffee_link": "请我喝咖啡",
+  "export_feedback_message_part2": "；不满意？请查看 ",
+  "organization_guide_link": "Figma Variables 组织建议",
+  "export_feedback_message_part3": " 或在 ",
+  "github_link": "GitHub 提问",
+  "export_feedback_message_part4": "。"
 }

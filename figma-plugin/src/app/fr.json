@@ -24,5 +24,12 @@
   "when_do_you_need_to_do_this": "Quand est-ce que vous avez besoin de faire cela ?",
   "when_do_you_need_to_do_this_description": "Si vos variables Figma contiennent des palettes par défaut de Tailwind CSS et que vous n'avez pas modifié ces valeurs, vous devriez les ignorer. Variables Xporter ignorera uniquement les palettes par défaut de Tailwind CSS qui commencent par color/ ou colors/",
   "tailwind_css_variable_naming_specification": "Vos Variables Figma doivent respecter les conventions de nommage Tailwind CSS, ",
-  "view_our_variable_organization_suggestions": "voir le guide d'organisation"
+  "view_our_variable_organization_suggestions": "voir le guide d'organisation",
+  "export_feedback_message_part1": "Satisfait ? Veuillez considérer",
+  "buy_me_coffee_link": " m'offrir un café",
+  "export_feedback_message_part2": " ; Pas satisfait ? Veuillez consulter notre ",
+  "organization_guide_link": "guide d'organisation Figma Variables",
+  "export_feedback_message_part3": " ou ",
+  "github_link": "signaler sur GitHub",
+  "export_feedback_message_part4": "."
 }

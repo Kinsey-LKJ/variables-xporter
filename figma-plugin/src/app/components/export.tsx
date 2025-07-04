@@ -1,4 +1,4 @@
-import { Button, Checkbox, Tooltip, Tabs, Modal } from '@mantine/core';
+import { Button, Checkbox, Tooltip, Tabs, Modal, Card, Text, Divider } from '@mantine/core';
 import { useVariableFormContext } from './variables-export-form-context';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { processColorValue as rgbObjectToColorString, processConstantValue as getCssValue } from '../../lib/utils';
@@ -28,6 +28,7 @@ const Export = (props: ExportProps) => {
   const { tailwindCSSOutput, exportFormat } = props;
   const { textData } = useContext(AppContext);
   const [opened, { open, close }] = useDisclosure(false);
+
   console.log(exportFormat);
   return (
     <div className=" grid gap-4">
@@ -39,121 +40,155 @@ const Export = (props: ExportProps) => {
       </div>
 
       {tailwindCSSOutput ? (
-        exportFormat === 'Tailwind CSS V3' ? (
-          <Tabs
-            key={'tailwindCSSOutput'}
-            defaultValue="tw-config"
-            className="h-auto grid gap-6 overflow-visible"
-          >
-            <Tabs.List className='sticky top-0 z-10'>
-              <Tabs.Tab value="tw-config" >tailwind.config.js</Tabs.Tab>
-              <Tabs.Tab value="tw-css">global.css</Tabs.Tab>
-            </Tabs.List>
+        <>
+          <Text size="xs" className="text-center">
+            <span> {textData.export_feedback_message_part1}</span>
+            <span>
+              <a
+                href="https://www.buymeacoffee.com/kinseylkj"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-yellow-400"
+              >
+                {textData.buy_me_coffee_link}
+              </a>
+            </span>
+            <span> {textData.export_feedback_message_part2}</span>
+            <span>
+              <a
+                href="https://variables-xporter.com/docs/organizing-your-variables"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-300"
+              >
+                {textData.organization_guide_link}
+              </a>
+            </span>
+            <span> {textData.export_feedback_message_part3}</span>
+            <span>
+              <a
+                href="https://github.com/Kinsey-LKJ/variables-xporter/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-300"
+              >
+                {textData.github_link}
+              </a>
+            </span>
+            <span> {textData.export_feedback_message_part4}</span>
+          </Text>
+          {exportFormat === 'Tailwind CSS V3' ? (
+            <Tabs key={'tailwindCSSOutput'} defaultValue="tw-config" className="h-auto grid gap-6 overflow-visible">
+              <Tabs.List className="sticky top-0 z-10">
+                <Tabs.Tab value="tw-config">tailwind.config.js</Tabs.Tab>
+                <Tabs.Tab value="tw-css">global.css</Tabs.Tab>
+              </Tabs.List>
 
-            <Tabs.Panel value="tw-config" className=" overflow-hidden">
-              <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
-                <div className="w-full h-full">
-                  <Button
-                    type="button"
-                    variant="subtle"
-                    size="icon"
-                    className="!absolute top-2 right-2 !p-0 !size-9"
-                    onClick={() => {
-                      copyToClipboard(`${tailwindCSSOutput.config}`);
-                    }}
-                  >
-                    <ClipboardList />
-                  </Button>
+              <Tabs.Panel value="tw-config" className=" overflow-hidden">
+                <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
+                  <div className="w-full h-full">
+                    <Button
+                      type="button"
+                      variant="subtle"
+                      size="icon"
+                      className="!absolute top-2 right-2 !p-0 !size-9"
+                      onClick={() => {
+                        copyToClipboard(`${tailwindCSSOutput.config}`);
+                      }}
+                    >
+                      <ClipboardList />
+                    </Button>
 
-                  <SyntaxHighlighter
-                    language="javascript"
-                    wrapLongLines={true}
-                    style={coldarkDark}
-                    customStyle={
-                      {
-                        padding: '1rem',
-                        marginTop: 0,
-                        background: 'rgb(32 37 46)',
-                        borderRadius: '0.5rem',
-                      } as React.CSSProperties
-                    }
-                  >
-                    {tailwindCSSOutput.config}
-                  </SyntaxHighlighter>
+                    <SyntaxHighlighter
+                      language="javascript"
+                      wrapLongLines={true}
+                      style={coldarkDark}
+                      customStyle={
+                        {
+                          padding: '1rem',
+                          marginTop: 0,
+                          background: 'rgb(32 37 46)',
+                          borderRadius: '0.5rem',
+                        } as React.CSSProperties
+                      }
+                    >
+                      {tailwindCSSOutput.config}
+                    </SyntaxHighlighter>
+                  </div>
                 </div>
-              </div>
-            </Tabs.Panel>
+              </Tabs.Panel>
 
-            <Tabs.Panel value="tw-css" className=" overflow-hidden">
-              <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
-                <div className="w-full">
-                  <Button
-                    type="button"
-                    variant="subtle"
-                    size="icon"
-                    className="!absolute top-2 right-2 !p-0 !size-9"
-                    onClick={() => {
-                      copyToClipboard(`${tailwindCSSOutput.globalsCSS}`);
-                    }}
-                  >
-                    <ClipboardList />
-                  </Button>
-                  <SyntaxHighlighter
-                    language="css"
-                    style={coldarkDark}
-                    customStyle={
-                      {
-                        padding: '1rem',
-                        marginTop: 0,
-                        background: 'rgb(32 37 46)',
-                        borderRadius: '0.5rem',
-                      } as React.CSSProperties
-                    }
-                  >
-                    {tailwindCSSOutput.globalsCSS}
-                  </SyntaxHighlighter>
+              <Tabs.Panel value="tw-css" className=" overflow-hidden">
+                <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
+                  <div className="w-full">
+                    <Button
+                      type="button"
+                      variant="subtle"
+                      size="icon"
+                      className="!absolute top-2 right-2 !p-0 !size-9"
+                      onClick={() => {
+                        copyToClipboard(`${tailwindCSSOutput.globalsCSS}`);
+                      }}
+                    >
+                      <ClipboardList />
+                    </Button>
+                    <SyntaxHighlighter
+                      language="css"
+                      style={coldarkDark}
+                      customStyle={
+                        {
+                          padding: '1rem',
+                          marginTop: 0,
+                          background: 'rgb(32 37 46)',
+                          borderRadius: '0.5rem',
+                        } as React.CSSProperties
+                      }
+                    >
+                      {tailwindCSSOutput.globalsCSS}
+                    </SyntaxHighlighter>
+                  </div>
                 </div>
-              </div>
-            </Tabs.Panel>
-          </Tabs>
-        ) : (
-          <Tabs key={'cssOutput'} defaultValue="css" className="h-auto grid gap-6 overflow-visible">
-            <Tabs.List className='sticky top-0 z-10'>
-              <Tabs.Tab value="css">css</Tabs.Tab>
-            </Tabs.List>
-            <Tabs.Panel value="css" className=" overflow-hidden">
-              <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
-                <div className="w-full">
-                  <Button
-                    type="button"
-                    variant="subtle"
-                    size="icon"
-                    className="!absolute top-2 right-2 !p-0 !size-9"
-                    onClick={() => {
-                      copyToClipboard(`${tailwindCSSOutput.globalsCSS}`);
-                    }}
-                  >
-                    <ClipboardList />
-                  </Button>
-                  <SyntaxHighlighter
-                    language="css"
-                    style={coldarkDark}
-                    customStyle={
-                      {
-                        padding: '1rem',
-                        marginTop: 0,
-                        background: 'rgb(32 37 46)',
-                        borderRadius: '0.5rem',
-                      } as React.CSSProperties
-                    }
-                  >
-                    {tailwindCSSOutput.globalsCSS}
-                  </SyntaxHighlighter>
+              </Tabs.Panel>
+            </Tabs>
+          ) : (
+            <Tabs key={'cssOutput'} defaultValue="css" className="h-auto grid gap-6 overflow-visible">
+              <Tabs.List className="sticky top-0 z-10">
+                <Tabs.Tab value="css">css</Tabs.Tab>
+              </Tabs.List>
+              <Tabs.Panel value="css" className=" overflow-hidden">
+                <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
+                  <div className="w-full">
+                    <Button
+                      type="button"
+                      variant="subtle"
+                      size="icon"
+                      className="!absolute top-2 right-2 !p-0 !size-9"
+                      onClick={() => {
+                        copyToClipboard(`${tailwindCSSOutput.globalsCSS}`);
+                      }}
+                    >
+                      <ClipboardList />
+                    </Button>
+                    <SyntaxHighlighter
+                      language="css"
+                      style={coldarkDark}
+                      customStyle={
+                        {
+                          padding: '1rem',
+                          marginTop: 0,
+                          background: 'rgb(32 37 46)',
+                          borderRadius: '0.5rem',
+                        } as React.CSSProperties
+                      }
+                    >
+                      {tailwindCSSOutput.globalsCSS}
+                    </SyntaxHighlighter>
+                  </div>
                 </div>
-              </div>
-            </Tabs.Panel>
-          </Tabs>
-        )
+              </Tabs.Panel>
+            </Tabs>
+          )}
+        </>
       ) : null}
     </div>
   );
