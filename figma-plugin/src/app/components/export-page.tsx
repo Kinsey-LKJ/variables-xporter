@@ -310,13 +310,13 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
                   alt="export-page-bg"
                 />
               </div>
-              <ScrollArea className=" flex-[0_0_100%] h-full min-w-0 p-8 overflow-y-hidden relative">
+              <ScrollArea className=" flex-[0_0_100%] h-full min-w-0 p-6 overflow-y-hidden relative">
                 <Welcome />
               </ScrollArea>
-              <ScrollArea className=" flex-[0_0_100%] h-full min-w-0 p-8 overflow-y-hidden relative">
+              <ScrollArea className=" flex-[0_0_100%] h-full min-w-0 p-6 overflow-y-hidden relative">
                 <Setup />
               </ScrollArea>
-              <ScrollArea className={`flex-[0_0_100%] h-full min-w-0 p-8 pb-0 relative `}>
+              <ScrollArea className={`flex-[0_0_100%] h-full min-w-0 p-6 pb-0 relative `}>
                 <Export tailwindCSSOutput={tailwindCSSOutput} exportFormat={formValues.exportFormat} />
               </ScrollArea>
             </div>

@@ -16,10 +16,9 @@ const Setup = () => {
   const formValus = form.values;
   return (
     <div className="w-full h-full overflow-y-hidden p-1">
-      <div className="grid gap-8">
+      <div className="grid gap-6">
         <div className="grid gap-3 text-center">
           <div className="text-4xl font-bold special-text">{textData.select_variables_to_export}</div>
-          {/* <div className=" text-sm">将 Figma Variables 导出为 Tailwind CSS Presets</div> */}
         </div>
 
         {collections ? (
@@ -36,16 +35,21 @@ const Setup = () => {
                 {...form.getInputProps('exportFormat')}
               />
 
-              {/* {formValus.exportFormat === 'Tailwind CSS V3' ? (
-                <a
-                  className=" text-xs justify-self-end text-blue-300 flex items-center justify-center"
-                  target="_blank"
-                  href="https://www.figma.com/community/file/1052575036916494414/tailwindcss-v3-4-3-design-system"
-                >
-                  {textData.tailwind_css_figma_template}
-                  <ArrowUpRight size={12} />
-                </a>
-              ) : null} */}
+              {(formValus.exportFormat === 'Tailwind CSS V4' || formValus.exportFormat === 'Tailwind CSS V3') && (
+
+                  <div className="text-xs px-1">
+                    {textData.tailwind_css_variable_naming_specification}
+                    <a
+                      className="text-blue-300 ml-1 inline-flex items-center"
+                      target="_blank"
+                      href="https://www.variables-xporter.com/docs/organizing-your-variables"
+                    >
+                      {textData.view_our_variable_organization_suggestions}
+                      <ArrowUpRight size={12} className="ml-1" />
+                    </a>
+                  </div>
+
+              )}
             </div>
             <Select
               size="sm"
@@ -58,31 +62,6 @@ const Setup = () => {
               {...form.getInputProps('selectCollectionID')}
             />
             <SelectVariableGroups collections={collections} variables={variables} />
-            {/* {formValus.selectVariableGroup.length > 0 ? (
-              <div className=" grid gap-2">
-                <Select
-                  size="sm"
-                  placeholder={textData.format}
-                  data={['Tailwind CSS V3', 'CSS Variables', 'Tailwind CSS V4']}
-                  comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
-                  maxDropdownHeight={200}
-                  className=" shadow-2xl"
-                  color="#C3FF36"
-                  {...form.getInputProps('exportFormat')}
-                />
-
-                {formValus.exportFormat === 'Tailwind CSS V3' ? (
-                  <a
-                    className=" text-xs justify-self-end text-blue-300 flex items-center justify-center"
-                    target="_blank"
-                    href="https://www.figma.com/community/file/1052575036916494414/tailwindcss-v3-4-3-design-system"
-                  >
-                    {textData.tailwind_css_figma_template}
-                    <ArrowUpRight size={12} />
-                  </a>
-                ) : null}
-              </div>
-            ) : null} */}
           </div>
         ) : null}
       </div>

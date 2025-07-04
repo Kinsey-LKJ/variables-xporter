@@ -28,7 +28,7 @@ const Setting = ({ windowSizeMap }: { windowSizeMap: { [key: string]: { width: n
   };
 
   return (
-    <div className="grid gap-8">
+    <div className="grid gap-6">
       {/* <div className="flex items-center justify-between gap-2">
         前缀
         <Switch size="md" />
