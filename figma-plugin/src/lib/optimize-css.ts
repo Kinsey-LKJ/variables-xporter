@@ -2,7 +2,7 @@
 import * as csstree from 'css-tree';
 
 /**
- * 通用 CSS 变量引用链优化 - 不依赖任何特定变量名
+ * 通用 CSS Variables引用链优化 - 不依赖任何特定变量名
  */
 export function optimizeCSSVariableReferences(cssText: string) {
   try {
@@ -273,7 +273,7 @@ export function optimizeCSSVariableReferences(cssText: string) {
     }
     
     // 6. 生成优化后的 CSS
-    console.log('CSS 变量引用优化完成');
+    console.log('CSS Variables引用优化完成');
     return csstree.generate(ast);
   } catch (error) {
     console.error('CSS 处理出错:', error);

@@ -702,7 +702,7 @@ function sanitizeCollectionName(name: string): string {
   );
 }
 
-// 帮助函数：获取变量的 CSS 变量名
+// 帮助函数：获取变量的 CSS Variables 名
 function getVariableCSSName(
   variable: { name: string; collection: TVariableCollection },
   originalCollection: TVariableCollection,
@@ -1570,7 +1570,7 @@ export async function generateThemeFiles(
       rootElementSize,
       selectCollectionID
     );
-    // 应用 CSS 变量引用优化
+    // 应用 CSS Variables引用优化
     // css = optimizeCSSVariableReferences(css);
     
     const tailwindConfig = generateTailwindConfig(results, exportFormat);
