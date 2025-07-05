@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { AppContext } from './App';
 import { ArrowUpRight } from 'lucide-react';
 import { useMantineTheme } from '@mantine/core';
+import { ExportFormat } from '@/src/types/app';
 
 const Setup = () => {
   const { textData, collections, variables } = useContext(AppContext);
@@ -14,6 +15,16 @@ const Setup = () => {
 
   const form = useVariableFormContext();
   const formValus = form.values;
+
+  // 定义所有可用的导出格式
+  const exportFormatOptions: Array<{ value: ExportFormat; label: string }> = [
+    { value: 'Tailwind CSS V3', label: 'Tailwind CSS V3' },
+    { value: 'Tailwind CSS V4', label: 'Tailwind CSS V4' },
+    { value: 'CSS Variables', label: 'CSS Variables' },
+    { value: 'shadcn/ui (Tailwind CSS V3)', label: 'shadcn/ui (Tailwind CSS V3)' },
+    { value: 'shadcn/ui (Tailwind CSS V4)', label: 'shadcn/ui (Tailwind CSS V4)' },
+  ];
+
   return (
     <div className="w-full h-full overflow-y-hidden p-1">
       <div className="grid gap-6">
@@ -27,7 +38,7 @@ const Setup = () => {
               <Select
                 size="sm"
                 placeholder={textData.format}
-                data={['Tailwind CSS V3', 'CSS Variables', 'Tailwind CSS V4']}
+                data={exportFormatOptions}
                 comboboxProps={{ transitionProps: { transition: 'pop', duration: 200 } }}
                 maxDropdownHeight={200}
                 className=" shadow-2xl"
@@ -35,7 +46,10 @@ const Setup = () => {
                 {...form.getInputProps('exportFormat')}
               />
 
-              {(formValus.exportFormat === 'Tailwind CSS V4' || formValus.exportFormat === 'Tailwind CSS V3') && (
+              {(formValus.exportFormat === 'Tailwind CSS V4' || 
+                formValus.exportFormat === 'Tailwind CSS V3' ||
+                formValus.exportFormat === 'shadcn/ui (Tailwind CSS V3)' ||
+                formValus.exportFormat === 'shadcn/ui (Tailwind CSS V4)') && (
 
                   <div className="text-xs px-1">
                     {textData.tailwind_css_variable_naming_specification}

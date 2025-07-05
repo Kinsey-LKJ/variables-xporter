@@ -64,6 +64,74 @@ const nonUnits = [
   'font-weight', // 整数
 ];
 
+const tailiwndcssV3ShadcnUiThemeList = new Set([
+  'colors-background',
+  'colors-foreground',
+  'colors-card',
+  'colors-card-foreground',
+  'colors-popover',
+  'colors-popover-foreground',
+  'colors-primary',
+  'colors-primary-foreground',
+  'colors-secondary',
+  'colors-secondary-foreground',
+  'colors-muted',
+  'colors-muted-foreground',
+  'colors-accent',
+  'colors-accent-foreground',
+  'colors-destructive',
+  'colors-border',
+  'colors-input',
+  'colors-ring',
+  'colors-chart-1',
+  'colors-chart-2',
+  'colors-chart-3',
+  'colors-chart-4',
+  'colors-chart-5',
+  'colors-sidebar',
+  'colors-sidebar-foreground',
+  'colors-sidebar-primary',
+  'colors-sidebar-primary-foreground',
+  'colors-sidebar-accent',
+  'colors-sidebar-accent-foreground',
+  'colors-sidebar-border',
+  'colors-sidebar-ring',
+]);
+
+const tailiwndcssV4ShadcnUiThemeList = new Set([
+  'color-background',
+  'color-foreground',
+  'color-card',
+  'color-card-foreground',
+  'color-popover',
+  'color-popover-foreground',
+  'color-primary',
+  'color-primary-foreground',
+  'color-secondary',
+  'color-secondary-foreground',
+  'color-muted',
+  'color-muted-foreground',
+  'color-accent',
+  'color-accent-foreground',
+  'color-destructive',
+  'color-border',
+  'color-input',
+  'color-ring',
+  'color-chart-1',
+  'color-chart-2',
+  'color-chart-3',
+  'color-chart-4',
+  'color-chart-5',
+  'color-sidebar',
+  'color-sidebar-foreground',
+  'color-sidebar-primary',
+  'color-sidebar-primary-foreground',
+  'color-sidebar-accent',
+  'color-sidebar-accent-foreground',
+  'color-sidebar-border',
+  'color-sidebar-ring',
+]);
+
 const figmaNameToKebabCase = (name: string): string => {
   const nameArray = name.split('/');
   const kebabCaseArray = nameArray.map((item) => changeCase.kebabCase(item));
@@ -96,7 +164,7 @@ export function processColorValue(value: ColorValue, format: ExportFormat): stri
   const g = Math.round(value.g * 255);
   const b = Math.round(value.b * 255);
 
-  if (format === 'Tailwind CSS V4') {
+  if (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)') {
     const oklch = convert([value.r, value.g, value.b], sRGB, OKLCH, [0, 0, 0]);
 
     // 优化数字显示格式的辅助函数
@@ -258,6 +326,7 @@ console.log('tailwindV4TypographyPropPattern', tailwindV4TypographyPropPattern);
 
 // 根据 Tailwind CSS 的命名规则，对变量名进行修正
 const variableNameCorrection = (name: string, format: ExportFormat): string => {
+  console.log(name);
   // 如果没有 / 符号，直接返回原名称
   if (!name.includes('/')) {
     return name;
@@ -270,7 +339,8 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
   const restParts = name.slice(name.indexOf('/'));
 
   // 根据 format 选择规则集
-  const rules = format === 'Tailwind CSS V4' ? tailwindv4Rule : tailwindv3Rule;
+  const rules =
+    format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)' ? tailwindv4Rule : tailwindv3Rule;
 
   // if (firstPart === 'font') {
   //   const fontVariableFirstPart = restParts.split('/')[1];
@@ -305,7 +375,7 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
     // 1. text/sm 或 font-size/sm
     // 2. text/sm/font-size 或 font-size/sm/font-size
     const fontSizeMatch = name.match(
-      format === 'Tailwind CSS V4'
+      format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)'
         ? new RegExp(`^text\\/([^/]+)(?:\\/(?:${fontSizePattern})?)?$`)
         : new RegExp(`^font-size\\/([^/]+)(?:\\/(?:${fontSizePattern})?)?$`)
     );
@@ -348,7 +418,7 @@ function processMergedFontConfigs(
     console.log('name', name);
 
     const fontMatch = name.match(
-      format === 'Tailwind CSS V4'
+      format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)'
         ? new RegExp(`^text\\/([^/]+)\\/(${tailwindV4TypographyPropPattern}|[Dd][Ee][Ff][Aa][Uu][Ll][Tt])$`)
         : new RegExp(`^font-size\\/([^/]+)\\/(${tailwindV3TypographyPropPattern}|[Dd][Ee][Ff][Aa][Uu][Ll][Tt])$`)
     );
@@ -394,7 +464,11 @@ function processMergedFontConfigs(
       delete fontConfigs[variant];
       // 移除这些变量的已使用标记
       for (const usedVar of usedVariables) {
-        if (usedVar.startsWith(`${format === 'Tailwind CSS V4' ? 'text' : 'font-size'}/${variant}/`)) {
+        if (
+          usedVar.startsWith(
+            `${format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)' ? 'text' : 'font-size'}/${variant}/`
+          )
+        ) {
           usedVariables.delete(usedVar);
         }
       }
@@ -706,7 +780,8 @@ function sanitizeCollectionName(name: string): string {
 function getVariableCSSName(
   variable: { name: string; collection: TVariableCollection },
   originalCollection: TVariableCollection,
-  shouldAppendCollectionName: boolean
+  shouldAppendCollectionName: boolean,
+  format: ExportFormat
 ): string {
   const cssNameKebabCase = variable.name
     .split('/')
@@ -717,12 +792,14 @@ function getVariableCSSName(
   const cssNameWithoutDefault = cssNameKebabCase.endsWith('-default')
     ? cssNameKebabCase.slice(0, -8) // 删除 '-default' (8个字符)
     : cssNameKebabCase;
+
+  const { name: cssNameProcessShadcnUiVariable } = processShadcnUiVariableName(cssNameWithoutDefault, format);
   if (variable.collection.id !== originalCollection.id && shouldAppendCollectionName) {
     const collectionName = sanitizeCollectionName(variable.collection.name);
-    return `${collectionName}-${cssNameWithoutDefault}`;
+    return `${collectionName}-${cssNameProcessShadcnUiVariable}`;
   }
 
-  return cssNameWithoutDefault;
+  return cssNameProcessShadcnUiVariable;
 }
 
 // 帮助函数：获取 mode 的 name 和所属集合
@@ -754,9 +831,11 @@ function generateCSSForMultipleVariables(
   rootElementSize: number = 16,
   selectCollectionID: string
 ): string {
-  const themeRootSelector = format === 'Tailwind CSS V4' ? '@theme' : ':root';
+  const themeRootSelector =
+    format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)' ? '@theme' : ':root';
   const css: string[] = [];
   const defaultValues: Map<string, string> = new Map();
+  const defaultValuesChanged: Map<string, string> = new Map(); // 经过 shadcn/ui 处理的变量
   const modeOverrides: Map<string, Set<string>> = new Map();
 
   // 创建变量到集合的映射
@@ -781,8 +860,11 @@ function generateCSSForMultipleVariables(
       return;
     }
 
-    let variableCSSName = getVariableCSSName(variable, originalCollection, appendCollectionName);
-    if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS V4') {
+    let variableCSSName = getVariableCSSName(variable, originalCollection, appendCollectionName, format);
+    if (
+      tailwindcssv4NeedUpdateVariablesName[variableCSSName] &&
+      (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)')
+    ) {
       variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
     }
 
@@ -807,7 +889,7 @@ function generateCSSForMultipleVariables(
               }
               return `.${modeName}`;
             })[0]
-          : themeRootSelector;
+          : getThemeRootSelector(variable, format);
 
       // 检查这个变量是否已经在这个选择器中处理过
       if (!processedVarsMap.has(selector)) {
@@ -836,9 +918,21 @@ function generateCSSForMultipleVariables(
       const declaration = `  --${variableCSSName}: ${processedValue};`;
 
       // 如果是默认选择器，只在没有默认值时设置
-      if (selector === themeRootSelector) {
-        if (!defaultValues.has(variableCSSName)) {
-          defaultValues.set(variableCSSName, declaration);
+      if (selector === getThemeRootSelector(variable, format)) {
+        // 直接检查最终变量名是否是标准的 shadcn/ui 变量
+        const isShadcnUiVariable = format === 'shadcn/ui (Tailwind CSS V4)' && 
+          tailiwndcssV4ShadcnUiThemeList.has(`color-${variableCSSName}`);
+        
+        if (isShadcnUiVariable) {
+          // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
+          if (!defaultValuesChanged.has(variableCSSName)) {
+            defaultValuesChanged.set(variableCSSName, declaration);
+          }
+        } else {
+          // 正常变量放入 defaultValues
+          if (!defaultValues.has(variableCSSName)) {
+            defaultValues.set(variableCSSName, declaration);
+          }
         }
       } else {
         if (!modeOverrides.has(selector)) {
@@ -875,7 +969,7 @@ function generateCSSForMultipleVariables(
                 }
                 return `.${modeName}`;
               })[0]
-            : themeRootSelector;
+            : getThemeRootSelector(variable, format);
 
         // 检查这个变量是否已经在这个选择器中处理过
         if (!processedVarsMap.has(selector)) {
@@ -890,13 +984,30 @@ function generateCSSForMultipleVariables(
         // 标记为已处理
         processedVarsMap.get(selector)!.add(variableCSSName);
 
-        const referencedVarName = getVariableCSSName(modeData.variable, originalCollection, appendCollectionName);
+        const referencedVarName = getVariableCSSName(
+          modeData.variable,
+          originalCollection,
+          appendCollectionName,
+          format
+        );
         const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
 
         // 如果是默认选择器，只在没有默认值时设置
-        if (selector === themeRootSelector) {
-          if (!defaultValues.has(variableCSSName)) {
-            defaultValues.set(variableCSSName, varReference);
+        if (selector === getThemeRootSelector(variable, format)) {
+          // 直接检查最终变量名是否是标准的 shadcn/ui 变量
+          const isShadcnUiVariable = format === 'shadcn/ui (Tailwind CSS V4)' && 
+            tailiwndcssV4ShadcnUiThemeList.has(`color-${variableCSSName}`);
+          
+          if (isShadcnUiVariable) {
+            // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
+            if (!defaultValuesChanged.has(variableCSSName)) {
+              defaultValuesChanged.set(variableCSSName, varReference);
+            }
+          } else {
+            // 正常变量放入 defaultValues
+            if (!defaultValues.has(variableCSSName)) {
+              defaultValues.set(variableCSSName, varReference);
+            }
           }
         } else {
           if (!modeOverrides.has(selector)) {
@@ -904,8 +1015,6 @@ function generateCSSForMultipleVariables(
           }
           modeOverrides.get(selector)!.add(varReference);
         }
-
-        console.log('varReference', varReference);
 
         // 如果引用的变量有值，继续处理
         if (modeData.value !== undefined) {
@@ -941,6 +1050,7 @@ function generateCSSForMultipleVariables(
   function processResult(
     result: Result,
     defaultValues: Map<string, string>,
+    defaultValuesChanged: Map<string, string>,
     modeOverrides: Map<string, Set<string>>,
     allCollections: TVariableCollection[],
     themeRootSelector: string,
@@ -952,8 +1062,16 @@ function generateCSSForMultipleVariables(
     // 处理默认模式
     const defaultMode = modes[initialVariable.collection.defaultModeId];
     if (defaultMode) {
-      let variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection, appendCollectionName);
-      if (tailwindcssv4NeedUpdateVariablesName[variableCSSName] && format === 'Tailwind CSS V4') {
+      let variableCSSName = getVariableCSSName(
+        initialVariable,
+        initialVariable.collection,
+        appendCollectionName,
+        format
+      );
+      if (
+        tailwindcssv4NeedUpdateVariablesName[variableCSSName] &&
+        (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)')
+      ) {
         variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
       }
       console.log('--------------处理默认模式---------------');
@@ -964,10 +1082,22 @@ function generateCSSForMultipleVariables(
         const referencedVarName = getVariableCSSName(
           defaultMode.variable,
           initialVariable.collection,
-          appendCollectionName
+          appendCollectionName,
+          format
         );
         const rootReference = `  --${variableCSSName}: var(--${referencedVarName});`;
-        defaultValues.set(variableCSSName, rootReference);
+        
+        // 直接检查最终变量名是否是标准的 shadcn/ui 变量
+        const isShadcnUiVariable = format === 'shadcn/ui (Tailwind CSS V4)' && 
+          tailiwndcssV4ShadcnUiThemeList.has(`color-${variableCSSName}`);
+        
+        if (isShadcnUiVariable) {
+          // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
+          defaultValuesChanged.set(variableCSSName, rootReference);
+        } else {
+          // 正常变量放入 defaultValues
+          defaultValues.set(variableCSSName, rootReference);
+        }
 
         if (defaultMode.value !== undefined) {
           processValue(
@@ -998,7 +1128,18 @@ function generateCSSForMultipleVariables(
               )
             : defaultMode.value;
         const declaration = `  --${variableCSSName}: ${processedValue};`;
-        defaultValues.set(variableCSSName, declaration);
+        
+        // 直接检查最终变量名是否是标准的 shadcn/ui 变量
+        const isShadcnUiVariable = format === 'shadcn/ui (Tailwind CSS V4)' && 
+          tailiwndcssV4ShadcnUiThemeList.has(`color-${variableCSSName}`);
+        
+        if (isShadcnUiVariable) {
+          // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
+          defaultValuesChanged.set(variableCSSName, declaration);
+        } else {
+          // 正常变量放入 defaultValues
+          defaultValues.set(variableCSSName, declaration);
+        }
       }
     }
 
@@ -1009,7 +1150,12 @@ function generateCSSForMultipleVariables(
         if (!modeData || modeId === initialVariable.collection.defaultModeId) continue;
         console.log('modes', modes);
         const parentModes = [modeId];
-        const variableCSSName = getVariableCSSName(initialVariable, initialVariable.collection, appendCollectionName);
+        const variableCSSName = getVariableCSSName(
+          initialVariable,
+          initialVariable.collection,
+          appendCollectionName,
+          format
+        );
 
         console.log('--------------处理其他模式---------------');
         console.log('variableCSSName', variableCSSName);
@@ -1019,7 +1165,8 @@ function generateCSSForMultipleVariables(
           const referencedVarName = getVariableCSSName(
             modeData.variable,
             initialVariable.collection,
-            appendCollectionName
+            appendCollectionName,
+            format
           );
           const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
 
@@ -1037,14 +1184,12 @@ function generateCSSForMultipleVariables(
                   }
                   return `.${modeName}`;
                 })[0]
-              : themeRootSelector;
+              : getThemeRootSelector(modeData.variable, format);
 
           if (!modeOverrides.has(selector)) {
             modeOverrides.set(selector, new Set());
           }
           modeOverrides.get(selector)!.add(varReference);
-
-          console.log('varReference', varReference);
 
           if (modeData.value !== undefined) {
             processValue(
@@ -1090,7 +1235,7 @@ function generateCSSForMultipleVariables(
                   }
                   return `.${modeName}`;
                 })[0]
-              : themeRootSelector;
+              : getThemeRootSelector(modeData.variable, format);
 
           if (!modeOverrides.has(selector)) {
             modeOverrides.set(selector, new Set());
@@ -1105,7 +1250,7 @@ function generateCSSForMultipleVariables(
 
   const tailwindcssv4NeedUpdateVariablesName: { [key: string]: string } = {};
 
-  if (format === 'Tailwind CSS V4') {
+  if (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)') {
     const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results, format);
     console.log('mergedFontConfig', mergedFontConfig);
 
@@ -1157,12 +1302,12 @@ function generateCSSForMultipleVariables(
       // }
 
       // 继续处理其他变量...
-      processResult(result, defaultValues, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
+      processResult(result, defaultValues, defaultValuesChanged, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
     }
   } else {
     // 非 Tailwind CSS V4 格式，使用原有的处理逻辑
     for (const result of results) {
-      processResult(result, defaultValues, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
+      processResult(result, defaultValues, defaultValuesChanged, modeOverrides, allCollections, themeRootSelector, useRemUnit, format);
     }
   }
 
@@ -1189,7 +1334,7 @@ function generateCSSForMultipleVariables(
       const collectionId = collectionOrder[i];
       const collection = allCollections.find((c) => c.id === collectionId);
       const declarations = groupedDeclarations.get(collectionId);
-      if (format === 'Tailwind CSS V4') {
+      if (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)') {
         if (declarations && declarations.length > 0) {
           if (collectionId === selectCollectionID) {
             css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
@@ -1226,6 +1371,39 @@ function generateCSSForMultipleVariables(
     css.push('}\n');
   }
 
+  // 处理经过 shadcn/ui 处理的变量（单独放在 :root 中）
+  if (defaultValuesChanged.size > 0) {
+    css.push('/* shadcn/ui Variables */');
+    css.push(':root {');
+
+    const currentCollectionId = results[0].initialVariable.collection.id;
+
+    // 对经过 shadcn/ui 处理的变量进行分组排序
+    const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
+      [...defaultValuesChanged.values()],
+      currentCollectionId,
+      variableCollectionMap,
+      currentCollectionId
+    );
+
+    // 按集合顺序输出变量
+    for (let i = 0; i < collectionOrder.length; i++) {
+      const collectionId = collectionOrder[i];
+      const collection = allCollections.find((c) => c.id === collectionId);
+      const declarations = groupedDeclarations.get(collectionId);
+      if (declarations && declarations.length > 0) {
+        css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
+        css.push(declarations.join('\n'));
+        // 如果不是最后一个集合，添加换行
+        if (i < collectionOrder.length - 1) {
+          css.push('');
+        }
+      }
+    }
+
+    css.push('}\n');
+  }
+
   if (defaultValuesCSSInOtherCollection) {
     defaultValuesCSSInOtherCollection += '\n';
     defaultValuesCSSInOtherCollection += '} \n';
@@ -1242,14 +1420,18 @@ function generateCSSForMultipleVariables(
     console.log('declarations', declarations);
     if (declarations?.size > 0) {
       css.push(`/* Mode Override */`);
-      if (format === 'Tailwind CSS V4' && selector.startsWith('@media')) {
+      if ((format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)') && selector.startsWith('@media')) {
         css.push(`${selector} {`);
       }
       if (selector.startsWith('@media')) {
-        if (format !== 'Tailwind CSS V4') {
+        if (format !== 'Tailwind CSS V4' && format !== 'shadcn/ui (Tailwind CSS V4)') {
           css.push(`${selector} {`);
         }
-        css.push(format === 'Tailwind CSS V4' ? ':root {' : themeRootSelector + ' {');
+        css.push(
+          format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)'
+            ? ':root {'
+            : themeRootSelector + ' {'
+        );
 
         // 对模式覆盖的值进行分组排序
         const { groupedDeclarations, collectionOrder } = sortCSSDeclarationsByCollection(
@@ -1275,7 +1457,7 @@ function generateCSSForMultipleVariables(
         }
 
         css.push('  }');
-        if (format !== 'Tailwind CSS V4') {
+        if (format !== 'Tailwind CSS V4' && format !== 'shadcn/ui (Tailwind CSS V4)') {
           css.push('}\n');
         }
       } else {
@@ -1308,7 +1490,7 @@ function generateCSSForMultipleVariables(
         css.push('}\n');
       }
 
-      if (format === 'Tailwind CSS V4' && selector.startsWith('@media')) {
+      if ((format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)') && selector.startsWith('@media')) {
         css.push('}\n');
         // css.push('}\n');
       }
@@ -1336,8 +1518,8 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
     ];
   }
 
-  function setNestedValue(obj: any, path: string[], value: string) {
-    console.log('setNestedValue', obj, path, value);
+  function setNestedValue(obj: any, path: string[], cssValue: string) {
+    console.log('setNestedValue', obj, path, cssValue);
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
       console.log('path[i]', path[i]);
@@ -1351,9 +1533,9 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
     }
 
     if (path[path.length - 1] === 'default') {
-      current['DEFAULT'] = value.replace('-default', '');
+      current['DEFAULT'] = cssValue.replace('-default', '');
     } else {
-      current[path[path.length - 1]] = value;
+      current[path[path.length - 1]] = cssValue;
     }
   }
 
@@ -1385,7 +1567,7 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
       }
 
       // 匹配 (font/)?property/xx 格式
-      const pattern = `^(font\\/|)(${format === 'Tailwind CSS V4' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})\\/([^/]+)$`;
+      const pattern = `^(font\\/|)(${format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})\\/([^/]+)$`;
       const match = name.match(new RegExp(pattern));
 
       if (match) {
@@ -1449,12 +1631,20 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
     } else {
       name = variable.name.split('/');
     }
+
+    const nameProcess = name.map((segment) => changeCase.kebabCase(segment)).join('-');
+    const { name: nameProcessShadcnUi } = processShadcnUiVariableName(nameProcess, format);
+
+    console.log('_____________________');
+    console.log(name, nameProcess, nameProcessShadcnUi);
+    console.log('_____________________');
+
     // 检查是否是颜色变量
     if (variable.resolvedDataType === 'COLOR') {
-      return `rgb(var(--${name.map((segment) => changeCase.kebabCase(segment)).join('-')}))`;
+      return `rgb(var(--${nameProcessShadcnUi}))`;
     }
     // 其他类型的变量保持原样
-    return `var(--${name.map((segment) => changeCase.kebabCase(segment)).join('-')})`;
+    return `var(--${nameProcessShadcnUi})`;
   }
 
   // 处理所有变量
@@ -1473,7 +1663,7 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
     // 检查是否是标准字体配置模式
     const fontMatch = name.match(
       new RegExp(
-        `^font\\/([^/]+)\\/(${format === 'Tailwind CSS V4' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})$`
+        `^font\\/([^/]+)\\/(${format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)' ? tailwindV4TypographyPropPattern : tailwindV3TypographyPropPattern})$`
       )
     );
     if (fontMatch) {
@@ -1572,7 +1762,7 @@ export async function generateThemeFiles(
     );
     // 应用 CSS Variables引用优化
     // css = optimizeCSSVariableReferences(css);
-    
+
     const tailwindConfig = generateTailwindConfig(results, exportFormat);
     return { css, tailwindConfig };
   } catch (error) {
@@ -1580,3 +1770,42 @@ export async function generateThemeFiles(
     throw error;
   }
 }
+
+const processShadcnUiVariableName = (name: string, format: ExportFormat): { name: string; isChange: boolean } => {
+  let isChange = false;
+  if (format !== 'shadcn/ui (Tailwind CSS V3)' && format !== 'shadcn/ui (Tailwind CSS V4)')
+    return { name: name, isChange: false };
+
+  if (format === 'shadcn/ui (Tailwind CSS V3)') {
+    // 如果以 -default 结尾，先去掉这个后缀再检查
+    const nameToCheck = name.endsWith('-default') ? name.slice(0, -8) : name;
+
+    if (tailiwndcssV3ShadcnUiThemeList.has(nameToCheck) && nameToCheck.startsWith('colors-')) {
+      console.log('shadcn/ui (Tailwind CSS V3) 匹配:', nameToCheck);
+      isChange = true;
+      return { name: nameToCheck.slice(7) + (name.endsWith('-default') ? '-default' : ''), isChange: isChange };
+    }
+  } else {
+    // 对 V4 也做相同处理
+    const nameToCheck = name.endsWith('-default') ? name.slice(0, -8) : name;
+
+    if (tailiwndcssV4ShadcnUiThemeList.has(nameToCheck) && nameToCheck.startsWith('color-')) {
+      isChange = true;
+      return { name: nameToCheck.slice(6) + (name.endsWith('-default') ? '-default' : ''), isChange: isChange };
+    }
+  }
+
+  return { name: name, isChange: isChange };
+};
+
+const getThemeRootSelector = (variable: { name: string; collection: TVariableCollection }, format: ExportFormat): string => {
+  if (format !== 'shadcn/ui (Tailwind CSS V4)' && format !== 'Tailwind CSS V4') return ':root';
+  if (format === 'Tailwind CSS V4') return '@theme';
+  const name = variable.name
+    .split('/')
+    .map((segment) => changeCase.kebabCase(segment))
+    .join('-');
+  const { isChange } = processShadcnUiVariableName(name, format);
+
+  return isChange ? ':root' : '@theme';
+};

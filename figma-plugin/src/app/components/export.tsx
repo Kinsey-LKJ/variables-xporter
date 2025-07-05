@@ -77,7 +77,7 @@ const Export = (props: ExportProps) => {
             </span>
             <span> {textData.export_feedback_message_part4}</span>
           </Text>
-          {exportFormat === 'Tailwind CSS V3' ? (
+          {exportFormat === 'Tailwind CSS V3' || exportFormat === 'shadcn/ui (Tailwind CSS V3)' ? (
             <Tabs key={'tailwindCSSOutput'} defaultValue="tw-config" className="h-auto grid gap-6 overflow-visible">
               <Tabs.List className="sticky top-0 z-10">
                 <Tabs.Tab value="tw-config">tailwind.config.js</Tabs.Tab>

@@ -148,7 +148,7 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
       ignoreTailwindColor: false,
       fileName: '',
       updateMessage: '',
-      exportFormat: 'Tailwind CSS V4',
+      exportFormat: 'shadcn/ui (Tailwind CSS V4)',
       windowSize: windowSize,
     },
   });
@@ -200,7 +200,7 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
             formValues.useRemUnit,
             formValues.selectVariableGroup,
             formValues.ignoreTailwindColor
-              ? formValues.exportFormat === 'Tailwind CSS V4'
+              ? formValues.exportFormat === 'Tailwind CSS V4' || formValues.exportFormat === 'shadcn/ui (Tailwind CSS V4)'
                 ? tailwindV4IgnoreGroup
                 : tailwindV3IgnoreGroup
               : [],
@@ -255,7 +255,7 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
             formValues.useRemUnit,
             formValues.selectVariableGroup,
             formValues.ignoreTailwindColor
-              ? formValues.exportFormat === 'Tailwind CSS V4'
+              ? formValues.exportFormat === 'Tailwind CSS V4' || formValues.exportFormat === 'shadcn/ui (Tailwind CSS V4)'
                 ? tailwindV4IgnoreGroup
                 : tailwindV3IgnoreGroup
               : [],
