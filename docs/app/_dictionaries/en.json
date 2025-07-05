@@ -1,11 +1,15 @@
 {
   "language": "English",
   "supportTailwindCssV4": "Support for Tailwind CSS V4",
-  "pluginHighlight": "Seamlessly integrate Figma Variables into Tailwind CSS or CSS Variables",
+  "pluginHighlight": "Seamlessly integrate Figma Variables into Tailwind CSS, CSS Variables or shadcn/ui projects",
   "start": "Get started",
   "learnMore": "Learn more",
   "exclusive": "Exclusively available",
   "features": {
+    "shadcnUi": {
+      "title": "shadcn/ui integration",
+      "description": "Make any shadcn/ui component have different brand colors, density modes, dark and light themes, and device modes, and easily meet your design system specifications"
+    },
     "multiMode": {
       "title": "Multi-mode support",
       "description": "Support for exporting compound multi-dimensional mode variables"
