@@ -220,6 +220,7 @@ code.text-\[\.9em\] {
   --primary: var(--theme-modes-primary);
   --primary-foreground: var(--theme-modes-primary-foreground);
 
+  --radius: var(--radius-modes-radius);
   --ring: var(--primary);
 
   --secondary: var(--color-fuchsia-200);
@@ -312,6 +313,9 @@ code.text-\[\.9em\] {
   --density-modes-spacing-8: 2rem;
   --density-modes-spacing-9: 2.25rem;
   --density-modes-spacing-px: 1px;
+
+  /* Collection: Radius Modes */
+  --radius-modes-radius: 0.625rem;
 } 
 
 /* Mode Override */
@@ -398,6 +402,18 @@ code.text-\[\.9em\] {
   --theme-modes-primary: var(--brand-modes-color-primary-dark);
   --theme-modes-primary-foreground: var(--brand-modes-color-primary-foreground-dark);
   --theme-modes-secondary: var(--brand-modes-color-secondary-dark);
+}
+
+/* Mode Override */
+.radius-large {
+  /* Collection: Radius Modes */
+  --radius-modes-radius: 1rem;
+}
+
+/* Mode Override */
+.radius-none {
+  /* Collection: Radius Modes */
+  --radius-modes-radius: 0rem;
 }
 
 

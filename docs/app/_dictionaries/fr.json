@@ -63,9 +63,31 @@
   "example": {
     "heading": "Exemple",
     "title": "Exemple",
-    "description": "Prise en charge des modes Sombre et Clair, ainsi que différentes densités et différentes configurations de marque.",
-    "note": "Les composants de l'exemple proviennent de shadcn/ui.",
+    "description": "Faites facilement en sorte que les composants shadcn/ui prennent en charge différents thèmes de couleurs de marque, modes de densité, thèmes sombres et clairs, et styles de bordure arrondis.",
+    "note": "En configurant simplement des variables dans Figma, vous pouvez faire en sorte que shadcn/ui respecte les spécifications de votre système de conception et soit facilement extensible.",
+    "checkInFigma": "Vérifier la configuration des Variables Figma",
     "default": "Par défaut",
-    "compact": "Compact"
+    "compact": "Compact",
+    "theme": {
+      "title": "Thème",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "density": {
+      "title": "Densité",
+      "compact": "Compact",
+      "default": "Par défaut"
+    },
+    "brand": {
+      "title": "Marque",
+      "a": "Marque A",
+      "b": "Marque B"
+    },
+    "radius": {
+      "title": "Rayon",
+      "none": "Aucun",
+      "small": "Petit",
+      "large": "Grand"
+    }
   }
 }

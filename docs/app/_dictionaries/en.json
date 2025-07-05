@@ -63,9 +63,31 @@
   "example": {
     "heading": "Example",
     "title": "Example",
-    "description": "Support for Dark and Light modes, as well as different densities and different brand configurations.",
-    "note": "The components in the example come from shadcn/ui.",
+    "description": "Easily make shadcn/ui components support different brand color themes, density modes, dark and light themes, and border radius styles.",
+    "note": "Simply set variables in Figma to make shadcn/ui comply with your design system specifications and easily extensible.",
+    "checkInFigma": "Check Figma Variables Configuration",
     "default": "Default",
-    "compact": "Compact"
+    "compact": "Compact",
+    "theme": {
+      "title": "Theme",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "density": {
+      "title": "Density",
+      "compact": "Compact",
+      "default": "Default"
+    },
+    "brand": {
+      "title": "Brand",
+      "a": "Brand A",
+      "b": "Brand B"
+    },
+    "radius": {
+      "title": "Radius",
+      "none": "None",
+      "small": "Small",
+      "large": "Large"
+    }
   }
 }
