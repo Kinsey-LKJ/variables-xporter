@@ -1,53 +1,76 @@
+import { Callout } from 'nextra/components'
+
+
 # shadcn/ui 集成
 
 Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma Variables 导出为 shadcn/ui 的主题配置(Tailwind CSS)，
 让任何 shadcn/ui 组件都能具有不同品牌颜色、密度模式、明暗主题等，让 shadcn/ui 轻松符合您的设计系统规范。
 
-## 先决条件
-### 1. 命名规范
+## 开始使用
+
+### 1. 检查命名规范
+
 您的 Figma Variables 需要符合 shadcn/ui 的命名规范，以下是完整的 shadcn/ui 变量命名和您应该在 Figma 中创建的变量的名称：
 
-  - --radius -> radius/DEFAULT [^1]
-  - --background -> colors/background/DEFAULT
-  - --foreground -> colors/foreground/DEFAULT
-  - --card -> colors/card/DEFAULT
-  - --card-foreground -> colors/card/foreground
-  - --popover -> colors/popover/DEFAULT
-  - --popover-foreground -> colors/popover/foreground
-  - --primary -> colors/primary/DEFAULT
-  - --primary-foreground -> colors/primary/foreground
-  - --secondary -> colors/secondary/DEFAULT
-  - --secondary-foreground -> colors/secondary/foreground
-  - --muted -> colors/muted/DEFAULT
-  - --muted-foreground -> colors/muted/foreground
-  - --accent -> colors/accent/DEFAULT
-  - --accent-foreground -> colors/accent/foreground
-  - --destructive -> colors/destructive/DEFAULT
-  - --border -> colors/border/DEFAULT
-  - --input -> colors/input/DEFAULT
-  - --ring -> colors/ring/DEFAULT
-  - --chart-1 -> colors/chart-1/DEFAULT
-  - --chart-2 -> colors/chart-2/DEFAULT
-  - --chart-3 -> colors/chart-3/DEFAULT
-  - --chart-4 -> colors/chart-4/DEFAULT
-  - --chart-5 -> colors/chart-5/DEFAULT
-  - --sidebar -> colors/sidebar/DEFAULT
-  - --sidebar-foreground -> colors/sidebar/foreground
-  - --sidebar-primary -> colors/sidebar/primary
-  - --sidebar-primary-foreground -> colors/sidebar/primary-foreground
-  - --sidebar-accent -> colors/sidebar/accent
-  - --sidebar-accent-foreground -> colors/sidebar/accent-foreground
-  - --sidebar-border -> colors/sidebar/border
-  - --sidebar-ring -> colors/sidebar/ring
+- --radius -> radius/DEFAULT [^1]
+- --background -> colors/background/DEFAULT
+- --foreground -> colors/foreground/DEFAULT
+- --card -> colors/card/DEFAULT
+- --card-foreground -> colors/card/foreground
+- --popover -> colors/popover/DEFAULT
+- --popover-foreground -> colors/popover/foreground
+- --primary -> colors/primary/DEFAULT
+- --primary-foreground -> colors/primary/foreground
+- --secondary -> colors/secondary/DEFAULT
+- --secondary-foreground -> colors/secondary/foreground
+- --muted -> colors/muted/DEFAULT
+- --muted-foreground -> colors/muted/foreground
+- --accent -> colors/accent/DEFAULT
+- --accent-foreground -> colors/accent/foreground
+- --destructive -> colors/destructive/DEFAULT
+- --border -> colors/border/DEFAULT
+- --input -> colors/input/DEFAULT
+- --ring -> colors/ring/DEFAULT
+- --chart-1 -> colors/chart-1/DEFAULT
+- --chart-2 -> colors/chart-2/DEFAULT
+- --chart-3 -> colors/chart-3/DEFAULT
+- --chart-4 -> colors/chart-4/DEFAULT
+- --chart-5 -> colors/chart-5/DEFAULT
+- --sidebar -> colors/sidebar/DEFAULT
+- --sidebar-foreground -> colors/sidebar/foreground
+- --sidebar-primary -> colors/sidebar/primary
+- --sidebar-primary-foreground -> colors/sidebar/primary-foreground
+- --sidebar-accent -> colors/sidebar/accent
+- --sidebar-accent-foreground -> colors/sidebar/accent-foreground
+- --sidebar-border -> colors/sidebar/border
+- --sidebar-ring -> colors/sidebar/ring
+
+<Callout type="info">
+  对于非 shadcn/ui 的变量，Variables Xporter 会将它们导出为 Tailwind CSS 配置。
+</Callout>
 
 ### 2. 选择对应的格式
+
 在导出格式中选择 shadcn/ui 及你所需的 Tailwind CSS 版本
+<figure className="mt-6 max-w-[400px]">
+  <>![选择 shadcn/ui 格式](/shadcn-ui/choose-shadcn-ui-format.png)</>
+  <figcaption>
+    选择 shadcn/ui 格式
+  </figcaption>
+</figure>
 
 ### 3. 导出
-点击导出按钮，Variables Xporter 会自动将您的 Figma Variables 导出为 shadcn/ui 的主题配置。
+
+选择需要导出的集合和变量组，点击导出按钮，Variables Xporter 会自动将您的 Figma Variables 导出为 shadcn/ui 的主题配置。
+<figure className="mt-6 max-w-[400px]">
+  <>![导出结果](/shadcn-ui/export-successful.png)</>
+  <figcaption>
+   导出结果
+  </figcaption>
+</figure>
 
 ### 4. 在 shadcn/ui 中使用
-将导出的配置文件复制到您的 shadcn/ui 项目的 Tailwind CSS 配置文件中，并根据您的需求进行调整。
 
+将导出的配置文件复制到您的 shadcn/ui 项目的 Tailwind CSS 配置文件中，并根据您的需求进行调整。
 
 [^1]: `DEFAULT` 关键字是组织变量层级的一种方式，[了解更多](/docs/organizing-your-variables/principles#use-default-value)
