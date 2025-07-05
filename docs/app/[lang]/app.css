@@ -54,12 +54,49 @@ code.text-\[\.9em\] {
   font-size: 14px;
 }
 
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
 /* Default Mode */
 @theme {
   /* Collection: Design Tokens */
-  --color-accent: var(--theme-modes-color-accent);
-  --color-accent-foreground: var(--theme-modes-color-accent-foreground);
-  --color-background: var(--theme-modes-color-background);
   --color-biloba-flower-100: oklch(0.914 0.043 285.5);
   --color-biloba-flower-200: oklch(0.843 0.081 284.5);
   --color-biloba-flower-300: oklch(0.771 0.121 284.7);
@@ -71,19 +108,11 @@ code.text-\[\.9em\] {
   --color-biloba-flower-800: oklch(0.415 0.184 287.9);
   --color-biloba-flower-900: oklch(0.37 0.142 288.3);
   --color-biloba-flower-950: oklch(0.265 0.092 292.3);
-  --color-border: var(--theme-modes-color-border);
   --color-border-muted: var(--theme-modes-color-border-muted);
-  --color-card: var(--theme-modes-color-background);
-  --color-card-foreground: var(--theme-modes-color-foreground);
-  --color-chart-1: var(--theme-modes-color-chart-1);
-  --color-chart-2: var(--theme-modes-color-chart-2);
-  --color-chart-3: var(--theme-modes-color-chart-3);
-  --color-chart-4: var(--theme-modes-color-chart-4);
   --color-cyan-300: oklch(0.865 0.115 207.1);
   --color-cyan-400: oklch(0.797 0.134 211.5);
   --color-cyan-500: oklch(0.715 0.126 215.2);
   --color-cyan-950: oklch(0.302 0.054 229.7);
-  --color-foreground: var(--theme-modes-color-foreground);
   --color-fuchsia-100: oklch(0.952 0.036 318.9);
   --color-fuchsia-200: oklch(0.903 0.073 319.6);
   --color-fuchsia-400: oklch(0.748 0.207 322.2);
@@ -94,40 +123,22 @@ code.text-\[\.9em\] {
   --color-green-100: oklch(0.962 0.043 156.7);
   --color-green-300: oklch(0.871 0.136 154.4);
   --color-green-400: oklch(0.8 0.182 151.7);
-  --color-input: var(--theme-modes-color-input);
-  --color-muted: var(--theme-modes-color-muted);
-  --color-muted-foreground: var(--theme-modes-color-muted-foreground);
-  --color-popover: var(--theme-modes-color-background);
-  --color-popover-foreground: var(--theme-modes-color-foreground);
-  --color-primary: var(--theme-modes-color-primary);
-  --color-primary-foreground: var(--theme-modes-color-primary-foreground);
   --color-purple-100: oklch(0.946 0.033 307.2);
   --color-purple-400: oklch(0.722 0.177 305.5);
   --color-red-100: oklch(0.936 0.031 17.7);
   --color-red-400: oklch(0.711 0.166 22.2);
-  --color-ring: var(--color-primary);
-  --color-secondary: var(--color-fuchsia-200);
-  --color-secondary-foreground: var(--color-fuchsia-950);
   --color-shadow: oklch(0.772 0.137 234.6);
-  --color-sidebar: var(--theme-modes-color-background);
-  --color-sidebar-accent: var(--theme-modes-color-accent);
-  --color-sidebar-accent-foreground: var(--theme-modes-color-accent-foreground);
-  --color-sidebar-border: var(--theme-modes-color-border);
-  --color-sidebar-foreground: var(--theme-modes-color-foreground);
-  --color-sidebar-primary: var(--theme-modes-color-primary);
-  --color-sidebar-primary-foreground: var(--theme-modes-color-primary-foreground);
-  --color-sidebar-ring: var(--theme-modes-color-primary);
   --color-tag-emerald-border: var(--color-green-400);
   --color-tag-emerald-foreground: var(--color-green-100);
   --color-tag-fuchsia-border: var(--color-fuchsia-400);
   --color-tag-fuchsia-foreground: var(--color-fuchsia-100);
-  --color-tag-primary-border: var(--color-primary);
-  --color-tag-primary-foreground: var(--color-foreground);
+  --color-tag-primary-border: var(--primary);
+  --color-tag-primary-foreground: var(--foreground);
   --color-tag-purple-border: var(--color-purple-400);
   --color-tag-purple-foreground: var(--color-purple-100);
   --color-tag-red-border: var(--color-red-400);
   --color-tag-red-foreground: var(--color-red-100);
-  --color-tag-secondary-border: var(--color-secondary);
+  --color-tag-secondary-border: var(--secondary);
   --color-tag-secondary-foreground: var(--color-fuchsia-100);
   --color-teal-200: oklch(0.91 0.093 180.4);
   --color-yellow-200: oklch(0.945 0.124 101.5);
@@ -181,24 +192,66 @@ code.text-\[\.9em\] {
 
 }
 
+/* shadcn/ui Variables */
+:root {
+  /* Collection: Design Tokens */
+  --accent: var(--theme-modes-accent);
+  --accent-foreground: var(--theme-modes-accent-foreground);
+
+  --background: var(--theme-modes-background);
+  --border: var(--theme-modes-border);
+
+  --card: var(--theme-modes-background);
+  --card-foreground: var(--theme-modes-foreground);
+  --chart-1: var(--theme-modes-chart-1);
+  --chart-2: var(--theme-modes-chart-2);
+  --chart-3: var(--theme-modes-chart-3);
+  --chart-4: var(--theme-modes-chart-4);
+
+  --foreground: var(--theme-modes-foreground);
+
+  --input: var(--theme-modes-input);
+
+  --muted: var(--theme-modes-muted);
+  --muted-foreground: var(--theme-modes-muted-foreground);
+
+  --popover: var(--theme-modes-background);
+  --popover-foreground: var(--theme-modes-foreground);
+  --primary: var(--theme-modes-primary);
+  --primary-foreground: var(--theme-modes-primary-foreground);
+
+  --ring: var(--primary);
+
+  --secondary: var(--color-fuchsia-200);
+  --secondary-foreground: var(--color-fuchsia-950);
+  --sidebar: var(--theme-modes-background);
+  --sidebar-accent: var(--theme-modes-accent);
+  --sidebar-accent-foreground: var(--theme-modes-accent-foreground);
+  --sidebar-border: var(--theme-modes-border);
+  --sidebar-foreground: var(--theme-modes-foreground);
+  --sidebar-primary: var(--theme-modes-primary);
+  --sidebar-primary-foreground: var(--theme-modes-primary-foreground);
+  --sidebar-ring: var(--theme-modes-primary);
+}
+
 :root{
   /* Collection: Theme Modes */
-  --theme-modes-color-accent: var(--brand-modes-color-accent-light);
-  --theme-modes-color-accent-foreground: var(--brand-modes-color-accent-foreground-light);
-  --theme-modes-color-background: var(--brand-modes-color-background-light);
-  --theme-modes-color-border: var(--brand-modes-color-border-light);
+  --theme-modes-accent: var(--brand-modes-color-accent-light);
+  --theme-modes-accent-foreground: var(--brand-modes-color-accent-foreground-light);
+  --theme-modes-background: var(--brand-modes-color-background-light);
+  --theme-modes-border: var(--brand-modes-color-border-light);
+  --theme-modes-chart-1: var(--theme-modes-primary);
+  --theme-modes-chart-2: var(--theme-modes-secondary);
+  --theme-modes-chart-3: var(--color-cyan-400);
+  --theme-modes-chart-4: var(--color-green-400);
   --theme-modes-color-border-muted: var(--brand-modes-color-border-muted-light);
-  --theme-modes-color-chart-1: var(--theme-modes-color-primary);
-  --theme-modes-color-chart-2: var(--theme-modes-color-secondary);
-  --theme-modes-color-chart-3: var(--color-cyan-400);
-  --theme-modes-color-chart-4: var(--color-green-400);
-  --theme-modes-color-foreground: var(--brand-modes-color-foreground-light);
-  --theme-modes-color-input: var(--brand-modes-color-input-light);
-  --theme-modes-color-muted: var(--brand-modes-color-muted-light);
-  --theme-modes-color-muted-foreground: var(--brand-modes-color-muted-foreground-light);
-  --theme-modes-color-primary: var(--brand-modes-color-primary-light);
-  --theme-modes-color-primary-foreground: var(--brand-modes-color-primary-foreground-light);
-  --theme-modes-color-secondary: var(--brand-modes-color-secondary-light);
+  --theme-modes-foreground: var(--brand-modes-color-foreground-light);
+  --theme-modes-input: var(--brand-modes-color-input-light);
+  --theme-modes-muted: var(--brand-modes-color-muted-light);
+  --theme-modes-muted-foreground: var(--brand-modes-color-muted-foreground-light);
+  --theme-modes-primary: var(--brand-modes-color-primary-light);
+  --theme-modes-primary-foreground: var(--brand-modes-color-primary-foreground-light);
+  --theme-modes-secondary: var(--brand-modes-color-secondary-light);
 
   /* Collection: Brand Modes */
   --brand-modes-color-accent-dark: oklch(0.294 0.037 264.7);
@@ -329,23 +382,24 @@ code.text-\[\.9em\] {
 /* Mode Override */
 .dark {
   /* Collection: Theme Modes */
-  --theme-modes-color-accent: var(--brand-modes-color-accent-dark);
-  --theme-modes-color-accent-foreground: var(--brand-modes-color-accent-foreground-dark);
-  --theme-modes-color-background: var(--brand-modes-color-background-dark);
-  --theme-modes-color-border: var(--brand-modes-color-border-dark);
+  --theme-modes-accent: var(--brand-modes-color-accent-dark);
+  --theme-modes-accent-foreground: var(--brand-modes-color-accent-foreground-dark);
+  --theme-modes-background: var(--brand-modes-color-background-dark);
+  --theme-modes-border: var(--brand-modes-color-border-dark);
+  --theme-modes-chart-1: var(--theme-modes-primary);
+  --theme-modes-chart-2: var(--theme-modes-secondary);
+  --theme-modes-chart-3: var(--color-teal-200);
+  --theme-modes-chart-4: var(--color-green-300);
   --theme-modes-color-border-muted: var(--brand-modes-color-border-muted-dark);
-  --theme-modes-color-chart-1: var(--theme-modes-color-primary);
-  --theme-modes-color-chart-2: var(--theme-modes-color-secondary);
-  --theme-modes-color-chart-3: var(--color-teal-200);
-  --theme-modes-color-chart-4: var(--color-green-300);
-  --theme-modes-color-foreground: var(--brand-modes-color-foreground-dark);
-  --theme-modes-color-input: var(--brand-modes-color-input-dark);
-  --theme-modes-color-muted: var(--brand-modes-color-muted-dark);
-  --theme-modes-color-muted-foreground: var(--brand-modes-color-muted-foreground-dark);
-  --theme-modes-color-primary: var(--brand-modes-color-primary-dark);
-  --theme-modes-color-primary-foreground: var(--brand-modes-color-primary-foreground-dark);
-  --theme-modes-color-secondary: var(--brand-modes-color-secondary-dark);
+  --theme-modes-foreground: var(--brand-modes-color-foreground-dark);
+  --theme-modes-input: var(--brand-modes-color-input-dark);
+  --theme-modes-muted: var(--brand-modes-color-muted-dark);
+  --theme-modes-muted-foreground: var(--brand-modes-color-muted-foreground-dark);
+  --theme-modes-primary: var(--brand-modes-color-primary-dark);
+  --theme-modes-primary-foreground: var(--brand-modes-color-primary-foreground-dark);
+  --theme-modes-secondary: var(--brand-modes-color-secondary-dark);
 }
+
 
 
 

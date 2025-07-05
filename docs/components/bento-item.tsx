@@ -25,7 +25,7 @@ const BentoItem = ({
         props.className
       )}
     >
-      <div className="w-full">{tag && <Tag color="primary">{tag}</Tag>}</div>
+      <div className="w-full">{tag && <Tag color="primary" className="z-10 relative">{tag}</Tag>}</div>
 
       <div className="absolute top-0 left-0 w-full h-full z-[1]">
         {children}
