@@ -65,71 +65,73 @@ const nonUnits = [
 ];
 
 const tailiwndcssV3ShadcnUiThemeList = new Set([
-  'colors-background',
-  'colors-foreground',
-  'colors-card',
-  'colors-card-foreground',
-  'colors-popover',
-  'colors-popover-foreground',
-  'colors-primary',
-  'colors-primary-foreground',
-  'colors-secondary',
-  'colors-secondary-foreground',
-  'colors-muted',
-  'colors-muted-foreground',
-  'colors-accent',
-  'colors-accent-foreground',
-  'colors-destructive',
-  'colors-border',
-  'colors-input',
-  'colors-ring',
-  'colors-chart-1',
-  'colors-chart-2',
-  'colors-chart-3',
-  'colors-chart-4',
-  'colors-chart-5',
-  'colors-sidebar',
-  'colors-sidebar-foreground',
-  'colors-sidebar-primary',
-  'colors-sidebar-primary-foreground',
-  'colors-sidebar-accent',
-  'colors-sidebar-accent-foreground',
-  'colors-sidebar-border',
-  'colors-sidebar-ring',
+  '[radius]-radius',
+  '[colors]-background',
+  '[colors]-foreground',
+  '[colors]-card',
+  '[colors]-card-foreground',
+  '[colors]-popover',
+  '[colors]-popover-foreground',
+  '[colors]-primary',
+  '[colors]-primary-foreground',
+  '[colors]-secondary',
+  '[colors]-secondary-foreground',
+  '[colors]-muted',
+  '[colors]-muted-foreground',
+  '[colors]-accent',
+  '[colors]-accent-foreground',
+  '[colors]-destructive',
+  '[colors]-border',
+  '[colors]-input',
+  '[colors]-ring',
+  '[colors]-chart-1',
+  '[colors]-chart-2',
+  '[colors]-chart-3',
+  '[colors]-chart-4',
+  '[colors]-chart-5',
+  '[colors]-sidebar',
+  '[colors]-sidebar-foreground',
+  '[colors]-sidebar-primary',
+  '[colors]-sidebar-primary-foreground',
+  '[colors]-sidebar-accent',
+  '[colors]-sidebar-accent-foreground',
+  '[colors]-sidebar-border',
+  '[colors]-sidebar-ring',
 ]);
 
 const tailiwndcssV4ShadcnUiThemeList = new Set([
-  'color-background',
-  'color-foreground',
-  'color-card',
-  'color-card-foreground',
-  'color-popover',
-  'color-popover-foreground',
-  'color-primary',
-  'color-primary-foreground',
-  'color-secondary',
-  'color-secondary-foreground',
-  'color-muted',
-  'color-muted-foreground',
-  'color-accent',
-  'color-accent-foreground',
-  'color-destructive',
-  'color-border',
-  'color-input',
-  'color-ring',
-  'color-chart-1',
-  'color-chart-2',
-  'color-chart-3',
-  'color-chart-4',
-  'color-chart-5',
-  'color-sidebar',
-  'color-sidebar-foreground',
-  'color-sidebar-primary',
-  'color-sidebar-primary-foreground',
-  'color-sidebar-accent',
-  'color-sidebar-accent-foreground',
-  'color-sidebar-border',
-  'color-sidebar-ring',
+  '[radius]-radius',
+  '[color]-background',
+  '[color]-foreground',
+  '[color]-card',
+  '[color]-card-foreground',
+  '[color]-popover',
+  '[color]-popover-foreground',
+  '[color]-primary',
+  '[color]-primary-foreground',
+  '[color]-secondary',
+  '[color]-secondary-foreground',
+  '[color]-muted',
+  '[color]-muted-foreground',
+  '[color]-accent',
+  '[color]-accent-foreground',
+  '[color]-destructive',
+  '[color]-border',
+  '[color]-input',
+  '[color]-ring',
+  '[color]-chart-1',
+  '[color]-chart-2',
+  '[color]-chart-3',
+  '[color]-chart-4',
+  '[color]-chart-5',
+  '[color]-sidebar',
+  '[color]-sidebar-foreground',
+  '[color]-sidebar-primary',
+  '[color]-sidebar-primary-foreground',
+  '[color]-sidebar-accent',
+  '[color]-sidebar-accent-foreground',
+  '[color]-sidebar-border',
+  '[color]-sidebar-ring',
 ]);
 
 const figmaNameToKebabCase = (name: string): string => {
@@ -920,8 +922,9 @@ function generateCSSForMultipleVariables(
       // 如果是默认选择器，只在没有默认值时设置
       if (selector === getThemeRootSelector(variable, format)) {
         // 直接检查最终变量名是否是标准的 shadcn/ui 变量
-        const isShadcnUiVariable = format === 'shadcn/ui (Tailwind CSS V4)' && 
-          tailiwndcssV4ShadcnUiThemeList.has(`color-${variableCSSName}`);
+        console.log(`🧪 [位置1] 判断 shadcn/ui 变量:`, { variableCSSName, format });
+        const { isChange: isShadcnUiVariable } = processShadcnUiVariableName(variableCSSName, format);
+        console.log(`🧪 [位置1] 判断结果:`, { variableCSSName, isShadcnUiVariable });
         
         if (isShadcnUiVariable) {
           // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
@@ -995,8 +998,9 @@ function generateCSSForMultipleVariables(
         // 如果是默认选择器，只在没有默认值时设置
         if (selector === getThemeRootSelector(variable, format)) {
           // 直接检查最终变量名是否是标准的 shadcn/ui 变量
-          const isShadcnUiVariable = format === 'shadcn/ui (Tailwind CSS V4)' && 
-            tailiwndcssV4ShadcnUiThemeList.has(`color-${variableCSSName}`);
+          console.log(`🧪 [位置2] 判断 shadcn/ui 变量:`, { variableCSSName, format });
+          const { isChange: isShadcnUiVariable } = processShadcnUiVariableName(variableCSSName, format);
+          console.log(`🧪 [位置2] 判断结果:`, { variableCSSName, isShadcnUiVariable });
           
           if (isShadcnUiVariable) {
             // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
@@ -1088,8 +1092,9 @@ function generateCSSForMultipleVariables(
         const rootReference = `  --${variableCSSName}: var(--${referencedVarName});`;
         
         // 直接检查最终变量名是否是标准的 shadcn/ui 变量
-        const isShadcnUiVariable = format === 'shadcn/ui (Tailwind CSS V4)' && 
-          tailiwndcssV4ShadcnUiThemeList.has(`color-${variableCSSName}`);
+        console.log(`🧪 [位置3] 判断 shadcn/ui 变量:`, { variableCSSName, format });
+        const { isChange: isShadcnUiVariable } = processShadcnUiVariableName(variableCSSName, format);
+        console.log(`🧪 [位置3] 判断结果:`, { variableCSSName, isShadcnUiVariable });
         
         if (isShadcnUiVariable) {
           // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
@@ -1130,8 +1135,9 @@ function generateCSSForMultipleVariables(
         const declaration = `  --${variableCSSName}: ${processedValue};`;
         
         // 直接检查最终变量名是否是标准的 shadcn/ui 变量
-        const isShadcnUiVariable = format === 'shadcn/ui (Tailwind CSS V4)' && 
-          tailiwndcssV4ShadcnUiThemeList.has(`color-${variableCSSName}`);
+        console.log(`🧪 [位置4] 判断 shadcn/ui 变量:`, { variableCSSName, format });
+        const { isChange: isShadcnUiVariable } = processShadcnUiVariableName(variableCSSName, format);
+        console.log(`🧪 [位置4] 判断结果:`, { variableCSSName, isShadcnUiVariable });
         
         if (isShadcnUiVariable) {
           // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
@@ -1776,25 +1782,57 @@ const processShadcnUiVariableName = (name: string, format: ExportFormat): { name
   if (format !== 'shadcn/ui (Tailwind CSS V3)' && format !== 'shadcn/ui (Tailwind CSS V4)')
     return { name: name, isChange: false };
 
-  if (format === 'shadcn/ui (Tailwind CSS V3)') {
-    // 如果以 -default 结尾，先去掉这个后缀再检查
-    const nameToCheck = name.endsWith('-default') ? name.slice(0, -8) : name;
+  // 检查是否以 -default 结尾
+  const hasDefaultSuffix = name.endsWith('-default');
+  const nameToCheck = hasDefaultSuffix ? name.slice(0, -8) : name;
+  
+  console.log(`🔍 processShadcnUiVariableName 调试:`, {
+    原始name: name,
+    nameToCheck: nameToCheck,
+    format: format,
+    hasDefaultSuffix: hasDefaultSuffix
+  });
+  
+  const themeList = format === 'shadcn/ui (Tailwind CSS V3)' 
+    ? tailiwndcssV3ShadcnUiThemeList 
+    : tailiwndcssV4ShadcnUiThemeList;
 
-    if (tailiwndcssV3ShadcnUiThemeList.has(nameToCheck) && nameToCheck.startsWith('colors-')) {
-      console.log('shadcn/ui (Tailwind CSS V3) 匹配:', nameToCheck);
-      isChange = true;
-      return { name: nameToCheck.slice(7) + (name.endsWith('-default') ? '-default' : ''), isChange: isChange };
-    }
-  } else {
-    // 对 V4 也做相同处理
-    const nameToCheck = name.endsWith('-default') ? name.slice(0, -8) : name;
+  console.log(`📋 主题列表:`, Array.from(themeList));
 
-    if (tailiwndcssV4ShadcnUiThemeList.has(nameToCheck) && nameToCheck.startsWith('color-')) {
-      isChange = true;
-      return { name: nameToCheck.slice(6) + (name.endsWith('-default') ? '-default' : ''), isChange: isChange };
+  // 遍历主题列表，查找匹配的模式
+  for (const themePattern of themeList) {
+    // 解析方括号格式：[type]-variableName
+    const match = themePattern.match(/^\[([^\]]+)\]-(.+)$/);
+    if (match) {
+      const [, type, variableName] = match;
+      
+      // 构建完整的变量名进行匹配
+      const fullVariableName = `${type}-${variableName}`;
+      
+      console.log(`🔍 检查模式:`, {
+        themePattern: themePattern,
+        type: type,
+        variableName: variableName,
+        fullVariableName: fullVariableName,
+        nameToCheck: nameToCheck,
+        完整匹配: fullVariableName === nameToCheck,
+        变量名匹配: variableName === nameToCheck
+      });
+      
+      // 检查是否匹配（支持两种方式：完整匹配或变量名匹配）
+      if (fullVariableName === nameToCheck || variableName === nameToCheck) {
+        console.log(`✅ shadcn/ui ${format} 匹配:`, `${nameToCheck} → ${themePattern}`);
+        isChange = true;
+        // 返回去掉类型前缀的变量名
+        return { 
+          name: variableName + (hasDefaultSuffix ? '-default' : ''), 
+          isChange: isChange 
+        };
+      }
     }
   }
 
+  console.log(`❌ 无匹配:`, nameToCheck);
   return { name: name, isChange: isChange };
 };
 
