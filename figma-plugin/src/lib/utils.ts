@@ -318,17 +318,17 @@ const tailwindV3TypographyPropPattern = Object.keys({ ...typographyPropertyMap, 
   .map((key) => key.replace(/[-]/g, '\\-'))
   .join('|');
 
-console.log('tailwindV3TypographyPropPattern', tailwindV3TypographyPropPattern);
+// console.log('tailwindV3TypographyPropPattern', tailwindV3TypographyPropPattern);
 
 const tailwindV4TypographyPropPattern = Object.keys({ ...typographyPropertyMap, ...tailwindv4Rule })
   .map((key) => key.replace(/[-]/g, '\\-'))
   .join('|');
 
-console.log('tailwindV4TypographyPropPattern', tailwindV4TypographyPropPattern);
+// console.log('tailwindV4TypographyPropPattern', tailwindV4TypographyPropPattern);
 
 // 根据 Tailwind CSS 的命名规则，对变量名进行修正
 const variableNameCorrection = (name: string, format: ExportFormat): string => {
-  console.log(name);
+  // console.log(name);
   // 如果没有 / 符号，直接返回原名称
   if (!name.includes('/')) {
     return name;
@@ -359,7 +359,7 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
   //   }
   // }
 
-  console.log('firstPart,restParts', firstPart, restParts);
+  // console.log('firstPart,restParts', firstPart, restParts);
 
   if (firstPart in rules) {
     // 获取所有值为 'fontSize' 的键
@@ -396,7 +396,7 @@ const variableNameCorrection = (name: string, format: ExportFormat): string => {
 function processMergedFontConfigs(
   results: Result[],
   format: ExportFormat,
-  ignoreTopLevelNames: boolean = true
+  ignoreTopLevelNames: boolean = false
 ): [Record<string, any>, Set<string>] {
   const fontConfigs: Record<
     string,
@@ -414,10 +414,10 @@ function processMergedFontConfigs(
   for (const result of results) {
     const { initialVariable } = result;
     const name = initialVariable.name;
-    console.log(name);
+    // console.log(name);
     // 检查是否是标准的字体配置
 
-    console.log('name', name);
+    // console.log('name', name);
 
     const fontMatch = name.match(
       format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)'
@@ -447,13 +447,21 @@ function processMergedFontConfigs(
           nameArray = name.split('/');
         }
 
-        const value = `var(--${nameArray.map((segment) => changeCase.kebabCase(segment)).join('-')})`;
+        console.log('nameArray', nameArray);
+
+        // 对于 fontSize 属性且变量名以 default 结尾时，去掉 default 部分
+        let processedNameArray = nameArray;
+        if (prop === 'fontSize' && nameArray[nameArray.length - 1].toLowerCase() === 'default') {
+          processedNameArray = nameArray.slice(0, -1);
+        }
+
+        const value = `var(--${processedNameArray.map((segment) => changeCase.kebabCase(segment)).join('-')})`;
         fontConfigs[variant][prop as keyof (typeof fontConfigs)[string]] = value;
-        console.log(value);
-        console.log(prop);
-        console.log('fontConfigs[variant]', fontConfigs[variant]);
+        // console.log(value);
+        // console.log(prop);
+        // console.log('fontConfigs[variant]', fontConfigs[variant]);
         if (fontConfigs[variant].fontSize || prop === 'fontSize') {
-          console.log('usedVariables.add(name)', name);
+          // console.log('usedVariables.add(name)', name);
           usedVariables.add(name);
         }
       }
@@ -490,8 +498,8 @@ function processMergedFontConfigs(
     mergedFontSize[variant] = Object.keys(settings).length > 0 ? [config.fontSize, settings] : config.fontSize;
   }
 
-  console.log('mergedFontSize', mergedFontSize);
-  console.log('fontConfigs', fontConfigs);
+  // console.log('mergedFontSize', mergedFontSize);
+  // console.log('fontConfigs', fontConfigs);
 
   return [mergedFontSize, usedVariables];
 }
@@ -641,7 +649,7 @@ function resolveVariables(
   const results: Result[] = [];
   const visitedVariableIds = new Set<string>();
 
-  console.log('ignoreGroup in resolveVariables', ignoreGroup);
+  // console.log('ignoreGroup in resolveVariables', ignoreGroup);
 
   const filtered = output.filter((item) => {
     return (
@@ -650,7 +658,7 @@ function resolveVariables(
     );
   });
 
-  console.log('filtered', filtered);
+  // console.log('filtered', filtered);
 
   for (const variable of filtered) {
     try {
@@ -922,9 +930,9 @@ function generateCSSForMultipleVariables(
       // 如果是默认选择器，只在没有默认值时设置
       if (selector === getThemeRootSelector(variable, format)) {
         // 直接检查最终变量名是否是标准的 shadcn/ui 变量
-        console.log(`🧪 [位置1] 判断 shadcn/ui 变量:`, { variableCSSName, format });
+        // console.log(`🧪 [位置1] 判断 shadcn/ui 变量:`, { variableCSSName, format });
         const { isChange: isShadcnUiVariable } = processShadcnUiVariableName(variableCSSName, format);
-        console.log(`🧪 [位置1] 判断结果:`, { variableCSSName, isShadcnUiVariable });
+        // console.log(`🧪 [位置1] 判断结果:`, { variableCSSName, isShadcnUiVariable });
         
         if (isShadcnUiVariable) {
           // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
@@ -997,10 +1005,10 @@ function generateCSSForMultipleVariables(
 
         // 如果是默认选择器，只在没有默认值时设置
         if (selector === getThemeRootSelector(variable, format)) {
-          // 直接检查最终变量名是否是标准的 shadcn/ui 变量
-          console.log(`🧪 [位置2] 判断 shadcn/ui 变量:`, { variableCSSName, format });
-          const { isChange: isShadcnUiVariable } = processShadcnUiVariableName(variableCSSName, format);
-          console.log(`🧪 [位置2] 判断结果:`, { variableCSSName, isShadcnUiVariable });
+                  // 直接检查最终变量名是否是标准的 shadcn/ui 变量
+        // console.log(`🧪 [位置2] 判断 shadcn/ui 变量:`, { variableCSSName, format });
+        const { isChange: isShadcnUiVariable } = processShadcnUiVariableName(variableCSSName, format);
+        // console.log(`🧪 [位置2] 判断结果:`, { variableCSSName, isShadcnUiVariable });
           
           if (isShadcnUiVariable) {
             // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
@@ -1078,7 +1086,7 @@ function generateCSSForMultipleVariables(
       ) {
         variableCSSName = tailwindcssv4NeedUpdateVariablesName[variableCSSName];
       }
-      console.log('--------------处理默认模式---------------');
+      // console.log('--------------处理默认模式---------------');
       // console.log('variableCSSName',variableCSSName);
 
       if (defaultMode.variable) {
@@ -1092,9 +1100,9 @@ function generateCSSForMultipleVariables(
         const rootReference = `  --${variableCSSName}: var(--${referencedVarName});`;
         
         // 直接检查最终变量名是否是标准的 shadcn/ui 变量
-        console.log(`🧪 [位置3] 判断 shadcn/ui 变量:`, { variableCSSName, format });
+        // console.log(`🧪 [位置3] 判断 shadcn/ui 变量:`, { variableCSSName, format });
         const { isChange: isShadcnUiVariable } = processShadcnUiVariableName(variableCSSName, format);
-        console.log(`🧪 [位置3] 判断结果:`, { variableCSSName, isShadcnUiVariable });
+        // console.log(`🧪 [位置3] 判断结果:`, { variableCSSName, isShadcnUiVariable });
         
         if (isShadcnUiVariable) {
           // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
@@ -1135,9 +1143,9 @@ function generateCSSForMultipleVariables(
         const declaration = `  --${variableCSSName}: ${processedValue};`;
         
         // 直接检查最终变量名是否是标准的 shadcn/ui 变量
-        console.log(`🧪 [位置4] 判断 shadcn/ui 变量:`, { variableCSSName, format });
+        // console.log(`🧪 [位置4] 判断 shadcn/ui 变量:`, { variableCSSName, format });
         const { isChange: isShadcnUiVariable } = processShadcnUiVariableName(variableCSSName, format);
-        console.log(`🧪 [位置4] 判断结果:`, { variableCSSName, isShadcnUiVariable });
+        // console.log(`🧪 [位置4] 判断结果:`, { variableCSSName, isShadcnUiVariable });
         
         if (isShadcnUiVariable) {
           // 经过 shadcn/ui 处理的变量放入 defaultValuesChanged
@@ -1154,7 +1162,7 @@ function generateCSSForMultipleVariables(
     if (modes) {
       for (const [modeId, modeData] of Object.entries(modes)) {
         if (!modeData || modeId === initialVariable.collection.defaultModeId) continue;
-        console.log('modes', modes);
+        // console.log('modes', modes);
         const parentModes = [modeId];
         const variableCSSName = getVariableCSSName(
           initialVariable,
@@ -1163,8 +1171,8 @@ function generateCSSForMultipleVariables(
           format
         );
 
-        console.log('--------------处理其他模式---------------');
-        console.log('variableCSSName', variableCSSName);
+        // console.log('--------------处理其他模式---------------');
+        // console.log('variableCSSName', variableCSSName);
 
         if (modeData.variable) {
           // 如果是引用其他变量
@@ -1252,21 +1260,21 @@ function generateCSSForMultipleVariables(
     }
   }
 
-  console.log('modeOverrides', modeOverrides);
+  // console.log('modeOverrides', modeOverrides);
 
   const tailwindcssv4NeedUpdateVariablesName: { [key: string]: string } = {};
 
   if (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)') {
     const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results, format);
-    console.log('mergedFontConfig', mergedFontConfig);
+    // console.log('mergedFontConfig', mergedFontConfig);
 
     for (const [variantName, config] of Object.entries(mergedFontConfig)) {
-      console.log('Tailwind CSS V4 config', config);
+      // console.log('Tailwind CSS V4 config', config);
       if (Array.isArray(config)) {
         const [fontSize, settings] = config as [string, Record<string, string>];
-        console.log('Tailwind CSS V4 fontSize', fontSize);
-        console.log('variantName', variantName);
-        console.log('settings', settings);
+        // console.log('Tailwind CSS V4 fontSize', fontSize);
+        // console.log('variantName', variantName);
+        // console.log('settings', settings);
 
         // // 提取原始值而不是变量名
         // const fontSizeValue = fontSize.match(/var\(--font-.*?-(size|fontSize)\)/i)
@@ -1277,7 +1285,7 @@ function generateCSSForMultipleVariables(
 
         if (settings) {
           for (const [prop, value] of Object.entries(settings)) {
-            console.log('variantName,prop', variantName, prop);
+            // console.log('variantName,prop', variantName, prop);
 
             // 对于符合条件的其他字体变量，更改为 Tailwind CSS V4 指定的格式
             tailwindcssv4NeedUpdateVariablesName[`text-${variantName}-${changeCase.kebabCase(prop)}`] =
@@ -1296,7 +1304,7 @@ function generateCSSForMultipleVariables(
       }
     }
 
-    console.log('Tailwind CSS V4 defaultValues', defaultValues);
+    // console.log('Tailwind CSS V4 defaultValues', defaultValues);
 
     // 处理每个结果
     for (const result of results) {
@@ -1418,12 +1426,12 @@ function generateCSSForMultipleVariables(
 
   // 对选择器进行排序
   const sortedSelectors = sortSelectors([...modeOverrides.keys()]);
-  console.log('sortedSelectors', sortedSelectors);
+  // console.log('sortedSelectors', sortedSelectors);
   const currentCollectionId = results[0].initialVariable.collection.id;
 
   for (const selector of sortedSelectors) {
     const declarations = modeOverrides.get(selector);
-    console.log('declarations', declarations);
+    // console.log('declarations', declarations);
     if (declarations?.size > 0) {
       css.push(`/* Mode Override */`);
       if ((format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)') && selector.startsWith('@media')) {
@@ -1482,7 +1490,7 @@ function generateCSSForMultipleVariables(
           const collectionId = collectionOrder[i];
           const collection = allCollections.find((c) => c.id === collectionId);
           const modeDeclarations = groupedDeclarations.get(collectionId);
-          console.log('modeDeclarations', modeDeclarations);
+          // console.log('modeDeclarations', modeDeclarations);
           if (modeDeclarations && modeDeclarations.length > 0) {
             css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
             css.push(modeDeclarations.join('\n'));
@@ -1525,12 +1533,12 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
   }
 
   function setNestedValue(obj: any, path: string[], cssValue: string) {
-    console.log('setNestedValue', obj, path, cssValue);
+    // console.log('setNestedValue', obj, path, cssValue);
     let current = obj;
     for (let i = 0; i < path.length - 1; i++) {
-      console.log('path[i]', path[i]);
-      console.log('current', current);
-      console.log('current[key]', current[path[i]]);
+      // console.log('path[i]', path[i]);
+      // console.log('current', current);
+      // console.log('current[key]', current[path[i]]);
       const key = path[i];
       if (!(key in current)) {
         current[key] = {};
@@ -1623,9 +1631,10 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
   }
 
   const config: Record<string, any> = {};
+  console.log('results', results);
   const [mergedFontConfig, usedVariables] = processMergedFontConfigs(results, format);
   console.log('mergedFontConfig', mergedFontConfig);
-  console.log('usedVariables', usedVariables);
+  // console.log('usedVariables', usedVariables);
   const fontProperties = processFontProperties(results, usedVariables, format);
   const topLevelFontConfig = processTopLevelFontConfigs(results, format);
 
@@ -1641,9 +1650,9 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
     const nameProcess = name.map((segment) => changeCase.kebabCase(segment)).join('-');
     const { name: nameProcessShadcnUi } = processShadcnUiVariableName(nameProcess, format);
 
-    console.log('_____________________');
-    console.log(name, nameProcess, nameProcessShadcnUi);
-    console.log('_____________________');
+    // console.log('_____________________');
+    // console.log(name, nameProcess, nameProcessShadcnUi);
+    // console.log('_____________________');
 
     // 检查是否是颜色变量
     if (variable.resolvedDataType === 'COLOR') {
@@ -1658,11 +1667,11 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
     const { initialVariable } = result;
     const name = initialVariable.name;
     const path = parseVariablePath(initialVariable.name);
-    console.log(name);
+    // console.log(name);
 
     // 如果这个变量已经被用于合并配置，则跳过
     if (usedVariables.has(name)) {
-      console.log('usedVariables.has(name)', name);
+      // console.log('usedVariables.has(name)', name);
       continue;
     }
 
@@ -1722,7 +1731,7 @@ function generateTailwindConfig(results: Result[], format: ExportFormat, ignoreT
     delete config.font;
   }
 
-  console.log(config);
+  // console.log(config);
 
   // 生成配置文件内容
   const configContent = `module.exports = {
@@ -1752,11 +1761,11 @@ export async function generateThemeFiles(
   rootElementSize: number = 16,
   selectCollectionID: string
 ): Promise<{ css: string; tailwindConfig: string }> {
-  console.log('ignoreGroup', ignoreGroup);
+  // console.log('ignoreGroup', ignoreGroup);
   try {
-    console.log('ignoreGroup', ignoreGroup);
+    // console.log('ignoreGroup', ignoreGroup);
     const results = resolveVariables(output, variables, collections, selectGroup, ignoreGroup, exportFormat);
-    console.log('results', results);
+    // console.log('results', results);
     let css = generateCSSForMultipleVariables(
       results,
       collections,
@@ -1786,18 +1795,18 @@ const processShadcnUiVariableName = (name: string, format: ExportFormat): { name
   const hasDefaultSuffix = name.endsWith('-default');
   const nameToCheck = hasDefaultSuffix ? name.slice(0, -8) : name;
   
-  console.log(`🔍 processShadcnUiVariableName 调试:`, {
-    原始name: name,
-    nameToCheck: nameToCheck,
-    format: format,
-    hasDefaultSuffix: hasDefaultSuffix
-  });
+  // console.log(`🔍 processShadcnUiVariableName 调试:`, {
+  //   原始name: name,
+  //   nameToCheck: nameToCheck,
+  //   format: format,
+  //   hasDefaultSuffix: hasDefaultSuffix
+  // });
   
   const themeList = format === 'shadcn/ui (Tailwind CSS V3)' 
     ? tailiwndcssV3ShadcnUiThemeList 
     : tailiwndcssV4ShadcnUiThemeList;
 
-  console.log(`📋 主题列表:`, Array.from(themeList));
+  // console.log(`📋 主题列表:`, Array.from(themeList));
 
   // 遍历主题列表，查找匹配的模式
   for (const themePattern of themeList) {
@@ -1809,19 +1818,19 @@ const processShadcnUiVariableName = (name: string, format: ExportFormat): { name
       // 构建完整的变量名进行匹配
       const fullVariableName = `${type}-${variableName}`;
       
-      console.log(`🔍 检查模式:`, {
-        themePattern: themePattern,
-        type: type,
-        variableName: variableName,
-        fullVariableName: fullVariableName,
-        nameToCheck: nameToCheck,
-        完整匹配: fullVariableName === nameToCheck,
-        变量名匹配: variableName === nameToCheck
-      });
+      // console.log(`🔍 检查模式:`, {
+      //   themePattern: themePattern,
+      //   type: type,
+      //   variableName: variableName,
+      //   fullVariableName: fullVariableName,
+      //   nameToCheck: nameToCheck,
+      //   完整匹配: fullVariableName === nameToCheck,
+      //   变量名匹配: variableName === nameToCheck
+      // });
       
       // 检查是否匹配（支持两种方式：完整匹配或变量名匹配）
       if (fullVariableName === nameToCheck || variableName === nameToCheck) {
-        console.log(`✅ shadcn/ui ${format} 匹配:`, `${nameToCheck} → ${themePattern}`);
+        // console.log(`✅ shadcn/ui ${format} 匹配:`, `${nameToCheck} → ${themePattern}`);
         isChange = true;
         // 返回去掉类型前缀的变量名
         return { 
@@ -1832,7 +1841,7 @@ const processShadcnUiVariableName = (name: string, format: ExportFormat): { name
     }
   }
 
-  console.log(`❌ 无匹配:`, nameToCheck);
+  // console.log(`❌ 无匹配:`, nameToCheck);
   return { name: name, isChange: isChange };
 };
 
