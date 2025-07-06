@@ -1,10 +1,10 @@
-import { Callout } from 'nextra/components'
-
+import { Callout, Cards } from "nextra/components";
+import { BookOpenCheck } from "lucide-react";
 
 # shadcn/ui 集成
 
 Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma Variables 导出为 shadcn/ui 的主题配置(Tailwind CSS)，
-让任何 shadcn/ui 组件都能具有不同品牌颜色、密度模式、明暗主题等，让 shadcn/ui 轻松符合您的设计系统规范。
+让任何 shadcn/ui 组件都能具有不同品牌颜色、密度模式、明暗主题等，帮助您创建您的设计系统。
 
 ## 开始使用
 
@@ -49,24 +49,31 @@ Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma
   对于非 shadcn/ui 的变量，Variables Xporter 会将它们导出为 Tailwind CSS 配置。
 </Callout>
 
+了解 Figma 变量组织建议：
+
+<Cards.Card
+  icon={<BookOpenCheck />}
+  title="Figma 变量组织建议"
+  href="/docs/organizing-your-variables"
+  className="mt-4"
+/>
+
 ### 2. 选择对应的格式
 
 在导出格式中选择 shadcn/ui 及你所需的 Tailwind CSS 版本
+
 <figure className="mt-6 max-w-[400px]">
   <>![选择 shadcn/ui 格式](/shadcn-ui/choose-shadcn-ui-format.png)</>
-  <figcaption>
-    选择 shadcn/ui 格式
-  </figcaption>
+  <figcaption>选择 shadcn/ui 格式</figcaption>
 </figure>
 
 ### 3. 导出
 
 选择需要导出的集合和变量组，点击导出按钮，Variables Xporter 会自动将您的 Figma Variables 导出为 shadcn/ui 的主题配置。
+
 <figure className="mt-6 max-w-[400px]">
   <>![导出结果](/shadcn-ui/export-successful.png)</>
-  <figcaption>
-   导出结果
-  </figcaption>
+  <figcaption>导出结果</figcaption>
 </figure>
 
 ### 4. 在 shadcn/ui 中使用

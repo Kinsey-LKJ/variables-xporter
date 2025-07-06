@@ -1,0 +1,100 @@
+---
+title: shadcn/ui (Tailwind CSS V4)
+---
+
+import { BookOpenCheck } from "lucide-react";
+import { Cards } from "nextra/components";
+
+# shadcn/ui (Tailwind CSS V4)
+
+Export Figma Variables as your custom shadcn/ui theme variables, supporting the latest Tailwind CSS V4. After selecting this export mode, you will get one file:
+- `app.css` - containing your custom shadcn/ui theme variables and Tailwind CSS configuration
+
+## Features and Optimizations
+### 1. Export shadcn/ui Theme Variables
+Variables Xporter will export clean shadcn/ui theme variables, helping you quickly build your Design System.
+```css
+/* shadcn/ui Variables */
+:root {
+  /* Collection: Design Tokens */
+  --accent: var(--theme-modes-accent);
+  --accent-foreground: var(--theme-modes-accent-foreground);
+
+  --background: var(--theme-modes-background);
+  --border: var(--theme-modes-border);
+
+  --card: var(--theme-modes-background);
+  --card-foreground: var(--theme-modes-foreground);
+  --chart-1: var(--theme-modes-chart-1);
+  --chart-2: var(--theme-modes-chart-2);
+  --chart-3: var(--theme-modes-chart-3);
+  --chart-4: var(--theme-modes-chart-4);
+
+  --foreground: var(--theme-modes-foreground);
+
+  --input: var(--theme-modes-input);
+
+  --muted: var(--theme-modes-muted);
+  --muted-foreground: var(--theme-modes-muted-foreground);
+
+  --popover: var(--theme-modes-background);
+  --popover-foreground: var(--theme-modes-foreground);
+  --primary: var(--theme-modes-primary);
+  --primary-foreground: var(--theme-modes-primary-foreground);
+
+  --radius: var(--radius-modes-radius);
+  --ring: var(--primary);
+
+  --secondary: var(--color-fuchsia-200);
+  --secondary-foreground: var(--color-fuchsia-950);
+  --sidebar: var(--theme-modes-background);
+  --sidebar-accent: var(--theme-modes-accent);
+  --sidebar-accent-foreground: var(--theme-modes-accent-foreground);
+  --sidebar-border: var(--theme-modes-border);
+  --sidebar-foreground: var(--theme-modes-foreground);
+  --sidebar-primary: var(--theme-modes-primary);
+  --sidebar-primary-foreground: var(--theme-modes-primary-foreground);
+  --sidebar-ring: var(--theme-modes-primary);
+}
+
+```
+
+
+### 2. Export Tailwind CSS Configuration
+For Tailwind CSS configuration, Variables Xporter will also export it together, ensuring the completeness of Design Tokens.
+```css
+/* Default Mode */
+@theme {
+  /* Collection: Design Tokens */
+  --text-body: 1.125rem;
+  --text-body--font-weight: 400;
+  --text-body--line-height: 100%;
+  --text-display: 5rem;
+  --text-display--font-weight: 800;
+  --text-display--line-height: 100%;
+  --text-heading: 2.25rem;
+  --text-heading--font-weight: 400;
+  --text-heading--line-height: 130%;
+  --text-title: 2rem;
+  --text-title--font-weight: 400;
+  --text-title--line-height: 100%;
+}
+```
+
+
+## Variable Organization Suggestions
+
+To ensure perfect export of Figma Variables, variable naming needs to follow certain rules, as they need to conform to shadcn/ui theme variable naming and correspond to Tailwind CSS configuration keys. Good variable organization can bring many benefits:
+
+- Improve variable maintainability
+- Maintain design system consistency
+- Facilitate team collaboration
+
+Check out the shadcn/ui integration guide:
+
+  <Cards.Card
+    icon={<BookOpenCheck />}
+    title="shadcn/ui Integration"
+    href="/docs/shadcn-ui"
+    className="mt-4"
+  /> 

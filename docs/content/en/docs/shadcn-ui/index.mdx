@@ -1,8 +1,9 @@
-import { Callout } from 'nextra/components'
+import { Callout, Cards } from "nextra/components";
+import { BookOpenCheck } from "lucide-react";
 
 # shadcn/ui Integration
 
-Variables Xporter is the first plugin to deeply integrate with shadcn/ui, capable of exporting Figma Variables as shadcn/ui theme configurations (Tailwind CSS), allowing any shadcn/ui component to have different brand colors, density modes, light/dark themes, and more, making shadcn/ui easily conform to your design system specifications.
+Variables Xporter is the first plugin to deeply integrate with shadcn/ui, capable of exporting Figma Variables as shadcn/ui theme configurations (Tailwind CSS), allowing any shadcn/ui component to have different brand colors, density modes, light/dark themes, and more, help you create your design system.
 
 ## Getting Started
 
@@ -46,6 +47,15 @@ Your Figma Variables need to follow shadcn/ui naming conventions. Here are the c
 <Callout type="info">
   For non-shadcn/ui variables, Variables Xporter will export them as Tailwind CSS configuration.
 </Callout>
+
+Learn about Figma variable organization suggestions:
+
+<Cards.Card
+  icon={<BookOpenCheck />}
+  title="Figma Variable Organization Suggestions"
+  href="/docs/organizing-your-variables"
+  className="mt-4"
+/>
 
 ### 2. Select the Corresponding Format
 

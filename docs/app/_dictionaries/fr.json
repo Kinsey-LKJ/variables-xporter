@@ -8,7 +8,7 @@
   "features": {
     "shadcnUi": {
       "title": "Intégration shadcn/ui",
-      "description": "Faites en sorte que tous les composants shadcn/ui soient dotés de couleurs, de modes de densité, de thèmes sombres et clairs, et de modes d'appareils, et de manière à ce qu'ils correspondent à vos normes de conception"
+      "description": "Faites en sorte que tous les composants shadcn/ui soient dotés de couleurs, de modes de densité, de thèmes sombres et clairs, et de modes d'appareils, et vous aide à créer votre système de conception"
     },
     "multiMode": {
       "title": "Prise en charge multi-modes",
@@ -64,7 +64,7 @@
     "heading": "Exemple",
     "title": "Exemple",
     "description": "Faites facilement en sorte que les composants shadcn/ui prennent en charge différents thèmes de couleurs de marque, modes de densité, thèmes sombres et clairs, et styles de bordure arrondis.",
-    "note": "En configurant simplement des variables dans Figma, vous pouvez faire en sorte que shadcn/ui respecte les spécifications de votre système de conception et soit facilement extensible.",
+    "note": "En configurant simplement des variables dans Figma, vous pouvez utiliser shadcn/ui pour créer votre système de conception et soit facilement extensible.",
     "checkInFigma": "Vérifier la configuration des Variables Figma",
     "default": "Par défaut",
     "compact": "Compact",

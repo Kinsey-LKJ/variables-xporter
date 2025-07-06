@@ -8,7 +8,7 @@
   "features": {
     "shadcnUi": {
       "title": "shadcn/ui 集成",
-      "description": "让任何 shadcn/ui 组件都具有不同品牌颜色、密度模式、明暗主题，轻松符合您的设计系统规范"
+      "description": "让任何 shadcn/ui 组件都具有不同品牌颜色、密度模式、明暗主题，帮助您创建您的设计系统"
     },
     "multiMode": {
       "title": "多模式支持",
@@ -64,7 +64,7 @@
     "heading": "示例",
     "title": "示例",
     "description": "轻松让 shadcn/ui 组件支持不同的品牌色主题、密度模式、明暗主题以及圆角风格。",
-    "note": "通过在 Figma 中简单的设置变量，就能让 shadcn/ui 符合您的设计系统规范，并易于扩展。",
+    "note": "通过在 Figma 中简单的设置变量，就能使用 shadcn/ui 创建您的设计系统，并易于扩展。",
     "checkInFigma": "查看 Figma Variables 配置",
     "default": "默认",
     "compact": "紧凑",
