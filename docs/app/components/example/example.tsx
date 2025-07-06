@@ -109,7 +109,7 @@ const Example = ({ params, dictionary }: ExampleProps) => {
 
       <Button asChild className="w-fit">
           <Link
-            href="https://www.figma.com/design/1234567890/Example"
+            href="https://www.figma.com/community/file/1522188131593288033"
             target="_blank"
           >
             {dictionary.example.checkInFigma}
