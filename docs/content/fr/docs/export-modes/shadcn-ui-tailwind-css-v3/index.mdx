@@ -1,0 +1,124 @@
+---
+title: shadcn/ui (Tailwind CSS V3)
+---
+
+import { BookOpenCheck } from "lucide-react";
+import { Cards } from "nextra/components";
+
+# shadcn/ui (Tailwind CSS V3)
+
+Exportez les Variables Figma en tant que variables de thème shadcn/ui personnalisées. Si votre shadcn/ui utilise encore Tailwind V3, veuillez sélectionner ce mode d'exportation. Après avoir sélectionné ce mode d'exportation, vous obtiendrez deux fichiers :
+
+- `tailwind.config.js` - contenant votre configuration Tailwind CSS
+- `global.css` - contenant vos variables de thème shadcn/ui personnalisées
+
+## Fonctionnalités et Optimisations
+
+### 1. Exporter les Variables de Thème shadcn/ui
+
+Variables Xporter exportera des variables de thème shadcn/ui propres, vous aidant à construire rapidement votre Design System.
+
+```css
+/* shadcn/ui Variables */
+:root {
+  /* Collection: Design Tokens */
+  --accent: var(--theme-modes-accent);
+  --accent-foreground: var(--theme-modes-accent-foreground);
+
+  --background: var(--theme-modes-background);
+  --border: var(--theme-modes-border);
+
+  --card: var(--theme-modes-background);
+  --card-foreground: var(--theme-modes-foreground);
+  --chart-1: var(--theme-modes-chart-1);
+  --chart-2: var(--theme-modes-chart-2);
+  --chart-3: var(--theme-modes-chart-3);
+  --chart-4: var(--theme-modes-chart-4);
+
+  --foreground: var(--theme-modes-foreground);
+
+  --input: var(--theme-modes-input);
+
+  --muted: var(--theme-modes-muted);
+  --muted-foreground: var(--theme-modes-muted-foreground);
+
+  --popover: var(--theme-modes-background);
+  --popover-foreground: var(--theme-modes-foreground);
+  --primary: var(--theme-modes-primary);
+  --primary-foreground: var(--theme-modes-primary-foreground);
+
+  --radius: var(--radius-modes-radius);
+  --ring: var(--primary);
+
+  --secondary: var(--color-fuchsia-200);
+  --secondary-foreground: var(--color-fuchsia-950);
+  --sidebar: var(--theme-modes-background);
+  --sidebar-accent: var(--theme-modes-accent);
+  --sidebar-accent-foreground: var(--theme-modes-accent-foreground);
+  --sidebar-border: var(--theme-modes-border);
+  --sidebar-foreground: var(--theme-modes-foreground);
+  --sidebar-primary: var(--theme-modes-primary);
+  --sidebar-primary-foreground: var(--theme-modes-primary-foreground);
+  --sidebar-ring: var(--theme-modes-primary);
+}
+```
+
+### 2. Exporter la Configuration Tailwind CSS
+
+Pour la configuration Tailwind CSS, Variables Xporter l'exportera également ensemble, garantissant l'intégrité des Design Tokens.
+
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      fontSize: {
+        body: [
+          "var(--font-size-body)",
+          {
+            lineHeight: "var(--font-size-body-line-height)",
+            fontWeight: "var(--font-size-body-font-weight)",
+          },
+        ],
+        title: [
+          "var(--font-size-title)",
+          {
+            lineHeight: "var(--font-size-title-line-height)",
+            fontWeight: "var(--font-size-title-font-weight)",
+          },
+        ],
+        heading: [
+          "var(--font-size-heading)",
+          {
+            lineHeight: "var(--font-size-heading-line-height)",
+            fontWeight: "var(--font-size-heading-font-weight)",
+          },
+        ],
+        display: [
+          "var(--font-size-display)",
+          {
+            lineHeight: "var(--font-size-display-line-height)",
+            fontWeight: "var(--font-size-display-font-weight)",
+          },
+        ],
+      },
+    },
+  },
+};
+```
+
+## Suggestions d'Organisation des Variables
+
+Pour garantir une exportation parfaite des Variables Figma, le nommage des variables doit suivre certaines règles, car elles doivent se conformer au nommage des variables de thème shadcn/ui et correspondre aux clés de configuration Tailwind CSS. Une bonne organisation des variables peut apporter de nombreux avantages :
+
+- Améliorer la maintenabilité des variables
+- Maintenir la cohérence du système de design
+- Faciliter la collaboration en équipe
+
+Consultez le guide d'export de thème shadcn/ui :
+
+<Cards.Card
+  icon={<BookOpenCheck />}
+  title="Export de Thème shadcn/ui"
+  href="/docs/shadcn-ui"
+  className="mt-4"
+/> 

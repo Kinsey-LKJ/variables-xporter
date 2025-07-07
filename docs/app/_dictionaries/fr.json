@@ -1,11 +1,15 @@
 {
   "language": "Français",
   "supportTailwindCssV4": "Prise en charge de Tailwind CSS V4",
-  "pluginHighlight": "Intégrez facilement les variables Figma dans Tailwind CSS ou les variables CSS",
+  "pluginHighlight": "Exportez les Variables Figma vers les projets shadcn/ui, Tailwind CSS ou CSS Variables",
   "start": "Commencer",
   "learnMore": "En savoir plus",
   "exclusive": "Disponible exclusivement",
   "features": {
+    "shadcnUi": {
+      "title": "Export de thème shadcn/ui",
+      "description": "Faites en sorte que tous les composants shadcn/ui soient dotés de couleurs, de modes de densité, de thèmes sombres et clairs, et de modes d'appareils, et vous aide à créer votre système de conception"
+    },
     "multiMode": {
       "title": "Prise en charge multi-modes",
       "description": "Prise en charge de l'exportation de variables composées multidimensionnelles"
@@ -59,9 +63,31 @@
   "example": {
     "heading": "Exemple",
     "title": "Exemple",
-    "description": "Prise en charge des modes Sombre et Clair, ainsi que différentes densités et différentes configurations de marque.",
-    "note": "Les composants de l'exemple proviennent de shadcn/ui.",
+    "description": "Faites facilement en sorte que les composants shadcn/ui prennent en charge différents thèmes de couleurs de marque, modes de densité, thèmes sombres et clairs, et styles de bordure arrondis.",
+    "note": "En configurant simplement des variables dans Figma, vous pouvez utiliser shadcn/ui pour créer votre système de conception et soit facilement extensible.",
+    "checkInFigma": "Vérifier la configuration des Variables Figma",
     "default": "Par défaut",
-    "compact": "Compact"
+    "compact": "Compact",
+    "theme": {
+      "title": "Thème",
+      "light": "Clair",
+      "dark": "Sombre"
+    },
+    "density": {
+      "title": "Densité",
+      "compact": "Compact",
+      "default": "Par défaut"
+    },
+    "brand": {
+      "title": "Marque",
+      "a": "Marque A",
+      "b": "Marque B"
+    },
+    "radius": {
+      "title": "Rayon",
+      "none": "Aucun",
+      "small": "Petit",
+      "large": "Grand"
+    }
   }
 }

@@ -1,4 +1,3 @@
-
 import BentoItem from "@/components/bento-item";
 import Blurer from "@/components/blurer";
 import Card from "@/components/card";
@@ -14,6 +13,7 @@ import DeviceModes from "@/public/website/device-modes.png";
 import ThemeModes from "@/public/website/theme-modes.png";
 import CssMediaQuery from "@/public/website/css-media-query.png";
 import FigmaTemplate from "@/public/website/figma-template.png";
+import ShadcnUi from "@/public/website/shadcn-ui.png";
 import Blur1 from "@/public/website/blur-1.png";
 import Blur2 from "@/public/website/blur-2.png";
 import { getDictionary } from "../_dictionaries/get-dictionary";
@@ -31,11 +31,14 @@ export default async function IndexPage({
   const { lang } = await params;
   const dictionary = await getDictionary(lang);
   return (
-
     <div className="w-full flex flex-col items-center overflow-hidden">
       <div className="flex flex-col items-center max-w-[1200px] relative">
         {/* <Blurer className="w-[736px] h-[137px] -translate-y-1/2 blur-[140px]" /> */}
-        <Image src={Blur1} alt="background" className="absolute w-[150%] max-w-[150%]  -translate-y-[60%]" />
+        <Image
+          src={Blur1}
+          alt="background"
+          className="absolute w-[150%] max-w-[150%]  -translate-y-[60%]"
+        />
         <div className=" flex flex-col items-center justify-center top-24 absolute z-10">
           <div className=" flex flex-col gap-12 items-center">
             <div className=" flex flex-col gap-4 items-center">
@@ -58,8 +61,24 @@ export default async function IndexPage({
         <Illustration className="mt-40" />
         <div className="w-full border-1 border-border bg-border relative grid gap-px ">
           {/* <Blurer className="w-full h-[137px] translate-y-full blur-[300px]" /> */}
-          <Image src={Blur2} alt="background" className="absolute w-[180%] max-w-[180%] translate-y-[-30%] justify-self-center" />
+          <Image
+            src={Blur2}
+            alt="background"
+            className="absolute w-[180%] max-w-[180%] translate-y-[-30%] justify-self-center"
+          />
           <div className="relative z-10  w-full grid grid-cols-3 gap-px bg-border ">
+            <BentoItem
+              tag={dictionary.exclusive}
+              title={dictionary.features.shadcnUi.title}
+              description={dictionary.features.shadcnUi.description}
+              className=" col-span-full "
+            >
+              <Image
+                src={ShadcnUi}
+                alt="shadcn-ui"
+                className="w-full h-full shadow-[0_-3px_200px_rgba(255,255,255,0.13)]"
+              />
+            </BentoItem>
             <BentoItem
               tag={dictionary.exclusive}
               title={dictionary.features.multiMode.title}
@@ -257,7 +276,10 @@ export default async function IndexPage({
                   {dictionary.figmaTemplate.description}
                 </div>
                 <Button className="w-fit" asChild>
-                  <Link href="https://www.figma.com/community/file/1522188131593288033" target="_blank">
+                  <Link
+                    href="https://www.figma.com/community/file/1522188131593288033"
+                    target="_blank"
+                  >
                     {dictionary.figmaTemplate.openInFigma}
                   </Link>
                 </Button>

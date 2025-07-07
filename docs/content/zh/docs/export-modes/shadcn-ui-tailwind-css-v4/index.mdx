@@ -1,0 +1,100 @@
+---
+title: shadcn/ui (Tailwind CSS V4)
+---
+
+import { BookOpenCheck } from "lucide-react";
+import { Cards } from "nextra/components";
+
+# shadcn/ui (Tailwind CSS V4)
+
+将 Figma Variables 导出为您自定义的 shadcn/ui 主题变量，支持最新的 Tailwind CSS V4。选择此导出模式后，您会得到一个文件：
+- `app.css` - 包含您自定义的 shadcn/ui 主题变量以及 Tailwind CSS 配置
+
+## 特性和优化
+### 1. 导出 shadcn/ui 主题变量
+Variables Xporter 会导出干净的 shadcn/ui 主题变量，帮助您快速的构建您的 Design System。
+```css
+/* shadcn/ui Variables */
+:root {
+  /* Collection: Design Tokens */
+  --accent: var(--theme-modes-accent);
+  --accent-foreground: var(--theme-modes-accent-foreground);
+
+  --background: var(--theme-modes-background);
+  --border: var(--theme-modes-border);
+
+  --card: var(--theme-modes-background);
+  --card-foreground: var(--theme-modes-foreground);
+  --chart-1: var(--theme-modes-chart-1);
+  --chart-2: var(--theme-modes-chart-2);
+  --chart-3: var(--theme-modes-chart-3);
+  --chart-4: var(--theme-modes-chart-4);
+
+  --foreground: var(--theme-modes-foreground);
+
+  --input: var(--theme-modes-input);
+
+  --muted: var(--theme-modes-muted);
+  --muted-foreground: var(--theme-modes-muted-foreground);
+
+  --popover: var(--theme-modes-background);
+  --popover-foreground: var(--theme-modes-foreground);
+  --primary: var(--theme-modes-primary);
+  --primary-foreground: var(--theme-modes-primary-foreground);
+
+  --radius: var(--radius-modes-radius);
+  --ring: var(--primary);
+
+  --secondary: var(--color-fuchsia-200);
+  --secondary-foreground: var(--color-fuchsia-950);
+  --sidebar: var(--theme-modes-background);
+  --sidebar-accent: var(--theme-modes-accent);
+  --sidebar-accent-foreground: var(--theme-modes-accent-foreground);
+  --sidebar-border: var(--theme-modes-border);
+  --sidebar-foreground: var(--theme-modes-foreground);
+  --sidebar-primary: var(--theme-modes-primary);
+  --sidebar-primary-foreground: var(--theme-modes-primary-foreground);
+  --sidebar-ring: var(--theme-modes-primary);
+}
+
+```
+
+
+### 2. 导出 Tailwind CSS 配置
+对于 Tailwind CSS 配置，Variables Xporter 也会一并导出，保证 Design Tokens 的完整性。
+```css
+/* Default Mode */
+@theme {
+  /* Collection: Design Tokens */
+  --text-body: 1.125rem;
+  --text-body--font-weight: 400;
+  --text-body--line-height: 100%;
+  --text-display: 5rem;
+  --text-display--font-weight: 800;
+  --text-display--line-height: 100%;
+  --text-heading: 2.25rem;
+  --text-heading--font-weight: 400;
+  --text-heading--line-height: 130%;
+  --text-title: 2rem;
+  --text-title--font-weight: 400;
+  --text-title--line-height: 100%;
+}
+```
+
+
+## 变量组织建议
+
+要保证 Figma Variables 的完美导出，变量的命名需要遵循一定的规则，这是因为需要符合 shadcn/ui 的主题变量命名，并与 Tailwind CSS 的配置键对应。良好的变量组织方式可以带来诸多好处：
+
+- 提高变量的可维护性
+- 保持设计系统的一致性
+- 方便团队协作
+
+查看 shadcn/ui 主题导出指南:
+
+  <Cards.Card
+    icon={<BookOpenCheck />}
+    title="shadcn/ui 主题导出"
+    href="/docs/shadcn-ui"
+    className="mt-4"
+  />

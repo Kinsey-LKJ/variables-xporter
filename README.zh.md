@@ -18,14 +18,16 @@
 
 ## 📖 项目简介
 
-Variables Xporter 是一个专业的 Figma 插件，它能将 Figma 设计变量无缝导出为 **Tailwind CSS 配置文件**或 **CSS Variables**，完美解决设计与开发之间的同步问题。让设计系统轻松落地到开发环境！
+Variables Xporter 是一个专业的 Figma 插件，支持将 Figma Variables 导出为 **shadcn/ui 主题变量**、**Tailwind CSS 配置文件**或 **CSS Variables**，完美解决设计与开发之间的同步问题。让设计系统轻松落地到开发环境！
 
 ## ✨ 核心特性
 
 ### 多种导出格式
-- **Tailwind CSS V3**
-- **Tailwind CSS V4**
-- **CSS Variables**
+- **shadcn/ui (Tailwind CSS V4)** ⭐ - 生成 shadcn/ui 主题变量和 Tailwind CSS V4 配置
+- **shadcn/ui (Tailwind CSS V3)** ⭐ - 生成 shadcn/ui 主题变量和 Tailwind CSS V3 配置
+- **Tailwind CSS V4** - 生成 Tailwind CSS V4 版本的配置文件和对应的 CSS
+- **Tailwind CSS V3** - 生成 Tailwind CSS V3 版本的配置文件和对应的 CSS
+- **CSS Variables** - 生成标准 CSS Variables
 
 ### 强大的多模式支持
 - **主题模式** - Dark/Light 模式完美支持
@@ -35,6 +37,7 @@ Variables Xporter 是一个专业的 Figma 插件，它能将 Figma 设计变量
 - ...
 
 ### 专业功能
+- **shadcn/ui 主题支持** - 直接导出为 shadcn/ui 主题格式，与组件完美兼容
 - **变量优化** - 忽略 Tailwind 默认调色板，简化导出的代码
 - **排版合并** - 自动合并相关的排版样式，构建更合理的排版相关变量
 - **媒体查询** - CSS 媒体查询模式支持
@@ -130,11 +133,92 @@ Theme Modes (辅助集合 - 仅存放变化的变量)
 
 ### 3. 导出变量
 1. 在 Figma 中打开插件
-2. 选择导出格式（Tailwind CSS 或 CSS Variables）
+2. 选择导出格式（shadcn/ui、Tailwind CSS 或 CSS Variables）
 3. 选择要导出的变量集合和分组
 4. 点击导出获取代码
 
 ### 4. 在项目中使用
+
+#### 🎨 shadcn/ui 主题变量
+
+专为 shadcn/ui 项目打造！Variables Xporter 生成的主题变量可以与 shadcn/ui 组件无缝配合。
+
+**shadcn/ui (Tailwind CSS V4) 格式：**
+
+将导出的主题变量添加到您的 CSS 文件中：
+
+```css
+/* 添加到您的 app.css 或 global.css */
+@theme {
+  /* shadcn/ui 主题变量 */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+}
+
+/* 暗色模式支持 */
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  /* ... 其他暗色模式变量 */
+}
+```
+
+**shadcn/ui (Tailwind CSS V3) 格式：**
+
+您将获得两个需要集成的文件：
+
+1. **tailwind.config.js** - 添加到您的 Tailwind 配置中
+2. **global.css** - 将 CSS 变量添加到全局样式中
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        // ... 其他主题颜色
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+    },
+  },
+}
+```
+
+您的 shadcn/ui 组件将自动使用这些主题变量！🎉
 
 #### Tailwind CSS V3
 
@@ -282,47 +366,7 @@ pnpm dev:docs
 pnpm build:docs
 ```
 
-### 技术栈
 
-#### Figma 插件
-- **框架**: React 18 + TypeScript
-- **构建工具**: Webpack 5
-- **UI 库**: Mantine 7
-- **状态管理**: React Context + useForm
-- **样式**: PostCSS + Tailwind CSS
-- **工具库**: Lucide React, GSAP, Color.js
-
-#### 文档站点  
-- **框架**: Next.js 15
-- **内容**: MDX + Nextra
-- **UI 库**: Radix UI + shadcn/ui
-- **样式**: Tailwind CSS V4
-- **国际化**: 内置多语言支持
-
-### 核心文件说明
-
-- `figma-plugin/src/lib/utils.ts` - 变量处理核心逻辑
-- `figma-plugin/src/app/components/App.tsx` - 插件主界面
-- `figma-plugin/src/plugin/controller.ts` - Figma API 交互
-- `docs/content/zh/docs/` - 中文文档内容
-
-## 🤝 贡献指南
-
-我们欢迎社区贡献！请遵循以下步骤：
-
-1. **Fork** 本仓库
-2. 创建新的功能分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add some amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 开启 **Pull Request**
-
-### 开发规范
-- 使用 TypeScript 进行类型安全开发
-- 遵循 ESLint 和 Prettier 代码规范
-- 更新相关文档
-
-### 报告问题
-如果您发现 bug 或有功能建议，请在 [Issues](https://github.com/Kinsey-LKJ/variables-xporter/issues) 中创建新的 issue。
 
 ## 🎯 路线图
 

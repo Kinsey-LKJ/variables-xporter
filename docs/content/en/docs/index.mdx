@@ -5,67 +5,83 @@ title: Introduction
 import { Callout } from 'nextra/components'
 import { Steps } from 'nextra/components'
 import { Cards } from 'nextra/components'
-import { Zap, RefreshCw, Palette, Type, Layout, Box,Columns3,EyeOff,Merge,Proportions,BookCopy } from 'lucide-react'
+import { Zap, RefreshCw, Palette, Type, Layout, Box,Columns3,EyeOff,Merge,Proportions,BookCopy, Star, Sparkles } from 'lucide-react'
 
 # Variables Xporter
 
-Variables Xporter is a Figma plugin that exports Figma variables as Tailwind CSS configuration files or CSS variables. It makes it easy to synchronize design systems with the development environment!
+Variables Xporter is a professional Figma plugin that supports exporting Figma Variables as **shadcn/ui theme variables**, **Tailwind CSS configuration files**, or **CSS Variables**, making it easy to synchronize Design Tokens with your development environment.
 
-## Export formats
+## shadcn/ui Theme Variable Support
 
-- **Tailwind CSS**: generates configuration files and corresponding CSS files
-- **CSS variables**: generates standard CSS variables
+<Callout type="info" emoji="✨">
+Variables Xporter supports exporting Figma Variables directly as shadcn/ui theme variables, giving your shadcn/ui components complete theme customization capabilities.
+</Callout>
 
-## Figma variable organization suggestions
+Learn how to export Figma Variables as shadcn/ui theme configurations, supporting light/dark modes, brand color modes, density modes, and more:
+<Cards.Card
+  icon={<Star />}
+  title="shadcn/ui Theme Export"
+  href="/docs/shadcn-ui"
+  className="mt-4"
+/>
 
-We provide comprehensive Figma variable organization suggestions to help you better manage variables and ensure the usability of the export results.
+## Export Modes
 
-  <Cards.Card
-    icon={<BookCopy />}
-    title="Properly organize your Figma Variables"
-    href="/docs/organizing-your-variables"
-    className="mt-4"
-  />
+- **shadcn/ui (Tailwind CSS V4)** ⭐: Generate shadcn/ui theme variables and Tailwind CSS V4 configuration
+- **shadcn/ui (Tailwind CSS V3)** ⭐: Generate shadcn/ui theme variables and Tailwind CSS V3 configuration
+- **Tailwind CSS V4**: Generate Tailwind CSS V4 configuration files and corresponding CSS
+- **Tailwind CSS V3**: Generate Tailwind CSS V3 configuration files and corresponding CSS
+- **CSS Variables**: Generate standard CSS Variables
 
 ## Features
 
-Variables Xporter has many unique features and provides special optimizations for Tailwind CSS projects, helping you better export Figma variables to the development environment.
+Variables Xporter provides various practical features to help you better manage and export design variables.
 
 <Cards>
   <Cards.Card
-    icon={<RefreshCw />}
-    title="Unit conversion"
-    href="/docs/features/unit-conversion"
-  />
-  <Cards.Card
     icon={<Columns3 />}
-    title="Multi-mode support"
+    title="Multi-mode Support"
     href="/docs/features/multi-mode"
   />
   <Cards.Card
-    icon={<EyeOff />}
-    title="Ignore Tailwind palette"
-    href="/docs/features/ignore-tailwind-palette"
-  />
-  <Cards.Card
     icon={<Merge/>}
-    title="Merge typography styles"
+    title="Merge Typography Styles"
     href="/docs/features/merge-typography-styles"
   />
   <Cards.Card
+    icon={<RefreshCw />}
+    title="Unit Conversion"
+    href="/docs/features/unit-conversion"
+  />
+  <Cards.Card
+    icon={<EyeOff />}
+    title="Ignore Tailwind Palette"
+    href="/docs/features/ignore-tailwind-palette"
+  />
+  <Cards.Card
     icon={<Proportions />}
-    title="CSS media query mode"
+    title="CSS Media Query Mode"
     href="/docs/features/css-media-query-mode"
   />
 </Cards>
 
-## Getting started
+## Variable Organization Suggestions
+
+We provide comprehensive Figma Variables organization suggestions to help you build a standardized design system variable structure:
+
+<Cards.Card
+  icon={<BookCopy />}
+  title="Properly Organize Your Figma Variables"
+  href="/docs/organizing-your-variables"
+  className="mt-4"
+/>
+
+## Getting Started
 
 <Steps>
+### Organize your Figma Variables according to [organization suggestions](/docs/organizing-your-variables)
 
-### Organize your Figma variables according to the [organization suggestions](/docs/organizing-your-variables)
-
-This is a crucial step, especially for Tailwind CSS projects.
+This is a crucial step, especially for shadcn/ui and Tailwind CSS projects. If you're using shadcn/ui, we recommend checking the [shadcn/ui Theme Export Guide](/docs/shadcn-ui) first.
 
 ### Open [Variables Xporter](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter) in your Figma file
 
@@ -76,7 +92,7 @@ This is a crucial step, especially for Tailwind CSS projects.
   </figcaption>
 </figure>
 
-### Select the collections and groups to export
+### Select collections and groups to export
 
 <figure className="mt-6 max-w-[400px]">
   <>![Choose collections and groups](/get-started/en/choose-collection-and-group.png)</>
@@ -85,7 +101,7 @@ This is a crucial step, especially for Tailwind CSS projects.
   </figcaption>
 </figure>
 
-### Choose the format and export
+### Choose the appropriate export format
 
 <figure className="mt-6 max-w-[400px]">
   <>![Choose format and export](/get-started/en/choose-format.png)</>

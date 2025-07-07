@@ -1,11 +1,15 @@
 {
   "language": "简体中文",
   "supportTailwindCssV4": "支持 Tailwind CSS V4",
-  "pluginHighlight": "将 Figma Variables 无缝集成到 Tailwind CSS 或 CSS Variables中",
+  "pluginHighlight": "将 Figma Variables 导出到 shadcn/ui、Tailwind CSS 或 CSS Variables 项目",
   "start": "开始使用",
   "learnMore": "了解更多",
   "exclusive": "专属提供",
   "features": {
+    "shadcnUi": {
+      "title": "shadcn/ui 主题导出",
+      "description": "让任何 shadcn/ui 组件都具有不同品牌颜色、密度模式、明暗主题，帮助您创建您的设计系统"
+    },
     "multiMode": {
       "title": "多模式支持",
       "description": "支持导出复合多维模式变量"
@@ -59,9 +63,31 @@
   "example": {
     "heading": "示例",
     "title": "示例",
-    "description": "支持深色和浅色模式，以及不同密度和品牌配置。",
-    "note": "示例中的组件来自 shadcn/ui。",
+    "description": "轻松让 shadcn/ui 组件支持不同的品牌色主题、密度模式、明暗主题以及圆角风格。",
+    "note": "通过在 Figma 中简单的设置变量，就能使用 shadcn/ui 创建您的设计系统，并易于扩展。",
+    "checkInFigma": "查看 Figma Variables 配置",
     "default": "默认",
-    "compact": "紧凑"
+    "compact": "紧凑",
+    "theme": {
+      "title": "主题",
+      "light": "亮色",
+      "dark": "暗色"
+    },
+    "density": {
+      "title": "密度",
+      "compact": "紧凑",
+      "default": "正常"
+    },
+    "brand": {
+      "title": "品牌",
+      "a": "品牌 A",
+      "b": "品牌 B"
+    },
+    "radius": {
+      "title": "圆角",
+      "none": "无",
+      "small": "正常",
+      "large": "大圆角"
+    }
   }
 }

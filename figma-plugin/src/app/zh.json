@@ -1,7 +1,7 @@
 {
   "language": "简体中文",
   "back": "返回",
-  "export_figma_variables_tailwind_css_or_css_variables": "将 Figma Variables 导出为 Tailwind CSS 或 CSS Variables",
+  "export_figma_variables_tailwind_css_or_css_variables": "将 Figma Variables 导出到 shadcn/ui、Tailwind CSS 或 CSS Variables 项目",
   "get_started": "开始使用",
   "select_variables_to_export": "选择要导出的变量",
   "select_collection": "选择集合",

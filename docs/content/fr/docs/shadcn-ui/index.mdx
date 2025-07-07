@@ -1,0 +1,97 @@
+import { Callout, Cards } from "nextra/components";
+import { BookCopy, Layout } from "lucide-react";
+
+# Export de Thème shadcn/ui
+
+Variables Xporter est le premier plugin à s'intégrer profondément avec shadcn/ui, capable d'exporter les Variables Figma en tant que configurations de thème shadcn/ui, permettant à n'importe quel composant shadcn/ui d'avoir différentes couleurs de marque, modes de densité, thèmes clair/sombre, et plus encore, vous aidant à créer votre système de design.
+
+## Commencer
+
+### 1. Vérifier la Convention de Nommage
+
+Vos Variables Figma doivent suivre les conventions de nommage de shadcn/ui. Voici les noms complets des variables shadcn/ui et les noms de variables correspondants que vous devriez créer dans Figma :
+
+- --radius -> radius/DEFAULT [^1]
+- --background -> colors/background/DEFAULT
+- --foreground -> colors/foreground/DEFAULT
+- --card -> colors/card/DEFAULT
+- --card-foreground -> colors/card/foreground
+- --popover -> colors/popover/DEFAULT
+- --popover-foreground -> colors/popover/foreground
+- --primary -> colors/primary/DEFAULT
+- --primary-foreground -> colors/primary/foreground
+- --secondary -> colors/secondary/DEFAULT
+- --secondary-foreground -> colors/secondary/foreground
+- --muted -> colors/muted/DEFAULT
+- --muted-foreground -> colors/muted/foreground
+- --accent -> colors/accent/DEFAULT
+- --accent-foreground -> colors/accent/foreground
+- --destructive -> colors/destructive/DEFAULT
+- --border -> colors/border/DEFAULT
+- --input -> colors/input/DEFAULT
+- --ring -> colors/ring/DEFAULT
+- --chart-1 -> colors/chart-1/DEFAULT
+- --chart-2 -> colors/chart-2/DEFAULT
+- --chart-3 -> colors/chart-3/DEFAULT
+- --chart-4 -> colors/chart-4/DEFAULT
+- --chart-5 -> colors/chart-5/DEFAULT
+- --sidebar -> colors/sidebar/DEFAULT
+- --sidebar-foreground -> colors/sidebar/foreground
+- --sidebar-primary -> colors/sidebar/primary
+- --sidebar-primary-foreground -> colors/sidebar/primary-foreground
+- --sidebar-accent -> colors/sidebar/accent
+- --sidebar-accent-foreground -> colors/sidebar/accent-foreground
+- --sidebar-border -> colors/sidebar/border
+- --sidebar-ring -> colors/sidebar/ring
+
+<Callout type="info">
+  Pour les variables non-shadcn/ui, Variables Xporter les exportera comme configuration Tailwind CSS.
+</Callout>
+
+Apprenez-en plus sur les suggestions d'organisation des variables Figma :
+
+<Cards.Card
+  icon={<BookCopy />}
+  title="Suggestions d'organisation des variables Figma"
+  href="/docs/organizing-your-variables"
+  className="mt-4"
+/>
+
+### 2. Sélectionner le Format Correspondant
+
+Dans le format d'exportation, sélectionnez shadcn/ui et votre version Tailwind CSS souhaitée.
+<figure className="mt-6 max-w-[400px]">
+  <>![Sélectionner le format shadcn/ui](/shadcn-ui/choose-shadcn-ui-format.png)</>
+  <figcaption>
+    Sélectionner le format shadcn/ui
+  </figcaption>
+</figure>
+
+### 3. Exporter
+
+Sélectionnez les collections et groupes de variables que vous souhaitez exporter, cliquez sur le bouton d'exportation, et Variables Xporter exportera automatiquement vos Variables Figma en tant que configuration de thème shadcn/ui.
+<figure className="mt-6 max-w-[400px]">
+  <>![Résultat d'exportation](/shadcn-ui/export-successful.png)</>
+  <figcaption>
+    Résultat d'exportation
+  </figcaption>
+</figure>
+
+### 4. Utiliser dans shadcn/ui
+
+Copiez le fichier de configuration exporté dans le fichier de configuration Tailwind CSS de votre projet shadcn/ui et ajustez selon vos besoins.
+
+## Exemples
+
+Découvrez les effets réels des variables de thème shadcn/ui en action, incluant la prévisualisation en temps réel des thèmes clair/sombre, modes de densité, couleurs de marque, styles de rayon, et plus encore.
+
+<Cards.Card
+  icon={<Layout />}
+  title="Voir les Exemples"
+  href="/example"
+  className="mt-4"
+/>
+
+---
+
+[^1]: Le mot-clé `DEFAULT` est une façon d'organiser les hiérarchies de variables, [en savoir plus](/docs/organizing-your-variables/principles#use-default-value) 
