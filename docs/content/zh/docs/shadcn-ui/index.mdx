@@ -1,9 +1,9 @@
 import { Callout, Cards } from "nextra/components";
-import { BookOpenCheck } from "lucide-react";
+import { BookCopy, Layout } from "lucide-react";
 
-# shadcn/ui 集成
+# shadcn/ui 主题导出
 
-Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma Variables 导出为 shadcn/ui 的主题配置(Tailwind CSS)，
+Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma Variables 导出为 shadcn/ui 的主题配置，
 让任何 shadcn/ui 组件都能具有不同品牌颜色、密度模式、明暗主题等，帮助您创建您的设计系统。
 
 ## 开始使用
@@ -52,7 +52,7 @@ Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma
 了解 Figma 变量组织建议：
 
 <Cards.Card
-  icon={<BookOpenCheck />}
+  icon={<BookCopy />}
   title="Figma 变量组织建议"
   href="/docs/organizing-your-variables"
   className="mt-4"
@@ -79,5 +79,18 @@ Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma
 ### 4. 在 shadcn/ui 中使用
 
 将导出的配置文件复制到您的 shadcn/ui 项目的 Tailwind CSS 配置文件中，并根据您的需求进行调整。
+
+## 示例
+
+查看 shadcn/ui 主题变量的实际效果展示，包括明暗主题、密度模式、品牌颜色、圆角风格等多种变量的实时切换预览。
+
+<Cards.Card
+  icon={<Layout />}
+  title="查看示例"
+  href="/example"
+  className="mt-4"
+/>
+
+---
 
 [^1]: `DEFAULT` 关键字是组织变量层级的一种方式，[了解更多](/docs/organizing-your-variables/principles#use-default-value)

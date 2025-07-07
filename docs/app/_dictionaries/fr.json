@@ -1,13 +1,13 @@
 {
   "language": "Français",
   "supportTailwindCssV4": "Prise en charge de Tailwind CSS V4",
-  "pluginHighlight": "Intégrez facilement les variables Figma dans Tailwind CSS, les variables CSS ou les projets shadcn/ui",
+  "pluginHighlight": "Exportez les Variables Figma vers les projets shadcn/ui, Tailwind CSS ou CSS Variables",
   "start": "Commencer",
   "learnMore": "En savoir plus",
   "exclusive": "Disponible exclusivement",
   "features": {
     "shadcnUi": {
-      "title": "Intégration shadcn/ui",
+      "title": "Export de thème shadcn/ui",
       "description": "Faites en sorte que tous les composants shadcn/ui soient dotés de couleurs, de modes de densité, de thèmes sombres et clairs, et de modes d'appareils, et vous aide à créer votre système de conception"
     },
     "multiMode": {

@@ -1,9 +1,9 @@
 import { Callout, Cards } from "nextra/components";
-import { BookOpenCheck } from "lucide-react";
+import { BookCopy, Layout } from "lucide-react";
 
-# shadcn/ui Integration
+# shadcn/ui Theme Export
 
-Variables Xporter is the first plugin to deeply integrate with shadcn/ui, capable of exporting Figma Variables as shadcn/ui theme configurations (Tailwind CSS), allowing any shadcn/ui component to have different brand colors, density modes, light/dark themes, and more, help you create your design system.
+Variables Xporter is the first plugin to deeply integrate with shadcn/ui, capable of exporting Figma Variables as shadcn/ui theme configurations, allowing any shadcn/ui component to have different brand colors, density modes, light/dark themes, and more, help you create your design system.
 
 ## Getting Started
 
@@ -51,7 +51,7 @@ Your Figma Variables need to follow shadcn/ui naming conventions. Here are the c
 Learn about Figma variable organization suggestions:
 
 <Cards.Card
-  icon={<BookOpenCheck />}
+  icon={<BookCopy />}
   title="Figma Variable Organization Suggestions"
   href="/docs/organizing-your-variables"
   className="mt-4"
@@ -80,5 +80,18 @@ Select the collections and variable groups you want to export, click the export 
 ### 4. Use in shadcn/ui
 
 Copy the exported configuration file to your shadcn/ui project's Tailwind CSS configuration file and adjust according to your needs.
+
+## Examples
+
+See the actual effects of shadcn/ui theme variables in action, including real-time preview switching for light/dark themes, density modes, brand colors, radius styles, and more.
+
+<Cards.Card
+  icon={<Layout />}
+  title="View Examples"
+  href="/example"
+  className="mt-4"
+/>
+
+---
 
 [^1]: The `DEFAULT` keyword is a way to organize variable hierarchies, [learn more](/docs/organizing-your-variables/principles#use-default-value) 

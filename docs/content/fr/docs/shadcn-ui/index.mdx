@@ -1,9 +1,9 @@
 import { Callout, Cards } from "nextra/components";
-import { BookOpenCheck } from "lucide-react";
+import { BookCopy, Layout } from "lucide-react";
 
-# Intégration shadcn/ui
+# Export de Thème shadcn/ui
 
-Variables Xporter est le premier plugin à s'intégrer profondément avec shadcn/ui, capable d'exporter les Variables Figma en tant que configurations de thème shadcn/ui (Tailwind CSS), permettant à tout composant shadcn/ui d'avoir différentes couleurs de marque, modes de densité, thèmes clair/sombre, et plus encore, vous aide à créer votre système de design.
+Variables Xporter est le premier plugin à s'intégrer profondément avec shadcn/ui, capable d'exporter les Variables Figma en tant que configurations de thème shadcn/ui, permettant à n'importe quel composant shadcn/ui d'avoir différentes couleurs de marque, modes de densité, thèmes clair/sombre, et plus encore, vous aidant à créer votre système de design.
 
 ## Commencer
 
@@ -51,7 +51,7 @@ Vos Variables Figma doivent suivre les conventions de nommage de shadcn/ui. Voic
 Apprenez-en plus sur les suggestions d'organisation des variables Figma :
 
 <Cards.Card
-  icon={<BookOpenCheck />}
+  icon={<BookCopy />}
   title="Suggestions d'organisation des variables Figma"
   href="/docs/organizing-your-variables"
   className="mt-4"
@@ -80,5 +80,18 @@ Sélectionnez les collections et groupes de variables que vous souhaitez exporte
 ### 4. Utiliser dans shadcn/ui
 
 Copiez le fichier de configuration exporté dans le fichier de configuration Tailwind CSS de votre projet shadcn/ui et ajustez selon vos besoins.
+
+## Exemples
+
+Découvrez les effets réels des variables de thème shadcn/ui en action, incluant la prévisualisation en temps réel des thèmes clair/sombre, modes de densité, couleurs de marque, styles de rayon, et plus encore.
+
+<Cards.Card
+  icon={<Layout />}
+  title="Voir les Exemples"
+  href="/example"
+  className="mt-4"
+/>
+
+---
 
 [^1]: Le mot-clé `DEFAULT` est une façon d'organiser les hiérarchies de variables, [en savoir plus](/docs/organizing-your-variables/principles#use-default-value) 

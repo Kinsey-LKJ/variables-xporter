@@ -1,13 +1,13 @@
 {
   "language": "简体中文",
   "supportTailwindCssV4": "支持 Tailwind CSS V4",
-  "pluginHighlight": "将 Figma Variables 无缝集成到 Tailwind CSS、 CSS Variables 或 shadcn/ui 项目中",
+  "pluginHighlight": "将 Figma Variables 导出到 shadcn/ui、Tailwind CSS 或 CSS Variables 项目",
   "start": "开始使用",
   "learnMore": "了解更多",
   "exclusive": "专属提供",
   "features": {
     "shadcnUi": {
-      "title": "shadcn/ui 集成",
+      "title": "shadcn/ui 主题导出",
       "description": "让任何 shadcn/ui 组件都具有不同品牌颜色、密度模式、明暗主题，帮助您创建您的设计系统"
     },
     "multiMode": {
