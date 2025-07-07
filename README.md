@@ -19,14 +19,16 @@ For complete usage documentation and API reference, visit: [variables-xporter.co
 
 ## 📖 Introduction
 
-Variables Xporter is a professional Figma plugin that seamlessly exports Figma design variables as **Tailwind CSS configuration files** or **CSS variables**, perfectly solving the synchronization problem between design and development. Make your design system effortlessly integrate into your development environment!
+Variables Xporter is a professional Figma plugin that supports exporting Figma Variables as **shadcn/ui theme variables**, **Tailwind CSS configuration files**, or **CSS variables**, perfectly solving the synchronization problem between design and development. Make your design system effortlessly integrate into your development environment!
 
 ## ✨ Core Features
 
 ### Multiple Export Formats
-- **Tailwind CSS V3**
-- **Tailwind CSS V4**
-- **CSS Variables**
+- **shadcn/ui (Tailwind CSS V4)** ⭐ - Generate shadcn/ui theme variables with Tailwind CSS V4 configuration
+- **shadcn/ui (Tailwind CSS V3)** ⭐ - Generate shadcn/ui theme variables with Tailwind CSS V3 configuration  
+- **Tailwind CSS V4** - Generate Tailwind CSS V4 configuration files and corresponding CSS
+- **Tailwind CSS V3** - Generate Tailwind CSS V3 configuration files and corresponding CSS
+- **CSS Variables** - Generate standard CSS Variables
 
 ### Powerful Multi-Mode Support
 - **Theme Modes** - Perfect Dark/Light mode support
@@ -36,6 +38,7 @@ Variables Xporter is a professional Figma plugin that seamlessly exports Figma d
 - ...
 
 ### Professional Features
+- **shadcn/ui Theme Support** - Direct export to shadcn/ui theme format with perfect component compatibility
 - **Variable Optimization** - Ignore Tailwind default palette to simplify exported code
 - **Typography Merging** - Automatically merge related typography styles for better variable organization
 - **Media Query Support** - CSS media query mode support
@@ -130,11 +133,92 @@ Organize your Figma variables according to our [Variable Organization Guidelines
 
 ### 3. Export Variables
 1. Open the plugin in Figma
-2. Select export format (Tailwind CSS or CSS Variables)
+2. Select export format (shadcn/ui, Tailwind CSS, or CSS Variables)
 3. Choose variable collections and groups to export
 4. Click export to get the code
 
 ### 4. Use in Your Project
+
+#### 🎨 shadcn/ui Theme Variables
+
+Perfect for shadcn/ui projects! Variables Xporter generates theme variables that work seamlessly with shadcn/ui components.
+
+**For shadcn/ui (Tailwind CSS V4):**
+
+Add the exported theme variables to your CSS file:
+
+```css
+/* Add to your app.css or global.css */
+@theme {
+  /* shadcn/ui theme variables */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 222.2 47.4% 11.2%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+}
+
+/* Dark mode support */
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  /* ... other dark mode variables */
+}
+```
+
+**For shadcn/ui (Tailwind CSS V3):**
+
+You'll get two files to integrate:
+
+1. **tailwind.config.js** - Add to your Tailwind configuration
+2. **global.css** - Add CSS variables to your global styles
+
+```javascript
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        // ... other theme colors
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+    },
+  },
+}
+```
+
+Your shadcn/ui components will automatically use these theme variables! 🎉
 
 #### Tailwind CSS V3
 
@@ -281,47 +365,7 @@ pnpm dev:docs
 pnpm build:docs
 ```
 
-### Tech Stack
 
-#### Figma Plugin
-- **Framework**: React 18 + TypeScript
-- **Build Tool**: Webpack 5
-- **UI Library**: Mantine 7
-- **State Management**: React Context + useForm
-- **Styling**: PostCSS + Tailwind CSS
-- **Utilities**: Lucide React, GSAP, Color.js
-
-#### Documentation Site
-- **Framework**: Next.js 15
-- **Content**: MDX + Nextra
-- **UI Library**: Radix UI + shadcn/ui
-- **Styling**: Tailwind CSS V4
-- **Internationalization**: Built-in multi-language support
-
-### Key Files
-
-- `figma-plugin/src/lib/utils.ts` - Core variable processing logic
-- `figma-plugin/src/app/components/App.tsx` - Main plugin interface
-- `figma-plugin/src/plugin/controller.ts` - Figma API interaction
-- `docs/content/zh/docs/` - Chinese documentation content
-
-## 🤝 Contributing
-
-We welcome community contributions! Please follow these steps:
-
-1. **Fork** this repository
-2. Create a new feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a **Pull Request**
-
-### Development Standards
-- Use TypeScript for type-safe development
-- Follow ESLint and Prettier code standards
-- Update relevant documentation
-
-### Report Issues
-If you find bugs or have feature suggestions, please create a new issue in [Issues](https://github.com/Kinsey-LKJ/variables-xporter/issues).
 
 ## 🎯 Roadmap
 
