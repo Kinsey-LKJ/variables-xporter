@@ -107,6 +107,28 @@ export class CSSGenerator {
         rootElementSize,
         variableCollectionMap
       );
+
+      // 如果默认模式有变量引用且包含复杂值，需要递归处理
+      if (defaultMode.variable && defaultMode.value !== undefined) {
+        this.processComplexValue(
+          defaultMode.value,
+          [],
+          defaultMode.variable,
+          defaultMode.variable.collection,
+          allCollections,
+          defaultMode.variable.collection,
+          initialVariable.collection,
+          initialVariable.resolvedDataType,
+          initialVariable.scopes,
+          cssOutput,
+          appendCollectionName,
+          useRemUnit,
+          format,
+          rootElementSize,
+          processedVarsMap,
+          variableCollectionMap
+        );
+      }
     }
 
     // 处理其他模式
@@ -125,6 +147,28 @@ export class CSSGenerator {
         rootElementSize,
         processedVarsMap
       );
+
+      // 如果模式数据有变量引用且包含复杂值，需要递归处理
+      if (modeData.variable && modeData.value !== undefined) {
+        this.processComplexValue(
+          modeData.value,
+          [modeId],
+          modeData.variable,
+          modeData.variable.collection,
+          allCollections,
+          modeData.variable.collection,
+          initialVariable.collection,
+          initialVariable.resolvedDataType,
+          initialVariable.scopes,
+          cssOutput,
+          appendCollectionName,
+          useRemUnit,
+          format,
+          rootElementSize,
+          processedVarsMap,
+          variableCollectionMap
+        );
+      }
     }
   }
 
@@ -290,6 +334,202 @@ export class CSSGenerator {
       );
     }
     return String(value);
+  }
+
+  /**
+   * 处理复杂的变量值 - 递归处理包含多个模式的变量引用
+   */
+  private static processComplexValue(
+    value: ResolvedValue | undefined,
+    parentModes: string[],
+    variable: { name: string; collection: TVariableCollection },
+    variableCollection: TVariableCollection,
+    allCollections: TVariableCollection[],
+    referencingCollection: TVariableCollection,
+    originalCollection: TVariableCollection,
+    resolvedDataType?: VariableResolvedDataType,
+    scopes?: VariableScope[],
+    cssOutput?: CSSOutput,
+    appendCollectionName?: boolean,
+    useRemUnit?: boolean,
+    format?: ExportFormat,
+    rootElementSize?: number,
+    processedVarsMap?: Map<string, Set<string>>,
+    variableCollectionMap?: Map<string, { collectionId: string; collectionName: string }>
+  ): void {
+    if (value === undefined || value === null) {
+      console.warn(`处理变量 ${variable.name} 时遇到空值`);
+      return;
+    }
+
+    let variableCSSName = NameTransformer.getVariableCSSName(
+      variable,
+      originalCollection,
+      appendCollectionName!,
+      format!
+    );
+
+    // 记录变量所属的集合信息
+    variableCollectionMap!.set(variableCSSName, {
+      collectionId: referencingCollection.id,
+      collectionName: referencingCollection.name,
+    });
+
+    // 如果是简单值或颜色值
+    if (typeof value !== 'object' || ColorProcessor.isColorValue(value)) {
+      const modeInfos = VariableResolver.getModeNamesAndCollections(parentModes, allCollections)
+        .filter((info) => info.collection.id === referencingCollection.id);
+
+      const selector = modeInfos.length > 0
+        ? modeInfos.map((info) => {
+            const modeName = info.name;
+            if (VariableResolver.isMediaQuery(modeName)) {
+              return `@media (${modeName})`;
+            }
+            return `.${modeName}`;
+          })[0]
+        : NameTransformer.getThemeRootSelector(variable, format!);
+
+      // 检查这个变量是否已经在这个选择器中处理过
+      if (!processedVarsMap!.has(selector)) {
+        processedVarsMap!.set(selector, new Set());
+      }
+
+      // 如果变量已在此选择器中处理过，跳过
+      if (processedVarsMap!.get(selector)!.has(variableCSSName)) {
+        return;
+      }
+
+      // 标记为已处理
+      processedVarsMap!.get(selector)!.add(variableCSSName);
+
+      const processedValue = this.processValue(
+        value,
+        resolvedDataType!,
+        scopes!,
+        useRemUnit!,
+        variableCSSName,
+        variable.name,
+        format!,
+        rootElementSize!
+      );
+
+      const declaration = `  --${variableCSSName}: ${processedValue};`;
+
+      // 如果是默认选择器
+      if (selector === NameTransformer.getThemeRootSelector(variable, format!)) {
+        this.addToAppropriateRules(declaration, variableCSSName, format!, cssOutput!);
+      } else {
+        // 添加到模式覆盖规则
+        if (!cssOutput!.modeRules.has(selector)) {
+          cssOutput!.modeRules.set(selector, new Set());
+        }
+        cssOutput!.modeRules.get(selector)!.add(declaration);
+      }
+      return;
+    }
+
+    // 如果是对象（包含模式信息），递归处理
+    const entries = Object.entries(value);
+    for (const [modeId, modeData] of entries) {
+      if (!modeData) continue;
+
+      const newParentModes = [...parentModes];
+      // 只有非默认模式才添加到父模式列表中
+      if (modeId !== variableCollection.defaultModeId) {
+        newParentModes.push(modeId);
+      }
+
+      // 如果是变量引用
+      if (modeData.variable) {
+        const modeInfos = VariableResolver.getModeNamesAndCollections(newParentModes, allCollections)
+          .filter((info) => info.collection.id === referencingCollection.id);
+
+        const selector = modeInfos.length > 0
+          ? modeInfos.map((info) => {
+              const modeName = info.name;
+              if (VariableResolver.isMediaQuery(modeName)) {
+                return `@media (${modeName})`;
+              }
+              return `.${modeName}`;
+            })[0]
+          : NameTransformer.getThemeRootSelector(variable, format!);
+
+        // 检查这个变量是否已经在这个选择器中处理过
+        if (!processedVarsMap!.has(selector)) {
+          processedVarsMap!.set(selector, new Set());
+        }
+
+        // 如果变量已在此选择器中处理过，跳过
+        if (processedVarsMap!.get(selector)!.has(variableCSSName)) {
+          continue;
+        }
+
+        // 标记为已处理
+        processedVarsMap!.get(selector)!.add(variableCSSName);
+
+        const referencedVarName = NameTransformer.getVariableCSSName(
+          modeData.variable,
+          originalCollection,
+          appendCollectionName!,
+          format!
+        );
+        const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
+
+        // 如果是默认选择器
+        if (selector === NameTransformer.getThemeRootSelector(variable, format!)) {
+          this.addToAppropriateRules(varReference, variableCSSName, format!, cssOutput!);
+        } else {
+          // 添加到模式覆盖规则
+          if (!cssOutput!.modeRules.has(selector)) {
+            cssOutput!.modeRules.set(selector, new Set());
+          }
+          cssOutput!.modeRules.get(selector)!.add(varReference);
+        }
+
+        // 如果引用的变量有值，继续处理
+        if (modeData.value !== undefined) {
+          this.processComplexValue(
+            modeData.value,
+            newParentModes,
+            modeData.variable,
+            modeData.variable.collection,
+            allCollections,
+            modeData.variable.collection,
+            originalCollection,
+            resolvedDataType,
+            scopes,
+            cssOutput,
+            appendCollectionName,
+            useRemUnit,
+            format,
+            rootElementSize,
+            processedVarsMap,
+            variableCollectionMap
+          );
+        }
+      } else if (modeData.value !== undefined) {
+        // 如果是直接值，递归处理
+        this.processComplexValue(
+          modeData.value,
+          newParentModes,
+          variable,
+          variableCollection,
+          allCollections,
+          referencingCollection,
+          originalCollection,
+          resolvedDataType,
+          scopes,
+          cssOutput,
+          appendCollectionName,
+          useRemUnit,
+          format,
+          rootElementSize,
+          processedVarsMap,
+          variableCollectionMap
+        );
+      }
+    }
   }
 
   /**
