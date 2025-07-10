@@ -91,6 +91,7 @@ export interface CSSOutput {
   defaultRules: Map<string, string>;
   defaultShadcnRules: Map<string, string>;
   modeRules: Map<string, Set<string>>;
+  variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>;
 }
 
 // ===== 字体配置 =====

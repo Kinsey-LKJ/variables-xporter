@@ -57,10 +57,10 @@ export class CSSGenerator {
       defaultRules: new Map(),
       defaultShadcnRules: new Map(),
       modeRules: new Map(),
+      variableCollectionMap: new Map(),
     };
 
     const processedVarsMap = new Map<string, Set<string>>();
-    const variableCollectionMap = new Map<string, { collectionId: string; collectionName: string }>();
 
     // 处理 Tailwind CSS V4 字体配置，获取变量名映射表
     const tailwindcssv4NeedUpdateVariablesName = this.processTailwindV4FontConfig(results, format, cssOutput);
@@ -75,7 +75,6 @@ export class CSSGenerator {
         format,
         rootElementSize,
         processedVarsMap,
-        variableCollectionMap,
         tailwindcssv4NeedUpdateVariablesName
       );
     }
@@ -95,7 +94,6 @@ export class CSSGenerator {
     format: ExportFormat,
     rootElementSize: number,
     processedVarsMap: Map<string, Set<string>>,
-    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>,
     tailwindcssv4NeedUpdateVariablesName: Map<string, string>
   ): void {
     const { initialVariable, modes } = result;
@@ -111,7 +109,6 @@ export class CSSGenerator {
         useRemUnit,
         format,
         rootElementSize,
-        variableCollectionMap,
         tailwindcssv4NeedUpdateVariablesName
       );
 
@@ -133,7 +130,6 @@ export class CSSGenerator {
           format,
           rootElementSize,
           processedVarsMap,
-          variableCollectionMap,
           tailwindcssv4NeedUpdateVariablesName
         );
       }
@@ -175,7 +171,6 @@ export class CSSGenerator {
           format,
           rootElementSize,
           processedVarsMap,
-          variableCollectionMap,
           tailwindcssv4NeedUpdateVariablesName
         );
       }
@@ -193,7 +188,6 @@ export class CSSGenerator {
     useRemUnit: boolean,
     format: ExportFormat,
     rootElementSize: number,
-    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>,
     tailwindcssv4NeedUpdateVariablesName: Map<string, string>
   ): void {
     let variableCSSName = NameTransformer.getVariableCSSName(
@@ -210,7 +204,7 @@ export class CSSGenerator {
     }
 
     // 记录变量所属的集合信息
-    variableCollectionMap.set(variableCSSName, {
+    cssOutput.variableCollectionMap.set(variableCSSName, {
       collectionId: variable.collection.id,
       collectionName: variable.collection.name,
     });
@@ -393,7 +387,6 @@ export class CSSGenerator {
     format?: ExportFormat,
     rootElementSize?: number,
     processedVarsMap?: Map<string, Set<string>>,
-    variableCollectionMap?: Map<string, { collectionId: string; collectionName: string }>,
     tailwindcssv4NeedUpdateVariablesName?: Map<string, string>
   ): void {
     if (value === undefined || value === null) {
@@ -415,7 +408,7 @@ export class CSSGenerator {
     }
 
     // 记录变量所属的集合信息
-    variableCollectionMap!.set(variableCSSName, {
+    cssOutput!.variableCollectionMap.set(variableCSSName, {
       collectionId: referencingCollection.id,
       collectionName: referencingCollection.name,
     });
@@ -557,7 +550,6 @@ export class CSSGenerator {
             format,
             rootElementSize,
             processedVarsMap,
-            variableCollectionMap,
             tailwindcssv4NeedUpdateVariablesName
           );
         }
@@ -579,7 +571,6 @@ export class CSSGenerator {
           format,
           rootElementSize,
           processedVarsMap,
-          variableCollectionMap,
           tailwindcssv4NeedUpdateVariablesName
         );
       }
@@ -657,27 +648,205 @@ export class CSSGenerator {
   ): string {
     const css: string[] = [];
     const themeRootSelector = getThemeRootSelector(format);
+    let otherCollectionsCSS = '';
 
-    // 生成默认规则
+    // 生成默认规则（按集合分组）
     if (cssOutput.defaultRules.size > 0) {
       css.push('/* Default Mode */');
       css.push(`${themeRootSelector} {`);
-      css.push(...this.sortAndFormatDeclarations([...cssOutput.defaultRules.values()]));
+      
+      // 按集合分组并添加注释
+      const result = this.generateCollectionGroupedCSS(
+        css, 
+        cssOutput.defaultRules, 
+        allCollections, 
+        selectCollectionID, 
+        currentCollectionId,
+        format,
+        cssOutput.variableCollectionMap
+      );
+      
       css.push('}\n');
+      
+      // 收集其他集合的 CSS
+      if (result.otherCollectionsCSS) {
+        otherCollectionsCSS += result.otherCollectionsCSS;
+      }
     }
 
-    // 生成 shadcn/ui 规则
+    // 生成 shadcn/ui 规则（按集合分组）
     if (cssOutput.defaultShadcnRules.size > 0) {
-      css.push('/* shadcn/ui Variables */');
+      css.push('/* shadcn/ui Theme */');
       css.push(':root {');
-      css.push(...this.sortAndFormatDeclarations([...cssOutput.defaultShadcnRules.values()]));
+      
+      // 按集合分组并添加注释
+      const result = this.generateCollectionGroupedCSS(
+        css, 
+        cssOutput.defaultShadcnRules, 
+        allCollections, 
+        selectCollectionID, 
+        currentCollectionId,
+        format,
+        cssOutput.variableCollectionMap
+      );
+      
       css.push('}\n');
+      
+      // 收集其他集合的 CSS（虽然 shadcn/ui 规则通常不会有其他集合）
+      if (result.otherCollectionsCSS) {
+        otherCollectionsCSS += result.otherCollectionsCSS;
+      }
+    }
+
+    // 添加其他集合的 CSS（仅对 V4 格式）- 紧跟在 shadcn/ui Theme 后面
+    if (otherCollectionsCSS) {
+      css.push(otherCollectionsCSS);
     }
 
     // 生成模式覆盖规则
-    this.generateModeOverrides(css, cssOutput.modeRules, format);
+    const modeOverridesResult = this.generateModeOverrides(css, cssOutput.modeRules, format, allCollections, selectCollectionID, currentCollectionId, cssOutput.variableCollectionMap);
+    if (modeOverridesResult?.otherCollectionsCSS) {
+      // 模式覆盖中的其他集合 CSS 也应该紧跟着添加
+      css.push(modeOverridesResult.otherCollectionsCSS);
+    }
 
     return css.join('\n');
+  }
+
+  /**
+   * 按集合分组生成 CSS 变量，并添加集合注释
+   */
+  private static generateCollectionGroupedCSS(
+    css: string[],
+    rules: Map<string, string>,
+    allCollections: TVariableCollection[],
+    selectCollectionID: string,
+    currentCollectionId: string,
+    format: ExportFormat,
+    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>
+  ): { otherCollectionsCSS?: string } {
+    const { groupedDeclarations, collectionOrder } = this.sortCSSDeclarationsByCollection(
+      [...rules.values()],
+      currentCollectionId,
+      variableCollectionMap,
+      currentCollectionId
+    );
+
+    const isV4 = format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)';
+    let otherCollectionsCSS = '';
+
+    // 按集合顺序输出变量
+    for (let i = 0; i < collectionOrder.length; i++) {
+      const collectionId = collectionOrder[i];
+      const collection = allCollections.find((c) => c.id === collectionId);
+      const declarations = groupedDeclarations.get(collectionId);
+      
+      if (declarations && declarations.length > 0) {
+        // 对于 V4 格式，区分当前集合和其他集合
+        if (isV4) {
+          if (collectionId === selectCollectionID) {
+            // 当前集合的变量放入 @theme
+            css.push(`  /* Collection: ${collection?.name || 'Current Collection'} */`);
+            css.push(declarations.join('\n'));
+            
+            // 如果不是最后一个当前集合，添加换行
+            if (i < collectionOrder.length - 1 && collectionOrder.slice(i + 1).some(id => id === selectCollectionID)) {
+              css.push('');
+            }
+          } else {
+            // 其他集合的变量收集到单独的 :root 块
+            if (otherCollectionsCSS === '') {
+              otherCollectionsCSS += ':root {\n';
+            } else {
+              otherCollectionsCSS += '\n\n';
+            }
+            otherCollectionsCSS += `  /* Collection: ${collection?.name || 'Design Tokens'} */\n`;
+            otherCollectionsCSS += declarations.join('\n');
+          }
+        } else {
+          // 非 V4 格式，所有集合都放在同一个块中
+          css.push(`  /* Collection: ${collection?.name || 'Design Tokens'} */`);
+          css.push(declarations.join('\n'));
+          
+          // 如果不是最后一个集合，添加换行
+          if (i < collectionOrder.length - 1) {
+            css.push('');
+          }
+        }
+      }
+    }
+
+    // 如果有其他集合的 CSS，关闭 :root 块
+    if (otherCollectionsCSS) {
+      otherCollectionsCSS += '\n}\n';
+    }
+
+    return { otherCollectionsCSS: otherCollectionsCSS || undefined };
+  }
+
+  /**
+   * 按集合对 CSS 声明进行分组排序
+   */
+  private static sortCSSDeclarationsByCollection(
+    declarations: string[],
+    currentCollectionId: string,
+    variableMap: Map<string, { collectionId: string; collectionName: string }>,
+    defaultCollectionId: string
+  ): { groupedDeclarations: Map<string, string[]>; collectionOrder: string[] } {
+    // 按集合分组
+    const groupedDeclarations = new Map<string, string[]>();
+    const collectionOrder: string[] = [];
+
+    // 首先将声明按集合分组
+    declarations.forEach((declaration) => {
+      const varName = declaration.match(/--([^:]+):/)?.[1] || '';
+      const varInfo = variableMap.get(varName);
+
+      const collectionId = varInfo?.collectionId || defaultCollectionId;
+      
+      if (!groupedDeclarations.has(collectionId)) {
+        groupedDeclarations.set(collectionId, []);
+        if (!collectionOrder.includes(collectionId)) {
+          collectionOrder.push(collectionId);
+        }
+      }
+      groupedDeclarations.get(collectionId)!.push(declaration);
+    });
+
+    // 对每个组内的声明进行排序，并在首字母变化时添加空行
+    for (const [collectionId, group] of groupedDeclarations) {
+      const sortedGroup: string[] = [];
+      const sortedDeclarations = group.sort((a, b) => {
+        const varNameA = a.match(/--([^:]+):/)?.[1] || '';
+        const varNameB = b.match(/--([^:]+):/)?.[1] || '';
+        return varNameA.localeCompare(varNameB);
+      });
+
+      let lastFirstLetter = '';
+      sortedDeclarations.forEach((declaration, index) => {
+        const varName = declaration.match(/--([^-]+)-/)?.[1] || '';
+        const currentFirstLetter = varName.charAt(0);
+
+        // 如果首字母变化了，并且不是第一个声明，添加空行
+        if (currentFirstLetter !== lastFirstLetter && lastFirstLetter !== '') {
+          sortedGroup.push('');
+        }
+
+        sortedGroup.push(declaration);
+        lastFirstLetter = currentFirstLetter;
+      });
+
+      groupedDeclarations.set(collectionId, sortedGroup);
+    }
+
+    // 确保当前集合在最前面
+    const currentCollectionIndex = collectionOrder.indexOf(currentCollectionId);
+    if (currentCollectionIndex > -1) {
+      collectionOrder.splice(currentCollectionIndex, 1);
+      collectionOrder.unshift(currentCollectionId);
+    }
+
+    return { groupedDeclarations, collectionOrder };
   }
 
   /**
@@ -686,9 +855,14 @@ export class CSSGenerator {
   private static generateModeOverrides(
     css: string[],
     modeRules: Map<string, Set<string>>,
-    format: ExportFormat
-  ): void {
+    format: ExportFormat,
+    allCollections: TVariableCollection[],
+    selectCollectionID: string,
+    currentCollectionId: string,
+    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>
+  ): { otherCollectionsCSS?: string } {
     const sortedSelectors = this.sortSelectors([...modeRules.keys()]);
+    let totalOtherCollectionsCSS = '';
 
     for (const selector of sortedSelectors) {
       const declarations = modeRules.get(selector);
@@ -697,11 +871,19 @@ export class CSSGenerator {
       css.push('/* Mode Override */');
       
       if (selector.startsWith('@media')) {
-        this.generateMediaQueryRule(css, selector, [...declarations], format);
+        const result = this.generateMediaQueryRule(css, selector, [...declarations], format, allCollections, selectCollectionID, currentCollectionId, variableCollectionMap);
+        if (result?.otherCollectionsCSS) {
+          totalOtherCollectionsCSS += result.otherCollectionsCSS;
+        }
       } else {
-        this.generateClassRule(css, selector, [...declarations]);
+        const result = this.generateClassRule(css, selector, [...declarations], allCollections, selectCollectionID, currentCollectionId, variableCollectionMap);
+        if (result?.otherCollectionsCSS) {
+          totalOtherCollectionsCSS += result.otherCollectionsCSS;
+        }
       }
     }
+
+    return { otherCollectionsCSS: totalOtherCollectionsCSS || undefined };
   }
 
   /**
@@ -711,36 +893,99 @@ export class CSSGenerator {
     css: string[],
     selector: string,
     declarations: string[],
-    format: ExportFormat
-  ): void {
+    format: ExportFormat,
+    allCollections: TVariableCollection[],
+    selectCollectionID: string,
+    currentCollectionId: string,
+    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>
+  ): { otherCollectionsCSS?: string } {
     const isV4 = format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)';
+    let otherCollectionsCSS = '';
     
-    if (isV4) {
-      css.push(`${selector} {`);
+    css.push(`${selector} {`);
+    css.push(':root {');
+    
+    // 按集合分组声明并添加注释
+    const { groupedDeclarations, collectionOrder } = this.sortCSSDeclarationsByCollection(
+      declarations,
+      currentCollectionId,
+      variableCollectionMap,
+      currentCollectionId
+    );
+
+    // 按集合顺序输出变量
+    for (let i = 0; i < collectionOrder.length; i++) {
+      const collectionId = collectionOrder[i];
+      const collection = allCollections.find((c) => c.id === collectionId);
+      const collectionDeclarations = groupedDeclarations.get(collectionId);
+      
+      if (collectionDeclarations && collectionDeclarations.length > 0) {
+        // 对于 V4 格式的媒体查询，其他集合的变量也需要单独处理
+        if (isV4 && collectionId !== selectCollectionID) {
+          // 媒体查询中的其他集合变量，为了保持一致性，也可以单独处理
+          // 但根据原始实现，媒体查询中通常所有变量都放在同一个 :root 中
+          css.push(`    /* Collection: ${collection?.name || 'Design Tokens'} */`);
+          css.push(collectionDeclarations.map(decl => '  ' + decl).join('\n'));
+        } else {
+          css.push(`    /* Collection: ${collection?.name || 'Design Tokens'} */`);
+          css.push(collectionDeclarations.map(decl => '  ' + decl).join('\n'));
+        }
+        
+        // 如果不是最后一个集合，添加换行
+        if (i < collectionOrder.length - 1) {
+          css.push('');
+        }
+      }
     }
     
-    if (!isV4) {
-      css.push(`${selector} {`);
-    }
-    
-    css.push(isV4 ? ':root {' : ':root {');
-    css.push(...this.sortAndFormatDeclarations(declarations));
     css.push('  }');
-    
-    if (!isV4) {
-      css.push('}\n');
-    } else {
-      css.push('}\n');
-    }
+    css.push('}\n');
+
+    return { otherCollectionsCSS: otherCollectionsCSS || undefined };
   }
 
   /**
    * 生成类规则
    */
-  private static generateClassRule(css: string[], selector: string, declarations: string[]): void {
+  private static generateClassRule(
+    css: string[], 
+    selector: string, 
+    declarations: string[],
+    allCollections: TVariableCollection[],
+    selectCollectionID: string,
+    currentCollectionId: string,
+    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>
+  ): { otherCollectionsCSS?: string } {
     css.push(`${selector} {`);
-    css.push(...this.sortAndFormatDeclarations(declarations));
+    
+    // 按集合分组声明并添加注释
+    const { groupedDeclarations, collectionOrder } = this.sortCSSDeclarationsByCollection(
+      declarations,
+      currentCollectionId,
+      variableCollectionMap,
+      currentCollectionId
+    );
+
+    // 按集合顺序输出变量
+    for (let i = 0; i < collectionOrder.length; i++) {
+      const collectionId = collectionOrder[i];
+      const collection = allCollections.find((c) => c.id === collectionId);
+      const collectionDeclarations = groupedDeclarations.get(collectionId);
+      
+      if (collectionDeclarations && collectionDeclarations.length > 0) {
+        css.push(`  /* Collection: ${collection?.name || 'Design Tokens'} */`);
+        css.push(collectionDeclarations.join('\n'));
+        
+        // 如果不是最后一个集合，添加换行
+        if (i < collectionOrder.length - 1) {
+          css.push('');
+        }
+      }
+    }
+    
     css.push('}\n');
+
+    return {}; // 类规则通常不需要分离集合
   }
 
   /**
