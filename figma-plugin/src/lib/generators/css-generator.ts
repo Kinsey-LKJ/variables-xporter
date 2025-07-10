@@ -8,6 +8,7 @@ import { ColorProcessor } from '../processors/color-processor';
 import { UnitConverter } from '../processors/unit-converter';
 import { NameTransformer } from '../processors/name-transformer';
 import { VariableResolver } from '../processors/variable-resolver';
+import { FontProcessor } from '../processors/font-processor';
 import { getThemeRootSelector } from '../constants/export-config';
 
 export class CSSGenerator {
@@ -61,6 +62,9 @@ export class CSSGenerator {
     const processedVarsMap = new Map<string, Set<string>>();
     const variableCollectionMap = new Map<string, { collectionId: string; collectionName: string }>();
 
+    // 处理 Tailwind CSS V4 字体配置，获取变量名映射表
+    const tailwindcssv4NeedUpdateVariablesName = this.processTailwindV4FontConfig(results, format, cssOutput);
+
     for (const result of results) {
       this.processResult(
         result,
@@ -71,7 +75,8 @@ export class CSSGenerator {
         format,
         rootElementSize,
         processedVarsMap,
-        variableCollectionMap
+        variableCollectionMap,
+        tailwindcssv4NeedUpdateVariablesName
       );
     }
 
@@ -90,7 +95,8 @@ export class CSSGenerator {
     format: ExportFormat,
     rootElementSize: number,
     processedVarsMap: Map<string, Set<string>>,
-    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>
+    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>,
+    tailwindcssv4NeedUpdateVariablesName: Map<string, string>
   ): void {
     const { initialVariable, modes } = result;
 
@@ -105,7 +111,8 @@ export class CSSGenerator {
         useRemUnit,
         format,
         rootElementSize,
-        variableCollectionMap
+        variableCollectionMap,
+        tailwindcssv4NeedUpdateVariablesName
       );
 
       // 如果默认模式有变量引用且包含复杂值，需要递归处理
@@ -126,7 +133,8 @@ export class CSSGenerator {
           format,
           rootElementSize,
           processedVarsMap,
-          variableCollectionMap
+          variableCollectionMap,
+          tailwindcssv4NeedUpdateVariablesName
         );
       }
     }
@@ -145,7 +153,8 @@ export class CSSGenerator {
         useRemUnit,
         format,
         rootElementSize,
-        processedVarsMap
+        processedVarsMap,
+        tailwindcssv4NeedUpdateVariablesName
       );
 
       // 如果模式数据有变量引用且包含复杂值，需要递归处理
@@ -166,7 +175,8 @@ export class CSSGenerator {
           format,
           rootElementSize,
           processedVarsMap,
-          variableCollectionMap
+          variableCollectionMap,
+          tailwindcssv4NeedUpdateVariablesName
         );
       }
     }
@@ -183,7 +193,8 @@ export class CSSGenerator {
     useRemUnit: boolean,
     format: ExportFormat,
     rootElementSize: number,
-    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>
+    variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>,
+    tailwindcssv4NeedUpdateVariablesName: Map<string, string>
   ): void {
     let variableCSSName = NameTransformer.getVariableCSSName(
       variable,
@@ -191,6 +202,12 @@ export class CSSGenerator {
       appendCollectionName,
       format
     );
+
+    // 应用 Tailwind CSS V4 字体变量名映射
+    if (tailwindcssv4NeedUpdateVariablesName.has(variableCSSName) && 
+        (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)')) {
+      variableCSSName = tailwindcssv4NeedUpdateVariablesName.get(variableCSSName)!;
+    }
 
     // 记录变量所属的集合信息
     variableCollectionMap.set(variableCSSName, {
@@ -200,12 +217,19 @@ export class CSSGenerator {
 
     if (defaultMode.variable) {
       // 处理变量引用
-      const referencedVarName = NameTransformer.getVariableCSSName(
+      let referencedVarName = NameTransformer.getVariableCSSName(
         defaultMode.variable,
         variable.collection,
         appendCollectionName,
         format
       );
+      
+      // 对引用的变量名也应用映射
+      if (tailwindcssv4NeedUpdateVariablesName.has(referencedVarName) && 
+          (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)')) {
+        referencedVarName = tailwindcssv4NeedUpdateVariablesName.get(referencedVarName)!;
+      }
+      
       const declaration = `  --${variableCSSName}: var(--${referencedVarName});`;
       this.addToAppropriateRules(declaration, variableCSSName, format, cssOutput);
     } else if (defaultMode.value !== undefined) {
@@ -238,14 +262,21 @@ export class CSSGenerator {
     useRemUnit: boolean,
     format: ExportFormat,
     rootElementSize: number,
-    processedVarsMap: Map<string, Set<string>>
+    processedVarsMap: Map<string, Set<string>>,
+    tailwindcssv4NeedUpdateVariablesName: Map<string, string>
   ): void {
-    const variableCSSName = NameTransformer.getVariableCSSName(
+    let variableCSSName = NameTransformer.getVariableCSSName(
       variable,
       variable.collection,
       appendCollectionName,
       format
     );
+
+    // 应用 Tailwind CSS V4 字体变量名映射
+    if (tailwindcssv4NeedUpdateVariablesName.has(variableCSSName) && 
+        (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)')) {
+      variableCSSName = tailwindcssv4NeedUpdateVariablesName.get(variableCSSName)!;
+    }
 
     const modeInfos = VariableResolver.getModeNamesAndCollections(parentModes, allCollections)
       .filter((info) => info.collection.id === variable.collection.id);
@@ -263,12 +294,19 @@ export class CSSGenerator {
 
     let declaration: string;
     if (modeData.variable) {
-      const referencedVarName = NameTransformer.getVariableCSSName(
+      let referencedVarName = NameTransformer.getVariableCSSName(
         modeData.variable,
         variable.collection,
         appendCollectionName,
         format
       );
+      
+      // 对引用的变量名也应用映射
+      if (tailwindcssv4NeedUpdateVariablesName.has(referencedVarName) && 
+          (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)')) {
+        referencedVarName = tailwindcssv4NeedUpdateVariablesName.get(referencedVarName)!;
+      }
+      
       declaration = `  --${variableCSSName}: var(--${referencedVarName});`;
     } else {
       const processedValue = this.processValue(
@@ -355,7 +393,8 @@ export class CSSGenerator {
     format?: ExportFormat,
     rootElementSize?: number,
     processedVarsMap?: Map<string, Set<string>>,
-    variableCollectionMap?: Map<string, { collectionId: string; collectionName: string }>
+    variableCollectionMap?: Map<string, { collectionId: string; collectionName: string }>,
+    tailwindcssv4NeedUpdateVariablesName?: Map<string, string>
   ): void {
     if (value === undefined || value === null) {
       console.warn(`处理变量 ${variable.name} 时遇到空值`);
@@ -368,6 +407,12 @@ export class CSSGenerator {
       appendCollectionName!,
       format!
     );
+
+    // 应用 Tailwind CSS V4 字体变量名映射
+    if (tailwindcssv4NeedUpdateVariablesName && tailwindcssv4NeedUpdateVariablesName.has(variableCSSName) && 
+        (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)')) {
+      variableCSSName = tailwindcssv4NeedUpdateVariablesName.get(variableCSSName)!;
+    }
 
     // 记录变量所属的集合信息
     variableCollectionMap!.set(variableCSSName, {
@@ -468,12 +513,19 @@ export class CSSGenerator {
         // 标记为已处理
         processedVarsMap!.get(selector)!.add(variableCSSName);
 
-        const referencedVarName = NameTransformer.getVariableCSSName(
+        let referencedVarName = NameTransformer.getVariableCSSName(
           modeData.variable,
           originalCollection,
           appendCollectionName!,
           format!
         );
+        
+        // 对引用的变量名也应用映射
+        if (tailwindcssv4NeedUpdateVariablesName && tailwindcssv4NeedUpdateVariablesName.has(referencedVarName) && 
+            (format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)')) {
+          referencedVarName = tailwindcssv4NeedUpdateVariablesName.get(referencedVarName)!;
+        }
+        
         const varReference = `  --${variableCSSName}: var(--${referencedVarName});`;
 
         // 如果是默认选择器
@@ -505,7 +557,8 @@ export class CSSGenerator {
             format,
             rootElementSize,
             processedVarsMap,
-            variableCollectionMap
+            variableCollectionMap,
+            tailwindcssv4NeedUpdateVariablesName
           );
         }
       } else if (modeData.value !== undefined) {
@@ -526,10 +579,49 @@ export class CSSGenerator {
           format,
           rootElementSize,
           processedVarsMap,
-          variableCollectionMap
+          variableCollectionMap,
+          tailwindcssv4NeedUpdateVariablesName
         );
       }
     }
+  }
+
+  /**
+   * 处理 Tailwind CSS V4 字体配置
+   * 根据原始实现，创建变量名映射表来处理字体属性的命名转换
+   */
+  private static processTailwindV4FontConfig(
+    results: ResolvedVariable[],
+    format: ExportFormat,
+    cssOutput: CSSOutput
+  ): Map<string, string> {
+    const tailwindcssv4NeedUpdateVariablesName: Map<string, string> = new Map();
+    
+    if (format !== 'Tailwind CSS V4' && format !== 'shadcn/ui (Tailwind CSS V4)') {
+      return tailwindcssv4NeedUpdateVariablesName;
+    }
+
+    const [mergedFontConfig, usedVariables] = FontProcessor.processMergedFontConfigs(results, format);
+    
+    // 分析字体配置，构建变量名映射表
+    for (const [variantName, config] of Object.entries(mergedFontConfig)) {
+      if (Array.isArray(config)) {
+        const [fontSize, settings] = config as [string, Record<string, string>];
+        
+        // 为字体属性创建变量名映射
+        if (settings) {
+          for (const [prop, value] of Object.entries(settings)) {
+            const kebabProp = prop.replace(/([A-Z])/g, '-$1').toLowerCase();
+            // 映射：从 text-variant-property 到 text-variant--property (双短横线)
+            const originalName = `text-${variantName}-${kebabProp}`;
+            const newName = `text-${variantName}--${kebabProp}`;
+            tailwindcssv4NeedUpdateVariablesName.set(originalName, newName);
+          }
+        }
+      }
+    }
+    
+    return tailwindcssv4NeedUpdateVariablesName;
   }
 
   /**
