@@ -3,20 +3,20 @@ checksums:
   f3526ad01ba955a40cb854dadf22b848:
     language: e1eeeb379f86a015d6e581fcbc4af7f3
     supportTailwindCssV4: 726d14e3f85bb055c5db0bce8b45e859
-    pluginHighlight: 6fc81329cbf3034efa3d66d95f499634
+    pluginHighlight: 27c3605dffda75f28e7d8f60759d7609
     start: 5c783951b0100a168bdd2161ff294833
     learnMore: e598091d132f890c37a6d4ed94f6d794
-    exclusive: 3f98452cb3f550ab81aa316bb07bcfc8
-    features/shadcnUi/title: 507dc84161940adf9612aedbfc4c13e2
-    features/shadcnUi/description: fbbdb414c2deb11f7659e6b94c82f505
-    features/multiMode/title: df394725f8af74b47359f061ac3c40cc
-    features/multiMode/description: fbe7dbcdc7356a3c4aeefb574a60333b
-    features/mergeTypographyStyles/title: 77df22f941841d388deb7631702237f5
-    features/mergeTypographyStyles/description: 4a1a04097343785f46bdbb49ecfbf14a
-    features/cssMediaQueryMode/title: 304b255ad622e10d1630aba83c282dfd
-    features/cssMediaQueryMode/description: bed5df773f699875d20540e8fad82fc0
-    features/unitConversion/title: aff7c68bfdb8dee8faeb06126634942f
-    features/unitConversion/description: 779998fc8e60352d51c7bc57fcbca088
+    exclusive: 33d015eed1746d386cd61622eb86418b
+    features/shadcnUi/title: 1f419a7293f77d3208299e00415c682e
+    features/shadcnUi/description: d2d3636c351688dda8f89b724a813ed8
+    features/multiMode/title: 344d708d41dfbbde11bcad74dec16d7d
+    features/multiMode/description: 65cefc14f891cd7bc732683d7dba84dc
+    features/mergeTypographyStyles/title: 23d66c1015942698a6950d728c8bc0e9
+    features/mergeTypographyStyles/description: ef36e0b8e922a61334992a110db81cf5
+    features/cssMediaQueryMode/title: da386bedc52f7b163da64f9e8121185f
+    features/cssMediaQueryMode/description: 7387d5d5b39aca9f523105130133b83f
+    features/unitConversion/title: f5299f6efe0b296457bd5d4ab43be2a0
+    features/unitConversion/description: 51b2be2ad55b7ef6586452d75929dee3
     organizingYourVariables/heading: 5183aa3fde402178bfc9d0b57d8969c5
     organizingYourVariables/principles/title: 51724209973365ced2fa65806a35ea09
     organizingYourVariables/principles/description: 7746c16c9738ea317b812e0f8fc57bc0
@@ -31,8 +31,8 @@ checksums:
     organizingYourVariables/multiMode/title: df394725f8af74b47359f061ac3c40cc
     organizingYourVariables/multiMode/description: 0caa716bfd855f210324d1eb406286ea
     figmaTemplate/heading: 120abf59a838bdf15155b32a5ff93228
-    figmaTemplate/title: ed2e8303056d538b4b5d7ea7404bea77
-    figmaTemplate/description: a90cec556d5653dee1dc399131427b05
+    figmaTemplate/title: 600a592c88887049e48cb1e4ba58098c
+    figmaTemplate/description: 84bde26c6f25a14a88b9e5f609c862a6
     figmaTemplate/openInFigma: 1308c3d6fd7b102179f449d5b969616a
     example/heading: c2d5d8760d96802e1b9a7bac290b1cfc
     example/title: c2d5d8760d96802e1b9a7bac290b1cfc
@@ -111,27 +111,27 @@ checksums:
     fm-attr-title: 6ffc4403292720e4db67e1436693f948
   421abf4e9b57e6555d87637d4573c9c0:
     md-section-0: f585fd2264d56f463d95f9b0811d400e
-    md-section-1: 3ab248110c2bc5717071d5dfd6b12b42
-    md-section-2: 36753e01548ae112145b5bc64d437740
-    md-section-3: 7c8c2a4310b6b7b4efb15ad15735c11b
-    md-section-4: a3198863464e2b37f4314cfcb6f3faee
-    md-section-5: e428cd3bb6719ec09232bce4391918fc
-    md-section-6: 850ba6a9c26a948fc6b19d7a9b16d32d
+    md-section-1: d21438296e7163188254958581dd68c2
+    md-section-2: 79727aa74b940c19b709da70299248b6
+    md-section-3: ffd8d2bd04033d97c40ead14f0510627
+    md-section-4: fcc5c7d9d8435446be00b73fd5c35e5b
+    md-section-5: b866ba4a4818cf5d16430d94dbfba13b
+    md-section-6: ca556ebaf0d185053a36a32e41b5167e
     md-section-7: 0c8c02bec174303103a2cec505203a10
     md-section-8: 12f17900cdae0459cfbbd154f8174ab2
     md-section-9: 6db0a99e7ec59558c3b2d054f09dda5d
     md-section-10: 61bf56d11bee017038bc24755d351f21
     md-section-11: 1253c2d1afea8fbd2a065132bc0d9d79
     md-section-12: 1bd10350a0bf4cbd854ec200670a3fb0
-    md-section-13: c2d0f6db56b30c552245bd2d64c8387c
+    md-section-13: 3143a02a8a5049cc27c8486e41f19503
     md-section-14: a38f340fe6df582def9b403ffe701279
     md-section-15: 8480183bc0a8b51bedf55a3408e6eab4
   526eb653e310e3a55d22ac15b1fda056:
     md-section-0: eca3ef68f46869882f559d83219092f4
-    md-section-1: eba766baf71fa1c389b1bd61f1d866a5
-    md-section-2: c389865bafdbfbbfa8aa34cd54d396bb
-    md-section-3: 2384ccfb1e621408ef3e42d85ae63158
-    md-section-4: 55873ecec3a1ca7eb0f206c36079638a
+    md-section-1: 03cb4a4825b89caab10e3ae6c2c2a7bb
+    md-section-2: 017e2285264ff742a50f8f7ec62b88e6
+    md-section-3: 887ceb92970cf4e961c6ea59ab512eb4
+    md-section-4: 08199bb0aa23e730e8c265177beb0eba
   e8b66a312fccfe004b1b7bfc0b7a069b:
     md-section-0: 0b2853372f391bb69280c88ed49d1f12
     md-section-1: 3991a34113d15a2b23f6d0c327bef41c
@@ -181,8 +181,8 @@ checksums:
     md-section-11: ed71f1e71683571eeac2f80c291c0a1b
     md-section-12: 2d35f01e0050ff346385e48d9f072790
   3642ede58f59b7bd70c395d3da40c113:
-    md-section-0: ee6d6503a586880a19753d75850346c0
-    md-section-1: 7ee183e1c22c5f50791bbd6b45bb5718
+    md-section-0: 348df8d323dd13e5d8c25b1b2979e4ce
+    md-section-1: 9731fe15b07e4f47fb6ff10588e4e432
     md-section-2: 8589379924d4868938d6c35a64b42165
     md-section-3: af5d3bf6066b7a65b9835b72ace4bbdd
     md-section-4: f2c07b4b6edfdbd65f87bf8c759db525
@@ -207,14 +207,18 @@ checksums:
     md-section-11: 0cd69a95c98c8796063e0cabd419861b
     md-section-12: 2b72c3727b63f53eebfcaaa6a9a0540b
     md-section-13: d90dc287905449ce37d29377f334db93
-    md-section-14: b1ad430eca21e813af980330090c9b40
-    md-section-15: f6411325b2603548955fccb01dd7b549
-    md-section-16: 7920a6a23bf1703db931e0a8aea005c8
-    md-section-17: 995a7cac049ec7dd782aa2f84f4e46b9
-    md-section-18: f3a5b888976b162d5dc07de1c6c29941
-    md-section-19: 5bb7739a289eeb1860a23f03c18d0622
-    md-section-20: e236a7377f6a58badcaafcb63b2fc7e1
-    md-section-21: 5bcc71024a3085c703a2b01718e9ca81
+    md-section-14: 7dd358cf7bba8c26b5931b3995bace73
+    md-section-15: fcbe042261eb42edd741b05ca43f90ef
+    md-section-16: fe7ed28a140e88f9439ce6d81d033118
+    md-section-17: 3db937bc4c8822a1dffc4001ea07b8df
+    md-section-18: 120c2d37595ebf95cd1f1533f5472adb
+    md-section-19: c715d678d5b39a118d4cd17887065f5d
+    md-section-20: 47fe775b2d035d702df447825b2a6237
+    md-section-21: fc097d78759593e108cf94bb652fb3c3
+    md-section-22: b39a7df836891e1855827a64ea874991
+    md-section-23: 5bb7739a289eeb1860a23f03c18d0622
+    md-section-24: a0600449d67c9f724a92dd9a1452904b
+    md-section-25: 5bcc71024a3085c703a2b01718e9ca81
   cf14e5b488b724a16dc5220099c6c51c:
     md-section-0: 1b629e8c1dc288edfa5658aed6e60744
     md-section-1: 4e04ceda78de5b4c5ed4310ad0adcca9
@@ -332,7 +336,7 @@ checksums:
   1ee230a14721e53d4abbdcf25c0335ca:
     md-section-0: 59b67a182fc04a3abf79f4a430c63c6e
     md-section-1: 9a5eefb048f14fd7997f0cdc5f2d30ba
-    md-section-2: fd36bd27b717b0d4355c3cc6a2202444
+    md-section-2: 20b22a1cad8547e030e3e7f3a333fd4b
     md-section-3: 90d70cbdec064800b09728d871e1110e
     md-section-4: e53e0f2cda93b173832d22e5ee466ff2
     md-section-5: b326595610433745ced7c64a2692d966
@@ -348,55 +352,50 @@ checksums:
     md-section-15: 7b4268e456a44dc26db228f4be5d3b5e
     fm-attr-title: 187a2cbb45c41a99615d5c873739aa73
   ac330dcd21b156b5f423a1b7a0b848a9:
-    md-section-0: 13c1ad365f208984f887ec16cee39f11
-    md-section-1: 32b7e2fcfdbea9be549bd5c7413f0708
-    md-section-2: 97bafc6c6327a37afd2a4fdddd3dca3f
-    md-section-3: 58bc13574dfc0029e32f68fa741dd650
-    md-section-4: 0dac4b0039d81b7906bd2dfbbdadf58d
-    md-section-5: b971e217a3e334731fd6a6a1c8d4f97a
-    md-section-6: 19de16a36340737635e93fb48b3ee916
-    md-section-7: 5c9e998e274aae3f4a3b98e742541724
-    md-section-8: 1e23e924b095728f9fd599a9662ed9f6
-    md-section-9: a7142e0fb9905fd99746395443f26db0
-    md-section-10: 5c342aaf9aacbf8d90f5385806795718
-    md-section-11: 020e5848b7c06205371ac2472e6b4c43
-    md-section-12: 3a2e3dbdccebb486d6fa86562f8f9797
-    md-section-13: ac8f45ff9dad453d51d7102429ec9144
-    md-section-14: 7c289704b45146c3658b342b2c24ff0e
-    md-section-15: 24e2db94cc6fcb61c9278cbb8861b601
-    md-section-16: 3db937bc4c8822a1dffc4001ea07b8df
-    md-section-17: 695764a1354415622fdbbca08d342ed4
-    md-section-18: e39236b6357708532dfdf6b25b972567
-    md-section-19: 7adf4b275d17a0d059eeae8b7c0f3c97
-    md-section-20: 70b94e8d521102beabed2319761c0142
-    md-section-21: 3242fccaefecd4d937e111b120d37663
-    md-section-22: f015ef36318be41484c6022b1e3ce454
-    md-section-23: b7ddc03a50c3d5e833629419d4bf2c69
-    md-section-24: fc5ce74439974231ff73f7afbb3d6677
-    md-section-25: a4a49bdedd9c6f53c087b8089c9066ac
-    md-section-26: 38a143a46c93ca5a01586672cb72fd6a
-    md-section-27: 0170e04d977dc27a89bdf5a8f249eb4f
-    md-section-28: 755b803fc941f6f4635ddf2f109eb436
-    md-section-29: f7d7984f423c2b98224168815a03f4dd
-    md-section-30: 77f4c86380b6f810a6b42afe7babcd43
-    md-section-31: 36695957c6b96c4d6cc107f961e3015f
-    md-section-32: 80094d698ebcb0a323f7acddc92a6356
-    md-section-33: a5196ea301ae80977e0868a2ba943ff1
-    md-section-34: ab350a6cf0e20fa02df1a5c03671b986
-    md-section-35: f290ba686cf0131dbdd49b25c2ba40a7
+    md-section-0: ec41eeff8564e30eb95fa2bd39217ee3
+    md-section-1: 13c1ad365f208984f887ec16cee39f11
+    md-section-2: 32b7e2fcfdbea9be549bd5c7413f0708
+    md-section-3: 97bafc6c6327a37afd2a4fdddd3dca3f
+    md-section-4: 58bc13574dfc0029e32f68fa741dd650
+    md-section-5: 0dac4b0039d81b7906bd2dfbbdadf58d
+    md-section-6: b971e217a3e334731fd6a6a1c8d4f97a
+    md-section-7: 19de16a36340737635e93fb48b3ee916
+    md-section-8: 5c9e998e274aae3f4a3b98e742541724
+    md-section-9: 1e23e924b095728f9fd599a9662ed9f6
+    md-section-10: a7142e0fb9905fd99746395443f26db0
+    md-section-11: 5c342aaf9aacbf8d90f5385806795718
+    md-section-12: 020e5848b7c06205371ac2472e6b4c43
+    md-section-13: 3a2e3dbdccebb486d6fa86562f8f9797
+    md-section-14: ac8f45ff9dad453d51d7102429ec9144
+    md-section-15: 7c289704b45146c3658b342b2c24ff0e
+    md-section-16: 24e2db94cc6fcb61c9278cbb8861b601
+    md-section-17: 3db937bc4c8822a1dffc4001ea07b8df
+    md-section-18: 695764a1354415622fdbbca08d342ed4
+    md-section-19: e39236b6357708532dfdf6b25b972567
+    md-section-20: 0170e04d977dc27a89bdf5a8f249eb4f
+    md-section-21: 755b803fc941f6f4635ddf2f109eb436
+    md-section-22: f7d7984f423c2b98224168815a03f4dd
+    md-section-23: 77f4c86380b6f810a6b42afe7babcd43
+    md-section-24: 36695957c6b96c4d6cc107f961e3015f
+    md-section-25: 47fe775b2d035d702df447825b2a6237
+    md-section-26: 269339c08349f13cfc1d7cfbc15c9e54
+    md-section-27: 80094d698ebcb0a323f7acddc92a6356
+    md-section-28: a5196ea301ae80977e0868a2ba943ff1
+    md-section-29: ab350a6cf0e20fa02df1a5c03671b986
+    md-section-30: f290ba686cf0131dbdd49b25c2ba40a7
   988d7745ae16017b9815f37c2c81b588:
     md-section-0: f43a64e488fe5bca5700b0526d39376c
     md-section-1: 6f04b9b2a5ed1d05e97197a98faadae3
-    md-section-2: 84c3c02fe9e048b3d46747cf0af13c4f
+    md-section-2: 618bf4b1ed9116b2ec2b7d5a39c77552
     md-section-3: 9e5a786192608844493dfbb6e4100886
-    md-section-4: 0632046c9a5e40a899d4c164d6835608
-    md-section-5: f9a303e005c1c788184d555b27df0711
+    md-section-4: 7135093e74546b0327624967559e7205
+    md-section-5: beae1ac78647dcad03536819069ca4f8
     md-section-6: b4e5cf6c29b2c00a53d0bdcdd203ada1
     md-section-7: 6db2304c025176cb9a4794a58cbf23fe
-    md-section-8: b71a2ce152e417cc193c4cc6c4b8a7e4
-    md-section-9: 7f7002ac337494b619438cadc839d663
-    md-section-10: 2c371e3c4fff8437e24de7c8a92e692b
-    md-section-11: 1d2562dfe399dd55731b01be5a0853c4
+    md-section-8: 1d76606a658261029336011146461a02
+    md-section-9: b3865748d8d6fe1220d4ab5925f3ee54
+    md-section-10: cc2b96f536709792a939a15f2fb86e79
+    md-section-11: c09aecb25e88b085d7479c4bcaff707b
     md-section-12: 33b9b1e9744318597da4b925b0995be2
     md-section-13: 7178d62b9079010f7e4c1074d2b14eff
     md-section-14: 51adf33450cab2ef392e93147386647c
@@ -404,10 +403,10 @@ checksums:
   7eac5cc392f2e333ceab4ddd3da549cb:
     md-section-0: 3dc72539e2ac094fdfcd62803eac1ad9
     md-section-1: f02861a0d164737efe60155b6208a57e
-    md-section-2: 3258cffeb5c71c920e4fc24f662d9767
+    md-section-2: 8d7deacc0c998dd3cea4c2e02fab6f44
     md-section-3: f91a1f65cd323c2eeecd1d11923edf40
     md-section-4: 098aa46d6ed723f59a95f6ed6e894cd9
-    md-section-5: 4b7894da8dd289b9995fd500b39c3a83
+    md-section-5: 139cf6a782712d4ab0723b8411819cf3
     md-section-6: ed453a5726110cb144f9ebfb9a7bc4cd
     md-section-7: 11da740b16692a4ffd11698c99b49fd6
     md-section-8: ff89575bfbbc6f6ec1535c6ffce865b5
