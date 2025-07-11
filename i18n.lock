@@ -11,8 +11,8 @@ checksums:
     features/shadcnUi/description: d2d3636c351688dda8f89b724a813ed8
     features/multiMode/title: 344d708d41dfbbde11bcad74dec16d7d
     features/multiMode/description: 65cefc14f891cd7bc732683d7dba84dc
-    features/mergeTypographyStyles/title: 23d66c1015942698a6950d728c8bc0e9
-    features/mergeTypographyStyles/description: ef36e0b8e922a61334992a110db81cf5
+    features/mergeTypographyStyles/title: 77df22f941841d388deb7631702237f5
+    features/mergeTypographyStyles/description: 3834850fd896cfab302d2749bdda3698
     features/cssMediaQueryMode/title: da386bedc52f7b163da64f9e8121185f
     features/cssMediaQueryMode/description: 7387d5d5b39aca9f523105130133b83f
     features/unitConversion/title: f5299f6efe0b296457bd5d4ab43be2a0
