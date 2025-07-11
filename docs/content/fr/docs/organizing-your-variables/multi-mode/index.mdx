@@ -30,9 +30,50 @@ Utilisez des noms descriptifs pour les variables et les modes, comme `colors/pri
 
 L'utilisation du principe du point de sortie unique permet de créer un système de variables multidimensionnel complexe, par exemple un système comprenant des modes composés comme les thèmes clair/sombre, les thèmes de marque, le design responsive et les modes de compacité. Créons-le étape par étape et apprécions les avantages du principe du point de sortie unique.
 
-### Commençons par la combinaison des thèmes de marque
+### Créer la Collection Design Tokens (Collection Principale)
 
-Nous disposons déjà d'un système de variables prenant en charge les thèmes clair et sombre. Maintenant, nous souhaitons ajouter un système de variables pour les thèmes de marque sur cette base.
+Tout d'abord, nous créons une collection principale pour stocker toutes les variables de design :
+
+```
+┌────────────────────────┬────────────────────────┐
+│                        │                        │
+│ Design Tokens          │         default        │
+│                        │                        │
+├────────────────────────┼────────────────────────┤
+│                        │                        │
+│ colors/primary/DEFAULT │ #EE6D21                │
+│ colors/zhiyun/600      │ #EE6D21                │
+│ colors/zhiyun/500      │ #E55517                │
+│ colors/fiveray/600     │ #DA5959                │
+│ colors/fiveray/500     │ #C03939                │
+│ ...                    │ ...                    │
+│                        │                        │
+└────────────────────────┴────────────────────────┘
+```
+
+Cette collection principale ne contient qu'un mode par défaut et sert de point de sortie unifié pour toutes les variables.
+
+### Créer la Collection des Modes de Thème
+
+Ensuite, nous créons une collection spécialement dédiée à la gestion des modes de thème :
+
+```
+┌────────────────────────┬──────────────────────┬─────────────────────┐
+│                        │                      │                     │
+│ Theme Modes            │         light        │         dark        │
+│                        │                      │                     │
+├────────────────────────┼──────────────────────┼─────────────────────┤
+│                        │                      │                     │
+│ colors/primary/DEFAULT │ colors/primary/light │ colors/primary/dark │
+│                        │                      │                     │
+└────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+Cette collection est dédiée au stockage des variables qui doivent basculer entre les thèmes clair et sombre.
+
+### Établir les Relations de Référence
+
+En faisant référence aux variables correspondantes de cette collection dans la collection principale, nous pouvons réaliser un basculement de thème élégant :
 
 ```
                 ┌────────────────────────┬────────────────────────┐
@@ -71,8 +112,8 @@ Nous disposons déjà d'un système de variables prenant en charge les thèmes c
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### Ajout du mode thème de marque
-
+### Créer un Système de Variables Multi-dimensionnel
+Nous disposons actuellement d'un système de variables prenant en charge les thèmes clair et sombre. Maintenant, nous souhaitons aller plus loin et ajouter un système de variables pour les thèmes de marque sur cette base.
 Créez une collection Brands Modes pour gérer les variables de thème de marque, puis créez deux modes de marque différents (dans cet exemple, `zhiyun` et `fiveray`). Ensuite, créez deux variables `colors/primary/light` et `colors/primary/dark` et définissez différentes valeurs pour chaque mode (dans cet exemple, en référençant les couleurs correspondantes de la collection principale Design Tokens).
 ```
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -155,7 +196,7 @@ Créez une collection Brands Modes pour gérer les variables de thème de marque
 Voilà ! Vous avez créé un système de variables multidimensionnel comprenant des thèmes clairs/sombres et des thèmes de marque, et grâce au principe du point de sortie unique, votre système de design est devenu plus flexible et maintenable.
 En examinant la chaîne de référence des variables dans son ensemble, on constate que c'est un peu complexe, mais c'est beaucoup plus clair et maintenable que de gérer toutes les variables dans une seule collection. Mais nous n'avons pas encore terminé, continuons à étendre ce système de variables.
 
-### Modèles de design responsive
+### Créer la Collection des Modes d'Appareil Responsive
 
 Généralement, les variables de taille de police sont ajustées en fonction des différentes tailles d'écran. Prenons l'exemple de la variable `font/hero/size` : commencez par créer une variable `font/hero/size` dans la collection Design Tokens, ainsi que deux variables `font/size/2xl` et `font/size/3xl`.
 
@@ -252,7 +293,7 @@ Maintenant, il suffit de modifier la valeur de la variable `font/hero/size` dans
 ```
 Nous avons omis la collection Theme Modes car son contenu reste identique à celui présenté précédemment. C'est là l'avantage du principe de point d'entrée unique : nous n'avons besoin de nous concentrer que sur les variables qui doivent changer dans des modes spécifiques.
 
-### Mode compact
+### Créer la Collection des Modes de Densité
 
 Certains projets d'administration B2B peuvent nécessiter un mode compact, où diverses dimensions sont réduites, comme les polices, les espacements, les largeurs de conteneurs, etc. Développons davantage notre système de variables pour intégrer ce mode compact.
 

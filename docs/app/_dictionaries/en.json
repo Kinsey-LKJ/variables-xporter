@@ -1,7 +1,7 @@
 {
   "language": "English",
   "supportTailwindCssV4": "Support for Tailwind CSS V4",
-  "pluginHighlight": "Transform Figma Variables into production-ready Design Tokens. Reduce manual work while maintaining design-development consistency.",
+  "pluginHighlight": "Export Figma Variables as production-ready shadcn/ui theme variables, Tailwind CSS configuration files, or CSS Variables.",
   "start": "Get started",
   "learnMore": "Learn more",
   "exclusive": "Exclusive feature",

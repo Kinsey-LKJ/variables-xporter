@@ -3,7 +3,7 @@
 <div align="center">
   <img src="docs/public/logo.svg" alt="Variables Xporter Logo" width="120" height="120">
   
-  **A powerful Figma plugin that seamlessly bridges design and development**
+  **将 Figma Variables 导出为生产就绪的 shadcn/ui 主题变量、Tailwind CSS 配置文件或 CSS Variables**
   
   [![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
   [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple.svg)](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter)

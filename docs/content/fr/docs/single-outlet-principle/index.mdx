@@ -1,3 +1,6 @@
+import { Cards } from 'nextra/components'
+import { Columns3 } from 'lucide-react'
+
 # Principe de la source unique
 
 Le principe de la source unique est la philosophie fondamentale d'organisation des variables recommandée par Variables Xporter, spécifiquement conçue pour résoudre les problèmes complexes de gestion de variables multi-modes dans les grands systèmes de design.
@@ -139,72 +142,6 @@ En faisant référencer par les variables de la collection principale les variab
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### Implémentation de système multidimensionnel complexe
-
-L'utilisation du principe de sortie unique permet la création de systèmes de variables multidimensionnels complexes, comme ceux combinant des thèmes clairs/sombres, des thèmes de marque, un design responsive et des modes de densité.
-
-#### Combinaisons de thèmes de marque
-
-En plus des thèmes clair/sombre, nous pouvons ajouter des variables de thème de marque. Créez une collection Modes de marques pour gérer les variables de thème de marque :
-
-```
- ┌────────────────────────┬──────────────────────┬─────────────────────┐
- │                        │                      │                     │
- │ Modes de marques       │        zhiyun        │        fiveray      │
- │                        │                      │                     │
- ├────────────────────────┼──────────────────────┼─────────────────────┤
- │                        │                      │                     │
- │ colors/primary/light   │ colors/zhiyun/600    │ colors/fiveray/600  │
- │                        │                      │                     │
- │ colors/primary/dark    │ colors/zhiyun/600    │ colors/fiveray/500  │
- │                        │                      │                     │
- │ ...                    │ ...                  │ ...                 │
- │                        │                      │                     │
- └────────────────────────┴──────────────────────┴─────────────────────┘
-```
-
-Établissez des relations de référence entre variables : les variables dans la collection Modes de thèmes font référence aux variables correspondantes de la collection Modes de marques en fonction du thème actuel.
-
-#### Modes de design responsive
-
-Généralement, les variables de taille de police s'ajustent en fonction des différentes tailles d'écran. Créez une collection Modes d'appareils pour gérer les variables de design responsive :
-
-```
- ┌────────────────────────┬──────────────────────┬─────────────────────┐
- │                        │                      │                     │
- │ Modes d'appareils      │        default       │    min-width:1024   │
- │                        │                      │                     │
- ├────────────────────────┼──────────────────────┼─────────────────────┤
- │                        │                      │                     │
- │ font/hero/size         │ font/size/2xl        │ font/size/3xl       │
- │                        │                      │                     │
- │ ...                    │ ...                  │ ...                 │
- │                        │                      │                     │
- └────────────────────────┴──────────────────────┴─────────────────────┘
-```
-
-#### Modes de densité
-
-Pour les projets backend B2B, il peut y avoir des modes compacts. Créez une collection Modes de densité :
-
-```
-┌────────────────────────┬──────────────────────┬─────────────────────┐
-│                        │                      │                     │
-│ Modes de densité       │        default       │       compact       │
-│                        │                      │                     │
-├────────────────────────┼──────────────────────┼─────────────────────┤
-│                        │                      │                     │
-│ spacing/1              │ 4                    │ 3                   │
-│                        │                      │                     │
-│ font/size/2xl          │ 24                   │ 22                  │
-│                        │                      │                     │
-│ font/size/3xl          │ 30                   │ 26                  │
-│                        │                      │                     │
-│ ...                    │ ...                  │ ...                 │
-│                        │                      │                     │
-└────────────────────────┴──────────────────────┴─────────────────────┘
-```
-
 ### Perspective utilisateur
 
 #### Utilisation par les designers
@@ -214,6 +151,19 @@ Dans Figma, les designers n'ont qu'à sélectionner les variables de la collecti
 #### Processus d'exportation
 
 Lors de l'utilisation du plugin Variables Xporter, vous n'avez besoin d'exporter que les variables de la collection Design Tokens. Le plugin trace automatiquement la chaîne de référence de chaque variable pour garantir l'obtention des valeurs concrètes finales, sans nécessiter l'exportation d'autres collections de modes.
+
+
+### Créer des Systèmes de Variables Multi-dimensionnels
+L'utilisation du principe de sortie unique permet la création de systèmes de variables multidimensionnels complexes, comme ceux combinant des thèmes clairs/sombres, des thèmes de marque, un design responsive et des modes de densité.
+<Cards>
+  <Cards.Card
+    icon={<Columns3 />}
+    title="Implémentation de Système Multi-dimensionnel Complexe"
+    href="/docs/organizing-your-variables/multi-mode"
+    className="mt-4"
+  />
+</Cards>
+
 
 ## Scénarios applicables
 
