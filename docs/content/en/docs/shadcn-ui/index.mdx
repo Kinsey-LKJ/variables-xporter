@@ -3,13 +3,13 @@ import { BookCopy, Layout } from "lucide-react";
 
 # shadcn/ui Theme Export
 
-Variables Xporter is the first plugin to deeply integrate with shadcn/ui, capable of exporting Figma Variables as shadcn/ui theme configurations, allowing any shadcn/ui component to have different brand colors, density modes, light/dark themes, and more, help you create your design system.
+Variables Xporter integrates well with shadcn/ui, directly exporting Figma Variables as shadcn/ui theme configurations. Transform your design system with support for multiple brand colors, density modes, light/dark themes, and more—with minimal setup required.
 
 ## Getting Started
 
-### 1. Check Naming Convention
+### 1. Follow shadcn/ui Naming Conventions
 
-Your Figma Variables need to follow shadcn/ui naming conventions. Here are the complete shadcn/ui variable names and the corresponding variable names you should create in Figma:
+For seamless integration, your Figma Variables must follow shadcn/ui naming conventions. Here's the complete mapping between shadcn/ui CSS variables and the corresponding Figma Variable names you should create:
 
 - --radius -> radius/DEFAULT [^1]
 - --background -> colors/background/DEFAULT
@@ -45,7 +45,7 @@ Your Figma Variables need to follow shadcn/ui naming conventions. Here are the c
 - --sidebar-ring -> colors/sidebar/ring
 
 <Callout type="info">
-  For non-shadcn/ui variables, Variables Xporter will export them as Tailwind CSS configuration.
+  Variables Xporter automatically exports non-shadcn/ui variables as Tailwind CSS configuration, giving you complete Design Token coverage.
 </Callout>
 
 Learn about Figma variable organization suggestions:
@@ -67,9 +67,9 @@ In the export format, select shadcn/ui and your desired Tailwind CSS version.
   </figcaption>
 </figure>
 
-### 3. Export
+### 3. Export Your Design System
 
-Select the collections and variable groups you want to export, click the export button, and Variables Xporter will automatically export your Figma Variables as shadcn/ui theme configuration.
+Select the collections and variable groups you want to export, click the export button, and Variables Xporter automatically generates production-ready shadcn/ui theme configuration.
 <figure className="mt-6 max-w-[400px]">
   <>![Export result](/shadcn-ui/export-successful.png)</>
   <figcaption>
@@ -77,9 +77,9 @@ Select the collections and variable groups you want to export, click the export 
   </figcaption>
 </figure>
 
-### 4. Use in shadcn/ui
+### 4. Integrate with Your Project
 
-Copy the exported configuration file to your shadcn/ui project's Tailwind CSS configuration file and adjust according to your needs.
+Copy the exported configuration to your shadcn/ui project's Tailwind CSS configuration file. No additional setup required—your design system is ready to use.
 
 ## Examples
 

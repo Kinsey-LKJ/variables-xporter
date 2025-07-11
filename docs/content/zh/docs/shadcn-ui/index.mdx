@@ -3,14 +3,13 @@ import { BookCopy, Layout } from "lucide-react";
 
 # shadcn/ui 主题导出
 
-Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma Variables 导出为 shadcn/ui 的主题配置，
-让任何 shadcn/ui 组件都能具有不同品牌颜色、密度模式、明暗主题等，帮助您创建您的设计系统。
+Variables Xporter 与 shadcn/ui 无缝集成，直接将 Figma Variables 导出为 shadcn/ui 主题配置。支持多品牌颜色、密度模式、明暗主题等，无需手动配置即可转换您的设计系统。
 
 ## 开始使用
 
-### 1. 检查命名规范
+### 1. 遵循 shadcn/ui 命名规范
 
-您的 Figma Variables 需要符合 shadcn/ui 的命名规范，以下是完整的 shadcn/ui 变量命名和您应该在 Figma 中创建的变量的名称：
+为了实现无缝集成，您的 Figma Variables 必须遵循 shadcn/ui 命名规范。以下是 shadcn/ui CSS 变量与对应 Figma Variable 名称的完整映射：
 
 - --radius -> radius/DEFAULT [^1]
 - --background -> colors/background/DEFAULT
@@ -46,7 +45,7 @@ Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma
 - --sidebar-ring -> colors/sidebar/ring
 
 <Callout type="info">
-  对于非 shadcn/ui 的变量，Variables Xporter 会将它们导出为 Tailwind CSS 配置。
+  Variables Xporter 会自动将非 shadcn/ui 变量导出为 Tailwind CSS 配置，确保完整的 Design Token 覆盖。
 </Callout>
 
 了解 Figma 变量组织建议：
@@ -67,18 +66,18 @@ Variables Xporter 是首个深度集成 shadcn/ui 的插件，它能够将 Figma
   <figcaption>选择 shadcn/ui 格式</figcaption>
 </figure>
 
-### 3. 导出
+### 3. 导出您的设计系统
 
-选择需要导出的集合和变量组，点击导出按钮，Variables Xporter 会自动将您的 Figma Variables 导出为 shadcn/ui 的主题配置。
+选择需要导出的集合和变量组，点击导出按钮，Variables Xporter 会自动生成生产就绪的 shadcn/ui 主题配置。
 
 <figure className="mt-6 max-w-[400px]">
   <>![导出结果](/shadcn-ui/export-successful.png)</>
   <figcaption>导出结果</figcaption>
 </figure>
 
-### 4. 在 shadcn/ui 中使用
+### 4. 集成到您的项目
 
-将导出的配置文件复制到您的 shadcn/ui 项目的 Tailwind CSS 配置文件中，并根据您的需求进行调整。
+将导出的配置复制到您的 shadcn/ui 项目的 Tailwind CSS 配置文件中。无需额外设置，您的设计系统即可使用。
 
 ## 示例
 

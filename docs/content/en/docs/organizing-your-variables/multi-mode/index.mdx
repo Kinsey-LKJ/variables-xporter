@@ -30,9 +30,50 @@ Use descriptive variable names and mode names, such as `colors/primary` and `lig
 
 Using the single outlet principle enables the creation of complex multi-dimensional variable systems, such as variable systems with compound modes including light/dark themes, brand themes, responsive design, and density modes. Let's create one step by step and experience the benefits of the single outlet principle.
 
-### Starting with brand theme combinations
+### Create Design Tokens Collection (Main Collection)
 
-We already have a variable system that supports light and dark themes. Now we want to add a brand theme variable system on top of the light/dark themes.
+First, we create a main collection to store all design variables:
+
+```
+┌────────────────────────┬────────────────────────┐
+│                        │                        │
+│ Design Tokens          │         default        │
+│                        │                        │
+├────────────────────────┼────────────────────────┤
+│                        │                        │
+│ colors/primary/DEFAULT │ #EE6D21                │
+│ colors/zhiyun/600      │ #EE6D21                │
+│ colors/zhiyun/500      │ #E55517                │
+│ colors/fiveray/600     │ #DA5959                │
+│ colors/fiveray/500     │ #C03939                │
+│ ...                    │ ...                    │
+│                        │                        │
+└────────────────────────┴────────────────────────┘
+```
+
+This main collection contains only a default mode and serves as the unified outlet for all variables.
+
+### Create Theme Mode Collection
+
+Next, we create a collection specifically for managing theme modes:
+
+```
+┌────────────────────────┬──────────────────────┬─────────────────────┐
+│                        │                      │                     │
+│ Theme Modes            │         light        │         dark        │
+│                        │                      │                     │
+├────────────────────────┼──────────────────────┼─────────────────────┤
+│                        │                      │                     │
+│ colors/primary/DEFAULT │ colors/primary/light │ colors/primary/dark │
+│                        │                      │                     │
+└────────────────────────┴──────────────────────┴─────────────────────┘
+```
+
+This collection is dedicated to storing variables that need to switch between light and dark themes.
+
+### Establish Reference Relationships
+
+By making variables in the main collection reference corresponding variables in this collection, we can achieve elegant theme switching:
 
 ```
                 ┌────────────────────────┬────────────────────────┐
@@ -71,8 +112,8 @@ We already have a variable system that supports light and dark themes. Now we wa
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### Adding brand theme modes
-
+### Creating Multi-dimensional Variable Systems
+We currently have a variable system that supports light and dark themes. Now we want to go further and add a brand theme variable system on top of the light/dark themes.
 Create a Brands Modes collection to manage brand theme variables, and create two different brand modes (in this example, `zhiyun` and `fiveray`). Then create two variables `colors/primary/light` and `colors/primary/dark`, and set different values for them in each mode (in this example, referencing the relevant colors from the main Design Tokens collection).
 ```
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -155,7 +196,7 @@ Next, establish the variable reference relationships: variables in the Theme Mod
 That's it! You've created a multi-dimensional variable system that includes both light/dark themes and brand themes, and through the single outlet principle, you've made your design system more flexible and maintainable.
 Looking at the overall variable reference chain, it may seem somewhat complex, but this approach is much clearer and more maintainable than managing all variables in a single collection. But we're not done yet—let's further expand this variable system.
 
-### Responsive design patterns
+### Create Responsive Design Mode Collection
 
 Typically, font size variables are adjusted based on different screen sizes. Taking the `font/hero/size` variable as an example, first create a `font/hero/size` variable in the Design Tokens collection, along with two variables `font/size/2xl` and `font/size/3xl`.
 
@@ -252,7 +293,7 @@ Now, simply change the value of the `font/hero/size` variable in the Design Toke
 ```
 We've omitted the Theme Modes collection since its content remains the same as before. This demonstrates the advantage of the single source of truth principle - we only need to focus on variables that need to change in specific modes.
 
-### Compact mode
+### Create Density Mode Collection
 
 Some B2B backend projects may have a compact mode where various dimensions become smaller, such as fonts, spacing, container widths, etc. Let's further expand our variable system by adding compact mode.
 

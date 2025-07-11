@@ -1,3 +1,6 @@
+import { Cards } from 'nextra/components'
+import { Columns3 } from 'lucide-react'
+
 # Single Outlet Principle
 
 The Single Outlet Principle is the core variable organization philosophy recommended by Variables Xporter, specifically designed to solve complex multi-mode variable management problems in large design systems.
@@ -139,72 +142,6 @@ By having variables in the main collection reference corresponding variables in 
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### Complex Multi-dimensional System Implementation
-
-Using the Single Outlet Principle enables creation of complex multi-dimensional variable systems, such as those combining light/dark themes, brand themes, responsive design, and density modes.
-
-#### Brand Theme Combinations
-
-On top of light/dark themes, we can add brand theme variables. Create a Brands Modes collection to manage brand theme variables:
-
-```
- ┌────────────────────────┬──────────────────────┬─────────────────────┐
- │                        │                      │                     │
- │ Brands Modes           │        zhiyun        │        fiveray      │
- │                        │                      │                     │
- ├────────────────────────┼──────────────────────┼─────────────────────┤
- │                        │                      │                     │
- │ colors/primary/light   │ colors/zhiyun/600    │ colors/fiveray/600  │
- │                        │                      │                     │
- │ colors/primary/dark    │ colors/zhiyun/600    │ colors/fiveray/500  │
- │                        │                      │                     │
- │ ...                    │ ...                  │ ...                 │
- │                        │                      │                     │
- └────────────────────────┴──────────────────────┴─────────────────────┘
-```
-
-Establish variable reference relationships: Variables in the Theme Modes collection reference corresponding variables from the Brands Modes collection based on the current theme.
-
-#### Responsive Design Modes
-
-Typically, font size variables adjust based on different screen sizes. Create a Device Modes collection to manage responsive design variables:
-
-```
- ┌────────────────────────┬──────────────────────┬─────────────────────┐
- │                        │                      │                     │
- │ Device Modes           │        default       │    min-width:1024   │
- │                        │                      │                     │
- ├────────────────────────┼──────────────────────┼─────────────────────┤
- │                        │                      │                     │
- │ font/hero/size         │ font/size/2xl        │ font/size/3xl       │
- │                        │                      │                     │
- │ ...                    │ ...                  │ ...                 │
- │                        │                      │                     │
- └────────────────────────┴──────────────────────┴─────────────────────┘
-```
-
-#### Density Modes
-
-For B2B backend projects, there might be compact modes. Create a Density Modes collection:
-
-```
-┌────────────────────────┬──────────────────────┬─────────────────────┐
-│                        │                      │                     │
-│ Density Modes          │        default       │       compact       │
-│                        │                      │                     │
-├────────────────────────┼──────────────────────┼─────────────────────┤
-│                        │                      │                     │
-│ spacing/1              │ 4                    │ 3                   │
-│                        │                      │                     │
-│ font/size/2xl          │ 24                   │ 22                  │
-│                        │                      │                     │
-│ font/size/3xl          │ 30                   │ 26                  │
-│                        │                      │                     │
-│ ...                    │ ...                  │ ...                 │
-│                        │                      │                     │
-└────────────────────────┴──────────────────────┴─────────────────────┘
-```
-
 ### User Perspective
 
 #### Designer Usage
@@ -214,6 +151,19 @@ In Figma, designers only need to select variables from the Design Tokens collect
 #### Export Process
 
 When using the Variables Xporter plugin, you only need to export variables from the Design Tokens collection. The plugin automatically traces each variable's reference chain to ensure it gets the final concrete values, without needing to export other mode collections.
+
+
+### Creating Multi-dimensional Variable Systems
+Using the Single Outlet Principle enables creation of complex multi-dimensional variable systems, such as those combining light/dark themes, brand themes, responsive design, and density modes.
+<Cards>
+  <Cards.Card
+    icon={<Columns3 />}
+    title="Complex Multi-dimensional System Implementation"
+    href="/docs/organizing-your-variables/multi-mode"
+    className="mt-4"
+  />
+</Cards>
+
 
 ## Applicable Scenarios
 

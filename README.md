@@ -3,7 +3,7 @@
 <div align="center">
   <img src="docs/public/logo.svg" alt="Variables Xporter Logo" width="120" height="120">
   
-  **A powerful Figma plugin that seamlessly bridges design and development**
+  **将 Figma Variables 导出为生产就绪的 shadcn/ui 主题变量、Tailwind CSS 配置文件或 CSS Variables**
   
   [![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
   [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple.svg)](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter)
@@ -19,7 +19,7 @@ For complete usage documentation and API reference, visit: [variables-xporter.co
 
 ## 📖 Introduction
 
-Variables Xporter is a professional Figma plugin that supports exporting Figma Variables as **shadcn/ui theme variables**, **Tailwind CSS configuration files**, or **CSS variables**, perfectly solving the synchronization problem between design and development. Make your design system effortlessly integrate into your development environment!
+Variables Xporter is a professional Figma plugin that exports Figma Variables as **shadcn/ui theme variables**, **Tailwind CSS configuration files**, or **CSS variables**, perfectly solving the synchronization problem between design and development. Transform your Figma Variables into consistent Design Tokens for your development environment.
 
 ## ✨ Core Features
 
@@ -39,10 +39,10 @@ Variables Xporter is a professional Figma plugin that supports exporting Figma V
 
 ### Professional Features
 - **shadcn/ui Theme Support** - Direct export to shadcn/ui theme format with perfect component compatibility
-- **Variable Optimization** - Ignore Tailwind default palette to simplify exported code
-- **Typography Merging** - Automatically merge related typography styles for better variable organization
-- **Media Query Support** - CSS media query mode support
-- **Variable References** - Maintain variable relationships from design and fully restore reference chains
+- **Variable Optimization** - Ignore Tailwind default palette to simplify exported code (Tailwind CSS optimization)
+- **Typography Merging** - Automatically merge related typography styles for better variable organization (Tailwind CSS optimization)
+- **Media Query Support** - Export Design Tokens with different values under media query conditions
+- **Variable References** - Maintain variable relationships from design and restore reference chains
 
 ## ✨ Philosophy
 

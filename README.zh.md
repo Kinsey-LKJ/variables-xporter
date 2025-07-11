@@ -3,7 +3,7 @@
 <div align="center">
   <img src="docs/public/logo.svg" alt="Variables Xporter Logo" width="120" height="120">
   
-  **一个强大的 Figma 插件，轻松的链接设计与开发**
+  **将 Figma Variables 导出为生产就绪的 shadcn/ui 主题变量、Tailwind CSS 配置文件或 CSS Variables**
   
   [![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
   [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple.svg)](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter)
@@ -18,7 +18,7 @@
 
 ## 📖 项目简介
 
-Variables Xporter 是一个专业的 Figma 插件，支持将 Figma Variables 导出为 **shadcn/ui 主题变量**、**Tailwind CSS 配置文件**或 **CSS Variables**，完美解决设计与开发之间的同步问题。让设计系统轻松落地到开发环境！
+Variables Xporter 是一个专业的 Figma 插件，支持将 Figma Variables 导出为 **shadcn/ui 主题变量**、**Tailwind CSS 配置文件**或 **CSS Variables**，完美解决设计与开发之间的同步问题。将您的 Figma Variables 转换为一致的 Design Tokens 用于开发环境。
 
 ## ✨ 核心特性
 
@@ -38,10 +38,10 @@ Variables Xporter 是一个专业的 Figma 插件，支持将 Figma Variables �
 
 ### 专业功能
 - **shadcn/ui 主题支持** - 直接导出为 shadcn/ui 主题格式，与组件完美兼容
-- **变量优化** - 忽略 Tailwind 默认调色板，简化导出的代码
-- **排版合并** - 自动合并相关的排版样式，构建更合理的排版相关变量
-- **媒体查询** - CSS 媒体查询模式支持
-- **变量引用** - 保持设计中的变量关联关系，完整还原变量引用联
+- **变量优化** - 忽略 Tailwind 默认调色板，简化导出的代码（Tailwind CSS 优化）
+- **排版合并** - 自动合并相关的排版样式，构建更合理的排版相关变量（Tailwind CSS 优化）
+- **媒体查询** - 导出在媒体查询条件下具有不同值的 Design Tokens
+- **变量引用** - 保持设计中的变量关联关系，还原变量引用链
 
 ## ✨ 理念
 
@@ -51,7 +51,7 @@ Variables Xporter 采用"单一出口原则"来组织复杂的多模式设计系
 
 #### 什么是单一出口原则？
 
-**单一出口原则是指在一个变量系统中，所有的变量以一个集合作为唯一出口，这个集合只包含一个模式，并通过引用其他集合中的变量来实现多模式变量管理。**
+**单一出口原则是指在一个变量系统中，所有的变量以一个集合作为单一出口，这个集合只包含一个模式，并通过引用其他集合中的变量来实现多模式变量管理。**
 
 传统的多模式变量组织方式：
 ```
