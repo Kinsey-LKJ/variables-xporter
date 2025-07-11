@@ -15,7 +15,7 @@
 
 ## 📚 Documentation
 
-For complete usage documentation and API reference, visit: [variables-xporter.com](https://variables-xporter.com)
+For complete usage documentation, visit: [variables-xporter.com](https://variables-xporter.com)
 
 ## 📖 Introduction
 

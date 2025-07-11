@@ -14,7 +14,7 @@
 
 ## 📚 文档
 
-完整的使用文档和 API 参考请访问：[variables-xporter.com](https://variables-xporter.com)  
+完整的使用文档请访问：[variables-xporter.com](https://variables-xporter.com)  
 
 ## 📖 项目简介
 
