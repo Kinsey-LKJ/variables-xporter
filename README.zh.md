@@ -3,7 +3,7 @@
 <div align="center">
   <img src="docs/public/logo.svg" alt="Variables Xporter Logo" width="120" height="120">
   
-  **一个将 Figma Variables 导出为代码的插件**
+  **一个强大的 Figma 插件，无缝连接设计与开发**
   
   [![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
   [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple.svg)](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter)
@@ -18,7 +18,7 @@
 
 ## 📖 项目简介
 
-Variables Xporter 是一个 Figma 插件，支持将 Figma Variables 导出为 **shadcn/ui 主题变量**、**Tailwind CSS 配置文件**或 **CSS Variables**，提供有效的设计与开发工作流程集成。将您的 Figma Variables 转换为一致的 Design Tokens 用于开发环境。
+Variables Xporter 是一个专业的 Figma 插件，支持将 Figma Variables 导出为 **shadcn/ui 主题变量**、**Tailwind CSS 配置文件**或 **CSS Variables**，完美解决设计与开发之间的同步问题。将您的 Figma Variables 转换为一致的 Design Tokens 用于开发环境。
 
 ## ✨ 核心特性
 
@@ -29,15 +29,15 @@ Variables Xporter 是一个 Figma 插件，支持将 Figma Variables 导出为 *
 - **Tailwind CSS V3** - 生成 Tailwind CSS V3 版本的配置文件和对应的 CSS
 - **CSS Variables** - 生成标准 CSS Variables
 
-### 多模式支持
-- **主题模式** - Dark/Light 模式支持
+### 强大的多模式支持
+- **主题模式** - Dark/Light 模式完美支持
 - **品牌模式** - 多品牌主题管理
 - **密度模式** - 界面不同密度适配
 - **设备模式** - 响应式断点适配
 - ...
 
-### 核心功能
-- **shadcn/ui 主题支持** - 直接导出为 shadcn/ui 主题格式，与组件兼容良好
+### 专业功能
+- **shadcn/ui 主题支持** - 直接导出为 shadcn/ui 主题格式，与组件完美兼容
 - **变量优化** - 忽略 Tailwind 默认调色板，简化导出的代码（Tailwind CSS 优化）
 - **排版合并** - 自动合并相关的排版样式，构建更合理的排版相关变量（Tailwind CSS 优化）
 - **媒体查询** - 导出在媒体查询条件下具有不同值的 Design Tokens
@@ -47,7 +47,7 @@ Variables Xporter 是一个 Figma 插件，支持将 Figma Variables 导出为 *
 
 ### 单一出口原则
 
-Variables Xporter 采用"单一出口原则"来组织复杂的多模式设计系统，这是我们管理大型设计系统变量的方法。
+Variables Xporter 采用"单一出口原则"来组织复杂的多模式设计系统，这是我们解决大型设计系统变量管理的核心理念。
 
 #### 什么是单一出口原则？
 
@@ -79,7 +79,7 @@ Theme Modes (辅助集合 - 仅存放变化的变量)
 
 #### 核心优势
 
-- **🎯 统一接口** - 设计师只需从主集合选择变量
+- **🎯 统一接口** - 设计师只需从主集合选择变量，无需在多个集合间切换
 - **⚡ 高效导出** - 导出时只需选择主集合，插件自动追踪引用链
 - **🔧 易于扩展** - 添加新模式维度（如品牌主题）时不会影响现有结构
 - **📦 避免冗余** - 只有需要变化的变量才放在模式集合中
@@ -99,7 +99,7 @@ Theme Modes (辅助集合 - 仅存放变化的变量)
    - 主集合变量引用模式集合对应变量
    - 形成清晰的变量引用链
 
-这种组织方式让您的设计系统既强大又简单，支持复杂的多模式场景而不会变得混乱。
+这种组织方式让您的设计系统既强大又简单，完美支持复杂的多模式场景而不会变得混乱。
 
 
 ## 🌍 国际化支持
@@ -141,7 +141,7 @@ Theme Modes (辅助集合 - 仅存放变化的变量)
 
 #### 🎨 shadcn/ui 主题变量
 
-为 shadcn/ui 项目优化！Variables Xporter 生成的主题变量可以与 shadcn/ui 组件良好配合。
+专为 shadcn/ui 项目打造！Variables Xporter 生成的主题变量可以与 shadcn/ui 组件无缝配合。
 
 **shadcn/ui (Tailwind CSS V4) 格式：**
 

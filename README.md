@@ -3,7 +3,7 @@
 <div align="center">
   <img src="docs/public/logo.svg" alt="Variables Xporter Logo" width="120" height="120">
   
-  **A Figma plugin that exports Figma Variables to code**
+  **A powerful Figma plugin that seamlessly bridges design and development**
   
   [![License](https://img.shields.io/badge/license-ISC-blue.svg)](LICENSE)
   [![Figma Plugin](https://img.shields.io/badge/Figma-Plugin-purple.svg)](https://www.figma.com/community/plugin/1522142900835722038/variables-xporter)
@@ -19,7 +19,7 @@ For complete usage documentation and API reference, visit: [variables-xporter.co
 
 ## 📖 Introduction
 
-Variables Xporter is a Figma plugin that exports Figma Variables as **shadcn/ui theme variables**, **Tailwind CSS configuration files**, or **CSS variables**, providing effective integration between design and development workflows. Transform your Figma Variables into consistent Design Tokens for your development environment.
+Variables Xporter is a professional Figma plugin that exports Figma Variables as **shadcn/ui theme variables**, **Tailwind CSS configuration files**, or **CSS variables**, perfectly solving the synchronization problem between design and development. Transform your Figma Variables into consistent Design Tokens for your development environment.
 
 ## ✨ Core Features
 
@@ -30,15 +30,15 @@ Variables Xporter is a Figma plugin that exports Figma Variables as **shadcn/ui 
 - **Tailwind CSS V3** - Generate Tailwind CSS V3 configuration files and corresponding CSS
 - **CSS Variables** - Generate standard CSS Variables
 
-### Multi-Mode Support
-- **Theme Modes** - Dark/Light mode support
+### Powerful Multi-Mode Support
+- **Theme Modes** - Perfect Dark/Light mode support
 - **Brand Modes** - Multi-brand theme management
 - **Density Modes** - Interface different density adaptation
 - **Device Modes** - Responsive breakpoint adaptation
 - ...
 
-### Key Features
-- **shadcn/ui Theme Support** - Direct export to shadcn/ui theme format with component compatibility
+### Professional Features
+- **shadcn/ui Theme Support** - Direct export to shadcn/ui theme format with perfect component compatibility
 - **Variable Optimization** - Ignore Tailwind default palette to simplify exported code (Tailwind CSS optimization)
 - **Typography Merging** - Automatically merge related typography styles for better variable organization (Tailwind CSS optimization)
 - **Media Query Support** - Export Design Tokens with different values under media query conditions
@@ -48,11 +48,11 @@ Variables Xporter is a Figma plugin that exports Figma Variables as **shadcn/ui 
 
 ### Single Outlet Principle
 
-Variables Xporter adopts the "Single Outlet Principle" to organize complex multi-mode design systems, which is our approach for managing large-scale design system variables.
+Variables Xporter adopts the "Single Outlet Principle" to organize complex multi-mode design systems, which is our core philosophy for solving large-scale design system variable management.
 
 #### What is the Single Outlet Principle?
 
-**The Single Outlet Principle means that in a variable system, all variables use one collection as the single outlet, which contains only one mode, and implements multi-mode variable management through references to variables in other collections.**
+**The Single Outlet Principle means that in a variable system, all variables use one collection as the sole outlet, which contains only one mode, and implements multi-mode variable management through references to variables in other collections.**
 
 Traditional multi-mode variable organization:
 ```
@@ -80,7 +80,7 @@ Theme Modes (Auxiliary Collection - Only stores changing variables)
 
 #### Core Advantages
 
-- **🎯 Unified Interface** - Designers only need to select variables from the main collection
+- **🎯 Unified Interface** - Designers only need to select variables from the main collection, no switching between multiple collections
 - **⚡ Efficient Export** - Only need to select the main collection when exporting, plugin automatically tracks reference chains
 - **🔧 Easy to Extend** - Adding new mode dimensions (like brand themes) won't affect existing structure
 - **📦 Avoid Redundancy** - Only variables that need to change are placed in mode collections
@@ -100,7 +100,7 @@ Theme Modes (Auxiliary Collection - Only stores changing variables)
    - Main collection variables reference corresponding variables in mode collections
    - Form clear variable reference chains
 
-This organization approach makes your design system both powerful and simple, supporting complex multi-mode scenarios without becoming chaotic.
+This organization approach makes your design system both powerful and simple, perfectly supporting complex multi-mode scenarios without becoming chaotic.
 
 ## 🌍 Internationalization
 - 🇨🇳 简体中文 (Simplified Chinese)
@@ -141,7 +141,7 @@ Organize your Figma variables according to our [Variable Organization Guidelines
 
 #### 🎨 shadcn/ui Theme Variables
 
-Optimized for shadcn/ui projects! Variables Xporter generates theme variables that work well with shadcn/ui components.
+Perfect for shadcn/ui projects! Variables Xporter generates theme variables that work seamlessly with shadcn/ui components.
 
 **For shadcn/ui (Tailwind CSS V4):**
 
