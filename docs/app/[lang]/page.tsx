@@ -46,7 +46,7 @@ export default async function IndexPage({
               <h1 className=" text-foreground text-display special-text">
                 Variables Xporter
               </h1>
-              <p className=" text-body text-muted-foreground">
+              <p className=" text-body text-muted-foreground text-center max-w-[800px]">
                 {dictionary.pluginHighlight}
               </p>
             </div>

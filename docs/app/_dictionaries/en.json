@@ -15,8 +15,8 @@
       "description": "Manage complex design systems with light/dark themes, brand variations, responsive breakpoints, and density modes in combined exports."
     },
     "mergeTypographyStyles": {
-      "title": "Typography variable merging",
-      "description": "Automatically combine font-size, line-height, letter-spacing, and other typography properties into unified Design Tokens, avoiding repetitive configuration."
+      "title": "Merge typography variables",
+      "description": "Automatically merge font-size, line-height, letter-spacing, and other styles into Tailwind-compliant configurations."
     },
     "cssMediaQueryMode": {
       "title": "Media query mode export",

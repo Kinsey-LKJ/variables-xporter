@@ -15,8 +15,8 @@
       "description": "Gérez des systèmes de conception complexes avec des thèmes clairs/sombres, des variations de marque, des points de rupture réactifs et des modes de densité dans des exports combinés."
     },
     "mergeTypographyStyles": {
-      "title": "Fusion des variables typographiques",
-      "description": "Combinez automatiquement font-size, line-height, letter-spacing et autres propriétés typographiques en Design Tokens unifiés, évitant la configuration répétitive."
+      "title": "Fusionner les variables typographiques",
+      "description": "Fusionnez automatiquement font-size, line-height, letter-spacing et autres styles en configurations conformes à Tailwind."
     },
     "cssMediaQueryMode": {
       "title": "Export en mode media query",

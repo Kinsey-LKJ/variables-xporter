@@ -15,8 +15,8 @@
       "description": "管理复杂的设计系统，支持明暗主题、品牌变体、响应式断点和密度模式的组合导出。"
     },
     "mergeTypographyStyles": {
-      "title": "排版变量合并",
-      "description": "自动将字体大小、行高、字间距等排版属性合并为统一的 Design Tokens，避免重复配置。"
+      "title": "合并排版变量",
+      "description": "自动将字体大小、行高、字间距等样式合并为 Tailwind 约定的配置。"
     },
     "cssMediaQueryMode": {
       "title": "媒体查询模式导出",
