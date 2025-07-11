@@ -1,30 +1,30 @@
 {
   "language": "English",
   "supportTailwindCssV4": "Support for Tailwind CSS V4",
-  "pluginHighlight": "Export Figma Variables to shadcn/ui, Tailwind CSS, or CSS Variables projects",
+  "pluginHighlight": "Transform Figma Variables into production-ready Design Tokens. Reduce manual work while maintaining design-development consistency.",
   "start": "Get started",
   "learnMore": "Learn more",
-  "exclusive": "Exclusively available",
+  "exclusive": "Exclusive feature",
   "features": {
     "shadcnUi": {
-      "title": "shadcn/ui theme export",
-      "description": "Make any shadcn/ui component have different brand colors, density modes, dark and light themes, and device modes, and help you create your design system"
+      "title": "shadcn/ui theme integration",
+      "description": "Directly export Figma Variables as shadcn/ui theme configurations. Support multi-brand, multi-theme design systems with streamlined development workflow."
     },
     "multiMode": {
-      "title": "Multi-mode support",
-      "description": "Support for exporting compound multi-dimensional mode variables"
+      "title": "Multi-mode variable system",
+      "description": "Manage complex design systems with light/dark themes, brand variations, responsive breakpoints, and density modes in combined exports."
     },
     "mergeTypographyStyles": {
-      "title": "Merge typography variables",
-      "description": "Merge and export text and typography-related variables"
+      "title": "Typography variable merging",
+      "description": "Automatically combine font-size, line-height, letter-spacing, and other typography properties into unified Design Tokens, avoiding repetitive configuration."
     },
     "cssMediaQueryMode": {
-      "title": "CSS media query mode",
-      "description": "Export variables in media query mode"
+      "title": "Media query mode export",
+      "description": "Export Design Tokens that have different values under different media query conditions for responsive design variable management."
     },
     "unitConversion": {
-      "title": "Unit conversion",
-      "description": "Convert px to rem units"
+      "title": "Smart unit conversion",
+      "description": "Intelligently convert px to rem, em, and other units, ensuring accessibility compliance and consistent scaling across devices."
     }
   },
   "organizingYourVariables": {
@@ -56,8 +56,8 @@
   },
   "figmaTemplate": {
     "heading": "Figma template",
-    "title": "Includes basic variables needed to build design tokens",
-    "description": "Start building your own design tokens here, including variables for colors, spacing, fonts, and more, with multiple modes for themes, brands, devices, and density.",
+    "title": "Includes basic variables needed to build Design Tokens",
+    "description": "Start building your own Design Tokens here, including variables for colors, spacing, fonts, and more, with multiple modes for themes, brands, devices, and density.",
     "openInFigma": "Open in Figma"
   },
   "example": {

@@ -1,30 +1,30 @@
 {
   "language": "简体中文",
   "supportTailwindCssV4": "支持 Tailwind CSS V4",
-  "pluginHighlight": "将 Figma Variables 导出到 shadcn/ui、Tailwind CSS 或 CSS Variables 项目",
+  "pluginHighlight": "将 Figma Variables 转换为生产就绪的 Design Tokens。减少手动工作，保持设计与开发的一致性。",
   "start": "开始使用",
   "learnMore": "了解更多",
-  "exclusive": "专属提供",
+  "exclusive": "专属功能",
   "features": {
     "shadcnUi": {
-      "title": "shadcn/ui 主题导出",
-      "description": "让任何 shadcn/ui 组件都具有不同品牌颜色、密度模式、明暗主题，帮助您创建您的设计系统"
+      "title": "shadcn/ui 主题集成",
+      "description": "直接导出 Figma Variables 为 shadcn/ui 主题配置。支持多品牌、多主题设计系统，简化开发流程。"
     },
     "multiMode": {
-      "title": "多模式支持",
-      "description": "支持导出复合多维模式变量"
+      "title": "多模式变量系统",
+      "description": "管理复杂的设计系统，支持明暗主题、品牌变体、响应式断点和密度模式的组合导出。"
     },
     "mergeTypographyStyles": {
-      "title": "合并排版变量",
-      "description": "合并并导出文本和排版相关变量"
+      "title": "排版变量合并",
+      "description": "自动将字体大小、行高、字间距等排版属性合并为统一的 Design Tokens，避免重复配置。"
     },
     "cssMediaQueryMode": {
-      "title": "CSS 媒体查询模式",
-      "description": "以媒体查询模式导出变量"
+      "title": "媒体查询模式导出",
+      "description": "导出在不同媒体查询条件下具有不同值的 Design Tokens，实现响应式设计变量管理。"
     },
     "unitConversion": {
-      "title": "单位转换",
-      "description": "将 px 转换为 rem 单位"
+      "title": "单位自动转换",
+      "description": "智能转换 px 为 rem、em 等单位，确保可访问性和跨设备的一致显示效果。"
     }
   },
   "organizingYourVariables": {
@@ -56,8 +56,8 @@
   },
   "figmaTemplate": {
     "heading": "Figma 模板",
-    "title": "包含构建设计令牌所需的基本变量",
-    "description": "从这里开始构建您自己的设计令牌，包括颜色、间距、字体等变量，并支持主题、品牌、设备和密度的多种模式。",
+    "title": "包含构建 Design Tokens 所需的基本变量",
+    "description": "从这里开始构建您自己的 Design Tokens，包括颜色、间距、字体等变量，并支持主题、品牌、设备和密度的多种模式。",
     "openInFigma": "在 Figma 中打开"
   },
   "example": {

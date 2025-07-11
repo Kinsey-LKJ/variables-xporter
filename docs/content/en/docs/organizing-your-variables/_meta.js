@@ -3,7 +3,8 @@ const meta = {
   colors: "",
   typography: "",
   spacing: "",
-  "other-tokens": ""
+  "other-tokens": "",
+  "multi-mode": ""
 };
 
 export default meta;
