@@ -16,6 +16,8 @@ import getConfig from 'next/config';
 import { I18NConfig } from "next/dist/server/config-shared";
 import LocalSwitch from "../components/local-switch";
 import { GithubIcon } from "lucide-react";
+import { Analytics } from "@vercel/analytics/next"
+
 
     
 export const metadata = {
@@ -119,6 +121,7 @@ export default async function RootLayout({ children, params }) {
         >
           {children}
         </Layout>
+        <Analytics />
       </body>
     </html>
   );
