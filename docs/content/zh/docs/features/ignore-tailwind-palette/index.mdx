@@ -2,7 +2,7 @@ import { Callout, Tabs } from 'nextra/components'
 
 # 忽略 Tailwind 调色板
 
-当使用 Tailwind CSS 导出模式时，Variables Xporter 提供了一个实用的选项来忽略 Tailwind 默认的调色板，让你导出的配置文件更加简洁。
+当使用 Tailwind CSS 导出模式时，Variables Xporter 提供了一个实用的选项来忽略 Tailwind 默认的调色板，让您导出的配置文件更加简洁。
 
 ## 为什么需要这个功能？
 
@@ -14,7 +14,7 @@ Tailwind CSS 默认包含了丰富的调色板：
 - Stone
 等...
 
-但是在 Figma 中，如果你的 Figma Variables 中包含了 Tailwind CSS 的默认色板，并且你只是引用了它们而没有进行修改，你应该忽略它们。因为在开发环境中，这些默认色板是内置的。
+但是在 Figma 中，如果您的 Figma Variables 中包含了 Tailwind CSS 的默认色板，并且您只是引用了它们而没有进行修改，您应该忽略它们。因为在开发环境中，这些默认色板是内置的。
 
 <Callout type="info">
   Variables Xporter 只会忽略以 color/ 和 colors/ 作为顶层目录的 Tailwind CSS 默认色板。
@@ -23,7 +23,7 @@ Tailwind CSS 默认包含了丰富的调色板：
 ## 如何使用
 
 1. 在导出设置中勾选"忽略 Tailwind CSS 默认色板"选项
-2. Variables Xporter 将只导出你在 Figma 中定义的颜色变量
+2. Variables Xporter 将只导出您在 Figma 中定义的颜色变量
 3. 生成的配置文件中不会包含 Tailwind 默认颜色
 
 ### 示例
@@ -40,13 +40,13 @@ Tailwind CSS 默认包含了丰富的调色板：
   --color-amber-50: oklch(0.987 0.022 95.277);
   ...
 
-  /* 你的自定义颜色 */
+  /* 您的自定义颜色 */
   --color-primary: var(--color-red-400);
 }
 
 /* 启用忽略选项后 */
 @theme {
-  /* 只包含你的自定义颜色，无需再次声明 Tailwind CSS 默认颜色，在开发环境中已内置 */
+  /* 只包含您的自定义颜色，无需再次声明 Tailwind CSS 默认颜色，在开发环境中已内置 */
   --color-primary: var(--color-red-400);
 }
 ```
@@ -60,7 +60,7 @@ module.exports = {
       slate: { /* ... */ },
       gray: { /* ... */ },
       zinc: { /* ... */ },
-      // 你的自定义颜色
+      // 您的自定义颜色
       primary: 'rgb(var(--colors-primary))',
     }
   }
@@ -70,7 +70,7 @@ module.exports = {
 module.exports = {
   theme: {
     colors: {
-      // 只包含你的自定义颜色，无需再次声明 Tailwind CSS 默认颜色，在开发环境中已内置
+      // 只包含您的自定义颜色，无需再次声明 Tailwind CSS 默认颜色，在开发环境中已内置
       primary: 'rgb(var(--colors-primary))',
     }
   }

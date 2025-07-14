@@ -3,7 +3,7 @@ import { Tabs } from 'nextra/components'
 
 # 颜色系统
 
-颜色系用几乎是 Design Tokens 里最重要的部分，如果你对颜色类变量的组织和命名没有头绪，[shadcn/ui 的命名约定](https://ui.shadcn.com/docs/theming#convention)是一个很好的开始：
+颜色系用几乎是 Design Tokens 里最重要的部分，如果您对颜色类变量的组织和命名没有头绪，[shadcn/ui 的命名约定](https://ui.shadcn.com/docs/theming#convention)是一个很好的开始：
 一般情况下，`background` 用于背景颜色，`foreground` 用于文本颜色，当 `background` 用于组件的背景颜色时，如 `colors/card/DEFAULT`[^1]，则省略 `background` 后缀，从这个基础出发逐渐扩展到更多的变量：
 
 {/* - `--background` - 背景色
@@ -78,7 +78,7 @@ import { Tabs } from 'nextra/components'
 
 ## 创建色板
 
-在 Design System 中，我们通常会使用一系列的色板作为颜色变量的原子变量，例如 `colors/blue/400`,`colors/red/300` 等。要创建这样的色板，并在开发环境使用它们，你同样需要遵循顶层目录的规则，在 Figma Variables 中将它们放在 `colors` 或者 `color` 目录下。例如：
+在 Design System 中，我们通常会使用一系列的色板作为颜色变量的原子变量，例如 `colors/blue/400`,`colors/red/300` 等。要创建这样的色板，并在开发环境使用它们，您同样需要遵循顶层目录的规则，在 Figma Variables 中将它们放在 `colors` 或者 `color` 目录下。例如：
 
 ### Blue 色板
 
@@ -128,7 +128,7 @@ import { Tabs } from 'nextra/components'
 
 ## 不透明度修饰符
 
-Variables Xporter 提供了强大的颜色处理功能，它会自动为你生成符合 Tailwind CSS 规则的颜色变量。在开发过程中，你可以轻松地使用不透明度修饰符[灵活调整颜色的透明度](https://tailwindcss.com/docs/colors#adjusting-opacity)，无需额外的变量定义。
+Variables Xporter 提供了强大的颜色处理功能，它会自动为您生成符合 Tailwind CSS 规则的颜色变量。在开发过程中，您可以轻松地使用不透明度修饰符[灵活调整颜色的透明度](https://tailwindcss.com/docs/colors#adjusting-opacity)，无需额外的变量定义。
 
 
   ```html
