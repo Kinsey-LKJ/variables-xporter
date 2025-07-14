@@ -9,7 +9,7 @@ Multi-mode is a powerful feature of Figma's variable system that allows the same
 Multi-mode variable systems are suitable for the following scenarios:
 - **Theme modes**: Light and dark theme switching
 - **Brand modes**: Multi-brand product support
-- **Device modes**: Responsive design adaptation
+- **Device modes**: Responsive variable adaptation
 - **Density modes**: Interface compactness adjustment
 
 ## Organization strategies
@@ -193,7 +193,7 @@ Next, establish the variable reference relationships: variables in the Theme Mod
    └─────────────────────────────────────────────────────────────┴──────────────────────┘
 
 ```
-That's it! You've created a multi-dimensional variable system that includes both light/dark themes and brand themes, and through the single outlet principle, you've made your design system more flexible and maintainable.
+That's it! You've created a multi-dimensional variable system that includes both light/dark themes and brand themes, and through the single outlet principle, you've made your design system more flexible and maintainable. In Figma, users only need to select variables from the Design Tokens collection, and their designs will have both light/dark theme and brand theme variables without needing to worry about the variable reference chain.
 Looking at the overall variable reference chain, it may seem somewhat complex, but this approach is much clearer and more maintainable than managing all variables in a single collection. But we're not done yet—let's further expand this variable system.
 
 ### Create Responsive Design Mode Collection
