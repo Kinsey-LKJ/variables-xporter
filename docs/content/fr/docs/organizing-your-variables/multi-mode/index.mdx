@@ -2,7 +2,7 @@ import { Callout } from 'nextra/components'
 
 # Organisation des variables multi-modes
 
-Le multi-mode est une fonctionnalité puissante du système de variables Figma qui permet à une même variable d'avoir différentes valeurs dans différents contextes. Organiser judicieusement les variables multi-modes est essentiel pour construire un système de design évolutif. Nous recommandons d'utiliser le [principe du point de sortie unique](/docs/single-outlet-principle) pour gérer des systèmes complexes de variables multi-modes.
+Le multi-mode est une fonctionnalité puissante du système de variables Figma qui permet à une même variable d'avoir différentes valeurs dans différents contextes. Organiser judicieusement les variables multi-modes est essentiel pour construire un système de design évolutif. Nous recommandons d'utiliser le [Principe de Sortie Unique](/docs/organizing-your-variables/single-outlet-principle) pour gérer des systèmes complexes de variables multi-modes.
 
 ## Scénarios d'application multi-modes
 
@@ -16,7 +16,7 @@ Les systèmes de variables multi-modes sont adaptés aux scénarios suivants :
 
 ### Séparation des collections par dimension
 
-Chaque dimension de mode est gérée dans une collection indépendante, en combinaison avec le [principe du point de sortie unique](/docs/single-outlet-principle) pour établir une hiérarchie de référence claire.
+Chaque dimension de mode est gérée dans une collection indépendante, en combinaison avec le [Principe de Sortie Unique](/docs/organizing-your-variables/single-outlet-principle) pour établir une hiérarchie de référence claire.
 
 ### Variables épurées
 
@@ -112,7 +112,7 @@ En faisant référence aux variables correspondantes de cette collection dans la
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### Créer un Système de Variables Multi-dimensionnel
+### Créer un système de variables multidimensionnel [#create-multi-dimensional-variable-system]
 
 Nous disposons actuellement d'un système de variables prenant en charge les thèmes clair et sombre. Maintenant, nous souhaitons aller plus loin et ajouter un système de variables pour les thèmes de marque sur cette base.
 Créez une collection Brands Modes pour gérer les variables de thème de marque, puis créez deux modes de marque différents (dans cet exemple, `zhiyun` et `fiveray`). Ensuite, créez deux variables `colors/primary/light` et `colors/primary/dark` et définissez différentes valeurs pour chaque mode (dans cet exemple, en référençant les couleurs correspondantes de la collection principale Design Tokens).

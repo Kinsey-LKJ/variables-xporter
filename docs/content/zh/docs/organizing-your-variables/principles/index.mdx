@@ -1,8 +1,10 @@
 import { FileTree } from 'nextra/components'
 import { Callout } from 'nextra/components'
 import { Config } from "tailwindcss";
+import { Columns3 } from 'lucide-react'
+import { Cards } from 'nextra/components'
 
-# 变量组织原则
+# 基本原则
 
 在使用 Variables Xporter 时，变量的组织方式会直接影响导出代码的质量。让我们来探讨如何在 Figma 中有效地组织变量，以确保导出的代码能够无缝集成到您的开发环境中。
 
@@ -76,7 +78,7 @@ import { Config } from "tailwindcss";
 - `colors/secondary`
 - `colors/tertiary`
 
-### 使用 `DEFAULT` 关键字组织变量层级
+### 使用 `DEFAULT` 关键字组织变量层级 [#using-default-keyword]
 
 `DEFAULT` 关键字有双重作用：它既可以设置默认值，更重要的是可以统一同一层级的变量，使变量管理更加清晰和系统化。让我们看一个具体的例子：
 
@@ -172,3 +174,5 @@ export default {
     使用默认值组织变量层级
   </figcaption>
 </figure>
+
+

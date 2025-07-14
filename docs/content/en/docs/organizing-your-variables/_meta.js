@@ -1,5 +1,6 @@
 const meta = {
   principles: "",
+  "single-outlet-principle": "Single Outlet Principle",
   colors: "",
   typography: "",
   spacing: "",

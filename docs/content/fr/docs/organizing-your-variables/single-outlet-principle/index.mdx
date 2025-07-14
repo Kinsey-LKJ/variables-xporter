@@ -1,25 +1,25 @@
 import { Cards } from 'nextra/components'
 import { Columns3 } from 'lucide-react'
 
-# Principe de la source unique
+# Principe de Sortie Unique
 
-Le principe de la source unique est la philosophie fondamentale d'organisation des variables recommandée par Variables Xporter, spécifiquement conçue pour résoudre les problèmes complexes de gestion de variables multi-modes dans les grands systèmes de design.
+Le Principe de Sortie Unique est une philosophie fondamentale d'organisation des variables recommandée par Variables Xporter, spécifiquement conçue pour résoudre les problèmes complexes de gestion de variables multi-modes dans les grands systèmes de design.
 
-## Qu'est-ce que le principe de la source unique ?
+## Qu'est-ce que le Principe de Sortie Unique ?
 
-**Le principe de la source unique signifie que dans un système de variables, toutes les variables utilisent une seule collection comme unique source. Cette collection ne contient qu'un seul mode et implémente la gestion des variables multi-modes en référençant des variables d'autres collections.**
+**Le Principe de Sortie Unique consiste à utiliser une collection comme unique point de sortie pour toutes les variables d'un système de variables. Cette collection ne contient qu'un seul mode et réalise la gestion des variables multi-modes en référençant des variables d'autres collections.**
 
 ## Problèmes des approches traditionnelles
 
 Dans la gestion traditionnelle des variables Figma, les designers placent généralement toutes les variables de mode dans la même collection :
 
 ```
-Collection traditionnelle (Toutes les variables étroitement couplées dans une collection)
-├── Mode clair                 ├── Mode sombre
-├── colors/primary: #3B82F6    ├── colors/primary: #60A5FA
-├── colors/secondary: #10B981  ├── colors/secondary: #F59E0B
-├── spacing/sm: 8px            ├── spacing/sm: 8px (paramètre dupliqué)
-└── font/size/base: 16px       └── font/size/base: 16px (paramètre dupliqué)
+Collection traditionnelle (toutes les variables étroitement couplées dans une collection)
+├── Mode clair                    ├── Mode sombre
+├── colors/primary: #3B82F6       ├── colors/primary: #60A5FA
+├── colors/secondary: #10B981     ├── colors/secondary: #F59E0B
+├── spacing/sm: 8px               ├── spacing/sm: 8px (paramètre dupliqué)
+└── font/size/base: 16px          └── font/size/base: 16px (paramètre dupliqué)
 ```
 
 Cette approche présente les problèmes suivants :
@@ -27,40 +27,40 @@ Cette approche présente les problèmes suivants :
 - **Paramètres redondants** : De nombreuses variables ont les mêmes valeurs dans différents modes mais nécessitent des paramètres dupliqués
 - **Complexité de gestion** : À mesure que les modes augmentent, les collections deviennent volumineuses et difficiles à gérer
 - **Confusion d'utilisation** : Les designers doivent basculer entre plusieurs modes pour trouver les variables appropriées
-- **Difficultés de mise à l'échelle** : L'ajout de nouvelles dimensions de mode nécessite un travail de duplication considérable
+- **Difficultés d'expansion** : L'ajout de nouvelles dimensions de mode nécessite un travail de duplication considérable
 
-## Solution avec le principe de la source unique
+## Solution avec le Principe de Sortie Unique
 
-Le principe de la source unique résout ces problèmes grâce à la séparation des préoccupations :
+Le Principe de Sortie Unique résout ces problèmes grâce à la séparation des préoccupations :
 
 ```
-Design Tokens (Collection principale - Source unique)
-├── colors/primary/DEFAULT → Référence à la collection Theme Modes
-├── colors/secondary/DEFAULT → Référence à la collection Theme Modes  
+Design Tokens (Collection principale - Sortie unique)
+├── colors/primary/DEFAULT → référence la collection Theme Modes
+├── colors/secondary/DEFAULT → référence la collection Theme Modes  
 ├── spacing/sm: 8px (valeur directe, pas besoin de multi-mode)
 └── font/size/base: 16px (valeur directe, pas besoin de multi-mode)
 
-Theme Modes (Collection auxiliaire - Stocke uniquement les variables changeantes)
-├── Mode clair                         ├── Mode sombre
-├── colors/primary/DEFAULT: #3B82F6    ├── colors/primary/DEFAULT: #60A5FA
-└── colors/secondary/DEFAULT: #10B981  └── colors/secondary/DEFAULT: #F59E0B
+Theme Modes (Collection auxiliaire - stocke uniquement les variables changeantes)
+├── Mode clair                             ├── Mode sombre
+├── colors/primary/DEFAULT: #3B82F6        ├── colors/primary/DEFAULT: #60A5FA
+└── colors/secondary/DEFAULT: #10B981      └── colors/secondary/DEFAULT: #F59E0B
 ```
 
 ## Avantages fondamentaux
 
-- **Interface unifiée** : Les designers sélectionnent uniquement les variables de la collection principale, sans besoin de basculer
+- **Interface unifiée** : Les designers n'ont qu'à sélectionner les variables de la collection principale, aucun basculement nécessaire
 - **Export efficace** : Exportez uniquement la collection principale, le plugin suit automatiquement les chaînes de référence
-- **Extension facile** : L'ajout de nouvelles dimensions de mode n'affecte pas les structures existantes
+- **Facilité d'expansion** : L'ajout de nouvelles dimensions de mode n'affecte pas la structure existante
 - **Évitement de la redondance** : Seules les variables changeantes sont placées dans les collections de mode
-- **Combinaisons flexibles** : Prend en charge des combinaisons de modes multidimensionnelles complexes
+- **Combinaisons flexibles** : Prend en charge des combinaisons de modes multidimensionnels complexes
 
 ## Exemples d'application pratique
 
-Démontrons comment appliquer le Principe de Point de Sortie Unique à travers des exemples spécifiques.
+Démontrons comment appliquer le Principe de Sortie Unique à travers des exemples spécifiques.
 
 ### Implémentation basique de thème clair/sombre
 
-#### Étape 1 : Créer une collection de jetons de design (Collection principale)
+#### Étape 1 : Créer une collection Design Tokens (Collection principale)
 
 D'abord, nous créons une collection principale pour stocker toutes les variables de design :
 
@@ -81,9 +81,9 @@ D'abord, nous créons une collection principale pour stocker toutes les variable
 └────────────────────────┴────────────────────────┘
 ```
 
-Cette collection principale contient un seul mode par défaut et sert de point de sortie unifié pour toutes les variables.
+Cette collection principale contient seulement un mode par défaut et sert de point de sortie unifié pour toutes les variables.
 
-#### Étape 2 : Créer une collection de modes de thème
+#### Étape 2 : Créer une collection Theme Modes
 
 Ensuite, nous créons une collection spécifiquement pour gérer les modes de thème :
 
@@ -99,11 +99,11 @@ Ensuite, nous créons une collection spécifiquement pour gérer les modes de th
 └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-Cette collection est dédiée au stockage des variables qui doivent basculer entre les thèmes clair et sombre.
+Cette collection est spécifiquement utilisée pour stocker les variables qui doivent basculer entre les thèmes clair et sombre.
 
 #### Étape 3 : Établir des relations de référence
 
-En faisant référencer par les variables de la collection principale les variables correspondantes dans cette collection, nous obtenons un basculement élégant entre les thèmes :
+En faisant référencer par les variables de la collection principale les variables correspondantes dans cette collection, nous pouvons réaliser un basculement de thème élégant :
 
 ```
                 ┌────────────────────────┬────────────────────────┐
@@ -146,31 +146,31 @@ En faisant référencer par les variables de la collection principale les variab
 
 #### Utilisation par les designers
 
-Dans Figma, les designers n'ont qu'à sélectionner les variables de la collection Design Tokens, sans se soucier des relations de référence entre variables sous-jacentes. C'est l'avantage du principe de point de sortie unique — offrir une interface unifiée et claire.
+Dans Figma, les designers n'ont qu'à sélectionner les variables de la collection Design Tokens sans se soucier des relations de référence entre variables sous-jacentes. C'est l'avantage du Principe de Sortie Unique—offrir une interface unifiée et claire.
 
 #### Processus d'exportation
 
 Lors de l'utilisation du plugin Variables Xporter, vous n'avez besoin d'exporter que les variables de la collection Design Tokens. Le plugin trace automatiquement la chaîne de référence de chaque variable pour garantir l'obtention des valeurs concrètes finales, sans nécessiter l'exportation d'autres collections de modes.
 
-### Créer des Systèmes de Variables Multi-dimensionnels
+### Créer un système de variables multidimensionnel [#create-multi-dimensional-variable-system]
 
-L'utilisation du principe de sortie unique permet la création de systèmes de variables multidimensionnels complexes, comme ceux combinant des thèmes clairs/sombres, des thèmes de marque, un design responsive et des modes de densité.
+En utilisant le Principe de Sortie Unique, vous pouvez créer des systèmes de variables multidimensionnels plus complexes, comme des systèmes qui combinent des thèmes clair/sombre, des thèmes de marque, un design responsive et des modes de densité.
+
 <Cards>
   <Cards.Card
     icon={<Columns3 />}
-    title="Implémentation de Système Multi-dimensionnel Complexe"
-    href="/docs/organizing-your-variables/multi-mode"
+    title="Implémentation de système multidimensionnel complexe"
+    href="/docs/organizing-your-variables/multi-mode#create-multi-dimensional-variable-system"
     className="mt-4"
   />
 </Cards>
 
 ## Scénarios applicables
 
-Le principe de point de sortie unique est particulièrement adapté pour :
+Le Principe de Sortie Unique est particulièrement adapté pour :
 
 - **Systèmes de design multi-modes** : incluant thèmes clair/sombre, thèmes de marque et autres dimensions de mode
 - **Grands systèmes de design** : avec de nombreuses variables nécessitant une structure organisationnelle claire
-- **Collaboration d'équipe** : quand plusieurs personnes ont besoin d'un point d'entrée unifié pour l'utilisation des variables
 - **Produits complexes** : prenant en charge plusieurs appareils, états et marques
 
 ## Considérations importantes
@@ -180,4 +180,4 @@ Le principe de point de sortie unique est particulièrement adapté pour :
 - **Documentation** : ajouter des descriptions pour les relations de référence importantes
 - **Maintenance régulière** : vérifier l'intégrité et la pertinence de la chaîne de référence
 
-En adoptant le principe de point de sortie unique, vous pouvez construire un système de variables à la fois puissant et simple, rendant les systèmes de design multi-modes complexes clairs et gérables.
+En adoptant le Principe de Sortie Unique, vous pouvez construire un système de variables à la fois puissant et simple, rendant les systèmes de design multi-modes complexes clairs et faciles à gérer.

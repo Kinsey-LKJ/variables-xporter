@@ -2,7 +2,7 @@ import { Callout } from 'nextra/components'
 
 # 多模式变量组织
 
-多模式是 Figma Variables 系统的强大功能，它允许同一个变量在不同的上下文中具有不同的值。合理地组织多模式变量是构建可扩展设计系统的关键。我们推荐使用[单一出口原则](/docs/single-outlet-principle)来管理复杂的多模式变量系统。
+多模式是 Figma Variables 系统的强大功能，它允许同一个变量在不同的上下文中具有不同的值。合理地组织多模式变量是构建可扩展设计系统的关键。我们推荐使用[单一出口原则](/docs/organizing-your-variables/single-outlet-principle)来管理复杂的多模式变量系统。
 
 ## 多模式应用场景
 
@@ -16,7 +16,7 @@ import { Callout } from 'nextra/components'
 
 ### 按维度分离集合
 
-每个模式维度使用独立集合管理，配合[单一出口原则](/docs/single-outlet-principle)建立清晰的引用层次。
+每个模式维度使用独立集合管理，配合[单一出口原则](/docs/organizing-your-variables/single-outlet-principle)建立清晰的引用层次。
 
 ### 精简变量
 
@@ -112,7 +112,7 @@ import { Callout } from 'nextra/components'
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### 创建多维度的变量系统
+### 创建多维度的变量系统 [#create-multi-dimensional-variable-system]
 
 我们目前已经拥有了一个支持明暗主题的变量系统，现在我们希望在明暗主题的基础上更进一步，加入品牌主题的变量系统。
 创建一个 Brands Modes 集合，用于管理品牌主题的变量，并创建两个不同的品牌模式（本例中是 `zhiyun` 和 `fiveray`），再创建两个变量 `colors/primary/light` 和 `colors/primary/dark`，并在两个模式下设置不同的值（本例中引用了主集合 Design Tokens 中的相关颜色）。
@@ -184,7 +184,7 @@ import { Callout } from 'nextra/components'
    │   │           │                        │                      │                     │
    │   ├──────────►│ colors/primary/light   │ colors/zhiyun/600──┐ │ colors/fiveray/600─┐│
    │   │           │                        │                    │ │                    ││
-   │   └──────────►│ colors/primary/dark    │ colors/zhiyun/600──┤ │ colors/fiveray/500──┤│
+   │   └──────────►│ colors/primary/dark    │ colors/zhiyun/600──┤ │ colors/fiveray/500──┤
    │               │                        │                    │ │                    ││
    │               │ ...                    │ ...                │ │ ...                ││
    │               │                        │                    │ │                    ││

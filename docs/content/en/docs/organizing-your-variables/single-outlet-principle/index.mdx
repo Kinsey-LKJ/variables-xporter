@@ -1,68 +1,68 @@
 import { Cards } from 'nextra/components'
 import { Columns3 } from 'lucide-react'
 
-# 单一出口原则
+# Single Outlet Principle
 
-单一出口原则是 Variables Xporter 推荐的核心变量组织理念，专为解决大型设计系统中复杂的多模式变量管理问题而设计。
+The Single Outlet Principle is a core variable organization philosophy recommended by Variables Xporter, designed specifically to solve complex multi-mode variable management problems in large design systems.
 
-## 什么是单一出口原则？
+## What is the Single Outlet Principle?
 
-**单一出口原则指的是在一个变量系统中，所有变量都使用一个集合作为唯一的出口。这个集合仅包含一个模式，并通过引用其他集合中的变量来实现多模式变量管理。**
+**The Single Outlet Principle refers to using one collection as the sole outlet for all variables in a variable system. This collection contains only one mode and achieves multi-mode variable management by referencing variables from other collections.**
 
-## 传统方法的问题
+## Problems with Traditional Approaches
 
-在传统的 Figma Variables 管理中，设计师通常将所有模式变量放在同一个集合中：
-
-```
-传统集合（所有变量紧密耦合在一个集合中）
-├── 浅色模式                     ├── 深色模式
-├── colors/primary: #3B82F6    ├── colors/primary: #60A5FA
-├── colors/secondary: #10B981  ├── colors/secondary: #F59E0B
-├── spacing/sm: 8px            ├── spacing/sm: 8px（重复设置）
-└── font/size/base: 16px       └── font/size/base: 16px（重复设置）
-```
-
-这种方法存在以下问题：
-
-- **冗余设置**：许多变量在不同模式下具有相同的值，但需要重复设置
-- **管理复杂性**：随着模式的增加，集合变得庞大且难以管理
-- **使用混乱**：设计师需要在多个模式之间切换以找到合适的变量
-- **扩展困难**：添加新的模式维度需要大量重复工作
-
-## 单一出口原则的解决方案
-
-单一出口原则通过关注点分离解决了这些问题：
+In traditional Figma Variables management, designers typically place all mode variables in the same collection:
 
 ```
-设计标记（主集合 - 唯一出口）
-├── colors/primary/DEFAULT → 引用主题模式集合
-├── colors/secondary/DEFAULT → 引用主题模式集合  
-├── spacing/sm: 8px（直接值，无需多模式）
-└── font/size/base: 16px（直接值，无需多模式）
-
-主题模式（辅助集合 - 仅存储变化的变量）
-├── 浅色模式                             ├── 深色模式
-├── colors/primary/DEFAULT: #3B82F6    ├── colors/primary/DEFAULT: #60A5FA
-└── colors/secondary/DEFAULT: #10B981  └── colors/secondary/DEFAULT: #F59E0B
+Traditional Collection (all variables tightly coupled in one collection)
+├── Light Mode                    ├── Dark Mode
+├── colors/primary: #3B82F6       ├── colors/primary: #60A5FA
+├── colors/secondary: #10B981     ├── colors/secondary: #F59E0B
+├── spacing/sm: 8px               ├── spacing/sm: 8px (duplicate setting)
+└── font/size/base: 16px          └── font/size/base: 16px (duplicate setting)
 ```
 
-## 核心优势
+This approach has the following problems:
 
-- **统一界面**：设计师只需从主集合中选择变量，无需切换
-- **高效导出**：仅导出主集合，插件会自动跟踪引用链
-- **易于扩展**：添加新的模式维度不会影响现有结构
-- **避免冗余**：仅将变化的变量放入模式集合中
-- **灵活组合**：支持复杂的多维模式组合
+- **Redundant settings**: Many variables have the same values across different modes but need to be set repeatedly
+- **Management complexity**: As modes increase, collections become large and difficult to manage
+- **Usage confusion**: Designers need to switch between multiple modes to find appropriate variables
+- **Expansion difficulties**: Adding new mode dimensions requires extensive repetitive work
 
-## 实际应用示例
+## The Single Outlet Principle Solution
 
-让我们通过具体示例演示如何应用单一出口原则。
+The Single Outlet Principle solves these problems through separation of concerns:
 
-### 基础的明暗主题实现
+```
+Design Tokens (Main Collection - Single Outlet)
+├── colors/primary/DEFAULT → references Theme Mode collection
+├── colors/secondary/DEFAULT → references Theme Mode collection  
+├── spacing/sm: 8px (direct value, no multi-mode needed)
+└── font/size/base: 16px (direct value, no multi-mode needed)
 
-#### 第一步：创建 Design Tokens 集合（主集合）
+Theme Modes (Auxiliary Collection - stores only changing variables)
+├── Light Mode                             ├── Dark Mode
+├── colors/primary/DEFAULT: #3B82F6        ├── colors/primary/DEFAULT: #60A5FA
+└── colors/secondary/DEFAULT: #10B981      └── colors/secondary/DEFAULT: #F59E0B
+```
 
-首先，我们创建一个主集合来存储所有设计变量：
+## Core Advantages
+
+- **Unified interface**: Designers only need to select variables from the main collection, no switching required
+- **Efficient export**: Only export the main collection, plugin automatically tracks reference chains
+- **Easy to scale**: Adding new mode dimensions doesn't affect existing structure
+- **Avoid redundancy**: Only place changing variables in mode collections
+- **Flexible combination**: Supports complex multi-dimensional mode combinations
+
+## Practical Application Examples
+
+Let's demonstrate how to apply the Single Outlet Principle through specific examples.
+
+### Basic Light/Dark Theme Implementation
+
+#### Step 1: Create Design Tokens Collection (Main Collection)
+
+First, we create a main collection to store all design variables:
 
 ```
 ┌────────────────────────┬────────────────────────┐
@@ -81,11 +81,11 @@ import { Columns3 } from 'lucide-react'
 └────────────────────────┴────────────────────────┘
 ```
 
-这个主集合仅包含一个默认模式，并作为所有变量的统一出口。
+This main collection contains only one default mode and serves as the unified outlet for all variables.
 
-#### 第二步：创建主题模式集合
+#### Step 2: Create Theme Mode Collection
 
-接下来，我们创建一个专门用于管理主题模式的集合：
+Next, we create a collection specifically for managing theme modes:
 
 ```
 ┌────────────────────────┬──────────────────────┬─────────────────────┐
@@ -99,11 +99,11 @@ import { Columns3 } from 'lucide-react'
 └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-这个集合专门用于存储需要在明暗主题之间切换的变量。
+This collection is specifically used to store variables that need to switch between light and dark themes.
 
-#### 第三步：建立引用关系
+#### Step 3: Establish Reference Relationships
 
-通过让主集合中的变量引用此集合中的对应变量，我们可以实现优雅的主题切换：
+By having variables in the main collection reference corresponding variables in this collection, we can achieve elegant theme switching:
 
 ```
                 ┌────────────────────────┬────────────────────────┐
@@ -142,42 +142,42 @@ import { Columns3 } from 'lucide-react'
 └──────────────────────────────────────────────────────────────┴─────────────────────┘
 ```
 
-### 用户视角
+### User Perspective
 
-#### 设计师使用
+#### Designer Usage
 
-在 Figma 中，设计师只需从 Design Tokens 集合中选择变量，而无需担心底层变量引用关系。这就是单一出口原则的优势——提供一个统一、清晰的界面。
+In Figma, designers only need to select variables from the Design Tokens collection without worrying about underlying variable reference relationships. This is the advantage of the Single Outlet Principle—providing a unified, clear interface.
 
-#### 导出流程
+#### Export Process
 
-使用 Variables Xporter 插件时，只需从 Design Tokens 集合中导出变量。插件会自动追踪每个变量的引用链，确保获取最终的具体值，而无需导出其他模式集合。
+When using the Variables Xporter plugin, you only need to export variables from the Design Tokens collection. The plugin will automatically track each variable's reference chain to ensure getting the final concrete values, without needing to export other mode collections.
 
-### 创建多维度的变量系统
+### Create Multi-Dimensional Variable System [#create-multi-dimensional-variable-system]
 
-使用单一出口原则可以创建更加复杂的多维变量系统，例如结合了明/暗主题、品牌主题、响应式设计和密度模式的系统。
+Using the Single Outlet Principle, you can create more complex multi-dimensional variable systems, such as systems that combine light/dark themes, brand themes, responsive design, and density modes.
+
 <Cards>
   <Cards.Card
     icon={<Columns3 />}
-    title="复杂的多维系统实现"
-    href="/docs/organizing-your-variables/multi-mode"
+    title="Complex Multi-Dimensional System Implementation"
+    href="/docs/organizing-your-variables/multi-mode#create-multi-dimensional-variable-system"
     className="mt-4"
   />
 </Cards>
 
-## 适用场景
+## Applicable Scenarios
 
-单一出口原则特别适用于：
+The Single Outlet Principle is particularly suitable for:
 
-- **多模式设计系统**：包括明暗主题、品牌主题及其他模式维度
-- **大型设计系统**：拥有大量变量且需要清晰的组织结构
-- **复杂产品**：支持多设备、多状态和多品牌
+- **Multi-mode design systems**: Including light/dark themes, brand themes, and other mode dimensions
+- **Large design systems**: With numerous variables requiring clear organizational structure
+- **Complex products**: Supporting multiple devices, states, and brands
 
-## 重要注意事项
+## Important Considerations
 
-- **引用层级控制**：避免过深的引用嵌套
-- **命名规范**：保持一致的变量命名标准
-- **文档记录**：为重要的引用关系添加描述
-- **定期维护**：检查引用链的完整性和合理性
+- **Reference level control**: Avoid overly deep reference nesting
+- **Naming conventions**: Maintain consistent variable naming standards
+- **Documentation**: Add descriptions for important reference relationships
+- **Regular maintenance**: Check the integrity and reasonableness of reference chains
 
-
-通过采用单一出口原则，您可以构建一个既强大又简单的变量系统，使复杂的多模式设计系统变得清晰且易于管理。
+By adopting the Single Outlet Principle, you can build a variable system that is both powerful and simple, making complex multi-mode design systems clear and easy to manage.
