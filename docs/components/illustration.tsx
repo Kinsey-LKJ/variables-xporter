@@ -116,95 +116,199 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <path d="M631 252.5H230H0" stroke="#212538" />
+      <path d="M631 252.5H230H0" stroke="url(#paint0_linear_635_2743)"/>
       <path
         d="M620.5 182.5V185.5L574.5 231.5H564.5H509.328C508.798 231.5 508.289 231.711 507.914 232.086L499.086 240.914C498.711 241.289 498.202 241.5 497.672 241.5H414.315C413.793 241.5 413.291 241.296 412.917 240.93L370.083 199.07C369.709 198.704 369.207 198.5 368.685 198.5H325.328C324.798 198.5 324.289 198.711 323.914 199.086L278.586 244.414C278.211 244.789 277.702 245 277.172 245H229H199.5V558"
         stroke="#212538"
       />
-      <path
-        d="M599.5 323.5V298L599 297.5L574 272.5H531.828C531.298 272.5 530.789 272.289 530.414 271.914L521.586 263.086C521.211 262.711 520.702 262.5 520.172 262.5H372.828C372.298 262.5 371.789 262.711 371.414 263.086L328.586 305.914C328.211 306.289 327.702 306.5 327.172 306.5H268.328C267.798 306.5 267.289 306.289 266.914 305.914L226.5 265.5L199.5 238.5V175.5C199.5 173.291 197.709 171.5 195.5 171.5H38.5C36.2909 171.5 34.5 169.709 34.5 167.5V0"
-        stroke="#212538"
-      />
-      <path
-        d="M110 172V171H128.5H147V172H128.5H110Z"
-        fill="url(#paint11_linear_445_1592)"
-      />
-      <g filter="url(#filter7_f_445_1592)">
-        <ellipse
-          cx="128.5"
-          cy="171.5"
-          rx="6.5"
-          ry="3.5"
-          fill="url(#paint12_linear_445_1592)"
+<path d="M599.5 323.5V298L599 297.5L574 272.5H531.828C531.298 272.5 530.789 272.289 530.414 271.914L521.586 263.086C521.211 262.711 520.702 262.5 520.172 262.5H372.828C372.298 262.5 371.789 262.711 371.414 263.086L328.586 305.914C328.211 306.289 327.702 306.5 327.172 306.5H268.328C267.798 306.5 267.289 306.289 266.914 305.914L226.5 265.5L199.5 238.5V175.5C199.5 173.291 197.709 171.5 195.5 171.5H38.5C36.2909 171.5 34.5 169.709 34.5 167.5V0" stroke="url(#paint0_linear_720_3555)"/>
+
+      <g id="red-light" transform="translate(-128, -171.5)">
+        <path
+          d="M110 172V171H128.5H147V172H128.5H110Z"
+          fill="url(#paint11_linear_445_1592)"
         />
+        <g filter="url(#filter7_f_445_1592)">
+          <ellipse
+            cx="128.5"
+            cy="171.5"
+            rx="6.5"
+            ry="3.5"
+            fill="url(#paint12_linear_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter8_f_445_1592)">
+          <circle
+            cx="128.5"
+            cy="171.5"
+            r="4.5"
+            fill="url(#paint13_radial_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter9_f_445_1592)">
+          <circle cx="128.5" cy="171.5" r="1.5" fill="white" />
+        </g>
       </g>
-      <g filter="url(#filter8_f_445_1592)">
-        <circle
-          cx="128.5"
-          cy="171.5"
-          r="4.5"
-          fill="url(#paint13_radial_445_1592)"
+
+      <g id="purple-light" transform="translate(-28.5, -252.5)">
+        <path
+          d="M10 253V252H28.5H47V253H28.5H10Z"
+          fill="url(#paint14_linear_445_1592)"
         />
+        <g filter="url(#filter10_f_445_1592)">
+          <ellipse
+            cx="28.5"
+            cy="252.5"
+            rx="6.5"
+            ry="3.5"
+            fill="url(#paint15_linear_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter11_f_445_1592)">
+          <circle
+            cx="28.5"
+            cy="252.5"
+            r="4.5"
+            fill="url(#paint16_radial_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter12_f_445_1592)">
+          <circle cx="28.5" cy="252.5" r="1.5" fill="white" />
+        </g>
       </g>
-      <g filter="url(#filter9_f_445_1592)">
-        <circle cx="128.5" cy="171.5" r="1.5" fill="white" />
-      </g>
-      <path
-        d="M10 253V252H28.5H47V253H28.5H10Z"
-        fill="url(#paint14_linear_445_1592)"
-      />
-      <g filter="url(#filter10_f_445_1592)">
-        <ellipse
-          cx="28.5"
-          cy="252.5"
-          rx="6.5"
-          ry="3.5"
-          fill="url(#paint15_linear_445_1592)"
+
+      <g id="gold-light-in-purple-path" transform="translate(-28.5, -252.5)">
+        <path
+          d="M10 253V252H28.5H47V253H28.5H10Z"
+          fill="url(#paint14_linear_445_1592)"
         />
+        <g filter="url(#filter10_f_445_1592)">
+          <ellipse
+            cx="28.5"
+            cy="252.5"
+            rx="6.5"
+            ry="3.5"
+            fill="url(#paint15_linear_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter11_f_445_1592)">
+          <circle
+            cx="28.5"
+            cy="252.5"
+            r="4.5"
+            fill="url(#paint16_radial_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter12_f_445_1592)">
+          <circle cx="28.5" cy="252.5" r="1.5" fill="white" />
+        </g>
       </g>
-      <g filter="url(#filter11_f_445_1592)">
-        <circle
-          cx="28.5"
-          cy="252.5"
-          r="4.5"
-          fill="url(#paint16_radial_445_1592)"
+
+      {/* <g id="gold-light-in-red-path" transform="translate(-28.5, -252.5)">
+        <path
+          d="M10 253V252H28.5H47V253H28.5H10Z"
+          fill="url(#paint14_linear_445_1592)"
         />
+        <g filter="url(#filter10_f_445_1592)">
+          <ellipse
+            cx="28.5"
+            cy="252.5"
+            rx="6.5"
+            ry="3.5"
+            fill="url(#paint15_linear_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter11_f_445_1592)">
+          <circle
+            cx="28.5"
+            cy="252.5"
+            r="4.5"
+            fill="url(#paint16_radial_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter12_f_445_1592)">
+          <circle cx="28.5" cy="252.5" r="1.5" fill="white" />
+        </g>
       </g>
-      <g filter="url(#filter12_f_445_1592)">
-        <circle cx="28.5" cy="252.5" r="1.5" fill="white" />
-      </g>
-      <path
-        d="M200 347L199 347L199 328.5L199 310L200 310L200 328.5L200 347Z"
-        fill="url(#paint17_linear_445_1592)"
-      />
-      <g filter="url(#filter13_f_445_1592)">
-        <ellipse
-          cx="199.5"
-          cy="328.5"
-          rx="6.5"
-          ry="3.5"
-          transform="rotate(-90 199.5 328.5)"
-          fill="url(#paint18_linear_445_1592)"
+
+      <g id="gold-light-in-green-path" transform="translate(-28.5, -252.5)">
+        <path
+          d="M10 253V252H28.5H47V253H28.5H10Z"
+          fill="url(#paint14_linear_445_1592)"
         />
-      </g>
-      <g filter="url(#filter14_f_445_1592)">
-        <circle
-          cx="199.5"
-          cy="328.5"
-          r="4.5"
-          transform="rotate(-90 199.5 328.5)"
-          fill="url(#paint19_radial_445_1592)"
+        <g filter="url(#filter10_f_445_1592)">
+          <ellipse
+            cx="28.5"
+            cy="252.5"
+            rx="6.5"
+            ry="3.5"
+            fill="url(#paint15_linear_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter11_f_445_1592)">
+          <circle
+            cx="28.5"
+            cy="252.5"
+            r="4.5"
+            fill="url(#paint16_radial_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter12_f_445_1592)">
+          <circle cx="28.5" cy="252.5" r="1.5" fill="white" />
+        </g>
+      </g> */}
+
+<circle id="green-circle" cx="199.5" cy="252.5" r="40" fill="url(#green-radial-gradient)" />
+                    <radialGradient id="green-radial-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                      <stop offset="0%" stopColor="#6AB094" stopOpacity={0.42} />
+                      <stop offset="100%" stopColor="#6AB094" stopOpacity={0} />
+                    </radialGradient>
+                    <circle id="purple-circle" cx="199.5" cy="252.5" r="40" fill="url(#purple-radial-gradient)" />
+                    <radialGradient id="purple-radial-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                      <stop offset="0%" stopColor="#624388" stopOpacity={0.7} />
+                      <stop offset="100%" stopColor="#624388" stopOpacity={0} />
+                    </radialGradient>
+                    <circle id="red-circle" cx="199.5" cy="252.5" r="40" fill="url(#red-radial-gradient)" />
+                    <radialGradient id="red-radial-gradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                      <stop offset="0%" stopColor="#F24E1E" stopOpacity={0.3} />
+                      <stop offset="100%" stopColor="#F24E1E" stopOpacity={0} />
+                    </radialGradient>
+
+      <g id="green-light" transform="rotate(90) translate(-199.5, -328.5)">
+        <path
+          d="M200 347L199 347L199 328.5L199 310L200 310L200 328.5L200 347Z"
+          fill="url(#paint17_linear_445_1592)"
         />
+        <g filter="url(#filter13_f_445_1592)">
+          <ellipse
+            cx="199.5"
+            cy="328.5"
+            rx="6.5"
+            ry="3.5"
+            transform="rotate(-90 199.5 328.5)"
+            fill="url(#paint18_linear_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter14_f_445_1592)">
+          <circle
+            cx="199.5"
+            cy="328.5"
+            r="4.5"
+            transform="rotate(-90 199.5 328.5)"
+            fill="url(#paint19_radial_445_1592)"
+          />
+        </g>
+        <g filter="url(#filter15_f_445_1592)">
+          <circle
+            cx="199.5"
+            cy="328.5"
+            r="1.5"
+            transform="rotate(-90 199.5 328.5)"
+            fill="white"
+          />
+        </g>
       </g>
-      <g filter="url(#filter15_f_445_1592)">
-        <circle
-          cx="199.5"
-          cy="328.5"
-          r="1.5"
-          transform="rotate(-90 199.5 328.5)"
-          fill="white"
-        />
-      </g>
+
       <g opacity="0.4">
         <path
           d="M950.983 101.455V108H950.216L946.649 102.861H946.585V108H945.793V101.455H946.56L950.139 106.607H950.203V101.455H950.983ZM957.043 103.5C956.973 103.285 956.88 103.092 956.765 102.922C956.652 102.749 956.517 102.602 956.359 102.48C956.204 102.359 956.027 102.266 955.829 102.202C955.631 102.138 955.413 102.107 955.177 102.107C954.789 102.107 954.437 102.207 954.119 102.407C953.802 102.607 953.549 102.902 953.362 103.292C953.174 103.682 953.08 104.161 953.08 104.727C953.08 105.294 953.175 105.772 953.365 106.162C953.554 106.552 953.811 106.847 954.135 107.048C954.459 107.248 954.823 107.348 955.228 107.348C955.603 107.348 955.933 107.268 956.219 107.108C956.506 106.946 956.73 106.718 956.89 106.424C957.052 106.128 957.133 105.78 957.133 105.379L957.376 105.43H955.407V104.727H957.9V105.43C957.9 105.969 957.785 106.438 957.555 106.837C957.327 107.235 957.011 107.544 956.609 107.763C956.208 107.981 955.748 108.089 955.228 108.089C954.649 108.089 954.139 107.953 953.7 107.68C953.264 107.408 952.923 107.02 952.678 106.517C952.435 106.014 952.313 105.418 952.313 104.727C952.313 104.21 952.383 103.744 952.521 103.331C952.662 102.915 952.86 102.561 953.116 102.27C953.371 101.978 953.674 101.754 954.023 101.598C954.373 101.443 954.757 101.365 955.177 101.365C955.522 101.365 955.844 101.417 956.142 101.522C956.443 101.624 956.71 101.77 956.944 101.96C957.181 102.147 957.378 102.372 957.536 102.634C957.693 102.894 957.802 103.183 957.862 103.5H957.043ZM959.257 108V101.455H960.05V107.297H963.093V108H959.257ZM966.301 108.089C965.863 108.089 965.475 108.012 965.138 107.856C964.804 107.699 964.543 107.482 964.355 107.207C964.168 106.93 964.075 106.615 964.077 106.261C964.075 105.984 964.129 105.729 964.24 105.494C964.351 105.258 964.502 105.061 964.694 104.903C964.888 104.743 965.104 104.642 965.343 104.599V104.561C965.029 104.48 964.78 104.304 964.595 104.034C964.409 103.761 964.318 103.451 964.32 103.104C964.318 102.771 964.402 102.474 964.572 102.212C964.743 101.95 964.977 101.743 965.276 101.592C965.576 101.441 965.918 101.365 966.301 101.365C966.681 101.365 967.02 101.441 967.318 101.592C967.616 101.743 967.85 101.95 968.021 102.212C968.194 102.474 968.281 102.771 968.283 103.104C968.281 103.451 968.186 103.761 967.999 104.034C967.813 104.304 967.567 104.48 967.26 104.561V104.599C967.497 104.642 967.71 104.743 967.9 104.903C968.089 105.061 968.24 105.258 968.353 105.494C968.466 105.729 968.524 105.984 968.526 106.261C968.524 106.615 968.428 106.93 968.238 107.207C968.051 107.482 967.79 107.699 967.455 107.856C967.123 108.012 966.738 108.089 966.301 108.089ZM966.301 107.386C966.598 107.386 966.853 107.338 967.069 107.243C967.284 107.147 967.45 107.011 967.567 106.837C967.684 106.662 967.744 106.457 967.746 106.223C967.744 105.976 967.68 105.757 967.554 105.568C967.429 105.378 967.257 105.229 967.04 105.12C966.825 105.012 966.578 104.957 966.301 104.957C966.022 104.957 965.773 105.012 965.554 105.12C965.336 105.229 965.165 105.378 965.039 105.568C964.915 105.757 964.855 105.976 964.857 106.223C964.855 106.457 964.911 106.662 965.026 106.837C965.143 107.011 965.311 107.147 965.528 107.243C965.745 107.338 966.003 107.386 966.301 107.386ZM966.301 104.28C966.536 104.28 966.744 104.233 966.925 104.139C967.108 104.045 967.252 103.914 967.356 103.746C967.461 103.578 967.514 103.381 967.516 103.155C967.514 102.933 967.462 102.74 967.359 102.576C967.257 102.41 967.115 102.282 966.934 102.193C966.753 102.101 966.542 102.055 966.301 102.055C966.056 102.055 965.842 102.101 965.659 102.193C965.476 102.282 965.334 102.41 965.234 102.576C965.134 102.74 965.085 102.933 965.087 103.155C965.085 103.381 965.135 103.578 965.237 103.746C965.342 103.914 965.485 104.045 965.669 104.139C965.852 104.233 966.063 104.28 966.301 104.28ZM969.955 108L972.883 102.209V102.158H969.508V101.455H973.701V102.196L970.786 108H969.955Z"
@@ -220,7 +324,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         d="M670.5 285.5H639H631.5L623.5 277.5V227.5L631.5 219.5H681.5L689.5 227.5V268V277.5L681.5 285.5H670.5Z"
         stroke="#212538"
       />
-      <g filter="url(#filter16_d_445_1592)">
+      <g filter="url(#filter16_d_445_1592)" id="export-display">
         <rect
           x="566"
           y="245"
@@ -962,7 +1066,11 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         d="M350.5 228V233.586C350.5 233.851 350.395 234.105 350.207 234.293L343.293 241.207C343.105 241.395 342.851 241.5 342.586 241.5H328.914C328.649 241.5 328.395 241.605 328.207 241.793L325 245"
         stroke="#212538"
       />
-      <g filter="url(#filter21_d_445_1592)">
+      <g
+        filter="url(#filter21_d_445_1592)"
+        id="tokens-display"
+        mask="url(#tokens-display-mask)"
+      >
         <rect
           x="301"
           y="245"
@@ -3615,6 +3723,8 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           stroke="url(#paint347_linear_445_1592)"
           strokeWidth="0.5"
         />
+
+        
       </g>
       <defs>
         <filter
@@ -4844,7 +4954,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#C1CFFA" />
-          <stop offset="1" stopColor="#212538" />
+          <stop offset="1" id="export-height-gradient" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_445_1592"
@@ -4855,7 +4965,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#C1CFFA" />
-          <stop offset="1" stopColor="#212538" />
+          <stop offset={1}  id="export-height-gradient" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_445_1592"
@@ -8424,6 +8534,27 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         >
           <stop offset="1" stopColor="#8F9CDA" />
         </linearGradient>
+
+        <linearGradient id="paint0_linear_635_2743" x1="0" y1="253" x2="631" y2="253" gradientUnits="userSpaceOnUse">
+<stop stop-color="#212538" stop-opacity="0"/>
+<stop offset="0.0787539" stop-color="#212538"/>
+<stop offset="0.474281" stop-color="#212538"/>
+<stop offset="0.477276" stop-color="#212538" stop-opacity="0"/>
+<stop offset="0.511924" stop-color="#212538" stop-opacity="0"/>
+<stop offset="0.54846" stop-color="#212538" stop-opacity="0"/>
+<stop offset="0.550926" stop-color="#212538"/>
+<stop offset="0.894598" stop-color="#212538"/>
+<stop offset="0.896791" stop-color="#212538" stop-opacity="0"/>
+<stop offset="0.931799" stop-color="#212538" stop-opacity="0"/>
+<stop offset="0.966808" stop-color="#212538" stop-opacity="0"/>
+<stop offset="0.968402" stop-color="#212538"/>
+</linearGradient>
+
+<linearGradient id="paint0_linear_720_3555" x1="317" y1="0" x2="317" y2="323.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#212538" stop-opacity="0"/>
+<stop offset="0.2" stop-color="#212538"/>
+<stop offset="1" stop-color="#212538"/>
+</linearGradient>
         <clipPath id="clip0_445_1592">
           <rect
             width="24"

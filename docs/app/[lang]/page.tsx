@@ -51,7 +51,7 @@ export default async function IndexPage({
               </p>
             </div>
             <div className=" flex gap-4">
-              <Button asChild>
+              <Button asChild className=" shadow-primary shadow-accent">
                 <Link href="/docs">{dictionary.start}</Link>
               </Button>
               {/* <Button variant="outline"><Link href="/docs">{dictionary.learnMore}</Link></Button> */}
