@@ -107,7 +107,7 @@ This organization approach makes your design system both powerful and simple, pe
 - 🇺🇸 English
 - 🇫🇷 Français
 
-## ☕ Support This Project
+<!-- ## ☕ Support This Project
 
 If Variables Xporter has been helpful to you, please consider buying me a coffee to support the continued development of this project!
 
@@ -121,7 +121,7 @@ Your support helps me:
 - 🚀 Continue developing new features
 - 🐛 Fix bugs and improve performance
 - 📚 Maintain and update documentation
-- 🎯 Respond to community feedback
+- 🎯 Respond to community feedback -->
 
 ## 🚀 Quick Start
 

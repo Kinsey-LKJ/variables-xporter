@@ -45,10 +45,10 @@ const Export = (props: ExportProps) => {
             <span> {textData.export_feedback_message_part1}</span>
             <span>
               <a
-                href="https://www.buymeacoffee.com/kinseylkj"
+                href="https://github.com/Kinsey-LKJ/variables-xporter"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-yellow-400"
+                className="text-blue-300"
               >
                 {textData.buy_me_coffee_link}
               </a>
