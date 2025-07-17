@@ -18,6 +18,7 @@ import LocalSwitch from "../components/local-switch";
 import { GithubIcon } from "lucide-react";
 import { Analytics } from "@vercel/analytics/next";
 import { Metadata } from "next";
+import ogImage from "@/public/og.png";
 
 export async function generateMetadata({
   params,
@@ -74,12 +75,28 @@ export async function generateMetadata({
       siteName: title,
       url,
       description,
+      images: [
+        {
+          url: ogImage.src,
+          width: 1200,
+          height: 630,
+          alt: "Variables Xporter",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       site: "@kinsey57534670",
       creator: "@kinsey57534670",
       description,
+      images: [
+        {
+          url: ogImage.src,
+          width: 1200,
+          height: 630,
+          alt: "Variables Xporter",
+        },
+      ],
     },
     robots: {
       index: true,
