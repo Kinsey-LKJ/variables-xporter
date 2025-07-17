@@ -8537,24 +8537,24 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
         </linearGradient>
 
         <linearGradient id="paint0_linear_635_2743" x1="0" y1="253" x2="631" y2="253" gradientUnits="userSpaceOnUse">
-<stop stop-color="#212538" stop-opacity="0"/>
-<stop offset="0.0787539" stop-color="#212538"/>
-<stop offset="0.474281" stop-color="#212538"/>
-<stop offset="0.477276" stop-color="#212538" stop-opacity="0"/>
-<stop offset="0.511924" stop-color="#212538" stop-opacity="0"/>
-<stop offset="0.54846" stop-color="#212538" stop-opacity="0"/>
-<stop offset="0.550926" stop-color="#212538"/>
-<stop offset="0.894598" stop-color="#212538"/>
-<stop offset="0.896791" stop-color="#212538" stop-opacity="0"/>
-<stop offset="0.931799" stop-color="#212538" stop-opacity="0"/>
-<stop offset="0.966808" stop-color="#212538" stop-opacity="0"/>
-<stop offset="0.968402" stop-color="#212538"/>
+<stop stopColor="#212538" stop-opacity="0"/>
+<stop offset="0.0787539" stopColor="#212538"/>
+<stop offset="0.474281" stopColor="#212538"/>
+<stop offset="0.477276" stopColor="#212538" stop-opacity="0"/>
+<stop offset="0.511924" stopColor="#212538" stop-opacity="0"/>
+<stop offset="0.54846" stopColor="#212538" stop-opacity="0"/>
+<stop offset="0.550926" stopColor="#212538"/>
+<stop offset="0.894598" stopColor="#212538"/>
+<stop offset="0.896791" stopColor="#212538" stop-opacity="0"/>
+<stop offset="0.931799" stopColor="#212538" stop-opacity="0"/>
+<stop offset="0.966808" stopColor="#212538" stop-opacity="0"/>
+<stop offset="0.968402" stopColor="#212538"/>
 </linearGradient>
 
 <linearGradient id="paint0_linear_720_3555" x1="317" y1="0" x2="317" y2="323.5" gradientUnits="userSpaceOnUse">
-<stop stop-color="#212538" stop-opacity="0"/>
-<stop offset="0.2" stop-color="#212538"/>
-<stop offset="1" stop-color="#212538"/>
+<stop stopColor="#212538" stop-opacity="0"/>
+<stop offset="0.2" stopColor="#212538"/>
+<stop offset="1" stopColor="#212538"/>
 </linearGradient>
         <clipPath id="clip0_445_1592">
           <rect

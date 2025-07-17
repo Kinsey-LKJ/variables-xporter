@@ -138,13 +138,13 @@ export default async function RootLayout({ children, params }) {
       logo={
         <div className="flex items-center gap-2">
           <Image
-            className="w-8 h-8"
+            className="w-8 h-8 hidden lg:block"
             src={Logo}
             alt="Variables Xporter"
             width={100}
             height={100}
           />
-          <b>Variables Xporter</b>{" "}
+          <b className="text-sm lg:text-base">Variables Xporter</b>{" "}
         </div>
       }
       // Next.js discord server
