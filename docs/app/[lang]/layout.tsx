@@ -67,14 +67,6 @@ export const metadata = {
     url: "https://www.variables-xporter.com",
     title: "Variables Xporter - Export Figma Variables to shadcn/ui & Tailwind CSS",
     description: "Export Figma Variables as production-ready shadcn/ui theme variables, Tailwind CSS configuration files, or CSS Variables. Support for multi-mode design systems.",
-    images: [
-      {
-        url: "/og.png",
-        width: 1200,
-        height: 630,
-        alt: "Variables Xporter",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -82,7 +74,6 @@ export const metadata = {
     creator: "@kinsey57534670",
     title: "Variables Xporter - Export Figma Variables to shadcn/ui & Tailwind CSS",
     description: "Export Figma Variables as production-ready shadcn/ui theme variables, Tailwind CSS configuration files, or CSS Variables.",
-    images: ["/og.png"],
   },
   robots: {
     index: true,

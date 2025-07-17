@@ -33,14 +33,6 @@ export async function generateMetadata({
   const title = "Variables Xporter";
   const description = dictionary.pluginHighlight;
   const url = "https://www.variables-xporter.com";
-  const images = [
-    {
-      url: `${url}/og.png`,
-      width: 1200,
-      height: 630,
-      alt: title,
-    },
-  ];
 
   return {
     title,
@@ -76,13 +68,11 @@ export async function generateMetadata({
       title,
       description,
       siteName: "Variables Xporter",
-      images,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images,
       creator: "@kinsey57534670",
       site: "@kinsey57534670",
     },
