@@ -49,7 +49,7 @@ export const Footer = () => {
   }, [resolvedTheme]);
 
   return (
-    <div className="text-center p-6 relative flex flex-col items-center overflow-hidden pt-56">
+    <div className="text-center p-6 relative flex flex-col items-center overflow-hidden  pt-32 lg:pt-56">
       {pathname === "/" && (
         <Blurer className="w-[736px] h-[137px] blur-[140px] translate-y-[150%] bottom-0"></Blurer>
       )}
