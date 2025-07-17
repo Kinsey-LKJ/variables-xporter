@@ -206,7 +206,9 @@ code.text-\[\.9em\] {
 :root {
   /* Collection: Theme Modes */
   --theme-modes-accent: var(--brand-modes-color-accent-light);
-  --theme-modes-accent-foreground: var(--brand-modes-color-accent-foreground-light);
+  --theme-modes-accent-foreground: var(
+    --brand-modes-color-accent-foreground-light
+  );
   --theme-modes-background: var(--brand-modes-color-background-light);
   --theme-modes-border: var(--brand-modes-color-border-light);
   --theme-modes-chart-1: var(--theme-modes-primary);
@@ -217,15 +219,23 @@ code.text-\[\.9em\] {
   --theme-modes-foreground: var(--brand-modes-color-foreground-light);
   --theme-modes-input: var(--brand-modes-color-input-light);
   --theme-modes-muted: var(--brand-modes-color-muted-light);
-  --theme-modes-muted-foreground: var(--brand-modes-color-muted-foreground-light);
+  --theme-modes-muted-foreground: var(
+    --brand-modes-color-muted-foreground-light
+  );
   --theme-modes-primary: var(--brand-modes-color-primary-light);
-  --theme-modes-primary-foreground: var(--brand-modes-color-primary-foreground-light);
+  --theme-modes-primary-foreground: var(
+    --brand-modes-color-primary-foreground-light
+  );
   --theme-modes-secondary: var(--brand-modes-color-secondary-light);
 
   /* Collection: Brand Modes */
   --brand-modes-color-accent-dark: oklch(0.294 0.037 264.7);
-  --brand-modes-color-accent-foreground-dark: var(--brand-modes-color-foreground-dark);
-  --brand-modes-color-accent-foreground-light: var(--brand-modes-color-foreground-light);
+  --brand-modes-color-accent-foreground-dark: var(
+    --brand-modes-color-foreground-dark
+  );
+  --brand-modes-color-accent-foreground-light: var(
+    --brand-modes-color-foreground-light
+  );
   --brand-modes-color-accent-light: oklch(0.976 0.008 271.3);
   --brand-modes-color-background-dark: oklch(0.181 0.037 265.9);
   --brand-modes-color-background-light: oklch(1 0 0);
@@ -291,8 +301,12 @@ code.text-\[\.9em\] {
 .brand-b {
   /* Collection: Brand Modes */
   --brand-modes-color-accent-dark: oklch(0.335 0.031 209.8);
-  --brand-modes-color-accent-foreground-dark: var(--brand-modes-color-foreground-dark);
-  --brand-modes-color-accent-foreground-light: var(--brand-modes-color-foreground-light);
+  --brand-modes-color-accent-foreground-dark: var(
+    --brand-modes-color-foreground-dark
+  );
+  --brand-modes-color-accent-foreground-light: var(
+    --brand-modes-color-foreground-light
+  );
   --brand-modes-color-accent-light: oklch(0.986 0.007 209.4);
   --brand-modes-color-background-dark: oklch(0.222 0.027 210.5);
   --brand-modes-color-background-light: oklch(1 0 0);
@@ -357,7 +371,9 @@ code.text-\[\.9em\] {
 .dark {
   /* Collection: Theme Modes */
   --theme-modes-accent: var(--brand-modes-color-accent-dark);
-  --theme-modes-accent-foreground: var(--brand-modes-color-accent-foreground-dark);
+  --theme-modes-accent-foreground: var(
+    --brand-modes-color-accent-foreground-dark
+  );
   --theme-modes-background: var(--brand-modes-color-background-dark);
   --theme-modes-border: var(--brand-modes-color-border-dark);
   --theme-modes-chart-1: var(--theme-modes-primary);
@@ -368,9 +384,13 @@ code.text-\[\.9em\] {
   --theme-modes-foreground: var(--brand-modes-color-foreground-dark);
   --theme-modes-input: var(--brand-modes-color-input-dark);
   --theme-modes-muted: var(--brand-modes-color-muted-dark);
-  --theme-modes-muted-foreground: var(--brand-modes-color-muted-foreground-dark);
+  --theme-modes-muted-foreground: var(
+    --brand-modes-color-muted-foreground-dark
+  );
   --theme-modes-primary: var(--brand-modes-color-primary-dark);
-  --theme-modes-primary-foreground: var(--brand-modes-color-primary-foreground-dark);
+  --theme-modes-primary-foreground: var(
+    --brand-modes-color-primary-foreground-dark
+  );
   --theme-modes-secondary: var(--brand-modes-color-secondary-dark);
 }
 
@@ -385,8 +405,6 @@ code.text-\[\.9em\] {
   /* Collection: Radius Modes */
   --radius-modes-radius: 0rem;
 }
-
-
 
 :root {
   --x-color-black: var(--x-color-neutral-950);
@@ -417,10 +435,7 @@ code.text-\[\.9em\] {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-foreground/20 via-foreground to-foreground/64;
 }
 
-
-
 @layer base {
-
   body {
     @apply bg-background text-foreground;
   }
@@ -430,12 +445,11 @@ code.text-\[\.9em\] {
   }
 }
 
-@layer components{
+@layer components {
   * {
     @apply border-border outline-ring/50;
   }
 }
-
 
 /*
  动画相关样式
@@ -444,7 +458,7 @@ code.text-\[\.9em\] {
 #red-light {
   opacity: 0;
   offset-path: path(
-    'M599.5 323.5V298L599 297.5L574 272.5H531.828C531.298 272.5 530.789 272.289 530.414 271.914L521.586 263.086C521.211 262.711 520.702 262.5 520.172 262.5H372.828C372.298 262.5 371.789 262.711 371.414 263.086L328.586 305.914C328.211 306.289 327.702 306.5 327.172 306.5H268.328C267.798 306.5 267.289 306.289 266.914 305.914L226.5 265.5L199.5 238.5V175.5C199.5 173.291 197.709 171.5 195.5 171.5H38.5C36.2909 171.5 34.5 169.709 34.5 167.5V0'
+    "M599.5 323.5V298L599 297.5L574 272.5H531.828C531.298 272.5 530.789 272.289 530.414 271.914L521.586 263.086C521.211 262.711 520.702 262.5 520.172 262.5H372.828C372.298 262.5 371.789 262.711 371.414 263.086L328.586 305.914C328.211 306.289 327.702 306.5 327.172 306.5H268.328C267.798 306.5 267.289 306.289 266.914 305.914L226.5 265.5L199.5 238.5V175.5C199.5 173.291 197.709 171.5 195.5 171.5H38.5C36.2909 171.5 34.5 169.709 34.5 167.5V0"
   );
   offset-distance: 100%;
   animation: red-light-move 10s 2s linear infinite;
@@ -452,7 +466,7 @@ code.text-\[\.9em\] {
 
 #purple-light {
   opacity: 0;
-  offset-path: path('M631 252.5H230H0');
+  offset-path: path("M631 252.5H230H0");
   offset-distance: 100%;
   animation: purple-light-move 10s 1s linear infinite;
   opacity: 0;
@@ -461,7 +475,7 @@ code.text-\[\.9em\] {
 #green-light {
   opacity: 0;
   offset-path: path(
-    'M620.5 182.5V185.5L574.5 231.5H564.5H509.328C508.798 231.5 508.289 231.711 507.914 232.086L499.086 240.914C498.711 241.289 498.202 241.5 497.672 241.5H414.315C413.793 241.5 413.291 241.296 412.917 240.93L370.083 199.07C369.709 198.704 369.207 198.5 368.685 198.5H325.328C324.798 198.5 324.289 198.711 323.914 199.086L278.586 244.414C278.211 244.789 277.702 245 277.172 245H229H199.5V448'
+    "M620.5 182.5V185.5L574.5 231.5H564.5H509.328C508.798 231.5 508.289 231.711 507.914 232.086L499.086 240.914C498.711 241.289 498.202 241.5 497.672 241.5H414.315C413.793 241.5 413.291 241.296 412.917 240.93L370.083 199.07C369.709 198.704 369.207 198.5 368.685 198.5H325.328C324.798 198.5 324.289 198.711 323.914 199.086L278.586 244.414C278.211 244.789 277.702 245 277.172 245H229H199.5V448"
   );
   offset-distance: 100%;
   animation: green-light-move 10s linear infinite;
@@ -492,7 +506,7 @@ code.text-\[\.9em\] {
   animation: gold-light-in-red-path-move 10s 2s linear infinite;
 } */
 #gold-light-in-purple-path {
-  offset-path: path('M631 252.5H230H0');
+  offset-path: path("M631 252.5H230H0");
   animation: gold-light-in-purple-path-move 10s 1s linear infinite;
 }
 
@@ -520,6 +534,86 @@ code.text-\[\.9em\] {
 #export-height-gradient {
   stop-color: #212538;
   animation: export-height-gradient 10s 2s linear infinite;
+}
+
+#output-light-path-1 {
+  animation: output-light-path 2s linear infinite;
+}
+
+#output-light-path-2 {
+  animation: output-light-path 1.7s 0.2s linear infinite;
+}
+
+#output-light-path-3 {
+  animation: output-light-path 1.7s 0.4s linear infinite;
+}
+
+#output-light-path-4 {
+  animation: output-light-path 2s 0.6s linear infinite;
+}
+
+#output-light-path-5 {
+  animation: output-light-path 3s linear infinite;
+}
+
+#output-tokens-1 {
+  animation: export-tokens 10s 2s linear infinite;
+}
+
+#output-tokens-2 {
+  animation: export-tokens 10s 3s linear infinite;
+}
+
+#output-tokens-3 {
+  animation: export-tokens 10s 2.2s linear infinite;
+}
+
+#output-tokens-4 {
+  animation: export-tokens 10s 2.5s linear infinite;
+}
+
+#output-tokens-5 {
+  animation: export-tokens 10s 2s linear infinite;
+}
+
+#output-tokens-6 {
+  animation: export-tokens 10s 2.8s linear infinite;
+}
+
+#output-tokens-7 {
+  animation: export-tokens 10s 2.2s linear infinite;
+}
+
+#output-tokens-8 {
+  animation: export-tokens 10s 2.5s linear infinite;
+}
+
+#output-tokens-9 {
+  animation: export-tokens 10s 2.2s linear infinite;
+}
+
+#output-tokens-10 {
+  animation: export-tokens 10s 2.5s linear infinite;
+}
+
+#output-tokens-11 {
+  animation: export-tokens 10s 2.2s linear infinite;
+}
+
+#output-tokens-12 {
+  animation: export-tokens 10s 2.5s linear infinite;
+}
+
+#output-tokens-13 {
+  animation: export-tokens 10s 2.2s linear infinite;
+}
+
+#output-tokens-14 {
+  animation: export-tokens 10s 2.5s linear infinite;
+}
+
+#output-tokens-15 {
+  animation: export-tokens 10s 2.2s linear infinite;
 }
 
 @keyframes red-light-move {
@@ -754,8 +848,6 @@ code.text-\[\.9em\] {
   }
 }
 @keyframes export-height-gradient {
-
-
   0% {
     stop-color: #212538;
   }
@@ -763,12 +855,52 @@ code.text-\[\.9em\] {
     stop-color: #212538;
   }
   85% {
-    stop-color: #C1CFFA;
+    stop-color: #c1cffa;
   }
   95% {
-    stop-color: #C1CFFA;
+    stop-color: #c1cffa;
   }
   100% {
     stop-color: #212538;
+  }
+}
+
+@keyframes export-tokens {
+  0% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  80% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+
+  85% {
+    opacity: 1;
+    transform: translateX(70px);
+  }
+
+  95% {
+    opacity: 0;
+    transform: translateX(80px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(0);
+  }
+}
+
+@keyframes output-light-path {
+  0% {
+    transform: translateX(0);
+  }
+
+  30% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }

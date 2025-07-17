@@ -72,7 +72,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           fill="url(#paint6_linear_445_1592)"
         />
       </g>
-      <g filter="url(#filter3_d_445_1592)">
+      <g filter="url(#filter3_d_445_1592)" id="output-tokens-1">
         <rect
           x="1010"
           y="242"
@@ -83,7 +83,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter4_d_445_1592)">
+      <g filter="url(#filter4_d_445_1592)" id="output-tokens-2">
         <rect
           x="1031"
           y="260"
@@ -94,7 +94,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter5_d_445_1592)">
+      <g filter="url(#filter5_d_445_1592)" id="output-tokens-3">
         <rect
           x="1034"
           y="241"
@@ -105,7 +105,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter6_d_445_1592)">
+      <g filter="url(#filter6_d_445_1592)" id="output-tokens-4">
         <rect
           x="1035"
           y="263"
@@ -498,39 +498,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           d="M1015.32 252.727C1015.32 253.418 1015.19 254.014 1014.94 254.517C1014.69 255.02 1014.35 255.408 1013.92 255.68C1013.48 255.953 1012.98 256.089 1012.43 256.089C1011.87 256.089 1011.37 255.953 1010.94 255.68C1010.5 255.408 1010.16 255.02 1009.91 254.517C1009.66 254.014 1009.54 253.418 1009.54 252.727C1009.54 252.037 1009.66 251.44 1009.91 250.938C1010.16 250.435 1010.5 250.047 1010.94 249.774C1011.37 249.501 1011.87 249.365 1012.43 249.365C1012.98 249.365 1013.48 249.501 1013.92 249.774C1014.35 250.047 1014.69 250.435 1014.94 250.938C1015.19 251.44 1015.32 252.037 1015.32 252.727ZM1014.55 252.727C1014.55 252.161 1014.45 251.682 1014.26 251.292C1014.08 250.902 1013.82 250.607 1013.5 250.407C1013.18 250.207 1012.82 250.107 1012.43 250.107C1012.03 250.107 1011.67 250.207 1011.35 250.407C1011.03 250.607 1010.77 250.902 1010.59 251.292C1010.4 251.682 1010.3 252.161 1010.3 252.727C1010.3 253.294 1010.4 253.772 1010.59 254.162C1010.77 254.552 1011.03 254.847 1011.35 255.048C1011.67 255.248 1012.03 255.348 1012.43 255.348C1012.82 255.348 1013.18 255.248 1013.5 255.048C1013.82 254.847 1014.08 254.552 1014.26 254.162C1014.45 253.772 1014.55 253.294 1014.55 252.727ZM1020.94 249.455H1021.74V253.788C1021.74 254.236 1021.63 254.635 1021.42 254.987C1021.21 255.336 1020.92 255.612 1020.53 255.815C1020.15 256.015 1019.71 256.115 1019.19 256.115C1018.68 256.115 1018.23 256.015 1017.85 255.815C1017.47 255.612 1017.17 255.336 1016.96 254.987C1016.75 254.635 1016.65 254.236 1016.65 253.788V249.455H1017.44V253.724C1017.44 254.044 1017.51 254.328 1017.65 254.578C1017.79 254.825 1017.99 255.02 1018.25 255.163C1018.51 255.303 1018.83 255.374 1019.19 255.374C1019.56 255.374 1019.87 255.303 1020.13 255.163C1020.39 255.02 1020.59 254.825 1020.73 254.578C1020.87 254.328 1020.94 254.044 1020.94 253.724V249.455ZM1022.96 250.158V249.455H1027.87V250.158H1025.81V256H1025.02V250.158H1022.96ZM1029.09 256V249.455H1031.31C1031.82 249.455 1032.24 249.547 1032.56 249.733C1032.89 249.916 1033.14 250.164 1033.29 250.477C1033.45 250.79 1033.53 251.14 1033.53 251.526C1033.53 251.911 1033.45 252.262 1033.29 252.577C1033.14 252.892 1032.9 253.144 1032.57 253.331C1032.24 253.517 1031.83 253.609 1031.32 253.609H1029.73V252.906H1031.29C1031.64 252.906 1031.93 252.846 1032.14 252.724C1032.35 252.603 1032.51 252.439 1032.6 252.232C1032.7 252.023 1032.75 251.788 1032.75 251.526C1032.75 251.263 1032.7 251.029 1032.6 250.822C1032.51 250.616 1032.35 250.454 1032.14 250.337C1031.92 250.217 1031.64 250.158 1031.28 250.158H1029.89V256H1029.09ZM1039.1 249.455H1039.89V253.788C1039.89 254.236 1039.79 254.635 1039.58 254.987C1039.37 255.336 1039.07 255.612 1038.69 255.815C1038.31 256.015 1037.86 256.115 1037.35 256.115C1036.84 256.115 1036.39 256.015 1036.01 255.815C1035.63 255.612 1035.33 255.336 1035.12 254.987C1034.91 254.635 1034.81 254.236 1034.81 253.788V249.455H1035.6V253.724C1035.6 254.044 1035.67 254.328 1035.81 254.578C1035.95 254.825 1036.15 255.02 1036.41 255.163C1036.67 255.303 1036.99 255.374 1037.35 255.374C1037.71 255.374 1038.03 255.303 1038.29 255.163C1038.55 255.02 1038.75 254.825 1038.89 254.578C1039.03 254.328 1039.1 254.044 1039.1 253.724V249.455ZM1041.12 250.158V249.455H1046.03V250.158H1043.97V256H1043.18V250.158H1041.12Z"
           fill="#E4E1E9"
         />
-        <g filter="url(#filter18_d_445_1592)">
-          <rect
-            x="1007"
-            y="256"
-            width="2"
-            height="1"
-            rx="0.5"
-            fill="url(#paint36_linear_445_1592)"
-            shapeRendering="crispEdges"
-          />
-        </g>
-        <g filter="url(#filter19_d_445_1592)">
-          <rect
-            x="1045"
-            y="247"
-            width="2"
-            height="1"
-            rx="0.5"
-            fill="url(#paint37_linear_445_1592)"
-            shapeRendering="crispEdges"
-          />
-        </g>
-        <g filter="url(#filter20_d_445_1592)">
-          <rect
-            x="1043"
-            y="255"
-            width="2"
-            height="1"
-            rx="0.5"
-            fill="url(#paint38_linear_445_1592)"
-            shapeRendering="crispEdges"
-          />
-        </g>
+
       </g>
       <g opacity="0.4">
         <g opacity="0.6">
@@ -3263,7 +3231,40 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           fill="url(#paint309_radial_445_1592)"
         />
       </g>
-      <g filter="url(#filter28_d_445_1592)">
+      <g filter="url(#filter18_d_445_1592)" id="output-tokens-5">
+          <rect
+            x="1007"
+            y="256"
+            width="2"
+            height="1"
+            rx="0.5"
+            fill="url(#paint36_linear_445_1592)"
+            shapeRendering="crispEdges"
+          />
+        </g>
+        <g filter="url(#filter19_d_445_1592)" id="output-tokens-6">
+          <rect
+            x="1045"
+            y="247"
+            width="2"
+            height="1"
+            rx="0.5"
+            fill="url(#paint37_linear_445_1592)"
+            shapeRendering="crispEdges"
+          />
+        </g>
+        <g filter="url(#filter20_d_445_1592)" id="output-tokens-7">
+          <rect
+            x="1043"
+            y="255"
+            width="2"
+            height="1"
+            rx="0.5"
+            fill="url(#paint38_linear_445_1592)"
+            shapeRendering="crispEdges"
+          />
+        </g>
+      <g filter="url(#filter28_d_445_1592)" id="output-tokens-8">
         <rect
           x="1059"
           y="250"
@@ -3274,7 +3275,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter29_d_445_1592)">
+      <g filter="url(#filter29_d_445_1592)" id="output-tokens-9">
         <rect
           x="1065"
           y="253"
@@ -3285,7 +3286,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter30_d_445_1592)">
+      <g filter="url(#filter30_d_445_1592)" id="output-tokens-10">
         <rect
           x="1087"
           y="251"
@@ -3296,7 +3297,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter31_d_445_1592)">
+      <g filter="url(#filter31_d_445_1592)" id="output-tokens-11">
         <rect
           x="1121"
           y="247"
@@ -3307,7 +3308,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter32_d_445_1592)">
+      <g filter="url(#filter32_d_445_1592)" id="output-tokens-12">
         <rect
           x="1109"
           y="254"
@@ -3318,7 +3319,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter33_d_445_1592)">
+      <g filter="url(#filter33_d_445_1592)" id="output-tokens-13">
         <rect
           x="1146"
           y="252"
@@ -3329,7 +3330,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter34_d_445_1592)">
+      <g filter="url(#filter34_d_445_1592)" id="output-tokens-14">
         <rect
           x="1180"
           y="249"
@@ -3340,7 +3341,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g filter="url(#filter35_d_445_1592)">
+      <g filter="url(#filter35_d_445_1592)" id="output-tokens-15">
         <rect
           x="1189"
           y="253"
@@ -3351,7 +3352,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           shapeRendering="crispEdges"
         />
       </g>
-      <g clipPath="url(#clip0_445_1592)">
+      <g clipPath="url(#clip0_445_1592)" id="output-light-path-1">
         <mask
           id="mask1_445_1592"
           maskUnits="userSpaceOnUse"
@@ -3379,7 +3380,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           />
         </g>
       </g>
-      <g clipPath="url(#clip1_445_1592)">
+      <g clipPath="url(#clip1_445_1592)" id="output-light-path-1">
         <mask
           id="mask2_445_1592"
           maskUnits="userSpaceOnUse"
@@ -3407,7 +3408,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           />
         </g>
       </g>
-      <g clipPath="url(#clip2_445_1592)">
+      <g clipPath="url(#clip2_445_1592)" id="output-light-path-3">
         <mask
           id="mask3_445_1592"
           maskUnits="userSpaceOnUse"
@@ -3435,7 +3436,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           />
         </g>
       </g>
-      <g clipPath="url(#clip3_445_1592)">
+      <g clipPath="url(#clip3_445_1592)" id="output-light-path-4">
         <mask
           id="mask4_445_1592"
           maskUnits="userSpaceOnUse"
@@ -3479,7 +3480,7 @@ const Illustration = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
           fill="url(#paint326_linear_445_1592)"
         />
       </mask>
-      <g mask="url(#mask5_445_1592)">
+      <g mask="url(#mask5_445_1592)" id="output-light-path-5">
         <rect
           x="1099"
           y="249"
