@@ -28,63 +28,65 @@ const theme = createTheme({
       '#402b84',
       '#28194d',
     ],
-    dark:[
-      "#9FAAC1",
-      "#7C879E",
-      "#5C667B",
-      "#4A5365",
-      "#38404F",
-      "#2E3543",
-      "#252B38",
-      "#1E232E",
-      "#181e2c",
-      "#101219"
-    ]
+    dark: [
+      '#9FAAC1',
+      '#7C879E',
+      '#5C667B',
+      '#4A5365',
+      '#38404F',
+      '#2E3543',
+      '#252B38',
+      '#1E232E',
+      '#181e2c',
+      '#101219',
+    ],
   },
   primaryShade: 3,
-  components:{
+  components: {
     Select: Select.extend({
-      classNames:{
-        input:'bg-background border-input placeholder:text-foreground-mute focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
-        dropdown:"bg-background border-input",
-        option:"hover:bg-accent"
-      }
+      classNames: {
+        input:
+          '!bg-background !border-input placeholder:!text-foreground-mute focus:!outline-hidden focus:!ring-1 focus:!ring-ring disabled:!cursor-not-allowed disabled:!opacity-50 [&>span]:!line-clamp-1',
+        dropdown: '!bg-background !border-input',
+        option: 'hover:!bg-accent',
+      },
     }),
     MultiSelect: MultiSelect.extend({
-      classNames:{
-        input:'bg-background border-input focus-within:outline-none focus-within:ring-1 focus-within:ring-ring disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
-        dropdown:"bg-background border-input",
-        option:"hover:bg-accent",
-        inputField:"placeholder:text-foreground-mute",
-        pill:"bg-primary text-primary-foreground"
-      }
+      classNames: {
+        input:
+          '!bg-background !border-input focus-within:!outline-hidden focus-within:!ring-1 focus-within:!ring-ring disabled:!cursor-not-allowed disabled:!opacity-50 [&>span]:!line-clamp-1',
+        dropdown: '!bg-background !border-input',
+        option: 'hover:!bg-accent',
+        inputField: 'placeholder:!text-foreground-mute',
+        pill: '!bg-primary !text-primary-foreground',
+      },
     }),
 
     Menu: Menu.extend({
-      classNames:{
-        dropdown:"bg-background border-input",
-        item:"hover:bg-accent"
-      }
+      classNames: {
+        dropdown: '!bg-background !border-input',
+        item: 'hover:!bg-accent',
+      },
     }),
 
     Tabs: Tabs.extend({
-      classNames:{
-        list:"bg-background",
-        tab:"hover:bg-accent",
+      classNames: {
+        list: '!bg-background',
+        tab: 'hover:!bg-accent',
         // list:"[--tab-border-color:rgb(var(--colors-background-muted))]"
-      }
+      },
     }),
 
     Drawer: Drawer.extend({
-      classNames:{
-        content:"bg-background",
-        header:"bg-background",
-        close:"hover:bg-accent",
-        title:"font-bold  text-xl",
-      }
-    })
-  }
-  
+      classNames: {
+        content: '!bg-background',
+        header: '!bg-background',
+        close: 'hover:!bg-accent',
+        title: '!font-bold  !text-xl',
+      },
+    }),
+  },
+
   // components: {
   //   Button: Button.extend({
   //     defaultProps: {
@@ -100,7 +102,6 @@ root.render(
     <App />
   </MantineProvider>
 );
-function generateColors(arg0: string): import("@mantine/core").MantineColorsTuple {
+function generateColors(arg0: string): import('@mantine/core').MantineColorsTuple {
   throw new Error('Function not implemented.');
 }
-

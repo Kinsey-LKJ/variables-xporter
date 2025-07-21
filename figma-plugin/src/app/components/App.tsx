@@ -226,7 +226,7 @@ function App() {
           <Button
             variant="subtle"
             leftSection={<ChevronLeftIcon />}
-            className="!pl-1 !pr-3 nav-back-button"
+            className="pl-1! pr-3! nav-back-button"
             style={{
               opacity: currentStep === 0 ? 0 : 1,
               pointerEvents: currentStep === 0 ? 'none' : 'auto',
@@ -287,7 +287,7 @@ function App() {
               <ConnectGithub checkAuthStatus={checkAuthStatus} />
             </Drawer.Root>
 
-            <Button variant="transparent" onClick={open} className="!p-0 !w-fit justify-self-end ">
+            <Button variant="transparent" onClick={open} className="p-0! w-fit! justify-self-end ">
               <Badge
                 size="lg"
                 leftSection={<Github size={16} />}

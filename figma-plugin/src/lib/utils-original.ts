@@ -57,11 +57,12 @@ const nonUnits = [
   'invert', // 0 到 1 的比值
   'saturate', // 0 到 1 的比值
   'sepia', // 0 到 1 的比值
+  'grow', // 整数
+  'shrink', // 整数
   'flex-grow', // 整数
   'flex-shrink', // 整数
   'order', // 整数
   'z-index', // 整数
-  'font-weight', // 整数
 ];
 
 const tailiwndcssV3ShadcnUiThemeList = new Set([

@@ -145,10 +145,10 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
       useRemUnit: true,
       rootElementSize: 16,
       selectVariableGroup: [],
-      ignoreTailwindColor: false,
+      ignoreTailwindColor: true,
       fileName: '',
       updateMessage: '',
-      exportFormat: 'shadcn/ui (Tailwind CSS V4)',
+      exportFormat: undefined,
       windowSize: windowSize,
     },
   });
@@ -204,7 +204,7 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
                 ? tailwindV4IgnoreGroup
                 : tailwindV3IgnoreGroup
               : [],
-            formValues.exportFormat,
+            formValues.exportFormat || 'Tailwind CSS V4',
             formValues.rootElementSize,
             formValues.selectCollectionID
           );
@@ -259,7 +259,7 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
                 ? tailwindV4IgnoreGroup
                 : tailwindV3IgnoreGroup
               : [],
-            formValues.exportFormat,
+            formValues.exportFormat || 'Tailwind CSS V4',
             formValues.rootElementSize,
             formValues.selectCollectionID
           );
@@ -289,7 +289,7 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
 
   return (
     <VariableFormProvider form={variableForm}>
-      <form className=" h-full flex flex-col !mb-0 overflow-hidden" onSubmit={variableForm.onSubmit(submitForm)}>
+      <form className=" h-full flex flex-col mb-0! overflow-hidden" onSubmit={variableForm.onSubmit(submitForm)}>
         <Drawer
           opened={opened}
           onClose={close}
@@ -304,10 +304,13 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
             <div className=" flex h-full items-start">
               <div className=" absolute -z-10 left-0 top-0">
                 <img
-                  width={windowSizeMap[formValues.windowSize].width * 3}
-                  height={windowSizeMap[formValues.windowSize].height - 52}
                   src={background}
                   alt="export-page-bg"
+                  className={`max-w-none`}
+                  style={{
+                    height: windowSizeMap[formValues.windowSize].height - 52,
+                    width: windowSizeMap[formValues.windowSize].width * 3,
+                  }}
                 />
               </div>
               <ScrollArea className=" flex-[0_0_100%] h-full min-w-0 p-6 overflow-y-hidden relative">
@@ -316,9 +319,7 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
               <ScrollArea className=" flex-[0_0_100%] h-full min-w-0 p-6 overflow-y-hidden relative">
                 <Setup />
               </ScrollArea>
-              <ScrollArea className={`flex-[0_0_100%] h-full min-w-0 p-6 pb-0 relative `}>
-                <Export tailwindCSSOutput={tailwindCSSOutput} exportFormat={formValues.exportFormat} />
-              </ScrollArea>
+              <Export tailwindCSSOutput={tailwindCSSOutput} exportFormat={formValues.exportFormat} />
             </div>
           </div>
         </div>

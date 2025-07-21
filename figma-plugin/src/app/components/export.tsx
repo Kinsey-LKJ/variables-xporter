@@ -1,4 +1,4 @@
-import { Button, Checkbox, Tooltip, Tabs, Modal, Card, Text, Divider } from '@mantine/core';
+import { Button, Checkbox, Tooltip, Tabs, Modal, Card, Text, Divider, ScrollArea } from '@mantine/core';
 import { useVariableFormContext } from './variables-export-form-context';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { ColorProcessor, UnitConverter } from '../../lib/utils';
@@ -25,18 +25,15 @@ interface ExportProps {
 }
 
 const Export = (props: ExportProps) => {
-  const { tailwindCSSOutput, exportFormat } = props;
+  const { tailwindCSSOutput, exportFormat = 'Tailwind CSS V4' } = props;
   const { textData } = useContext(AppContext);
   const [opened, { open, close }] = useDisclosure(false);
 
-  console.log(exportFormat);
+
   return (
-    <div className=" grid gap-4">
+    <div className=" grid gap-4 flex-[0_0_100%] h-full min-w-0 p-6 overflow-y-hidden relative">
       <div className="grid gap-3 text-center">
         <div className="text-4xl font-bold special-text">{textData.export_successful}</div>
-        {exportFormat === 'Tailwind CSS V3' ? (
-          <div className=" text-sm">{textData.import_as_tailwind_css_presets}</div>
-        ) : null}
       </div>
 
       {tailwindCSSOutput ? (
@@ -78,113 +75,130 @@ const Export = (props: ExportProps) => {
             <span> {textData.export_feedback_message_part4}</span>
           </Text>
           {exportFormat === 'Tailwind CSS V3' || exportFormat === 'shadcn/ui (Tailwind CSS V3)' ? (
-            <Tabs key={'tailwindCSSOutput'} defaultValue="tw-config" className="h-auto grid gap-6 overflow-visible">
+            <Tabs key={'tailwindCSSOutput'} defaultValue="tw-config" className="h-auto !flex !flex-col overflow-hidden">
               <Tabs.List className="sticky top-0 z-10">
                 <Tabs.Tab value="tw-config">tailwind.config.js</Tabs.Tab>
                 <Tabs.Tab value="tw-css">global.css</Tabs.Tab>
               </Tabs.List>
 
-              <Tabs.Panel value="tw-config" className=" overflow-hidden">
-                <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
-                  <div className="w-full h-full">
-                    <Button
-                      type="button"
-                      variant="subtle"
-                      size="icon"
-                      className="!absolute top-2 right-2 !p-0 !size-9"
-                      onClick={() => {
-                        copyToClipboard(`${tailwindCSSOutput.config}`);
-                      }}
-                    >
-                      <ClipboardList />
-                    </Button>
-
-                    <SyntaxHighlighter
-                      language="javascript"
-                      wrapLongLines={true}
-                      style={coldarkDark}
-                      customStyle={
-                        {
-                          padding: '1rem',
-                          marginTop: 0,
-                          background: 'rgb(32 37 46)',
-                          borderRadius: '0.5rem',
-                        } as React.CSSProperties
-                      }
-                    >
-                      {tailwindCSSOutput.config}
-                    </SyntaxHighlighter>
+              <Tabs.Panel value="tw-config" className=" overflow-hidden relative">
+                <ScrollArea
+                  style={{
+                    background: 'rgb(32 37 46)',
+                    borderRadius: '0 0 0.5rem 0.5rem',
+                  }}
+                >
+                  <div className="w-full h-full rounded-b-sm flex  justify-center relative overflow-x-hidden">
+                    <div className="w-full h-full">
+                      <SyntaxHighlighter
+                        language="javascript"
+                        wrapLongLines={true}
+                        style={coldarkDark}
+                        customStyle={
+                          {
+                            padding: '1rem',
+                            background: 'transparent',
+                            margin: 0,
+                          } as React.CSSProperties
+                        }
+                      >
+                        {tailwindCSSOutput.config}
+                      </SyntaxHighlighter>
+                    </div>
                   </div>
-                </div>
+                </ScrollArea>
+                <Button
+                  type="button"
+                  variant="default"
+                  size="icon"
+                  className="!absolute top-2 right-4 p-0! size-9!"
+                  onClick={() => {
+                    copyToClipboard(`${tailwindCSSOutput.config}`);
+                  }}
+                >
+                  <ClipboardList />
+                </Button>
               </Tabs.Panel>
 
-              <Tabs.Panel value="tw-css" className=" overflow-hidden">
-                <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
-                  <div className="w-full">
-                    <Button
-                      type="button"
-                      variant="subtle"
-                      size="icon"
-                      className="!absolute top-2 right-2 !p-0 !size-9"
-                      onClick={() => {
-                        copyToClipboard(`${tailwindCSSOutput.globalsCSS}`);
-                      }}
-                    >
-                      <ClipboardList />
-                    </Button>
-                    <SyntaxHighlighter
-                      language="css"
-                      style={coldarkDark}
-                      customStyle={
-                        {
-                          padding: '1rem',
-                          marginTop: 0,
-                          background: 'rgb(32 37 46)',
-                          borderRadius: '0.5rem',
-                        } as React.CSSProperties
-                      }
-                    >
-                      {tailwindCSSOutput.globalsCSS}
-                    </SyntaxHighlighter>
+              <Tabs.Panel value="tw-css" className=" overflow-hidden relative">
+                <ScrollArea
+                  style={{
+                    background: 'rgb(32 37 46)',
+                    borderRadius: '0 0 0.5rem 0.5rem',
+                  }}
+                >
+                  <div className="w-full h-full rounded-b-sm flex justify-center relative overflow-x-hidden">
+                    <div className="w-full">
+                      <SyntaxHighlighter
+                        language="css"
+                        style={coldarkDark}
+                        customStyle={
+                          {
+                            padding: '1rem',
+                            background: 'transparent',
+                            margin: 0,
+                          } as React.CSSProperties
+                        }
+                      >
+                        {tailwindCSSOutput.globalsCSS}
+                      </SyntaxHighlighter>
+                    </div>
                   </div>
-                </div>
+                </ScrollArea>
+                <Button
+                  type="button"
+                  variant="default"
+                  size="icon"
+                  className="!absolute top-2 right-4 p-0! size-9!"
+                  onClick={() => {
+                    copyToClipboard(`${tailwindCSSOutput.globalsCSS}`);
+                  }}
+                >
+                  <ClipboardList />
+                </Button>
               </Tabs.Panel>
             </Tabs>
           ) : (
-            <Tabs key={'cssOutput'} defaultValue="css" className="h-auto grid gap-6 overflow-visible">
+            <Tabs key={'cssOutput'} defaultValue="css" className="h-auto !flex !flex-col overflow-hidden">
               <Tabs.List className="sticky top-0 z-10">
                 <Tabs.Tab value="css">css</Tabs.Tab>
               </Tabs.List>
-              <Tabs.Panel value="css" className=" overflow-hidden">
-                <div className="w-full h-full pb-8 rounded-b-sm flex items-center justify-center relative overflow-x-hidden">
-                  <div className="w-full">
-                    <Button
-                      type="button"
-                      variant="subtle"
-                      size="icon"
-                      className="!absolute top-2 right-2 !p-0 !size-9"
-                      onClick={() => {
-                        copyToClipboard(`${tailwindCSSOutput.globalsCSS}`);
-                      }}
-                    >
-                      <ClipboardList />
-                    </Button>
-                    <SyntaxHighlighter
-                      language="css"
-                      style={coldarkDark}
-                      customStyle={
-                        {
-                          padding: '1rem',
-                          marginTop: 0,
-                          background: 'rgb(32 37 46)',
-                          borderRadius: '0.5rem',
-                        } as React.CSSProperties
-                      }
-                    >
-                      {tailwindCSSOutput.globalsCSS}
-                    </SyntaxHighlighter>
+              <Tabs.Panel value="css" className=" overflow-hidden relative">
+                <ScrollArea
+                  style={{
+                    background: 'rgb(32 37 46)',
+                    borderRadius: '0 0 0.5rem 0.5rem',
+                  }}
+                >
+                  <div className="w-full h-full rounded-b-sm flex  justify-center relative overflow-x-hidden">
+                    <div className="w-full">
+                      <SyntaxHighlighter
+                        language="css"
+                        style={coldarkDark}
+                        customStyle={
+                          {
+                            padding: '1rem',
+                            background: 'transparent',
+                            margin: 0,
+                          } as React.CSSProperties
+                        }
+                      >
+                        {tailwindCSSOutput.globalsCSS}
+                      </SyntaxHighlighter>
+                    </div>
                   </div>
-                </div>
+                </ScrollArea>
+                <Button
+                  type="button"
+                  variant="default"
+                  size="icon"
+                  className="!absolute top-2 right-4 p-0! size-9!"
+                  onClick={() => {
+                    copyToClipboard(`${tailwindCSSOutput.globalsCSS}`);
+                  }}
+                >
+                  <ClipboardList />
+                </Button>
               </Tabs.Panel>
             </Tabs>
           )}

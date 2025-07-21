@@ -31,11 +31,12 @@ export const NON_UNITS = [
   'invert',
   'saturate',
   'sepia',
+  'grow',
+  'shrink',
   'flex-grow',
   'flex-shrink',
   'order',
   'z-index',
-  'font-weight',
 ] as const;
 
 // ===== shadcn/ui 主题变量 =====

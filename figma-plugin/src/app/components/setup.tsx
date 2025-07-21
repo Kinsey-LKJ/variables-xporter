@@ -18,11 +18,11 @@ const Setup = () => {
 
   // 定义所有可用的导出格式
   const exportFormatOptions: Array<{ value: ExportFormat; label: string }> = [
-    { value: 'Tailwind CSS V3', label: 'Tailwind CSS V3' },
-    { value: 'Tailwind CSS V4', label: 'Tailwind CSS V4' },
-    { value: 'CSS Variables', label: 'CSS Variables' },
-    { value: 'shadcn/ui (Tailwind CSS V3)', label: 'shadcn/ui (Tailwind CSS V3)' },
     { value: 'shadcn/ui (Tailwind CSS V4)', label: 'shadcn/ui (Tailwind CSS V4)' },
+    { value: 'shadcn/ui (Tailwind CSS V3)', label: 'shadcn/ui (Tailwind CSS V3)' },
+    { value: 'Tailwind CSS V4', label: 'Tailwind CSS V4' },
+    { value: 'Tailwind CSS V3', label: 'Tailwind CSS V3' },
+    { value: 'CSS Variables', label: 'CSS Variables' },
   ];
 
   return (
@@ -46,23 +46,21 @@ const Setup = () => {
                 {...form.getInputProps('exportFormat')}
               />
 
-              {(formValus.exportFormat === 'Tailwind CSS V4' || 
+              {(formValus.exportFormat === 'Tailwind CSS V4' ||
                 formValus.exportFormat === 'Tailwind CSS V3' ||
                 formValus.exportFormat === 'shadcn/ui (Tailwind CSS V3)' ||
                 formValus.exportFormat === 'shadcn/ui (Tailwind CSS V4)') && (
-
-                  <div className="text-xs px-1">
-                    {textData.tailwind_css_variable_naming_specification}
-                    <a
-                      className="text-blue-300 ml-1 inline-flex items-center"
-                      target="_blank"
-                      href="https://www.variables-xporter.com/docs/organizing-your-variables"
-                    >
-                      {textData.view_our_variable_organization_suggestions}
-                      <ArrowUpRight size={12} className="ml-1" />
-                    </a>
-                  </div>
-
+                <div className="text-xs px-1">
+                  {textData.tailwind_css_variable_naming_specification}
+                  <a
+                    className="text-blue-300 ml-1 inline-flex items-center"
+                    target="_blank"
+                    href="https://www.variables-xporter.com/docs/organizing-your-variables"
+                  >
+                    {textData.view_our_variable_organization_suggestions}
+                    <ArrowUpRight size={12} className="ml-1" />
+                  </a>
+                </div>
               )}
             </div>
             <Select

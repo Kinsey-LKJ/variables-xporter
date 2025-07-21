@@ -44,12 +44,12 @@ const ConnectGithub = ({
     <>
       <Drawer.Overlay backgroundOpacity={0.5} blur={4} />
       <Drawer.Content>
-        <Drawer.Header className=" !justify-evenly !p-2">
+        <Drawer.Header className=" justify-evenly! p-2!">
           <Button
             onClick={onPrevButtonClick}
             variant="subtle"
             leftSection={<ChevronLeftIcon />}
-            className={`!pl-1 !pr-3 nav-back-button ${selectedSnap === 0 ? 'opacity-0 pointer-events-none' : ''}`}
+            className={`pl-1! pr-3! nav-back-button ${selectedSnap === 0 ? 'opacity-0 pointer-events-none' : ''}`}
           >
             返回
           </Button>
@@ -145,7 +145,7 @@ const ConnectGithub = ({
                           <div className=" text-sm">
                             已连接到储存库 <div>{connectedRepoInfo.name}</div>
                           </div>
-                          <Button variant="subtle" size="xs" className=" !w-fit" onClick={cancelConnection}>
+                          <Button variant="subtle" size="xs" className=" w-fit!" onClick={cancelConnection}>
                             取消连接
                           </Button>
                         </div>
