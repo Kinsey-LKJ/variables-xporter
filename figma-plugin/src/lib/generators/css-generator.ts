@@ -650,51 +650,127 @@ export class CSSGenerator {
     const themeRootSelector = getThemeRootSelector(format);
     let otherCollectionsCSS = '';
 
-    // 生成默认规则（按集合分组）
-    if (cssOutput.defaultRules.size > 0) {
-      css.push('/* Default Mode */');
-      css.push(`${themeRootSelector} {`);
-      
-      // 按集合分组并添加注释
-      const result = this.generateCollectionGroupedCSS(
-        css, 
-        cssOutput.defaultRules, 
-        allCollections, 
-        selectCollectionID, 
-        currentCollectionId,
-        format,
-        cssOutput.variableCollectionMap
-      );
-      
-      css.push('}\n');
-      
-      // 收集其他集合的 CSS
-      if (result.otherCollectionsCSS) {
-        otherCollectionsCSS += result.otherCollectionsCSS;
-      }
-    }
+    // 对于 shadcn/ui V3 格式，先生成 shadcn/ui Theme 部分
+    const isV3ShadcnFormat = format === 'shadcn/ui (Tailwind CSS V3)';
 
-    // 生成 shadcn/ui 规则（按集合分组）
-    if (cssOutput.defaultShadcnRules.size > 0) {
-      css.push('/* shadcn/ui Theme */');
-      css.push(':root {');
-      
-      // 按集合分组并添加注释
-      const result = this.generateCollectionGroupedCSS(
-        css, 
-        cssOutput.defaultShadcnRules, 
-        allCollections, 
-        selectCollectionID, 
-        currentCollectionId,
-        format,
-        cssOutput.variableCollectionMap
-      );
-      
-      css.push('}\n');
-      
-      // 收集其他集合的 CSS（虽然 shadcn/ui 规则通常不会有其他集合）
-      if (result.otherCollectionsCSS) {
-        otherCollectionsCSS += result.otherCollectionsCSS;
+    if (isV3ShadcnFormat) {
+      // 先生成 shadcn/ui 规则（按集合分组）
+      if (cssOutput.defaultShadcnRules.size > 0) {
+        css.push('/* shadcn/ui Theme */');
+        
+        // 检查是否有有效的声明内容
+        const tempCSS: string[] = [];
+        const result = this.generateCollectionGroupedCSS(
+          tempCSS, 
+          cssOutput.defaultShadcnRules, 
+          allCollections, 
+          selectCollectionID, 
+          currentCollectionId,
+          format,
+          cssOutput.variableCollectionMap
+        );
+        
+        // 只有在有实际内容时才生成选择器块
+        if (tempCSS.length > 0 && tempCSS.some(line => line.trim() && !line.includes('/* Collection:'))) {
+          css.push('@layer base {');
+          css.push('  :root {');
+          css.push(...tempCSS);
+          css.push('  }');
+          css.push('}\n');
+        }
+        
+        // 收集其他集合的 CSS（虽然 shadcn/ui 规则通常不会有其他集合）
+        if (result.otherCollectionsCSS) {
+          otherCollectionsCSS += result.otherCollectionsCSS;
+        }
+      }
+
+      // 然后生成默认规则（按集合分组）
+      if (cssOutput.defaultRules.size > 0) {
+        // css.push('/* Default Mode */');
+        
+        // 检查是否有有效的声明内容
+        const tempCSS: string[] = [];
+        const result = this.generateCollectionGroupedCSS(
+          tempCSS, 
+          cssOutput.defaultRules, 
+          allCollections, 
+          selectCollectionID, 
+          currentCollectionId,
+          format,
+          cssOutput.variableCollectionMap
+        );
+        
+        // 只有在有实际内容时才生成选择器块
+        if (tempCSS.length > 0 && tempCSS.some(line => line.trim() && !line.includes('/* Collection:'))) {
+          css.push(`${themeRootSelector} {`);
+          css.push(...tempCSS);
+          css.push('}\n');
+        }
+        
+        // 收集其他集合的 CSS
+        if (result.otherCollectionsCSS) {
+          otherCollectionsCSS += result.otherCollectionsCSS;
+        }
+      }
+    } else {
+      // 其他格式保持原有顺序：先默认规则，后 shadcn/ui 规则
+      // 生成默认规则（按集合分组）
+      if (cssOutput.defaultRules.size > 0) {
+        // css.push('/* Default Mode */');
+        
+        // 检查是否有有效的声明内容
+        const tempCSS: string[] = [];
+        const result = this.generateCollectionGroupedCSS(
+          tempCSS, 
+          cssOutput.defaultRules, 
+          allCollections, 
+          selectCollectionID, 
+          currentCollectionId,
+          format,
+          cssOutput.variableCollectionMap
+        );
+        
+        // 只有在有实际内容时才生成选择器块
+        if (tempCSS.length > 0 && tempCSS.some(line => line.trim() && !line.includes('/* Collection:'))) {
+          css.push(`${themeRootSelector} {`);
+          css.push(...tempCSS);
+          css.push('}\n');
+        }
+        
+        // 收集其他集合的 CSS
+        if (result.otherCollectionsCSS) {
+          otherCollectionsCSS += result.otherCollectionsCSS;
+        }
+      }
+
+      // 生成 shadcn/ui 规则（按集合分组）
+      if (cssOutput.defaultShadcnRules.size > 0) {
+        css.push('/* shadcn/ui Theme */');
+        
+        // 检查是否有有效的声明内容
+        const tempCSS: string[] = [];
+        const result = this.generateCollectionGroupedCSS(
+          tempCSS, 
+          cssOutput.defaultShadcnRules, 
+          allCollections, 
+          selectCollectionID, 
+          currentCollectionId,
+          format,
+          cssOutput.variableCollectionMap
+        );
+        
+        // 只有在有实际内容时才生成选择器块
+        if (tempCSS.length > 0 && tempCSS.some(line => line.trim() && !line.includes('/* Collection:'))) {
+          css.push(':root {');
+          css.push(...tempCSS);
+          css.push('}\n');
+        }
+        
+        // 收集其他集合的 CSS（虽然 shadcn/ui 规则通常不会有其他集合）
+        if (result.otherCollectionsCSS) {
+          otherCollectionsCSS += result.otherCollectionsCSS;
+        }
       }
     }
 
@@ -868,6 +944,13 @@ export class CSSGenerator {
       const declarations = modeRules.get(selector);
       if (!declarations?.size) continue;
 
+      // 检查声明是否包含实际内容（非空行和非注释）
+      const hasValidDeclarations = [...declarations].some(decl => 
+        decl.trim() && !decl.includes('/* Collection:') && decl.includes('--')
+      );
+      
+      if (!hasValidDeclarations) continue;
+
       css.push('/* Mode Override */');
       
       if (selector.startsWith('@media')) {
@@ -902,9 +985,6 @@ export class CSSGenerator {
     const isV4 = format === 'Tailwind CSS V4' || format === 'shadcn/ui (Tailwind CSS V4)';
     let otherCollectionsCSS = '';
     
-    css.push(`${selector} {`);
-    css.push(':root {');
-    
     // 按集合分组声明并添加注释
     const { groupedDeclarations, collectionOrder } = this.sortCSSDeclarationsByCollection(
       declarations,
@@ -913,6 +993,9 @@ export class CSSGenerator {
       currentCollectionId
     );
 
+    // 收集所有有效的声明内容
+    const validContent: string[] = [];
+    
     // 按集合顺序输出变量
     for (let i = 0; i < collectionOrder.length; i++) {
       const collectionId = collectionOrder[i];
@@ -920,26 +1003,39 @@ export class CSSGenerator {
       const collectionDeclarations = groupedDeclarations.get(collectionId);
       
       if (collectionDeclarations && collectionDeclarations.length > 0) {
-        // 对于 V4 格式的媒体查询，其他集合的变量也需要单独处理
-        if (isV4 && collectionId !== selectCollectionID) {
-          // 媒体查询中的其他集合变量，为了保持一致性，也可以单独处理
-          // 但根据原始实现，媒体查询中通常所有变量都放在同一个 :root 中
-          css.push(`    /* Collection: ${collection?.name || 'Design Tokens'} */`);
-          css.push(collectionDeclarations.map(decl => '  ' + decl).join('\n'));
-        } else {
-          css.push(`    /* Collection: ${collection?.name || 'Design Tokens'} */`);
-          css.push(collectionDeclarations.map(decl => '  ' + decl).join('\n'));
-        }
+        // 检查是否有实际的 CSS 变量声明
+        const hasValidDeclarations = collectionDeclarations.some(decl => 
+          decl.trim() && decl.includes('--') && !decl.includes('/* Collection:')
+        );
         
-        // 如果不是最后一个集合，添加换行
-        if (i < collectionOrder.length - 1) {
-          css.push('');
+        if (hasValidDeclarations) {
+          // 对于 V4 格式的媒体查询，其他集合的变量也需要单独处理
+          if (isV4 && collectionId !== selectCollectionID) {
+            // 媒体查询中的其他集合变量，为了保持一致性，也可以单独处理
+            // 但根据原始实现，媒体查询中通常所有变量都放在同一个 :root 中
+            validContent.push(`    /* Collection: ${collection?.name || 'Design Tokens'} */`);
+            validContent.push(collectionDeclarations.map(decl => '  ' + decl).join('\n'));
+          } else {
+            validContent.push(`    /* Collection: ${collection?.name || 'Design Tokens'} */`);
+            validContent.push(collectionDeclarations.map(decl => '  ' + decl).join('\n'));
+          }
+          
+          // 如果不是最后一个集合，添加换行
+          if (i < collectionOrder.length - 1) {
+            validContent.push('');
+          }
         }
       }
     }
     
-    css.push('  }');
-    css.push('}\n');
+    // 只有在有实际内容时才生成选择器块
+    if (validContent.length > 0) {
+      css.push(`${selector} {`);
+      css.push(':root {');
+      css.push(...validContent);
+      css.push('  }');
+      css.push('}\n');
+    }
 
     return { otherCollectionsCSS: otherCollectionsCSS || undefined };
   }
@@ -956,8 +1052,6 @@ export class CSSGenerator {
     currentCollectionId: string,
     variableCollectionMap: Map<string, { collectionId: string; collectionName: string }>
   ): { otherCollectionsCSS?: string } {
-    css.push(`${selector} {`);
-    
     // 按集合分组声明并添加注释
     const { groupedDeclarations, collectionOrder } = this.sortCSSDeclarationsByCollection(
       declarations,
@@ -966,6 +1060,9 @@ export class CSSGenerator {
       currentCollectionId
     );
 
+    // 收集所有有效的声明内容
+    const validContent: string[] = [];
+
     // 按集合顺序输出变量
     for (let i = 0; i < collectionOrder.length; i++) {
       const collectionId = collectionOrder[i];
@@ -973,17 +1070,29 @@ export class CSSGenerator {
       const collectionDeclarations = groupedDeclarations.get(collectionId);
       
       if (collectionDeclarations && collectionDeclarations.length > 0) {
-        css.push(`  /* Collection: ${collection?.name || 'Design Tokens'} */`);
-        css.push(collectionDeclarations.join('\n'));
+        // 检查是否有实际的 CSS 变量声明
+        const hasValidDeclarations = collectionDeclarations.some(decl => 
+          decl.trim() && decl.includes('--') && !decl.includes('/* Collection:')
+        );
         
-        // 如果不是最后一个集合，添加换行
-        if (i < collectionOrder.length - 1) {
-          css.push('');
+        if (hasValidDeclarations) {
+          validContent.push(`  /* Collection: ${collection?.name || 'Design Tokens'} */`);
+          validContent.push(collectionDeclarations.join('\n'));
+          
+          // 如果不是最后一个集合，添加换行
+          if (i < collectionOrder.length - 1) {
+            validContent.push('');
+          }
         }
       }
     }
     
-    css.push('}\n');
+    // 只有在有实际内容时才生成选择器块
+    if (validContent.length > 0) {
+      css.push(`${selector} {`);
+      css.push(...validContent);
+      css.push('}\n');
+    }
 
     return {}; // 类规则通常不需要分离集合
   }
