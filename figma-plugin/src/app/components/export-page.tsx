@@ -145,7 +145,7 @@ const ExportPage = forwardRef<ExportPageHandles>((_, ref) => {
       useRemUnit: true,
       rootElementSize: 16,
       selectVariableGroup: [],
-      ignoreTailwindColor: true,
+      ignoreTailwindColor: false,
       fileName: '',
       updateMessage: '',
       exportFormat: undefined,
