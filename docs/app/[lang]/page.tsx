@@ -271,13 +271,13 @@ export default async function IndexPage({
 
             <div className="relative z-10  w-full grid  grid-cols-2 bg-background overflow-hidden">
               <div className="grid gap-6 max-w-112  p-10">
-                <div className="text-heading text-primary">
+                <div className="text-heading text-secondary">
                   {dictionary.figmaTemplate.shadcnUi.title}
                 </div>
                 <div className="text-body text-muted-foreground leading-tight">
                   {dictionary.figmaTemplate.shadcnUi.description}
                 </div>
-                <Button className="w-fit" asChild>
+                <Button className="w-fit" asChild variant="secondary">
                   <Link
                     href="https://www.figma.com/community/file/1529796560368045075"
                     target="_blank"
