@@ -53,6 +53,9 @@ export default async function IndexPage({
               <Button asChild className=" shadow-[0px_2px_20px_10px_var(--color-muted)]">
                 <Link href="/docs">{dictionary.start}</Link>
               </Button>
+              <Button asChild className=" shadow-[0px_2px_20px_10px_var(--color-muted)]" variant={"outline"}>
+                <Link href="https://www.figma.com/community/plugin/1522142900835722038/variables-xporter" target="_blank">{dictionary.openInFigma}</Link>
+              </Button>
               {/* <Button variant="outline"><Link href="/docs">{dictionary.learnMore}</Link></Button> */}
             </div>
           </div>

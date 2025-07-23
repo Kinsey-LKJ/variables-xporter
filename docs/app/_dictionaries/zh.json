@@ -3,7 +3,7 @@
   "supportTailwindCssV4": "支持 Tailwind CSS V4",
   "pluginHighlight": "将 Figma Variables 导出为生产就绪的 shadcn/ui 主题变量、Tailwind CSS 配置文件或 CSS Variables。",
   "start": "开始使用",
-  "learnMore": "了解更多",
+  "openInFigma": "在 Figma 中打开",
   "exclusive": "专属功能",
   "features": {
     "shadcnUi": {

@@ -3,7 +3,7 @@
   "supportTailwindCssV4": "Support for Tailwind CSS V4",
   "pluginHighlight": "Export Figma Variables as production-ready shadcn/ui theme variables, Tailwind CSS configuration files, or CSS Variables.",
   "start": "Get started",
-  "learnMore": "Learn more",
+  "openInFigma": "Open in Figma",
   "exclusive": "Exclusive feature",
   "features": {
     "shadcnUi": {
