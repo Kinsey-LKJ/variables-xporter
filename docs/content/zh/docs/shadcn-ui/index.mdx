@@ -1,5 +1,5 @@
 import { Callout, Cards } from "nextra/components";
-import { BookCopy, Layout } from "lucide-react";
+import { Box, Layout } from "lucide-react";
 
 # shadcn/ui 主题导出
 
@@ -50,12 +50,12 @@ Variables Xporter 与 shadcn/ui 无缝集成，直接将 Figma Variables 导出�
   Variables Xporter 会自动将非 shadcn/ui 变量导出为 Tailwind CSS 配置，确保完整的 Design Token 覆盖。
 </Callout>
 
-了解 Figma 变量组织建议：
+#### 无需自行创建，从我们的模板开始：
 
 <Cards.Card
-  icon={<BookCopy />}
-  title="Figma 变量组织建议"
-  href="/docs/organizing-your-variables"
+  icon={<Box />}
+  title="自定义 shadcn/ui 主题模板"
+  href="https://www.figma.com/community/file/1529796560368045075"
   className="mt-4"
 />
 
@@ -81,16 +81,6 @@ Variables Xporter 与 shadcn/ui 无缝集成，直接将 Figma Variables 导出�
 
 将导出的配置复制到您的 shadcn/ui 项目的 Tailwind CSS 配置文件中。无需额外设置，您的设计系统即可使用。
 
-## 示例
-
-查看 shadcn/ui 主题变量的实际效果展示，包括明暗主题、密度模式、品牌颜色、圆角风格等多种变量的实时切换预览。
-
-<Cards.Card
-  icon={<Layout />}
-  title="查看示例"
-  href="/example"
-  className="mt-4"
-/>
 
 ---
 

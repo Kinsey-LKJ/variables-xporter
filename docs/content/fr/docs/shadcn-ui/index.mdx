@@ -1,5 +1,5 @@
 import { Callout, Cards } from "nextra/components";
-import { BookCopy, Layout } from "lucide-react";
+import { Box, Layout } from "lucide-react";
 
 # Export de Thème shadcn/ui
 
@@ -47,17 +47,18 @@ Pour une intégration transparente, vos Variables Figma doivent suivre les conve
 | `--radius`                | `radius/radius`                    |
 
 <Callout type="info">
-  Pour les variables non-shadcn/ui, Variables Xporter les exportera comme configuration Tailwind CSS.
+  Variables Xporter exporte automatiquement les variables non-shadcn/ui comme configuration Tailwind CSS, garantissant une couverture complète des Design Tokens.
 </Callout>
 
-Apprenez-en plus sur les suggestions d'organisation des variables Figma :
+#### Commencez avec notre modèle au lieu de créer le vôtre :
 
 <Cards.Card
-  icon={<BookCopy />}
-  title="Suggestions d'organisation des variables Figma"
-  href="/docs/organizing-your-variables"
+  icon={<Box />}
+  title="Modèle de thème shadcn/ui personnalisé"
+  href="https://www.figma.com/community/file/1529796560368045075"
   className="mt-4"
 />
+
 
 ### 2. Sélectionner le Format Correspondant
 
@@ -83,16 +84,6 @@ Sélectionnez les collections et groupes de variables que vous souhaitez exporte
 
 Copiez le fichier de configuration exporté dans le fichier de configuration Tailwind CSS de votre projet shadcn/ui et ajustez selon vos besoins.
 
-## Exemples
-
-Découvrez les effets réels des variables de thème shadcn/ui en action, incluant la prévisualisation en temps réel des thèmes clair/sombre, modes de densité, couleurs de marque, styles de rayon, et plus encore.
-
-<Cards.Card
-  icon={<Layout />}
-  title="Voir les Exemples"
-  href="/example"
-  className="mt-4"
-/>
 
 ---
 
