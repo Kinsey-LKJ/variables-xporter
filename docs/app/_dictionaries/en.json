@@ -56,9 +56,16 @@
   },
   "figmaTemplate": {
     "heading": "Figma template",
-    "title": "Includes basic variables needed to build Design Tokens",
-    "description": "Start building your own Design Tokens here, including variables for colors, spacing, fonts, and more, with multiple modes for themes, brands, devices, and density.",
-    "openInFigma": "Open in Figma"
+    "complete": {
+      "title": "Complete Design Tokens Template",
+      "description": "Includes basic variables needed to build complete Design Tokens, supporting complex design systems with multiple modes for light/dark themes, brand colors, density, and border radius styles.",
+      "openInFigma": "Open in Figma"
+    },
+    "shadcnUi": {
+      "title": "Custom shadcn/ui Theme Template",
+      "description": "A custom-styled shadcn/ui theme template with light and dark modes, helping you build your styled component library.",
+      "openInFigma": "Open in Figma"
+    }
   },
   "example": {
     "heading": "Example",

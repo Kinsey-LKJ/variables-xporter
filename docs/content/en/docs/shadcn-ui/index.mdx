@@ -11,38 +11,40 @@ Variables Xporter seamlessly integrates with shadcn/ui, directly exporting Figma
 
 For seamless integration, your Figma Variables must follow shadcn/ui naming conventions. Here's the complete mapping between shadcn/ui theme variables and the Figma Variable names you should create:
 
-- `--radius` -> `radius/DEFAULT` [^1]
-- `--background` -> `colors/background/DEFAULT`
-- `--foreground` -> `colors/foreground/DEFAULT`
-- `--card` -> `colors/card/DEFAULT`
-- `--card-foreground` -> `colors/card/foreground`
-- `--popover` -> `colors/popover/DEFAULT`
-- `--popover-foreground` -> `colors/popover/foreground`
-- `--primary` -> `colors/primary/DEFAULT`
-- `--primary-foreground` -> `colors/primary/foreground`
-- `--secondary` -> `colors/secondary/DEFAULT`
-- `--secondary-foreground` -> `colors/secondary/foreground`
-- `--muted` -> `colors/muted/DEFAULT`
-- `--muted-foreground` -> `colors/muted/foreground`
-- `--accent` -> `colors/accent/DEFAULT`
-- `--accent-foreground` -> `colors/accent/foreground`
-- `--destructive` -> `colors/destructive/DEFAULT`
-- `--border` -> `colors/border/DEFAULT`
-- `--input` -> `colors/input/DEFAULT`
-- `--ring` -> `colors/ring/DEFAULT`
-- `--chart-1` -> `colors/chart-1/DEFAULT`
-- `--chart-2` -> `colors/chart-2/DEFAULT`
-- `--chart-3` -> `colors/chart-3/DEFAULT`
-- `--chart-4` -> `colors/chart-4/DEFAULT`
-- `--chart-5` -> `colors/chart-5/DEFAULT`
-- `--sidebar` -> `colors/sidebar/DEFAULT`
-- `--sidebar-foreground` -> `colors/sidebar/foreground`
-- `--sidebar-primary` -> `colors/sidebar/primary`
-- `--sidebar-primary-foreground` -> `colors/sidebar/primary-foreground`
-- `--sidebar-accent` -> `colors/sidebar/accent`
-- `--sidebar-accent-foreground` -> `colors/sidebar/accent-foreground`
-- `--sidebar-border` -> `colors/sidebar/border`
-- `--sidebar-ring` -> `colors/sidebar/ring`
+| shadcn/ui Theme          | Figma Variable Naming                |
+| :------------------------ | :--------------------------------- |
+| `--background`            | `colors/background/DEFAULT` [^1]   |
+| `--foreground`            | `colors/foreground/DEFAULT`        |
+| `--card`                  | `colors/card/DEFAULT`              |
+| `--card-foreground`       | `colors/card/foreground`           |
+| `--popover`               | `colors/popover/DEFAULT`           |
+| `--popover-foreground`    | `colors/popover/foreground`        |
+| `--primary`               | `colors/primary/DEFAULT`           |
+| `--primary-foreground`    | `colors/primary/foreground`        |
+| `--secondary`             | `colors/secondary/DEFAULT`         |
+| `--secondary-foreground`  | `colors/secondary/foreground`      |
+| `--muted`                 | `colors/muted/DEFAULT`             |
+| `--muted-foreground`      | `colors/muted/foreground`          |
+| `--accent`                | `colors/accent/DEFAULT`            |
+| `--accent-foreground`     | `colors/accent/foreground`         |
+| `--destructive`           | `colors/destructive/DEFAULT`       |
+| `--border`                | `colors/border/DEFAULT`            |
+| `--input`                 | `colors/input/DEFAULT`             |
+| `--ring`                  | `colors/ring/DEFAULT`              |
+| `--chart-1`               | `colors/chart-1/DEFAULT`           |
+| `--chart-2`               | `colors/chart-2/DEFAULT`           |
+| `--chart-3`               | `colors/chart-3/DEFAULT`           |
+| `--chart-4`               | `colors/chart-4/DEFAULT`           |
+| `--chart-5`               | `colors/chart-5/DEFAULT`           |
+| `--sidebar`               | `colors/sidebar/DEFAULT`           |
+| `--sidebar-foreground`    | `colors/sidebar/foreground`        |
+| `--sidebar-primary`       | `colors/sidebar/primary`           |
+| `--sidebar-primary-foreground` | `colors/sidebar/primary-foreground` |
+| `--sidebar-accent`        | `colors/sidebar/accent`            |
+| `--sidebar-accent-foreground` | `colors/sidebar/accent-foreground` |
+| `--sidebar-border`        | `colors/sidebar/border`            |
+| `--sidebar-ring`          | `colors/sidebar/ring`              |
+| `--radius`                | `radius/radius`                    |
 
 <Callout type="info">
   Variables Xporter automatically exports non-shadcn/ui variables as Tailwind CSS configuration, giving you complete Design Token coverage.

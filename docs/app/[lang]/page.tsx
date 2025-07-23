@@ -12,7 +12,8 @@ import DensityModes from "@/public/website/density-modes.png";
 import DeviceModes from "@/public/website/device-modes.png";
 import ThemeModes from "@/public/website/theme-modes.png";
 import CssMediaQuery from "@/public/website/css-media-query.png";
-import FigmaTemplate from "@/public/website/figma-template.png";
+import FigmaTemplate from "@/public/website/template1.png";
+import FigmaTemplateShadcnUi from "@/public/website/template2.png";
 import ShadcnUi from "@/public/website/shadcn-ui.png";
 import Blur1 from "@/public/website/blur-1.png";
 import Blur2 from "@/public/website/blur-2.png";
@@ -265,34 +266,65 @@ export default async function IndexPage({
               {dictionary.figmaTemplate.heading}
             </div>
 
-            <div className="relative z-10  w-full grid  bg-background p-10 overflow-hidden">
-              <div className="grid gap-6 max-w-112">
+            <div className="relative z-10  w-full grid  grid-cols-2 bg-background overflow-hidden">
+              <div className="grid gap-6 max-w-112  p-10">
                 <div className="text-heading text-primary">
-                  {dictionary.figmaTemplate.title}
+                  {dictionary.figmaTemplate.shadcnUi.title}
                 </div>
                 <div className="text-body text-muted-foreground leading-tight">
-                  {dictionary.figmaTemplate.description}
+                  {dictionary.figmaTemplate.shadcnUi.description}
+                </div>
+                <Button className="w-fit" asChild>
+                  <Link
+                    href="https://www.figma.com/community/file/1529796560368045075"
+                    target="_blank"
+                  >
+                    {dictionary.figmaTemplate.shadcnUi.openInFigma}
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="w-full h-full relative right-0 bottom-0 [mask:linear-gradient(90deg,transparent,black_15%_100%)]">
+                <Image
+                  className=" h-full w-full object-cover"
+                  src={FigmaTemplateShadcnUi}
+                  alt="figma-template"
+                  width={1920}
+                  height={1080}
+                />
+              </div>
+            </div>
+
+            <div className="relative z-10  w-full grid  grid-cols-2 bg-background overflow-hidden">
+              <div className="grid gap-6 max-w-112  p-10">
+                <div className="text-heading text-primary">
+                  {dictionary.figmaTemplate.complete.title}
+                </div>
+                <div className="text-body text-muted-foreground leading-tight">
+                  {dictionary.figmaTemplate.complete.description}
                 </div>
                 <Button className="w-fit" asChild>
                   <Link
                     href="https://www.figma.com/community/file/1522188131593288033"
                     target="_blank"
                   >
-                    {dictionary.figmaTemplate.openInFigma}
+                    {dictionary.figmaTemplate.complete.openInFigma}
                   </Link>
                 </Button>
               </div>
 
-              <div className="w-[80%] absolute right-0 bottom-0 translate-x-[30%] translate-y-[43%]">
+              <div className="w-full h-full relative right-0 bottom-0 [mask:linear-gradient(90deg,transparent,black_15%_100%)]">
                 <Image
-                  className="w-full"
+                  className=" h-full w-full object-cover"
                   src={FigmaTemplate}
                   alt="figma-template"
-                  width={3216}
-                  height={2149}
+                  width={1920}
+                  height={1080}
                 />
               </div>
             </div>
+
+
           </div>
         </div>
       </div>

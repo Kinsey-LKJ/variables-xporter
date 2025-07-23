@@ -56,9 +56,16 @@
   },
   "figmaTemplate": {
     "heading": "Modèle Figma",
-    "title": "Inclut les variables de base nécessaires pour créer des Design Tokens",
-    "description": "Commencez à créer vos propres Design Tokens ici, y compris des variables pour les couleurs, l'espacement, les polices et plus encore, avec plusieurs modes pour les thèmes, les marques, les appareils et la densité.",
-    "openInFigma": "Ouvrir dans Figma"
+    "complete": {
+      "title": "Modèle complet de Design Tokens",
+      "description": "Inclut les variables de base nécessaires pour créer des Design Tokens complets, prenant en charge des systèmes de conception complexes avec plusieurs modes pour les thèmes clairs/sombres, les couleurs de marque, la densité et les styles de bordure arrondis.",
+      "openInFigma": "Ouvrir dans Figma"
+    },
+    "shadcnUi": {
+      "title": "Modèle de thème shadcn/ui personnalisé",
+      "description": "Un modèle de thème shadcn/ui au style personnalisé avec des modes clair et sombre, vous aidant à créer votre bibliothèque de composants stylisés.",
+      "openInFigma": "Ouvrir dans Figma"
+    }
   },
   "example": {
     "heading": "Exemple",

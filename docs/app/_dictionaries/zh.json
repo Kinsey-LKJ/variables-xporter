@@ -56,9 +56,16 @@
   },
   "figmaTemplate": {
     "heading": "Figma 模板",
-    "title": "包含构建 Design Tokens 所需的基本变量",
-    "description": "从这里开始构建您自己的 Design Tokens，包括颜色、间距、字体等变量，并支持主题、品牌、设备和密度的多种模式。",
-    "openInFigma": "在 Figma 中打开"
+    "complete": {
+      "title": "完整的 Design Tokens 模板",
+      "description": "包含构建完整 Design Tokens 所需的基本变量，支持明暗主题、品牌颜色、紧密性、圆角风格等多种模式的复杂设计系统。",
+      "openInFigma": "在 Figma 中打开"
+    },
+    "shadcnUi": {
+      "title": "自定义 shadcn/ui 主题模板",
+      "description": "一个自定义风格的 shadcn/ui 主题模板，包含明暗模式，帮助构建你自己风格的组件库。",
+      "openInFigma": "在 Figma 中打开"
+    }
   },
   "example": {
     "heading": "示例",

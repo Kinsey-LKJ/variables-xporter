@@ -18,18 +18,34 @@ Pour rendre les variables plus compréhensibles et maintenables, nous recommando
   Lorsque vous utilisez Variables Xporter, vous devez utiliser soit la convention camelCase soit kebab-case pour séparer plusieurs mots, comme `borderRadius` ou `border-radius`.
 </Callout> */}
 
-### Noms de premier niveau
+### Structure de nommage [#naming-structure]
 
-Si votre projet utilise Tailwind CSS, assurez-vous que vos noms de variables de premier niveau correspondent aux clés de configuration du thème Tailwind CSS. Voici quelques clés de configuration courantes :
+Si votre projet utilise Tailwind CSS, assurez-vous que vos noms de variables de premier niveau correspondent aux clés de configuration du thème Tailwind CSS. Voici les clés de configuration complètes et la structure de nommage correspondante des Variables Figma :
 
-- `colors`
-- `spacing`
-- `fontSize`
-- `fontWeight`
-- `borderRadius`
-- `opacity`
+| Configuration Tailwind CSS | Variables Figma | Exemples de nommage | Notes |
+| :----- | :---- | :---- | :---- |
+| `--color-*` | `color/*` | `color/primary` `color/blue/400` | [Suggestions d'organisation des variables de couleur](/docs/organizing-your-variables/colors) |
+| `--font-*` | `font/*` | `font/sans` `font/mono` | [Suggestions d'organisation des variables typographiques](/docs/organizing-your-variables/typography) |
+| `--text-*` | `text/*` | `text/body` `text/sm`  | [Suggestions d'organisation des variables typographiques](/docs/organizing-your-variables/typography) |
+| `--font-weight-*` | `font-weight/*` | `font-weight/bold` `font-weight/medium` | [Suggestions d'organisation des variables typographiques](/docs/organizing-your-variables/typography) |
+| `--tracking-*` | `tracking/*` | `tracking/wide` `tracking/tight` | [Suggestions d'organisation des variables typographiques](/docs/organizing-your-variables/typography) |
+| `--leading-*` | `leading/*` | `leading/tight` `leading/normal` | [Suggestions d'organisation des variables typographiques](/docs/organizing-your-variables/typography) |
+| `--breakpoint-*` | `breakpoint/*` | `breakpoint/xl` `breakpoint/2xl`
+| `--container-*` | `container/*` | `container/xl` `container/2xl` 
+| `--spacing-*` | `spacing/*` | `spacing/sm` `spacing/md` | [Suggestions d'organisation des variables d'espacement](/docs/organizing-your-variables/spacing) |
+| `--radius-*` | `radius/*` | `radius/md` `radius/lg` |
+| `--shadow-*` | `shadow/*` | `shadow/md` `shadow/lg` |
+| `--inset-shadow-*` | `inset-shadow/*` | `inset-shadow/xs` `inset-shadow/sm` |
+| `--drop-shadow-*` | `drop-shadow/*` | `drop-shadow/md` `drop-shadow/lg` |
+| `--blur-*` | `blur/*` | `blur/md` `blur/lg` |
+| `--perspective-*` | `perspective/*` | `perspective/near` `perspective/far` |
+| `--aspect-*` | `aspect/*` | `aspect/video` `aspect/square` |
+| `--ease-*` | `ease/*` | `ease/out` `ease/in-out` |
+| `--animate-*` | `animate/*` | `animate/spin` `animate/pulse` |
 
-Vous pouvez trouver la liste complète des clés de configuration dans la [Référence de configuration du thème Tailwind CSS](https://tailwindcss.com/docs/theme#theme-variable-namespaces).
+
+
+Référez-vous à : [Référence de configuration du thème Tailwind CSS](https://tailwindcss.com/docs/theme#theme-variable-namespaces)
 
 ## Conventions de nommage
 

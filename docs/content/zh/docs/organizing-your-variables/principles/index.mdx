@@ -20,18 +20,34 @@ import { Cards } from 'nextra/components'
   在使用 Variables Xporter 时，必须使用 camelCase 或 kebab-case 命名约定来分隔多个单词，例如 `borderRadius` 或 `border-radius`。
 </Callout> */}
 
-### 顶级命名
+### 命名结构 [#naming-structure]
 
-如果您的项目使用 Tailwind CSS，请确保顶级变量名与 Tailwind CSS 主题配置键保持一致。以下是一些常见的配置键：
+如果您的项目使用 Tailwind CSS，请确保顶级变量名与 Tailwind CSS 主题配置键保持一致。以下是完整的配置键及对应的 Figma Variables 命名结构：
 
-- `colors`
-- `spacing`
-- `fontSize`
-- `fontWeight`
-- `borderRadius`
-- `opacity`
+| Tailwind CSS 配置 | Figma Variables | 命名示例 | 说明 |
+| :----- | :---- | :---- | :---- |
+| `--color-*` | `color/*` | `color/primary` `color/blue/400` | [颜色变量组织建议](/docs/organizing-your-variables/colors) |
+| `--font-*` | `font/*` | `font/sans` `font/mono` | [排类变量组织建议](/docs/organizing-your-variables/typography) |
+| `--text-*` | `text/*` | `text/body` `text/sm`  | [排版变量组织建议](/docs/organizing-your-variables/typography) |
+| `--font-weight-*` | `font-weight/*` | `font-weight/bold` `font-weight/medium` | [排版变量组织建议](/docs/organizing-your-variables/typography) |
+| `--tracking-*` | `tracking/*` | `tracking/wide` `tracking/tight` | [排版变量组织建议](/docs/organizing-your-variables/typography) |
+| `--leading-*` | `leading/*` | `leading/tight` `leading/normal` | [排版类量组织建议](/docs/organizing-your-variables/typography) |
+| `--breakpoint-*` | `breakpoint/*` | `breakpoint/xl` `breakpoint/2xl`
+| `--container-*` | `container/*` | `container/xl` `container/2xl` 
+| `--spacing-*` | `spacing/*` | `spacing/sm` `spacing/md` | [间距变量组织建议](/docs/organizing-your-variables/spacing) |
+| `--radius-*` | `radius/*` | `radius/md` `radius/lg` |
+| `--shadow-*` | `shadow/*` | `shadow/md` `shadow/lg` |
+| `--inset-shadow-*` | `inset-shadow/*` | `inset-shadow/xs` `inset-shadow/sm` |
+| `--drop-shadow-*` | `drop-shadow/*` | `drop-shadow/md` `drop-shadow/lg` |
+| `--blur-*` | `blur/*` | `blur/md` `blur/lg` |
+| `--perspective-*` | `perspective/*` | `perspective/near` `perspective/far` |
+| `--aspect-*` | `aspect/*` | `aspect/video` `aspect/square` |
+| `--ease-*` | `ease/*` | `ease/out` `ease/in-out` |
+| `--animate-*` | `animate/*` | `animate/spin` `animate/pulse` |
 
-您可以在 [Tailwind CSS 主题配置参考](https://tailwindcss.com/docs/theme#theme-variable-namespaces) 中找到完整的配置键列表。
+
+
+请参考：[Tailwind CSS 主题配置参考](https://tailwindcss.com/docs/theme#theme-variable-namespaces)
 
 ## 命名约定
 

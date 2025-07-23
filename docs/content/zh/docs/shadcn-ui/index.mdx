@@ -11,38 +11,40 @@ Variables Xporter 与 shadcn/ui 无缝集成，直接将 Figma Variables 导出�
 
 为了实现无缝集成，您的 Figma Variables 必须遵循 shadcn/ui 命名规范。以下是 shadcn/ui 的主题变量与您应该创建的 Figma Variable 名称的完整映射：
 
-- `--radius` -> `radius/DEFAULT` [^1]
-- `--background` -> `colors/background/DEFAULT`
-- `--foreground` -> `colors/foreground/DEFAULT`
-- `--card` -> `colors/card/DEFAULT`
-- `--card-foreground` -> `colors/card/foreground`
-- `--popover` -> `colors/popover/DEFAULT`
-- `--popover-foreground` -> `colors/popover/foreground`
-- `--primary` -> `colors/primary/DEFAULT`
-- `--primary-foreground` -> `colors/primary/foreground`
-- `--secondary` -> `colors/secondary/DEFAULT`
-- `--secondary-foreground` -> `colors/secondary/foreground`
-- `--muted` -> `colors/muted/DEFAULT`
-- `--muted-foreground` -> `colors/muted/foreground`
-- `--accent` -> `colors/accent/DEFAULT`
-- `--accent-foreground` -> `colors/accent/foreground`
-- `--destructive` -> `colors/destructive/DEFAULT`
-- `--border` -> `colors/border/DEFAULT`
-- `--input` -> `colors/input/DEFAULT`
-- `--ring` -> `colors/ring/DEFAULT`
-- `--chart-1` -> `colors/chart-1/DEFAULT`
-- `--chart-2` -> `colors/chart-2/DEFAULT`
-- `--chart-3` -> `colors/chart-3/DEFAULT`
-- `--chart-4` -> `colors/chart-4/DEFAULT`
-- `--chart-5` -> `colors/chart-5/DEFAULT`
-- `--sidebar` -> `colors/sidebar/DEFAULT`
-- `--sidebar-foreground` -> `colors/sidebar/foreground`
-- `--sidebar-primary` -> `colors/sidebar/primary`
-- `--sidebar-primary-foreground` -> `colors/sidebar/primary-foreground`
-- `--sidebar-accent` -> `colors/sidebar/accent`
-- `--sidebar-accent-foreground` -> `colors/sidebar/accent-foreground`
-- `--sidebar-border` -> `colors/sidebar/border`
-- `--sidebar-ring` -> `colors/sidebar/ring`
+| shadcn/ui 主题          | Figma Variable 命名                |
+| :------------------------ | :--------------------------------- |
+| `--background`            | `colors/background/DEFAULT` [^1]   |
+| `--foreground`            | `colors/foreground/DEFAULT`        |
+| `--card`                  | `colors/card/DEFAULT`              |
+| `--card-foreground`       | `colors/card/foreground`           |
+| `--popover`               | `colors/popover/DEFAULT`           |
+| `--popover-foreground`    | `colors/popover/foreground`        |
+| `--primary`               | `colors/primary/DEFAULT`           |
+| `--primary-foreground`    | `colors/primary/foreground`        |
+| `--secondary`             | `colors/secondary/DEFAULT`         |
+| `--secondary-foreground`  | `colors/secondary/foreground`      |
+| `--muted`                 | `colors/muted/DEFAULT`             |
+| `--muted-foreground`      | `colors/muted/foreground`          |
+| `--accent`                | `colors/accent/DEFAULT`            |
+| `--accent-foreground`     | `colors/accent/foreground`         |
+| `--destructive`           | `colors/destructive/DEFAULT`       |
+| `--border`                | `colors/border/DEFAULT`            |
+| `--input`                 | `colors/input/DEFAULT`             |
+| `--ring`                  | `colors/ring/DEFAULT`              |
+| `--chart-1`               | `colors/chart-1/DEFAULT`           |
+| `--chart-2`               | `colors/chart-2/DEFAULT`           |
+| `--chart-3`               | `colors/chart-3/DEFAULT`           |
+| `--chart-4`               | `colors/chart-4/DEFAULT`           |
+| `--chart-5`               | `colors/chart-5/DEFAULT`           |
+| `--sidebar`               | `colors/sidebar/DEFAULT`           |
+| `--sidebar-foreground`    | `colors/sidebar/foreground`        |
+| `--sidebar-primary`       | `colors/sidebar/primary`           |
+| `--sidebar-primary-foreground` | `colors/sidebar/primary-foreground` |
+| `--sidebar-accent`        | `colors/sidebar/accent`            |
+| `--sidebar-accent-foreground` | `colors/sidebar/accent-foreground` |
+| `--sidebar-border`        | `colors/sidebar/border`            |
+| `--sidebar-ring`          | `colors/sidebar/ring`              |
+| `--radius`                | `radius/radius`                    |
 
 <Callout type="info">
   Variables Xporter 会自动将非 shadcn/ui 变量导出为 Tailwind CSS 配置，确保完整的 Design Token 覆盖。

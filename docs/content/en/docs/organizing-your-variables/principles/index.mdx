@@ -18,18 +18,34 @@ To make variables more understandable and maintainable, we recommend following t
   When using Variables Xporter, you must use either camelCase or kebab-case naming conventions to separate multiple words, such as `borderRadius` or `border-radius`.
 </Callout> */}
 
-### Top-level names
+### Naming Structure [#naming-structure]
 
-If your project uses Tailwind CSS, ensure that your top-level variable names align with Tailwind CSS theme configuration keys. Here are some common configuration keys:
+If your project uses Tailwind CSS, ensure that your top-level variable names align with Tailwind CSS theme configuration keys. Here's the complete configuration keys and corresponding Figma Variables naming structure:
 
-- `colors`
-- `spacing`
-- `fontSize`
-- `fontWeight`
-- `borderRadius`
-- `opacity`
+| Tailwind CSS Configuration | Figma Variables | Naming Examples | Notes |
+| :----- | :---- | :---- | :---- |
+| `--color-*` | `color/*` | `color/primary` `color/blue/400` | [Color variable organization suggestions](/docs/organizing-your-variables/colors) |
+| `--font-*` | `font/*` | `font/sans` `font/mono` | [Typography variable organization suggestions](/docs/organizing-your-variables/typography) |
+| `--text-*` | `text/*` | `text/body` `text/sm`  | [Typography variable organization suggestions](/docs/organizing-your-variables/typography) |
+| `--font-weight-*` | `font-weight/*` | `font-weight/bold` `font-weight/medium` | [Typography variable organization suggestions](/docs/organizing-your-variables/typography) |
+| `--tracking-*` | `tracking/*` | `tracking/wide` `tracking/tight` | [Typography variable organization suggestions](/docs/organizing-your-variables/typography) |
+| `--leading-*` | `leading/*` | `leading/tight` `leading/normal` | [Typography variable organization suggestions](/docs/organizing-your-variables/typography) |
+| `--breakpoint-*` | `breakpoint/*` | `breakpoint/xl` `breakpoint/2xl`
+| `--container-*` | `container/*` | `container/xl` `container/2xl` 
+| `--spacing-*` | `spacing/*` | `spacing/sm` `spacing/md` | [Spacing variable organization suggestions](/docs/organizing-your-variables/spacing) |
+| `--radius-*` | `radius/*` | `radius/md` `radius/lg` |
+| `--shadow-*` | `shadow/*` | `shadow/md` `shadow/lg` |
+| `--inset-shadow-*` | `inset-shadow/*` | `inset-shadow/xs` `inset-shadow/sm` |
+| `--drop-shadow-*` | `drop-shadow/*` | `drop-shadow/md` `drop-shadow/lg` |
+| `--blur-*` | `blur/*` | `blur/md` `blur/lg` |
+| `--perspective-*` | `perspective/*` | `perspective/near` `perspective/far` |
+| `--aspect-*` | `aspect/*` | `aspect/video` `aspect/square` |
+| `--ease-*` | `ease/*` | `ease/out` `ease/in-out` |
+| `--animate-*` | `animate/*` | `animate/spin` `animate/pulse` |
 
-You can find the complete list of configuration keys in the [Tailwind CSS Theme Configuration Reference](https://tailwindcss.com/docs/theme#theme-variable-namespaces).
+
+
+Refer to: [Tailwind CSS Theme Configuration Reference](https://tailwindcss.com/docs/theme#theme-variable-namespaces)
 
 ## Naming conventions
 
