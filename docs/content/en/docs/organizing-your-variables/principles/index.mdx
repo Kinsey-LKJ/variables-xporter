@@ -66,8 +66,8 @@ Here are some common naming formats for reference:
 - sentenceCase -> Two words
 
 <Callout type="info" emoji="ℹ️">
-  When exporting variables, regardless of which format you use from the above, Variables Xporter will automatically convert the output to match the conventions or requirements of Tailwind CSS configuration files and CSS variables:
-  - Tailwind CSS configuration files: uses camelCase format (e.g., fontSize, fontWeight)
+  When exporting variables, regardless of which format you use from the above, Variables Xporter will automatically convert the output to match the conventions or requirements of `tailwind.config.js` files and CSS variables:
+  - `tailwind.config.js` files: uses camelCase format (e.g., fontSize, fontWeight)
   - CSS variables: uses kebab-case format (e.g., font-size, font-weight)
 </Callout>
 
@@ -148,7 +148,7 @@ export default {
 };
 ```
 
-Don't worry though, Tailwind CSS provides an elegant solution — using the `DEFAULT` keyword:
+Don't worry though, Tailwind CSS V3 provides an elegant solution — using the `DEFAULT` keyword:
 
 ```ts twoslash
 // @errors: 1117
@@ -188,3 +188,8 @@ They will appear in the same directory:
     Organizing variable hierarchy using default values
   </figcaption>
 </figure>
+
+
+<Callout type="info" emoji="ℹ️">
+In the latest Tailwind CSS V4, configuration files have migrated from JavaScript to CSS files, so the `DEFAULT` keyword is no longer needed. However, we still recommend using the `DEFAULT` keyword to organize variable hierarchy to ensure clear hierarchical structure of variables in Figma. When you choose Tailwind CSS V4 or shadcn/ui (Tailwind CSS V4) as the output format, Variables Xporter will automatically remove redundant `DEFAULT` keywords from the exported results to match the conventions or requirements of Tailwind CSS V4.
+</Callout>

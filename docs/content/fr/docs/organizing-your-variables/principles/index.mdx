@@ -66,8 +66,8 @@ Voici quelques formats de nommage courants pour référence :
 - sentenceCase -> Two words
 
 <Callout type="info" emoji="ℹ️">
-  Lors de l'exportation des variables, quel que soit le format que vous utilisez parmi ceux ci-dessus, Variables Xporter convertira automatiquement la sortie pour correspondre aux conventions ou exigences des fichiers de configuration Tailwind CSS et des variables CSS :
-  - Fichiers de configuration Tailwind CSS : utilise le format camelCase (par ex., fontSize, fontWeight)
+  Lors de l'exportation des variables, quel que soit le format que vous utilisez parmi ceux ci-dessus, Variables Xporter convertira automatiquement la sortie pour correspondre aux conventions ou exigences des fichiers `tailwind.config.js` et des variables CSS :
+  - Fichiers `tailwind.config.js` : utilise le format camelCase (par ex., fontSize, fontWeight)
   - Variables CSS : utilise le format kebab-case (par ex., font-size, font-weight)
 </Callout>
 
@@ -148,7 +148,7 @@ export default {
 };
 ```
 
-Ne vous inquiétez pas, Tailwind CSS propose une solution élégante — en utilisant le mot-clé `DEFAULT` :
+Ne vous inquiétez pas, Tailwind CSS V3 propose une solution élégante — en utilisant le mot-clé `DEFAULT` :
 
 ```ts twoslash
 // @errors: 1117
@@ -188,3 +188,8 @@ Elles apparaîtront dans le même répertoire :
     Organisation de la hiérarchie des variables à l'aide de valeurs par défaut
   </figcaption>
 </figure>
+
+
+<Callout type="info" emoji="ℹ️">
+Dans la dernière version de Tailwind CSS V4, les fichiers de configuration ont migré de JavaScript vers des fichiers CSS, donc le mot-clé `DEFAULT` n'est plus nécessaire. Cependant, nous recommandons toujours d'utiliser le mot-clé `DEFAULT` pour organiser la hiérarchie des variables afin d'assurer une structure hiérarchique claire des variables dans Figma. Lorsque vous choisissez Tailwind CSS V4 ou shadcn/ui (Tailwind CSS V4) comme format de sortie, Variables Xporter supprimera automatiquement les mots-clés `DEFAULT` redondants des résultats exportés pour correspondre aux conventions ou exigences de Tailwind CSS V4.
+</Callout>

@@ -68,8 +68,8 @@ import { Cards } from 'nextra/components'
 - sentenceCase -> Two words
 
 <Callout type="info" emoji="ℹ️">
-  在导出变量时，无论您使用上述哪种格式，Variables Xporter 都会自动转换输出以匹配 Tailwind CSS 配置文件和 CSS Variables 的约定或要求：
-  - Tailwind CSS 配置文件：使用 camelCase 格式（例如：fontSize, fontWeight）
+  在导出变量时，无论您使用上述哪种格式，Variables Xporter 都会自动转换输出以匹配 `tailwind.config.js` 文件和 CSS Variables 的约定或要求：
+  - `tailwind.config.js` 文件：使用 camelCase 格式（例如：fontSize, fontWeight）
   - CSS Variables：使用 kebab-case 格式（例如：font-size, font-weight）
 </Callout>
 
@@ -150,7 +150,7 @@ export default {
 };
 ```
 
-不过不用担心，Tailwind CSS 提供了一个优雅的解决方案——使用 `DEFAULT` 关键字：
+不过不用担心，Tailwind CSS V3 提供了一个优雅的解决方案——使用 `DEFAULT` 关键字：
 
 ```ts twoslash
 // @errors: 1117
@@ -190,3 +190,8 @@ export default {
     使用默认值组织变量层级
   </figcaption>
 </figure>
+
+
+<Callout type="info" emoji="ℹ️">
+在最新的 Tailwind CSS V4 中，配置文件从 JavaScript 迁移到了 CSS 文件中，因此不再需要使用 `DEFAULT` 关键字，但是我们依然建议使用 `DEFAULT` 关键字来组织变量层级，以确保变量在 Figma 中的层级结构清晰， 当您选择 Tailwind CSS V4 或者 shadcn/ui (Tailwind CSS V4) 作为输出格式时，Variables Xporter 会自动将导出结果中多余的 `DEFAULT` 关键字删除，保证匹配 Tailwind CSS V4 的约定或要求。
+</Callout>
