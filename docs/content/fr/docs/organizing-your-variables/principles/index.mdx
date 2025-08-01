@@ -99,7 +99,7 @@ Le mot-clé `DEFAULT` sert un double objectif : il définit une valeur par défa
 - `colors/primary`
 - `colors/primary/foreground`
 
-C'est un ensemble courant de variables utilisées pour la couleur primaire et la couleur du texte sur les arrière-plans primaires, mais cette nomenclature seule n'est pas suffisante. Réfléchissons-y en termes de gestion de fichiers :
+C'est un ensemble courant de variables utilisées pour la couleur primaire et la couleur du texte sur des arrière-plans primaires, mais cette nomenclature seule n'est pas suffisante. Réfléchissons-y en termes de gestion de fichiers :
 
 <FileTree>
   <FileTree.Folder name="colors" defaultOpen>
@@ -129,7 +129,7 @@ Pour trouver la variable `colors/primary`, vous devez aller dans le répertoire 
 </figure>
 
 À mesure que nos variables augmentent en nombre, trouver `colors/primary` devient plus fastidieux **car nous ne pouvons pas nous fier à la barre latérale pour une navigation rapide et devons plutôt chercher dans le répertoire colors**.
-Cela affecte non seulement l'efficacité de notre flux de travail mais, plus important encore, lorsque nous essayons de convertir cette structure en configuration Tailwind CSS V3, nous nous heurtons à une limitation technique : **les objets JavaScript ne peuvent pas utiliser la même clé à la fois comme valeur et comme objet**.
+Cela n'affecte pas seulement l'efficacité de notre flux de travail mais, plus important encore, lorsque nous essayons de convertir cette structure en configuration Tailwind CSS V3, nous nous heurtons à une limitation technique : **les objets JavaScript ne peuvent pas utiliser la même clé à la fois comme valeur et comme objet**.
 
 ```ts twoslash
 // @errors: 1117
@@ -167,7 +167,7 @@ export default {
 };
 ```
 
-Le meilleur aspect est que dans le développement réel, vous n'avez pas besoin d'écrire le mot-clé `DEFAULT`. Tailwind CSS gère automatiquement ce détail, gardant votre code propre :
+Le meilleur, c'est que dans le développement réel, vous n'avez pas besoin d'écrire le mot-clé `DEFAULT`. Tailwind CSS gère automatiquement ce détail, gardant votre code propre :
 
 ```html
 <div class="text-primary">
@@ -191,5 +191,5 @@ Elles apparaîtront dans le même répertoire :
 
 
 <Callout type="info" emoji="ℹ️">
-Dans la dernière version de Tailwind CSS V4, les fichiers de configuration ont migré de JavaScript vers des fichiers CSS, donc le mot-clé `DEFAULT` n'est plus nécessaire. Cependant, nous recommandons toujours d'utiliser le mot-clé `DEFAULT` pour organiser la hiérarchie des variables afin d'assurer une structure hiérarchique claire des variables dans Figma. Lorsque vous choisissez Tailwind CSS V4 ou shadcn/ui (Tailwind CSS V4) comme format de sortie, Variables Xporter supprimera automatiquement les mots-clés `DEFAULT` redondants des résultats exportés pour correspondre aux conventions ou exigences de Tailwind CSS V4.
+Dans la dernière version de Tailwind CSS V4, les fichiers de configuration sont passés de JavaScript à CSS, donc le mot-clé `DEFAULT` n'est plus nécessaire. Cependant, nous recommandons toujours d'utiliser le mot-clé `DEFAULT` pour organiser la hiérarchie des variables afin d'assurer une structure hiérarchique claire des variables dans Figma. Lorsque vous choisissez Tailwind CSS V4 ou shadcn/ui (Tailwind CSS V4) comme format de sortie, Variables Xporter supprimera automatiquement les mots-clés `DEFAULT` redondants des résultats exportés pour correspondre aux conventions ou exigences de Tailwind CSS V4.
 </Callout>
