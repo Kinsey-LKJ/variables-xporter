@@ -150,3 +150,41 @@ No specific test commands are configured. Testing should be done manually throug
 - Documentation available in multiple languages
 - Language dictionaries in JSON format
 - Locale detection and switching implemented
+
+## Git Commit Guidelines
+
+### Commit Message Format
+Use bilingual commit messages with the following structure:
+
+```
+type: english title | 中文标题
+
+- English bullet point descriptions
+- More English descriptions
+- Additional English context
+
+- 中文要点描述
+- 更多中文描述
+- 额外的中文上下文
+```
+
+### Format Rules
+1. **Title**: Use `|` to separate English and Chinese titles
+2. **Body**: Separate English and Chinese descriptions into distinct sections
+3. **Language Order**: Always put English first, followed by Chinese
+4. **Consistency**: Apply the same changes across all language versions (en/fr/zh) when updating documentation
+
+### Example
+```
+docs: update Tailwind CSS version references and V4 compatibility notes | 更新 Tailwind CSS 版本引用和 V4 兼容性说明
+
+- Update configuration file references to `tailwind.config.js` format
+- Clarify Tailwind CSS V3 vs V4 differences for DEFAULT keyword usage
+- Add V4 compatibility information for automatic DEFAULT keyword removal
+- Apply changes consistently across all language versions (en/fr/zh)
+
+- 更新配置文件引用为 `tailwind.config.js` 格式
+- 明确 Tailwind CSS V3 与 V4 在 DEFAULT 关键字使用上的差异
+- 添加 V4 兼容性信息，自动移除 DEFAULT 关键字
+- 在所有语言版本中一致应用更改
+```
