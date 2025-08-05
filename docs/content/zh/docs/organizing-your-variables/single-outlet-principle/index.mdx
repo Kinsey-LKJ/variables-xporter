@@ -15,19 +15,19 @@ import { Columns3 } from 'lucide-react'
 
 ```
 传统集合（所有变量紧密耦合在一个集合中）
-├── Light Mode                    ├── Dark Mode
-├── colors/primary: #3B82F6       ├── colors/primary: #60A5FA
-├── colors/secondary: #10B981     ├── colors/secondary: #F59E0B
-├── spacing/sm: 8px               ├── spacing/sm: 8px（重复设置）
-└── font/size/base: 16px          └── font/size/base: 16px（重复设置）
+├── 浅色模式                     ├── 深色模式
+├── colors/primary: #3B82F6    ├── colors/primary: #60A5FA
+├── colors/secondary: #10B981  ├── colors/secondary: #F59E0B
+├── spacing/sm: 8px            ├── spacing/sm: 8px（重复设置）
+└── font/size/base: 16px       └── font/size/base: 16px（重复设置）
 ```
 
 这种方法存在以下问题：
 
 - **冗余设置**：许多变量在不同模式下具有相同的值，但需要重复设置
 - **管理复杂性**：随着模式的增加，集合变得庞大且难以管理
-- **使用困惑**：设计师需要在多个集合之间切换以找到合适的变量
-- **扩展困难**：添加新的模式维度需要大量重复性工作
+- **使用混乱**：设计师需要在多个集合之间切换以找到合适的变量
+- **扩展困难**：添加新的模式维度需要大量重复工作
 
 ## 单一出口原则的解决方案
 
@@ -99,7 +99,7 @@ import { Columns3 } from 'lucide-react'
 └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
 
-此集合专门用于存储需要在明暗主题之间切换的变量。
+这个集合专门用于存储需要在明暗主题之间切换的变量。
 
 #### 第三步：建立引用关系
 
@@ -168,8 +168,8 @@ import { Columns3 } from 'lucide-react'
 
 单一出口原则特别适用于：
 
-- **多模式设计系统**：包括明/暗主题、品牌主题和其他模式维度
-- **大型设计系统**：包含大量变量，需要清晰的组织结构
+- **多模式设计系统**：包括明暗主题、品牌主题及其他模式维度
+- **大型设计系统**：拥有大量变量且需要清晰的组织结构
 
 ## 重要注意事项
 
