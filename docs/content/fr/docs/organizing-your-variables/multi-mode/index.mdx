@@ -114,8 +114,8 @@ En faisant référence aux variables correspondantes de cette collection dans la
 
 ### Créer un système de variables multidimensionnel [#create-multi-dimensional-variable-system]
 
-Nous disposons actuellement d'un système de variables prenant en charge les thèmes clair et sombre. Maintenant, nous souhaitons aller plus loin et ajouter un système de variables pour les thèmes de marque sur cette base.
-Créez une collection Brands Modes pour gérer les variables de thème de marque, puis créez deux modes de marque différents (dans cet exemple, `zhiyun` et `fiveray`). Ensuite, créez deux variables `colors/primary/light` et `colors/primary/dark` et définissez différentes valeurs pour chaque mode (dans cet exemple, en référençant les couleurs correspondantes de la collection principale Design Tokens).
+Nous disposons actuellement d'un système de variables qui prend en charge les thèmes clair et sombre. Maintenant, nous voulons aller plus loin et ajouter un système de variables de thème de marque par-dessus les thèmes clair/sombre.
+Créez une collection Modes de Marques pour gérer les variables de thème de marque, et créez deux modes de marque différents (dans cet exemple, `zhiyun` et `fiveray`). Ensuite, créez deux variables `colors/primary/light` et `colors/primary/dark`, et définissez différentes valeurs pour elles dans chaque mode (dans cet exemple, en référençant les couleurs pertinentes de la collection principale Design Tokens).
 ```
  ┌────────────────────────┬──────────────────────┬─────────────────────┐
  │                        │                      │                     │
@@ -131,7 +131,7 @@ Créez une collection Brands Modes pour gérer les variables de thème de marque
  │                        │                      │                     │
  └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
-Établissez ensuite les relations de référence entre les variables : les variables de la collection Theme Modes font référence aux variables correspondantes de la collection Brands Modes en fonction du thème actuel, tandis que les variables de la collection Brands Modes font référence aux valeurs de couleur spécifiques de la collection Design Tokens. Ainsi, lorsque vous changez de marque ou de thème, toutes les couleurs du système sont mises à jour en conséquence.
+Ensuite, établissez les relations de référence de variables : les variables dans la collection Modes de Thème référencent les variables correspondantes dans la collection Modes de Marques en fonction du thème actuel, tandis que les variables dans la collection Modes de Marques référencent des valeurs de couleur spécifiques dans la collection Design Tokens. De cette façon, lors du changement de marques ou de thèmes, toutes les couleurs du système se mettront à jour en conséquence.
 
 ```
 
@@ -194,8 +194,8 @@ Créez une collection Brands Modes pour gérer les variables de thème de marque
    └─────────────────────────────────────────────────────────────┴──────────────────────┘
 
 ```
-Voilà ! Vous avez créé un système de variables multidimensionnel comprenant des thèmes clairs/sombres et des thèmes de marque, et grâce au principe du point de sortie unique, votre système de design est devenu plus flexible et maintenable. Dans Figma, les utilisateurs n'ont qu'à sélectionner les variables de la collection Design Tokens, et leurs designs auront les variables de thème clair/sombre et de marque sans avoir besoin de se soucier de la chaîne de référence des variables.
-En examinant la chaîne de référence des variables dans son ensemble, on constate que c'est un peu complexe, mais c'est beaucoup plus clair et maintenable que de gérer toutes les variables dans une seule collection. Mais nous n'avons pas encore terminé, continuons à étendre ce système de variables.
+Voilà ! Vous avez créé un système de variables multidimensionnel qui inclut à la fois des thèmes clair/sombre et des thèmes de marque, et grâce au principe de point de sortie unique, vous avez rendu votre système de design plus flexible et maintenable. Dans Figma, les utilisateurs n'ont besoin de sélectionner que des variables de la collection Design Tokens, et leurs designs auront à la fois des variables de thème clair/sombre et de thème de marque sans avoir à se soucier de la chaîne de référence des variables.
+En examinant la chaîne de référence globale des variables, cela peut sembler quelque peu complexe, mais cette approche est beaucoup plus claire et plus facile à maintenir que la gestion de toutes les variables dans une seule collection. Mais nous n'avons pas encore terminé — développons davantage ce système de variables.
 
 ### Créer la Collection des Modes d'Appareil Responsive
 
