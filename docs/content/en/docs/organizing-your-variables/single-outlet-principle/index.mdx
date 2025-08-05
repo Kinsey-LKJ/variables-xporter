@@ -26,7 +26,7 @@ This approach has the following problems:
 
 - **Redundant settings**: Many variables have the same values across different modes but need to be set repeatedly
 - **Management complexity**: As modes increase, collections become large and difficult to manage
-- **Usage confusion**: Designers need to switch between multiple modes to find appropriate variables
+- **Usage confusion**: Designers need to switch between multiple collections to find appropriate variables
 - **Expansion difficulties**: Adding new mode dimensions requires extensive repetitive work
 
 ## The Single Outlet Principle Solution
@@ -94,7 +94,7 @@ Next, we create a collection specifically for managing theme modes:
 │                        │                      │                     │
 ├────────────────────────┼──────────────────────┼─────────────────────┤
 │                        │                      │                     │
-│ colors/primary/DEFAULT │ colors/primary/light │ colors/primary/dark │
+│ colors/primary/DEFAULT │  colors/zhiyun/600   │  colors/zhiyun/500  │
 │                        │                      │                     │
 └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
@@ -171,7 +171,6 @@ The Single Outlet Principle is particularly suitable for:
 
 - **Multi-mode design systems**: Including light/dark themes, brand themes, and other mode dimensions
 - **Large design systems**: With numerous variables requiring clear organizational structure
-- **Complex products**: Supporting multiple devices, states, and brands
 
 ## Important Considerations
 

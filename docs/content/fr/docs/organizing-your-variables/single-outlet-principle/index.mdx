@@ -26,7 +26,7 @@ Cette approche présente les problèmes suivants :
 
 - **Paramètres redondants** : De nombreuses variables ont les mêmes valeurs dans différents modes mais nécessitent des paramètres dupliqués
 - **Complexité de gestion** : À mesure que les modes augmentent, les collections deviennent volumineuses et difficiles à gérer
-- **Confusion d'utilisation** : Les designers doivent basculer entre plusieurs modes pour trouver les variables appropriées
+- **Confusion d'utilisation** : Les designers doivent basculer entre plusieurs collections pour trouver les variables appropriées
 - **Difficultés d'expansion** : L'ajout de nouvelles dimensions de mode nécessite un travail de duplication considérable
 
 ## Solution avec le Principe de Sortie Unique
@@ -94,7 +94,7 @@ Ensuite, nous créons une collection spécifiquement pour gérer les modes de th
 │                        │                      │                     │
 ├────────────────────────┼──────────────────────┼─────────────────────┤
 │                        │                      │                     │
-│ colors/primary/DEFAULT │ colors/primary/light │ colors/primary/dark │
+│ colors/primary/DEFAULT │  colors/zhiyun/600   │  colors/zhiyun/500  │
 │                        │                      │                     │
 └────────────────────────┴──────────────────────┴─────────────────────┘
 ```
@@ -171,7 +171,6 @@ Le Principe de Sortie Unique est particulièrement adapté pour :
 
 - **Systèmes de design multi-modes** : incluant thèmes clair/sombre, thèmes de marque et autres dimensions de mode
 - **Grands systèmes de design** : avec de nombreuses variables nécessitant une structure organisationnelle claire
-- **Produits complexes** : prenant en charge plusieurs appareils, états et marques
 
 ## Considérations importantes
 
