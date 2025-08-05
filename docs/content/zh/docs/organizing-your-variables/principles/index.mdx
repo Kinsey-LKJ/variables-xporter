@@ -54,7 +54,7 @@ import { Cards } from 'nextra/components'
 在设计系统中，我们经常需要使用多个单词来描述一个变量。Variables Xporter 会根据目标格式自动转换命名格式：
 
 - Tailwind CSS 配置文件：使用 camelCase 格式（例如：fontSize, fontWeight）
-- CSS Variables：使用 kebab-case 格式（例如：font-size, font-weight）
+- CSS 变量：使用 kebab-case 格式（例如：font-size, font-weight）
 
 以下是一些常见的命名格式供参考：
 - camelCase -> twoWords
@@ -68,9 +68,9 @@ import { Cards } from 'nextra/components'
 - sentenceCase -> Two words
 
 <Callout type="info" emoji="ℹ️">
-  在导出变量时，无论您使用上述哪种格式，Variables Xporter 都会自动转换输出以匹配 `tailwind.config.js` 文件和 CSS Variables 的约定或要求：
+  在导出变量时，无论您使用上述哪种格式，Variables Xporter 都会自动将输出转换为符合 `tailwind.config.js` 文件和 CSS 变量的约定或要求：
   - `tailwind.config.js` 文件：使用 camelCase 格式（例如：fontSize, fontWeight）
-  - CSS Variables：使用 kebab-case 格式（例如：font-size, font-weight）
+  - CSS 变量：使用 kebab-case 格式（例如：font-size, font-weight）
 </Callout>
 
 ## 分组原则
@@ -96,12 +96,12 @@ import { Cards } from 'nextra/components'
 
 ### 使用 `DEFAULT` 关键字组织变量层级 [#using-default-keyword]
 
-`DEFAULT` 关键字有双重作用：它既可以设置默认值，更重要的是可以统一同一层级的变量，使变量管理更加清晰和系统化。让我们看一个具体的例子：
+`DEFAULT` 关键字有双重作用：它设置默认值，更重要的是，它统一了同一级别的变量，使变量管理更加清晰和系统化。让我们看一个具体的例子：
 
 - `colors/primary`
 - `colors/primary/foreground`
 
-这是一个常见的变量集合，用于主色和主背景上的文本颜色，但仅靠这种命名还不够。让我们从文件管理的角度来思考：
+这是一个常见的变量集，用于主色和主背景上的文本颜色，但仅靠这种命名还不够。让我们从文件管理的角度来思考：
 
 <FileTree>
   <FileTree.Folder name="colors" defaultOpen>
@@ -112,7 +112,7 @@ import { Cards } from 'nextra/components'
   </FileTree.Folder>
 </FileTree>
 
-这里我们遇到了一个有趣的挑战：虽然逻辑上 `colors/primary` 和 `colors/primary/foreground` 应该在同一个目录中，但实际上它们分散在不同的位置。让我们看看这在 Figma 中是如何呈现的：
+这里我们遇到了一个有趣的挑战：虽然逻辑上 `colors/primary` 和 `colors/primary/foreground` 应该在同一个目录中，但实际上它们分散在不同的位置。让我们看看在 Figma 中是如何显示的：
 
 <figure className="mt-6">
   <>![无法在 colors -> primary 目录中找到 `colors/primary` 变量](/organizing-your-variables/organizing-your-variables-1.png)</>
@@ -130,8 +130,8 @@ import { Cards } from 'nextra/components'
   </figcaption>
 </figure>
 
-随着变量数量的增加，找到 `colors/primary` 变得更加繁琐，**因为我们无法依赖侧边栏进行快速导航，而必须在 colors 目录中搜索**。
-这不仅影响了我们的工作流程效率，更重要的是，当我们尝试将这种结构转换为 Tailwind CSS V3 配置时，会遇到一个技术限制：**JavaScript 对象不能同时将同一个键用作值和对象**。
+随着变量数量的增加，找到 `colors/primary` 变得更加繁琐，**因为我们无法依赖侧边栏快速导航，而必须在 colors 目录中搜索**。
+这不仅影响了我们的工作效率，更重要的是，当我们尝试将这种结构转换为 Tailwind CSS V3 配置时，我们遇到了一个技术限制：**JavaScript 对象不能同时将同一个键用作值和对象**。
 
 ```ts twoslash
 // @errors: 1117
@@ -177,12 +177,12 @@ export default {
 </div>
 ```
 
-通过这种技术，我们可以在 Figma 中优雅地组织变量。只需使用 `DEFAULT` 作为默认值的标记：
+通过这种技术，我们可以优雅地在 Figma 中组织变量。只需使用 `DEFAULT` 作为默认值的标记：
 
 - `colors/primary/DEFAULT` - 主色的默认值
 - `colors/primary/foreground` - 主背景上的文本颜色
 
-它们会出现在同一个目录中：
+它们将出现在同一个目录中：
 
 <figure className="mt-6">
   <>![使用默认值组织变量层级](/organizing-your-variables/organizing-your-variables-3.png)</>
@@ -193,5 +193,5 @@ export default {
 
 
 <Callout type="info" emoji="ℹ️">
-在最新的 Tailwind CSS V4 中，配置文件从 JavaScript 迁移到了 CSS 文件中，因此不再需要使用 `DEFAULT` 关键字，但是我们依然建议使用 `DEFAULT` 关键字来组织变量层级，以确保变量在 Figma 中的层级结构清晰， 当您选择 Tailwind CSS V4 或者 shadcn/ui (Tailwind CSS V4) 作为输出格式时，Variables Xporter 会自动将导出结果中多余的 `DEFAULT` 关键字删除，保证匹配 Tailwind CSS V4 的约定或要求。
+在最新的 Tailwind CSS V4 中，配置文件已从 JavaScript 文件迁移到 CSS 文件，因此不再需要 `DEFAULT` 关键字。然而，我们仍然建议使用 `DEFAULT` 关键字来组织变量层级，以确保 Figma 中变量的层级结构清晰。当您选择 Tailwind CSS V4 或 shadcn/ui (Tailwind CSS V4) 作为输出格式时，Variables Xporter 会自动从导出结果中移除多余的 `DEFAULT` 关键字，以符合 Tailwind CSS V4 的约定或要求。
 </Callout>
